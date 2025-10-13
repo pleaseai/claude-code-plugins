@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "pleaseai-plugins",
+  "version": "0.1.0",
+  "description": "Bundled plugins for Claude Code",
+  "owner": {
+    "name": "Anthropic",
+    "email": "support@anthropic.com"
+  },
+  "plugins": [
+    {
+      "name": "nanobanana",
+      "description": "Claude Code Plugin for Nano Banana (Gemini 2.5 Flash Image) model - generate and manipulate images with text prompts",
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/nanobanana"
+      }
+    }
+  ]
+}
