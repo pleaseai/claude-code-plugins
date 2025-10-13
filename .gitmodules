@@ -1,0 +1,3 @@
+[submodule "plugins/nanobanana"]
+	path = plugins/nanobanana
+	url = https://github.com/pleaseai/nanobanana
