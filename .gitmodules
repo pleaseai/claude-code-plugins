@@ -4,3 +4,6 @@
 [submodule "plugins/flutter"]
 	path = plugins/flutter
 	url = git@github.com:pleaseai/flutter.git
+[submodule "plugins/code-review"]
+	path = plugins/code-review
+	url = git@github.com:pleaseai/code-review-plugin.git

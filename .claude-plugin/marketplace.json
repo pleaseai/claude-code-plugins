@@ -32,6 +32,14 @@
         "source": "github",
         "repo": "pleaseai/spec-kit-plugin"
       }
+    },
+    {
+      "name": "code-review",
+      "description": "Code review plugin for Claude Code",
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/code-review-plugin"
+      }
     }
   ]
 }
