@@ -1,11 +1,11 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "pleaseai-plugins",
+  "name": "pleaseai",
   "version": "0.1.0",
   "description": "Bundled plugins for Claude Code",
   "owner": {
-    "name": "Anthropic",
-    "email": "support@anthropic.com"
+    "name": "Passion Factory",
+    "email": "support@passionfactory.ai"
   },
   "plugins": [
     {
