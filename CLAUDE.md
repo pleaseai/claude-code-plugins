@@ -114,6 +114,7 @@ This project follows strict development standards documented in:
 - @docs/STANDARDS.md
 - @docs/TDD.md
 - @docs/TESTING.md
+- @docs/plugins.md - Complete Claude Code plugin reference (manifest schema, components, development tools)
 
 ## Plugin Installation
 
