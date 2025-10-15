@@ -1,6 +1,7 @@
+import type { AggregatedMarketplace, AggregatedPlugin, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
 import { readFile } from 'node:fs/promises'
 import { resolve } from 'node:path'
-import type { AggregatedMarketplace, AggregatedPlugin, Marketplace, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
+import process from 'node:process'
 import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/marketplace-schema'
 
 /**

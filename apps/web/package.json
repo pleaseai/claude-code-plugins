@@ -23,8 +23,8 @@
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"
   },
-
   "devDependencies": {
+    "@iconify-json/heroicons": "^1.2.3",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.9.0",
     "@nuxt/test-utils": "3.19.2",

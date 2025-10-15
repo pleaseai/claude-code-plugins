@@ -1,18 +1,6 @@
 <script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core'
 import type { AggregatedPlugin, MarketplaceAPIResponse, Plugin } from '~/types/marketplace'
-
-interface MarketplaceData {
-  name: string
-  version: string
-  description: string
-  repository?: string
-  owner: {
-    name: string
-    email: string
-  }
-  plugins: Plugin[]
-}
+import { useTimeoutFn } from '@vueuse/core'
 
 const searchQuery = ref('')
 const selectedMarketplace = ref<string | null>(null) // Filter by marketplace.json name
@@ -52,7 +40,8 @@ const { data: apiData, pending, error } = await useFetch<MarketplaceAPIResponse>
 
 // Aggregate all plugins from all marketplaces
 const allPlugins = computed(() => {
-  if (!apiData.value) return []
+  if (!apiData.value)
+    return []
 
   return apiData.value.marketplaces.flatMap(m =>
     m.plugins.map(plugin => ({
@@ -64,7 +53,8 @@ const allPlugins = computed(() => {
 
 // Marketplace filter options
 const marketplaceOptions = computed(() => {
-  if (!apiData.value) return []
+  if (!apiData.value)
+    return []
 
   return [
     { label: 'All Marketplaces', value: null },

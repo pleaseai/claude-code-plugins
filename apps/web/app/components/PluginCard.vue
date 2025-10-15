@@ -10,7 +10,7 @@ interface Plugin {
   name: string
   description: string
   version?: string
-  author?: string | { name?: string; email?: string }
+  author?: string | { name?: string, email?: string }
   source: PluginSource | string
   marketplaceRepo?: string
   marketplaceJsonName?: string
@@ -113,8 +113,9 @@ const displayDescription = computed(() => {
 // Extract author name from either marketplace.json or fetched metadata
 // Handles both string and object formats
 // If author email is @anthropic.com, display "Anthropic" instead of individual name
-function getAuthorName(author: string | { name?: string; email?: string } | undefined): string | undefined {
-  if (!author) return undefined
+function getAuthorName(author: string | { name?: string, email?: string } | undefined): string | undefined {
+  if (!author)
+    return undefined
 
   // Handle string format
   if (typeof author === 'string') {
@@ -165,7 +166,6 @@ const githubSourceUrl = computed(() => {
     const treePath = props.plugin.source.replace(/^\.\//, 'tree/main/')
     const url = `https://github.com/${repoPath}/${treePath}`
 
-    console.log(`[PluginCard] Generated URL for ${props.plugin.name}:`, url)
     return url
   }
   // GitHub plugin
