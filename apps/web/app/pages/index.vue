@@ -8,6 +8,14 @@
     >
       <template #links>
         <div class="flex items-center gap-4">
+          <UButton
+            to="https://github.com/pleaseai/claude-code-plugins"
+            target="_blank"
+            icon="i-simple-icons-github"
+            color="neutral"
+            variant="ghost"
+            aria-label="View on GitHub"
+          />
           <UColorModeButton />
         </div>
       </template>

@@ -1,6 +1,13 @@
 # Claude Code Plugins Marketplace
 
+[![GitHub stars](https://img.shields.io/github/stars/pleaseai/claude-code-plugins?style=social)](https://github.com/pleaseai/claude-code-plugins)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![GitHub issues](https://img.shields.io/github/issues/pleaseai/claude-code-plugins)](https://github.com/pleaseai/claude-code-plugins/issues)
+[![GitHub pull requests](https://img.shields.io/github/issues-pr/pleaseai/claude-code-plugins)](https://github.com/pleaseai/claude-code-plugins/pulls)
+
 A curated marketplace of plugins for [Claude Code](https://www.anthropic.com/news/claude-code-plugins), providing custom collections of slash commands, agents, MCP servers, and hooks to enhance your development workflow.
+
+**Repository:** [https://github.com/pleaseai/claude-code-plugins](https://github.com/pleaseai/claude-code-plugins)
 
 ## Overview
 

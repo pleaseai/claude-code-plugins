@@ -3,6 +3,8 @@
   "name": "pleaseai",
   "version": "0.1.0",
   "description": "Bundled plugins for Claude Code",
+  "homepage": "https://github.com/pleaseai/claude-code-plugins",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
   "owner": {
     "name": "Passion Factory",
     "email": "support@passionfactory.ai"
