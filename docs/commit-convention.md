@@ -215,15 +215,3 @@ body" # passes
 ```
 100
 ```
-
-```sh
-echo "fix: some message
-
-body with multiple lines
-has a message that is way too long and will break the line rule 'line-max-length' by several characters" # fails
-
-echo "fix: some message
-
-body with multiple lines
-but still no line is too long" # passes
-```

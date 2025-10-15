@@ -10,3 +10,6 @@
 [submodule "plugins/security"]
 	path = plugins/security
 	url = git@github.com:pleaseai/security-plugin.git
+[submodule "plugins/spec-kit"]
+	path = plugins/spec-kit
+	url = git@github.com:pleaseai/spec-kit-plugin.git

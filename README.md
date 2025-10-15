@@ -9,15 +9,29 @@ This marketplace is maintained by Passion Factory and provides bundled plugins t
 ## Available Plugins
 
 ### Nano Banana
-
 Generate and manipulate images using the Gemini 2.5 Flash Image model directly from Claude Code.
 
-**Features:**
-- Image generation from text prompts
-- Image manipulation and editing
-- Powered by Gemini 2.5 Flash
-
 **Repository:** [pleaseai/nanobanana](https://github.com/pleaseai/nanobanana)
+
+### Security Analysis
+AI-powered security analysis for code changes and pull requests, identifying vulnerabilities and security risks.
+
+**Repository:** [pleaseai/security-plugin](https://github.com/pleaseai/security-plugin)
+
+### Flutter Development
+Flutter and Dart-related commands and context for enhanced mobile development workflow.
+
+**Repository:** [pleaseai/flutter](https://github.com/pleaseai/flutter)
+
+### Code Review
+Comprehensive code review plugin for Claude Code with specialized review agents.
+
+**Repository:** [pleaseai/code-review-plugin](https://github.com/pleaseai/code-review-plugin)
+
+### Spec Kit
+Toolkit to help you get started with Spec-Driven Development.
+
+**Repository:** [pleaseai/spec-kit-plugin](https://github.com/pleaseai/spec-kit-plugin)
 
 ## Installation
 
@@ -33,6 +47,10 @@ Once the marketplace is added, install any plugin with:
 
 ```bash
 /plugin install nanobanana@pleaseai
+/plugin install gemini-cli-security@pleaseai
+/plugin install flutter@pleaseai
+/plugin install code-review@pleaseai
+/plugin install speckit@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
