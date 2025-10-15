@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:www.anthropic.com)",
+      "mcp__nuxt-ui-remote__list_components",
+      "mcp__nuxt-ui-remote__get_component",
+      "Bash(npm view:*)",
+      "Bash(npm run dev)",
+      "Bash(gh pr view:*)",
+      "Bash(npm run build)",
+      "Bash(git fetch:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
