@@ -1,7 +1,5 @@
 import type { AggregatedMarketplace, AggregatedPlugin, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
-import { readFile } from 'node:fs/promises'
-import { resolve } from 'node:path'
-import process from 'node:process'
+import marketplaceSourcesConfig from '../marketplace-sources.json'
 import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/marketplace-schema'
 
 /**
@@ -10,14 +8,8 @@ import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/mark
  */
 const fetchMarketplaces = defineCachedFunction(
   async (): Promise<MarketplaceAPIResponse> => {
-    // Load marketplace sources configuration
-    // Resolve path from public directory (available in runtime)
-    const configPath = resolve(process.cwd(), 'public/marketplace-sources.json')
-    const configData = await readFile(configPath, 'utf-8')
-    const parsedConfig = JSON.parse(configData)
-
     // Validate configuration with Zod
-    const validatedConfig = marketplaceSourcesConfigSchema.parse(parsedConfig)
+    const validatedConfig = marketplaceSourcesConfigSchema.parse(marketplaceSourcesConfig)
     const enabledSources = validatedConfig.sources
       .filter(s => s.enabled)
       .sort((a, b) => a.priority - b.priority)
