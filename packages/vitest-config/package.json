@@ -1,7 +1,7 @@
 {
   "name": "@pleaseai/vitest-config",
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
   "exports": {
     ".": "./dist/index.js",
     "./base": "./dist/configs/base-config.js",
