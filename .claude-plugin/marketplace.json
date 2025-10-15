@@ -13,7 +13,7 @@
       "description": "Claude Code Plugin for Nano Banana (Gemini 2.5 Flash Image) model - generate and manipulate images with text prompts",
       "source": {
         "source": "github",
-        "repo": "pleaseai/nanobanana"
+        "repo": "pleaseai/nanobanana-plugin"
       }
     },
     {
@@ -21,7 +21,7 @@
       "description": "Enables several Flutter and Dart-related commands and context.",
       "source": {
         "source": "github",
-        "repo": "pleaseai/flutter"
+        "repo": "pleaseai/flutter-plugin"
       }
     },
     {
