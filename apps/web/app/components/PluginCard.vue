@@ -40,11 +40,31 @@
             </UBadge>
           </div>
         </div>
-        <div v-if="hasContext || hasMcpServer" class="flex items-center gap-2">
+        <div v-if="hasContext || hasMcpServer || authorName" class="flex items-center gap-2">
+          <UBadge
+            v-if="authorName === 'Google'"
+            variant="soft"
+            color="warning"
+            size="sm"
+            title="Developed by Google"
+          >
+            <UIcon name="i-simple-icons-google" class="mr-1" />
+            Google
+          </UBadge>
+          <UBadge
+            v-if="authorName === 'Anthropic'"
+            variant="soft"
+            color="error"
+            size="sm"
+            title="Developed by Anthropic"
+          >
+            <UIcon name="i-simple-icons-anthropic" class="mr-1" />
+            Anthropic
+          </UBadge>
           <UBadge
             v-if="hasContext"
             variant="soft"
-            color="purple"
+            color="info"
             size="sm"
             title="Includes Context File"
           >
@@ -54,7 +74,7 @@
           <UBadge
             v-if="hasMcpServer"
             variant="soft"
-            color="blue"
+            color="primary"
             size="sm"
             title="Includes MCP Server"
           >
@@ -185,7 +205,15 @@ const displayDescription = computed(() => {
 
 // Computed author - prefer marketplace.json, fallback to metadata
 const displayAuthor = computed(() => {
-  return props.plugin.author || pluginMetadata.value?.author
+  const author = props.plugin.author || pluginMetadata.value?.author
+  // Handle both string and object formats
+  return typeof author === 'string' ? author : author?.name
+})
+
+// Get author name for badge display
+const authorName = computed(() => {
+  const author = props.plugin.author || pluginMetadata.value?.author
+  return typeof author === 'string' ? author : author?.name
 })
 
 // Computed license - from fetched metadata
