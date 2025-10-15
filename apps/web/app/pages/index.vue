@@ -1,31 +1,9 @@
 <script setup lang="ts">
+import type { AggregatedPlugin, MarketplaceAPIResponse, Plugin } from '~/types/marketplace'
 import { useTimeoutFn } from '@vueuse/core'
 
-interface PluginSource {
-  source: 'github'
-  repo: string
-}
-
-interface Plugin {
-  name: string
-  description: string
-  version?: string
-  author?: string
-  source: PluginSource
-}
-
-interface MarketplaceData {
-  name: string
-  version: string
-  description: string
-  owner: {
-    name: string
-    email: string
-  }
-  plugins: Plugin[]
-}
-
 const searchQuery = ref('')
+const selectedMarketplace = ref<string | null>(null) // Filter by marketplace.json name
 const route = useRoute()
 const router = useRouter()
 const toast = useToast()
@@ -57,18 +35,42 @@ const targetPluginName = computed(() => {
   return undefined
 })
 
-// Fetch marketplace data
-const { data: marketplaceData, pending, error } = await useAsyncData<MarketplaceData>(
-  'marketplace',
-  () => queryCollection('marketplace').first(),
-)
+// Fetch marketplace data from API
+const { data: apiData, pending, error } = await useFetch<MarketplaceAPIResponse>('/api/marketplaces')
+
+// Aggregate all plugins from all marketplaces
+const allPlugins = computed(() => {
+  if (!apiData.value)
+    return []
+
+  return apiData.value.marketplaces.flatMap(m =>
+    m.plugins.map(plugin => ({
+      ...plugin,
+      marketplaceRepo: m.repo,
+    })),
+  )
+})
+
+// Marketplace filter options
+const marketplaceOptions = computed(() => {
+  if (!apiData.value)
+    return []
+
+  return [
+    { label: 'All Marketplaces', value: null },
+    ...apiData.value.marketplaces.map(m => ({
+      label: `${m.marketplaceJsonName} (${m.pluginCount})`, // Use name from marketplace.json
+      value: m.marketplaceJsonName,
+    })),
+  ]
+})
 
 // Check if plugin matches search query
 function pluginMatchesSearch(plugin: Plugin, query: string): boolean {
   const searchFields = [
     plugin.name,
     plugin.description,
-    plugin.source.repo,
+    typeof plugin.source === 'string' ? plugin.source : plugin.source.repo,
   ]
 
   return searchFields.some(field =>
@@ -76,20 +78,26 @@ function pluginMatchesSearch(plugin: Plugin, query: string): boolean {
   )
 }
 
-// Filter plugins based on search query
+// Filter plugins based on search query and marketplace selection
 const filteredPlugins = computed(() => {
-  if (!marketplaceData.value?.plugins)
-    return []
+  let plugins = allPlugins.value
 
-  const query = searchQuery.value.toLowerCase().trim()
-
-  if (!query) {
-    return marketplaceData.value.plugins
+  // Filter by marketplace
+  if (selectedMarketplace.value) {
+    plugins = plugins.filter(plugin =>
+      (plugin as AggregatedPlugin).marketplaceJsonName === selectedMarketplace.value,
+    )
   }
 
-  return marketplaceData.value.plugins.filter(plugin =>
-    pluginMatchesSearch(plugin, query),
-  )
+  // Filter by search query
+  const query = searchQuery.value.toLowerCase().trim()
+  if (query) {
+    plugins = plugins.filter(plugin =>
+      pluginMatchesSearch(plugin, query),
+    )
+  }
+
+  return plugins
 })
 
 // Store plugin card refs for scrolling
@@ -138,7 +146,7 @@ watch([() => targetPluginName.value, pending], ([pluginName, isLoading]) => {
     return
 
   // Check if plugin exists in the data first
-  const pluginExists = marketplaceData.value?.plugins?.some(p => p.name === pluginName)
+  const pluginExists = allPlugins.value.some(p => p.name === pluginName)
 
   if (!pluginExists) {
     // Plugin doesn't exist in marketplace data
@@ -240,14 +248,26 @@ useHead({
 
     <!-- Main Content -->
     <UContainer class="py-12">
-      <!-- Search Bar -->
-      <div class="mb-8 max-w-2xl mx-auto">
+      <!-- Search Bar and Filters -->
+      <div class="mb-8 max-w-2xl mx-auto space-y-4">
         <PluginSearch v-model="searchQuery" :filtered-count="filteredPlugins.length" />
+
+        <!-- Marketplace Filter -->
+        <div v-if="marketplaceOptions.length > 0" class="flex items-center gap-2">
+          <label class="text-sm font-medium text-muted">Filter by Marketplace:</label>
+          <USelectMenu
+            v-model="selectedMarketplace"
+            :items="marketplaceOptions"
+            value-key="value"
+            placeholder="All Marketplaces"
+            class="w-64"
+          />
+        </div>
       </div>
 
       <!-- Disclaimer Alert -->
       <UAlert
-        v-if="marketplaceData"
+        v-if="apiData"
         icon="i-heroicons-information-circle"
         color="blue"
         variant="soft"
@@ -307,18 +327,18 @@ useHead({
     </UContainer>
 
     <!-- Footer Section -->
-    <UContainer v-if="marketplaceData" class="py-12 border-t border-default">
+    <UContainer v-if="apiData" class="py-12 border-t border-default">
       <div class="text-center">
         <p class="text-sm text-muted mb-2">
-          Marketplace maintained by <span class="font-semibold">{{ marketplaceData.owner.name }}</span>
+          Marketplace maintained by <span class="font-semibold">Passion Factory</span>
         </p>
         <UButton
-          :to="`mailto:${marketplaceData.owner.email}`"
+          to="mailto:support@passionfactory.ai"
           variant="ghost"
           size="sm"
           icon="i-heroicons-envelope"
         >
-          {{ marketplaceData.owner.email }}
+          support@passionfactory.ai
         </UButton>
       </div>
     </UContainer>

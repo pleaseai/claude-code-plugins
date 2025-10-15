@@ -64,7 +64,7 @@
       "description": "A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities",
       "source": {
         "source": "github",
-        "repo": "amondnet/grafana-plugin"
+        "repo": "amondnet/mcp-grafana"
       }
     }
   ]

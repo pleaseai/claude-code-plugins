@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "name": "pleaseai",
+      "description": "Community-contributed plugins from PleaseAI",
+      "url": "https://raw.githubusercontent.com/pleaseai/claude-code-plugins/main/.claude-plugin/marketplace.json",
+      "repo": "pleaseai/claude-code-plugins",
+      "enabled": true,
+      "priority": 1
+    },
+    {
+      "name": "claude-code-plugins",
+      "description": "Bundled plugins for Claude Code including Agent SDK development tools, PR review toolkit, and commit workflows",
+      "url": "https://raw.githubusercontent.com/anthropics/claude-code/main/.claude-plugin/marketplace.json",
+      "repo": "anthropics/claude-code",
+      "enabled": true,
+      "priority": 2
+    }
+  ]
+}

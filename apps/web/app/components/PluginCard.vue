@@ -10,8 +10,10 @@ interface Plugin {
   name: string
   description: string
   version?: string
-  author?: string
-  source: PluginSource
+  author?: string | { name?: string, email?: string }
+  source: PluginSource | string
+  marketplaceRepo?: string
+  marketplaceJsonName?: string
 }
 
 interface PluginMetadata {
@@ -35,13 +37,19 @@ const isModalOpen = ref(false)
 const pluginMetadata = ref<PluginMetadata | null>(null)
 const loading = ref(false)
 
-// Fetch plugin metadata from GitHub
+// Fetch plugin metadata from GitHub (only for plugins without version in marketplace.json)
 async function fetchPluginMetadata() {
+  // If version already exists in marketplace.json, don't fetch
   if (props.plugin.version) {
-    // If version already exists in marketplace.json, don't fetch
     return
   }
 
+  // Local plugins should have metadata in marketplace.json - skip fetch
+  if (typeof props.plugin.source === 'string') {
+    return
+  }
+
+  // GitHub plugin - fetch from GitHub
   loading.value = true
   try {
     const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
@@ -104,8 +112,22 @@ const displayDescription = computed(() => {
 
 // Extract author name from either marketplace.json or fetched metadata
 // Handles both string and object formats
-function getAuthorName(author: string | { name?: string } | undefined): string | undefined {
-  return typeof author === 'string' ? author : author?.name
+// If author email is @anthropic.com, display "Anthropic" instead of individual name
+function getAuthorName(author: string | { name?: string, email?: string } | undefined): string | undefined {
+  if (!author)
+    return undefined
+
+  // Handle string format
+  if (typeof author === 'string') {
+    return author
+  }
+
+  // Handle object format - check email domain
+  if (author.email?.endsWith('@anthropic.com')) {
+    return 'Anthropic'
+  }
+
+  return author.name
 }
 
 // Computed author - prefer marketplace.json, fallback to metadata
@@ -129,6 +151,27 @@ const hasContext = computed(() => {
   return !!pluginMetadata.value?.contextFileName
 })
 
+// Computed GitHub source URL
+const githubSourceUrl = computed(() => {
+  if (typeof props.plugin.source === 'string') {
+    // Local plugin - construct GitHub URL from marketplace repository
+    if (!props.plugin.marketplaceRepo) {
+      console.warn(`[PluginCard] No marketplace repository for local plugin: ${props.plugin.name}`)
+      return undefined
+    }
+
+    // marketplaceRepo is already in "org/repo" format
+    const repoPath = props.plugin.marketplaceRepo
+    // Convert local path to GitHub tree path (e.g., "./plugins/agent-sdk-dev" -> "tree/main/plugins/agent-sdk-dev")
+    const treePath = props.plugin.source.replace(/^\.\//, 'tree/main/')
+    const url = `https://github.com/${repoPath}/${treePath}`
+
+    return url
+  }
+  // GitHub plugin
+  return `https://github.com/${props.plugin.source.repo}`
+})
+
 // Consolidated badges configuration
 interface Badge {
   key: string
@@ -140,6 +183,18 @@ interface Badge {
 
 const badges = computed<Badge[]>(() => {
   const badgeList: Badge[] = []
+
+  // Marketplace badge (shown first)
+  if (props.plugin.marketplaceJsonName) {
+    const isOfficial = props.plugin.marketplaceJsonName === 'anthropic'
+    badgeList.push({
+      key: 'marketplace',
+      icon: isOfficial ? 'i-heroicons-shield-check' : 'i-heroicons-building-storefront',
+      label: props.plugin.marketplaceJsonName,
+      color: isOfficial ? 'primary' : 'success',
+      title: `From ${props.plugin.marketplaceJsonName} marketplace`,
+    })
+  }
 
   // Author badges
   if (displayAuthor.value === 'Google') {
@@ -232,7 +287,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-              <span class="truncate">{{ plugin.source.repo }}</span>
+              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.repo }}</span>
             </div>
           </div>
           <div class="shrink-0">
@@ -277,7 +332,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
 
       <!-- Metadata -->
       <div v-if="displayAuthor || displayLicense" class="flex flex-wrap gap-2 text-xs">
-        <div v-if="displayAuthor" class="flex items-center gap-1 text-muted">
+        <div v-if="displayAuthor && displayAuthor !== 'Anthropic' && displayAuthor !== 'Google'" class="flex items-center gap-1 text-muted">
           <UIcon name="i-heroicons-user-circle" class="shrink-0" />
           <span>{{ displayAuthor }}</span>
         </div>
@@ -291,7 +346,8 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
     <template #footer>
       <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
         <UButton
-          :to="`https://github.com/${plugin.source.repo}`"
+          v-if="githubSourceUrl"
+          :to="githubSourceUrl"
           target="_blank"
           external
           variant="outline"
@@ -307,7 +363,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
           color="primary"
           size="sm"
           icon="i-heroicons-arrow-down-tray"
-          class="flex-1 justify-center"
+          :class="githubSourceUrl ? 'flex-1 justify-center' : 'w-full justify-center'"
           title="View installation instructions"
           @click="openInstallModal"
         >
@@ -321,5 +377,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
   <InstallModal
     v-model:open="isModalOpen"
     :plugin-name="plugin.name"
+    :marketplace-json-name="plugin.marketplaceJsonName"
+    :marketplace-repo="plugin.marketplaceRepo"
   />
 </template>

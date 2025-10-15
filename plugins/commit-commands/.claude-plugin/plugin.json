@@ -1,0 +1,9 @@
+{
+  "name": "commit-commands",
+  "version": "1.0.0",
+  "description": "Git commit workflow commands for creating commits, pushing changes, and opening PRs with ease",
+  "author": {
+    "name": "Passion Factory",
+    "email": "support@passionfactory.ai"
+  }
+}

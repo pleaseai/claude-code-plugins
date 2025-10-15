@@ -3,8 +3,12 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/code-review" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/firebase" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/flutter" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/grafana" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/nanobanana" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/postgres" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/plugins/security" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/plugins/spec-kit" vcs="Git" />
   </component>
 </project>

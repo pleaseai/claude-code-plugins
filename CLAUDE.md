@@ -83,19 +83,19 @@ The marketplace website is built with:
 cd apps/web
 
 # Install dependencies
-npm install
+bun install
 
 # Development server
-npm run dev
+bun run dev
 
 # Build for production
-npm run build
+bun run build
 
 # Preview production build
-npm run preview
+bun run preview
 
 # Generate static site
-npm run generate
+bun run generate
 ```
 
 ### Plugin Development
@@ -134,10 +134,10 @@ Users can add this marketplace and install plugins:
 ```bash
 # For plugins with tests
 cd plugins/<plugin-name>
-npm run test
+bun run test
 
 # Type checking across plugins
-npm run typecheck
+bun run typecheck
 ```
 
 ## Key Files
