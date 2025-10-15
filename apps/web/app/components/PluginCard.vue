@@ -74,19 +74,25 @@
         </UButton>
 
         <UButton
-          @click="copyInstallCommand"
-          :variant="copied ? 'soft' : 'solid'"
-          :color="copied ? 'green' : 'primary'"
+          @click="openInstallModal"
+          variant="solid"
+          color="primary"
           size="sm"
-          :icon="copied ? 'i-heroicons-check-circle' : 'i-heroicons-clipboard-document'"
+          icon="i-heroicons-arrow-down-tray"
           class="flex-1 justify-center"
-          :title="copied ? 'Copied to clipboard!' : 'Copy install command'"
+          title="View installation instructions"
         >
-          {{ copied ? 'Copied!' : 'Install' }}
+          Install
         </UButton>
       </div>
     </template>
   </UCard>
+
+  <!-- Install Modal -->
+  <InstallModal
+    v-model:open="isModalOpen"
+    :plugin-name="plugin.name"
+  />
 </template>
 
 <script setup lang="ts">
@@ -115,7 +121,7 @@ const props = defineProps<{
   plugin: Plugin
 }>()
 
-const copied = ref(false)
+const isModalOpen = ref(false)
 const pluginMetadata = ref<PluginMetadata | null>(null)
 const loading = ref(false)
 
@@ -166,18 +172,7 @@ onMounted(() => {
   fetchPluginMetadata()
 })
 
-const copyInstallCommand = async () => {
-  const command = `claude-code plugins install https://github.com/${props.plugin.source.repo}`
-
-  try {
-    await navigator.clipboard.writeText(command)
-    copied.value = true
-
-    setTimeout(() => {
-      copied.value = false
-    }, 2000)
-  } catch (err) {
-    console.error('Failed to copy:', err)
-  }
+const openInstallModal = () => {
+  isModalOpen.value = true
 }
 </script>
