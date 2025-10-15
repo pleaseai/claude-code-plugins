@@ -61,6 +61,7 @@ Claude Code plugins are customizable extensions that can include:
 - **Subagents**: Purpose-built agents for specialized tasks
 - **MCP Servers**: Connect to external tools and data sources
 - **Hooks**: Customize Claude Code's workflow behavior
+- **Context Files**: AI-specific instructions loaded automatically on session start
 
 Plugins can be easily toggled on and off as needed, making them perfect for:
 - Enforcing team coding standards
@@ -69,13 +70,49 @@ Plugins can be easily toggled on and off as needed, making them perfect for:
 - Connecting internal tools
 - Bundling related customizations
 
+### Context File Support
+
+Many plugins in this marketplace include context files that provide AI-specific instructions:
+
+- **Automatic Loading**: Context files are loaded via SessionStart hooks
+- **Gemini CLI Compatibility**: Supports plugins converted from Gemini CLI extensions
+- **Visual Indication**: Plugins with context files show a "Context" badge in the marketplace
+- **Examples**: `GEMINI.md`, `flutter.md` with specialized AI instructions
+
 ## Creating Your Own Plugin
 
 To create and distribute your own plugins:
 
 1. Create a GitHub repository
-2. Add a `.claude-plugin/marketplace.json` file with your plugin configuration
-3. Users can add your marketplace with `/plugin marketplace add <username>/<repo-name>`
+2. Add a `.claude-plugin/plugin.json` file with your plugin configuration
+3. (Optional) Add `contextFileName` field to enable automatic context loading
+4. Users can add your marketplace with `/plugin marketplace add <username>/<repo-name>`
+
+### Example plugin.json with Context File
+
+```json
+{
+  "name": "my-plugin",
+  "version": "1.0.0",
+  "description": "My custom plugin",
+  "contextFileName": "CONTEXT.md",
+  "mcpServers": { ... },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
+```
 
 For detailed documentation on creating plugins, visit:
 - [Plugin Marketplace Documentation](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces#github-repositories)

@@ -20,24 +20,44 @@
             <span class="truncate">{{ plugin.source.repo }}</span>
           </div>
         </div>
-        <UBadge
-          v-if="displayVersion"
-          variant="soft"
-          color="primary"
-          size="sm"
-          class="shrink-0"
-        >
-          v{{ displayVersion }}
-        </UBadge>
-        <UBadge
-          v-else-if="loading"
-          variant="soft"
-          color="neutral"
-          size="sm"
-          class="shrink-0"
-        >
-          Loading...
-        </UBadge>
+        <div class="flex items-center gap-2 shrink-0">
+          <UBadge
+            v-if="hasContext"
+            variant="soft"
+            color="purple"
+            size="sm"
+            title="Includes Context File"
+          >
+            <UIcon name="i-heroicons-document-text" class="mr-1" />
+            Context
+          </UBadge>
+          <UBadge
+            v-if="hasMcpServer"
+            variant="soft"
+            color="blue"
+            size="sm"
+            title="Includes MCP Server"
+          >
+            <UIcon name="i-heroicons-server" class="mr-1" />
+            MCP
+          </UBadge>
+          <UBadge
+            v-if="displayVersion"
+            variant="soft"
+            color="primary"
+            size="sm"
+          >
+            v{{ displayVersion }}
+          </UBadge>
+          <UBadge
+            v-else-if="loading"
+            variant="soft"
+            color="neutral"
+            size="sm"
+          >
+            Loading...
+          </UBadge>
+        </div>
       </div>
     </template>
 
@@ -114,6 +134,8 @@ interface PluginMetadata {
   description?: string
   author?: string
   license?: string
+  mcpServers?: Record<string, any>
+  contextFileName?: string
   [key: string]: any
 }
 
@@ -165,6 +187,16 @@ const displayAuthor = computed(() => {
 // Computed license - from fetched metadata
 const displayLicense = computed(() => {
   return pluginMetadata.value?.license
+})
+
+// Computed MCP server availability - check if plugin has MCP server configured
+const hasMcpServer = computed(() => {
+  return pluginMetadata.value?.mcpServers && Object.keys(pluginMetadata.value.mcpServers).length > 0
+})
+
+// Computed context file availability - check if plugin has context file configured
+const hasContext = computed(() => {
+  return !!pluginMetadata.value?.contextFileName
 })
 
 // Fetch metadata on mount
