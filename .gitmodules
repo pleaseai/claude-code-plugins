@@ -1,6 +1,6 @@
 [submodule "plugins/nanobanana"]
 	path = plugins/nanobanana
-	url = https://github.com/pleaseai/nanobanana
+	url = git@github.com:pleaseai/nanobanana-plugin.git
 [submodule "plugins/flutter"]
 	path = plugins/flutter
 	url = git@github.com:pleaseai/flutter.git
