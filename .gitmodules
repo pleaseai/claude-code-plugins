@@ -13,3 +13,9 @@
 [submodule "plugins/spec-kit"]
 	path = plugins/spec-kit
 	url = git@github.com:pleaseai/spec-kit-plugin.git
+[submodule "plugins/postgres"]
+	path = plugins/postgres
+	url = git@github.com:pleaseai/postgres-plugin.git
+[submodule "plugins/firebase"]
+	path = plugins/firebase
+	url = git@github.com:pleaseai/firebase-plugin.git
