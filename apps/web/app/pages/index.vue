@@ -55,7 +55,9 @@
         <PluginCard
           v-for="plugin in filteredPlugins"
           :key="plugin.name"
+          :ref="el => setPluginCardRef(plugin.name, el)"
           :plugin="plugin"
+          :auto-open-modal="plugin.name === targetPluginName"
         />
       </UPageGrid>
 
@@ -95,6 +97,8 @@
 </template>
 
 <script setup lang="ts">
+import { useTimeoutFn } from '@vueuse/core'
+
 interface PluginSource {
   source: 'github'
   repo: string
@@ -120,12 +124,55 @@ interface MarketplaceData {
 }
 
 const searchQuery = ref('')
+const route = useRoute()
+const router = useRouter()
+const toast = useToast()
+const pluginCardRefs = ref<Record<string, any>>({})
+const pendingScrollTimer = ref<{ stop: () => void } | null>(null)
+
+// Get target plugin name from URL query parameter with validation
+const targetPluginName = computed(() => {
+  const pluginParam = route.query.plugin || route.query.install
+
+  // Handle array case (e.g., ?plugin=foo&plugin=bar)
+  if (Array.isArray(pluginParam)) {
+    console.warn('[Plugin URL Navigation] Multiple plugin parameters detected, using first value')
+    return pluginParam[0] || undefined
+  }
+
+  // Handle empty string
+  if (pluginParam === '') {
+    console.warn('[Plugin URL Navigation] Empty plugin parameter detected')
+    return undefined
+  }
+
+  // Normalize and validate
+  if (typeof pluginParam === 'string') {
+    const normalized = pluginParam.trim()
+    return normalized || undefined
+  }
+
+  return undefined
+})
 
 // Fetch marketplace data
 const { data: marketplaceData, pending, error } = await useAsyncData<MarketplaceData>(
   'marketplace',
   () => queryCollection('marketplace').first()
 )
+
+// Check if plugin matches search query
+function pluginMatchesSearch(plugin: Plugin, query: string): boolean {
+  const searchFields = [
+    plugin.name,
+    plugin.description,
+    plugin.source.repo
+  ]
+
+  return searchFields.some(field =>
+    field.toLowerCase().includes(query)
+  )
+}
 
 // Filter plugins based on search query
 const filteredPlugins = computed(() => {
@@ -137,13 +184,117 @@ const filteredPlugins = computed(() => {
     return marketplaceData.value.plugins
   }
 
-  return marketplaceData.value.plugins.filter(plugin => {
-    return (
-      plugin.name.toLowerCase().includes(query) ||
-      plugin.description.toLowerCase().includes(query) ||
-      plugin.source.repo.toLowerCase().includes(query)
-    )
-  })
+  return marketplaceData.value.plugins.filter(plugin =>
+    pluginMatchesSearch(plugin, query)
+  )
+})
+
+// Store plugin card refs for scrolling
+const setPluginCardRef = (pluginName: string, el: any) => {
+  if (el) {
+    pluginCardRefs.value[pluginName] = el
+  }
+}
+
+// Scroll to a specific plugin card with error handling
+function scrollToPlugin(pluginName: string): boolean {
+  const targetCard = pluginCardRefs.value[pluginName]
+
+  if (!targetCard) {
+    // Use debug level for initial attempts - this is expected during loading
+    return false
+  }
+
+  try {
+    const element = targetCard.$el
+
+    if (!element || !(element instanceof HTMLElement)) {
+      throw new Error(`Invalid DOM element for plugin "${pluginName}"`)
+    }
+
+    if (typeof element.scrollIntoView !== 'function') {
+      throw new Error('scrollIntoView not supported')
+    }
+
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    })
+
+    return true
+  } catch (error) {
+    console.error(`[Plugin URL Navigation] Failed to scroll to plugin "${pluginName}":`, error)
+    return false
+  }
+}
+
+// Auto-scroll to target plugin when page loads with user feedback
+watch([() => targetPluginName.value, pending], ([pluginName, isLoading]) => {
+  if (!pluginName || isLoading) return
+
+  // Check if plugin exists in the data first
+  const pluginExists = marketplaceData.value?.plugins?.some(p => p.name === pluginName)
+
+  if (!pluginExists) {
+    // Plugin doesn't exist in marketplace data
+    toast.add({
+      title: 'Plugin Not Found',
+      description: `The plugin "${pluginName}" could not be found. It may have been removed or the link may be incorrect.`,
+      color: 'red',
+      icon: 'i-heroicons-exclamation-triangle'
+    })
+
+    // Clear the query parameter to prevent confusion
+    router.replace({ query: {} })
+    return
+  }
+
+  // Clean up any existing pending timer
+  pendingScrollTimer.value?.stop()
+
+  // Plugin exists, try to scroll with retry logic
+  let retryCount = 0
+  const maxRetries = 5
+  const retryDelay = 200 // ms between retries
+
+  const attemptScroll = () => {
+    // Wait for next tick to ensure DOM is updated
+    nextTick(() => {
+      const scrolled = scrollToPlugin(pluginName)
+
+      if (scrolled) {
+        // Success! Clear timer reference
+        pendingScrollTimer.value = null
+        return
+      }
+
+      // Not ready yet, retry if we haven't exceeded max retries
+      retryCount++
+      if (retryCount < maxRetries) {
+        const timer = useTimeoutFn(attemptScroll, retryDelay)
+        pendingScrollTimer.value = timer
+        timer.start()
+      } else {
+        // Max retries reached, show user feedback
+        console.error(`[Plugin URL Navigation] Failed to scroll to "${pluginName}" after ${maxRetries} attempts`)
+        toast.add({
+          title: 'Navigation Issue',
+          description: `The plugin "${pluginName}" was found but could not be displayed. Try refreshing the page.`,
+          color: 'orange',
+          icon: 'i-heroicons-exclamation-circle'
+        })
+        pendingScrollTimer.value = null
+      }
+    })
+  }
+
+  // Start the scroll attempt cycle
+  attemptScroll()
+}, { immediate: true })
+
+// Clean up pending timer on unmount
+onBeforeUnmount(() => {
+  pendingScrollTimer.value?.stop()
 })
 
 // SEO Meta
