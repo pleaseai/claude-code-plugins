@@ -1,6 +1,8 @@
 <script setup lang="ts">
 interface Props {
   pluginName: string
+  marketplaceJsonName?: string
+  marketplaceRepo?: string
   open?: boolean
 }
 
@@ -19,8 +21,19 @@ const isOpen = computed({
   set: value => emit('update:open', value),
 })
 
-const marketplaceCommand = '/plugin marketplace add pleaseai/claude-code-plugins'
-const installCommand = computed(() => `/plugin install ${props.pluginName}@pleaseai`)
+// Determine marketplace command and install command based on marketplace info
+const marketplaceCommand = computed(() => {
+  // Use org/repo format for marketplace add
+  const repo = props.marketplaceRepo || 'pleaseai/claude-code-plugins'
+  return `/plugin marketplace add ${repo}`
+})
+
+const installCommand = computed(() => {
+  // Use pluginName@marketplaceJsonName format for plugin install
+  // marketplaceJsonName comes from the "name" field in marketplace.json
+  const marketplaceJsonName = props.marketplaceJsonName || 'claude-code-plugins'
+  return `/plugin install ${props.pluginName}@${marketplaceJsonName}`
+})
 
 const copiedStates = reactive({
   marketplace: false,
@@ -74,7 +87,7 @@ async function copyCommand(command: string, type: keyof typeof copiedStates) {
 }
 
 async function copyAllCommands() {
-  const allCommands = `${marketplaceCommand}\n${installCommand.value}`
+  const allCommands = `${marketplaceCommand.value}\n${installCommand.value}`
 
   try {
     // Check if clipboard API is available
@@ -92,7 +105,7 @@ async function copyAllCommands() {
   catch (err) {
     // Log error with full context for debugging
     console.error('Failed to copy all commands to clipboard:', {
-      marketplaceCommand,
+      marketplaceCommand: marketplaceCommand.value,
       installCommand: installCommand.value,
       error: err instanceof Error ? err.message : String(err),
       clipboardAvailable: isClipboardSupported.value,
