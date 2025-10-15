@@ -40,46 +40,17 @@
             </UBadge>
           </div>
         </div>
-        <div v-if="hasContext || hasMcpServer || authorName" class="flex items-center gap-2">
+        <div v-if="badges.length > 0" class="flex items-center gap-2">
           <UBadge
-            v-if="authorName === 'Google'"
+            v-for="badge in badges"
+            :key="badge.key"
             variant="soft"
-            color="warning"
+            :color="badge.color"
             size="sm"
-            title="Developed by Google"
+            :title="badge.title"
           >
-            <UIcon name="i-simple-icons-google" class="mr-1" />
-            Google
-          </UBadge>
-          <UBadge
-            v-if="authorName === 'Anthropic'"
-            variant="soft"
-            color="error"
-            size="sm"
-            title="Developed by Anthropic"
-          >
-            <UIcon name="i-simple-icons-anthropic" class="mr-1" />
-            Anthropic
-          </UBadge>
-          <UBadge
-            v-if="hasContext"
-            variant="soft"
-            color="info"
-            size="sm"
-            title="Includes Context File"
-          >
-            <UIcon name="i-heroicons-document-text" class="mr-1" />
-            Context
-          </UBadge>
-          <UBadge
-            v-if="hasMcpServer"
-            variant="soft"
-            color="primary"
-            size="sm"
-            title="Includes MCP Server"
-          >
-            <UIcon name="i-heroicons-server" class="mr-1" />
-            MCP
+            <UIcon :name="badge.icon" class="mr-1" />
+            {{ badge.label }}
           </UBadge>
         </div>
       </div>
@@ -140,6 +111,8 @@
 </template>
 
 <script setup lang="ts">
+import { useTimeoutFn } from '@vueuse/core'
+
 interface PluginSource {
   source: 'github'
   repo: string
@@ -186,11 +159,42 @@ const fetchPluginMetadata = async () => {
     const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
     const response = await fetch(url)
 
-    if (response.ok) {
+    if (!response.ok) {
+      // Log specific HTTP error
+      console.error(`Failed to fetch plugin metadata: HTTP ${response.status}`, {
+        plugin: props.plugin.name,
+        repo: props.plugin.source.repo,
+        status: response.status,
+        statusText: response.statusText
+      })
+
+      // Handle specific error cases
+      if (response.status === 404) {
+        console.warn(`Plugin metadata not found for ${props.plugin.name}`)
+        // 404 is common for plugins without metadata - don't show toast
+      } else if (response.status === 403) {
+        console.error(`Access denied to plugin metadata for ${props.plugin.name}`)
+      }
+      return
+    }
+
+    // Parse JSON with error handling
+    try {
       pluginMetadata.value = await response.json()
+    } catch (parseErr) {
+      console.error('Failed to parse plugin metadata JSON:', {
+        plugin: props.plugin.name,
+        error: parseErr instanceof Error ? parseErr.message : String(parseErr)
+      })
+      // Don't show toast - this is a plugin configuration issue
     }
   } catch (err) {
-    console.error('Failed to fetch plugin metadata:', err)
+    // Network-level errors (connection failed, CORS, etc.)
+    console.error('Network error fetching plugin metadata:', {
+      plugin: props.plugin.name,
+      repo: props.plugin.source.repo,
+      error: err instanceof Error ? err.message : String(err)
+    })
   } finally {
     loading.value = false
   }
@@ -206,17 +210,16 @@ const displayDescription = computed(() => {
   return props.plugin.description || pluginMetadata.value?.description || 'No description available'
 })
 
+// Extract author name from either marketplace.json or fetched metadata
+// Handles both string and object formats
+function getAuthorName(author: string | { name?: string } | undefined): string | undefined {
+  return typeof author === 'string' ? author : author?.name
+}
+
 // Computed author - prefer marketplace.json, fallback to metadata
 const displayAuthor = computed(() => {
   const author = props.plugin.author || pluginMetadata.value?.author
-  // Handle both string and object formats
-  return typeof author === 'string' ? author : author?.name
-})
-
-// Get author name for badge display
-const authorName = computed(() => {
-  const author = props.plugin.author || pluginMetadata.value?.author
-  return typeof author === 'string' ? author : author?.name
+  return getAuthorName(author)
 })
 
 // Computed license - from fetched metadata
@@ -234,6 +237,61 @@ const hasContext = computed(() => {
   return !!pluginMetadata.value?.contextFileName
 })
 
+// Consolidated badges configuration
+interface Badge {
+  key: string
+  icon: string
+  label: string
+  color: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'
+  title: string
+}
+
+const badges = computed<Badge[]>(() => {
+  const badgeList: Badge[] = []
+
+  // Author badges
+  if (displayAuthor.value === 'Google') {
+    badgeList.push({
+      key: 'google',
+      icon: 'i-simple-icons-google',
+      label: 'Google',
+      color: 'warning',
+      title: 'Developed by Google'
+    })
+  } else if (displayAuthor.value === 'Anthropic') {
+    badgeList.push({
+      key: 'anthropic',
+      icon: 'i-simple-icons-anthropic',
+      label: 'Anthropic',
+      color: 'error',
+      title: 'Developed by Anthropic'
+    })
+  }
+
+  // Feature badges
+  if (hasContext.value) {
+    badgeList.push({
+      key: 'context',
+      icon: 'i-heroicons-document-text',
+      label: 'Context',
+      color: 'info',
+      title: 'Includes Context File'
+    })
+  }
+
+  if (hasMcpServer.value) {
+    badgeList.push({
+      key: 'mcp',
+      icon: 'i-heroicons-server',
+      label: 'MCP',
+      color: 'primary',
+      title: 'Includes MCP Server'
+    })
+  }
+
+  return badgeList
+})
+
 // Fetch metadata on mount
 onMounted(() => {
   fetchPluginMetadata()
@@ -243,13 +301,20 @@ const openInstallModal = () => {
   isModalOpen.value = true
 }
 
-// Auto-open modal when autoOpenModal prop is true
+// Auto-open modal when autoOpenModal prop is true with automatic cleanup
+const { start: startModalTimer, stop: stopModalTimer } = useTimeoutFn(() => {
+  isModalOpen.value = true
+}, 500)
+
 watch(() => props.autoOpenModal, (shouldOpen) => {
+  // Stop any existing timer
+  stopModalTimer()
+
   if (shouldOpen) {
-    // Small delay to ensure smooth scroll completes first
-    setTimeout(() => {
-      isModalOpen.value = true
-    }, 500)
+    // Start timer to open modal after scroll completes
+    startModalTimer()
   }
 }, { immediate: true })
+
+// VueUse automatically cleans up on unmount, no need for manual cleanup!
 </script>
