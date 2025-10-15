@@ -1,3 +1,11 @@
+<script setup lang="ts">
+defineProps<{
+  filteredCount: number
+}>()
+
+const searchQuery = defineModel<string>({ default: '' })
+</script>
+
 <template>
   <div class="w-full">
     <div class="relative">
@@ -21,11 +29,11 @@
             </UBadge>
             <UButton
               v-if="searchQuery"
-              @click="searchQuery = ''"
               variant="ghost"
               size="xs"
               icon="i-heroicons-x-mark"
               aria-label="Clear search"
+              @click="searchQuery = ''"
             />
           </div>
         </template>
@@ -38,11 +46,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-const searchQuery = defineModel<string>({ default: '' })
-
-defineProps<{
-  filteredCount: number
-}>()
-</script>

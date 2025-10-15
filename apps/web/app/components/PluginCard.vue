@@ -1,3 +1,217 @@
+<script setup lang="ts">
+import { useTimeoutFn } from '@vueuse/core'
+
+interface PluginSource {
+  source: 'github'
+  repo: string
+}
+
+interface Plugin {
+  name: string
+  description: string
+  version?: string
+  author?: string
+  source: PluginSource
+}
+
+interface PluginMetadata {
+  version?: string
+  description?: string
+  author?: string
+  license?: string
+  mcpServers?: Record<string, any>
+  contextFileName?: string
+  [key: string]: any
+}
+
+const props = withDefaults(defineProps<{
+  plugin: Plugin
+  autoOpenModal?: boolean
+}>(), {
+  autoOpenModal: false,
+})
+
+const isModalOpen = ref(false)
+const pluginMetadata = ref<PluginMetadata | null>(null)
+const loading = ref(false)
+
+// Fetch plugin metadata from GitHub
+async function fetchPluginMetadata() {
+  if (props.plugin.version) {
+    // If version already exists in marketplace.json, don't fetch
+    return
+  }
+
+  loading.value = true
+  try {
+    const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
+    const response = await fetch(url)
+
+    if (!response.ok) {
+      // Log specific HTTP error
+      console.error(`Failed to fetch plugin metadata: HTTP ${response.status}`, {
+        plugin: props.plugin.name,
+        repo: props.plugin.source.repo,
+        status: response.status,
+        statusText: response.statusText,
+      })
+
+      // Handle specific error cases
+      if (response.status === 404) {
+        console.warn(`Plugin metadata not found for ${props.plugin.name}`)
+        // 404 is common for plugins without metadata - don't show toast
+      }
+      else if (response.status === 403) {
+        console.error(`Access denied to plugin metadata for ${props.plugin.name}`)
+      }
+      return
+    }
+
+    // Parse JSON with error handling
+    try {
+      pluginMetadata.value = await response.json()
+    }
+    catch (parseErr) {
+      console.error('Failed to parse plugin metadata JSON:', {
+        plugin: props.plugin.name,
+        error: parseErr instanceof Error ? parseErr.message : String(parseErr),
+      })
+      // Don't show toast - this is a plugin configuration issue
+    }
+  }
+  catch (err) {
+    // Network-level errors (connection failed, CORS, etc.)
+    console.error('Network error fetching plugin metadata:', {
+      plugin: props.plugin.name,
+      repo: props.plugin.source.repo,
+      error: err instanceof Error ? err.message : String(err),
+    })
+  }
+  finally {
+    loading.value = false
+  }
+}
+
+// Computed version - from marketplace.json or fetched metadata
+const displayVersion = computed(() => {
+  return props.plugin.version || pluginMetadata.value?.version
+})
+
+// Computed description - prefer marketplace.json, fallback to metadata
+const displayDescription = computed(() => {
+  return props.plugin.description || pluginMetadata.value?.description || 'No description available'
+})
+
+// Extract author name from either marketplace.json or fetched metadata
+// Handles both string and object formats
+function getAuthorName(author: string | { name?: string } | undefined): string | undefined {
+  return typeof author === 'string' ? author : author?.name
+}
+
+// Computed author - prefer marketplace.json, fallback to metadata
+const displayAuthor = computed(() => {
+  const author = props.plugin.author || pluginMetadata.value?.author
+  return getAuthorName(author)
+})
+
+// Computed license - from fetched metadata
+const displayLicense = computed(() => {
+  return pluginMetadata.value?.license
+})
+
+// Computed MCP server availability - check if plugin has MCP server configured
+const hasMcpServer = computed(() => {
+  return pluginMetadata.value?.mcpServers && Object.keys(pluginMetadata.value.mcpServers).length > 0
+})
+
+// Computed context file availability - check if plugin has context file configured
+const hasContext = computed(() => {
+  return !!pluginMetadata.value?.contextFileName
+})
+
+// Consolidated badges configuration
+interface Badge {
+  key: string
+  icon: string
+  label: string
+  color: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'
+  title: string
+}
+
+const badges = computed<Badge[]>(() => {
+  const badgeList: Badge[] = []
+
+  // Author badges
+  if (displayAuthor.value === 'Google') {
+    badgeList.push({
+      key: 'google',
+      icon: 'i-simple-icons-google',
+      label: 'Google',
+      color: 'warning',
+      title: 'Developed by Google',
+    })
+  }
+  else if (displayAuthor.value === 'Anthropic') {
+    badgeList.push({
+      key: 'anthropic',
+      icon: 'i-simple-icons-anthropic',
+      label: 'Anthropic',
+      color: 'error',
+      title: 'Developed by Anthropic',
+    })
+  }
+
+  // Feature badges
+  if (hasContext.value) {
+    badgeList.push({
+      key: 'context',
+      icon: 'i-heroicons-document-text',
+      label: 'Context',
+      color: 'info',
+      title: 'Includes Context File',
+    })
+  }
+
+  if (hasMcpServer.value) {
+    badgeList.push({
+      key: 'mcp',
+      icon: 'i-heroicons-server',
+      label: 'MCP',
+      color: 'primary',
+      title: 'Includes MCP Server',
+    })
+  }
+
+  return badgeList
+})
+
+// Fetch metadata on mount
+onMounted(() => {
+  fetchPluginMetadata()
+})
+
+function openInstallModal() {
+  isModalOpen.value = true
+}
+
+// Auto-open modal when autoOpenModal prop is true with automatic cleanup
+const { start: startModalTimer, stop: stopModalTimer } = useTimeoutFn(() => {
+  isModalOpen.value = true
+}, 500)
+
+watch(() => props.autoOpenModal, (shouldOpen) => {
+  // Stop any existing timer
+  stopModalTimer()
+
+  if (shouldOpen) {
+    // Start timer to open modal after scroll completes
+    startModalTimer()
+  }
+}, { immediate: true })
+
+// VueUse automatically cleans up on unmount, no need for manual cleanup!
+</script>
+
 <template>
   <UCard
     variant="outline"
@@ -89,13 +303,13 @@
         </UButton>
 
         <UButton
-          @click="openInstallModal"
           variant="solid"
           color="primary"
           size="sm"
           icon="i-heroicons-arrow-down-tray"
           class="flex-1 justify-center"
           title="View installation instructions"
+          @click="openInstallModal"
         >
           Install
         </UButton>
@@ -109,212 +323,3 @@
     :plugin-name="plugin.name"
   />
 </template>
-
-<script setup lang="ts">
-import { useTimeoutFn } from '@vueuse/core'
-
-interface PluginSource {
-  source: 'github'
-  repo: string
-}
-
-interface Plugin {
-  name: string
-  description: string
-  version?: string
-  author?: string
-  source: PluginSource
-}
-
-interface PluginMetadata {
-  version?: string
-  description?: string
-  author?: string
-  license?: string
-  mcpServers?: Record<string, any>
-  contextFileName?: string
-  [key: string]: any
-}
-
-const props = withDefaults(defineProps<{
-  plugin: Plugin
-  autoOpenModal?: boolean
-}>(), {
-  autoOpenModal: false
-})
-
-const isModalOpen = ref(false)
-const pluginMetadata = ref<PluginMetadata | null>(null)
-const loading = ref(false)
-
-// Fetch plugin metadata from GitHub
-const fetchPluginMetadata = async () => {
-  if (props.plugin.version) {
-    // If version already exists in marketplace.json, don't fetch
-    return
-  }
-
-  loading.value = true
-  try {
-    const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
-    const response = await fetch(url)
-
-    if (!response.ok) {
-      // Log specific HTTP error
-      console.error(`Failed to fetch plugin metadata: HTTP ${response.status}`, {
-        plugin: props.plugin.name,
-        repo: props.plugin.source.repo,
-        status: response.status,
-        statusText: response.statusText
-      })
-
-      // Handle specific error cases
-      if (response.status === 404) {
-        console.warn(`Plugin metadata not found for ${props.plugin.name}`)
-        // 404 is common for plugins without metadata - don't show toast
-      } else if (response.status === 403) {
-        console.error(`Access denied to plugin metadata for ${props.plugin.name}`)
-      }
-      return
-    }
-
-    // Parse JSON with error handling
-    try {
-      pluginMetadata.value = await response.json()
-    } catch (parseErr) {
-      console.error('Failed to parse plugin metadata JSON:', {
-        plugin: props.plugin.name,
-        error: parseErr instanceof Error ? parseErr.message : String(parseErr)
-      })
-      // Don't show toast - this is a plugin configuration issue
-    }
-  } catch (err) {
-    // Network-level errors (connection failed, CORS, etc.)
-    console.error('Network error fetching plugin metadata:', {
-      plugin: props.plugin.name,
-      repo: props.plugin.source.repo,
-      error: err instanceof Error ? err.message : String(err)
-    })
-  } finally {
-    loading.value = false
-  }
-}
-
-// Computed version - from marketplace.json or fetched metadata
-const displayVersion = computed(() => {
-  return props.plugin.version || pluginMetadata.value?.version
-})
-
-// Computed description - prefer marketplace.json, fallback to metadata
-const displayDescription = computed(() => {
-  return props.plugin.description || pluginMetadata.value?.description || 'No description available'
-})
-
-// Extract author name from either marketplace.json or fetched metadata
-// Handles both string and object formats
-function getAuthorName(author: string | { name?: string } | undefined): string | undefined {
-  return typeof author === 'string' ? author : author?.name
-}
-
-// Computed author - prefer marketplace.json, fallback to metadata
-const displayAuthor = computed(() => {
-  const author = props.plugin.author || pluginMetadata.value?.author
-  return getAuthorName(author)
-})
-
-// Computed license - from fetched metadata
-const displayLicense = computed(() => {
-  return pluginMetadata.value?.license
-})
-
-// Computed MCP server availability - check if plugin has MCP server configured
-const hasMcpServer = computed(() => {
-  return pluginMetadata.value?.mcpServers && Object.keys(pluginMetadata.value.mcpServers).length > 0
-})
-
-// Computed context file availability - check if plugin has context file configured
-const hasContext = computed(() => {
-  return !!pluginMetadata.value?.contextFileName
-})
-
-// Consolidated badges configuration
-interface Badge {
-  key: string
-  icon: string
-  label: string
-  color: 'primary' | 'secondary' | 'success' | 'info' | 'warning' | 'error' | 'neutral'
-  title: string
-}
-
-const badges = computed<Badge[]>(() => {
-  const badgeList: Badge[] = []
-
-  // Author badges
-  if (displayAuthor.value === 'Google') {
-    badgeList.push({
-      key: 'google',
-      icon: 'i-simple-icons-google',
-      label: 'Google',
-      color: 'warning',
-      title: 'Developed by Google'
-    })
-  } else if (displayAuthor.value === 'Anthropic') {
-    badgeList.push({
-      key: 'anthropic',
-      icon: 'i-simple-icons-anthropic',
-      label: 'Anthropic',
-      color: 'error',
-      title: 'Developed by Anthropic'
-    })
-  }
-
-  // Feature badges
-  if (hasContext.value) {
-    badgeList.push({
-      key: 'context',
-      icon: 'i-heroicons-document-text',
-      label: 'Context',
-      color: 'info',
-      title: 'Includes Context File'
-    })
-  }
-
-  if (hasMcpServer.value) {
-    badgeList.push({
-      key: 'mcp',
-      icon: 'i-heroicons-server',
-      label: 'MCP',
-      color: 'primary',
-      title: 'Includes MCP Server'
-    })
-  }
-
-  return badgeList
-})
-
-// Fetch metadata on mount
-onMounted(() => {
-  fetchPluginMetadata()
-})
-
-const openInstallModal = () => {
-  isModalOpen.value = true
-}
-
-// Auto-open modal when autoOpenModal prop is true with automatic cleanup
-const { start: startModalTimer, stop: stopModalTimer } = useTimeoutFn(() => {
-  isModalOpen.value = true
-}, 500)
-
-watch(() => props.autoOpenModal, (shouldOpen) => {
-  // Stop any existing timer
-  stopModalTimer()
-
-  if (shouldOpen) {
-    // Start timer to open modal after scroll completes
-    startModalTimer()
-  }
-}, { immediate: true })
-
-// VueUse automatically cleans up on unmount, no need for manual cleanup!
-</script>

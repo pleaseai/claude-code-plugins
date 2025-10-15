@@ -10,6 +10,10 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
+  TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
+
 jobs:
   lint:
     name: Lint
@@ -29,6 +33,18 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: '1.2.22'
+
+      # ESLint 캐시 복원
+      - name: Restore ESLint cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            .eslintcache
+            apps/*/.eslintcache
+            packages/*/.eslintcache
+          key: ${{ runner.os }}-eslint-${{ hashFiles('**/package.json', '**/.eslintrc*', '**/eslint.config.*') }}
+          restore-keys: |
+            ${{ runner.os }}-eslint-
 
       - name: Install dependencies
         run: bun install --frozen-lockfile

@@ -2,14 +2,17 @@
   "name": "web",
   "type": "module",
   "private": true,
+  "engines": {
+    "node": "22.x"
+  },
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "lint": "eslint --ext .",
-    "lint:fix": "eslint --fix ."
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint --cache --fix ."
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
@@ -28,8 +31,5 @@
     "@pleaseai/typescript-config": "workspace:*",
     "eslint": "^9.33.0",
     "typescript": "^5.9.2"
-  },
-  "engines": {
-    "node": "22.x"
   }
 }
