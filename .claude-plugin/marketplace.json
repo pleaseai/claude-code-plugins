@@ -25,8 +25,8 @@
       }
     },
     {
-      "name": "speckit",
-      "description": "💫 Toolkit to help you get started with Spec-Driven Development",
+      "name": "spec-kit",
+      "description": "💫 Claude Code plugin for GitHub's Spec-Kit - Toolkit for Spec-Driven Development",
       "version": "0.0.61",
       "source": {
         "source": "github",
