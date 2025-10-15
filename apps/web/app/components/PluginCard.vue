@@ -4,23 +4,43 @@
     class="group hover:ring-2 hover:ring-primary transition-all duration-200 h-full flex flex-col"
   >
     <template #header>
-      <div class="flex items-start justify-between gap-3">
-        <div class="flex-1">
-          <div class="flex items-center gap-2 mb-1">
-            <UIcon
-              name="i-heroicons-cube"
-              class="text-primary shrink-0"
-            />
-            <h3 class="text-lg font-semibold truncate">
-              {{ plugin.name }}
-            </h3>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-start justify-between gap-3">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-2 mb-1">
+              <UIcon
+                name="i-heroicons-cube"
+                class="text-primary shrink-0"
+              />
+              <h3 class="text-lg font-semibold truncate">
+                {{ plugin.name }}
+              </h3>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-muted">
+              <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
+              <span class="truncate">{{ plugin.source.repo }}</span>
+            </div>
           </div>
-          <div class="flex items-center gap-2 text-xs text-muted">
-            <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-            <span class="truncate">{{ plugin.source.repo }}</span>
+          <div class="shrink-0">
+            <UBadge
+              v-if="displayVersion"
+              variant="soft"
+              color="primary"
+              size="sm"
+            >
+              v{{ displayVersion }}
+            </UBadge>
+            <UBadge
+              v-else-if="loading"
+              variant="soft"
+              color="neutral"
+              size="sm"
+            >
+              Loading...
+            </UBadge>
           </div>
         </div>
-        <div class="flex items-center gap-2 shrink-0">
+        <div v-if="hasContext || hasMcpServer" class="flex items-center gap-2">
           <UBadge
             v-if="hasContext"
             variant="soft"
@@ -40,22 +60,6 @@
           >
             <UIcon name="i-heroicons-server" class="mr-1" />
             MCP
-          </UBadge>
-          <UBadge
-            v-if="displayVersion"
-            variant="soft"
-            color="primary"
-            size="sm"
-          >
-            v{{ displayVersion }}
-          </UBadge>
-          <UBadge
-            v-else-if="loading"
-            variant="soft"
-            color="neutral"
-            size="sm"
-          >
-            Loading...
           </UBadge>
         </div>
       </div>
