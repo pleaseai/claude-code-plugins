@@ -99,6 +99,7 @@ interface Plugin {
   name: string
   description: string
   version?: string
+  author?: string
   source: PluginSource
 }
 
@@ -150,9 +151,9 @@ const displayDescription = computed(() => {
   return props.plugin.description || pluginMetadata.value?.description || 'No description available'
 })
 
-// Computed author - from fetched metadata
+// Computed author - prefer marketplace.json, fallback to metadata
 const displayAuthor = computed(() => {
-  return pluginMetadata.value?.author
+  return props.plugin.author || pluginMetadata.value?.author
 })
 
 // Computed license - from fetched metadata

@@ -104,6 +104,7 @@ interface Plugin {
   name: string
   description: string
   version?: string
+  author?: string
   source: PluginSource
 }
 

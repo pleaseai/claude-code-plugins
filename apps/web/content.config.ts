@@ -23,6 +23,7 @@ export default defineContentConfig({
             name: z.string(),
             description: z.string(),
             version: z.string().optional(),
+            author: z.string().optional(),
             source: z.object({
               source: z.literal('github'),
               repo: z.string()
