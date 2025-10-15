@@ -1,7 +1,7 @@
 {
   "name": "web",
   "type": "module",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "engines": {
     "node": "22.x"
@@ -23,7 +23,6 @@
     "vue": "^3.5.22",
     "vue-router": "^4.5.1"
   },
-
   "devDependencies": {
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.9.0",
