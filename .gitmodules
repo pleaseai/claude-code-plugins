@@ -7,3 +7,6 @@
 [submodule "plugins/code-review"]
 	path = plugins/code-review
 	url = git@github.com:pleaseai/code-review-plugin.git
+[submodule "plugins/security"]
+	path = plugins/security
+	url = git@github.com:pleaseai/security-plugin.git

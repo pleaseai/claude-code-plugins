@@ -27,6 +27,16 @@ if [ -f "$EXTENSION_JSON" ]; then
     # If contextFileName exists, read and output the file
     if [ -n "$CONTEXT_FILE" ] && [ -f "${CLAUDE_PLUGIN_ROOT}/${CONTEXT_FILE}" ]; then
         echo "📦 Loading context from plugin: ${PLUGIN_NAME} (${CONTEXT_FILE})" >&2
-        cat "${CLAUDE_PLUGIN_ROOT}/${CONTEXT_FILE}"
+
+        # Read the context file content
+        CONTEXT_CONTENT=$(cat "${CLAUDE_PLUGIN_ROOT}/${CONTEXT_FILE}")
+
+        # Output as JSON with additionalContext
+        jq -n --arg context "$CONTEXT_CONTENT" '{
+          "hookSpecificOutput": {
+            "hookEventName": "SessionStart",
+            "additionalContext": $context
+          }
+        }'
     fi
 fi
