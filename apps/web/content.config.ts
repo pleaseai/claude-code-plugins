@@ -1,5 +1,5 @@
-import { defineContentConfig, defineCollection, z } from '@nuxt/content'
-import { resolve } from 'path'
+import { resolve } from 'node:path'
+import { defineCollection, defineContentConfig, z } from '@nuxt/content'
 
 export default defineContentConfig({
   collections: {
@@ -7,7 +7,7 @@ export default defineContentConfig({
       type: 'data',
       source: {
         include: 'marketplace.json',
-        cwd: resolve(__dirname, '../../.claude-plugin')
+        cwd: resolve(__dirname, '../../.claude-plugin'),
       },
       schema: z.object({
         $schema: z.string().optional(),
@@ -16,7 +16,7 @@ export default defineContentConfig({
         description: z.string(),
         owner: z.object({
           name: z.string(),
-          email: z.string()
+          email: z.string(),
         }),
         plugins: z.array(
           z.object({
@@ -26,11 +26,11 @@ export default defineContentConfig({
             author: z.string().optional(),
             source: z.object({
               source: z.literal('github'),
-              repo: z.string()
-            })
-          })
-        )
-      })
-    })
-  }
+              repo: z.string(),
+            }),
+          }),
+        ),
+      }),
+    }),
+  },
 })
