@@ -1,5 +1,6 @@
 {
   "name": "@pleaseai/vitest-config",
+  "version": "0.0.0",
   "type": "module",
   "exports": {
     ".": "./dist/index.js",
