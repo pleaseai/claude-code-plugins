@@ -19,3 +19,6 @@
 [submodule "plugins/firebase"]
 	path = plugins/firebase
 	url = git@github.com:pleaseai/firebase-plugin.git
+[submodule "plugins/grafana"]
+	path = plugins/grafana
+	url = git@github.com:amondnet/mcp-grafana.git
