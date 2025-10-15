@@ -7,9 +7,29 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is a Claude Code plugin marketplace repository providing bundled plugins that extend Claude Code with specialized tools and automation. The repository contains:
 
 - **Marketplace Configuration**: Managed via `.claude-plugin/marketplace.json`
-- **Plugin Collection**: Multiple plugins in `plugins/` directory (nanobanana, security, flutter, code-review)
+- **External Plugins**: All plugins are maintained as git submodules in `external-plugins/` directory
 - **Web Application**: Nuxt-based marketplace frontend in `apps/web/`
 - **Hooks System**: Session initialization hooks in `hooks/`
+
+### Directory Structure
+
+```
+claude-code-plugins/
+├── external-plugins/           # All plugins (git submodules)
+│   ├── nanobanana/            # Image generation plugin
+│   ├── flutter/               # Flutter development tools
+│   ├── security/              # Security analysis
+│   ├── spec-kit/              # Spec-driven development
+│   ├── code-review/           # Code review automation
+│   ├── firebase/              # Firebase integration
+│   ├── postgres/              # PostgreSQL MCP server
+│   ├── grafana/               # Grafana integration
+│   ├── mcp-neo4j/             # Neo4j MCP server
+│   └── chrome-devtools-mcp/   # Chrome DevTools automation
+├── apps/web/                  # Marketplace website
+├── .claude-plugin/            # Marketplace configuration
+└── hooks/                     # Session hooks
+```
 
 ## Architecture
 
@@ -17,32 +37,35 @@ This is a Claude Code plugin marketplace repository providing bundled plugins th
 
 Each plugin follows this standard structure:
 ```
-plugins/<plugin-name>/
-├── gemini-extension.json    # Plugin manifest
-├── README.md                 # Plugin documentation
-├── commands/                 # Slash commands (markdown files)
-├── hooks/                    # Hook configurations
-└── mcp-server/              # MCP server implementation
+external-plugins/<plugin-name>/
+├── .claude-plugin/
+│   └── plugin.json          # Claude Code plugin manifest
+├── gemini-extension.json    # Gemini CLI extension manifest (legacy)
+├── README.md                # Plugin documentation
+├── commands/                # Slash commands (markdown files)
+├── hooks/                   # Hook configurations
+└── mcp-server/             # MCP server implementation
     ├── package.json
     ├── src/
-    │   ├── index.ts         # Main server entry
-    │   └── *.ts             # Implementation modules
-    └── dist/                # Compiled output
+    │   ├── index.ts        # Main server entry
+    │   └── *.ts            # Implementation modules
+    └── dist/               # Compiled output
 ```
 
 ### Key Components
 
-**1. plugin.json (Claude Code format)**
+**1. plugin.json (Claude Code)**
 - Located in `.claude-plugin/plugin.json`
+- Required for Claude Code plugins
 - Defines plugin metadata (name, version, description)
 - Configures MCP servers with command and args
 - Specifies `contextFileName` for AI context loading
 - Defines hooks for lifecycle events
 
-**2. gemini-extension.json (Gemini CLI format)**
-- Original Gemini CLI extension metadata
-- Used for backwards compatibility
-- Context file fallback if not specified in plugin.json
+**2. gemini-extension.json (Gemini CLI - Legacy)**
+- Original Gemini CLI extension manifest
+- Kept for backwards compatibility with Gemini CLI
+- Not used by Claude Code
 
 **3. MCP Servers**
 - Node.js-based servers using `@modelcontextprotocol/sdk`
@@ -100,12 +123,18 @@ bun run generate
 
 ### Plugin Development
 
-Each plugin is maintained in its own repository. For plugin-specific development commands and setup, refer to each plugin's repository:
-- `plugins/nanobanana/` → https://github.com/pleaseai/nanobanana
-- `plugins/security/` → https://github.com/pleaseai/security-plugin
-- `plugins/flutter/` → https://github.com/pleaseai/flutter
-- `plugins/code-review/` → https://github.com/pleaseai/code-review-plugin
-- `plugins/spec-kit/` → https://github.com/pleaseai/spec-kit-plugin
+All plugins are maintained in separate repositories and included as git submodules:
+
+- `external-plugins/nanobanana/` → https://github.com/pleaseai/nanobanana-plugin
+- `external-plugins/security/` → https://github.com/pleaseai/security-plugin
+- `external-plugins/flutter/` → https://github.com/pleaseai/flutter-plugin
+- `external-plugins/code-review/` → https://github.com/pleaseai/code-review-plugin
+- `external-plugins/spec-kit/` → https://github.com/pleaseai/spec-kit-plugin
+- `external-plugins/firebase/` → https://github.com/pleaseai/firebase-plugin
+- `external-plugins/postgres/` → https://github.com/pleaseai/postgres-plugin
+- `external-plugins/grafana/` → https://github.com/amondnet/mcp-grafana
+- `external-plugins/mcp-neo4j/` → https://github.com/amondnet/mcp-neo4j
+- `external-plugins/chrome-devtools-mcp/` → https://github.com/pleaseai/chrome-devtools-mcp
 
 ## Development Standards
 
@@ -133,7 +162,7 @@ Users can add this marketplace and install plugins:
 
 ```bash
 # For plugins with tests
-cd plugins/<plugin-name>
+cd external-plugins/<plugin-name>
 bun run test
 
 # Type checking across plugins
@@ -144,7 +173,8 @@ bun run typecheck
 
 - `.claude-plugin/marketplace.json` - Marketplace configuration and plugin registry
 - `apps/web/nuxt.config.ts` - Nuxt application configuration
-- `plugins/*/gemini-extension.json` - Plugin manifests
+- `external-plugins/*/gemini-extension.json` - Plugin manifests (legacy)
+- `external-plugins/*/.claude-plugin/plugin.json` - Plugin manifests (Claude Code)
 - `hooks/hooks.json` - Session start hooks
 - `docs/commit-convention.md` - Commit message guidelines
 - `docs/TDD.md` - Test-driven development methodology

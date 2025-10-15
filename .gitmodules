@@ -1,30 +1,33 @@
-[submodule "plugins/nanobanana"]
-	path = plugins/nanobanana
+[submodule "external-plugins/nanobanana"]
+	path = external-plugins/nanobanana
 	url = git@github.com:pleaseai/nanobanana-plugin.git
-[submodule "plugins/flutter"]
-	path = plugins/flutter
+[submodule "external-plugins/flutter"]
+	path = external-plugins/flutter
 	url = git@github.com:pleaseai/flutter-plugin.git
-[submodule "plugins/code-review"]
-	path = plugins/code-review
+[submodule "external-plugins/code-review"]
+	path = external-plugins/code-review
 	url = git@github.com:pleaseai/code-review-plugin.git
-[submodule "plugins/security"]
-	path = plugins/security
+[submodule "external-plugins/security"]
+	path = external-plugins/security
 	url = git@github.com:pleaseai/security-plugin.git
-[submodule "plugins/spec-kit"]
-	path = plugins/spec-kit
+[submodule "external-plugins/spec-kit"]
+	path = external-plugins/spec-kit
 	url = git@github.com:pleaseai/spec-kit-plugin.git
-[submodule "plugins/postgres"]
-	path = plugins/postgres
+[submodule "external-plugins/postgres"]
+	path = external-plugins/postgres
 	url = git@github.com:pleaseai/postgres-plugin.git
-[submodule "plugins/firebase"]
-	path = plugins/firebase
+[submodule "external-plugins/firebase"]
+	path = external-plugins/firebase
 	url = git@github.com:pleaseai/firebase-plugin.git
-[submodule "plugins/grafana"]
-	path = plugins/grafana
+[submodule "external-plugins/grafana"]
+	path = external-plugins/grafana
 	url = git@github.com:amondnet/mcp-grafana.git
-[submodule "plugins/mcp-neo4j"]
-	path = plugins/mcp-neo4j
+[submodule "external-plugins/mcp-neo4j"]
+	path = external-plugins/mcp-neo4j
 	url = git@github.com:amondnet/mcp-neo4j.git
-[submodule "plugins/chrome-devtools-mcp"]
-	path = plugins/chrome-devtools-mcp
+[submodule "external-plugins/chrome-devtools-mcp"]
+	path = external-plugins/chrome-devtools-mcp
 	url = git@github.com:pleaseai/chrome-devtools-mcp.git
+[submodule "external-plugins/open-aware"]
+	path = external-plugins/open-aware
+	url = git@github.com:amondnet/open-aware.git
