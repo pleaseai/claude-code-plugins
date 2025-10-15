@@ -55,7 +55,9 @@
         <PluginCard
           v-for="plugin in filteredPlugins"
           :key="plugin.name"
+          :ref="el => setPluginCardRef(plugin.name, el)"
           :plugin="plugin"
+          :auto-open-modal="plugin.name === targetPluginName"
         />
       </UPageGrid>
 
@@ -120,6 +122,13 @@ interface MarketplaceData {
 }
 
 const searchQuery = ref('')
+const route = useRoute()
+const pluginCardRefs = ref<Record<string, any>>({})
+
+// Get target plugin name from URL query parameter
+const targetPluginName = computed(() => {
+  return (route.query.plugin || route.query.install) as string | undefined
+})
 
 // Fetch marketplace data
 const { data: marketplaceData, pending, error } = await useAsyncData<MarketplaceData>(
@@ -145,6 +154,29 @@ const filteredPlugins = computed(() => {
     )
   })
 })
+
+// Store plugin card refs for scrolling
+const setPluginCardRef = (pluginName: string, el: any) => {
+  if (el) {
+    pluginCardRefs.value[pluginName] = el
+  }
+}
+
+// Auto-scroll to target plugin when page loads
+watch([() => targetPluginName.value, pending], ([pluginName, isLoading]) => {
+  if (!pluginName || isLoading) return
+
+  // Wait for next tick to ensure DOM is updated
+  nextTick(() => {
+    const targetCard = pluginCardRefs.value[pluginName]
+    if (targetCard?.$el) {
+      targetCard.$el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+    }
+  })
+}, { immediate: true })
 
 // SEO Meta
 useHead({

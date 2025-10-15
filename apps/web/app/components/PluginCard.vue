@@ -163,9 +163,12 @@ interface PluginMetadata {
   [key: string]: any
 }
 
-const props = defineProps<{
+const props = withDefaults(defineProps<{
   plugin: Plugin
-}>()
+  autoOpenModal?: boolean
+}>(), {
+  autoOpenModal: false
+})
 
 const isModalOpen = ref(false)
 const pluginMetadata = ref<PluginMetadata | null>(null)
@@ -239,4 +242,14 @@ onMounted(() => {
 const openInstallModal = () => {
   isModalOpen.value = true
 }
+
+// Auto-open modal when autoOpenModal prop is true
+watch(() => props.autoOpenModal, (shouldOpen) => {
+  if (shouldOpen) {
+    // Small delay to ensure smooth scroll completes first
+    setTimeout(() => {
+      isModalOpen.value = true
+    }, 500)
+  }
+}, { immediate: true })
 </script>
