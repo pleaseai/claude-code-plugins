@@ -1,0 +1,11 @@
+{
+  "name": "@pleaseai/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "std-env": "^3.9.0",
+    "vitest": "^3.2.4",
+    "@vue/tsconfig": "^0.5.1"
+  }
+}
