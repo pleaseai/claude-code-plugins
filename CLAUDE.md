@@ -32,25 +32,39 @@ plugins/<plugin-name>/
 
 ### Key Components
 
-**1. gemini-extension.json**
+**1. plugin.json (Claude Code format)**
+- Located in `.claude-plugin/plugin.json`
 - Defines plugin metadata (name, version, description)
 - Configures MCP servers with command and args
-- Specifies context file (usually `GEMINI.md`)
+- Specifies `contextFileName` for AI context loading
+- Defines hooks for lifecycle events
 
-**2. MCP Servers**
+**2. gemini-extension.json (Gemini CLI format)**
+- Original Gemini CLI extension metadata
+- Used for backwards compatibility
+- Context file fallback if not specified in plugin.json
+
+**3. MCP Servers**
 - Node.js-based servers using `@modelcontextprotocol/sdk`
 - Compiled TypeScript from `mcp-server/src/` to `mcp-server/dist/`
 - Run via `node mcp-server/dist/index.js`
 
-**3. Commands**
+**4. Commands**
 - Markdown files in `commands/` directory
 - Define slash commands accessible in Claude Code
 - Command names derived from file structure (e.g., `commands/security/analyze.md` → `/security:analyze`)
 
-**4. Hooks**
-- `hooks.json` files define event-driven automation
+**5. Hooks**
+- Defined in `plugin.json` under `hooks` key
 - Common hooks: `SessionStart`, `PostToolUse`
 - Can execute shell commands or load context
+- Example: `hooks/context.sh` loads context files automatically
+
+**6. Context Files**
+- Plugins can specify a `contextFileName` in their `plugin.json`
+- Context files (e.g., `GEMINI.md`, `flutter.md`) provide AI-specific instructions
+- Automatically loaded via SessionStart hooks
+- Enables seamless migration from Gemini CLI extensions to Claude Code plugins
 
 ### Web Application
 
