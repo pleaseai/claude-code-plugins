@@ -22,3 +22,6 @@
 [submodule "plugins/grafana"]
 	path = plugins/grafana
 	url = git@github.com:amondnet/mcp-grafana.git
+[submodule "plugins/mcp-neo4j"]
+	path = plugins/mcp-neo4j
+	url = git@github.com:amondnet/mcp-neo4j.git
