@@ -1,0 +1,38 @@
+{
+  "name": "@pleaseai/vitest-config",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./base": "./dist/configs/base-config.js",
+    "./ui": "./dist/configs/ui-config.js"
+  },
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "collect-json-reports": "node dist/scripts/collect-json-outputs.js",
+    "merge-json-reports": "nyc merge coverage/raw coverage/merged/merged-coverage.json",
+    "report": "nyc report -t coverage/merged --report-dir coverage/report --reporter=html --exclude-after-remap false",
+    "view-report": "open coverage/report/index.html",
+    "lint": "eslint . --cache",
+    "lint:fix": "eslint . --cache --fix"
+  },
+  "dependencies": {
+    "vitest": "^3.2.4"
+  },
+  "devDependencies": {
+    "@pleaseai/eslint-config": "workspace:*",
+    "@pleaseai/typescript-config": "workspace:*",
+    "@vitest/coverage-v8": "^3.2.4",
+    "@vitest/ui": "^3.2.4",
+    "eslint": "^9.33.0",
+    "glob": "^11.0.1",
+    "jsdom": "^26.0.0",
+    "nyc": "^17.1.0",
+    "std-env": "^3.9.0",
+    "tsup": "^8.5.0",
+    "typescript": "latest"
+  }
+}

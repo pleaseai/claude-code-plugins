@@ -5,10 +5,16 @@ export default defineNuxtConfig({
 
   modules: [
     '@nuxt/ui',
-    '@nuxt/content'
+    '@nuxt/content',
+      '@nuxt/eslint',
+
   ],
   css: ['~/assets/css/main.css'],
-
+    eslint: {
+        config: {
+            standalone: false, // <---
+        },
+    },
   tailwindcss: {
     config: {
       safelist: [

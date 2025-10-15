@@ -102,7 +102,7 @@ All plugins with context files now include:
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "startup|resume",
+        "matcher": "startup",
         "hooks": [
           {
             "type": "command",

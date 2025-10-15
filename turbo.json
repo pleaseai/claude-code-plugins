@@ -1,0 +1,65 @@
+{
+  "$schema": "https://turborepo.com/schema.json",
+  "ui": "tui",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".nuxt/**", "!.nuxt/cache/**", "dist/**",".output/**"],
+    },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "outputs": [".eslintcache"],
+      "cache": true
+    },
+    "lint:fix": {
+      "outputs": [".eslintcache"],
+      "cache": true
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "test": {
+      "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/vitest.config.ts"],
+      "dependsOn": ["transit", "@pleaseai/vitest-config#build"],
+      "outputs": ["coverage.json"]
+    },
+    "test:watch": {
+      "cache": false,
+      "persistent": true
+    },
+    "transit": {
+      "dependsOn": ["^transit"]
+    },
+    "e2e": {
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "outputs": ["playwright-report/**", "test-results/**"],
+      "cache": false
+    },
+    "e2e:ui": {
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "cache": false,
+      "persistent": true
+    },
+    "e2e:debug": {
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "cache": false,
+      "persistent": true
+    },
+    "e2e:headed": {
+      "dependsOn": ["^build"],
+      "passThroughEnv": ["PLAYWRIGHT_*"],
+      "cache": false
+    },
+    "e2e:install": {
+      "cache": false
+    }
+  }
+}

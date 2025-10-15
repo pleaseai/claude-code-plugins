@@ -107,7 +107,7 @@ To create and distribute your own plugins:
   "hooks": {
     "SessionStart": [
       {
-        "matcher": "startup|resume",
+        "matcher": "startup",
         "hooks": [
           {
             "type": "command",

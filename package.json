@@ -1,0 +1,57 @@
+{
+  "name": "claude-code-plugins",
+  "version": "1.0.0",
+  "description": "A curated marketplace of plugins for [Claude Code](https://www.anthropic.com/news/claude-code-plugins), providing custom collections of slash commands, agents, MCP servers, and hooks to enhance your development workflow.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "turbo build --concurrency 16",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "test": "turbo test --concurrency 16",
+    "test:projects": "vitest run",
+    "test:projects:watch": "vitest --watch",
+    "test:integration": "bun test --timeout 600000 packages/**/tests/integration/**/*.integration.test.ts",
+    "test:all": "bun run test && bun run test:integration",
+    "view-report": "turbo run view-report",
+    "e2e": "turbo run e2e",
+    "e2e:ui": "turbo run e2e:ui",
+    "e2e:debug": "turbo run e2e:debug",
+    "e2e:headed": "turbo run e2e:headed",
+    "e2e:install": "turbo run e2e:install",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^5.2.1",
+    "@pleaseai/vitest-config": "workspace:*",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7",
+    "prettier": "^3.2.5",
+    "turbo": "^2.5.6",
+    "typescript": "5.7.3",
+    "vitest": "^3.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pleaseai/claude-code-plugins.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pleaseai/claude-code-plugins/issues"
+  },
+  "homepage": "https://github.com/pleaseai/claude-code-plugins#readme",
+  "packageManager": "bun@1.2.22",
+  "engines": {
+    "node": "22.x"
+  },
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ]
+}

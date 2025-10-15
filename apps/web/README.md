@@ -42,20 +42,20 @@ apps/web/
 
 ### Prerequisites
 
-- Node.js 20+
-- npm or pnpm
+- Node.js 22+
+- bun
 
 ### Installation
 
 ```bash
 cd apps/web
-npm install
+bun install
 ```
 
 ### Development
 
 ```bash
-npm run dev
+bun run dev
 ```
 
 The application will be available at [http://localhost:3000](http://localhost:3000)
@@ -63,13 +63,13 @@ The application will be available at [http://localhost:3000](http://localhost:30
 ### Build
 
 ```bash
-npm run build
+bun run build
 ```
 
 ### Preview Production Build
 
 ```bash
-npm run preview
+bun run preview
 ```
 
 ## Data Source
