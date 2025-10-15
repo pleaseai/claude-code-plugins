@@ -3,7 +3,7 @@
 	url = git@github.com:pleaseai/nanobanana-plugin.git
 [submodule "plugins/flutter"]
 	path = plugins/flutter
-	url = git@github.com:pleaseai/flutter.git
+	url = git@github.com:pleaseai/flutter-plugin.git
 [submodule "plugins/code-review"]
 	path = plugins/code-review
 	url = git@github.com:pleaseai/code-review-plugin.git
