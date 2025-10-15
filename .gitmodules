@@ -25,3 +25,6 @@
 [submodule "plugins/mcp-neo4j"]
 	path = plugins/mcp-neo4j
 	url = git@github.com:amondnet/mcp-neo4j.git
+[submodule "plugins/chrome-devtools-mcp"]
+	path = plugins/chrome-devtools-mcp
+	url = git@github.com:pleaseai/chrome-devtools-mcp.git

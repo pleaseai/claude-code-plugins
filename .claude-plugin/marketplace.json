@@ -74,6 +74,14 @@
         "source": "github",
         "repo": "amondnet/mcp-neo4j"
       }
+    },
+    {
+      "name": "chrome-devtools-mcp",
+      "description": "Control and inspect a live Chrome browser through MCP - automate actions, debug, and analyze performance using Chrome DevTools",
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/chrome-devtools-mcp"
+      }
     }
   ]
 }
