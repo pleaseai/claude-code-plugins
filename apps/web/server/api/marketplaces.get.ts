@@ -11,8 +11,8 @@ import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/mark
 const fetchMarketplaces = defineCachedFunction(
   async (): Promise<MarketplaceAPIResponse> => {
     // Load marketplace sources configuration
-    // Resolve path relative to the web app root
-    const configPath = resolve(process.cwd(), 'marketplace-sources.json')
+    // Resolve path from public directory (available in runtime)
+    const configPath = resolve(process.cwd(), 'public/marketplace-sources.json')
     const configData = await readFile(configPath, 'utf-8')
     const parsedConfig = JSON.parse(configData)
 
