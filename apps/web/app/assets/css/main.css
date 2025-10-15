@@ -1,2 +1,8 @@
 @import "tailwindcss";
 @import "@nuxt/ui";
+
+@theme {
+  /* 한글 + 영문 시스템 폰트 스택 */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo',
+               'Malgun Gothic', 'Segoe UI', Roboto, sans-serif;
+}
