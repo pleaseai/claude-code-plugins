@@ -17,12 +17,20 @@
       "priority": 2
     },
     {
+      "name": "anthropic-agent-skills",
+      "description": "Anthropic example skills demonstrating various capabilities including skill creation, MCP building, visual design, algorithmic art, internal communications, web testing, artifact building, Slack GIFs, and theme styling",
+      "url": "https://raw.githubusercontent.com/anthropics/skills/main/.claude-plugin/marketplace.json",
+      "repo": "anthropics/skills",
+      "enabled": true,
+      "priority": 3
+    },
+    {
       "name": "claude-code-workflows",
       "description": "Production-ready workflow orchestration with 62 focused plugins, 84 specialized agents, and 42 tools - optimized for granular installation and minimal token usage",
       "url": "https://raw.githubusercontent.com/wshobson/agents/main/.claude-plugin/marketplace.json",
       "repo": "wshobson/agents",
       "enabled": true,
-      "priority": 3
+      "priority": 4
     },
     {
       "name": "claude-code-templates",
@@ -30,7 +38,7 @@
       "url": "https://raw.githubusercontent.com/davila7/claude-code-templates/main/.claude-plugin/marketplace.json",
       "repo": "davila7/claude-code-templates",
       "enabled": true,
-      "priority": 4
+      "priority": 5
     }
   ]
 }
