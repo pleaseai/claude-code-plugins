@@ -96,7 +96,7 @@
       "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
       "source": {
         "source": "github",
-        "repo": "nuxt/ui"
+        "repo": "pleaseai/nuxt-ui"
       }
     }
   ]
