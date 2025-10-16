@@ -54,7 +54,7 @@ export async function fetchGitHubStars(owner: string, repo: string): Promise<num
       'User-Agent': 'claude-code-plugins-marketplace',
     }
 
-    const githubToken = process.env.GITHUB_TOKEN
+    const githubToken = import.meta.env.GITHUB_TOKEN
     if (githubToken) {
       headers.Authorization = `token ${githubToken}`
     }

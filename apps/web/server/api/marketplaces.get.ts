@@ -1,7 +1,7 @@
-import type { AggregatedMarketplace, AggregatedPlugin, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
+import type { AggregatedMarketplace, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
 import marketplaceSourcesConfig from '../marketplace-sources.json'
-import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/marketplace-schema'
 import { fetchPluginStars } from '../utils/github'
+import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/marketplace-schema'
 
 /**
  * Fetch and aggregate multiple marketplaces
