@@ -26,6 +26,7 @@ export const pluginSchema = z.object({
   ]).optional(),
   category: z.string().optional(),
   source: pluginSourceSchema,
+  stars: z.number().optional(),
 })
 
 export const marketplaceSchema = z.object({

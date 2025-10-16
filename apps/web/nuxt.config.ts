@@ -7,6 +7,14 @@ export default defineNuxtConfig({
     preset: 'vercel',
   },
 
+  // ISR configuration for marketplace data
+  // Page uses server-side data fetching (useAsyncData), so only page ISR is needed
+  // Data is fetched on the server and included in the cached HTML
+  routeRules: {
+    '/': { isr: 3600 }, // Main page with embedded data: revalidate every 1 hour
+    '/api/marketplaces': { isr: 3600 }, // Keep API endpoint cached for direct API access if needed
+  },
+
   modules: [
     '@nuxt/ui',
     '@nuxt/content',

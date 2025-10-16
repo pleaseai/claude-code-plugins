@@ -14,6 +14,7 @@ interface Plugin {
   source: PluginSource | string
   marketplaceRepo?: string
   marketplaceJsonName?: string
+  stars?: number
 }
 
 interface PluginMetadata {
@@ -234,6 +235,24 @@ const badges = computed<Badge[]>(() => {
       label: 'MCP',
       color: 'primary',
       title: 'Includes MCP Server',
+    })
+  }
+
+  // GitHub stars badge
+  if (props.plugin.stars !== null && props.plugin.stars !== undefined && props.plugin.stars >= 0) {
+    const formatStars = (count: number): string => {
+      if (count >= 1000) {
+        return `${(count / 1000).toFixed(1)}k`
+      }
+      return count.toString()
+    }
+
+    badgeList.push({
+      key: 'stars',
+      icon: 'i-heroicons-star',
+      label: formatStars(props.plugin.stars),
+      color: 'warning',
+      title: `${props.plugin.stars.toLocaleString()} GitHub stars`,
     })
   }
 

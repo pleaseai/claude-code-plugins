@@ -23,6 +23,7 @@ export interface Plugin {
   author?: string | { name?: string, email?: string }
   category?: string
   source: PluginSource | string
+  stars?: number
 }
 
 export interface Marketplace {

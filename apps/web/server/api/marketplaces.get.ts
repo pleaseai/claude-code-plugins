@@ -1,12 +1,14 @@
 import type { AggregatedMarketplace, AggregatedPlugin, MarketplaceAPIResponse, MarketplaceSource } from '~/types/marketplace'
 import marketplaceSourcesConfig from '../marketplace-sources.json'
 import { marketplaceSchema, marketplaceSourcesConfigSchema } from '../utils/marketplace-schema'
+import { fetchPluginStars } from '../utils/github'
 
 /**
  * Fetch and aggregate multiple marketplaces
  * Uses Nuxt's built-in caching with 5-minute TTL
+ * Exported for direct use in server-side rendering
  */
-const fetchMarketplaces = defineCachedFunction(
+export const fetchMarketplaces = defineCachedFunction(
   async (): Promise<MarketplaceAPIResponse> => {
     // Validate configuration with Zod
     const validatedConfig = marketplaceSourcesConfigSchema.parse(marketplaceSourcesConfig)
@@ -30,20 +32,46 @@ const fetchMarketplaces = defineCachedFunction(
           // Validate marketplace data with Zod
           const validatedMarketplace = marketplaceSchema.parse(response)
 
-          // Transform plugins to include marketplace metadata
-          const plugins: AggregatedPlugin[] = validatedMarketplace.plugins.map(plugin => ({
-            ...plugin,
-            marketplaceRepo: source.repo,
-            marketplaceJsonName: validatedMarketplace.name,
-          }))
+          // Cache marketplace repo stars to avoid duplicate API calls
+          let marketplaceRepoStars: number | null | undefined
+
+          // Fetch GitHub stars for all plugins in parallel
+          const pluginsWithStars = await Promise.all(
+            validatedMarketplace.plugins.map(async (plugin) => {
+              let stars = plugin.stars
+
+              // Fetch stars if not already provided
+              if (stars === undefined || stars === null) {
+                // For local plugins (e.g., "./plugins/xxx"), use marketplace repo
+                if (typeof plugin.source === 'string' && plugin.source.startsWith('./')) {
+                  // Fetch marketplace repo stars only once and cache it
+                  if (marketplaceRepoStars === undefined) {
+                    marketplaceRepoStars = await fetchPluginStars(source.repo)
+                  }
+                  stars = marketplaceRepoStars
+                }
+                else {
+                  // For GitHub plugins, use plugin's own repo
+                  stars = await fetchPluginStars(plugin.source)
+                }
+              }
+
+              return {
+                ...plugin,
+                stars,
+                marketplaceRepo: source.repo,
+                marketplaceJsonName: validatedMarketplace.name,
+              }
+            }),
+          )
 
           return {
             name: source.name,
             description: source.description,
             repo: source.repo,
             marketplaceJsonName: validatedMarketplace.name,
-            pluginCount: plugins.length,
-            plugins,
+            pluginCount: pluginsWithStars.length,
+            plugins: pluginsWithStars,
           }
         }
         catch (error) {
