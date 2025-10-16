@@ -182,7 +182,47 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
    }
    ```
 
-4. **Create SessionStart Hook (Optional but Recommended):**
+4. **Create Skill for Intelligent Activation (Recommended):**
+
+   Create `skills/[plugin-name]/SKILL.md`:
+   ```markdown
+   ---
+   name: Plugin Name Feature
+   description: Brief description of what this plugin does. Use when [specific scenarios]. Triggers on mentions of [keywords, features, use cases].
+   allowed-tools: mcp__plugin_name__tool-1, mcp__plugin_name__tool-2
+   ---
+
+   # Plugin Name - Feature Description
+
+   Always use [plugin-name] MCP tools automatically when [specific scenarios].
+
+   ## When to Use
+   - Scenario 1: Specific use case
+   - Scenario 2: Another use case
+   - Scenario 3: Framework/library specific
+
+   ## How to Use
+   1. Use `tool-1` to perform action
+   2. Use `tool-2` to complete workflow
+   3. Apply results as needed
+
+   ## Important Notes
+   - Note about API keys or configuration
+   - Performance considerations
+   - Best practices
+   ```
+
+   **Why Skills over SessionStart Hooks:**
+   - ✅ Claude loads skill only when relevant to the task
+   - ✅ Significantly reduces token usage
+   - ✅ Simpler maintenance (single markdown file)
+   - ✅ Intelligent activation based on context
+   - ✅ Clear trigger patterns in description
+
+   **Legacy Approach (SessionStart Hook - Not Recommended):**
+
+   <details>
+   <summary>Click to see SessionStart hook approach (deprecated)</summary>
 
    Create `hooks/hooks.json`:
    ```json
@@ -205,38 +245,11 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
    }
    ```
 
-   Create `hooks/context.sh`:
-   ```bash
-   #!/usr/bin/env bash
-   set -euo pipefail
-
-   CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT}/hooks/USAGE.md"
-
-   if [ -f "$CONTEXT_FILE" ]; then
-       CONTEXT_CONTENT=$(cat "$CONTEXT_FILE")
-       jq -n --arg context "$CONTEXT_CONTENT" '{
-         "hookSpecificOutput": {
-           "hookEventName": "SessionStart",
-           "additionalContext": $context
-         }
-       }'
-   fi
-   ```
-
-   Create `hooks/USAGE.md`:
-   ```markdown
-   # Plugin Usage Instructions
-
-   Always use [plugin-name] MCP tools when [specific scenarios].
-
-   ## When to Use
-   - Scenario 1
-   - Scenario 2
-
-   ## Available Tools
-   - tool-1: Description
-   - tool-2: Description
-   ```
+   **Limitations:**
+   - ❌ Loads on every session start regardless of need
+   - ❌ Wastes tokens even when plugin is not relevant
+   - ❌ Requires shell script + JSON output complexity
+   </details>
 
    Make script executable:
    ```bash
@@ -294,11 +307,15 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
 - Use `${PLUGIN_VAR:-}` pattern for optional environment variables
 - Always specify `-y` flag with npx to avoid interactive prompts
 
-**SessionStart Hooks:**
-- Keep hook scripts minimal and focused
-- Return proper JSON format with `hookSpecificOutput`
-- Don't rely on `contextFileName` - handle context loading in hook script
-- Make scripts executable with `chmod +x`
+**Skills (Recommended):**
+- Use gerund form for skill name ("Processing PDFs", "Analyzing Code")
+- Include specific triggers in description for intelligent activation
+- Specify `allowed-tools` for automatic MCP tool permissions
+- Keep SKILL.md under 500 lines for token efficiency
+
+**SessionStart Hooks (Legacy - Not Recommended):**
+- Use Skills instead for better token efficiency and intelligent activation
+- Only use hooks for non-MCP tool automation (validation, formatting, etc.)
 
 **Directory Structure:**
 - `.claude-plugin/plugin.json` must be at this exact path
@@ -319,11 +336,13 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
 
 See `external-plugins/context7/` for a complete example of:
 - NPX-based MCP server integration
-- SessionStart hook for automatic tool usage
+- **Skill-based intelligent activation** (recommended approach)
 - Optional API key configuration
 - Upstream PR contribution
 
 Reference documentation: @docs/lessons-learned/context7.md
+
+**Note**: Context7 was migrated from SessionStart hooks to Skills for better token efficiency. See the lessons learned doc for the evolution and comparison.
 
 ## Development Standards
 

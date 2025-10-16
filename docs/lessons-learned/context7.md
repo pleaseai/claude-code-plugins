@@ -36,16 +36,18 @@ When integrating MCP servers, there are two primary approaches:
 
 **Important Note:** Even with NPX, the MCP server may still call external APIs (like Context7 does with `https://context7.com/api`). The "local" part refers to where the MCP protocol adapter runs, not data sources.
 
-### 2. SessionStart Hooks for Automatic Context Loading
+### 2. Skills vs SessionStart Hooks for Automatic Tool Usage
 
 **Problem:** Users need to remember to ask Claude to use specific MCP tools.
 
-**Solution:** Use SessionStart hooks to automatically load usage instructions.
+**Solution Evolution:**
 
-**Implementation Pattern:**
+#### ❌ Initial Approach: SessionStart Hooks (Deprecated)
+
+SessionStart hooks load context on every session:
 
 ```json
-// hooks/hooks.json
+// hooks/hooks.json (OLD APPROACH - NOT RECOMMENDED)
 {
   "description": "Load Context7 usage instructions at session start",
   "hooks": {
@@ -65,30 +67,47 @@ When integrating MCP servers, there are two primary approaches:
 }
 ```
 
-```bash
-# hooks/context.sh
-#!/usr/bin/env bash
-set -euo pipefail
+**Limitations:**
+- ❌ Loads on every session start regardless of need
+- ❌ Wastes tokens even when not working with libraries
+- ❌ Requires shell script + JSON output complexity
+- ❌ No intelligent activation
 
-CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT}/hooks/CONTEXT7.md"
+#### ✅ Better Approach: Skills (Recommended)
 
-if [ -f "$CONTEXT_FILE" ]; then
-    CONTEXT_CONTENT=$(cat "$CONTEXT_FILE")
+Use Skills for intelligent, on-demand activation:
 
-    jq -n --arg context "$CONTEXT_CONTENT" '{
-      "hookSpecificOutput": {
-        "hookEventName": "SessionStart",
-        "additionalContext": $context
-      }
-    }'
-fi
+```yaml
+# skills/context7/SKILL.md
+---
+name: Library Documentation Lookup
+description: Fetch up-to-date documentation and code examples for any library or framework using Context7. Use when writing code with external libraries, setting up tools, configuring frameworks, or needing current API documentation. Triggers on mentions of library names, npm packages, framework setup, API docs, or code generation requests.
+allowed-tools: mcp__plugin_dev-tools_context7__resolve-library-id, mcp__plugin_dev-tools_context7__get-library-docs
+---
+
+# Context7 - Library Documentation
+
+Always use Context7 MCP tools automatically when generating code, performing setup, or needing library documentation.
+
+## When to Use
+- Writing code with external libraries
+- Setting up frameworks or tools
+- Needing current API documentation
+- Finding best practices for libraries
 ```
 
+**Advantages:**
+- ✅ Claude loads skill only when working with libraries/frameworks
+- ✅ Significantly reduces token usage
+- ✅ Simpler maintenance (single markdown file)
+- ✅ Intelligent activation based on context
+- ✅ Clear trigger patterns in description
+
 **Key Points:**
-- Keep the shell script minimal and focused
-- Don't rely on `contextFileName` in plugin.json - handle it directly in the hook
-- Return proper JSON format with `hookSpecificOutput` structure
-- Make scripts executable (`chmod +x`)
+- Use gerund form for skill name ("Library Documentation Lookup")
+- Include specific triggers in description (library names, frameworks, API docs)
+- Specify allowed MCP tools for automatic permission
+- Keep SKILL.md under 500 lines for efficiency
 
 ### 3. Environment Variable Patterns for API Keys
 
@@ -121,6 +140,21 @@ fi
 
 ### 4. Plugin Directory Structure Best Practices
 
+**Modern Structure (with Skills):**
+
+```
+external-plugins/context7/
+├── .claude-plugin/
+│   └── plugin.json              # Plugin manifest (required)
+├── skills/
+│   └── context7/
+│       └── SKILL.md             # Skill definition with auto-activation
+├── README.md                   # Documentation with installation guide
+└── (source code of the tool itself)
+```
+
+**Legacy Structure (with SessionStart Hooks - Deprecated):**
+
 ```
 external-plugins/context7/
 ├── .claude-plugin/
@@ -135,8 +169,9 @@ external-plugins/context7/
 
 **Critical Rules:**
 - `.claude-plugin/plugin.json` is required and must be in this exact location
-- `hooks/`, `commands/`, `agents/` directories must be at plugin root, NOT inside `.claude-plugin/`
+- `skills/`, `hooks/`, `commands/`, `agents/` directories must be at plugin root, NOT inside `.claude-plugin/`
 - Use `${CLAUDE_PLUGIN_ROOT}` in all path references for portability
+- Prefer `skills/` over `hooks/` for automatic tool usage guidance
 
 ### 5. Documentation and Installation Instructions
 
@@ -209,42 +244,34 @@ When adding a plugin to the marketplace that's developed in a separate repositor
 
 ### 7. Common Pitfalls and Solutions
 
-#### Pitfall: Copying complex hook scripts from other plugins
-**Problem:** Scripts like `context.sh` from other plugins may include legacy code for `contextFileName` fallback logic that's unnecessary for new plugins.
+#### Pitfall: Using SessionStart hooks instead of Skills
+**Problem:** Using SessionStart hooks for automatic tool usage loads context on every session, wasting tokens.
 
-**Solution:** Write minimal, focused hook scripts that do exactly what you need:
-```bash
-#!/usr/bin/env bash
-set -euo pipefail
-
-CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT}/hooks/CONTEXT.md"
-
-if [ -f "$CONTEXT_FILE" ]; then
-    CONTEXT_CONTENT=$(cat "$CONTEXT_FILE")
-    jq -n --arg context "$CONTEXT_CONTENT" '{
-      "hookSpecificOutput": {
-        "hookEventName": "SessionStart",
-        "additionalContext": $context
-      }
-    }'
-fi
-```
+**Solution:** Use Skills for intelligent, on-demand activation:
+- Skills load only when relevant to the current task
+- Clear trigger patterns in description
+- Simpler maintenance (no shell scripts)
+- Better token efficiency
 
 #### Pitfall: Confusion between NPX and HTTP transport
 **Problem:** Thinking NPX means everything runs locally and HTTP means everything is remote.
 
 **Solution:** Understand that both patterns may call external APIs. NPX runs the MCP protocol adapter locally, but the adapter can still make network requests.
 
-#### Pitfall: Assuming `contextFileName` is required
-**Problem:** Including `contextFileName` in plugin.json when using custom hooks.
+#### Pitfall: Weak trigger patterns in Skill descriptions
+**Problem:** Vague skill descriptions that don't clearly specify when to activate.
 
-**Solution:** If your hook script directly reads the context file, `contextFileName` is redundant. Only include it if you're using the standard context loading mechanism.
+**Solution:** Include specific triggers in the description:
+- Library names and package managers
+- Framework setup keywords
+- API documentation mentions
+- Code generation scenarios
 
 ## Best Practices Summary
 
 1. **Use NPX for MCP servers** unless there's a specific reason to use HTTP
-2. **Implement SessionStart hooks** for automatic tool usage
-3. **Keep hook scripts minimal** and focused on their specific purpose
+2. **Use Skills for automatic tool usage** instead of SessionStart hooks for better token efficiency
+3. **Include specific triggers** in skill descriptions for intelligent activation
 4. **Use environment variables** with `${VAR:-}` pattern for optional configuration
 5. **Follow standard directory structure** with `.claude-plugin/` for manifest only
 6. **Document installation clearly** with the correct command patterns
@@ -254,10 +281,11 @@ fi
 
 ## Context7-Specific Insights
 
-1. **Automatic Tool Usage:** By loading instructions on SessionStart, Claude automatically uses Context7 MCP tools without explicit user prompts
-2. **API Key Optional:** Context7 works without an API key but provides higher rate limits with one
-3. **Documentation Focus:** Context7 is about fetching up-to-date library documentation, so emphasize this in the context instructions
-4. **Integration Pattern:** The plugin demonstrates how to wrap existing npm-published MCP servers with enhanced Claude Code integration
+1. **Automatic Tool Usage:** Skills enable Claude to automatically use Context7 MCP tools when working with libraries/frameworks
+2. **Token Efficiency:** Skill-based approach significantly reduces token usage compared to SessionStart hooks
+3. **API Key Optional:** Context7 works without an API key but provides higher rate limits with one
+4. **Documentation Focus:** Context7 is about fetching up-to-date library documentation, so emphasize this in skill descriptions
+5. **Integration Pattern:** The plugin demonstrates how to wrap existing npm-published MCP servers with enhanced Claude Code integration
 
 ## References
 
@@ -266,8 +294,18 @@ fi
 - [Context7 Repository](https://github.com/upstash/context7)
 - [Plugin Marketplace Schema](https://anthropic.com/claude-code/marketplace.schema.json)
 
+## Changelog
+
+- **October 16, 2025**: Initial documentation with SessionStart hook approach
+- **October 17, 2025**: Updated to reflect Skills-based approach as recommended pattern
+  - Added Skills vs SessionStart Hooks comparison
+  - Updated directory structure examples
+  - Revised best practices and pitfalls
+  - Updated Context7-specific insights
+
 ## Date
 
 Created: October 16, 2025
+Updated: October 17, 2025
 Plugin: Context7
 PR: https://github.com/upstash/context7/pull/786
