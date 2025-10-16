@@ -35,8 +35,13 @@ const targetPluginName = computed(() => {
   return undefined
 })
 
-// Fetch marketplace data from API
-const { data: apiData, pending, error } = await useFetch<MarketplaceAPIResponse>('/api/marketplaces')
+// Fetch marketplace data using useAsyncData for SSR/ISR support
+// useAsyncData automatically handles server-side fetching and client hydration
+// Data is fetched on the server, cached, and passed to the client without re-fetching
+const { data: apiData, pending, error } = await useAsyncData(
+  'marketplaces',
+  () => $fetch<MarketplaceAPIResponse>('/api/marketplaces'),
+)
 
 // Aggregate all plugins from all marketplaces
 const allPlugins = computed(() => {
