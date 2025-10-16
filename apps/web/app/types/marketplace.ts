@@ -18,7 +18,7 @@ export interface PluginSource {
 
 export interface Plugin {
   name: string
-  description: string
+  description?: string
   version?: string
   author?: string | { name?: string, email?: string }
   category?: string
