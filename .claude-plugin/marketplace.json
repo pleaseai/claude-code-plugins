@@ -94,11 +94,18 @@
       }
     },
     {
-      "name": "nuxt-ui",
+      "name": "nuxt",
       "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
       "source": {
         "source": "github",
         "repo": "pleaseai/nuxt-ui"
+      }
+    },
+    {
+      "name": "nuxt",
+      "source": {
+        "source": "github",
+        "repo": "amondnet/nuxt"
       }
     },
     {
