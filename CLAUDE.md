@@ -25,7 +25,8 @@ claude-code-plugins/
 │   ├── postgres/              # PostgreSQL MCP server
 │   ├── grafana/               # Grafana integration
 │   ├── mcp-neo4j/             # Neo4j MCP server
-│   └── chrome-devtools-mcp/   # Chrome DevTools automation
+│   ├── chrome-devtools-mcp/   # Chrome DevTools automation
+│   └── context7/              # Up-to-date library documentation
 ├── apps/web/                  # Marketplace website
 ├── .claude-plugin/            # Marketplace configuration
 └── hooks/                     # Session hooks
@@ -135,6 +136,194 @@ All plugins are maintained in separate repositories and included as git submodul
 - `external-plugins/grafana/` → https://github.com/amondnet/mcp-grafana
 - `external-plugins/mcp-neo4j/` → https://github.com/amondnet/mcp-neo4j
 - `external-plugins/chrome-devtools-mcp/` → https://github.com/pleaseai/chrome-devtools-mcp
+- `external-plugins/context7/` → https://github.com/pleaseai/context7
+
+## Claude Code Plugin Development Guide
+
+### Adding a New Plugin to the Marketplace
+
+When integrating an existing MCP server or tool as a Claude Code plugin:
+
+1. **Add as Git Submodule:**
+   ```bash
+   git submodule add git@github.com:org/tool-repo.git external-plugins/plugin-name
+   cd external-plugins/plugin-name
+   ```
+
+2. **Create Plugin Structure:**
+   ```bash
+   mkdir -p .claude-plugin hooks
+   ```
+
+3. **Create plugin.json:**
+   ```json
+   {
+     "name": "plugin-name",
+     "version": "1.0.0",
+     "description": "Brief description of the plugin",
+     "author": {
+       "name": "Author Name",
+       "url": "https://github.com/author"
+     },
+     "homepage": "https://tool-website.com",
+     "repository": "https://github.com/org/tool-repo",
+     "license": "MIT",
+     "keywords": ["keyword1", "keyword2"],
+     "hooks": "./hooks/hooks.json",
+     "mcpServers": {
+       "server-name": {
+         "command": "npx",
+         "args": ["-y", "@org/package-name"],
+         "env": {
+           "API_KEY": "${PLUGIN_API_KEY:-}"
+         }
+       }
+     }
+   }
+   ```
+
+4. **Create SessionStart Hook (Optional but Recommended):**
+
+   Create `hooks/hooks.json`:
+   ```json
+   {
+     "description": "Load plugin usage instructions at session start",
+     "hooks": {
+       "SessionStart": [
+         {
+           "matcher": "startup",
+           "hooks": [
+             {
+               "type": "command",
+               "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
+               "timeout": 10
+             }
+           ]
+         }
+       ]
+     }
+   }
+   ```
+
+   Create `hooks/context.sh`:
+   ```bash
+   #!/usr/bin/env bash
+   set -euo pipefail
+
+   CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT}/hooks/USAGE.md"
+
+   if [ -f "$CONTEXT_FILE" ]; then
+       CONTEXT_CONTENT=$(cat "$CONTEXT_FILE")
+       jq -n --arg context "$CONTEXT_CONTENT" '{
+         "hookSpecificOutput": {
+           "hookEventName": "SessionStart",
+           "additionalContext": $context
+         }
+       }'
+   fi
+   ```
+
+   Create `hooks/USAGE.md`:
+   ```markdown
+   # Plugin Usage Instructions
+
+   Always use [plugin-name] MCP tools when [specific scenarios].
+
+   ## When to Use
+   - Scenario 1
+   - Scenario 2
+
+   ## Available Tools
+   - tool-1: Description
+   - tool-2: Description
+   ```
+
+   Make script executable:
+   ```bash
+   chmod +x hooks/context.sh
+   ```
+
+5. **Update Plugin README:**
+   Add Claude Code installation instructions:
+   ```markdown
+   #### Claude Code Plugin
+
+   Install as a Claude Code plugin:
+
+   \`\`\`sh
+   claude
+   /plugin marketplace add pleaseai/claude-code-plugins
+   /plugin install plugin-name@pleaseai
+   \`\`\`
+
+   This automatically loads usage instructions on session start.
+
+   Optionally set API key (if required):
+   \`\`\`sh
+   export PLUGIN_API_KEY="your-api-key"
+   \`\`\`
+   ```
+
+6. **Commit Plugin Changes:**
+   ```bash
+   git add .claude-plugin/ hooks/ README.md
+   git commit -m "feat: add Claude Code plugin configuration"
+   git push origin main
+   ```
+
+7. **Create Upstream PR (if forked):**
+   ```bash
+   gh pr create --repo original-org/tool-repo \
+     --title "feat: add Claude Code plugin configuration" \
+     --body "Add Claude Code plugin support with automatic integration..."
+   ```
+
+8. **Update Marketplace Configuration:**
+   In the main repository root:
+   ```bash
+   # Update marketplace.json
+   # Add entry to plugins array
+   git add .claude-plugin/marketplace.json external-plugins/plugin-name
+   git commit -m "feat: add plugin-name to marketplace"
+   ```
+
+### Best Practices
+
+**MCP Server Integration:**
+- Use `npx` for MCP servers published to npm
+- Use `${PLUGIN_VAR:-}` pattern for optional environment variables
+- Always specify `-y` flag with npx to avoid interactive prompts
+
+**SessionStart Hooks:**
+- Keep hook scripts minimal and focused
+- Return proper JSON format with `hookSpecificOutput`
+- Don't rely on `contextFileName` - handle context loading in hook script
+- Make scripts executable with `chmod +x`
+
+**Directory Structure:**
+- `.claude-plugin/plugin.json` must be at this exact path
+- `hooks/`, `commands/`, `agents/` directories at plugin root
+- Use `${CLAUDE_PLUGIN_ROOT}` for all path references
+
+**Documentation:**
+- Include Claude Code installation in plugin README
+- Explain automatic features (SessionStart hooks)
+- Document optional environment variables clearly
+
+**Testing:**
+- Test the full installation flow
+- Verify SessionStart hook loads correctly
+- Test with and without environment variables
+
+### Example: Context7 Plugin
+
+See `external-plugins/context7/` for a complete example of:
+- NPX-based MCP server integration
+- SessionStart hook for automatic tool usage
+- Optional API key configuration
+- Upstream PR contribution
+
+Reference documentation: @docs/lessons-learned/context7.md
 
 ## Development Standards
 
@@ -144,6 +333,7 @@ This project follows strict development standards documented in:
 - @docs/TDD.md
 - @docs/TESTING.md
 - @docs/plugins.md - Complete Claude Code plugin reference (manifest schema, components, development tools)
+- @docs/lessons-learned/ - Practical guides from plugin development experiences
 
 ## Plugin Installation
 
