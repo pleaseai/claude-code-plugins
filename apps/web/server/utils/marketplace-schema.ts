@@ -52,8 +52,8 @@ export const marketplaceSchema = z.object({
   // Check for deprecated root-level fields and warn
   if (data.version !== undefined || data.description !== undefined) {
     console.warn(
-      `[DEPRECATED] Marketplace "${data.name}": version and description at root level are deprecated. ` +
-      `Please move them to metadata object: { metadata: { version: "...", description: "..." } }`
+      `[DEPRECATED] Marketplace "${data.name}": version and description at root level are deprecated. `
+      + `Please move them to metadata object: { metadata: { version: "...", description: "..." } }`,
     )
   }
 
