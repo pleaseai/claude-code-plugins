@@ -90,6 +90,14 @@
         "source": "github",
         "repo": "pleaseai/context7"
       }
+    },
+    {
+      "name": "nuxt-ui",
+      "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
+      "source": {
+        "source": "github",
+        "repo": "nuxt/ui"
+      }
     }
   ]
 }

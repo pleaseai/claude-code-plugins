@@ -34,3 +34,6 @@
 [submodule "external-plugins/context7"]
 	path = external-plugins/context7
 	url = git@github.com:pleaseai/context7.git
+[submodule "external-plugins/nuxt-ui"]
+	path = external-plugins/nuxt-ui
+	url = git@github.com:pleaseai/nuxt-ui.git
