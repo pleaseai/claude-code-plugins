@@ -34,8 +34,8 @@ export const marketplaceSchema = z.object({
   name: z.string(),
   version: z.string().optional(),
   description: z.string().optional(),
-  // Support marketplaces that nest version/description in metadata object
-  // (e.g., claude-code-workflows, claude-code-templates)
+  // Official schema: version/description should be in metadata object
+  // Root-level fields are deprecated but still supported for backwards compatibility
   metadata: z.object({
     version: z.string().optional(),
     description: z.string().optional(),
@@ -49,13 +49,21 @@ export const marketplaceSchema = z.object({
   }),
   plugins: z.array(pluginSchema),
 }).transform((data) => {
-  // Normalize version/description to always be defined strings
-  // Supports both root-level (Anthropic style) and metadata-nested (community style) formats
-  const version = data.version ?? data.metadata?.version ?? '0.0.0'
-  const description = data.description ?? data.metadata?.description ?? 'No description available'
+  // Check for deprecated root-level fields and warn
+  if (data.version !== undefined || data.description !== undefined) {
+    console.warn(
+      `[DEPRECATED] Marketplace "${data.name}": version and description at root level are deprecated. ` +
+      `Please move them to metadata object: { metadata: { version: "...", description: "..." } }`
+    )
+  }
 
-  // Remove redundant metadata field after extraction
-  const { metadata, ...rest } = data
+  // Normalize version/description with priority: metadata > root-level > defaults
+  // Prefer metadata values (official schema) over root-level (deprecated)
+  const version = data.metadata?.version ?? data.version ?? '0.0.0'
+  const description = data.metadata?.description ?? data.description ?? 'No description available'
+
+  // Remove redundant fields after extraction
+  const { metadata, version: _, description: __, ...rest } = data
 
   return {
     ...rest,

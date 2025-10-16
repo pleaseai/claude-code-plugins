@@ -1,13 +1,15 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "pleaseai",
-  "version": "0.1.0",
-  "description": "Bundled plugins for Claude Code",
   "homepage": "https://github.com/pleaseai/claude-code-plugins",
   "repository": "https://github.com/pleaseai/claude-code-plugins",
   "owner": {
     "name": "Passion Factory",
     "email": "support@passionfactory.ai"
+  },
+  "metadata": {
+    "version": "0.1.0",
+    "description": "Bundled plugins for Claude Code"
   },
   "plugins": [
     {
@@ -98,6 +100,11 @@
         "source": "github",
         "repo": "pleaseai/nuxt-ui"
       }
+    },
+    {
+      "name": "plugin-dev",
+      "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
+      "source": "./plugins/plugin-dev"
     }
   ]
 }

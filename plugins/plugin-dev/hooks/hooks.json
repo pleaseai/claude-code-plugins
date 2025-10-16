@@ -1,0 +1,17 @@
+{
+  "description": "Validate plugin manifests when modified",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "plugin\\.json",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/validate-manifest.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
