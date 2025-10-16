@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.0.0...web-v1.1.0) (2025-10-16)
+
+
+### Features
+
+* add community marketplaces and improve schema flexibility ([#17](https://github.com/pleaseai/claude-code-plugins/issues/17)) ([439bd48](https://github.com/pleaseai/claude-code-plugins/commit/439bd488212957b17caf49c39f1b9dfecaccc78b))
+* add GitHub stars display with ISR and optimized caching ([#19](https://github.com/pleaseai/claude-code-plugins/issues/19)) ([d2affb6](https://github.com/pleaseai/claude-code-plugins/commit/d2affb69c9ddfbd7eb9b673e19494a1721f2f1df))
+* add optimized system font stack for Korean and English ([#15](https://github.com/pleaseai/claude-code-plugins/issues/15)) ([24a985c](https://github.com/pleaseai/claude-code-plugins/commit/24a985ce7619d40bfbca980a653039b257e440e7))
+* implement multi-marketplace support for plugin distribution ([#11](https://github.com/pleaseai/claude-code-plugins/issues/11)) ([c22149e](https://github.com/pleaseai/claude-code-plugins/commit/c22149ea5139c632daeb1d3432f162e08c806cba))
+
+
+### Bug Fixes
+
+* configure Vercel preset and fix marketplace config loading ([#16](https://github.com/pleaseai/claude-code-plugins/issues/16)) ([c7865eb](https://github.com/pleaseai/claude-code-plugins/commit/c7865ebd4fc2be36418acc6cbb54cd456ff844ba))
+* move marketplace-sources.json to public directory for Vercel deployment ([#13](https://github.com/pleaseai/claude-code-plugins/issues/13)) ([da7a27d](https://github.com/pleaseai/claude-code-plugins/commit/da7a27da5ab3e7716f92005b6888ac669422c6c7))
+* resolve Vercel build warning and lint errors ([#20](https://github.com/pleaseai/claude-code-plugins/issues/20)) ([1b87031](https://github.com/pleaseai/claude-code-plugins/commit/1b87031a5323975fffb9c91097c0762bf60dd638))
+
 ## 1.0.0 (2025-10-15)
 
 
