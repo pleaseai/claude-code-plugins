@@ -31,3 +31,6 @@
 [submodule "external-plugins/open-aware"]
 	path = external-plugins/open-aware
 	url = git@github.com:amondnet/open-aware.git
+[submodule "external-plugins/context7"]
+	path = external-plugins/context7
+	url = git@github.com:pleaseai/context7.git
