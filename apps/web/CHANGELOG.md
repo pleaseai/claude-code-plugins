@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.1.0...web-v1.2.0) (2025-10-18)
+
+
+### Features
+
+* add Anthropic agent skills marketplace ([#24](https://github.com/pleaseai/claude-code-plugins/issues/24)) ([77543c2](https://github.com/pleaseai/claude-code-plugins/commit/77543c2f5d0978350a44c3233cd8b2c586103086))
+* add plugin-dev toolkit and fix marketplace schema ([3467298](https://github.com/pleaseai/claude-code-plugins/commit/3467298bb269e021f5b2fdd6f5ef2e1dc9b921b7))
+
+
+### Bug Fixes
+
+* make plugin description optional in marketplace schema ([#25](https://github.com/pleaseai/claude-code-plugins/issues/25)) ([e8226f0](https://github.com/pleaseai/claude-code-plugins/commit/e8226f0bab4f2549be14912aeb92eff49f538e99))
+* **marketplace:** make plugin description optional in schema and types ([248aff5](https://github.com/pleaseai/claude-code-plugins/commit/248aff515148cada3fc0a0536a524b9c4c1c1687))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.0.0...web-v1.1.0) (2025-10-16)
 
 
