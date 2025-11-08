@@ -87,7 +87,7 @@
     },
     {
       "name": "chrome-devtools-cli",
-      "description": "Reliable automation, in-depth debugging, and performance analysis in Chrome using Chrome DevTools and Puppeteer"
+      "description": "Reliable automation, in-depth debugging, and performance analysis in Chrome using Chrome DevTools and Puppeteer",
       "source": {
         "source": "github",
         "repo": "ChromeDevTools/chrome-devtools-mcp"
