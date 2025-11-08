@@ -85,7 +85,6 @@
         "repo": "ChromeDevTools/chrome-devtools-mcp"
       }
     },
-    ,
     {
       "name": "chrome-devtools-cli",
       "description": "Reliable automation, in-depth debugging, and performance analysis in Chrome using Chrome DevTools and Puppeteer"
@@ -93,7 +92,7 @@
         "source": "github",
         "repo": "ChromeDevTools/chrome-devtools-mcp"
       }
-    }
+    },
     {
       "name": "context7",
       "description": "Up-to-date documentation and code examples for any library or framework using Context7 MCP server",
