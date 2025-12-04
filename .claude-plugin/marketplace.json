@@ -120,6 +120,14 @@
       "name": "plugin-dev",
       "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
       "source": "./plugins/plugin-dev"
-    }
+    },
+    {
+      "name": "mcp-gateway",
+      "description": "MCP gateway server for tool discovery with regex, BM25, embedding, and hybrid search",
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/mcp-gateway"
+      }
+    }    
   ]
 }
