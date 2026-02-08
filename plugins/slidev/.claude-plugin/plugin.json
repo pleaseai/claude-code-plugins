@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/slidev",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["slidev", "slides", "presentation", "antfu"]
+  "keywords": [
+    "slidev",
+    "slides",
+    "presentation",
+    "antfu"
+  ]
 }

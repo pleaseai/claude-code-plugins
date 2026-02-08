@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/pnpm",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["pnpm", "package-manager", "monorepo", "antfu"]
+  "keywords": [
+    "pnpm",
+    "package-manager",
+    "monorepo",
+    "antfu"
+  ]
 }

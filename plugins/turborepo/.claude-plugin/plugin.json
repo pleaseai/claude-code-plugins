@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/turborepo",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["turborepo", "monorepo", "build-system", "antfu"]
+  "keywords": [
+    "turborepo",
+    "monorepo",
+    "build-system",
+    "antfu"
+  ]
 }

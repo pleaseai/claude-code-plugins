@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/unocss",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["unocss", "css", "atomic-css", "antfu"]
+  "keywords": [
+    "unocss",
+    "css",
+    "atomic-css",
+    "antfu"
+  ]
 }
