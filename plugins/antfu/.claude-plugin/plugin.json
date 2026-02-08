@@ -1,6 +1,6 @@
 {
   "name": "antfu",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
   "author": {
     "name": "Anthony Fu",

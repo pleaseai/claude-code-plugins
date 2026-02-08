@@ -142,7 +142,7 @@ for (const plugin of pluginList) {
   // Write plugin.json
   const manifest = {
     name: plugin,
-    version: "1.0.0",
+    version: "1.1.0",
     description: desc,
     author: {
       name: "Anthony Fu",
