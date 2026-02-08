@@ -1,0 +1,13 @@
+{
+  "name": "turborepo",
+  "version": "1.0.0",
+  "description": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/turborepo",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["turborepo", "monorepo", "build-system", "antfu"]
+}

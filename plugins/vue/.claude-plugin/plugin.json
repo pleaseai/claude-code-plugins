@@ -1,0 +1,13 @@
+{
+  "name": "vue",
+  "version": "1.0.0",
+  "description": "Vue 3 core, best practices, router patterns, and testing",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vue",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["vue", "vue3", "composition-api", "antfu"]
+}

@@ -1,0 +1,13 @@
+{
+  "name": "web-design",
+  "version": "1.0.0",
+  "description": "Review UI code for Web Interface Guidelines compliance",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/web-design-guidelines",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["web-design", "ui", "accessibility", "antfu"]
+}

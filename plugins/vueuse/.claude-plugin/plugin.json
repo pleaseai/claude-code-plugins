@@ -1,0 +1,13 @@
+{
+  "name": "vueuse",
+  "version": "1.0.0",
+  "description": "Apply VueUse composables where appropriate to build concise, maintainable Vue.js / Nuxt features",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vueuse-functions",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["vueuse", "vue", "composables", "antfu"]
+}
