@@ -1,0 +1,13 @@
+{
+  "name": "vite",
+  "version": "1.0.0",
+  "description": "Vite build tool configuration, plugin API, SSR, and Vite 8 Rolldown migration. Use when working with Vite projects, vite.config.ts, Vite plugins, or building libraries/SSR apps with Vite.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vite",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["vite", "build-tool", "bundler", "antfu"]
+}

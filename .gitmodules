@@ -37,3 +37,6 @@
 [submodule "external-plugins/nuxt-ui"]
 	path = external-plugins/nuxt-ui
 	url = git@github.com:pleaseai/nuxt-ui.git
+[submodule "vendor/antfu-skills"]
+	path = vendor/antfu-skills
+	url = https://github.com/antfu/skills.git

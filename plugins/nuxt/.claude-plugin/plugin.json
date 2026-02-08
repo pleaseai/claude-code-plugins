@@ -1,0 +1,13 @@
+{
+  "name": "nuxt",
+  "version": "1.0.0",
+  "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing. Use when working with Nuxt apps, server routes, useFetch, middleware, or hybrid rendering.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/nuxt",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["nuxt", "vue", "ssr", "antfu"]
+}

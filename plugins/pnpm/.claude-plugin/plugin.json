@@ -1,0 +1,13 @@
+{
+  "name": "pnpm",
+  "version": "1.0.0",
+  "description": "Node.js package manager with strict dependency resolution. Use when running pnpm specific commands, configuring workspaces, or managing dependencies with catalogs, patches, or overrides.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/pnpm",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": ["pnpm", "package-manager", "monorepo", "antfu"]
+}

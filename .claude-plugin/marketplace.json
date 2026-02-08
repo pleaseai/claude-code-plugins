@@ -110,13 +110,6 @@
       }
     },
     {
-      "name": "nuxt",
-      "source": {
-        "source": "github",
-        "repo": "amondnet/nuxt"
-      }
-    },
-    {
       "name": "plugin-dev",
       "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
       "source": "./plugins/plugin-dev"
@@ -128,6 +121,76 @@
         "source": "github",
         "repo": "pleaseai/mcp-gateway"
       }
-    }    
+    },
+    {
+      "name": "antfu",
+      "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
+      "source": "./plugins/antfu"
+    },
+    {
+      "name": "nuxt",
+      "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing",
+      "source": "./plugins/nuxt"
+    },
+    {
+      "name": "pinia",
+      "description": "Pinia official Vue state management library, type-safe and extensible",
+      "source": "./plugins/pinia"
+    },
+    {
+      "name": "pnpm",
+      "description": "Node.js package manager with strict dependency resolution and workspace support",
+      "source": "./plugins/pnpm"
+    },
+    {
+      "name": "slidev",
+      "description": "Create and present web-based slides for developers using Markdown and Vue components",
+      "source": "./plugins/slidev"
+    },
+    {
+      "name": "tsdown",
+      "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
+      "source": "./plugins/tsdown"
+    },
+    {
+      "name": "turborepo",
+      "description": "Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization",
+      "source": "./plugins/turborepo"
+    },
+    {
+      "name": "unocss",
+      "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS",
+      "source": "./plugins/unocss"
+    },
+    {
+      "name": "vite",
+      "description": "Vite build tool configuration, plugin API, SSR, and Rolldown migration",
+      "source": "./plugins/vite"
+    },
+    {
+      "name": "vitepress",
+      "description": "VitePress static site generator powered by Vite and Vue",
+      "source": "./plugins/vitepress"
+    },
+    {
+      "name": "vitest",
+      "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API",
+      "source": "./plugins/vitest"
+    },
+    {
+      "name": "vue",
+      "description": "Vue 3 core, best practices, router patterns, and testing",
+      "source": "./plugins/vue"
+    },
+    {
+      "name": "vueuse",
+      "description": "VueUse composables for building concise, maintainable Vue.js / Nuxt features",
+      "source": "./plugins/vueuse"
+    },
+    {
+      "name": "web-design",
+      "description": "Review UI code for Web Interface Guidelines compliance",
+      "source": "./plugins/web-design"
+    }
   ]
 }
