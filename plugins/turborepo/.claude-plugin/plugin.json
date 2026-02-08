@@ -1,6 +1,6 @@
 {
   "name": "turborepo",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
   "author": {
     "name": "Anthony Fu",

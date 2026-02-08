@@ -1,6 +1,6 @@
 {
   "name": "vitepress",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "VitePress static site generator powered by Vite and Vue. Use when building documentation sites, configuring themes, or writing Markdown with Vue components.",
   "author": {
     "name": "Anthony Fu",
