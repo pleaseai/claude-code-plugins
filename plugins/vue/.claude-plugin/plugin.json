@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/vue",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["vue", "vue3", "composition-api", "antfu"]
+  "keywords": [
+    "vue",
+    "vue3",
+    "composition-api",
+    "antfu"
+  ]
 }

@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/vitepress",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["vitepress", "documentation", "static-site", "antfu"]
+  "keywords": [
+    "vitepress",
+    "documentation",
+    "static-site",
+    "antfu"
+  ]
 }

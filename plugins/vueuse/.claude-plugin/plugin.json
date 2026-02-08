@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/vueuse-functions",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["vueuse", "vue", "composables", "antfu"]
+  "keywords": [
+    "vueuse",
+    "vue",
+    "composables",
+    "antfu"
+  ]
 }

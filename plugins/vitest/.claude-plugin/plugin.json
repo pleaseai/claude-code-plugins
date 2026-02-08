@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/vitest",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["vitest", "testing", "unit-test", "antfu"]
+  "keywords": [
+    "vitest",
+    "testing",
+    "unit-test",
+    "antfu"
+  ]
 }

@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/web-design-guidelines",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["web-design", "ui", "accessibility", "antfu"]
+  "keywords": [
+    "web-design",
+    "ui",
+    "accessibility",
+    "antfu"
+  ]
 }

@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/vite",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["vite", "build-tool", "bundler", "antfu"]
+  "keywords": [
+    "vite",
+    "build-tool",
+    "bundler",
+    "antfu"
+  ]
 }

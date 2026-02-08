@@ -9,5 +9,10 @@
   "homepage": "https://github.com/antfu/skills/tree/main/skills/antfu",
   "repository": "https://github.com/antfu/skills",
   "license": "MIT",
-  "keywords": ["antfu", "conventions", "eslint", "typescript"]
+  "keywords": [
+    "antfu",
+    "conventions",
+    "eslint",
+    "typescript"
+  ]
 }
