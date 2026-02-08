@@ -86,14 +86,6 @@
       }
     },
     {
-      "name": "chrome-devtools-cli",
-      "description": "Reliable automation, in-depth debugging, and performance analysis in Chrome using Chrome DevTools and Puppeteer",
-      "source": {
-        "source": "github",
-        "repo": "ChromeDevTools/chrome-devtools-mcp"
-      }
-    },
-    {
       "name": "context7",
       "description": "Up-to-date documentation and code examples for any library or framework using Context7 MCP server",
       "source": {
@@ -113,14 +105,6 @@
       "name": "plugin-dev",
       "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
       "source": "./plugins/plugin-dev"
-    },
-    {
-      "name": "mcp-gateway",
-      "description": "MCP gateway server for tool discovery with regex, BM25, embedding, and hybrid search",
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/mcp-gateway"
-      }
     },
     {
       "name": "antfu",
