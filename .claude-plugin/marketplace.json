@@ -175,6 +175,11 @@
       "name": "web-design",
       "description": "Review UI code for Web Interface Guidelines compliance",
       "source": "./plugins/web-design"
+    },
+    {
+      "name": "gatekeeper",
+      "description": "Auto-approve safe commands, AI-assisted review for the rest",
+      "source": "./plugins/gatekeeper"
     }
   ]
 }
