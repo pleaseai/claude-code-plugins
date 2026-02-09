@@ -19,6 +19,11 @@
       "release-type": "node",
       "package-name": "@pleaseai/vitest-config",
       "component": "vitest-config"
+    },
+    "plugins/gatekeeper": {
+      "release-type": "node",
+      "package-name": "gatekeeper",
+      "component": "gatekeeper"
     }
   },
   "release-type": "node",
