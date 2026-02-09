@@ -91,23 +91,23 @@ describe('passthrough', () => {
 // ─── DENY rules ──────────────────────────────────────────────────────────────
 
 describe('deny rules', () => {
-  test('should deny rm -rf /', () => {
+  test('should deny rm -rf / (exact root)', () => {
     expectDeny(bash('rm -rf /'), 'Filesystem root deletion blocked')
-    expectDeny(bash('rm -rf /var'))
-    expectDeny(bash('sudo rm -rf /'))
+    expectDeny(bash('rm  -rf  /'), 'Filesystem root deletion blocked')
   })
 
-  test('should deny rm -rf ~', () => {
+  test('should deny rm -rf ~ (home directory)', () => {
     expectDeny(bash('rm -rf ~'), 'Home directory deletion blocked')
-    expectDeny(bash('rm -rf ~/'))
+    expectDeny(bash('rm -rf ~/'), 'Home directory deletion blocked')
+    expectDeny(bash('rm -rf ~/Documents'), 'Home directory deletion blocked')
   })
 
-  test('should deny mkfs', () => {
+  test('should deny mkfs (anchored to start)', () => {
     expectDeny(bash('mkfs.ext4 /dev/sda'), 'Disk format command blocked')
     expectDeny(bash('mkfs.xfs /dev/sdb1'))
   })
 
-  test('should deny dd disk zeroing', () => {
+  test('should deny dd disk zeroing (anchored to start)', () => {
     expectDeny(bash('dd if=/dev/zero of=/dev/sda'), 'Disk zeroing blocked')
     expectDeny(bash('dd if=/dev/zero of=/dev/nvme0n1'))
   })
@@ -116,6 +116,22 @@ describe('deny rules', () => {
     expectPassthrough(bash('rm -rf ./build'))
     expectPassthrough(bash('rm -rf dist'))
     expectPassthrough(bash('rm file.txt'))
+  })
+
+  test('should not deny rm -rf on subdirectories like /var, /tmp', () => {
+    expectPassthrough(bash('rm -rf /var/log/old'))
+    expectPassthrough(bash('rm -rf /tmp/build'))
+    expectPassthrough(bash('rm -rf /home/user/project/dist'))
+  })
+
+  test('should not deny when deny pattern appears in echo or comments', () => {
+    expectAllow(bash('echo rm -rf /'))
+    expectAllow(bash('echo mkfs.ext4'))
+  })
+
+  test('should not deny ~user paths (other users home)', () => {
+    expectPassthrough(bash('rm -rf ~ubuntu/tmp'))
+    expectPassthrough(bash('rm -rf ~admin/cache'))
   })
 })
 
@@ -352,8 +368,11 @@ describe('isGitPushNonForce', () => {
 // ─── DENY takes priority over ALLOW ──────────────────────────────────────────
 
 describe('deny priority', () => {
-  test('deny should take priority over allow patterns', () => {
-    expectDeny(bash('rm -rf /home'))
+  test('deny should take priority when both could match', () => {
+    // "rm -rf /" is denied even though the command starts with rm
+    expectDeny(bash('rm -rf /'))
+    // "mkfs.ext4" is denied even if prefixed by sudo (which could look like a command)
+    expectDeny(bash('mkfs.ext4 /dev/sda'))
   })
 })
 

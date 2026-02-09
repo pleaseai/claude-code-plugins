@@ -11,11 +11,11 @@ export interface Rule {
 }
 
 export const DENY_RULES: Rule[] = [
-  { pattern: /rm\s+-rf\s+\//i, reason: 'Filesystem root deletion blocked' },
-  { pattern: /rm\s+-rf\s+~/i, reason: 'Home directory deletion blocked' },
-  { pattern: /mkfs\./i, reason: 'Disk format command blocked' },
+  { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: 'Filesystem root deletion blocked' },
+  { pattern: /^rm\s+-rf\s+~(?:\/|$)/i, reason: 'Home directory deletion blocked' },
+  { pattern: /^mkfs\./i, reason: 'Disk format command blocked' },
   {
-    pattern: /dd\s+if=\/dev\/zero\s+of=\/dev\//i,
+    pattern: /^dd\s+if=\/dev\/zero\s+of=\/dev\//i,
     reason: 'Disk zeroing blocked',
   },
 ]
