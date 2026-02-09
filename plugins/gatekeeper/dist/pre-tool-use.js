@@ -86,19 +86,31 @@ async function main() {
   if (!raw.trim()) {
     process.exit(0);
   }
-  let input;
+  let parsed;
   try {
-    input = JSON.parse(raw);
-  } catch {
-    process.exit(0);
+    parsed = JSON.parse(raw);
+  } catch (err) {
+    process.stderr.write(`gatekeeper: invalid JSON input: ${err instanceof Error ? err.message : String(err)}
+`);
+    process.exit(1);
   }
+  if (parsed === null || typeof parsed !== "object" || Array.isArray(parsed)) {
+    process.stderr.write(`gatekeeper: expected JSON object, got ${parsed === null ? "null" : typeof parsed}
+`);
+    process.exit(1);
+  }
+  const input = parsed;
   const decision = evaluate(input);
   if (decision) {
     process.stdout.write(JSON.stringify(decision));
   }
   process.exit(0);
 }
-main();
+main().catch((err) => {
+  process.stderr.write(`gatekeeper: unexpected error: ${err instanceof Error ? err.message : String(err)}
+`);
+  process.exit(1);
+});
 export {
   makeDecision,
   isGitPushNonForce,

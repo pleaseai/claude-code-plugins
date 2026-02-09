@@ -128,18 +128,26 @@ function readStdin(): Promise<string> {
 
 async function main(): Promise<void> {
   const raw = await readStdin()
+  // Empty stdin means no hook input; passthrough is correct per Claude Code hook protocol
   if (!raw.trim()) {
     process.exit(0)
   }
 
-  let input: PreToolUseHookInput
+  let parsed: unknown
   try {
-    input = JSON.parse(raw)
+    parsed = JSON.parse(raw)
   }
-  catch {
-    process.exit(0)
+  catch (err) {
+    process.stderr.write(`gatekeeper: invalid JSON input: ${err instanceof Error ? err.message : String(err)}\n`)
+    process.exit(1)
   }
 
+  if (parsed === null || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    process.stderr.write(`gatekeeper: expected JSON object, got ${parsed === null ? 'null' : typeof parsed}\n`)
+    process.exit(1)
+  }
+
+  const input = parsed as PreToolUseHookInput
   const decision = evaluate(input)
   if (decision) {
     process.stdout.write(JSON.stringify(decision))
@@ -148,4 +156,7 @@ async function main(): Promise<void> {
   process.exit(0)
 }
 
-main()
+main().catch((err) => {
+  process.stderr.write(`gatekeeper: unexpected error: ${err instanceof Error ? err.message : String(err)}\n`)
+  process.exit(1)
+})
