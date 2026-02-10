@@ -2,6 +2,7 @@
 import process from "node:process";
 var DENY_RULES = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: "Filesystem root deletion blocked" },
+  { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: "Destructive wildcard deletion from root blocked" },
   { pattern: /^rm\s+-rf\s+~(?:\/|$)/i, reason: "Home directory deletion blocked" },
   { pattern: /^mkfs\./i, reason: "Disk format command blocked" },
   {
@@ -11,7 +12,7 @@ var DENY_RULES = [
 ];
 var ALLOW_RULES = [
   {
-    pattern: /^(npm|yarn|pnpm|bun)\s+(test|run|install|ci|add|remove|exec|ls|info|outdated|audit|why|x)\b/i,
+    pattern: /^(npm|yarn|pnpm|bun)\s+(test|run|install|ci|add|remove|ls|info|outdated|audit|why)\b/i,
     reason: "Safe package manager command"
   },
   {
@@ -36,7 +37,7 @@ var ALLOW_RULES = [
   }
 ];
 function isGitPushNonForce(cmd) {
-  return /^git\s+push\b/i.test(cmd) && !/--force\b|-f\b/i.test(cmd);
+  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-[^\s]*f/i.test(cmd);
 }
 function makeDecision(decision, reason) {
   return {
@@ -53,6 +54,9 @@ function evaluate(input) {
   }
   const cmd = input.tool_input?.command ?? "";
   if (!cmd) {
+    return null;
+  }
+  if (/[;&|`\n]|\$\(/.test(cmd)) {
     return null;
   }
   for (const rule of DENY_RULES) {

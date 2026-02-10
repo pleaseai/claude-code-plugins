@@ -124,6 +124,10 @@ describe('deny rules', () => {
     expectPassthrough(bash('rm -rf /home/user/project/dist'))
   })
 
+  test('should deny rm -rf /* (root wildcard)', () => {
+    expectDeny(bash('rm -rf /*'), 'Destructive wildcard deletion from root blocked')
+  })
+
   test('should not deny when deny pattern appears in echo or comments', () => {
     expectAllow(bash('echo rm -rf /'))
     expectAllow(bash('echo mkfs.ext4'))
@@ -145,13 +149,11 @@ describe('allow: package managers', () => {
     'npm ci',
     'npm add lodash',
     'npm remove lodash',
-    'npm exec tsc',
     'npm ls',
     'npm info react',
     'npm outdated',
     'npm audit',
     'npm why react',
-    'npm x create-next-app',
     'yarn test',
     'yarn install',
     'yarn add react',
@@ -162,7 +164,6 @@ describe('allow: package managers', () => {
     'bun install',
     'bun run dev',
     'bun add zod',
-    'bun x create-next-app',
   ]
 
   for (const cmd of PM_COMMANDS) {
@@ -170,6 +171,11 @@ describe('allow: package managers', () => {
       expectAllow(bash(cmd), 'Safe package manager command')
     })
   }
+  test('should passthrough exec/x subcommands (can run arbitrary code)', () => {
+    expectPassthrough(bash('npm exec tsc'))
+    expectPassthrough(bash('npm x create-next-app'))
+    expectPassthrough(bash('bun x create-next-app'))
+  })
 })
 
 // ─── ALLOW: Git read operations ──────────────────────────────────────────────
@@ -251,6 +257,10 @@ describe('allow: git push (non-force)', () => {
 
   test('should passthrough git push -f', () => {
     expectPassthrough(bash('git push -f origin main'))
+  })
+
+  test('should passthrough git push with combined short flags containing f', () => {
+    expectPassthrough(bash('git push -vf origin feature'))
   })
 })
 
@@ -356,6 +366,7 @@ describe('isGitPushNonForce', () => {
     expect(isGitPushNonForce('git push --force')).toBe(false)
     expect(isGitPushNonForce('git push -f origin main')).toBe(false)
     expect(isGitPushNonForce('git push --force-with-lease')).toBe(false)
+    expect(isGitPushNonForce('git push -vf')).toBe(false)
   })
 
   test('should return false for non-push commands', () => {
@@ -379,12 +390,20 @@ describe('deny priority', () => {
 // ─── Edge cases ──────────────────────────────────────────────────────────────
 
 describe('edge cases', () => {
-  test('should allow chained commands if first command matches allow pattern', () => {
-    expectAllow(bash('npm test && npm run build'))
+  test('should passthrough chained commands to AI review', () => {
+    expectPassthrough(bash('npm test && npm run build'))
+    expectPassthrough(bash('npm test && rm -rf /'))
+    expectPassthrough(bash('ls; rm -rf ~'))
   })
 
-  test('should handle piped commands that start with allowed', () => {
-    expectAllow(bash('ls -la | grep test'))
+  test('should passthrough piped commands to AI review', () => {
+    expectPassthrough(bash('ls -la | grep test'))
+    expectPassthrough(bash('cat file | xargs rm -rf'))
+  })
+
+  test('should passthrough commands with subshell or backticks', () => {
+    expectPassthrough(bash('echo $(whoami)'))
+    expectPassthrough(bash('echo `whoami`'))
   })
 
   test('should handle commands with leading whitespace as passthrough', () => {

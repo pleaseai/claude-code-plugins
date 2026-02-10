@@ -12,6 +12,7 @@ export interface Rule {
 
 export const DENY_RULES: Rule[] = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: 'Filesystem root deletion blocked' },
+  { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: 'Destructive wildcard deletion from root blocked' },
   { pattern: /^rm\s+-rf\s+~(?:\/|$)/i, reason: 'Home directory deletion blocked' },
   { pattern: /^mkfs\./i, reason: 'Disk format command blocked' },
   {
@@ -24,7 +25,7 @@ export const ALLOW_RULES: Rule[] = [
   // Package managers
   {
     pattern:
-      /^(npm|yarn|pnpm|bun)\s+(test|run|install|ci|add|remove|exec|ls|info|outdated|audit|why|x)\b/i,
+      /^(npm|yarn|pnpm|bun)\s+(test|run|install|ci|add|remove|ls|info|outdated|audit|why)\b/i,
     reason: 'Safe package manager command',
   },
   // Git read operations
@@ -59,7 +60,7 @@ export const ALLOW_RULES: Rule[] = [
 ]
 
 export function isGitPushNonForce(cmd: string): boolean {
-  return /^git\s+push\b/i.test(cmd) && !/--force\b|-f\b/i.test(cmd)
+  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-[^\s]*f/i.test(cmd)
 }
 
 export function makeDecision(
@@ -88,6 +89,11 @@ export function evaluate(
   const cmd
     = (input.tool_input as { command?: string } | undefined)?.command ?? ''
   if (!cmd) {
+    return null
+  }
+
+  // 0. Reject command chaining/substitution — let AI review complex commands
+  if (/[;&|`\n]|\$\(/.test(cmd)) {
     return null
   }
 
