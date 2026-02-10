@@ -60,7 +60,7 @@ export const ALLOW_RULES: Rule[] = [
 ]
 
 export function isGitPushNonForce(cmd: string): boolean {
-  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-\S*f/i.test(cmd)
+  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-(?!-)\S*f/i.test(cmd)
 }
 
 export function makeDecision(
@@ -92,31 +92,31 @@ export function evaluate(
     return null
   }
 
-  // 0. Reject command chaining/substitution — let AI review complex commands
-  if (/[;&|`\n]|\$\(/.test(cmd)) {
-    return null
-  }
-
-  // 1. DENY check (destructive commands)
+  // 1. DENY check (destructive commands) — always check first
   for (const rule of DENY_RULES) {
     if (rule.pattern.test(cmd)) {
       return makeDecision('deny', rule.reason)
     }
   }
 
-  // 2. ALLOW check (safe commands)
+  // 2. Reject command chaining/substitution — let AI review complex commands
+  if (/[;&|`\n]|\$\(/.test(cmd)) {
+    return null
+  }
+
+  // 3. ALLOW check (safe commands)
   for (const rule of ALLOW_RULES) {
     if (rule.pattern.test(cmd)) {
       return makeDecision('allow', rule.reason)
     }
   }
 
-  // 3. Git push without --force
+  // 4. Git push without --force
   if (isGitPushNonForce(cmd)) {
     return makeDecision('allow', 'Safe git push (non-force)')
   }
 
-  // 4. Passthrough
+  // 5. Passthrough
   return null
 }
 

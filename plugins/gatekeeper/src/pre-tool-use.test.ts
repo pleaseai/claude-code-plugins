@@ -262,6 +262,14 @@ describe('allow: git push (non-force)', () => {
   test('should passthrough git push with combined short flags containing f', () => {
     expectPassthrough(bash('git push -vf origin feature'))
   })
+
+  test('should allow git push with --follow-tags (not force)', () => {
+    expectAllow(bash('git push --follow-tags'), 'Safe git push (non-force)')
+  })
+
+  test('should allow git push with --no-verify (not force)', () => {
+    expectAllow(bash('git push --no-verify'), 'Safe git push (non-force)')
+  })
 })
 
 // ─── ALLOW: Build tools and runtimes ─────────────────────────────────────────
@@ -360,6 +368,8 @@ describe('isGitPushNonForce', () => {
     expect(isGitPushNonForce('git push')).toBe(true)
     expect(isGitPushNonForce('git push origin main')).toBe(true)
     expect(isGitPushNonForce('git push -u origin feature')).toBe(true)
+    expect(isGitPushNonForce('git push --follow-tags')).toBe(true)
+    expect(isGitPushNonForce('git push --no-verify')).toBe(true)
   })
 
   test('should return false for force push', () => {
@@ -384,6 +394,13 @@ describe('deny priority', () => {
     expectDeny(bash('rm -rf /'))
     // "mkfs.ext4" is denied even if prefixed by sudo (which could look like a command)
     expectDeny(bash('mkfs.ext4 /dev/sda'))
+  })
+
+  test('deny should take priority over chaining passthrough', () => {
+    expectDeny(bash('rm -rf / ; echo done'))
+    expectDeny(bash('rm -rf / && ls'))
+    expectDeny(bash('rm -rf / | cat'))
+    expectDeny(bash('rm -rf ~/ ; true'))
   })
 })
 

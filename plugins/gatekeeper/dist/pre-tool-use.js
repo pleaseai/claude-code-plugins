@@ -37,7 +37,7 @@ var ALLOW_RULES = [
   }
 ];
 function isGitPushNonForce(cmd) {
-  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-[^\s]*f/i.test(cmd);
+  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-(?!-)\S*f/i.test(cmd);
 }
 function makeDecision(decision, reason) {
   return {
@@ -56,13 +56,13 @@ function evaluate(input) {
   if (!cmd) {
     return null;
   }
-  if (/[;&|`\n]|\$\(/.test(cmd)) {
-    return null;
-  }
   for (const rule of DENY_RULES) {
     if (rule.pattern.test(cmd)) {
       return makeDecision("deny", rule.reason);
     }
+  }
+  if (/[;&|`\n]|\$\(/.test(cmd)) {
+    return null;
   }
   for (const rule of ALLOW_RULES) {
     if (rule.pattern.test(cmd)) {
