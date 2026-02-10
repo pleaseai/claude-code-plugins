@@ -60,7 +60,7 @@ export const ALLOW_RULES: Rule[] = [
 ]
 
 export function isGitPushNonForce(cmd: string): boolean {
-  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-[^\s]*f/i.test(cmd)
+  return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-\S*f/i.test(cmd)
 }
 
 export function makeDecision(
