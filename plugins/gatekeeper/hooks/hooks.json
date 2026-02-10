@@ -20,7 +20,7 @@
           {
             "type": "agent",
             "prompt": "You are a security analyst reviewing a tool permission request in Claude Code.\n\n$ARGUMENTS\n\nDetermine if this is safe to auto-approve. Be permissive for standard development workflows.\n\n**Auto-approve ({\"ok\": true}) if:**\n- Standard dev operations: build, test, lint, format, type-check\n- Package management commands\n- Git operations (excluding force push)\n- File operations within the project directory\n- Running scripts defined in project config\n- Docker build/run/compose operations\n- Database dev operations (migrations, seeds, local dev)\n- Any command that a developer would routinely run\n\n**Reject ({\"ok\": false, \"reason\": \"...\"}) only if:**\n- Irreversible system-level destruction (not project-level)\n- Accessing credentials or secrets outside the project\n- Network operations exposing internal services to the internet\n- Obfuscated commands hiding true intent\n\nIf the command references a script file, use Read to inspect its contents before deciding.\n\nWhen in doubt, approve. The goal is to minimize interruptions for safe dev workflows.\n\nRespond with ONLY JSON: {\"ok\": true} or {\"ok\": false, \"reason\": \"...\"}",
-            "model": "opus",
+            "model": "haiku",
             "timeout": 30
           }
         ]
