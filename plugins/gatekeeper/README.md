@@ -18,7 +18,7 @@ Layer 1: PreToolUse (pattern matching, <5ms)
   └── PASSTHROUGH: unknown commands → permission dialog
                                           │
                                           ▼
-                                Layer 2: PermissionRequest (AI agent, haiku)
+                                Layer 2: PermissionRequest (AI agent, opus)
                                   ├── approve → execute
                                   └── reject → block with reason
 ```
@@ -40,6 +40,7 @@ Layer 1: PreToolUse (pattern matching, <5ms)
 | Pattern | Reason |
 |---------|--------|
 | `rm -rf /` | Filesystem root deletion |
+| `rm -rf /*` | Destructive wildcard deletion from root |
 | `rm -rf ~` | Home directory deletion |
 | `mkfs.*` | Disk format |
 | `dd if=/dev/zero of=/dev/` | Disk zeroing |
@@ -72,6 +73,10 @@ echo '{"tool_name":"Bash","tool_input":{"command":"rm -rf /"}}' | node dist/pre-
 # PASSTHROUGH test (no output)
 echo '{"tool_name":"Bash","tool_input":{"command":"curl https://example.com"}}' | node dist/pre-tool-use.js
 ```
+
+## References
+
+- [Claude Code Tips: PermissionRequest Hook Pattern](https://www.threads.com/@boris_cherny/post/DUMZy85EoFj)
 
 ## License
 
