@@ -3,5 +3,6 @@
   "apps/web": "1.2.0",
   "packages/eslint-config": "0.0.0",
   "packages/typescript-config": "0.0.0",
-  "packages/vitest-config": "0.0.0"
+  "packages/vitest-config": "0.0.0",
+  "plugins/gatekeeper": "1.0.0"
 }
