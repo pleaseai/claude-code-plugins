@@ -180,6 +180,11 @@
       "name": "gatekeeper",
       "description": "Auto-approve safe commands, AI-assisted review for the rest",
       "source": "./plugins/gatekeeper"
+    },
+    {
+      "name": "mcp-dev",
+      "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
+      "source": "./plugins/mcp-dev"
     }
   ]
 }
