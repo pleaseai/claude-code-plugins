@@ -27,6 +27,10 @@ claude-code-plugins/
 │   ├── mcp-neo4j/             # Neo4j MCP server
 │   ├── chrome-devtools-mcp/   # Chrome DevTools automation
 │   └── context7/              # Up-to-date library documentation
+├── plugins/                    # Built-in plugins (maintained in this repo)
+│   ├── gatekeeper/            # Auto-approve safe commands
+│   ├── plugin-dev/            # Plugin development tools
+│   └── ...                    # Framework-specific plugins (antfu, nuxt, vue, etc.)
 ├── apps/web/                  # Marketplace website
 ├── .claude-plugin/            # Marketplace configuration
 └── hooks/                     # Session hooks
@@ -169,7 +173,6 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
      "repository": "https://github.com/org/tool-repo",
      "license": "MIT",
      "keywords": ["keyword1", "keyword2"],
-     "hooks": "./hooks/hooks.json",
      "mcpServers": {
        "server-name": {
          "command": "npx",
@@ -321,6 +324,10 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
 - `.claude-plugin/plugin.json` must be at this exact path
 - `hooks/`, `commands/`, `agents/` directories at plugin root
 - Use `${CLAUDE_PLUGIN_ROOT}` for all path references
+
+**Hooks Auto-Loading:**
+- `hooks/hooks.json` is auto-loaded by Claude Code — do NOT reference it in `plugin.json`'s `hooks` field
+- `plugin.json`'s `hooks` field should only reference ADDITIONAL hook files beyond the standard path
 
 **Documentation:**
 - Include Claude Code installation in plugin README
