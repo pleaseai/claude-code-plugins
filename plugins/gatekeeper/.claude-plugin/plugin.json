@@ -8,6 +8,5 @@
   },
   "repository": "https://github.com/pleaseai/claude-code-plugins",
   "license": "MIT",
-  "keywords": ["security", "permissions", "gatekeeper", "hook"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["security", "permissions", "gatekeeper", "hook"]
 }
