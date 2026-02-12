@@ -185,6 +185,11 @@
       "name": "mcp-dev",
       "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
       "source": "./plugins/mcp-dev"
+    },
+    {
+      "name": "cubic",
+      "description": "AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues",
+      "source": "./plugins/cubic"
     }
   ]
 }
