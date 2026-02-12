@@ -35,7 +35,7 @@ Always pass `--json` for structured output. Key modes:
 - `cubic review --commit HEAD~1 --json` -- review a specific commit
 - `cubic review --prompt "focus area" --json` -- custom review focus
 
-**Constraint**: `--base`, `--commit`, and `--prompt` are mutually exclusive.
+> **Constraint**: `--base`, `--commit`, and `--prompt` are mutually exclusive.
 
 ## JSON Output Format
 
@@ -61,7 +61,8 @@ Priority levels: **P0** (critical) > **P1** (high) > **P2** (medium) > **P3** (l
 2. Parse the JSON output to identify issues
 3. Sort issues by priority (P0 first)
 4. For each issue, read the referenced file and line
-5. Apply fixes using Edit tool, addressing highest priority issues first
-6. Re-run `cubic review --json` to verify fixes
+5. Present proposed fixes to the user for approval before applying
+6. Apply approved fixes using Edit tool
+7. Re-run `cubic review --json` to verify fixes
 
 For the full command reference and step-by-step workflow, use `/cubic:review`.

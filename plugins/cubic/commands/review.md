@@ -1,5 +1,5 @@
 ---
-description: Run Cubic AI code review on current changes. Detects bugs, security vulnerabilities, and style issues. Usage - /cubic:review [--base main] [--commit HEAD~1] [--prompt "focus area"]
+description: Run Cubic AI code review on current changes. Detects bugs, security vulnerabilities, and style issues. Usage - /cubic:review [--base <branch>] [--commit <ref>] [--prompt "<instructions>"]
 allowed-tools: Bash, Read, Edit
 ---
 
@@ -16,15 +16,19 @@ Analyze `$ARGUMENTS` to determine the review mode:
 | User Intent | Command |
 |-------------|---------|
 | Review uncommitted changes (default) | `cubic review --json` |
-| Review branch diff against base | `cubic review --base --json` or `cubic review --base main --json` |
+| Review branch diff against base | `cubic review --base <branch> --json` |
 | Review specific commit | `cubic review --commit <ref> --json` |
 | Review with custom focus | `cubic review --prompt "<instructions>" --json` |
 
 If `$ARGUMENTS` is empty, default to reviewing uncommitted changes.
 
+### Step 1.5: Sanitize arguments
+
+Before constructing any Bash command, validate that user-provided values (branch names, commit refs, prompt text) do not contain shell metacharacters (`;`, `&&`, `||`, `|`, `` ` ``, `$()`). Always use single quotes around user-provided values when interpolating into shell commands. Reject any input containing command separators or substitution patterns.
+
 ### Step 2: Run Cubic review
 
-Execute the appropriate command via Bash. Always include `--json` for structured output.
+Execute the appropriate command via Bash. Always include `--json` for structured output. Ensure all user-provided arguments are properly shell-quoted.
 
 ```bash
 cubic review --json
@@ -65,14 +69,16 @@ Found N issues (X critical, Y high, Z medium, W low)
 ...
 ```
 
-### Step 5: Offer to fix issues
+### Step 5: Propose fixes and get user approval
 
 For each P0 and P1 issue:
 1. Read the referenced file at the specified line
-2. Propose a fix
-3. Apply the fix using Edit if the user agrees
+2. Propose a fix and explain the change
+3. Wait for user approval before applying with Edit
 
-For P2/P3 issues, list them as suggestions without automatically fixing.
+Do not apply fixes automatically. Always present proposed changes to the user first.
+
+For P2/P3 issues, list them as suggestions without fixing.
 
 ### Step 6: Verify fixes
 
