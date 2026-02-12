@@ -24,7 +24,7 @@ If `$ARGUMENTS` is empty, default to reviewing uncommitted changes.
 
 ### Step 1.5: Sanitize arguments
 
-Before constructing any Bash command, validate that user-provided values (branch names, commit refs, prompt text) do not contain shell metacharacters (`;`, `&&`, `||`, `|`, `` ` ``, `$()`). Always use single quotes around user-provided values when interpolating into shell commands. Reject any input containing command separators or substitution patterns.
+Before constructing any Bash command, validate that user-provided values (branch names, commit refs, prompt text) do not contain shell metacharacters (`;`, `&&`, `||`, `|`, `` ` ``, `$()`, `'`, newlines). Always use single quotes around user-provided values when interpolating into shell commands. Reject any input containing command separators, substitution patterns, or single quotes (which break single-quote escaping).
 
 ### Step 2: Run Cubic review
 
