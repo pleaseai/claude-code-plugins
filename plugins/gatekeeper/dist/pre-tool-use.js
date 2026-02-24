@@ -1,5 +1,101 @@
 // src/pre-tool-use.ts
 import process from "node:process";
+
+// src/chain-parser.ts
+function parseChainedCommand(cmd) {
+  if (/\$\(|`|\n|<\(|>\(/.test(cmd)) {
+    return { kind: "unparseable" };
+  }
+  if (!/[;&|<>]/.test(cmd)) {
+    return { kind: "single" };
+  }
+  let state = "normal";
+  let escaped = false;
+  const parts = [];
+  let current = "";
+  let hasChainOp = false;
+  for (let i = 0;i < cmd.length; i++) {
+    const ch = cmd[i];
+    if (escaped) {
+      current += ch;
+      escaped = false;
+      continue;
+    }
+    if (state === "normal") {
+      if (ch === "\\") {
+        escaped = true;
+        current += ch;
+        continue;
+      }
+      if (ch === "'") {
+        state = "single";
+        current += ch;
+        continue;
+      }
+      if (ch === '"') {
+        state = "double";
+        current += ch;
+        continue;
+      }
+      if (ch === "<" || ch === ">") {
+        return { kind: "unparseable" };
+      }
+      const next = cmd[i + 1];
+      if (ch === "&" && next === "&") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        i++;
+        continue;
+      }
+      if (ch === "|" && next === "|") {
+        return { kind: "unparseable" };
+      }
+      if (ch === ";") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        continue;
+      }
+      if (ch === "|") {
+        return { kind: "unparseable" };
+      }
+      if (ch === "&") {
+        return { kind: "unparseable" };
+      }
+      current += ch;
+    } else if (state === "single") {
+      if (ch === "'") {
+        state = "normal";
+      }
+      current += ch;
+    } else if (state === "double") {
+      if (ch === "\\") {
+        escaped = true;
+        current += ch;
+        continue;
+      }
+      if (ch === '"') {
+        state = "normal";
+      }
+      current += ch;
+    }
+  }
+  if (state !== "normal") {
+    return { kind: "unparseable" };
+  }
+  parts.push(current);
+  if (!hasChainOp) {
+    return { kind: "single" };
+  }
+  const trimmed = parts.map((p) => p.trim());
+  if (trimmed.some((p) => p === "")) {
+    return { kind: "unparseable" };
+  }
+  return { kind: "chain", parts: trimmed };
+}
+
+// src/pre-tool-use.ts
 var DENY_RULES = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: "Filesystem root deletion blocked" },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: "Destructive wildcard deletion from root blocked" },
@@ -8,6 +104,14 @@ var DENY_RULES = [
   {
     pattern: /^dd\s+if=\/dev\/zero\s+of=\/dev\//i,
     reason: "Disk zeroing blocked"
+  },
+  {
+    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-c|--eval)\b/i,
+    reason: "Inline interpreter code execution blocked"
+  },
+  {
+    pattern: /^find\b.*\s-exec\b/i,
+    reason: "find -exec blocked: potential arbitrary command execution"
   }
 ];
 var ALLOW_RULES = [
@@ -48,31 +152,89 @@ function makeDecision(decision, reason) {
     }
   };
 }
+function splitChainedCommands(cmd) {
+  const result = parseChainedCommand(cmd);
+  return result.kind === "chain" ? result.parts : null;
+}
+function evaluateSingleCommand(cmd) {
+  if (!cmd.trim()) {
+    return null;
+  }
+  for (const rule of DENY_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: "deny", reason: rule.reason };
+    }
+  }
+  for (const rule of ALLOW_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: "allow", reason: rule.reason };
+    }
+  }
+  if (isGitPushNonForce(cmd)) {
+    return { decision: "allow", reason: "Safe git push (non-force)" };
+  }
+  return null;
+}
 function evaluate(input) {
   if (input.tool_name !== "Bash") {
     return null;
   }
-  const cmd = input.tool_input?.command ?? "";
+  const cmd = (input.tool_input?.command ?? "").trim();
   if (!cmd) {
     return null;
   }
   for (const rule of DENY_RULES) {
     if (rule.pattern.test(cmd)) {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — ${rule.reason}
+`);
       return makeDecision("deny", rule.reason);
     }
   }
-  if (/[;&|`\n]|\$\(/.test(cmd)) {
+  const parsed = parseChainedCommand(cmd);
+  if (parsed.kind === "unparseable") {
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unparseable structure
+`);
     return null;
   }
-  for (const rule of ALLOW_RULES) {
-    if (rule.pattern.test(cmd)) {
-      return makeDecision("allow", rule.reason);
+  if (parsed.kind === "single") {
+    const result = evaluateSingleCommand(cmd);
+    if (result) {
+      process.stderr.write(`gatekeeper: ${result.decision} "${cmd}" — ${result.reason}
+`);
+      return makeDecision(result.decision, result.reason);
+    }
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — no matching rule
+`);
+    return null;
+  }
+  const reasons = [];
+  let firstAllowedResult = null;
+  for (const part of parsed.parts) {
+    const result = evaluateSingleCommand(part);
+    if (result?.decision === "deny") {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — part "${part}": ${result.reason}
+`);
+      return makeDecision("deny", result.reason);
+    }
+    if (result === null) {
+      process.stderr.write(`gatekeeper: passthrough "${cmd}" — unknown part "${part}"
+`);
+      return null;
+    }
+    reasons.push(`[${part}]: ${result.reason}`);
+    if (firstAllowedResult === null) {
+      firstAllowedResult = result;
     }
   }
-  if (isGitPushNonForce(cmd)) {
-    return makeDecision("allow", "Safe git push (non-force)");
+  if (firstAllowedResult === null) {
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unexpected empty chain result
+`);
+    return null;
   }
-  return null;
+  const compositeReason = `Chain allowed — ${reasons.join("; ")}`;
+  process.stderr.write(`gatekeeper: allow "${cmd}" — ${compositeReason}
+`);
+  return makeDecision("allow", compositeReason);
 }
 function readStdin() {
   return new Promise((resolve, reject) => {
@@ -116,8 +278,10 @@ main().catch((err) => {
   process.exit(1);
 });
 export {
+  splitChainedCommands,
   makeDecision,
   isGitPushNonForce,
+  evaluateSingleCommand,
   evaluate,
   DENY_RULES,
   ALLOW_RULES

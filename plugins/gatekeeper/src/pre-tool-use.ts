@@ -4,12 +4,15 @@ import type {
   SyncHookJSONOutput,
 } from '@anthropic-ai/claude-agent-sdk'
 import process from 'node:process'
+import { parseChainedCommand } from './chain-parser'
 
 export interface Rule {
   pattern: RegExp
   reason: string
 }
 
+// NOTE: All patterns must NOT use the `g` flag. RegExp.test() with `g` mutates
+// lastIndex and produces incorrect results on subsequent calls within the same process.
 export const DENY_RULES: Rule[] = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: 'Filesystem root deletion blocked' },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: 'Destructive wildcard deletion from root blocked' },
@@ -18,6 +21,21 @@ export const DENY_RULES: Rule[] = [
   {
     pattern: /^dd\s+if=\/dev\/zero\s+of=\/dev\//i,
     reason: 'Disk zeroing blocked',
+  },
+  // Block inline code execution in interpreter commands
+  // node/tsx: -p means --print (evaluates code); npx: -p means --package (safe)
+  {
+    pattern: /^(node|tsx)\s+(-e|-p|-c|--eval|--print)\b/i,
+    reason: 'Inline interpreter code execution blocked',
+  },
+  {
+    pattern: /^(npx|python3?|ruby|perl)\s+(-e|-c|--eval|--print)\b/i,
+    reason: 'Inline interpreter code execution blocked',
+  },
+  // Block find -exec which enables arbitrary command execution
+  {
+    pattern: /^find\b.*\s(-exec|-execdir|-delete)\b/i,
+    reason: 'find -exec/-execdir/-delete blocked: potential arbitrary command execution or recursive deletion',
   },
 ]
 
@@ -77,7 +95,57 @@ export function makeDecision(
 }
 
 /**
- * Evaluate a tool input and return a decision or null (passthrough).
+ * Compatibility wrapper around parseChainedCommand.
+ *
+ * Returns the split parts when the command is a valid chain (;/&& only),
+ * or null for single commands, unparseable input, pipe, ||, redirects, etc.
+ *
+ * NOTE: Callers must pre-trim the command. Patterns use ^ anchors and leading
+ * whitespace bypasses them.
+ */
+export function splitChainedCommands(cmd: string): string[] | null {
+  const result = parseChainedCommand(cmd)
+  return result.kind === 'chain' ? result.parts : null
+}
+
+/**
+ * Evaluate a single (unchained) command against DENY/ALLOW rules.
+ *
+ * Returns null when:
+ * - The trimmed command is empty
+ * - No rule matches and it is not a safe git push
+ *
+ * Note: does NOT trim the command for pattern matching — patterns use ^ anchors.
+ * Callers (such as evaluate()) are responsible for trimming before calling.
+ */
+export function evaluateSingleCommand(
+  cmd: string,
+): { decision: 'allow' | 'deny', reason: string } | null {
+  if (!cmd.trim()) {
+    return null
+  }
+
+  for (const rule of DENY_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: 'deny', reason: rule.reason }
+    }
+  }
+
+  for (const rule of ALLOW_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: 'allow', reason: rule.reason }
+    }
+  }
+
+  if (isGitPushNonForce(cmd)) {
+    return { decision: 'allow', reason: 'Safe git push (non-force)' }
+  }
+
+  return null
+}
+
+/**
+ * Evaluate a tool input and return a decision or null (passthrough to AI).
  */
 export function evaluate(
   input: PreToolUseHookInput,
@@ -86,38 +154,71 @@ export function evaluate(
     return null
   }
 
-  const cmd
-    = (input.tool_input as { command?: string } | undefined)?.command ?? ''
+  // Trim at entry point: prevents leading-whitespace bypass of ^ anchored DENY patterns
+  const cmd = ((input.tool_input as { command?: string } | undefined)?.command ?? '').trim()
   if (!cmd) {
     return null
   }
 
-  // 1. DENY check (destructive commands) — always check first
+  // 1. DENY check on full command (fast path: catches dangerous commands immediately)
   for (const rule of DENY_RULES) {
     if (rule.pattern.test(cmd)) {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — ${rule.reason}\n`)
       return makeDecision('deny', rule.reason)
     }
   }
 
-  // 2. Reject command chaining/substitution — let AI review complex commands
-  if (/[;&|`\n]|\$\(/.test(cmd)) {
+  // 2. Parse the command structure
+  const parsed = parseChainedCommand(cmd)
+
+  if (parsed.kind === 'unparseable') {
+    // Has pipes, redirects, ||, process substitution, or other complex constructs → AI review
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unparseable structure\n`)
     return null
   }
 
-  // 3. ALLOW check (safe commands)
-  for (const rule of ALLOW_RULES) {
-    if (rule.pattern.test(cmd)) {
-      return makeDecision('allow', rule.reason)
+  if (parsed.kind === 'single') {
+    // Single command: evaluate directly
+    const result = evaluateSingleCommand(cmd)
+    if (result) {
+      process.stderr.write(`gatekeeper: ${result.decision} "${cmd}" — ${result.reason}\n`)
+      return makeDecision(result.decision, result.reason)
+    }
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — no matching rule\n`)
+    return null
+  }
+
+  // 3. Chain evaluation (;/&& only): every part must be explicitly safe to auto-approve
+  const reasons: string[] = []
+  let firstAllowedResult: { decision: 'allow' | 'deny', reason: string } | null = null
+
+  for (const part of parsed.parts) {
+    const result = evaluateSingleCommand(part)
+    if (result?.decision === 'deny') {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — part "${part}": ${result.reason}\n`)
+      return makeDecision('deny', result.reason)
+    }
+    if (result === null) {
+      // Unknown command in chain → conservative: let AI review the full chain
+      process.stderr.write(`gatekeeper: passthrough "${cmd}" — unknown part "${part}"\n`)
+      return null
+    }
+    reasons.push(`[${part}]: ${result.reason}`)
+    if (firstAllowedResult === null) {
+      firstAllowedResult = result
     }
   }
 
-  // 4. Git push without --force
-  if (isGitPushNonForce(cmd)) {
-    return makeDecision('allow', 'Safe git push (non-force)')
+  // Defensive guard: should be unreachable since parsed.parts is non-empty
+  // and every part returned a non-null allow result above.
+  if (firstAllowedResult === null) {
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unexpected empty chain result\n`)
+    return null
   }
 
-  // 5. Passthrough
-  return null
+  const compositeReason = `Chain allowed — ${reasons.join('; ')}`
+  process.stderr.write(`gatekeeper: allow "${cmd}" — ${compositeReason}\n`)
+  return makeDecision('allow', compositeReason)
 }
 
 function readStdin(): Promise<string> {
