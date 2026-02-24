@@ -1,6 +1,6 @@
 {
   "name": "gatekeeper",
-  "version": "1.0.1",
+  "version": "1.2.0",
   "description": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
   "author": {
     "name": "Minsu Lee",
