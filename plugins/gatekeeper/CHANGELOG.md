@@ -1,10 +1,18 @@
 # Changelog
 
-## [1.2.0] (2026-02-24)
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.1.1...gatekeeper-v1.2.0) (2026-02-24)
+
 
 ### Features
 
-* **gatekeeper:** change PermissionRequest agent model from opus to sonnet for faster response
+* **gatekeeper:** add chain command parsing in Layer 1 to detect chained command abuse ([4fa5b37](https://github.com/pleaseai/claude-code-plugins/commit/4fa5b37))
+* **gatekeeper:** change PermissionRequest agent model from opus to sonnet for faster response ([f38e10f](https://github.com/pleaseai/claude-code-plugins/commit/f38e10f))
+
+
+### Bug Fixes
+
+* **gatekeeper:** address security gaps in DENY rules and chain parser ([3ef548b](https://github.com/pleaseai/claude-code-plugins/commit/3ef548b))
+* **gatekeeper:** address security vulnerabilities in chain command parsing ([f6515cc](https://github.com/pleaseai/claude-code-plugins/commit/f6515cc))
 
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.1.0...gatekeeper-v1.1.1) (2026-02-11)
 

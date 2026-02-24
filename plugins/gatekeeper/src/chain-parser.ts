@@ -6,14 +6,16 @@
  * caused the two functions to diverge and produce inconsistent security decisions.
  */
 
-export type ParseResult =
-  /** Reject and send to AI review. Covers: subshell, backtick, newline,
-   *  process substitution, redirect, pipe, ||, lone &, unclosed quote, malformed chain. */
-  | { kind: 'unparseable' }
+export type ParseResult
+  /**
+   * Reject and send to AI review. Covers: subshell, backtick, newline,
+   *  process substitution, redirect, pipe, ||, lone &, unclosed quote, malformed chain.
+   */
+  = | { kind: 'unparseable' }
   /** No unquoted chain operators: evaluate as a single command. */
-  | { kind: 'single' }
+    | { kind: 'single' }
   /** Successfully split on ; or && only: evaluate each part independently. */
-  | { kind: 'chain'; parts: string[] }
+    | { kind: 'chain', parts: string[] }
 
 /**
  * Parse a shell command string and classify it as unparseable, single, or a
@@ -150,7 +152,7 @@ export function parseChainedCommand(cmd: string): ParseResult {
 
   // Trim parts and reject if any are empty → malformed chain
   const trimmed = parts.map(p => p.trim())
-  if (trimmed.some(p => p === '')) {
+  if (trimmed.includes('')) {
     return { kind: 'unparseable' }
   }
 

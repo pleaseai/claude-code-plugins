@@ -23,8 +23,13 @@ export const DENY_RULES: Rule[] = [
     reason: 'Disk zeroing blocked',
   },
   // Block inline code execution in interpreter commands
+  // node/tsx: -p means --print (evaluates code); npx: -p means --package (safe)
   {
-    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-p|-c|--eval|--print)\b/i,
+    pattern: /^(node|tsx)\s+(-e|-p|-c|--eval|--print)\b/i,
+    reason: 'Inline interpreter code execution blocked',
+  },
+  {
+    pattern: /^(npx|python3?|ruby|perl)\s+(-e|-c|--eval|--print)\b/i,
     reason: 'Inline interpreter code execution blocked',
   },
   // Block find -exec which enables arbitrary command execution

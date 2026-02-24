@@ -89,9 +89,9 @@ describe('splitChainedCommands', () => {
   })
 
   test('should return null for operators inside single quotes', () => {
-    expect(splitChainedCommands("grep 'a|b' file.txt")).toBeNull()
-    expect(splitChainedCommands("git commit -m 'a && b'")).toBeNull()
-    expect(splitChainedCommands("echo 'a; b; c'")).toBeNull()
+    expect(splitChainedCommands('grep \'a|b\' file.txt')).toBeNull()
+    expect(splitChainedCommands('git commit -m \'a && b\'')).toBeNull()
+    expect(splitChainedCommands('echo \'a; b; c\'')).toBeNull()
   })
 
   test('should return null for operators inside double quotes', () => {
@@ -107,8 +107,8 @@ describe('splitChainedCommands', () => {
   })
 
   test('should return null for unclosed single quote', () => {
-    expect(splitChainedCommands("echo 'test && rm -rf /")).toBeNull()
-    expect(splitChainedCommands("git commit -m 'feat")).toBeNull()
+    expect(splitChainedCommands('echo \'test && rm -rf /')).toBeNull()
+    expect(splitChainedCommands('git commit -m \'feat')).toBeNull()
   })
 
   test('should return null for unclosed double quote', () => {
@@ -352,6 +352,12 @@ describe('deny rules', () => {
   test('should deny node -p (print evaluates arbitrary JS)', () => {
     expectDeny(bash('node -p "require(\'child_process\').execSync(\'rm -rf /\')"'), 'Inline interpreter code execution blocked')
     expectDeny(bash('node --print "process.env"'), 'Inline interpreter code execution blocked')
+  })
+
+  test('should not deny npx -p/--package (package selection flag, not code eval)', () => {
+    // npx -p means --package (install package), not --print (evaluate code)
+    expectAllow(bash('npx -p create-react-app create-react-app my-app'))
+    expectAllow(bash('npx --package typescript tsc --init'))
   })
 
   test('should not deny safe rm commands', () => {
@@ -718,7 +724,7 @@ describe('chain parsing: safe chains are allowed in Layer 1', () => {
 
   test('should allow single command with operators inside single quotes', () => {
     // Pipe inside single quotes: not a chain operator
-    expectAllow(bash("grep 'a|b' file.txt"))
+    expectAllow(bash('grep \'a|b\' file.txt'))
   })
 
   test('should allow single command with operators inside double quotes', () => {
