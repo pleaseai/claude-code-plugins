@@ -1,7 +1,7 @@
 {
   "name": "gatekeeper",
   "type": "module",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "build": "bun build src/pre-tool-use.ts --outdir dist --target node",

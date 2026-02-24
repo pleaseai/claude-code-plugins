@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0] (2026-02-24)
+
+
+### Features
+
+* **gatekeeper:** change PermissionRequest agent model from opus to sonnet for faster response
+
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.1.0...gatekeeper-v1.1.1) (2026-02-11)
 
 
