@@ -4,7 +4,7 @@ import type {
   SyncHookJSONOutput,
 } from '@anthropic-ai/claude-agent-sdk'
 import { describe, expect, test } from 'bun:test'
-import { evaluate, isGitPushNonForce } from './pre-tool-use'
+import { evaluate, evaluateSingleCommand, isGitPushNonForce, splitChainedCommands } from './pre-tool-use'
 
 const STUB_BASE = {
   session_id: 'test-session',
@@ -48,6 +48,158 @@ function expectDeny(input: PreToolUseHookInput, expectedReason?: string) {
 function expectPassthrough(input: PreToolUseHookInput) {
   expect(evaluate(input)).toBeNull()
 }
+
+// ─── splitChainedCommands ─────────────────────────────────────────────────────
+
+describe('splitChainedCommands', () => {
+  test('should return null for subshell $() substitution', () => {
+    expect(splitChainedCommands('echo $(whoami)')).toBeNull()
+    expect(splitChainedCommands('ls $(pwd)')).toBeNull()
+  })
+
+  test('should return null for backtick substitution', () => {
+    expect(splitChainedCommands('echo `whoami`')).toBeNull()
+    expect(splitChainedCommands('ls `pwd`')).toBeNull()
+  })
+
+  test('should return null for newline in command', () => {
+    expect(splitChainedCommands('ls\npwd')).toBeNull()
+  })
+
+  test('should return null when no chain operators present', () => {
+    expect(splitChainedCommands('npm test')).toBeNull()
+    expect(splitChainedCommands('git status')).toBeNull()
+    expect(splitChainedCommands('ls -la')).toBeNull()
+  })
+
+  test('should return null for operators inside single quotes', () => {
+    expect(splitChainedCommands("grep 'a|b' file.txt")).toBeNull()
+    expect(splitChainedCommands("git commit -m 'a && b'")).toBeNull()
+    expect(splitChainedCommands("echo 'a; b; c'")).toBeNull()
+  })
+
+  test('should return null for operators inside double quotes', () => {
+    expect(splitChainedCommands('git commit -m "a && b"')).toBeNull()
+    expect(splitChainedCommands('echo "a | b"')).toBeNull()
+    expect(splitChainedCommands('grep "a;b" file.txt')).toBeNull()
+  })
+
+  test('should return null for unclosed single quote', () => {
+    expect(splitChainedCommands("echo 'test && rm -rf /")).toBeNull()
+    expect(splitChainedCommands("git commit -m 'feat")).toBeNull()
+  })
+
+  test('should return null for unclosed double quote', () => {
+    expect(splitChainedCommands('echo "test && rm -rf /')).toBeNull()
+  })
+
+  test('should return null for empty parts (malformed chains)', () => {
+    expect(splitChainedCommands('ls ;; pwd')).toBeNull()
+    expect(splitChainedCommands('ls &&')).toBeNull()
+    expect(splitChainedCommands('&& ls')).toBeNull()
+    expect(splitChainedCommands('ls || || pwd')).toBeNull()
+  })
+
+  test('should split on && operator', () => {
+    expect(splitChainedCommands('npm test && npm run build')).toEqual([
+      'npm test',
+      'npm run build',
+    ])
+  })
+
+  test('should split on || operator', () => {
+    expect(splitChainedCommands('git status || git init')).toEqual([
+      'git status',
+      'git init',
+    ])
+  })
+
+  test('should split on ; operator', () => {
+    expect(splitChainedCommands('ls; pwd')).toEqual(['ls', 'pwd'])
+    expect(splitChainedCommands('ls ; pwd')).toEqual(['ls', 'pwd'])
+  })
+
+  test('should split on | (pipe) operator', () => {
+    expect(splitChainedCommands('ls -la | grep test')).toEqual([
+      'ls -la',
+      'grep test',
+    ])
+  })
+
+  test('should split 3+ chained commands', () => {
+    expect(
+      splitChainedCommands('npm test && npm run build && npm run lint'),
+    ).toEqual(['npm test', 'npm run build', 'npm run lint'])
+  })
+
+  test('should trim whitespace from each part', () => {
+    expect(splitChainedCommands('  ls  &&  pwd  ')).toEqual(['ls', 'pwd'])
+  })
+
+  test('should not split on lone & (background execution)', () => {
+    expect(splitChainedCommands('ls &')).toBeNull()
+    expect(splitChainedCommands('sleep 5 & echo done')).toBeNull()
+  })
+})
+
+// ─── evaluateSingleCommand ────────────────────────────────────────────────────
+
+describe('evaluateSingleCommand', () => {
+  test('should return null for empty string', () => {
+    expect(evaluateSingleCommand('')).toBeNull()
+  })
+
+  test('should return null for whitespace-only string', () => {
+    expect(evaluateSingleCommand('   ')).toBeNull()
+    expect(evaluateSingleCommand('\t')).toBeNull()
+  })
+
+  test('should return deny for DENY rule matches', () => {
+    const result = evaluateSingleCommand('rm -rf /')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('deny')
+    expect(result!.reason).toBe('Filesystem root deletion blocked')
+  })
+
+  test('should return deny for rm -rf ~ (home directory)', () => {
+    const result = evaluateSingleCommand('rm -rf ~')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('deny')
+    expect(result!.reason).toBe('Home directory deletion blocked')
+  })
+
+  test('should return allow for ALLOW rule matches', () => {
+    const result = evaluateSingleCommand('npm test')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('allow')
+    expect(result!.reason).toBe('Safe package manager command')
+  })
+
+  test('should return allow for git operations', () => {
+    const result = evaluateSingleCommand('git status')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('allow')
+    expect(result!.reason).toBe('Safe git read operation')
+  })
+
+  test('should return allow for safe git push', () => {
+    const result = evaluateSingleCommand('git push')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('allow')
+    expect(result!.reason).toBe('Safe git push (non-force)')
+  })
+
+  test('should return null for unknown commands', () => {
+    expect(evaluateSingleCommand('curl https://example.com')).toBeNull()
+    expect(evaluateSingleCommand('xargs rm -rf')).toBeNull()
+    expect(evaluateSingleCommand('ssh user@host')).toBeNull()
+  })
+
+  test('should not trim input for pattern matching (preserves leading whitespace behavior)', () => {
+    // Leading whitespace means patterns with ^ don't match → null
+    expect(evaluateSingleCommand('  npm test')).toBeNull()
+  })
+})
 
 // ─── Passthrough (non-Bash, empty) ───────────────────────────────────────────
 
@@ -404,20 +556,63 @@ describe('deny priority', () => {
   })
 })
 
+// ─── Chain parsing: integration tests ────────────────────────────────────────
+
+describe('chain parsing: safe chains are allowed in Layer 1', () => {
+  test('should allow chain where all parts are safe', () => {
+    expectAllow(bash('npm test && npm run build'))
+    expectAllow(bash('ls -la | grep test'))
+  })
+
+  test('should allow 3+ chained safe commands', () => {
+    expectAllow(bash('npm test && npm run build && npm run lint'))
+  })
+
+  test('should deny chain where any part is denied', () => {
+    expectDeny(bash('npm test && rm -rf /'))
+    expectDeny(bash('ls; rm -rf ~'))
+    expectDeny(bash('ls && rm -rf /'))
+  })
+
+  test('should passthrough chain where any part is unknown', () => {
+    expectPassthrough(bash('cat file | xargs rm -rf'))
+    expectPassthrough(bash('npm test && curl example.com'))
+  })
+
+  test('should allow single command with operators inside single quotes', () => {
+    // Pipe inside single quotes: not a chain operator
+    expectAllow(bash("grep 'a|b' file.txt"))
+  })
+
+  test('should allow single command with operators inside double quotes', () => {
+    // Chain operators inside double quotes: not chain operators
+    expectAllow(bash('git commit -m "a && b"'))
+  })
+
+  test('should passthrough unparseable: subshell $() substitution', () => {
+    expectPassthrough(bash('echo $(whoami)'))
+  })
+
+  test('should passthrough unparseable: backtick substitution', () => {
+    expectPassthrough(bash('echo `whoami`'))
+  })
+
+  test('should passthrough malformed chain: empty parts', () => {
+    expectPassthrough(bash('ls ;; pwd'))
+  })
+
+  test('should passthrough malformed chain: trailing operator', () => {
+    expectPassthrough(bash('ls &&'))
+  })
+
+  test('should passthrough background execution (lone &)', () => {
+    expectPassthrough(bash('sleep 5 & echo done'))
+  })
+})
+
 // ─── Edge cases ──────────────────────────────────────────────────────────────
 
 describe('edge cases', () => {
-  test('should passthrough chained commands to AI review', () => {
-    expectPassthrough(bash('npm test && npm run build'))
-    expectPassthrough(bash('npm test && rm -rf /'))
-    expectPassthrough(bash('ls; rm -rf ~'))
-  })
-
-  test('should passthrough piped commands to AI review', () => {
-    expectPassthrough(bash('ls -la | grep test'))
-    expectPassthrough(bash('cat file | xargs rm -rf'))
-  })
-
   test('should passthrough commands with subshell or backticks', () => {
     expectPassthrough(bash('echo $(whoami)'))
     expectPassthrough(bash('echo `whoami`'))

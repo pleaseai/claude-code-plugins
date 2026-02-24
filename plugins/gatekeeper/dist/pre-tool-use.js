@@ -48,6 +48,171 @@ function makeDecision(decision, reason) {
     }
   };
 }
+function splitChainedCommands(cmd) {
+  if (/\$\(|`|\n/.test(cmd)) {
+    return null;
+  }
+  if (!/[;&|]/.test(cmd)) {
+    return null;
+  }
+  let state = "normal";
+  let escaped = false;
+  const parts = [];
+  let current = "";
+  let hasChainOp = false;
+  for (let i = 0;i < cmd.length; i++) {
+    const ch = cmd[i];
+    if (escaped) {
+      current += ch;
+      escaped = false;
+      continue;
+    }
+    if (state === "normal") {
+      if (ch === "\\") {
+        escaped = true;
+        current += ch;
+        continue;
+      }
+      if (ch === "'") {
+        state = "single";
+        current += ch;
+        continue;
+      }
+      if (ch === '"') {
+        state = "double";
+        current += ch;
+        continue;
+      }
+      const next = cmd[i + 1];
+      if (ch === "&" && next === "&") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        i++;
+        continue;
+      }
+      if (ch === "|" && next === "|") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        i++;
+        continue;
+      }
+      if (ch === ";") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        continue;
+      }
+      if (ch === "|") {
+        parts.push(current);
+        current = "";
+        hasChainOp = true;
+        continue;
+      }
+      if (ch === "&") {
+        return null;
+      }
+      current += ch;
+    } else if (state === "single") {
+      if (ch === "'") {
+        state = "normal";
+      }
+      current += ch;
+    } else if (state === "double") {
+      if (ch === "\\") {
+        escaped = true;
+        current += ch;
+        continue;
+      }
+      if (ch === '"') {
+        state = "normal";
+      }
+      current += ch;
+    }
+  }
+  if (state !== "normal") {
+    return null;
+  }
+  parts.push(current);
+  if (!hasChainOp) {
+    return null;
+  }
+  const trimmed = parts.map((p) => p.trim());
+  if (trimmed.some((p) => p === "")) {
+    return null;
+  }
+  return trimmed;
+}
+function hasUnquotedChainOps(cmd) {
+  if (/\$\(|`|\n/.test(cmd)) {
+    return true;
+  }
+  if (!/[;&|]/.test(cmd)) {
+    return false;
+  }
+  let state = "normal";
+  let escaped = false;
+  for (let i = 0;i < cmd.length; i++) {
+    const ch = cmd[i];
+    if (escaped) {
+      escaped = false;
+      continue;
+    }
+    if (state === "normal") {
+      if (ch === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (ch === "'") {
+        state = "single";
+        continue;
+      }
+      if (ch === '"') {
+        state = "double";
+        continue;
+      }
+      if (ch === ";" || ch === "&" || ch === "|") {
+        return true;
+      }
+    } else if (state === "single") {
+      if (ch === "'") {
+        state = "normal";
+      }
+    } else if (state === "double") {
+      if (ch === "\\") {
+        escaped = true;
+        continue;
+      }
+      if (ch === '"') {
+        state = "normal";
+      }
+    }
+  }
+  if (state !== "normal") {
+    return true;
+  }
+  return false;
+}
+function evaluateSingleCommand(cmd) {
+  if (!cmd.trim()) {
+    return null;
+  }
+  for (const rule of DENY_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: "deny", reason: rule.reason };
+    }
+  }
+  for (const rule of ALLOW_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: "allow", reason: rule.reason };
+    }
+  }
+  if (isGitPushNonForce(cmd)) {
+    return { decision: "allow", reason: "Safe git push (non-force)" };
+  }
+  return null;
+}
 function evaluate(input) {
   if (input.tool_name !== "Bash") {
     return null;
@@ -61,18 +226,28 @@ function evaluate(input) {
       return makeDecision("deny", rule.reason);
     }
   }
-  if (/[;&|`\n]|\$\(/.test(cmd)) {
+  const parts = splitChainedCommands(cmd);
+  if (parts === null) {
+    if (hasUnquotedChainOps(cmd)) {
+      return null;
+    }
+    const result = evaluateSingleCommand(cmd);
+    if (result) {
+      return makeDecision(result.decision, result.reason);
+    }
     return null;
   }
-  for (const rule of ALLOW_RULES) {
-    if (rule.pattern.test(cmd)) {
-      return makeDecision("allow", rule.reason);
+  for (const part of parts) {
+    const result = evaluateSingleCommand(part);
+    if (result?.decision === "deny") {
+      return makeDecision("deny", result.reason);
+    }
+    if (result === null) {
+      return null;
     }
   }
-  if (isGitPushNonForce(cmd)) {
-    return makeDecision("allow", "Safe git push (non-force)");
-  }
-  return null;
+  const firstResult = evaluateSingleCommand(parts[0]);
+  return makeDecision("allow", firstResult.reason);
 }
 function readStdin() {
   return new Promise((resolve, reject) => {
@@ -116,8 +291,10 @@ main().catch((err) => {
   process.exit(1);
 });
 export {
+  splitChainedCommands,
   makeDecision,
   isGitPushNonForce,
+  evaluateSingleCommand,
   evaluate,
   DENY_RULES,
   ALLOW_RULES
