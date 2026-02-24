@@ -2,7 +2,6 @@
 
 ## [1.2.0] (2026-02-24)
 
-
 ### Features
 
 * **gatekeeper:** change PermissionRequest agent model from opus to sonnet for faster response
