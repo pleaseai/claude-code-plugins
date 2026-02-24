@@ -24,13 +24,13 @@ export const DENY_RULES: Rule[] = [
   },
   // Block inline code execution in interpreter commands
   {
-    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-c|--eval)\b/i,
+    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-p|-c|--eval|--print)\b/i,
     reason: 'Inline interpreter code execution blocked',
   },
   // Block find -exec which enables arbitrary command execution
   {
-    pattern: /^find\b.*\s-exec\b/i,
-    reason: 'find -exec blocked: potential arbitrary command execution',
+    pattern: /^find\b.*\s(-exec|-execdir|-delete)\b/i,
+    reason: 'find -exec/-execdir/-delete blocked: potential arbitrary command execution or recursive deletion',
   },
 ]
 

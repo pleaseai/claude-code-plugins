@@ -38,8 +38,8 @@ export function parseChainedCommand(cmd: string): ParseResult {
     return { kind: 'unparseable' }
   }
 
-  // Quick exit: no special characters at all
-  if (!/[;&|<>]/.test(cmd)) {
+  // Quick exit: no special characters at all (include backslash to detect trailing escape)
+  if (!/[;&|<>\\]/.test(cmd)) {
     return { kind: 'single' }
   }
 
@@ -136,8 +136,8 @@ export function parseChainedCommand(cmd: string): ParseResult {
     }
   }
 
-  // Unclosed quote → malformed
-  if (state !== 'normal') {
+  // Unclosed quote or trailing backslash → malformed
+  if (state !== 'normal' || escaped) {
     return { kind: 'unparseable' }
   }
 
