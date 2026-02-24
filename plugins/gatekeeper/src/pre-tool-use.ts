@@ -4,12 +4,15 @@ import type {
   SyncHookJSONOutput,
 } from '@anthropic-ai/claude-agent-sdk'
 import process from 'node:process'
+import { parseChainedCommand } from './chain-parser'
 
 export interface Rule {
   pattern: RegExp
   reason: string
 }
 
+// NOTE: All patterns must NOT use the `g` flag. RegExp.test() with `g` mutates
+// lastIndex and produces incorrect results on subsequent calls within the same process.
 export const DENY_RULES: Rule[] = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: 'Filesystem root deletion blocked' },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: 'Destructive wildcard deletion from root blocked' },
@@ -18,6 +21,16 @@ export const DENY_RULES: Rule[] = [
   {
     pattern: /^dd\s+if=\/dev\/zero\s+of=\/dev\//i,
     reason: 'Disk zeroing blocked',
+  },
+  // Block inline code execution in interpreter commands
+  {
+    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-c|--eval)\b/i,
+    reason: 'Inline interpreter code execution blocked',
+  },
+  // Block find -exec which enables arbitrary command execution
+  {
+    pattern: /^find\b.*\s-exec\b/i,
+    reason: 'find -exec blocked: potential arbitrary command execution',
   },
 ]
 
@@ -77,208 +90,17 @@ export function makeDecision(
 }
 
 /**
- * Split a command string on unquoted chain operators (&&, ||, ;, |).
+ * Compatibility wrapper around parseChainedCommand.
  *
- * Returns null when:
- * - The command contains $(), backticks, or newlines (unparseable)
- * - No chain operators exist in an unquoted context (single command)
- * - The command has unclosed quotes (malformed)
- * - Any split part is empty (malformed)
- * - A lone & is present (background execution, not a chain operator)
+ * Returns the split parts when the command is a valid chain (;/&& only),
+ * or null for single commands, unparseable input, pipe, ||, redirects, etc.
  *
- * Returns a trimmed, non-empty string[] when the command is a valid chain.
+ * NOTE: Callers must pre-trim the command. Patterns use ^ anchors and leading
+ * whitespace bypasses them.
  */
 export function splitChainedCommands(cmd: string): string[] | null {
-  // Reject subshell substitution, backticks, and newlines — unparseable
-  if (/\$\(|`|\n/.test(cmd)) {
-    return null
-  }
-
-  // Quick exit: no chain characters at all
-  if (!/[;&|]/.test(cmd)) {
-    return null
-  }
-
-  type State = 'normal' | 'single' | 'double'
-  let state: State = 'normal'
-  let escaped = false
-  const parts: string[] = []
-  let current = ''
-  let hasChainOp = false
-
-  for (let i = 0; i < cmd.length; i++) {
-    const ch = cmd[i]
-
-    if (escaped) {
-      current += ch
-      escaped = false
-      continue
-    }
-
-    if (state === 'normal') {
-      if (ch === '\\') {
-        escaped = true
-        current += ch
-        continue
-      }
-      if (ch === '\'') {
-        state = 'single'
-        current += ch
-        continue
-      }
-      if (ch === '"') {
-        state = 'double'
-        current += ch
-        continue
-      }
-
-      const next = cmd[i + 1]
-
-      // 2-char operators take priority
-      if (ch === '&' && next === '&') {
-        parts.push(current)
-        current = ''
-        hasChainOp = true
-        i++ // skip second &
-        continue
-      }
-      if (ch === '|' && next === '|') {
-        parts.push(current)
-        current = ''
-        hasChainOp = true
-        i++ // skip second |
-        continue
-      }
-
-      // Single-char chain operators
-      if (ch === ';') {
-        parts.push(current)
-        current = ''
-        hasChainOp = true
-        continue
-      }
-      if (ch === '|') {
-        parts.push(current)
-        current = ''
-        hasChainOp = true
-        continue
-      }
-
-      // Lone & means background execution — treat as unparseable
-      if (ch === '&') {
-        return null
-      }
-
-      current += ch
-    }
-    else if (state === 'single') {
-      if (ch === '\'') {
-        state = 'normal'
-      }
-      current += ch
-    }
-    else if (state === 'double') {
-      if (ch === '\\') {
-        escaped = true
-        current += ch
-        continue
-      }
-      if (ch === '"') {
-        state = 'normal'
-      }
-      current += ch
-    }
-  }
-
-  // Unclosed quote — malformed
-  if (state !== 'normal') {
-    return null
-  }
-
-  parts.push(current)
-
-  // No chain operators found in unquoted context — single command
-  if (!hasChainOp) {
-    return null
-  }
-
-  // Trim parts and reject if any are empty — malformed
-  const trimmed = parts.map(p => p.trim())
-  if (trimmed.some(p => p === '')) {
-    return null
-  }
-
-  return trimmed
-}
-
-/**
- * Check whether a command has unquoted chain operators or dangerous chars.
- *
- * Used to distinguish "no unquoted operators" (→ single command) from
- * "has unquoted operators but unparseable/malformed" (→ passthrough).
- */
-function hasUnquotedChainOps(cmd: string): boolean {
-  // Subshell substitution, backticks, and newlines are always suspicious
-  if (/\$\(|`|\n/.test(cmd)) {
-    return true
-  }
-
-  // Quick exit: no chain characters at all
-  if (!/[;&|]/.test(cmd)) {
-    return false
-  }
-
-  type State = 'normal' | 'single' | 'double'
-  let state: State = 'normal'
-  let escaped = false
-
-  for (let i = 0; i < cmd.length; i++) {
-    const ch = cmd[i]
-
-    if (escaped) {
-      escaped = false
-      continue
-    }
-
-    if (state === 'normal') {
-      if (ch === '\\') {
-        escaped = true
-        continue
-      }
-      if (ch === '\'') {
-        state = 'single'
-        continue
-      }
-      if (ch === '"') {
-        state = 'double'
-        continue
-      }
-      if (ch === ';' || ch === '&' || ch === '|') {
-        return true
-      }
-    }
-    else if (state === 'single') {
-      if (ch === '\'') {
-        state = 'normal'
-      }
-    }
-    else if (state === 'double') {
-      if (ch === '\\') {
-        escaped = true
-        continue
-      }
-      if (ch === '"') {
-        state = 'normal'
-      }
-    }
-  }
-
-  // Unclosed quote is suspicious
-  if (state !== 'normal') {
-    return true
-  }
-
-  return false
+  const result = parseChainedCommand(cmd)
+  return result.kind === 'chain' ? result.parts : null
 }
 
 /**
@@ -288,8 +110,8 @@ function hasUnquotedChainOps(cmd: string): boolean {
  * - The trimmed command is empty
  * - No rule matches and it is not a safe git push
  *
- * Note: does NOT trim the command for pattern matching — patterns use ^ anchors
- * and leading whitespace is intentionally treated as unknown/passthrough.
+ * Note: does NOT trim the command for pattern matching — patterns use ^ anchors.
+ * Callers (such as evaluate()) are responsible for trimming before calling.
  */
 export function evaluateSingleCommand(
   cmd: string,
@@ -318,7 +140,7 @@ export function evaluateSingleCommand(
 }
 
 /**
- * Evaluate a tool input and return a decision or null (passthrough).
+ * Evaluate a tool input and return a decision or null (passthrough to AI).
  */
 export function evaluate(
   input: PreToolUseHookInput,
@@ -327,52 +149,71 @@ export function evaluate(
     return null
   }
 
-  const cmd
-    = (input.tool_input as { command?: string } | undefined)?.command ?? ''
+  // Trim at entry point: prevents leading-whitespace bypass of ^ anchored DENY patterns
+  const cmd = ((input.tool_input as { command?: string } | undefined)?.command ?? '').trim()
   if (!cmd) {
     return null
   }
 
-  // 1. DENY check on full command (fast path: catches dangerous commands at start)
+  // 1. DENY check on full command (fast path: catches dangerous commands immediately)
   for (const rule of DENY_RULES) {
     if (rule.pattern.test(cmd)) {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — ${rule.reason}\n`)
       return makeDecision('deny', rule.reason)
     }
   }
 
-  // 2. Try to split chained commands
-  const parts = splitChainedCommands(cmd)
+  // 2. Parse the command structure
+  const parsed = parseChainedCommand(cmd)
 
-  if (parts === null) {
-    // Distinguish "no unquoted chain operators" from "has chain ops but unparseable"
-    if (hasUnquotedChainOps(cmd)) {
-      // Unquoted chain operators exist but we couldn't cleanly split → AI review
-      return null
-    }
-
-    // Single command: evaluate directly
-    const result = evaluateSingleCommand(cmd)
-    if (result) {
-      return makeDecision(result.decision, result.reason)
-    }
+  if (parsed.kind === 'unparseable') {
+    // Has pipes, redirects, ||, process substitution, or other complex constructs → AI review
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unparseable structure\n`)
     return null
   }
 
-  // 3. Chain evaluation: all parts must be safe to auto-approve
-  for (const part of parts) {
+  if (parsed.kind === 'single') {
+    // Single command: evaluate directly
+    const result = evaluateSingleCommand(cmd)
+    if (result) {
+      process.stderr.write(`gatekeeper: ${result.decision} "${cmd}" — ${result.reason}\n`)
+      return makeDecision(result.decision, result.reason)
+    }
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — no matching rule\n`)
+    return null
+  }
+
+  // 3. Chain evaluation (;/&& only): every part must be explicitly safe to auto-approve
+  const reasons: string[] = []
+  let firstAllowedResult: { decision: 'allow' | 'deny', reason: string } | null = null
+
+  for (const part of parsed.parts) {
     const result = evaluateSingleCommand(part)
     if (result?.decision === 'deny') {
+      process.stderr.write(`gatekeeper: deny "${cmd}" — part "${part}": ${result.reason}\n`)
       return makeDecision('deny', result.reason)
     }
     if (result === null) {
-      // Unknown command in chain → conservative: let AI review
+      // Unknown command in chain → conservative: let AI review the full chain
+      process.stderr.write(`gatekeeper: passthrough "${cmd}" — unknown part "${part}"\n`)
       return null
+    }
+    reasons.push(`[${part}]: ${result.reason}`)
+    if (firstAllowedResult === null) {
+      firstAllowedResult = result
     }
   }
 
-  // All parts are explicitly allowed — use first part's reason
-  const firstResult = evaluateSingleCommand(parts[0])!
-  return makeDecision('allow', firstResult.reason)
+  // Defensive guard: should be unreachable since parsed.parts is non-empty
+  // and every part returned a non-null allow result above.
+  if (firstAllowedResult === null) {
+    process.stderr.write(`gatekeeper: passthrough "${cmd}" — unexpected empty chain result\n`)
+    return null
+  }
+
+  const compositeReason = `Chain allowed — ${reasons.join('; ')}`
+  process.stderr.write(`gatekeeper: allow "${cmd}" — ${compositeReason}\n`)
+  return makeDecision('allow', compositeReason)
 }
 
 function readStdin(): Promise<string> {
