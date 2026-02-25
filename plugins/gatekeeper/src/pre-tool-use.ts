@@ -29,7 +29,11 @@ export const DENY_RULES: Rule[] = [
     reason: 'Inline interpreter code execution blocked',
   },
   {
-    pattern: /^(npx|python3?|ruby|perl)\s+(-e|-c|--eval|--print)\b/i,
+    pattern: /^(python3?|ruby|perl)\s+(-e|-c|--eval|--print)\b/i,
+    reason: 'Inline interpreter code execution blocked',
+  },
+  {
+    pattern: /^(npx)\s+(-c|--call)\b/i,
     reason: 'Inline interpreter code execution blocked',
   },
   // Block find -exec which enables arbitrary command execution
