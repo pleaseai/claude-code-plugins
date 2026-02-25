@@ -6,7 +6,7 @@ function parseChainedCommand(cmd) {
   if (/\$\(|`|\n|<\(|>\(/.test(cmd)) {
     return { kind: "unparseable" };
   }
-  if (!/[;&|<>]/.test(cmd)) {
+  if (!/[;&|<>\\]/.test(cmd)) {
     return { kind: "single" };
   }
   let state = "normal";
@@ -81,7 +81,7 @@ function parseChainedCommand(cmd) {
       current += ch;
     }
   }
-  if (state !== "normal") {
+  if (state !== "normal" || escaped) {
     return { kind: "unparseable" };
   }
   parts.push(current);
@@ -89,7 +89,7 @@ function parseChainedCommand(cmd) {
     return { kind: "single" };
   }
   const trimmed = parts.map((p) => p.trim());
-  if (trimmed.some((p) => p === "")) {
+  if (trimmed.includes("")) {
     return { kind: "unparseable" };
   }
   return { kind: "chain", parts: trimmed };
@@ -106,12 +106,20 @@ var DENY_RULES = [
     reason: "Disk zeroing blocked"
   },
   {
-    pattern: /^(node|npx|tsx|python3?|ruby|perl)\s+(-e|-c|--eval)\b/i,
+    pattern: /^(node|tsx)\s+(-e|-p|-c|--eval|--print)\b/i,
     reason: "Inline interpreter code execution blocked"
   },
   {
-    pattern: /^find\b.*\s-exec\b/i,
-    reason: "find -exec blocked: potential arbitrary command execution"
+    pattern: /^(python3?|ruby|perl)\s+(-e|-c|--eval|--print)\b/i,
+    reason: "Inline interpreter code execution blocked"
+  },
+  {
+    pattern: /^(npx)\s+(-c|--call)\b/i,
+    reason: "Inline interpreter code execution blocked"
+  },
+  {
+    pattern: /^find\b.*\s(-exec|-execdir|-delete)\b/i,
+    reason: "find -exec/-execdir/-delete blocked: potential arbitrary command execution or recursive deletion"
   }
 ];
 var ALLOW_RULES = [
