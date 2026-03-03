@@ -23,7 +23,14 @@
     "plugins/gatekeeper": {
       "release-type": "node",
       "package-name": "gatekeeper",
-      "component": "gatekeeper"
+      "component": "gatekeeper",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
