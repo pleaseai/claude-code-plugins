@@ -15,30 +15,161 @@ This marketplace is maintained by Passion Factory and provides bundled plugins t
 
 ## Available Plugins
 
-### Nano Banana
+### External Plugins
+
+#### Nano Banana
 Generate and manipulate images using the Gemini 2.5 Flash Image model directly from Claude Code.
 
-**Repository:** [pleaseai/nanobanana](https://github.com/pleaseai/nanobanana)
+**Install:** `/plugin install nanobanana@pleaseai` | **Repository:** [pleaseai/nanobanana-plugin](https://github.com/pleaseai/nanobanana-plugin)
 
-### Security Analysis
+#### Security Analysis (`gemini-cli-security`)
 AI-powered security analysis for code changes and pull requests, identifying vulnerabilities and security risks.
 
-**Repository:** [pleaseai/security-plugin](https://github.com/pleaseai/security-plugin)
+**Install:** `/plugin install gemini-cli-security@pleaseai` | **Repository:** [pleaseai/security-plugin](https://github.com/pleaseai/security-plugin)
 
-### Flutter Development
+#### Flutter Development
 Flutter and Dart-related commands and context for enhanced mobile development workflow.
 
-**Repository:** [pleaseai/flutter](https://github.com/pleaseai/flutter)
+**Install:** `/plugin install flutter@pleaseai` | **Repository:** [pleaseai/flutter-plugin](https://github.com/pleaseai/flutter-plugin)
 
-### Code Review
+#### Code Review
 Comprehensive code review plugin for Claude Code with specialized review agents.
 
-**Repository:** [pleaseai/code-review-plugin](https://github.com/pleaseai/code-review-plugin)
+**Install:** `/plugin install code-review@pleaseai` | **Repository:** [pleaseai/code-review-plugin](https://github.com/pleaseai/code-review-plugin)
 
-### Spec Kit
+#### Spec Kit
 Toolkit to help you get started with Spec-Driven Development.
 
-**Repository:** [pleaseai/spec-kit-plugin](https://github.com/pleaseai/spec-kit-plugin)
+**Install:** `/plugin install spec-kit@pleaseai` | **Repository:** [pleaseai/spec-kit-plugin](https://github.com/pleaseai/spec-kit-plugin)
+
+#### Firebase
+Prototype, build & run modern apps users love with Firebase's backend, AI, and operational infrastructure.
+
+**Install:** `/plugin install firebase@pleaseai` | **Repository:** [pleaseai/firebase-plugin](https://github.com/pleaseai/firebase-plugin)
+
+#### Grafana
+A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities.
+
+**Install:** `/plugin install grafana@pleaseai` | **Repository:** [amondnet/mcp-grafana](https://github.com/amondnet/mcp-grafana)
+
+#### MCP Neo4j
+Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling.
+
+**Install:** `/plugin install mcp-neo4j@pleaseai` | **Repository:** [amondnet/mcp-neo4j](https://github.com/amondnet/mcp-neo4j)
+
+#### Chrome DevTools MCP
+Control and inspect a live Chrome browser through MCP — automate actions, debug, and analyze performance using Chrome DevTools.
+
+**Install:** `/plugin install chrome-devtools-mcp@pleaseai` | **Repository:** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
+
+#### Context7
+Up-to-date documentation and code examples for any library or framework using Context7 MCP server.
+
+**Install:** `/plugin install context7@pleaseai` | **Repository:** [pleaseai/context7](https://github.com/pleaseai/context7)
+
+#### Nuxt UI
+Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server.
+
+**Install:** `/plugin install nuxt-ui@pleaseai` | **Repository:** [pleaseai/nuxt-ui](https://github.com/pleaseai/nuxt-ui)
+
+#### Playwright CLI
+Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
+
+**Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
+
+---
+
+### Built-in Plugins
+
+#### Plugin Dev
+Best practices, guidelines, and validation tools for Claude Code plugin development.
+
+**Install:** `/plugin install plugin-dev@pleaseai`
+
+#### Gatekeeper
+Auto-approve safe commands, AI-assisted review for the rest.
+
+**Install:** `/plugin install gatekeeper@pleaseai`
+
+#### Cubic
+AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues.
+
+**Install:** `/plugin install cubic@pleaseai`
+
+#### MCP Dev
+Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools.
+
+**Install:** `/plugin install mcp-dev@pleaseai`
+
+#### Vue
+Vue 3 core, best practices, router patterns, and testing.
+
+**Install:** `/plugin install vue@pleaseai`
+
+#### Nuxt
+Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing.
+
+**Install:** `/plugin install nuxt@pleaseai`
+
+#### Pinia
+Pinia official Vue state management library, type-safe and extensible.
+
+**Install:** `/plugin install pinia@pleaseai`
+
+#### VueUse
+VueUse composables for building concise, maintainable Vue.js / Nuxt features.
+
+**Install:** `/plugin install vueuse@pleaseai`
+
+#### Vite
+Vite build tool configuration, plugin API, SSR, and Rolldown migration.
+
+**Install:** `/plugin install vite@pleaseai`
+
+#### Vitest
+Vitest fast unit testing framework powered by Vite with Jest-compatible API.
+
+**Install:** `/plugin install vitest@pleaseai`
+
+#### VitePress
+VitePress static site generator powered by Vite and Vue.
+
+**Install:** `/plugin install vitepress@pleaseai`
+
+#### UnoCSS
+UnoCSS instant atomic CSS engine, superset of Tailwind CSS.
+
+**Install:** `/plugin install unocss@pleaseai`
+
+#### Web Design
+Review UI code for Web Interface Guidelines compliance.
+
+**Install:** `/plugin install web-design@pleaseai`
+
+#### Turborepo
+Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization.
+
+**Install:** `/plugin install turborepo@pleaseai`
+
+#### tsdown
+Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown.
+
+**Install:** `/plugin install tsdown@pleaseai`
+
+#### Slidev
+Create and present web-based slides for developers using Markdown and Vue components.
+
+**Install:** `/plugin install slidev@pleaseai`
+
+#### pnpm
+Node.js package manager with strict dependency resolution and workspace support.
+
+**Install:** `/plugin install pnpm@pleaseai`
+
+#### Antfu
+Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects.
+
+**Install:** `/plugin install antfu@pleaseai`
 
 ## Installation
 
@@ -53,11 +184,39 @@ Toolkit to help you get started with Spec-Driven Development.
 Once the marketplace is added, install any plugin with:
 
 ```bash
+# External plugins
 /plugin install nanobanana@pleaseai
 /plugin install gemini-cli-security@pleaseai
 /plugin install flutter@pleaseai
 /plugin install code-review@pleaseai
-/plugin install speckit@pleaseai
+/plugin install spec-kit@pleaseai
+/plugin install firebase@pleaseai
+/plugin install grafana@pleaseai
+/plugin install mcp-neo4j@pleaseai
+/plugin install chrome-devtools-mcp@pleaseai
+/plugin install context7@pleaseai
+/plugin install nuxt-ui@pleaseai
+/plugin install playwright-cli@pleaseai
+
+# Built-in plugins
+/plugin install plugin-dev@pleaseai
+/plugin install gatekeeper@pleaseai
+/plugin install cubic@pleaseai
+/plugin install mcp-dev@pleaseai
+/plugin install vue@pleaseai
+/plugin install nuxt@pleaseai
+/plugin install pinia@pleaseai
+/plugin install vueuse@pleaseai
+/plugin install vite@pleaseai
+/plugin install vitest@pleaseai
+/plugin install vitepress@pleaseai
+/plugin install unocss@pleaseai
+/plugin install web-design@pleaseai
+/plugin install turborepo@pleaseai
+/plugin install tsdown@pleaseai
+/plugin install slidev@pleaseai
+/plugin install pnpm@pleaseai
+/plugin install antfu@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
@@ -76,72 +235,6 @@ Plugins can be easily toggled on and off as needed, making them perfect for:
 - Sharing productivity workflows
 - Connecting internal tools
 - Bundling related customizations
-
-### Context File Support
-
-Many plugins in this marketplace include context files that provide AI-specific instructions:
-
-- **Automatic Loading**: Context files are loaded via SessionStart hooks
-- **Gemini CLI Compatibility**: Supports plugins converted from Gemini CLI extensions
-- **Visual Indication**: Plugins with context files show a "Context" badge in the marketplace
-- **Examples**: `GEMINI.md`, `flutter.md` with specialized AI instructions
-
-## Creating Your Own Plugin
-
-To create and distribute your own plugins:
-
-1. Create a GitHub repository
-2. Add a `.claude-plugin/plugin.json` file with your plugin configuration
-3. (Optional) Add `contextFileName` field to enable automatic context loading
-4. Users can add your marketplace with `/plugin marketplace add <username>/<repo-name>`
-
-### Example plugin.json with Context File
-
-```json
-{
-  "name": "my-plugin",
-  "version": "1.0.0",
-  "description": "My custom plugin",
-  "contextFileName": "CONTEXT.md",
-  "mcpServers": { ... },
-  "hooks": {
-    "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
-            "timeout": 10
-          }
-        ]
-      }
-    ]
-  }
-}
-```
-
-For detailed documentation on creating plugins, visit:
-- [Plugin Marketplace Documentation](https://docs.claude.com/en/docs/claude-code/plugin-marketplaces#github-repositories)
-- [Claude Code Plugins Announcement](https://www.anthropic.com/news/claude-code-plugins)
-
-## Marketplace Configuration
-
-This marketplace is configured via `.claude-plugin/marketplace.json`:
-
-```json
-{
-  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "pleaseai",
-  "version": "0.1.0",
-  "description": "Bundled plugins for Claude Code",
-  "owner": {
-    "name": "Passion Factory",
-    "email": "support@passionfactory.ai"
-  },
-  "plugins": [...]
-}
-```
 
 ## Support
 
