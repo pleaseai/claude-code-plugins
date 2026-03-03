@@ -62,10 +62,6 @@ Control and inspect a live Chrome browser through MCP — automate actions, debu
 
 **Install:** `/plugin install chrome-devtools-mcp@pleaseai` | **Repository:** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
 
-#### Context7
-Up-to-date documentation and code examples for any library or framework using Context7 MCP server.
-
-**Install:** `/plugin install context7@pleaseai` | **Repository:** [pleaseai/context7](https://github.com/pleaseai/context7)
 
 #### Nuxt UI
 Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server.
@@ -194,7 +190,6 @@ Once the marketplace is added, install any plugin with:
 /plugin install grafana@pleaseai
 /plugin install mcp-neo4j@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
-/plugin install context7@pleaseai
 /plugin install nuxt-ui@pleaseai
 /plugin install playwright-cli@pleaseai
 

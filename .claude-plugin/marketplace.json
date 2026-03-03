@@ -86,14 +86,6 @@
       }
     },
     {
-      "name": "context7",
-      "description": "Up-to-date documentation and code examples for any library or framework using Context7 MCP server",
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/context7"
-      }
-    },
-    {
       "name": "nuxt-ui",
       "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
       "source": {
