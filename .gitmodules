@@ -40,3 +40,6 @@
 [submodule "vendor/antfu-skills"]
 	path = vendor/antfu-skills
 	url = https://github.com/antfu/skills.git
+[submodule "external-plugins/playwright-cli"]
+	path = external-plugins/playwright-cli
+	url = git@github.com:pleaseai/playwright-cli.git
