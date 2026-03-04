@@ -1,0 +1,1 @@
+/home/coder/IdeaProjects/claude-code-plugins/.claude/worktrees/supabase/vendor/supabase/skills/supabase-postgres-best-practices/CLAUDE.md
