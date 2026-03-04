@@ -5,7 +5,7 @@
  *
  * Commands:
  *   bun scripts/cli.ts init     # add vendor submodules to this repo
- *   bun scripts/cli.ts sync     # update submodules + copy skills to plugins/
+ *   bun scripts/cli.ts sync     # update submodules + copy skills directly to plugins/
  *   bun scripts/cli.ts check    # check for available upstream updates
  *   bun scripts/cli.ts cleanup  # remove stale submodules and plugin skills
  */
@@ -15,7 +15,6 @@ import { dirname, join, resolve } from "node:path"
 import { submodules, vendors } from "./meta.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
-const SKILLS_DIR = join(ROOT, "skills")                          // our own skills output
 const ANTFU_MANUAL_DIR = join(ROOT, "vendor/antfu-skills/skills") // read-only: Type 3 manual skills
 const PLUGINS_DIR = join(ROOT, "plugins")
 
@@ -23,7 +22,7 @@ const PLUGINS_DIR = join(ROOT, "plugins")
 // skill dir name → plugin dir name
 // ---------------------------------------------------------------------------
 const SKILL_TO_PLUGIN: Record<string, string> = {
-  // Type 1: generated into skills/ via /generate-skill command
+  // Type 1: generated directly into plugins/{plugin}/skills/{skill}/ via /generate-skill
   antfu: "antfu",
   nuxt: "nuxt",
   pinia: "pinia",
@@ -73,6 +72,17 @@ function getRegisteredSubmodulePaths(): string[] {
   const gitmodules = join(ROOT, ".gitmodules")
   if (!existsSync(gitmodules)) return []
   return Array.from(readFileSync(gitmodules, "utf-8").matchAll(/path\s*=\s*(.+)/g), m => m[1].trim())
+}
+
+function ensurePlugin(plugin: string) {
+  const pluginDir = join(PLUGINS_DIR, plugin)
+  mkdirSync(join(pluginDir, "skills"), { recursive: true })
+
+  // Ensure package.json for release-please
+  const pkgPath = join(pluginDir, "package.json")
+  if (!existsSync(pkgPath)) {
+    writeFileSync(pkgPath, `${JSON.stringify({ name: plugin, version: "0.0.1", private: true }, null, 2)}\n`)
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -150,10 +160,8 @@ async function syncSubmodules() {
   }
   console.log("done\n")
 
-  // 2. Sync Type 2 vendor skills → skills/
-  console.log("Syncing vendor skills...")
-  mkdirSync(SKILLS_DIR, { recursive: true })
-
+  // 2. Sync Type 2 vendor skills → plugins/{plugin}/skills/{skill}/
+  console.log("Syncing vendor skills to plugins...")
   for (const [name, config] of Object.entries(vendors)) {
     const submodulePath = `vendor/${name}`
     const vendorPath = join(ROOT, submodulePath)
@@ -171,14 +179,20 @@ async function syncSubmodules() {
 
     for (const [srcSkill, outSkill] of Object.entries(config.skills)) {
       const src = join(vendorSkillsDir, srcSkill)
-      const dest = join(SKILLS_DIR, outSkill)
-
+      const plugin = SKILL_TO_PLUGIN[outSkill]
+      if (!plugin) {
+        console.warn(`  ! no plugin mapping for skill: ${outSkill}`)
+        continue
+      }
       if (!existsSync(src)) {
         console.warn(`  ! skill not found: vendor/${name}/skills/${srcSkill}`)
         continue
       }
 
-      process.stdout.write(`  ${srcSkill} → skills/${outSkill} ... `)
+      ensurePlugin(plugin)
+      const dest = join(PLUGINS_DIR, plugin, "skills", outSkill)
+
+      process.stdout.write(`  ${srcSkill} → plugins/${plugin}/skills/${outSkill} ... `)
       rmSync(dest, { recursive: true, force: true })
       mkdirSync(dest, { recursive: true })
       cpSync(src, dest, { recursive: true })
@@ -202,64 +216,40 @@ async function syncSubmodules() {
     }
   }
 
-  // 2b. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → skills/ (read-only source)
-  console.log("\nCopying manual skills...")
+  // 3. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → plugins/{plugin}/skills/
+  console.log("\nCopying manual skills to plugins...")
   for (const skill of ["antfu"]) {
+    const plugin = SKILL_TO_PLUGIN[skill]
+    if (!plugin) continue
+
     const src = join(ANTFU_MANUAL_DIR, skill)
-    const dest = join(SKILLS_DIR, skill)
     if (!existsSync(src)) {
       console.warn(`  ! manual skill not found: ${skill}`)
       continue
     }
-    process.stdout.write(`  ${skill} ... `)
+
+    ensurePlugin(plugin)
+    const dest = join(PLUGINS_DIR, plugin, "skills", skill)
+
+    process.stdout.write(`  ${skill} → plugins/${plugin}/skills/${skill} ... `)
     rmSync(dest, { recursive: true, force: true })
     cpSync(src, dest, { recursive: true })
     console.log("done")
   }
 
-  // 3. Copy all skills/ → plugins/*/skills/
-  console.log("\nCopying skills to plugins...")
-  const pluginList = [...new Set(Object.values(SKILL_TO_PLUGIN))].sort()
-
-  for (const plugin of pluginList) {
-    const pluginDir = join(PLUGINS_DIR, plugin)
-    const skillsDir = join(pluginDir, "skills")
-    mkdirSync(skillsDir, { recursive: true })
-
-    // Ensure package.json for release-please
-    const pkgPath = join(pluginDir, "package.json")
-    if (!existsSync(pkgPath)) {
-      writeFileSync(pkgPath, `${JSON.stringify({ name: plugin, version: "0.0.1", private: true }, null, 2)}\n`)
-    }
-
-    for (const [skill, targetPlugin] of Object.entries(SKILL_TO_PLUGIN)) {
-      if (targetPlugin !== plugin) continue
-      const src = join(SKILLS_DIR, skill)
-      const dest = join(skillsDir, skill)
-      if (!existsSync(src)) {
-        console.warn(`  ! skill not found: ${skill}`)
-        continue
-      }
-      rmSync(dest, { recursive: true, force: true })
-      cpSync(src, dest, { recursive: true })
-    }
-
-    // turborepo: copy command file
-    if (plugin === "turborepo") {
-      const commandsDir = join(pluginDir, "commands")
-      mkdirSync(commandsDir, { recursive: true })
-      const src = join(SKILLS_DIR, "turborepo/command/turborepo.md")
-      const dest = join(commandsDir, "turborepo.md")
-      if (existsSync(src)) {
-        rmSync(dest, { force: true })
-        cpSync(src, dest)
-      }
-    }
-
-    console.log(`  ✓ ${plugin}`)
+  // 4. turborepo: copy command file
+  const turborepoCommandSrc = join(PLUGINS_DIR, "turborepo/skills/turborepo/command/turborepo.md")
+  if (existsSync(turborepoCommandSrc)) {
+    const commandsDir = join(PLUGINS_DIR, "turborepo/commands")
+    mkdirSync(commandsDir, { recursive: true })
+    const dest = join(commandsDir, "turborepo.md")
+    rmSync(dest, { force: true })
+    cpSync(turborepoCommandSrc, dest)
+    console.log("\n  turborepo command synced")
   }
 
-  console.log(`\nDone. Synced ${pluginList.length} plugins.`)
+  const pluginCount = new Set(Object.values(SKILL_TO_PLUGIN)).size
+  console.log(`\nDone. Synced skills for ${pluginCount} plugins.`)
 }
 
 // ---------------------------------------------------------------------------
@@ -321,7 +311,7 @@ async function cleanup() {
   const extraSubmodules = registered.filter(p => !expectedPaths.has(p))
 
   if (extraSubmodules.length > 0) {
-    console.log("Removing extra vendor submodules:")
+    console.log("Removing extra submodules:")
     for (const submodulePath of extraSubmodules) {
       process.stdout.write(`  ${submodulePath} ... `)
       try {
@@ -338,10 +328,9 @@ async function cleanup() {
 
   // 2. Stale skill directories in plugins/
   const expectedSkills = new Set(Object.keys(SKILL_TO_PLUGIN))
-  let cleanedPlugins = 0
+  let cleanedCount = 0
 
-  const pluginList = [...new Set(Object.values(SKILL_TO_PLUGIN))].sort()
-  for (const plugin of pluginList) {
+  for (const plugin of new Set(Object.values(SKILL_TO_PLUGIN))) {
     const skillsDir = join(PLUGINS_DIR, plugin, "skills")
     if (!existsSync(skillsDir)) continue
 
@@ -351,12 +340,12 @@ async function cleanup() {
         process.stdout.write(`  removing stale skill: plugins/${plugin}/skills/${entry.name} ... `)
         rmSync(join(skillsDir, entry.name), { recursive: true })
         console.log("done")
-        cleanedPlugins++
+        cleanedCount++
       }
     }
   }
 
-  if (extraSubmodules.length === 0 && cleanedPlugins === 0) {
+  if (extraSubmodules.length === 0 && cleanedCount === 0) {
     console.log("Everything is clean.")
   } else {
     console.log("Cleanup done.")
@@ -386,7 +375,7 @@ switch (command) {
     console.log()
     console.log("Commands:")
     console.log("  init     Add vendor submodules to this repo")
-    console.log("  sync     Update submodules and copy skills to plugins/")
+    console.log("  sync     Update submodules and sync skills directly to plugins/")
     console.log("  check    Check for available upstream updates")
     console.log("  cleanup  Remove stale submodules and plugin skills")
     process.exit(1)
