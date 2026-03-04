@@ -85,3 +85,6 @@
 [submodule "vendor/nuxt-ui"]
 	path = vendor/nuxt-ui
 	url = https://github.com/nuxt/ui
+[submodule "vendor/supabase"]
+	path = vendor/supabase
+	url = https://github.com/supabase/agent-skills

@@ -43,6 +43,7 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   "web-design-guidelines": "web-design",
   mastra: "mastra",
   "nuxt-ui": "nuxt-ui",
+  "supabase-postgres-best-practices": "supabase",
 }
 
 // ---------------------------------------------------------------------------
@@ -227,7 +228,7 @@ async function syncSubmodules() {
       process.stdout.write(`  ${srcSkill} → ${destRelative} ... `)
       rmSync(dest, { recursive: true, force: true })
       mkdirSync(dest, { recursive: true })
-      cpSync(src, dest, { recursive: true })
+      cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
 
       // Copy LICENSE from vendor root
       const licenseNames = ["LICENSE", "LICENSE.md", "LICENSE.txt", "license", "license.md", "license.txt"]
@@ -290,7 +291,7 @@ async function syncSubmodules() {
 
     process.stdout.write(`  ${skill} → plugins/${plugin}/skills/${skill} ... `)
     rmSync(dest, { recursive: true, force: true })
-    cpSync(src, dest, { recursive: true })
+    cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
     manualPaths.push(`plugins/${plugin}/skills/${skill}`)
     console.log("done")
   }

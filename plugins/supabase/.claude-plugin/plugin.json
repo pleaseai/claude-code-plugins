@@ -1,0 +1,18 @@
+{
+  "name": "supabase",
+  "version": "1.0.0",
+  "description": "Agent Skills to help developers using AI agents with Supabase",
+  "author": {
+    "name": "Supabase",
+    "url": "https://github.com/supabase"
+  },
+  "repository": "https://github.com/supabase/agent-skills",
+  "license": "MIT",
+  "keywords": ["supabase", "postgres", "database", "backend"],
+  "mcpServers": {
+    "supabase": {
+      "type": "http",
+      "url": "https://mcp.supabase.com/mcp?read_only=true"
+    }
+  }
+}
