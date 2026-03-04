@@ -135,6 +135,12 @@ export const vendors: Record<string, VendorMeta> = {
       slack: "slack",
     },
   },
+  "ai-sdk": {
+    source: "https://github.com/vercel/ai",
+    skills: {
+      "use-ai-sdk": "use-ai-sdk",
+    },
+  },
 }
 
 /**

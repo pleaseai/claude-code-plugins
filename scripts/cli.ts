@@ -59,6 +59,7 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   dogfood: "agent-browser",
   electron: "agent-browser",
   slack: "agent-browser",
+  "use-ai-sdk": "ai-sdk",
 }
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,12 @@
+{
+  "name": "ai-sdk",
+  "version": "1.0.0",
+  "description": "The AI Toolkit for TypeScript - official agent skills for building AI-powered applications and agents with Vercel AI SDK",
+  "author": {
+    "name": "Vercel",
+    "url": "https://github.com/vercel"
+  },
+  "repository": "https://github.com/vercel/ai",
+  "license": "Apache-2.0",
+  "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"]
+}
