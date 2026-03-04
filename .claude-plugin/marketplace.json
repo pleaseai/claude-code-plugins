@@ -309,9 +309,9 @@
     },
     {
       "name": "agent-browser",
-      "description": "Browser automation CLI for AI agents",
+      "description": "Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows",
       "category": "browser",
-      "keywords": ["agent-browser", "browser", "automation", "agents"],
+      "keywords": ["agent-browser", "browser", "automation", "agents", "electron", "slack", "desktop", "qa"],
       "tags": ["browser", "automation"],
       "source": "./plugins/agent-browser"
     }
