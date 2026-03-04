@@ -94,3 +94,6 @@
 [submodule "vendor/better-auth"]
 	path = vendor/better-auth
 	url = https://github.com/better-auth/skills
+[submodule "vendor/agent-browser"]
+	path = vendor/agent-browser
+	url = https://github.com/vercel-labs/agent-browser

@@ -55,6 +55,10 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   emailAndPassword: "better-auth",
   organization: "better-auth",
   twoFactor: "better-auth",
+  "agent-browser": "agent-browser",
+  dogfood: "agent-browser",
+  electron: "agent-browser",
+  slack: "agent-browser",
 }
 
 // ---------------------------------------------------------------------------
