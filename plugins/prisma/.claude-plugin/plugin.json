@@ -8,5 +8,11 @@
   },
   "repository": "https://github.com/prisma/skills",
   "license": "MIT",
-  "keywords": ["prisma", "orm", "database", "typescript", "migrations"]
+  "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
+  "mcpServers": {
+    "Prisma-Local": {
+      "command": "npx",
+      "args": ["-y", "prisma", "mcp"]
+    }
+  }
 }
