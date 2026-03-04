@@ -50,6 +50,11 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   "prisma-driver-adapter-implementation": "prisma",
   "prisma-postgres": "prisma",
   "prisma-upgrade-v7": "prisma",
+  "best-practices": "better-auth",
+  "create-auth": "better-auth",
+  emailAndPassword: "better-auth",
+  organization: "better-auth",
+  twoFactor: "better-auth",
 }
 
 // ---------------------------------------------------------------------------
