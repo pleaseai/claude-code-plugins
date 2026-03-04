@@ -1,1 +1,1 @@
-AGENTS.md
+/home/coder/IdeaProjects/claude-code-plugins/.claude/worktrees/ai-sdk/vendor/supabase/skills/supabase-postgres-best-practices/CLAUDE.md

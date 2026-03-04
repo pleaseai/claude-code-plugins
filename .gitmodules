@@ -97,3 +97,6 @@
 [submodule "vendor/agent-browser"]
 	path = vendor/agent-browser
 	url = https://github.com/vercel-labs/agent-browser
+[submodule "vendor/ai-sdk"]
+	path = vendor/ai-sdk
+	url = https://github.com/vercel/ai
