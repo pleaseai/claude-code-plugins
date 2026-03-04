@@ -298,6 +298,14 @@
       "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
       "tags": ["database", "orm"],
       "source": "./plugins/prisma"
+    },
+    {
+      "name": "better-auth",
+      "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+      "category": "development",
+      "keywords": ["better-auth", "authentication", "auth", "typescript"],
+      "tags": ["framework", "auth"],
+      "source": "./plugins/better-auth"
     }
   ]
 }

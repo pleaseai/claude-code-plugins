@@ -115,6 +115,17 @@ export const vendors: Record<string, VendorMeta> = {
       "prisma-upgrade-v7": "prisma-upgrade-v7",
     },
   },
+  "better-auth": {
+    source: "https://github.com/better-auth/skills",
+    skillsDir: "better-auth",
+    skills: {
+      "best-practices": "best-practices",
+      "create-auth": "create-auth",
+      emailAndPassword: "emailAndPassword",
+      organization: "organization",
+      twoFactor: "twoFactor",
+    },
+  },
 }
 
 /**

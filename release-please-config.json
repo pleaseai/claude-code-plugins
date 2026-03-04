@@ -229,6 +229,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/better-auth": {
+      "release-type": "simple",
+      "component": "better-auth",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

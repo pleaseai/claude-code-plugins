@@ -1,0 +1,12 @@
+{
+  "name": "better-auth",
+  "version": "1.0.0",
+  "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+  "author": {
+    "name": "Better Auth",
+    "url": "https://github.com/better-auth"
+  },
+  "repository": "https://github.com/better-auth/skills",
+  "license": "MIT",
+  "keywords": ["better-auth", "authentication", "auth", "typescript"]
+}
