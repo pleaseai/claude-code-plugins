@@ -15,6 +15,9 @@
     {
       "name": "nanobanana",
       "description": "Claude Code Plugin for Nano Banana (Gemini 2.5 Flash Image) model - generate and manipulate images with text prompts",
+      "category": "ai",
+      "keywords": ["image-generation", "gemini", "ai", "flash"],
+      "tags": ["mcp", "image"],
       "source": {
         "source": "github",
         "repo": "pleaseai/nanobanana-plugin"
@@ -23,6 +26,9 @@
     {
       "name": "flutter",
       "description": "Enables several Flutter and Dart-related commands and context.",
+      "category": "mobile",
+      "keywords": ["flutter", "dart", "mobile", "cross-platform"],
+      "tags": ["framework", "mobile"],
       "source": {
         "source": "github",
         "repo": "pleaseai/flutter-plugin"
@@ -32,6 +38,9 @@
       "name": "spec-kit",
       "description": "💫 Claude Code plugin for GitHub's Spec-Kit - Toolkit for Spec-Driven Development",
       "version": "0.0.61",
+      "category": "development",
+      "keywords": ["spec", "specification", "tdd", "requirements"],
+      "tags": ["workflow", "spec-driven"],
       "source": {
         "source": "github",
         "repo": "pleaseai/spec-kit-plugin"
@@ -40,6 +49,9 @@
     {
       "name": "code-review",
       "description": "Code review plugin for Claude Code",
+      "category": "development",
+      "keywords": ["code-review", "quality", "review"],
+      "tags": ["workflow", "review"],
       "source": {
         "source": "github",
         "repo": "pleaseai/code-review-plugin"
@@ -48,6 +60,9 @@
     {
       "name": "gemini-cli-security",
       "description": "Security analysis plugin for Claude Code",
+      "category": "security",
+      "keywords": ["security", "analysis", "vulnerability", "sast"],
+      "tags": ["security", "analysis"],
       "source": {
         "source": "github",
         "repo": "pleaseai/security-plugin"
@@ -56,6 +71,9 @@
     {
       "name": "firebase",
       "description": "Prototype, build & run modern apps users love with Firebase's backend, AI, and operational infrastructure.",
+      "category": "cloud",
+      "keywords": ["firebase", "google", "backend", "cloud"],
+      "tags": ["mcp", "cloud"],
       "source": {
         "source": "github",
         "repo": "pleaseai/firebase-plugin"
@@ -64,6 +82,9 @@
     {
       "name": "grafana",
       "description": "A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities",
+      "category": "monitoring",
+      "keywords": ["grafana", "monitoring", "dashboards", "observability"],
+      "tags": ["mcp", "monitoring"],
       "source": {
         "source": "github",
         "repo": "amondnet/mcp-grafana"
@@ -72,6 +93,9 @@
     {
       "name": "mcp-neo4j",
       "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
+      "category": "database",
+      "keywords": ["neo4j", "graph-database", "cypher"],
+      "tags": ["mcp", "database"],
       "source": {
         "source": "github",
         "repo": "amondnet/mcp-neo4j"
@@ -80,6 +104,9 @@
     {
       "name": "chrome-devtools-mcp",
       "description": "Control and inspect a live Chrome browser through MCP - automate actions, debug, and analyze performance using Chrome DevTools",
+      "category": "browser",
+      "keywords": ["chrome", "devtools", "browser", "debugging"],
+      "tags": ["mcp", "browser"],
       "source": {
         "source": "github",
         "repo": "ChromeDevTools/chrome-devtools-mcp"
@@ -88,6 +115,9 @@
     {
       "name": "nuxt-ui",
       "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
+      "category": "ui",
+      "keywords": ["nuxt-ui", "vue", "components", "ui-library"],
+      "tags": ["mcp", "ui"],
       "source": {
         "source": "github",
         "repo": "pleaseai/nuxt-ui"
@@ -96,96 +126,153 @@
     {
       "name": "plugin-dev",
       "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
+      "category": "tooling",
+      "keywords": ["plugin", "development", "validation", "best-practices"],
+      "tags": ["tooling", "plugin"],
       "source": "./plugins/plugin-dev"
     },
     {
       "name": "antfu",
       "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
+      "category": "framework",
+      "keywords": ["antfu", "eslint", "typescript", "conventions"],
+      "tags": ["tooling", "conventions"],
       "source": "./plugins/antfu"
     },
     {
       "name": "nuxt",
       "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing",
+      "category": "framework",
+      "keywords": ["nuxt", "vue", "ssr", "full-stack"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/nuxt"
     },
     {
       "name": "pinia",
       "description": "Pinia official Vue state management library, type-safe and extensible",
+      "category": "framework",
+      "keywords": ["pinia", "vue", "state-management", "store"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/pinia"
     },
     {
       "name": "pnpm",
       "description": "Node.js package manager with strict dependency resolution and workspace support",
+      "category": "tooling",
+      "keywords": ["pnpm", "package-manager", "node", "workspace"],
+      "tags": ["tooling", "node"],
       "source": "./plugins/pnpm"
     },
     {
       "name": "slidev",
       "description": "Create and present web-based slides for developers using Markdown and Vue components",
+      "category": "framework",
+      "keywords": ["slidev", "slides", "presentation", "markdown"],
+      "tags": ["framework", "presentation"],
       "source": "./plugins/slidev"
     },
     {
       "name": "tsdown",
       "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
+      "category": "tooling",
+      "keywords": ["tsdown", "bundler", "typescript", "rolldown"],
+      "tags": ["tooling", "build"],
       "source": "./plugins/tsdown"
     },
     {
       "name": "turborepo",
       "description": "Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization",
+      "category": "tooling",
+      "keywords": ["turborepo", "monorepo", "build-system", "caching"],
+      "tags": ["tooling", "monorepo"],
       "source": "./plugins/turborepo"
     },
     {
       "name": "unocss",
       "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS",
+      "category": "framework",
+      "keywords": ["unocss", "css", "atomic-css", "tailwind"],
+      "tags": ["framework", "css"],
       "source": "./plugins/unocss"
     },
     {
       "name": "vite",
       "description": "Vite build tool configuration, plugin API, SSR, and Rolldown migration",
+      "category": "tooling",
+      "keywords": ["vite", "build-tool", "dev-server", "hmr"],
+      "tags": ["tooling", "build"],
       "source": "./plugins/vite"
     },
     {
       "name": "vitepress",
       "description": "VitePress static site generator powered by Vite and Vue",
+      "category": "framework",
+      "keywords": ["vitepress", "static-site", "documentation", "vue"],
+      "tags": ["framework", "docs"],
       "source": "./plugins/vitepress"
     },
     {
       "name": "vitest",
       "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API",
+      "category": "development",
+      "keywords": ["vitest", "testing", "unit-test", "jest"],
+      "tags": ["tooling", "testing"],
       "source": "./plugins/vitest"
     },
     {
       "name": "vue",
       "description": "Vue 3 core, best practices, router patterns, and testing",
+      "category": "framework",
+      "keywords": ["vue", "vue3", "composition-api", "reactivity"],
+      "tags": ["framework", "frontend"],
       "source": "./plugins/vue"
     },
     {
       "name": "vueuse",
       "description": "VueUse composables for building concise, maintainable Vue.js / Nuxt features",
+      "category": "framework",
+      "keywords": ["vueuse", "vue", "composables", "utilities"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/vueuse"
     },
     {
       "name": "web-design",
       "description": "Review UI code for Web Interface Guidelines compliance",
+      "category": "ui",
+      "keywords": ["web-design", "accessibility", "ui-review", "wcag"],
+      "tags": ["review", "ui"],
       "source": "./plugins/web-design"
     },
     {
       "name": "gatekeeper",
       "description": "Auto-approve safe commands, AI-assisted review for the rest",
+      "category": "tooling",
+      "keywords": ["gatekeeper", "auto-approve", "permissions", "safety"],
+      "tags": ["tooling", "safety"],
       "source": "./plugins/gatekeeper"
     },
     {
       "name": "mcp-dev",
       "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
+      "category": "tooling",
+      "keywords": ["mcp", "server", "development", "best-practices"],
+      "tags": ["tooling", "mcp"],
       "source": "./plugins/mcp-dev"
     },
     {
       "name": "cubic",
       "description": "AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues",
+      "category": "development",
+      "keywords": ["cubic", "code-review", "bugs", "security"],
+      "tags": ["review", "analysis"],
       "source": "./plugins/cubic"
     },
     {
       "name": "playwright-cli",
       "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps",
+      "category": "development",
+      "keywords": ["playwright", "browser", "automation", "testing"],
+      "tags": ["tooling", "testing"],
       "source": {
         "source": "github",
         "repo": "pleaseai/playwright-cli"
@@ -194,6 +281,9 @@
     {
       "name": "mastra",
       "description": "Official agent skills for coding agents working with the Mastra AI framework",
+      "category": "ai",
+      "keywords": ["mastra", "ai-framework", "agents", "workflows"],
+      "tags": ["framework", "ai"],
       "source": "./plugins/mastra"
     }
   ]
