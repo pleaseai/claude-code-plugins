@@ -85,3 +85,6 @@
 [submodule "vendor/mastra"]
 	path = vendor/mastra
 	url = https://github.com/mastra-ai/skills
+[submodule "vendor/nuxt-ui"]
+	path = vendor/nuxt-ui
+	url = https://github.com/nuxt/ui
