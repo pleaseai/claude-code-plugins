@@ -14,5 +14,11 @@
     "vue",
     "ssr",
     "antfu"
-  ]
+  ],
+  "mcpServers": {
+    "nuxt-remote": {
+      "type": "http",
+      "url": "https://nuxt.com/mcp"
+    }
+  }
 }
