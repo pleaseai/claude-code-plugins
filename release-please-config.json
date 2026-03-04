@@ -35,72 +35,156 @@
     "plugins/antfu": {
       "release-type": "simple",
       "component": "antfu",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/nuxt": {
       "release-type": "simple",
       "component": "nuxt",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/pinia": {
       "release-type": "simple",
       "component": "pinia",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/pnpm": {
       "release-type": "simple",
       "component": "pnpm",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/slidev": {
       "release-type": "simple",
       "component": "slidev",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/tsdown": {
       "release-type": "simple",
       "component": "tsdown",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/turborepo": {
       "release-type": "simple",
       "component": "turborepo",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/unocss": {
       "release-type": "simple",
       "component": "unocss",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/vite": {
       "release-type": "simple",
       "component": "vite",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/vitepress": {
       "release-type": "simple",
       "component": "vitepress",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/vitest": {
       "release-type": "simple",
       "component": "vitest",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/vue": {
       "release-type": "simple",
       "component": "vue",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/vueuse": {
       "release-type": "simple",
       "component": "vueuse",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     },
     "plugins/web-design": {
       "release-type": "simple",
       "component": "web-design",
-      "version-file": ".claude-plugin/plugin.json"
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
