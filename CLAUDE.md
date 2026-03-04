@@ -351,6 +351,15 @@ Reference documentation: `docs/lessons-learned/context7.md`
 
 **Note**: Context7 was migrated from SessionStart hooks to Skills for better token efficiency. See the lessons learned doc for the evolution and comparison.
 
+### Vendor-Synced Skills (Read-Only)
+
+Skills in `plugins/*/skills/` that contain a `SYNC.md` file are vendor-synced and **must not be modified directly** — changes will be overwritten on the next `bun run skills:sync`.
+```bash
+# Check before editing
+cat plugins/<plugin>/skills/<skill>/SYNC.md
+```
+Skip any code review suggestions targeting vendor-synced skill files.
+
 ## Development Standards
 
 Read these documents **only when relevant to the current task** — do not load them all upfront:
