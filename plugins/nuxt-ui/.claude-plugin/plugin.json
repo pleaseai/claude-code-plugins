@@ -1,0 +1,12 @@
+{
+  "name": "nuxt-ui",
+  "version": "1.0.0",
+  "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
+  "author": {
+    "name": "Nuxt",
+    "url": "https://github.com/nuxt"
+  },
+  "repository": "https://github.com/nuxt/ui",
+  "license": "MIT",
+  "keywords": ["nuxt-ui", "vue", "ui", "tailwind", "reka-ui"]
+}
