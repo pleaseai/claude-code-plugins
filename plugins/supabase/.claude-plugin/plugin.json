@@ -8,7 +8,7 @@
   },
   "repository": "https://github.com/supabase/agent-skills",
   "license": "MIT",
-  "keywords": ["supabase"],
+  "keywords": ["supabase", "postgres", "database", "backend"],
   "mcpServers": {
     "supabase": {
       "type": "http",
