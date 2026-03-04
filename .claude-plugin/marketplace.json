@@ -282,6 +282,14 @@
       "keywords": ["mastra", "ai-framework", "agents", "workflows"],
       "tags": ["framework", "ai"],
       "source": "./plugins/mastra"
+    },
+    {
+      "name": "supabase",
+      "description": "Agent Skills to help developers using AI agents with Supabase",
+      "category": "database",
+      "keywords": ["supabase", "postgres", "database", "backend"],
+      "tags": ["database", "backend"],
+      "source": "./plugins/supabase"
     }
   ]
 }

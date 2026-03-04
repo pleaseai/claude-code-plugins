@@ -95,6 +95,12 @@ export const vendors: Record<string, VendorMeta> = {
       "nuxt-ui": "nuxt-ui",
     },
   },
+  supabase: {
+    source: "https://github.com/supabase/agent-skills",
+    skills: {
+      "supabase-postgres-best-practices": "supabase-postgres-best-practices",
+    },
+  },
 }
 
 /**

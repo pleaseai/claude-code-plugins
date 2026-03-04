@@ -43,6 +43,7 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   "web-design-guidelines": "web-design",
   mastra: "mastra",
   "nuxt-ui": "nuxt-ui",
+  "supabase-postgres-best-practices": "supabase",
 }
 
 // ---------------------------------------------------------------------------
