@@ -91,3 +91,6 @@
 [submodule "vendor/prisma"]
 	path = vendor/prisma
 	url = https://github.com/prisma/skills
+[submodule "vendor/better-auth"]
+	path = vendor/better-auth
+	url = https://github.com/better-auth/skills
