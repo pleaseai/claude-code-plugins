@@ -40,3 +40,39 @@
 [submodule "external-plugins/playwright-cli"]
 	path = external-plugins/playwright-cli
 	url = git@github.com:pleaseai/playwright-cli.git
+[submodule "sources/vue"]
+	path = sources/vue
+	url = https://github.com/vuejs/docs
+[submodule "sources/nuxt"]
+	path = sources/nuxt
+	url = https://github.com/nuxt/nuxt
+[submodule "sources/vite"]
+	path = sources/vite
+	url = https://github.com/vitejs/vite
+[submodule "sources/unocss"]
+	path = sources/unocss
+	url = https://github.com/unocss/unocss
+[submodule "sources/pnpm"]
+	path = sources/pnpm
+	url = https://github.com/pnpm/pnpm.io
+[submodule "sources/pinia"]
+	path = sources/pinia
+	url = https://github.com/vuejs/pinia
+[submodule "sources/vitest"]
+	path = sources/vitest
+	url = https://github.com/vitest-dev/vitest
+[submodule "sources/vitepress"]
+	path = sources/vitepress
+	url = https://github.com/vuejs/vitepress
+[submodule "vendor/slidev"]
+	path = vendor/slidev
+	url = https://github.com/slidevjs/slidev
+[submodule "vendor/vueuse"]
+	path = vendor/vueuse
+	url = https://github.com/vueuse/skills
+[submodule "vendor/tsdown"]
+	path = vendor/tsdown
+	url = https://github.com/rolldown/tsdown
+[submodule "vendor/vuejs-ai"]
+	path = vendor/vuejs-ai
+	url = https://github.com/vuejs-ai/skills
