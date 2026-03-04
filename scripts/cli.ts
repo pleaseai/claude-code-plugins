@@ -211,7 +211,11 @@ async function syncSubmodules() {
     const vendorSkillsDir = join(vendorPath, skillsDirValue)
     const resolvedSkillsDir = resolve(vendorSkillsDir)
     const resolvedVendorPath = resolve(vendorPath)
-    if (!resolvedSkillsDir.startsWith(resolvedVendorPath + "/") && resolvedSkillsDir !== resolvedVendorPath) {
+    if (
+      resolvedSkillsDir !== resolvedVendorPath &&
+      !resolvedSkillsDir.startsWith(`${resolvedVendorPath}/`) &&
+      !resolvedSkillsDir.startsWith(`${resolvedVendorPath}\\`)
+    ) {
       console.error(`  ! invalid skillsDir for ${name}: "${config.skillsDir}" (escapes vendor directory)`)
       continue
     }
