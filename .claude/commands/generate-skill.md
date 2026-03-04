@@ -11,19 +11,25 @@ Follow the guidelines in `vendor/antfu-skills/AGENTS.md` to generate Type 1 skil
 
 1. **Read** `vendor/antfu-skills/AGENTS.md` for the full generation guidelines
 2. **Check** `vendor/antfu-skills/instructions/$ARGUMENTS.md` for project-specific instructions (if it exists)
-3. **Read** source docs from `vendor/antfu-skills/sources/$ARGUMENTS/docs/`
-4. **Generate** skill files into `vendor/antfu-skills/skills/$ARGUMENTS/`:
+3. **Read** source docs from `sources/$ARGUMENTS/docs/`
+4. **Generate** skill files into `skills/$ARGUMENTS/`:
    - `SKILL.md` — index with frontmatter (`name`, `description`, `metadata`) and a table of all references
    - `GENERATION.md` — tracking metadata (source path, git SHA, generation date)
    - `references/*.md` — one file per concept (prefixed by category, e.g. `core-syntax.md`, `features-plugins.md`)
 5. **Run** the sync script to copy the generated skills into the plugin:
    ```bash
-   bun scripts/generate-antfu-plugins.ts
+   bun scripts/cli.ts sync
+   ```
+6. **Commit** the generated skills:
+   ```bash
+   git add skills/$ARGUMENTS/ plugins/$ARGUMENTS/skills/
+   git commit -m "feat($ARGUMENTS): generate skills from official documentation"
    ```
 
 ## Output Location
 
-- Generated skills: `vendor/antfu-skills/skills/$ARGUMENTS/`
+- Source docs: `sources/$ARGUMENTS/` (submodule, run `bun scripts/cli.ts init` if missing)
+- Generated skills: `skills/$ARGUMENTS/` (our own skills directory, never modify `vendor/antfu-skills/`)
 - Synced to plugin: `plugins/$ARGUMENTS/skills/$ARGUMENTS/`
 
 ## Writing Guidelines

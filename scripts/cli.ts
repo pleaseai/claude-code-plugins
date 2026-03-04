@@ -15,14 +15,15 @@ import { dirname, join, resolve } from "node:path"
 import { submodules, vendors } from "./meta.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
-const ANTFU_SKILLS_DIR = join(ROOT, "vendor/antfu-skills/skills")
+const SKILLS_DIR = join(ROOT, "skills")                          // our own skills output
+const ANTFU_MANUAL_DIR = join(ROOT, "vendor/antfu-skills/skills") // read-only: Type 3 manual skills
 const PLUGINS_DIR = join(ROOT, "plugins")
 
 // ---------------------------------------------------------------------------
 // skill dir name → plugin dir name
 // ---------------------------------------------------------------------------
 const SKILL_TO_PLUGIN: Record<string, string> = {
-  // Type 1: generated, read from vendor/antfu-skills/skills/
+  // Type 1: generated into skills/ via /generate-skill command
   antfu: "antfu",
   nuxt: "nuxt",
   pinia: "pinia",
@@ -149,8 +150,10 @@ async function syncSubmodules() {
   }
   console.log("done\n")
 
-  // 2. Copy vendor skills → vendor/antfu-skills/skills/
+  // 2. Sync Type 2 vendor skills → skills/
   console.log("Syncing vendor skills...")
+  mkdirSync(SKILLS_DIR, { recursive: true })
+
   for (const [name, config] of Object.entries(vendors)) {
     const submodulePath = `vendor/${name}`
     const vendorPath = join(ROOT, submodulePath)
@@ -168,7 +171,7 @@ async function syncSubmodules() {
 
     for (const [srcSkill, outSkill] of Object.entries(config.skills)) {
       const src = join(vendorSkillsDir, srcSkill)
-      const dest = join(ANTFU_SKILLS_DIR, outSkill)
+      const dest = join(SKILLS_DIR, outSkill)
 
       if (!existsSync(src)) {
         console.warn(`  ! skill not found: vendor/${name}/skills/${srcSkill}`)
@@ -199,7 +202,22 @@ async function syncSubmodules() {
     }
   }
 
-  // 3. Copy all skills → plugins/*/skills/
+  // 2b. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → skills/ (read-only source)
+  console.log("\nCopying manual skills...")
+  for (const skill of ["antfu"]) {
+    const src = join(ANTFU_MANUAL_DIR, skill)
+    const dest = join(SKILLS_DIR, skill)
+    if (!existsSync(src)) {
+      console.warn(`  ! manual skill not found: ${skill}`)
+      continue
+    }
+    process.stdout.write(`  ${skill} ... `)
+    rmSync(dest, { recursive: true, force: true })
+    cpSync(src, dest, { recursive: true })
+    console.log("done")
+  }
+
+  // 3. Copy all skills/ → plugins/*/skills/
   console.log("\nCopying skills to plugins...")
   const pluginList = [...new Set(Object.values(SKILL_TO_PLUGIN))].sort()
 
@@ -216,7 +234,7 @@ async function syncSubmodules() {
 
     for (const [skill, targetPlugin] of Object.entries(SKILL_TO_PLUGIN)) {
       if (targetPlugin !== plugin) continue
-      const src = join(ANTFU_SKILLS_DIR, skill)
+      const src = join(SKILLS_DIR, skill)
       const dest = join(skillsDir, skill)
       if (!existsSync(src)) {
         console.warn(`  ! skill not found: ${skill}`)
@@ -230,7 +248,7 @@ async function syncSubmodules() {
     if (plugin === "turborepo") {
       const commandsDir = join(pluginDir, "commands")
       mkdirSync(commandsDir, { recursive: true })
-      const src = join(ANTFU_SKILLS_DIR, "turborepo/command/turborepo.md")
+      const src = join(SKILLS_DIR, "turborepo/command/turborepo.md")
       const dest = join(commandsDir, "turborepo.md")
       if (existsSync(src)) {
         rmSync(dest, { force: true })
