@@ -11,11 +11,8 @@
   "keywords": ["nuxt-ui", "vue", "ui", "tailwind", "reka-ui"],
   "mcpServers": {
     "nuxt-ui": {
-      "command": "npx",
-      "args": [
-        "mcp-remote",
-        "https://ui.nuxt.com/mcp"
-      ]
+      "type": "http",
+      "url": "https://ui.nuxt.com/mcp"
     }
   }
 }
