@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "Official agent skills for coding agents working with the Mastra AI framework",
   "author": {
-    "name": "Minsu Lee",
-    "url": "https://github.com/amondnet"
+    "name": "Mastra AI",
+    "url": "https://github.com/mastra-ai"
   },
   "repository": "https://github.com/mastra-ai/skills",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "keywords": ["mastra", "ai", "framework", "agent"]
 }

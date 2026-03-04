@@ -136,11 +136,11 @@ Create `plugins/<plugin-name>/.claude-plugin/plugin.json`:
   "version": "1.0.0",
   "description": "<description from repo or user input>",
   "author": {
-    "name": "Minsu Lee",
-    "url": "https://github.com/amondnet"
+    "name": "<owner from repo or user input>",
+    "url": "https://github.com/<owner>"
   },
   "repository": "<repo-url>",
-  "license": "MIT",
+  "license": "<license from repo or MIT>",
   "keywords": ["<vendor-name>"]
 }
 ```
