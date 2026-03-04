@@ -67,7 +67,7 @@ These are **read-only**. Do not modify them here; contribute changes upstream to
 │
 └── plugins/                        # Plugin directories
     └── {plugin}/
-        └── skills/                 # Synced directly from vendor/ by cli.ts sync
+        └── skills/                 # Synced from vendor/ (Type 2/3) or copied from skills/ (Type 1)
             └── {skill-name}/
 ```
 

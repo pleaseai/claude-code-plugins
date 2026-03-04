@@ -81,9 +81,7 @@ function getGitSha(dir: string): string | null {
 }
 
 function isSubmoduleRegistered(submodulePath: string): boolean {
-  const gitmodules = join(ROOT, ".gitmodules")
-  if (!existsSync(gitmodules)) return false
-  return readFileSync(gitmodules, "utf-8").includes(`path = ${submodulePath}`)
+  return getRegisteredSubmodulePaths().includes(submodulePath)
 }
 
 function getRegisteredSubmodulePaths(): string[] {

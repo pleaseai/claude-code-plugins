@@ -241,7 +241,9 @@ provide(themeActionsKey, { toggleTheme })
 
 // Consumer.vue
 const theme = inject(themeKey)
-const { toggleTheme } = inject(themeActionsKey)
+const themeActions = inject(themeActionsKey)
+if (!themeActions) throw new Error('themeActionsKey provider is missing')
+const { toggleTheme } = themeActions
 ```
 
 Use symbols for keys to avoid collisions in large apps:

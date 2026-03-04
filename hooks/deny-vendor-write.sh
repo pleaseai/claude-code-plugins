@@ -25,7 +25,7 @@ if [ -z "$file_path" ]; then
   exit 0
 fi
 
-# 절대 경로 정규화 (상대 경로 처리)
+# 절대 경로 정규화 (상대 경로 처리, .. 세그먼트 canonicalize)
 case "$file_path" in
   /*)
     abs_path="$file_path"
@@ -34,6 +34,9 @@ case "$file_path" in
     abs_path="${CLAUDE_PROJECT_DIR}/${file_path}"
     ;;
 esac
+
+# .. 세그먼트를 정규화하여 경로 우회 방지 (realpath -m은 파일이 없어도 작동)
+abs_path="$(realpath -m "$abs_path" 2>/dev/null || echo "$abs_path")"
 
 # 쓰기 금지 디렉토리 목록 확인 (프로젝트 루트에 앵커링)
 project_dir="${CLAUDE_PROJECT_DIR%/}"
