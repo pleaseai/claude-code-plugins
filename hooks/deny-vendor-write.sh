@@ -35,10 +35,10 @@ case "$file_path" in
     ;;
 esac
 
-# .. 세그먼트를 정규화하여 경로 우회 방지
+# .. 세그먼트를 정규화하고 심볼릭 링크를 해결하여 경로 우회 방지
 # realpath -m은 GNU 전용이므로 python3로 크로스 플랫폼 폴백
 # fail-closed: 두 방법 모두 실패 시 요청 차단
-if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null || python3 -c "import os.path, sys; print(os.path.abspath(os.path.normpath(sys.argv[1])))" "$abs_path" 2>/dev/null)"; then
+if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null || python3 -c "import pathlib, sys; print(str(pathlib.Path(sys.argv[1]).resolve(strict=False)))" "$abs_path" 2>/dev/null)"; then
   echo '{
   "hookSpecificOutput": {
     "permissionDecision": "deny",
@@ -49,7 +49,10 @@ if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null || python3 -c "import os.pa
 fi
 
 # 쓰기 금지 디렉토리 목록 확인 (프로젝트 루트에 앵커링)
-project_dir="${CLAUDE_PROJECT_DIR%/}"
+# abs_path와 동일한 정규화(심볼릭 링크 해결)를 적용하여 경로 비교의 일관성 보장
+_raw_project_dir="${CLAUDE_PROJECT_DIR%/}"
+project_dir="$(realpath -m "$_raw_project_dir" 2>/dev/null || python3 -c "import pathlib, sys; print(str(pathlib.Path(sys.argv[1]).resolve(strict=False)))" "$_raw_project_dir" 2>/dev/null || printf '%s' "$_raw_project_dir")"
+project_dir="${project_dir%/}"
 
 if [[ "$abs_path" == "${project_dir}/vendor/"* ]]; then
   echo '{
