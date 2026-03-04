@@ -83,6 +83,12 @@ export const vendors: Record<string, VendorMeta> = {
       "web-design-guidelines": "web-design-guidelines",
     },
   },
+  mastra: {
+    source: "https://github.com/mastra-ai/skills",
+    skills: {
+      mastra: "mastra",
+    },
+  },
 }
 
 /**

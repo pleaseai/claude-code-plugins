@@ -190,6 +190,11 @@
         "source": "github",
         "repo": "pleaseai/playwright-cli"
       }
+    },
+    {
+      "name": "mastra",
+      "description": "Official agent skills for coding agents working with the Mastra AI framework",
+      "source": "./plugins/mastra"
     }
   ]
 }

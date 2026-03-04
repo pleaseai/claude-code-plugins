@@ -82,3 +82,6 @@
 [submodule "vendor/web-design-guidelines"]
 	path = vendor/web-design-guidelines
 	url = https://github.com/vercel-labs/agent-skills
+[submodule "vendor/mastra"]
+	path = vendor/mastra
+	url = https://github.com/mastra-ai/skills

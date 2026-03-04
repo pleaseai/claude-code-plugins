@@ -4,7 +4,6 @@
     <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/chrome-devtools-mcp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/code-review" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/external-plugins/context7" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/firebase" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/flutter" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/grafana" vcs="Git" />
@@ -12,6 +11,7 @@
     <mapping directory="$PROJECT_DIR$/external-plugins/nanobanana" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/nuxt-ui" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/open-aware" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/external-plugins/playwright-cli" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/postgres" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/security" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/external-plugins/spec-kit" vcs="Git" />

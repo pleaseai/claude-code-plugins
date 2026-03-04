@@ -185,6 +185,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/mastra": {
+      "release-type": "simple",
+      "component": "mastra",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

@@ -41,6 +41,7 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   turborepo: "turborepo",
   "vueuse-functions": "vueuse",
   "web-design-guidelines": "web-design",
+  mastra: "mastra",
 }
 
 // ---------------------------------------------------------------------------
