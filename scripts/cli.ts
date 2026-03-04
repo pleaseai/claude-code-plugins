@@ -46,6 +46,8 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
 // ---------------------------------------------------------------------------
 // Helpers
 // ---------------------------------------------------------------------------
+// NOTE: exec/execSafe use shell execution. Do NOT call with user-provided or
+// external input — use execFile/execFileSafe instead (they bypass the shell).
 function exec(cmd: string, cwd = ROOT): string {
   return execSync(cmd, { cwd, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }).trim()
 }

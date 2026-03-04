@@ -16,13 +16,15 @@ Follow the guidelines in `docs/skills-generator.md` to generate Type 1 skills.
    - `SKILL.md` — index with frontmatter (`name`, `description`, `metadata`) and a table of all references
    - `GENERATION.md` — tracking metadata (source path, git SHA, generation date)
    - `references/*.md` — one file per concept (prefixed by category, e.g. `core-syntax.md`, `features-plugins.md`)
-5. **Run** the sync script to copy the generated skills into the plugin:
+5. **Copy** the generated skills into the plugin directory:
    ```bash
-   bun scripts/cli.ts sync
+   cp -r skills/$ARGUMENTS/ plugins/$ARGUMENTS/skills/$ARGUMENTS/
    ```
+   > Note: `bun run skills:sync` only handles Type 2 (vendor) and Type 3 (manual) skills.
+   > Type 1 (generated) skills must be copied manually to the plugin directory.
 6. **Commit** the generated skills:
    ```bash
-   git add skills/$ARGUMENTS/ plugins/$ARGUMENTS/skills/
+   git add skills/$ARGUMENTS/ plugins/$ARGUMENTS/skills/$ARGUMENTS/
    git commit -m "feat($ARGUMENTS): generate skills from official documentation"
    ```
 

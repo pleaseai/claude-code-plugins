@@ -11,7 +11,7 @@ PLEASE STRICTLY FOLLOW THE BEST PRACTICES FOR SKILL: https://platform.claude.com
 
 ## Skill Source Types
 
-There are two types of skill sources. The project lists are defined in `scripts/meta.ts`:
+There are three types of skill sources. The project lists are defined in `scripts/meta.ts`:
 
 ### Type 1: Generated Skills (`sources/`)
 
@@ -35,7 +35,7 @@ For projects that **already maintain their own skills**. We clone their repo as 
 
 Skills sourced from `vendor/antfu-skills/skills/` — written by Anthony Fu with his preferences, experience, tastes and best practices.
 
-These are **read-only**. Do not modify them here; contribute changes upstream to [antfu/skills](https://github.com/antfu/skills). They are automatically copied to `skills/` by the sync script.
+These are **read-only**. Do not modify them here; contribute changes upstream to [antfu/skills](https://github.com/antfu/skills). They are automatically copied directly to `plugins/{plugin}/skills/` by the sync script (not via the intermediate `skills/` directory).
 
 ## Repository Structure
 
@@ -67,7 +67,7 @@ These are **read-only**. Do not modify them here; contribute changes upstream to
 │
 └── plugins/                        # Plugin directories
     └── {plugin}/
-        └── skills/                 # Synced from skills/ by cli.ts sync
+        └── skills/                 # Synced directly from vendor/ by cli.ts sync
             └── {skill-name}/
 ```
 
@@ -144,7 +144,8 @@ These are **read-only**. Do not modify them here; contribute changes upstream to
 After generating or updating skills, sync them to the plugin directories:
 
 ```bash
-bun scripts/cli.ts sync
+bun run skills:sync
+# or directly: bun scripts/cli.ts sync
 ```
 
 This copies `skills/` → `plugins/*/skills/` according to the mapping in `scripts/meta.ts`.

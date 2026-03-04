@@ -3,7 +3,7 @@
  * Mirrors the structure of vendor/antfu-skills/meta.ts but managed in this repo.
  *
  * To add a new source (Type 1):
- *   1. Add an entry to `sources` below
+ *   1. Add an entry to `submodules` below
  *   2. Run: bun scripts/cli.ts init
  *   3. Generate skills: /generate-skill <name>
  *   4. Add skill → plugin mapping to SKILL_TO_PLUGIN in scripts/cli.ts
@@ -87,6 +87,6 @@ export const vendors: Record<string, VendorMeta> = {
 
 /**
  * Type 3: Hand-written skills by Anthony Fu.
- * These live in vendor/antfu-skills/skills/ and are read directly.
+ * These live in vendor/antfu-skills/skills/ and are copied directly to plugins/{plugin}/skills/ by the sync script.
  */
 export const manual: string[] = ["antfu"]
