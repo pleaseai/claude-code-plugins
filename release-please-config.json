@@ -251,6 +251,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/ai-sdk": {
+      "release-type": "simple",
+      "component": "ai-sdk",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

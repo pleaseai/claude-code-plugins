@@ -314,6 +314,14 @@
       "keywords": ["agent-browser", "browser", "automation", "agents", "electron", "slack", "desktop", "qa"],
       "tags": ["browser", "automation"],
       "source": "./plugins/agent-browser"
+    },
+    {
+      "name": "ai-sdk",
+      "description": "The AI Toolkit for TypeScript - official agent skills for building AI-powered applications and agents with Vercel AI SDK",
+      "category": "ai",
+      "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"],
+      "tags": ["framework", "ai"],
+      "source": "./plugins/ai-sdk"
     }
   ]
 }
