@@ -25,6 +25,8 @@ export const pluginSchema = z.object({
     }),
   ]).optional(),
   category: z.string().optional(),
+  keywords: z.array(z.string()).optional(),
+  tags: z.array(z.string()).optional(),
   source: pluginSourceSchema,
   stars: z.number().optional(),
 })
