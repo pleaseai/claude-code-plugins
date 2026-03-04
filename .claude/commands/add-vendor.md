@@ -122,11 +122,17 @@ For each unique target plugin that doesn't already exist in `plugins/`:
 mkdir -p plugins/<plugin-name>/.claude-plugin
 ```
 
-Fetch the vendor repo's README or description to get a meaningful description:
+Fetch the vendor repo's metadata to determine description, author, and license:
 
 ```bash
-gh api repos/<owner>/<repo> --jq '.description'
+# Get description, owner, and license in one call
+gh api repos/<owner>/<repo> --jq '{description: .description, owner: .owner.login, license: .license.spdx_id}'
 ```
+
+- **description**: Use the repo description, or ask the user if empty
+- **author.name**: Use the organization/user name from `owner.login` (e.g., `"mastra-ai"` → `"Mastra AI"`)
+- **author.url**: Use `https://github.com/<owner>`
+- **license**: Use the SPDX license ID from `license.spdx_id` (e.g., `"Apache-2.0"`, `"MIT"`); fall back to `"MIT"` if null
 
 Create `plugins/<plugin-name>/.claude-plugin/plugin.json`:
 
