@@ -38,7 +38,7 @@ esac
 # .. 세그먼트를 정규화하여 경로 우회 방지
 # realpath -m은 GNU 전용이므로 python3로 크로스 플랫폼 폴백
 # fail-closed: 두 방법 모두 실패 시 요청 차단
-if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null || python3 -c "import os.path, sys; print(os.path.normpath(sys.argv[1]))" "$abs_path" 2>/dev/null)"; then
+if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null || python3 -c "import pathlib, sys; print(pathlib.Path(sys.argv[1]).resolve(strict=False))" "$abs_path" 2>/dev/null)"; then
   echo '{
   "hookSpecificOutput": {
     "permissionDecision": "deny",
