@@ -36,7 +36,16 @@ case "$file_path" in
 esac
 
 # .. 세그먼트를 정규화하여 경로 우회 방지 (realpath -m은 파일이 없어도 작동)
-abs_path="$(realpath -m "$abs_path" 2>/dev/null || echo "$abs_path")"
+# fail-open 대신 fail-closed: 경로 정규화 실패 시 요청 차단
+if ! abs_path="$(realpath -m "$abs_path" 2>/dev/null)"; then
+  echo '{
+  "hookSpecificOutput": {
+    "permissionDecision": "deny",
+    "permissionDecisionReason": "경로 정규화에 실패하여 요청을 차단했습니다."
+  }
+}' >&2
+  exit 2
+fi
 
 # 쓰기 금지 디렉토리 목록 확인 (프로젝트 루트에 앵커링)
 project_dir="${CLAUDE_PROJECT_DIR%/}"

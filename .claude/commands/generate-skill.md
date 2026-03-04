@@ -18,7 +18,7 @@ Follow the guidelines in `docs/skills-generator.md` to generate Type 1 skills.
    - `references/*.md` — one file per concept (prefixed by category, e.g. `core-syntax.md`, `features-plugins.md`)
 5. **Copy** the generated skills into the plugin directory:
    ```bash
-   mkdir -p plugins/$ARGUMENTS/skills/$ARGUMENTS/ && cp -r skills/$ARGUMENTS/. plugins/$ARGUMENTS/skills/$ARGUMENTS/
+   mkdir -p "plugins/$ARGUMENTS/skills/$ARGUMENTS/" && cp -r "skills/$ARGUMENTS/." "plugins/$ARGUMENTS/skills/$ARGUMENTS/"
    ```
    > Note: `bun run skills:sync` only handles Type 2 (vendor) and Type 3 (manual) skills.
    > Type 1 (generated) skills must be copied manually to the plugin directory.
