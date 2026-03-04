@@ -279,7 +279,7 @@ watch(targetNumber, (newValue) => {
 }
 
 /* AVOID: Properties that trigger layout recalculation */
-.element-avoid {
+.element {
   transition: width 0.3s ease, height 0.3s ease, margin 0.3s ease;
 }
 

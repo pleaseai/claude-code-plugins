@@ -15,7 +15,7 @@ tags: [vue3, directives, custom-directives, composition, typescript]
 - Use directives only when you need direct DOM access
 - Do not mutate directive arguments or binding objects
 - Clean up timers, listeners, and observers in `unmounted`
-- Register directives in `<script setup>` with the `v` prefix (e.g., `vFocus`)
+- Register directives in `<script setup>` with the `v-` prefix
 - In TypeScript projects, type directive values and augment template directive types
 - Prefer components or composables for complex behavior
 
@@ -117,7 +117,7 @@ export const vHighlight = {
 } satisfies Directive<HTMLElement, HighlightValue>
 
 declare module 'vue' {
-  interface GlobalDirectives {
+  interface ComponentCustomProperties {
     vHighlight: typeof vHighlight
   }
 }

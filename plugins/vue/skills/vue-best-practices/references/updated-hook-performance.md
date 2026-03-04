@@ -120,23 +120,24 @@ onUpdated(() => {
 ```
 
 ```javascript
-// GOOD: Conditional check in updated hook (read-only DOM operations)
+// GOOD: Conditional check in updated hook
 export default {
   data() {
     return {
-      content: ''
+      content: '',
+      lastSyncedContent: ''
     }
   },
   updated() {
-    // Only perform DOM reads/external calls, not reactive state mutations
-    if (this.$refs.editor && this.content) {
-      this.syncExternalEditor() // Sync external (non-reactive) state
+    // Only act if specific condition is met
+    if (this.content !== this.lastSyncedContent) {
+      this.syncContent()
+      this.lastSyncedContent = this.content
     }
   },
   methods: {
-    // import debounce from 'lodash-es/debounce'
-    syncExternalEditor: debounce(function() {
-      // Sync external library state (not Vue reactive data)
+    syncContent: debounce(function() {
+      // Sync logic
     }, 300)
   }
 }
