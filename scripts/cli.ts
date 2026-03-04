@@ -44,6 +44,12 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
   mastra: "mastra",
   "nuxt-ui": "nuxt-ui",
   "supabase-postgres-best-practices": "supabase",
+  "prisma-cli": "prisma",
+  "prisma-client-api": "prisma",
+  "prisma-database-setup": "prisma",
+  "prisma-driver-adapter-implementation": "prisma",
+  "prisma-postgres": "prisma",
+  "prisma-upgrade-v7": "prisma",
 }
 
 // ---------------------------------------------------------------------------
@@ -201,9 +207,9 @@ async function syncSubmodules() {
     const sha = getGitSha(vendorPath)
     console.log(`${sha?.slice(0, 7) ?? "?"}`)
 
-    const vendorSkillsDir = join(vendorPath, "skills")
+    const vendorSkillsDir = join(vendorPath, config.skillsDir ?? "skills")
     if (!existsSync(vendorSkillsDir)) {
-      console.warn(`  ! no skills/ in vendor/${name}`)
+      console.warn(`  ! no ${config.skillsDir ?? "skills"}/ in vendor/${name}`)
       continue
     }
 

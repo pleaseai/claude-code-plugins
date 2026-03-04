@@ -290,6 +290,14 @@
       "keywords": ["supabase", "postgres", "database", "backend"],
       "tags": ["database", "backend"],
       "source": "./plugins/supabase"
+    },
+    {
+      "name": "prisma",
+      "description": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows",
+      "category": "database",
+      "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
+      "tags": ["database", "orm"],
+      "source": "./plugins/prisma"
     }
   ]
 }
