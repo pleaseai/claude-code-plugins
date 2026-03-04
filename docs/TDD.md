@@ -1,6 +1,6 @@
 # TDD.md
 
-This document outlines the Test-Driven Development methodology and core development principles for the spec-kit-sdk project.
+This document outlines the Test-Driven Development methodology and core development principles.
 
 ## CORE DEVELOPMENT PRINCIPLES
 
@@ -9,7 +9,8 @@ This document outlines the Test-Driven Development methodology and core developm
 - Implement the minimum code needed to make tests pass
 - Refactor only after tests are passing
 - Follow Beck's "Tidy First" approach by separating structural changes from behavioral changes
-- Maintain high code quality throughout development
+- Maintain code ownership: understand and be able to explain every line of AI-generated code
+- Maintain high code quality throughout development — the same standards apply regardless of AI involvement
 
 ## TDD METHODOLOGY GUIDANCE
 
@@ -79,19 +80,27 @@ Follow this process precisely, always prioritizing clean, well-tested code over 
 
 **Always write one test at a time, make it run, then improve structure. Always run all the tests (except long-running tests) each time.**
 
+## Augmented Coding Integration
+
+When using AI assistance, apply Kent Beck's Augmented Coding principles alongside TDD:
+
+- **Developer leads**: AI is a tool, not the decision-maker
+- **Incremental progress**: One small change at a time, confirm tests pass, commit — then proceed
+- **Stop and revert** when AI adds unrequested functionality, manipulates tests, or repeats failing approaches
+
+See [STANDARDS.md](./STANDARDS.md) → AI Collaboration Warning Signs for the full list of signals.
+
 ## Integration with Project Standards
 
 This TDD methodology works in conjunction with:
-- **[STANDARDS.md](./STANDARDS.md)** - Coding standards and mandatory rules
+- **[STANDARDS.md](./STANDARDS.md)** - Coding standards, surgical changes, and AI collaboration rules
 - **[TESTING.md](./TESTING.md)** - Testing guidelines and best practices
-- **[CLAUDE.md](./CLAUDE.md)** - Claude Code guidance and commands
 
 ## TDD Commands
 
 ```bash
 # Run tests in TDD cycle
 bun test                    # Run all tests
-bun test:unit              # Run unit tests only
 bun test path/to/test.ts   # Run specific test file
 
 # Quality checks before commit

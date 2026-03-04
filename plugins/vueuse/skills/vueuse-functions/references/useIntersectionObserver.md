@@ -88,15 +88,14 @@ export interface UseIntersectionObserverOptions extends ConfigurableWindow {
   /**
    * A string which specifies a set of offsets to add to the root's bounding_box when calculating intersections.
    */
-  rootMargin?: string
+  rootMargin?: MaybeRefOrGetter<string>
   /**
    * Either a single number or an array of numbers between 0.0 and 1.
    * @default 0
    */
   threshold?: number | number[]
 }
-export interface UseIntersectionObserverReturn extends Pausable {
-  isSupported: ComputedRef<boolean>
+export interface UseIntersectionObserverReturn extends Supportable, Pausable {
   stop: () => void
 }
 /**

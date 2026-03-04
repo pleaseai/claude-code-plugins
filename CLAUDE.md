@@ -347,19 +347,32 @@ See `external-plugins/context7/` for a complete example of:
 - Optional API key configuration
 - Upstream PR contribution
 
-Reference documentation: @docs/lessons-learned/context7.md
+Reference documentation: `docs/lessons-learned/context7.md`
 
 **Note**: Context7 was migrated from SessionStart hooks to Skills for better token efficiency. See the lessons learned doc for the evolution and comparison.
 
+### Vendor-Synced Skills (Read-Only)
+
+Skills in `plugins/*/skills/` that contain a `SYNC.md` file are vendor-synced and **must not be modified directly** — changes will be overwritten on the next `bun run skills:sync`.
+```bash
+# Check before editing
+cat plugins/<plugin>/skills/<skill>/SYNC.md
+```
+Skip any code review suggestions targeting vendor-synced skill files.
+
 ## Development Standards
 
-This project follows strict development standards documented in:
-- @docs/commit-convention.md
-- @docs/STANDARDS.md
-- @docs/TDD.md
-- @docs/TESTING.md
-- @docs/plugins.md - Complete Claude Code plugin reference (manifest schema, components, development tools)
-- @docs/lessons-learned/ - Practical guides from plugin development experiences
+Read these documents **only when relevant to the current task** — do not load them all upfront:
+
+| Document | When to read |
+|----------|-------------|
+| `docs/commit-convention.md` | Before creating a commit |
+| `docs/STANDARDS.md` | Before writing or reviewing code |
+| `docs/TDD.md` | Before writing tests or implementing features |
+| `docs/TESTING.md` | Before writing or reviewing tests |
+| `docs/plugins.md` | When developing or modifying plugins |
+| `docs/skills-generator.md` | When generating or updating skills (`/generate-skill`) |
+| `docs/lessons-learned/` | When working on a topic covered by a lessons-learned doc |
 
 ## Plugin Installation
 

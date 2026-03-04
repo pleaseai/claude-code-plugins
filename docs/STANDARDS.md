@@ -9,7 +9,7 @@ Problem definition → small, safe change → change review → refactor — rep
 - If you make assumptions, record them in the Issue/PR/ADR.
 - Never commit or log secrets; validate all inputs and encode/normalize outputs.
 - Avoid premature abstraction and use intention-revealing names.
-- Apply YAGNI principle: "You Aren't Gonna Need It" - don't build features until they're actually needed.
+- Apply YAGNI principle: “You Aren’t Gonna Need It” - don’t build features until they’re actually needed.
 - Compare at least two options before deciding.
 
 ## Mindset
@@ -17,6 +17,7 @@ Problem definition → small, safe change → change review → refactor — rep
 - Think like a senior engineer.
 - Don’t jump in on guesses or rush to conclusions.
 - Always evaluate multiple approaches; write one line each for pros/cons/risks, then choose the simplest solution.
+- Record assumptions in the Issue, PR, or ADR.
 
 ## Code & File Reference Rules
 
@@ -28,7 +29,7 @@ Problem definition → small, safe change → change review → refactor — rep
 ## Required Coding Rules
 
 - Before coding, write a Problem 1-Pager: Context / Problem / Goal / Non-Goals / Constraints.
-- Enforce limits: file ≤ 300 LOC, function ≤ 50 LOC, parameters ≤ 5, cyclomatic complexity ≤ 10. If exceeded, split/refactor.
+- Enforce limits: file ≤ 500 LOC, function ≤ 50 LOC, parameters ≤ 5, cyclomatic complexity ≤ 10, cognitive complexity ≤ 15. If exceeded, split/refactor.
 - Prefer explicit code; no hidden “magic.”
 - Follow DRY, but avoid premature abstraction.
 - Isolate side effects (I/O, network, global state) at the boundary layer.
@@ -60,6 +61,36 @@ Problem definition → small, safe change → change review → refactor — rep
 - Report failures with specific errors/messages.
 - Make tests serve as usage examples; include boundary and failure cases.
 
+## Surgical Changes
+
+Modify only what’s necessary. Respect existing code.
+
+- **Don’t refactor unrelated code** — even if it looks messy, resist the urge unless explicitly asked.
+- **Preserve existing style** — match indentation, naming, and formatting of surrounding code.
+- **Don’t restyle or reformat** — changing whitespace, import order, or quotes in untouched code creates noise.
+- **Remove only what your changes orphaned** — delete imports/functions that YOUR change made unused.
+- **Flag pre-existing dead code** — leave a comment or mention in PR, don’t delete without being asked.
+
+## Managing Assumptions
+
+Surface uncertainty instead of silently choosing an interpretation.
+
+- **State assumptions explicitly** before proceeding: “I’m assuming X because Y”
+- **Present multiple interpretations** when requirements are ambiguous
+- **Ask for clarification** rather than guessing — especially for business logic
+- **Push back** when a request seems like it would introduce unnecessary complexity
+
+## AI Collaboration Warning Signs
+
+Stop and revert immediately when you observe any of these signals:
+
+| Warning Sign | Description | Response |
+|---|---|---|
+| **Loops** | AI repeats the same approach 3+ times without progress | Stop. Re-analyze the problem and try a different strategy |
+| **Unrequested functionality** | AI adds features or code not asked for | Revert immediately. Keep scope to the current task only |
+| **Test manipulation** | AI modifies or deletes tests to make code pass | Never allowed. If the test is correct, fix the code |
+| **Silent architecture decisions** | AI selects patterns or libraries without disclosure | Stop. Ask AI to present options, then decide explicitly |
+
 ## Anti-Pattern Rules
 
 - Don’t modify code without reading the whole context.
@@ -67,3 +98,5 @@ Problem definition → small, safe change → change review → refactor — rep
 - Don’t ignore failures or warnings.
 - Don’t introduce unjustified optimization or abstraction.
 - Don’t overuse broad exceptions.
+- Don’t refactor unrelated code — noisy diffs make reviews harder.
+- Don’t make silent assumptions — state them explicitly or ask.

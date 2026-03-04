@@ -231,6 +231,59 @@ Plugins can be easily toggled on and off as needed, making them perfect for:
 - Connecting internal tools
 - Bundling related customizations
 
+## Development
+
+### Antfu Skill Plugins
+
+The antfu-based skill plugins (vue, nuxt, vite, etc.) are managed via `scripts/cli.ts`, which mirrors the behavior of [antfu/skills](https://github.com/antfu/skills).
+
+#### Skill Source Types
+
+| Type | Location | How it works |
+|------|----------|-------------|
+| **Type 1 (Generated)** | `sources/{name}/` | Clone source repo, generate skills manually via `/generate-skill` |
+| **Type 2 (Vendored)** | `vendor/{name}/` | Clone repo with existing `skills/` dir, sync automatically |
+| **Type 3 (Manual)** | `vendor/antfu-skills/skills/antfu/` | Hand-written by Anthony Fu, read directly |
+
+#### CLI Commands
+
+```bash
+# Add submodules defined in scripts/meta.ts
+bun run skills:init
+
+# Update vendor submodules + copy skills to plugins/
+bun run skills:sync
+
+# Check for upstream updates
+bun run skills:check
+
+# Remove stale submodules and plugin skills
+bun run skills:cleanup
+```
+
+#### Adding a New Vendor (Type 2)
+
+1. Add entry to `vendors` in `scripts/meta.ts`:
+   ```ts
+   "my-lib": {
+     source: "https://github.com/org/my-lib",
+     skills: { "my-skill": "my-skill" },
+   }
+   ```
+2. Add skill → plugin mapping in `SKILL_TO_PLUGIN` in `scripts/cli.ts`
+3. Run `bun run skills:init` then `bun run skills:sync`
+
+#### Adding a New Source (Type 1)
+
+1. Add entry to `submodules` in `scripts/meta.ts`:
+   ```ts
+   "my-lib": "https://github.com/org/my-lib"
+   ```
+2. Run `bun run skills:init` to clone the repo to `sources/my-lib/`
+3. Generate skills using `/generate-skill my-lib`
+4. Add skill → plugin mapping in `SKILL_TO_PLUGIN` in `scripts/cli.ts`
+5. Run `bun run skills:sync`
+
 ## Support
 
 For questions or issues:

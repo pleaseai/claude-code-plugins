@@ -22,7 +22,11 @@
     "e2e:debug": "turbo run e2e:debug",
     "e2e:headed": "turbo run e2e:headed",
     "e2e:install": "turbo run e2e:install",
-    "prepare": "husky"
+    "prepare": "husky",
+    "skills:init": "bun scripts/cli.ts init",
+    "skills:sync": "bun scripts/cli.ts sync",
+    "skills:check": "bun scripts/cli.ts check",
+    "skills:cleanup": "bun scripts/cli.ts cleanup"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^5.2.1",
