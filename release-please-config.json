@@ -31,6 +31,174 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/antfu": {
+      "release-type": "node",
+      "package-name": "antfu",
+      "component": "antfu",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/nuxt": {
+      "release-type": "node",
+      "package-name": "nuxt",
+      "component": "nuxt",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/pinia": {
+      "release-type": "node",
+      "package-name": "pinia",
+      "component": "pinia",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/pnpm": {
+      "release-type": "node",
+      "package-name": "pnpm",
+      "component": "pnpm",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/slidev": {
+      "release-type": "node",
+      "package-name": "slidev",
+      "component": "slidev",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/tsdown": {
+      "release-type": "node",
+      "package-name": "tsdown",
+      "component": "tsdown",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/turborepo": {
+      "release-type": "node",
+      "package-name": "turborepo",
+      "component": "turborepo",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/unocss": {
+      "release-type": "node",
+      "package-name": "unocss",
+      "component": "unocss",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/vite": {
+      "release-type": "node",
+      "package-name": "vite",
+      "component": "vite",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/vitepress": {
+      "release-type": "node",
+      "package-name": "vitepress",
+      "component": "vitepress",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/vitest": {
+      "release-type": "node",
+      "package-name": "vitest",
+      "component": "vitest",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/vue": {
+      "release-type": "node",
+      "package-name": "vue",
+      "component": "vue",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/vueuse": {
+      "release-type": "node",
+      "package-name": "vueuse",
+      "component": "vueuse",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/web-design": {
+      "release-type": "node",
+      "package-name": "web-design",
+      "component": "web-design",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
