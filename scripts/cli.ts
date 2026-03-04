@@ -207,9 +207,16 @@ async function syncSubmodules() {
     const sha = getGitSha(vendorPath)
     console.log(`${sha?.slice(0, 7) ?? "?"}`)
 
-    const vendorSkillsDir = join(vendorPath, config.skillsDir ?? "skills")
+    const skillsDirValue = config.skillsDir ?? "skills"
+    const vendorSkillsDir = join(vendorPath, skillsDirValue)
+    const resolvedSkillsDir = resolve(vendorSkillsDir)
+    const resolvedVendorPath = resolve(vendorPath)
+    if (!resolvedSkillsDir.startsWith(resolvedVendorPath + "/") && resolvedSkillsDir !== resolvedVendorPath) {
+      console.error(`  ! invalid skillsDir for ${name}: "${config.skillsDir}" (escapes vendor directory)`)
+      continue
+    }
     if (!existsSync(vendorSkillsDir)) {
-      console.warn(`  ! no ${config.skillsDir ?? "skills"}/ in vendor/${name}`)
+      console.warn(`  ! no ${skillsDirValue}/ in vendor/${name}`)
       continue
     }
 
@@ -223,7 +230,8 @@ async function syncSubmodules() {
         continue
       }
       if (!existsSync(src)) {
-        console.warn(`  ! skill not found: vendor/${name}/skills/${srcSkill}`)
+        const relSrc = skillsDirValue === "." ? `vendor/${name}/${srcSkill}` : `vendor/${name}/${skillsDirValue}/${srcSkill}`
+        console.warn(`  ! skill not found: ${relSrc}`)
         continue
       }
 
@@ -232,9 +240,16 @@ async function syncSubmodules() {
       const destRelative = `plugins/${plugin}/skills/${outSkill}`
 
       process.stdout.write(`  ${srcSkill} → ${destRelative} ... `)
-      rmSync(dest, { recursive: true, force: true })
-      mkdirSync(dest, { recursive: true })
-      cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
+      try {
+        rmSync(dest, { recursive: true, force: true })
+        mkdirSync(dest, { recursive: true })
+        cpSync(src, dest, { recursive: true })
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e)
+        console.error(`FAILED\n  ! could not copy ${srcSkill}: ${msg}`)
+        rmSync(dest, { recursive: true, force: true })
+        continue
+      }
 
       // Copy LICENSE from vendor root
       const licenseNames = ["LICENSE", "LICENSE.md", "LICENSE.txt", "license", "license.md", "license.txt"]
@@ -248,7 +263,8 @@ async function syncSubmodules() {
 
       // Write SYNC.md
       const date = new Date().toISOString().split("T")[0]
-      writeFileSync(join(dest, "SYNC.md"), `# Sync Info\n\n- **Source:** \`vendor/${name}/skills/${srcSkill}\`\n- **Git SHA:** \`${sha}\`\n- **Synced:** ${date}\n`)
+      const skillsSubpath = skillsDirValue === "." ? srcSkill : `${skillsDirValue}/${srcSkill}`
+      writeFileSync(join(dest, "SYNC.md"), `# Sync Info\n\n- **Source:** \`vendor/${name}/${skillsSubpath}\`\n- **Git SHA:** \`${sha}\`\n- **Synced:** ${date}\n`)
 
       changedPaths.push(destRelative)
       console.log("done")
@@ -270,6 +286,9 @@ async function syncSubmodules() {
 
     // Commit this vendor's changes
     if (hasGitChanges(changedPaths)) {
+      if (sha === null) {
+        console.warn(`  ! WARNING: could not read git SHA for vendor/${name}. Commit message will say 'unknown'.`)
+      }
       const shortSha = sha?.slice(0, 7) ?? "unknown"
       commitChanges(changedPaths, `chore(sync): sync ${name} to ${shortSha}`)
       committed.push(name)

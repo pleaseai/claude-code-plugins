@@ -10,7 +10,7 @@
   "license": "MIT",
   "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
   "mcpServers": {
-    "Prisma-Local": {
+    "prisma": {
       "command": "npx",
       "args": ["-y", "prisma", "mcp"]
     }
