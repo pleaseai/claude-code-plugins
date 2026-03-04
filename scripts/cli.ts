@@ -9,7 +9,7 @@
  *   bun scripts/cli.ts check    # check for available upstream updates
  *   bun scripts/cli.ts cleanup  # remove stale submodules and plugin skills
  */
-import { execSync } from "node:child_process"
+import { execFileSync, execSync } from "node:child_process"
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { submodules, vendors } from "./meta.ts"
@@ -53,7 +53,23 @@ function exec(cmd: string, cwd = ROOT): string {
 function execSafe(cmd: string, cwd = ROOT): string | null {
   try {
     return exec(cmd, cwd)
-  } catch {
+  } catch (e) {
+    const msg = e instanceof Error ? e.message.split("\n")[0] : String(e)
+    process.stderr.write(`  [warn] command failed: ${cmd}\n         ${msg}\n`)
+    return null
+  }
+}
+
+function execFile(cmd: string, args: string[], cwd = ROOT): string {
+  return execFileSync(cmd, args, { cwd, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }).trim()
+}
+
+function execFileSafe(cmd: string, args: string[], cwd = ROOT): string | null {
+  try {
+    return execFile(cmd, args, cwd)
+  } catch (e) {
+    const msg = e instanceof Error ? e.message.split("\n")[0] : String(e)
+    process.stderr.write(`  [warn] command failed: ${cmd} ${args.join(" ")}\n         ${msg}\n`)
     return null
   }
 }
@@ -92,7 +108,7 @@ async function initSubmodules() {
     if (isSubmoduleRegistered(submodulePath)) {
       if (!existsSync(join(fullPath, ".git"))) {
         process.stdout.write(`  init: ${submodulePath} ... `)
-        execSafe(`git submodule update --init ${submodulePath}`)
+        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
         console.log("done")
       } else {
         console.log(`  already initialized: ${submodulePath}`)
@@ -103,7 +119,7 @@ async function initSubmodules() {
     process.stdout.write(`  adding: ${name}  (${url}) ... `)
     try {
       mkdirSync(dirname(fullPath), { recursive: true })
-      exec(`git submodule add ${url} ${submodulePath}`)
+      execFile("git", ["submodule", "add", url, submodulePath])
       console.log("done")
     } catch (e) {
       console.error(`failed\n    ${e}`)
@@ -119,7 +135,7 @@ async function initSubmodules() {
     if (isSubmoduleRegistered(submodulePath)) {
       if (!existsSync(join(fullPath, ".git"))) {
         process.stdout.write(`  init: ${submodulePath} ... `)
-        execSafe(`git submodule update --init ${submodulePath}`)
+        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
         console.log("done")
       } else {
         console.log(`  already initialized: ${submodulePath}`)
@@ -130,7 +146,7 @@ async function initSubmodules() {
     process.stdout.write(`  adding: ${name}  (${config.source}) ... `)
     try {
       mkdirSync(dirname(fullPath), { recursive: true })
-      exec(`git submodule add ${config.source} ${submodulePath}`)
+      execFile("git", ["submodule", "add", config.source, submodulePath])
       console.log("done")
     } catch (e) {
       console.error(`failed\n    ${e}`)
@@ -144,13 +160,14 @@ async function initSubmodules() {
 // sync helpers
 // ---------------------------------------------------------------------------
 function hasGitChanges(paths: string[]): boolean {
-  const status = execSafe(`git status --porcelain -- ${paths.join(" ")}`)
-  return status !== null && status.trim() !== ""
+  const status = execFileSafe("git", ["status", "--porcelain", "--", ...paths])
+  if (status === null) throw new Error("git status failed")
+  return status.trim() !== ""
 }
 
 function commitChanges(paths: string[], message: string) {
-  exec(`git add -- ${paths.join(" ")}`)
-  exec(`git commit -m ${JSON.stringify(message)}`)
+  execFile("git", ["add", "--", ...paths])
+  execFile("git", ["commit", "-m", message])
 }
 
 // ---------------------------------------------------------------------------
@@ -172,7 +189,12 @@ async function syncSubmodules() {
 
     // Update submodule to latest
     process.stdout.write(`[${name}] updating submodule... `)
-    execSafe(`git submodule update --remote --merge ${submodulePath}`)
+    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", submodulePath])
+    if (updated === null) {
+      console.log("FAILED")
+      console.warn(`  ! Skipping ${name} to avoid committing stale content.`)
+      continue
+    }
     const sha = getGitSha(vendorPath)
     console.log(`${sha?.slice(0, 7) ?? "?"}`)
 
@@ -351,10 +373,10 @@ async function cleanup() {
     for (const submodulePath of extraSubmodules) {
       process.stdout.write(`  ${submodulePath} ... `)
       try {
-        execSafe(`git submodule deinit -f ${submodulePath}`)
+        execFileSafe("git", ["submodule", "deinit", "-f", submodulePath])
         const gitModulesCache = join(ROOT, ".git/modules", submodulePath)
         if (existsSync(gitModulesCache)) rmSync(gitModulesCache, { recursive: true })
-        exec(`git rm -f ${submodulePath}`)
+        execFile("git", ["rm", "-f", submodulePath])
         console.log("removed")
       } catch (e) {
         console.error(`failed: ${e}`)

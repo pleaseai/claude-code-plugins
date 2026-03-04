@@ -35,8 +35,10 @@ case "$file_path" in
     ;;
 esac
 
-# 쓰기 금지 디렉토리 목록 확인
-if echo "$abs_path" | grep -qE '(^|/)vendor(/|$)'; then
+# 쓰기 금지 디렉토리 목록 확인 (프로젝트 루트에 앵커링)
+project_dir="${CLAUDE_PROJECT_DIR%/}"
+
+if [[ "$abs_path" == "${project_dir}/vendor/"* ]]; then
   echo '{
   "hookSpecificOutput": {
     "permissionDecision": "deny",
@@ -46,7 +48,7 @@ if echo "$abs_path" | grep -qE '(^|/)vendor(/|$)'; then
   exit 2
 fi
 
-if echo "$abs_path" | grep -qE '(^|/)sources(/|$)'; then
+if [[ "$abs_path" == "${project_dir}/sources/"* ]]; then
   echo '{
   "hookSpecificOutput": {
     "permissionDecision": "deny",
