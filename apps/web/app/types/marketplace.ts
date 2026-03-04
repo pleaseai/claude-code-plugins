@@ -22,6 +22,8 @@ export interface Plugin {
   version?: string
   author?: string | { name?: string, email?: string }
   category?: string
+  keywords?: string[]
+  tags?: string[]
   source: PluginSource | string
   stars?: number
 }
