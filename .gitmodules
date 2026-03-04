@@ -88,3 +88,6 @@
 [submodule "vendor/supabase"]
 	path = vendor/supabase
 	url = https://github.com/supabase/agent-skills
+[submodule "vendor/prisma"]
+	path = vendor/prisma
+	url = https://github.com/prisma/skills

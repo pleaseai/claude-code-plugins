@@ -19,6 +19,8 @@
 export interface VendorMeta {
   /** Git repository URL */
   source: string
+  /** Path within the vendor repo where skills live. Defaults to "skills". Use "." for repos where skills are at root. */
+  skillsDir?: string
   /** sourceSkillName → outputSkillName mapping */
   skills: Record<string, string>
 }
@@ -99,6 +101,18 @@ export const vendors: Record<string, VendorMeta> = {
     source: "https://github.com/supabase/agent-skills",
     skills: {
       "supabase-postgres-best-practices": "supabase-postgres-best-practices",
+    },
+  },
+  prisma: {
+    source: "https://github.com/prisma/skills",
+    skillsDir: ".",
+    skills: {
+      "prisma-cli": "prisma-cli",
+      "prisma-client-api": "prisma-client-api",
+      "prisma-database-setup": "prisma-database-setup",
+      "prisma-driver-adapter-implementation": "prisma-driver-adapter-implementation",
+      "prisma-postgres": "prisma-postgres",
+      "prisma-upgrade-v7": "prisma-upgrade-v7",
     },
   },
 }
