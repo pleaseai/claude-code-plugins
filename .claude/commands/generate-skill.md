@@ -5,11 +5,11 @@ description: Generate skills for a project from its official documentation.
 
 Generate agent skills for the project: **$ARGUMENTS**
 
-Follow the guidelines in `vendor/antfu-skills/AGENTS.md` to generate Type 1 skills.
+Follow the guidelines in `docs/skills-generator.md` to generate Type 1 skills.
 
 ## Steps
 
-1. **Read** `vendor/antfu-skills/AGENTS.md` for the full generation guidelines
+1. **Read** `docs/skills-generator.md` for the full generation guidelines
 2. **Check** `vendor/antfu-skills/instructions/$ARGUMENTS.md` for project-specific instructions (if it exists)
 3. **Read** source docs from `sources/$ARGUMENTS/docs/`
 4. **Generate** skill files into `skills/$ARGUMENTS/`:
