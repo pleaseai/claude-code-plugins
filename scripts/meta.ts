@@ -89,6 +89,12 @@ export const vendors: Record<string, VendorMeta> = {
       mastra: "mastra",
     },
   },
+  "nuxt-ui": {
+    source: "https://github.com/nuxt/ui",
+    skills: {
+      "nuxt-ui": "nuxt-ui",
+    },
+  },
 }
 
 /**

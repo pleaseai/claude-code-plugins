@@ -114,14 +114,11 @@
     },
     {
       "name": "nuxt-ui",
-      "description": "Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server",
+      "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
       "category": "ui",
       "keywords": ["nuxt-ui", "vue", "components", "ui-library"],
-      "tags": ["mcp", "ui"],
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/nuxt-ui"
-      }
+      "tags": ["ui"],
+      "source": "./plugins/nuxt-ui"
     },
     {
       "name": "plugin-dev",

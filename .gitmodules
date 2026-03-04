@@ -31,9 +31,6 @@
 [submodule "external-plugins/open-aware"]
 	path = external-plugins/open-aware
 	url = git@github.com:amondnet/open-aware.git
-[submodule "external-plugins/nuxt-ui"]
-	path = external-plugins/nuxt-ui
-	url = git@github.com:pleaseai/nuxt-ui.git
 [submodule "vendor/antfu-skills"]
 	path = vendor/antfu-skills
 	url = https://github.com/antfu/skills.git
@@ -85,3 +82,6 @@
 [submodule "vendor/mastra"]
 	path = vendor/mastra
 	url = https://github.com/mastra-ai/skills
+[submodule "vendor/nuxt-ui"]
+	path = vendor/nuxt-ui
+	url = https://github.com/nuxt/ui
