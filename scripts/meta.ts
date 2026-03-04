@@ -126,6 +126,15 @@ export const vendors: Record<string, VendorMeta> = {
       twoFactor: "twoFactor",
     },
   },
+  "agent-browser": {
+    source: "https://github.com/vercel-labs/agent-browser",
+    skills: {
+      "agent-browser": "agent-browser",
+      dogfood: "dogfood",
+      electron: "electron",
+      slack: "slack",
+    },
+  },
 }
 
 /**

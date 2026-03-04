@@ -306,6 +306,14 @@
       "keywords": ["better-auth", "authentication", "auth", "typescript"],
       "tags": ["framework", "auth"],
       "source": "./plugins/better-auth"
+    },
+    {
+      "name": "agent-browser",
+      "description": "Browser automation CLI for AI agents",
+      "category": "browser",
+      "keywords": ["agent-browser", "browser", "automation", "agents"],
+      "tags": ["browser", "automation"],
+      "source": "./plugins/agent-browser"
     }
   ]
 }

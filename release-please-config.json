@@ -240,6 +240,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/agent-browser": {
+      "release-type": "simple",
+      "component": "agent-browser",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
