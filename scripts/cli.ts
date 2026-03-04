@@ -141,21 +141,26 @@ async function initSubmodules() {
 }
 
 // ---------------------------------------------------------------------------
+// sync helpers
+// ---------------------------------------------------------------------------
+function hasGitChanges(paths: string[]): boolean {
+  const status = execSafe(`git status --porcelain -- ${paths.join(" ")}`)
+  return status !== null && status.trim() !== ""
+}
+
+function commitChanges(paths: string[], message: string) {
+  exec(`git add -- ${paths.join(" ")}`)
+  exec(`git commit -m ${JSON.stringify(message)}`)
+}
+
+// ---------------------------------------------------------------------------
 // sync
 // ---------------------------------------------------------------------------
 async function syncSubmodules() {
-  // 1. Update each vendor submodule
-  process.stdout.write("Updating vendor submodules... ")
-  for (const name of Object.keys(vendors)) {
-    const submodulePath = `vendor/${name}`
-    if (isSubmoduleRegistered(submodulePath)) {
-      execSafe(`git submodule update --remote --merge ${submodulePath}`)
-    }
-  }
-  console.log("done\n")
+  const committed: string[] = []
 
-  // 2. Sync Type 2 vendor skills → plugins/{plugin}/skills/{skill}/
-  console.log("Syncing vendor skills to plugins...")
+  // 1. Sync Type 2 vendor skills → plugins/{plugin}/skills/{skill}/ + commit per vendor
+  console.log("Syncing vendor skills to plugins...\n")
   for (const [name, config] of Object.entries(vendors)) {
     const submodulePath = `vendor/${name}`
     const vendorPath = join(ROOT, submodulePath)
@@ -165,11 +170,19 @@ async function syncSubmodules() {
       continue
     }
 
+    // Update submodule to latest
+    process.stdout.write(`[${name}] updating submodule... `)
+    execSafe(`git submodule update --remote --merge ${submodulePath}`)
+    const sha = getGitSha(vendorPath)
+    console.log(`${sha?.slice(0, 7) ?? "?"}`)
+
     const vendorSkillsDir = join(vendorPath, "skills")
     if (!existsSync(vendorSkillsDir)) {
       console.warn(`  ! no skills/ in vendor/${name}`)
       continue
     }
+
+    const changedPaths: string[] = [submodulePath]
 
     for (const [srcSkill, outSkill] of Object.entries(config.skills)) {
       const src = join(vendorSkillsDir, srcSkill)
@@ -185,8 +198,9 @@ async function syncSubmodules() {
 
       ensurePlugin(plugin)
       const dest = join(PLUGINS_DIR, plugin, "skills", outSkill)
+      const destRelative = `plugins/${plugin}/skills/${outSkill}`
 
-      process.stdout.write(`  ${srcSkill} → plugins/${plugin}/skills/${outSkill} ... `)
+      process.stdout.write(`  ${srcSkill} → ${destRelative} ... `)
       rmSync(dest, { recursive: true, force: true })
       mkdirSync(dest, { recursive: true })
       cpSync(src, dest, { recursive: true })
@@ -202,16 +216,41 @@ async function syncSubmodules() {
       }
 
       // Write SYNC.md
-      const sha = getGitSha(vendorPath)
       const date = new Date().toISOString().split("T")[0]
       writeFileSync(join(dest, "SYNC.md"), `# Sync Info\n\n- **Source:** \`vendor/${name}/skills/${srcSkill}\`\n- **Git SHA:** \`${sha}\`\n- **Synced:** ${date}\n`)
 
+      changedPaths.push(destRelative)
       console.log("done")
+    }
+
+    // turborepo: also sync command file
+    if (name === "turborepo") {
+      const turborepoCommandSrc = join(PLUGINS_DIR, "turborepo/skills/turborepo/command/turborepo.md")
+      if (existsSync(turborepoCommandSrc)) {
+        const commandsDir = join(PLUGINS_DIR, "turborepo/commands")
+        mkdirSync(commandsDir, { recursive: true })
+        const dest = join(commandsDir, "turborepo.md")
+        rmSync(dest, { force: true })
+        cpSync(turborepoCommandSrc, dest)
+        changedPaths.push("plugins/turborepo/commands/turborepo.md")
+        console.log("  turborepo command synced")
+      }
+    }
+
+    // Commit this vendor's changes
+    if (hasGitChanges(changedPaths)) {
+      const shortSha = sha?.slice(0, 7) ?? "unknown"
+      commitChanges(changedPaths, `chore(sync): sync ${name} to ${shortSha}`)
+      committed.push(name)
+      console.log(`  → committed: chore(sync): sync ${name} to ${shortSha}\n`)
+    } else {
+      console.log(`  → no changes\n`)
     }
   }
 
-  // 3. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → plugins/{plugin}/skills/
-  console.log("\nCopying manual skills to plugins...")
+  // 2. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → plugins/{plugin}/skills/
+  console.log("Syncing manual skills to plugins...")
+  const manualPaths: string[] = []
   for (const skill of ["antfu"]) {
     const plugin = SKILL_TO_PLUGIN[skill]
     if (!plugin) continue
@@ -228,22 +267,25 @@ async function syncSubmodules() {
     process.stdout.write(`  ${skill} → plugins/${plugin}/skills/${skill} ... `)
     rmSync(dest, { recursive: true, force: true })
     cpSync(src, dest, { recursive: true })
+    manualPaths.push(`plugins/${plugin}/skills/${skill}`)
     console.log("done")
   }
 
-  // 4. turborepo: copy command file
-  const turborepoCommandSrc = join(PLUGINS_DIR, "turborepo/skills/turborepo/command/turborepo.md")
-  if (existsSync(turborepoCommandSrc)) {
-    const commandsDir = join(PLUGINS_DIR, "turborepo/commands")
-    mkdirSync(commandsDir, { recursive: true })
-    const dest = join(commandsDir, "turborepo.md")
-    rmSync(dest, { force: true })
-    cpSync(turborepoCommandSrc, dest)
-    console.log("\n  turborepo command synced")
+  if (manualPaths.length > 0 && hasGitChanges(manualPaths)) {
+    const sha = getGitSha(join(ROOT, "vendor/antfu-skills"))
+    const shortSha = sha?.slice(0, 7) ?? "unknown"
+    commitChanges(manualPaths, `chore(sync): sync antfu manual skills to ${shortSha}`)
+    committed.push("antfu-skills")
+    console.log(`  → committed: chore(sync): sync antfu manual skills to ${shortSha}`)
+  } else {
+    console.log("  → no changes")
   }
 
-  const pluginCount = new Set(Object.values(SKILL_TO_PLUGIN)).size
-  console.log(`\nDone. Synced skills for ${pluginCount} plugins.`)
+  if (committed.length === 0) {
+    console.log("\nAll skills are up to date. Nothing to commit.")
+  } else {
+    console.log(`\nDone. ${committed.length} commit(s): ${committed.join(", ")}`)
+  }
 }
 
 // ---------------------------------------------------------------------------
