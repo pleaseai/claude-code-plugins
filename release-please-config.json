@@ -33,172 +33,74 @@
       ]
     },
     "plugins/antfu": {
-      "release-type": "node",
-      "package-name": "antfu",
+      "release-type": "simple",
       "component": "antfu",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/nuxt": {
-      "release-type": "node",
-      "package-name": "nuxt",
+      "release-type": "simple",
       "component": "nuxt",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/pinia": {
-      "release-type": "node",
-      "package-name": "pinia",
+      "release-type": "simple",
       "component": "pinia",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/pnpm": {
-      "release-type": "node",
-      "package-name": "pnpm",
+      "release-type": "simple",
       "component": "pnpm",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/slidev": {
-      "release-type": "node",
-      "package-name": "slidev",
+      "release-type": "simple",
       "component": "slidev",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/tsdown": {
-      "release-type": "node",
-      "package-name": "tsdown",
+      "release-type": "simple",
       "component": "tsdown",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/turborepo": {
-      "release-type": "node",
-      "package-name": "turborepo",
+      "release-type": "simple",
       "component": "turborepo",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/unocss": {
-      "release-type": "node",
-      "package-name": "unocss",
+      "release-type": "simple",
       "component": "unocss",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/vite": {
-      "release-type": "node",
-      "package-name": "vite",
+      "release-type": "simple",
       "component": "vite",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/vitepress": {
-      "release-type": "node",
-      "package-name": "vitepress",
+      "release-type": "simple",
       "component": "vitepress",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/vitest": {
-      "release-type": "node",
-      "package-name": "vitest",
+      "release-type": "simple",
       "component": "vitest",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/vue": {
-      "release-type": "node",
-      "package-name": "vue",
+      "release-type": "simple",
       "component": "vue",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/vueuse": {
-      "release-type": "node",
-      "package-name": "vueuse",
+      "release-type": "simple",
       "component": "vueuse",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     },
     "plugins/web-design": {
-      "release-type": "node",
-      "package-name": "web-design",
+      "release-type": "simple",
       "component": "web-design",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
+      "version-file": ".claude-plugin/plugin.json"
     }
   },
   "release-type": "node",

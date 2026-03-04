@@ -77,12 +77,6 @@ function getRegisteredSubmodulePaths(): string[] {
 function ensurePlugin(plugin: string) {
   const pluginDir = join(PLUGINS_DIR, plugin)
   mkdirSync(join(pluginDir, "skills"), { recursive: true })
-
-  // Ensure package.json for release-please
-  const pkgPath = join(pluginDir, "package.json")
-  if (!existsSync(pkgPath)) {
-    writeFileSync(pkgPath, `${JSON.stringify({ name: plugin, version: "0.0.1", private: true }, null, 2)}\n`)
-  }
 }
 
 // ---------------------------------------------------------------------------
