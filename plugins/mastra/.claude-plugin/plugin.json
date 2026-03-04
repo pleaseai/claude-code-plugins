@@ -8,5 +8,10 @@
   },
   "repository": "https://github.com/mastra-ai/skills",
   "license": "Apache-2.0",
-  "keywords": ["mastra", "ai", "framework", "agent"]
+  "keywords": [
+    "mastra",
+    "ai",
+    "framework",
+    "agent"
+  ]
 }
