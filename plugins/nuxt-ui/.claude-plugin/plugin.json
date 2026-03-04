@@ -8,7 +8,13 @@
   },
   "repository": "https://github.com/nuxt/ui",
   "license": "MIT",
-  "keywords": ["nuxt-ui", "vue", "ui", "tailwind", "reka-ui"],
+  "keywords": [
+    "nuxt-ui",
+    "vue",
+    "ui",
+    "tailwind",
+    "reka-ui"
+  ],
   "mcpServers": {
     "nuxt-ui": {
       "type": "http",
