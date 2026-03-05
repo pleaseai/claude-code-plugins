@@ -345,6 +345,33 @@ async function syncSubmodules() {
     console.log("  → no changes")
   }
 
+  // 3. Update skills.sh managed plugins
+  console.log("\nUpdating skills.sh plugins...\n")
+  const skillsShPlugins = readdirSync(PLUGINS_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory() && existsSync(join(PLUGINS_DIR, d.name, "skills-lock.json")))
+    .map(d => d.name)
+
+  for (const plugin of skillsShPlugins) {
+    const pluginDir = join(PLUGINS_DIR, plugin)
+    const changedPaths = [`plugins/${plugin}`]
+
+    process.stdout.write(`[${plugin}] bunx skills update... `)
+    const result = execFileSafe("bunx", ["skills", "update", "-y"], pluginDir)
+    if (result === null) {
+      console.log("FAILED")
+      continue
+    }
+    console.log("done")
+
+    if (hasGitChanges(changedPaths)) {
+      commitChanges(changedPaths, `chore(sync): update skills.sh plugin ${plugin}`)
+      committed.push(`${plugin} (skills.sh)`)
+      console.log(`  → committed: chore(sync): update skills.sh plugin ${plugin}\n`)
+    } else {
+      console.log(`  → no changes\n`)
+    }
+  }
+
   if (committed.length === 0) {
     console.log("\nAll skills are up to date. Nothing to commit.")
   } else {
