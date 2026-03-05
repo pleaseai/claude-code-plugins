@@ -1,0 +1,13 @@
+{
+  "name": "slack-agent",
+  "version": "1.0.0",
+  "description": "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt. Provides development patterns, testing requirements, and quality standards.",
+  "author": {
+    "name": "vercel-labs",
+    "url": "https://github.com/vercel-labs"
+  },
+  "repository": "https://github.com/vercel-labs/slack-agent-skill",
+  "license": "Apache-2.0",
+  "keywords": ["slack-agent"],
+  "skills": "./.agents/skills/"
+}

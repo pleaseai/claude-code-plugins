@@ -262,6 +262,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/slack-agent": {
+      "release-type": "simple",
+      "component": "slack-agent",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

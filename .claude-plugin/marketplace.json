@@ -322,6 +322,11 @@
       "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"],
       "tags": ["framework", "ai"],
       "source": "./plugins/ai-sdk"
+    },
+    {
+      "name": "slack-agent",
+      "description": "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt.",
+      "source": "./plugins/slack-agent"
     }
   ]
 }
