@@ -26,10 +26,10 @@ claude-code-plugins/
 │   ├── grafana/               # Grafana integration
 │   ├── chrome-devtools-mcp/   # Chrome DevTools automation
 │   └── context7/              # Up-to-date library documentation
-├── plugins/                    # Built-in plugins (maintained in this repo)
-│   ├── gatekeeper/            # Auto-approve safe commands
-│   ├── plugin-dev/            # Plugin development tools
-│   └── ...                    # Framework-specific plugins (antfu, nuxt, vue, etc.)
+├── plugins/                    # Built-in plugins (manually maintained) AND auto-generated Type 4 output
+│   ├── gatekeeper/            # Auto-approve safe commands (manually maintained)
+│   ├── plugin-dev/            # Plugin development tools (manually maintained)
+│   └── ...                    # Framework-specific plugins + auto-synced Gemini CLI extensions
 ├── apps/web/                  # Marketplace website
 ├── .claude-plugin/            # Marketplace configuration
 └── hooks/                     # Session hooks
@@ -141,6 +141,51 @@ All plugins are maintained in separate repositories and included as git submodul
 - `external-plugins/context7/` → https://github.com/pleaseai/context7
 
 ## Claude Code Plugin Development Guide
+
+### Adding a Gemini CLI Extension (Type 4 Auto-Sync)
+
+Type 4 plugins are Gemini CLI extensions stored as read-only git submodules in `external-plugins/<name>/`. The sync system auto-generates Claude Code plugin artifacts into `plugins/<name>/` — do not edit files in `plugins/<name>/` manually when they are Type 4 output.
+
+**Simplest approach — use the slash command:**
+```bash
+/add-gemini-extension <extension-name> <github-repo-url>
+```
+This automates the full workflow: validates the repo, updates `scripts/meta.ts`, runs `init` and `sync`, and updates the marketplace config.
+
+**Manual approach:**
+
+1. Add an entry to the `extensions` registry in `scripts/meta.ts`:
+   ```typescript
+   export const extensions: Record<string, ExtensionMeta> = {
+     "extension-name": {
+       source: "https://github.com/org/repo",
+       // pluginName: "override-name",  // optional: defaults to extension key
+       // skipCommands: true,           // optional: skip TOML→Markdown command conversion
+     },
+   }
+   ```
+
+2. Run init to add the submodule, then sync to generate artifacts:
+   ```bash
+   bun scripts/cli.ts init   # adds git submodule at external-plugins/<name>/
+   bun scripts/cli.ts sync   # generates plugins/<name>/ artifacts
+   ```
+
+**`ExtensionMeta` interface fields:**
+- `source` (required) — Git repository URL of the Gemini CLI extension
+- `pluginName` (optional) — Override the output plugin name; defaults to the extension key
+- `skipCommands` (optional) — Set `true` to skip converting TOML commands to Markdown
+
+**Data flow:**
+```
+external-plugins/<name>/    →    plugins/<name>/
+  (read-only submodule)          (auto-generated — do not edit manually)
+  gemini-extension.json    →     .claude-plugin/plugin.json
+  commands/*.toml          →     commands/*.md
+  <contextFileName>        →     hooks/hooks.json + hooks/context.sh + <contextFileName>
+```
+
+Files in `plugins/<name>/` that are auto-generated will have a `SYNC.md` marker. Fields added manually to `plugin.json` (such as `author`, `homepage`, `repository`, `license`, `keywords`) survive re-syncs; auto-generated fields (`name`, `version`, `description`, `mcpServers`, `commands`) are overwritten each sync.
 
 ### Adding a New Plugin to the Marketplace
 
@@ -403,6 +448,8 @@ bun run typecheck
 - `external-plugins/*/gemini-extension.json` - Plugin manifests (legacy)
 - `external-plugins/*/.claude-plugin/plugin.json` - Plugin manifests (Claude Code)
 - `hooks/hooks.json` - Session start hooks
+- `scripts/meta.ts` - Registry for Type 1/2/3/4 plugin sources (submodules, vendors, extensions)
+- `scripts/cli.ts` - CLI tool: `init` (add submodules) and `sync` (generate plugin artifacts)
 - `docs/commit-convention.md` - Commit message guidelines
 - `docs/TDD.md` - Test-driven development methodology
 - `.nvmrc` - Node.js version specification (v22)
