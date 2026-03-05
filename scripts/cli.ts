@@ -21,7 +21,7 @@ const PLUGINS_DIR = join(ROOT, "plugins")
 // ---------------------------------------------------------------------------
 // skill dir name → plugin dir name
 // ---------------------------------------------------------------------------
-const SKILL_TO_PLUGIN: Record<string, string> = {
+export const SKILL_TO_PLUGIN: Record<string, string> = {
   // Type 1: generated directly into plugins/{plugin}/skills/{skill}/ via /generate-skill
   antfu: "antfu",
   nuxt: "nuxt",
@@ -67,11 +67,11 @@ const SKILL_TO_PLUGIN: Record<string, string> = {
 // ---------------------------------------------------------------------------
 // NOTE: exec/execSafe use shell execution. Do NOT call with user-provided or
 // external input — use execFile/execFileSafe instead (they bypass the shell).
-function exec(cmd: string, cwd = ROOT): string {
+export function exec(cmd: string, cwd = ROOT): string {
   return execSync(cmd, { cwd, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }).trim()
 }
 
-function execSafe(cmd: string, cwd = ROOT): string | null {
+export function execSafe(cmd: string, cwd = ROOT): string | null {
   try {
     return exec(cmd, cwd)
   } catch (e) {
@@ -81,11 +81,11 @@ function execSafe(cmd: string, cwd = ROOT): string | null {
   }
 }
 
-function execFile(cmd: string, args: string[], cwd = ROOT): string {
+export function execFile(cmd: string, args: string[], cwd = ROOT): string {
   return execFileSync(cmd, args, { cwd, encoding: "utf-8", stdio: ["pipe", "pipe", "pipe"] }).trim()
 }
 
-function execFileSafe(cmd: string, args: string[], cwd = ROOT): string | null {
+export function execFileSafe(cmd: string, args: string[], cwd = ROOT): string | null {
   try {
     return execFile(cmd, args, cwd)
   } catch (e) {
@@ -95,21 +95,21 @@ function execFileSafe(cmd: string, args: string[], cwd = ROOT): string | null {
   }
 }
 
-function getGitSha(dir: string): string | null {
+export function getGitSha(dir: string): string | null {
   return execSafe("git rev-parse HEAD", dir)
 }
 
-function isSubmoduleRegistered(submodulePath: string): boolean {
+export function isSubmoduleRegistered(submodulePath: string): boolean {
   return getRegisteredSubmodulePaths().includes(submodulePath)
 }
 
-function getRegisteredSubmodulePaths(): string[] {
+export function getRegisteredSubmodulePaths(): string[] {
   const gitmodules = join(ROOT, ".gitmodules")
   if (!existsSync(gitmodules)) return []
   return Array.from(readFileSync(gitmodules, "utf-8").matchAll(/path\s*=\s*(.+)/g), m => (m[1] ?? "").trim())
 }
 
-function ensurePlugin(plugin: string) {
+export function ensurePlugin(plugin: string) {
   const pluginDir = join(PLUGINS_DIR, plugin)
   mkdirSync(join(pluginDir, "skills"), { recursive: true })
 }
@@ -117,7 +117,7 @@ function ensurePlugin(plugin: string) {
 // ---------------------------------------------------------------------------
 // init
 // ---------------------------------------------------------------------------
-async function initSubmodules() {
+export async function initSubmodules() {
   // Type 1: sources
   console.log("Initializing source submodules...\n")
   for (const [name, url] of Object.entries(submodules)) {
@@ -178,13 +178,13 @@ async function initSubmodules() {
 // ---------------------------------------------------------------------------
 // sync helpers
 // ---------------------------------------------------------------------------
-function hasGitChanges(paths: string[]): boolean {
+export function hasGitChanges(paths: string[]): boolean {
   const status = execFileSafe("git", ["status", "--porcelain", "--", ...paths])
   if (status === null) throw new Error("git status failed")
   return status.trim() !== ""
 }
 
-function commitChanges(paths: string[], message: string) {
+export function commitChanges(paths: string[], message: string) {
   execFile("git", ["add", "--", ...paths])
   execFile("git", ["commit", "-m", message])
 }
@@ -192,7 +192,7 @@ function commitChanges(paths: string[], message: string) {
 // ---------------------------------------------------------------------------
 // sync
 // ---------------------------------------------------------------------------
-async function syncSubmodules() {
+export async function syncSubmodules() {
   const committed: string[] = []
 
   // 1. Sync Type 2 vendor skills → plugins/{plugin}/skills/{skill}/ + commit per vendor
@@ -382,7 +382,7 @@ async function syncSubmodules() {
 // ---------------------------------------------------------------------------
 // check
 // ---------------------------------------------------------------------------
-async function checkUpdates() {
+export async function checkUpdates() {
   process.stdout.write("Fetching remote changes... ")
   for (const name of Object.keys(submodules)) {
     const path = join(ROOT, "sources", name)
@@ -425,7 +425,7 @@ async function checkUpdates() {
 // ---------------------------------------------------------------------------
 // cleanup
 // ---------------------------------------------------------------------------
-async function cleanup() {
+export async function cleanup() {
   // 1. Extra submodules not in meta.ts
   const expectedPaths = new Set([
     ...Object.keys(submodules).map(n => `sources/${n}`),
@@ -482,28 +482,30 @@ async function cleanup() {
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
-const command = process.argv[2]
+if (import.meta.main) {
+  const command = process.argv[2]
 
-switch (command) {
-  case "init":
-    await initSubmodules()
-    break
-  case "sync":
-    await syncSubmodules()
-    break
-  case "check":
-    await checkUpdates()
-    break
-  case "cleanup":
-    await cleanup()
-    break
-  default:
-    console.log("Usage: bun scripts/cli.ts <command>")
-    console.log()
-    console.log("Commands:")
-    console.log("  init     Add vendor submodules to this repo")
-    console.log("  sync     Update submodules and sync skills directly to plugins/")
-    console.log("  check    Check for available upstream updates")
-    console.log("  cleanup  Remove stale submodules and plugin skills")
-    process.exit(1)
+  switch (command) {
+    case "init":
+      await initSubmodules()
+      break
+    case "sync":
+      await syncSubmodules()
+      break
+    case "check":
+      await checkUpdates()
+      break
+    case "cleanup":
+      await cleanup()
+      break
+    default:
+      console.log("Usage: bun scripts/cli.ts <command>")
+      console.log()
+      console.log("Commands:")
+      console.log("  init     Add vendor submodules to this repo")
+      console.log("  sync     Update submodules and sync skills directly to plugins/")
+      console.log("  check    Check for available upstream updates")
+      console.log("  cleanup  Remove stale submodules and plugin skills")
+      process.exit(1)
+  }
 }
