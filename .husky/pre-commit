@@ -1,8 +1,9 @@
 #!/usr/bin/env sh
 
 branch="$(git rev-parse --abbrev-ref HEAD)"
+remote="$(git remote get-url origin 2>/dev/null || echo '')"
 
-if [ "$branch" = "main" ]; then
+if [ "$branch" = "main" ] && echo "$remote" | grep -q "pleaseai/claude-code-plugins"; then
   echo ""
   echo "ERROR: Direct commits to the 'main' branch are not allowed."
   echo ""
