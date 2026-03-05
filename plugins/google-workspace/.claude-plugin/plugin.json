@@ -2,5 +2,13 @@
   "name": "google-workspace-cli",
   "version": "latest",
   "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+  "author": {
+    "name": "googleworkspace",
+    "url": "https://github.com/googleworkspace"
+  },
+  "homepage": "https://github.com/googleworkspace/cli",
+  "repository": "https://github.com/googleworkspace/cli",
+  "license": "NOASSERTION",
+  "keywords": ["google-workspace"],
   "mcpServers": {}
 }

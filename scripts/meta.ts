@@ -156,6 +156,8 @@ export interface ExtensionMeta {
   pluginName?: string
   /** Skip TOML command conversion */
   skipCommands?: boolean
+  /** Skip skills/ directory sync */
+  skipSkills?: boolean
 }
 
 /**
@@ -168,4 +170,8 @@ export interface ExtensionMeta {
  *   2. Run: bun scripts/cli.ts init
  *   3. Run: bun scripts/cli.ts sync
  */
-export const extensions: Record<string, ExtensionMeta> = {}
+export const extensions: Record<string, ExtensionMeta> = {
+  "google-workspace": {
+    source: "https://github.com/googleworkspace/cli",
+  },
+}
