@@ -13,7 +13,7 @@ A Nuxt 4 + Nuxt UI 4 application for browsing and installing Claude Code plugins
 
 ## Project Structure
 
-```
+```text
 apps/web/
 ├── app/
 │   ├── components/

@@ -26,11 +26,11 @@
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.3",
     "@nuxt/devtools": "latest",
-    "@nuxt/eslint": "^1.9.0",
+    "@nuxt/eslint": "^1.15.2",
     "@nuxt/test-utils": "3.19.2",
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
-    "eslint": "^10.0.2",
+    "eslint": "^9.33.0",
     "typescript": "^5.9.2"
   }
 }
