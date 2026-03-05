@@ -115,34 +115,21 @@ bun scripts/cli.ts init
 
 Report the result. If it fails, stop and show the error — do not continue.
 
-## Step 6 — Create Plugin Scaffolding
+## Step 6 — Run `bun scripts/cli.ts sync` and Register in Marketplace
 
-**6a. Create `.claude-plugin/plugin.json`** in `plugins/<plugin-name>/`:
+**6a. Generate plugin artifacts:**
 
 ```bash
-mkdir -p plugins/<plugin-name>/.claude-plugin
+bun scripts/cli.ts sync
 ```
 
-Fetch repo metadata for author/license:
-```bash
-gh api repos/<owner>/<repo> --jq '{description: .description, owner: .owner.login, license: .license.spdx_id}'
-```
+This generates:
+- `plugins/<plugin-name>/.claude-plugin/plugin.json` (from `mcpServers` in `gemini-extension.json`)
+- Hooks (`hooks/hooks.json`, `hooks/context.sh`) if `contextFileName` exists
+- `plugins/<plugin-name>/commands/*.md` converted from TOML (if `commands/` exists)
+- `SYNC.md` marker file
 
-Create `plugins/<plugin-name>/.claude-plugin/plugin.json`:
-```json
-{
-  "name": "<plugin-name>",
-  "version": "1.0.0",
-  "description": "<description from repo>",
-  "author": {
-    "name": "<owner from repo>",
-    "url": "https://github.com/<owner>"
-  },
-  "repository": "<repo-url>",
-  "license": "<license or MIT>",
-  "keywords": ["<extension-name>"]
-}
-```
+Report the result. If it fails, stop and show the error — do not continue.
 
 **6b. Add entry to `.claude-plugin/marketplace.json`:**
 
@@ -172,21 +159,32 @@ Read `release-please-config.json` and add to the `packages` object after the las
 }
 ```
 
-## Step 7 — Run `bun scripts/cli.ts sync`
+## Step 7 — Enrich the Generated `plugin.json`
 
-Generate plugin artifacts from the extension:
+The sync step generates `plugins/<plugin-name>/.claude-plugin/plugin.json` with only the fields it derives from `gemini-extension.json`: `name`, `version`, `description`, `mcpServers`, and `commands`. These fields are overwritten on every future sync — do not edit them manually.
 
+Enrich the file by adding the fields that sync does NOT generate and will NOT overwrite:
+
+Fetch repo metadata:
 ```bash
-bun scripts/cli.ts sync
+gh api repos/<owner>/<repo> --jq '{owner: .owner.login, license: .license.spdx_id}'
 ```
 
-This will:
-- Generate `plugins/<plugin-name>/.claude-plugin/plugin.json` (overwriting the scaffold if mcpServers differ — review afterwards)
-- Copy context file and generate hooks (if `contextFileName` exists)
-- Convert TOML commands to Markdown (if `commands/` exists)
-- Write `SYNC.md` and auto-commit
+Add these fields to the generated `plugin.json`:
+```json
+{
+  "author": {
+    "name": "<owner from repo>",
+    "url": "https://github.com/<owner>"
+  },
+  "homepage": "<repo-url>",
+  "repository": "<repo-url>",
+  "license": "<license spdx_id, or MIT if null>",
+  "keywords": ["<extension-name>"]
+}
+```
 
-Report the result. Note any warnings or errors.
+Use the Edit tool to merge these fields into the existing generated file without disturbing the auto-generated fields.
 
 ## Step 8 — Summary Report
 

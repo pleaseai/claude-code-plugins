@@ -13,6 +13,7 @@ import { execFileSync, execSync } from "node:child_process"
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
 import { extensions, submodules, vendors } from "./meta.ts"
+import { convertMcpServerPaths, parseToml } from "./extension-helpers.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
 const ANTFU_MANUAL_DIR = join(ROOT, "vendor/antfu-skills/skills") // read-only: Type 3 manual skills
@@ -115,134 +116,40 @@ export function ensurePlugin(plugin: string) {
 }
 
 // ---------------------------------------------------------------------------
-// Extension helpers
-// ---------------------------------------------------------------------------
-
-/**
- * Replace ${extensionPath} references in MCP server configs with ${CLAUDE_PLUGIN_ROOT}.
- * Operates on the JSON string representation to cover all nested string values.
- */
-function convertMcpServerPaths(mcpServers: Record<string, unknown>): Record<string, unknown> {
-  const json = JSON.stringify(mcpServers)
-  const converted = json
-    .replace(/\$\{extensionPath\}\$\{\/\}/g, "${CLAUDE_PLUGIN_ROOT}/")
-    .replace(/\$\{extensionPath\}\//g, "${CLAUDE_PLUGIN_ROOT}/")
-    .replace(/\$\{extensionPath\}/g, "${CLAUDE_PLUGIN_ROOT}")
-  return JSON.parse(converted) as Record<string, unknown>
-}
-
-/**
- * Parse a simple Gemini extension TOML command file.
- * Supports:
- *   description = "single line"
- *   prompt = """multiline"""
- *   prompt = "single line"
- */
-function parseToml(content: string): { description?: string; prompt: string } | null {
-  const descMatch = content.match(/^description\s*=\s*"((?:[^"\\]|\\.)*)"\s*$/m)
-  const description = descMatch?.[1]
-
-  // Triple-quoted multiline string
-  const tripleMatch = content.match(/^prompt\s*=\s*"""([\s\S]*?)"""/m)
-  if (tripleMatch) {
-    const prompt = (tripleMatch[1] ?? "").replace(/^\n/, "")
-    return { description, prompt }
-  }
-
-  // Double-quoted single line
-  const singleMatch = content.match(/^prompt\s*=\s*"((?:[^"\\]|\\.)*)"\s*$/m)
-  if (singleMatch) {
-    return { description, prompt: singleMatch[1] ?? "" }
-  }
-
-  return null
-}
-
-// ---------------------------------------------------------------------------
 // init
 // ---------------------------------------------------------------------------
+function initSubmoduleGroup(label: string, prefix: string, entries: Array<[string, string]>) {
+  console.log(`\nInitializing ${label}...\n`)
+  for (const [name, source] of entries) {
+    const submodulePath = `${prefix}/${name}`
+    const fullPath = join(ROOT, submodulePath)
+
+    if (isSubmoduleRegistered(submodulePath)) {
+      if (!existsSync(join(fullPath, ".git"))) {
+        process.stdout.write(`  init: ${submodulePath} ... `)
+        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
+        console.log("done")
+      } else {
+        console.log(`  already initialized: ${submodulePath}`)
+      }
+      continue
+    }
+
+    process.stdout.write(`  adding: ${name}  (${source}) ... `)
+    try {
+      mkdirSync(dirname(fullPath), { recursive: true })
+      execFile("git", ["submodule", "add", source, submodulePath])
+      console.log("done")
+    } catch (e) {
+      console.error(`failed\n    ${e}`)
+    }
+  }
+}
+
 export async function initSubmodules() {
-  // Type 1: sources
-  console.log("Initializing source submodules...\n")
-  for (const [name, url] of Object.entries(submodules)) {
-    const submodulePath = `sources/${name}`
-    const fullPath = join(ROOT, submodulePath)
-
-    if (isSubmoduleRegistered(submodulePath)) {
-      if (!existsSync(join(fullPath, ".git"))) {
-        process.stdout.write(`  init: ${submodulePath} ... `)
-        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
-        console.log("done")
-      } else {
-        console.log(`  already initialized: ${submodulePath}`)
-      }
-      continue
-    }
-
-    process.stdout.write(`  adding: ${name}  (${url}) ... `)
-    try {
-      mkdirSync(dirname(fullPath), { recursive: true })
-      execFile("git", ["submodule", "add", url, submodulePath])
-      console.log("done")
-    } catch (e) {
-      console.error(`failed\n    ${e}`)
-    }
-  }
-
-  // Type 2: vendors
-  console.log("\nInitializing vendor submodules...\n")
-  for (const [name, config] of Object.entries(vendors)) {
-    const submodulePath = `vendor/${name}`
-    const fullPath = join(ROOT, submodulePath)
-
-    if (isSubmoduleRegistered(submodulePath)) {
-      if (!existsSync(join(fullPath, ".git"))) {
-        process.stdout.write(`  init: ${submodulePath} ... `)
-        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
-        console.log("done")
-      } else {
-        console.log(`  already initialized: ${submodulePath}`)
-      }
-      continue
-    }
-
-    process.stdout.write(`  adding: ${name}  (${config.source}) ... `)
-    try {
-      mkdirSync(dirname(fullPath), { recursive: true })
-      execFile("git", ["submodule", "add", config.source, submodulePath])
-      console.log("done")
-    } catch (e) {
-      console.error(`failed\n    ${e}`)
-    }
-  }
-
-  // Type 4: Gemini CLI extensions
-  console.log("\nInitializing extension submodules...\n")
-  for (const [name, config] of Object.entries(extensions)) {
-    const submodulePath = `external-plugins/${name}`
-    const fullPath = join(ROOT, submodulePath)
-
-    if (isSubmoduleRegistered(submodulePath)) {
-      if (!existsSync(join(fullPath, ".git"))) {
-        process.stdout.write(`  init: ${submodulePath} ... `)
-        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
-        console.log("done")
-      } else {
-        console.log(`  already initialized: ${submodulePath}`)
-      }
-      continue
-    }
-
-    process.stdout.write(`  adding: ${name}  (${config.source}) ... `)
-    try {
-      mkdirSync(dirname(fullPath), { recursive: true })
-      execFile("git", ["submodule", "add", config.source, submodulePath])
-      console.log("done")
-    } catch (e) {
-      console.error(`failed\n    ${e}`)
-    }
-  }
-
+  initSubmoduleGroup("source submodules", "sources", Object.entries(submodules))
+  initSubmoduleGroup("vendor submodules", "vendor", Object.entries(vendors).map(([n, c]) => [n, c.source]))
+  initSubmoduleGroup("extension submodules", "external-plugins", Object.entries(extensions).map(([n, c]) => [n, c.source]))
   console.log("\nDone.")
 }
 
