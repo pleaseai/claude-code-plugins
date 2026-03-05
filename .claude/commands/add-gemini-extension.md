@@ -40,7 +40,7 @@ This repository does not appear to be a Gemini CLI extension.
 From `gemini-extension.json`, extract:
 - `name`, `version`, `description` (may be absent)
 - `contextFileName` (optional — triggers SessionStart hook generation)
-- `mcpServers` (required)
+- `mcpServers` (optional — defaults to {} if absent)
 - Presence of `commands/` directory (check via GitHub API)
 
 Check for a `commands/` directory:

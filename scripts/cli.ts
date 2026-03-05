@@ -145,14 +145,14 @@ function parseToml(content: string): { description?: string; prompt: string } | 
   // Triple-quoted multiline string
   const tripleMatch = content.match(/^prompt\s*=\s*"""([\s\S]*?)"""/m)
   if (tripleMatch) {
-    const prompt = tripleMatch[1].replace(/^\n/, "")
+    const prompt = (tripleMatch[1] ?? "").replace(/^\n/, "")
     return { description, prompt }
   }
 
-  // Single-quoted single line
+  // Double-quoted single line
   const singleMatch = content.match(/^prompt\s*=\s*"((?:[^"\\]|\\.)*)"\s*$/m)
   if (singleMatch) {
-    return { description, prompt: singleMatch[1] }
+    return { description, prompt: singleMatch[1] ?? "" }
   }
 
   return null
@@ -418,9 +418,14 @@ export async function syncSubmodules() {
 
   // 3. Update skills.sh managed plugins
   console.log("\nUpdating skills.sh plugins...\n")
-  const skillsShPlugins = readdirSync(PLUGINS_DIR, { withFileTypes: true })
-    .filter(d => d.isDirectory() && existsSync(join(PLUGINS_DIR, d.name, "skills-lock.json")))
-    .map(d => d.name)
+  if (!existsSync(PLUGINS_DIR)) {
+    console.log("  no plugins directory found, skipping skills.sh plugin check")
+  }
+  const skillsShPlugins = existsSync(PLUGINS_DIR)
+    ? readdirSync(PLUGINS_DIR, { withFileTypes: true })
+        .filter(d => d.isDirectory() && existsSync(join(PLUGINS_DIR, d.name, "skills-lock.json")))
+        .map(d => d.name)
+    : []
 
   for (const plugin of skillsShPlugins) {
     const pluginDir = join(PLUGINS_DIR, plugin)
@@ -450,6 +455,12 @@ export async function syncSubmodules() {
     const extensionPath = join(ROOT, submodulePath)
     const pluginName = config.pluginName ?? name
     const pluginDir = join(PLUGINS_DIR, pluginName)
+    const resolvedPluginDir = resolve(pluginDir)
+    const resolvedPluginsDir = resolve(PLUGINS_DIR)
+    if (resolvedPluginDir !== resolvedPluginsDir && !resolvedPluginDir.startsWith(`${resolvedPluginsDir}/`)) {
+      console.error(`  ! invalid pluginName for ${name}: "${pluginName}" (escapes plugins directory)`)
+      continue
+    }
 
     if (!isSubmoduleRegistered(submodulePath) || !existsSync(extensionPath)) {
       console.warn(`  ! not initialized: ${name}  (run: bun scripts/cli.ts init)`)
@@ -516,6 +527,15 @@ export async function syncSubmodules() {
     const contextFileName = typeof extensionJson.contextFileName === "string" ? extensionJson.contextFileName : null
     if (contextFileName) {
       const contextSrc = join(extensionPath, contextFileName)
+      const resolvedContextSrc = resolve(contextSrc)
+      const resolvedExtensionPath = resolve(extensionPath)
+      if (
+        resolvedContextSrc !== resolvedExtensionPath &&
+        !resolvedContextSrc.startsWith(`${resolvedExtensionPath}/`)
+      ) {
+        console.error(`  ! invalid contextFileName for ${name}: "${contextFileName}" (escapes extension directory)`)
+        continue
+      }
       if (existsSync(contextSrc)) {
         const contextDest = join(pluginDir, contextFileName)
         mkdirSync(dirname(contextDest), { recursive: true })
@@ -559,6 +579,8 @@ export async function syncSubmodules() {
         execFileSafe("chmod", ["+x", contextShDest])
         changedPaths.push(`plugins/${pluginName}/hooks/context.sh`)
         console.log(`  hooks/context.sh copied`)
+      } else {
+        console.warn(`  ! WARNING: hooks/context.sh not found at ${contextShSrc} — hooks.json will reference a missing script`)
       }
     }
 
@@ -643,16 +665,24 @@ export async function syncSubmodules() {
     changedPaths.push(`plugins/${pluginName}/SYNC.md`)
 
     // Commit if anything changed
-    if (hasGitChanges(changedPaths)) {
-      if (sha === null) {
-        console.warn(`  ! WARNING: could not read git SHA for external-plugins/${name}. Commit will say 'unknown'.`)
+    try {
+      if (hasGitChanges(changedPaths)) {
+        if (sha === null) {
+          console.warn(`  ! WARNING: could not read git SHA for external-plugins/${name}. Commit will say 'unknown'.`)
+        }
+        const shortSha = sha?.slice(0, 7) ?? "unknown"
+        try {
+          commitChanges(changedPaths, `chore(sync): sync extension ${name} to ${shortSha}`)
+          committed.push(name)
+          console.log(`  → committed: chore(sync): sync extension ${name} to ${shortSha}\n`)
+        } catch (e) {
+          console.error(`  ! failed to commit extension ${name}: ${e}`)
+        }
+      } else {
+        console.log(`  → no changes\n`)
       }
-      const shortSha = sha?.slice(0, 7) ?? "unknown"
-      commitChanges(changedPaths, `chore(sync): sync extension ${name} to ${shortSha}`)
-      committed.push(name)
-      console.log(`  → committed: chore(sync): sync extension ${name} to ${shortSha}\n`)
-    } else {
-      console.log(`  → no changes\n`)
+    } catch (e) {
+      console.error(`  ! failed to check/commit extension ${name}: ${e}`)
     }
   }
 
