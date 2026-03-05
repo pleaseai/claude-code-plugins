@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-v1.0.0...nuxt-v1.1.0) (2026-03-05)
+
+
+### Features
+
+* **nuxt:** add nuxt remote MCP server configuration ([#51](https://github.com/pleaseai/claude-code-plugins/issues/51)) ([728ce4a](https://github.com/pleaseai/claude-code-plugins/commit/728ce4ac35c1089d475cc7004287abf0dea692d7))
+
 ## 1.0.0 (2026-03-04)
 
 

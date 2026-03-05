@@ -8,6 +8,8 @@
   },
   "repository": "https://github.com/vercel-labs/slack-agent-skill",
   "license": "Apache-2.0",
-  "keywords": ["slack-agent"],
+  "keywords": [
+    "slack-agent"
+  ],
   "skills": "./.agents/skills/"
 }
