@@ -27,6 +27,7 @@ Validate:
   ```
 - `REPO_URL` matches `https://github.com/<owner>/<repo>`. Normalize to `<owner>/<repo>` short form.
 - `PLUGIN_NAME` contains only alphanumeric characters, hyphens, and underscores.
+- `SKILL_NAME` contains only alphanumeric characters, hyphens, and underscores.
 
 Check for conflicts:
 - `plugins/<PLUGIN_NAME>/` must NOT already exist
@@ -78,7 +79,7 @@ Proceed to create plugin? (yes/no)
 Fetch repo metadata for description, author, and license:
 
 ```bash
-gh api repos/<owner>/<repo> --jq '{description: .description, owner: .owner.login, license: .license.spdx_id}'
+gh api repos/<owner>/<repo> --jq '{description: .description, owner: (.owner.name // .owner.login), license: (.license.spdx_id // "MIT")}'
 ```
 
 Also read `plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md` frontmatter — the `description` field there may give a better description than the repo's.

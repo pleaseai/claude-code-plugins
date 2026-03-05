@@ -106,7 +106,7 @@ function isSubmoduleRegistered(submodulePath: string): boolean {
 function getRegisteredSubmodulePaths(): string[] {
   const gitmodules = join(ROOT, ".gitmodules")
   if (!existsSync(gitmodules)) return []
-  return Array.from(readFileSync(gitmodules, "utf-8").matchAll(/path\s*=\s*(.+)/g), m => m[1].trim())
+  return Array.from(readFileSync(gitmodules, "utf-8").matchAll(/path\s*=\s*(.+)/g), m => (m[1] ?? "").trim())
 }
 
 function ensurePlugin(plugin: string) {
