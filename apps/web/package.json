@@ -30,7 +30,7 @@
     "@nuxt/test-utils": "3.19.2",
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
-    "eslint": "^9.33.0",
+    "eslint": "^10.0.2",
     "typescript": "^5.9.2"
   }
 }
