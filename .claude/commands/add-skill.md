@@ -79,7 +79,7 @@ Proceed to create plugin? (yes/no)
 Fetch repo metadata for description, author, and license:
 
 ```bash
-gh api repos/<owner>/<repo> --jq '{description: .description, owner: (.owner.name // .owner.login), license: (.license.spdx_id // "MIT")}'
+gh api repos/<owner>/<repo> --jq '{description: .description, owner: (.owner.name // .owner.login), license: (.license.spdx_id // "NOASSERTION")}'
 ```
 
 Also read `plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md` frontmatter — the `description` field there may give a better description than the repo's.
@@ -96,7 +96,7 @@ Create `plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json`:
     "url": "https://github.com/<owner>"
   },
   "repository": "https://github.com/<owner>/<repo>",
-  "license": "<SPDX from repo, or MIT>",
+  "license": "<SPDX from repo, or NOASSERTION if unknown>",
   "keywords": ["<PLUGIN_NAME>"],
   "skills": "./.agents/skills/"
 }
