@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+branch="$(git rev-parse --abbrev-ref HEAD)"
+remote="$(git remote get-url origin 2>/dev/null || echo '')"
+
+if [ "$branch" = "main" ] && echo "$remote" | grep -q "pleaseai/claude-code-plugins"; then
+  echo ""
+  echo "ERROR: Direct commits to the 'main' branch are not allowed."
+  echo ""
+  echo "Please create a new branch and open a pull request:"
+  echo ""
+  echo "  git checkout -b <branch-name>"
+  echo "  git commit"
+  echo "  git push -u origin <branch-name>"
+  echo "  gh pr create"
+  echo ""
+  exit 1
+fi
