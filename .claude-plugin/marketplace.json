@@ -14,14 +14,11 @@
   "plugins": [
     {
       "name": "nanobanana",
-      "description": "Claude Code Plugin for Nano Banana (Gemini 2.5 Flash Image) model - generate and manipulate images with text prompts",
+      "description": "Gemini CLI extension for Nano Banana models - generate and manipulate images with text prompts",
       "category": "ai",
       "keywords": ["image-generation", "gemini", "ai", "flash"],
       "tags": ["mcp", "image"],
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/nanobanana-plugin"
-      }
+      "source": "./plugins/nanobanana"
     },
     {
       "name": "flutter",
