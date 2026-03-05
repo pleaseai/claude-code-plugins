@@ -364,7 +364,11 @@ export async function syncSubmodules() {
     const pluginDir = join(PLUGINS_DIR, pluginName)
     const resolvedPluginDir = resolve(pluginDir)
     const resolvedPluginsDir = resolve(PLUGINS_DIR)
-    if (resolvedPluginDir !== resolvedPluginsDir && !resolvedPluginDir.startsWith(`${resolvedPluginsDir}/`)) {
+    if (
+      resolvedPluginDir !== resolvedPluginsDir &&
+      !resolvedPluginDir.startsWith(`${resolvedPluginsDir}/`) &&
+      !resolvedPluginDir.startsWith(`${resolvedPluginsDir}\\`)
+    ) {
       console.error(`  ! invalid pluginName for ${name}: "${pluginName}" (escapes plugins directory)`)
       continue
     }
@@ -438,7 +442,8 @@ export async function syncSubmodules() {
       const resolvedExtensionPath = resolve(extensionPath)
       if (
         resolvedContextSrc !== resolvedExtensionPath &&
-        !resolvedContextSrc.startsWith(`${resolvedExtensionPath}/`)
+        !resolvedContextSrc.startsWith(`${resolvedExtensionPath}/`) &&
+        !resolvedContextSrc.startsWith(`${resolvedExtensionPath}\\`)
       ) {
         console.error(`  ! invalid contextFileName for ${name}: "${contextFileName}" (escapes extension directory)`)
         continue

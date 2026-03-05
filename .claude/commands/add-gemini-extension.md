@@ -43,9 +43,9 @@ From `gemini-extension.json`, extract:
 - `mcpServers` (optional — defaults to {} if absent)
 - Presence of `commands/` directory (check via GitHub API)
 
-Check for a `commands/` directory:
+Check for a `commands/` directory (a 404 response means the directory is absent — treat it as an expected optional case, not an error):
 ```bash
-gh api repos/<owner>/<repo>/contents/commands
+gh api repos/<owner>/<repo>/contents/commands 2>/dev/null || echo "[]"
 ```
 
 Display a summary of what was found:
@@ -179,7 +179,7 @@ Add these fields to the generated `plugin.json`:
   },
   "homepage": "<repo-url>",
   "repository": "<repo-url>",
-  "license": "<license spdx_id, or MIT if null>",
+  "license": "<license spdx_id, or NOASSERTION if null>",
   "keywords": ["<extension-name>"]
 }
 ```
