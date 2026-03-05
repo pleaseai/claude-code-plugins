@@ -22,9 +22,6 @@
 [submodule "external-plugins/grafana"]
 	path = external-plugins/grafana
 	url = git@github.com:amondnet/mcp-grafana.git
-[submodule "external-plugins/mcp-neo4j"]
-	path = external-plugins/mcp-neo4j
-	url = git@github.com:amondnet/mcp-neo4j.git
 [submodule "external-plugins/chrome-devtools-mcp"]
 	path = external-plugins/chrome-devtools-mcp
 	url = git@github.com:pleaseai/chrome-devtools-mcp.git
