@@ -31,6 +31,13 @@ export default defineConfig({
           environment: 'jsdom',
         },
       },
+      {
+        root: '.',
+        test: {
+          include: ['scripts/**/*.test.ts'],
+          environment: 'node',
+        },
+      },
     ],
   },
 })
