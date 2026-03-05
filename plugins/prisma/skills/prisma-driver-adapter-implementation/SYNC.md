@@ -2,4 +2,4 @@
 
 - **Source:** `vendor/prisma/prisma-driver-adapter-implementation`
 - **Git SHA:** `e47383cb0e1bd6feb696502cccfc39837f44f4f4`
-- **Synced:** 2026-03-04
+- **Synced:** 2026-03-05
