@@ -96,10 +96,7 @@
       "category": "database",
       "keywords": ["neo4j", "graph-database", "cypher"],
       "tags": ["mcp", "database"],
-      "source": {
-        "source": "github",
-        "repo": "amondnet/mcp-neo4j"
-      }
+      "source": "./plugins/neo4j"
     },
     {
       "name": "chrome-devtools-mcp",

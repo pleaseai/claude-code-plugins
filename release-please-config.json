@@ -273,6 +273,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/neo4j": {
+      "release-type": "simple",
+      "component": "neo4j",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

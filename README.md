@@ -52,11 +52,6 @@ A Model Context Protocol (MCP) server for Grafana providing access to dashboards
 
 **Install:** `/plugin install grafana@pleaseai` | **Repository:** [grafana/mcp-grafana](https://github.com/grafana/mcp-grafana)
 
-#### MCP Neo4j
-Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling.
-
-**Install:** `/plugin install mcp-neo4j@pleaseai` | **Repository:** [amondnet/mcp-neo4j](https://github.com/amondnet/mcp-neo4j)
-
 #### Chrome DevTools MCP
 Control and inspect a live Chrome browser through MCP — automate actions, debug, and analyze performance using Chrome DevTools.
 
@@ -202,6 +197,11 @@ Skills for building Slack agents and bots with Chat SDK, Bolt for JavaScript, an
 
 **Install:** `/plugin install slack-agent@pleaseai` | **Source:** [plugins/slack-agent](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/slack-agent)
 
+#### MCP Neo4j
+Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling.
+
+**Install:** `/plugin install mcp-neo4j@pleaseai` | **Source:** [plugins/neo4j](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/neo4j)
+
 ## Installation
 
 ### Add This Marketplace
@@ -223,7 +223,6 @@ Once the marketplace is added, install any plugin with:
 /plugin install spec-kit@pleaseai
 /plugin install firebase@pleaseai
 /plugin install grafana@pleaseai
-/plugin install mcp-neo4j@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install playwright-cli@pleaseai
 
@@ -254,6 +253,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install agent-browser@pleaseai
 /plugin install ai-sdk@pleaseai
 /plugin install slack-agent@pleaseai
+/plugin install mcp-neo4j@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
