@@ -12,7 +12,7 @@
 import { execFileSync, execSync } from "node:child_process"
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
-import { submodules, vendors } from "./meta.ts"
+import { extensions, submodules, vendors } from "./meta.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
 const ANTFU_MANUAL_DIR = join(ROOT, "vendor/antfu-skills/skills") // read-only: Type 3 manual skills
@@ -115,6 +115,50 @@ export function ensurePlugin(plugin: string) {
 }
 
 // ---------------------------------------------------------------------------
+// Extension helpers
+// ---------------------------------------------------------------------------
+
+/**
+ * Replace ${extensionPath} references in MCP server configs with ${CLAUDE_PLUGIN_ROOT}.
+ * Operates on the JSON string representation to cover all nested string values.
+ */
+function convertMcpServerPaths(mcpServers: Record<string, unknown>): Record<string, unknown> {
+  const json = JSON.stringify(mcpServers)
+  const converted = json
+    .replace(/\$\{extensionPath\}\$\{\/\}/g, "${CLAUDE_PLUGIN_ROOT}/")
+    .replace(/\$\{extensionPath\}\//g, "${CLAUDE_PLUGIN_ROOT}/")
+    .replace(/\$\{extensionPath\}/g, "${CLAUDE_PLUGIN_ROOT}")
+  return JSON.parse(converted) as Record<string, unknown>
+}
+
+/**
+ * Parse a simple Gemini extension TOML command file.
+ * Supports:
+ *   description = "single line"
+ *   prompt = """multiline"""
+ *   prompt = "single line"
+ */
+function parseToml(content: string): { description?: string; prompt: string } | null {
+  const descMatch = content.match(/^description\s*=\s*"((?:[^"\\]|\\.)*)"\s*$/m)
+  const description = descMatch?.[1]
+
+  // Triple-quoted multiline string
+  const tripleMatch = content.match(/^prompt\s*=\s*"""([\s\S]*?)"""/m)
+  if (tripleMatch) {
+    const prompt = tripleMatch[1].replace(/^\n/, "")
+    return { description, prompt }
+  }
+
+  // Single-quoted single line
+  const singleMatch = content.match(/^prompt\s*=\s*"((?:[^"\\]|\\.)*)"\s*$/m)
+  if (singleMatch) {
+    return { description, prompt: singleMatch[1] }
+  }
+
+  return null
+}
+
+// ---------------------------------------------------------------------------
 // init
 // ---------------------------------------------------------------------------
 export async function initSubmodules() {
@@ -149,6 +193,33 @@ export async function initSubmodules() {
   console.log("\nInitializing vendor submodules...\n")
   for (const [name, config] of Object.entries(vendors)) {
     const submodulePath = `vendor/${name}`
+    const fullPath = join(ROOT, submodulePath)
+
+    if (isSubmoduleRegistered(submodulePath)) {
+      if (!existsSync(join(fullPath, ".git"))) {
+        process.stdout.write(`  init: ${submodulePath} ... `)
+        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
+        console.log("done")
+      } else {
+        console.log(`  already initialized: ${submodulePath}`)
+      }
+      continue
+    }
+
+    process.stdout.write(`  adding: ${name}  (${config.source}) ... `)
+    try {
+      mkdirSync(dirname(fullPath), { recursive: true })
+      execFile("git", ["submodule", "add", config.source, submodulePath])
+      console.log("done")
+    } catch (e) {
+      console.error(`failed\n    ${e}`)
+    }
+  }
+
+  // Type 4: Gemini CLI extensions
+  console.log("\nInitializing extension submodules...\n")
+  for (const [name, config] of Object.entries(extensions)) {
+    const submodulePath = `external-plugins/${name}`
     const fullPath = join(ROOT, submodulePath)
 
     if (isSubmoduleRegistered(submodulePath)) {
@@ -372,6 +443,219 @@ export async function syncSubmodules() {
     }
   }
 
+  // 4. Sync Gemini CLI extensions → plugins/<name>/
+  console.log("\nSyncing Gemini extensions to plugins...\n")
+  for (const [name, config] of Object.entries(extensions)) {
+    const submodulePath = `external-plugins/${name}`
+    const extensionPath = join(ROOT, submodulePath)
+    const pluginName = config.pluginName ?? name
+    const pluginDir = join(PLUGINS_DIR, pluginName)
+
+    if (!isSubmoduleRegistered(submodulePath) || !existsSync(extensionPath)) {
+      console.warn(`  ! not initialized: ${name}  (run: bun scripts/cli.ts init)`)
+      continue
+    }
+
+    // Update submodule to latest
+    process.stdout.write(`[${name}] updating submodule... `)
+    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", submodulePath])
+    if (updated === null) {
+      console.log("FAILED")
+      console.warn(`  ! Skipping ${name} to avoid committing stale content.`)
+      continue
+    }
+    const sha = getGitSha(extensionPath)
+    console.log(`${sha?.slice(0, 7) ?? "?"}`)
+
+    // Read gemini-extension.json
+    const extensionJsonPath = join(extensionPath, "gemini-extension.json")
+    if (!existsSync(extensionJsonPath)) {
+      console.warn(`  ! no gemini-extension.json in external-plugins/${name}`)
+      continue
+    }
+
+    let extensionJson: Record<string, unknown>
+    try {
+      extensionJson = JSON.parse(readFileSync(extensionJsonPath, "utf-8")) as Record<string, unknown>
+    } catch (e) {
+      console.error(`  ! failed to parse gemini-extension.json: ${e}`)
+      continue
+    }
+
+    const changedPaths: string[] = [submodulePath]
+
+    // Determine if commands will be generated
+    const sourceCommandsDir = join(extensionPath, "commands")
+    let hasCommands = false
+    if (!config.skipCommands && existsSync(sourceCommandsDir)) {
+      const cmdFiles = readdirSync(sourceCommandsDir).filter(f => f.endsWith(".toml") || f.endsWith(".md"))
+      hasCommands = cmdFiles.length > 0
+    }
+
+    // Generate plugins/<name>/.claude-plugin/plugin.json
+    mkdirSync(join(pluginDir, ".claude-plugin"), { recursive: true })
+    const rawMcpServers = extensionJson.mcpServers
+    const mcpServers =
+      rawMcpServers && typeof rawMcpServers === "object"
+        ? convertMcpServerPaths(rawMcpServers as Record<string, unknown>)
+        : {}
+    const pluginJson: Record<string, unknown> = {
+      name: extensionJson.name ?? pluginName,
+      version: extensionJson.version ?? "1.0.0",
+      ...(extensionJson.description ? { description: extensionJson.description } : {}),
+      mcpServers,
+    }
+    if (hasCommands) pluginJson.commands = ["./commands"]
+
+    const pluginJsonPath = join(pluginDir, ".claude-plugin", "plugin.json")
+    writeFileSync(pluginJsonPath, JSON.stringify(pluginJson, null, 2) + "\n")
+    changedPaths.push(`plugins/${pluginName}/.claude-plugin/plugin.json`)
+    console.log(`  plugin.json generated`)
+
+    // Handle context file via SessionStart hook
+    const contextFileName = typeof extensionJson.contextFileName === "string" ? extensionJson.contextFileName : null
+    if (contextFileName) {
+      const contextSrc = join(extensionPath, contextFileName)
+      if (existsSync(contextSrc)) {
+        const contextDest = join(pluginDir, contextFileName)
+        mkdirSync(dirname(contextDest), { recursive: true })
+        cpSync(contextSrc, contextDest)
+        changedPaths.push(`plugins/${pluginName}/${contextFileName}`)
+        console.log(`  context file synced: ${contextFileName}`)
+      } else {
+        console.warn(`  ! contextFileName not found: ${contextFileName}`)
+      }
+
+      // Copy gemini-extension.json so context.sh can read contextFileName
+      cpSync(extensionJsonPath, join(pluginDir, "gemini-extension.json"))
+      changedPaths.push(`plugins/${pluginName}/gemini-extension.json`)
+
+      // Generate hooks/hooks.json
+      mkdirSync(join(pluginDir, "hooks"), { recursive: true })
+      const hooksJson = {
+        description: "Load plugin context at session start",
+        hooks: {
+          SessionStart: [
+            {
+              hooks: [
+                {
+                  type: "command",
+                  command: "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
+                  timeout: 10,
+                },
+              ],
+            },
+          ],
+        },
+      }
+      writeFileSync(join(pluginDir, "hooks", "hooks.json"), JSON.stringify(hooksJson, null, 2) + "\n")
+      changedPaths.push(`plugins/${pluginName}/hooks/hooks.json`)
+
+      // Copy hooks/context.sh
+      const contextShSrc = join(ROOT, "hooks", "context.sh")
+      if (existsSync(contextShSrc)) {
+        const contextShDest = join(pluginDir, "hooks", "context.sh")
+        cpSync(contextShSrc, contextShDest)
+        execFileSafe("chmod", ["+x", contextShDest])
+        changedPaths.push(`plugins/${pluginName}/hooks/context.sh`)
+        console.log(`  hooks/context.sh copied`)
+      }
+    }
+
+    // Convert TOML commands to Markdown
+    if (!config.skipCommands && existsSync(sourceCommandsDir)) {
+      const outputCommandsDir = join(pluginDir, "commands")
+      mkdirSync(outputCommandsDir, { recursive: true })
+
+      const allFiles = readdirSync(sourceCommandsDir)
+      const tomlFiles = allFiles.filter(f => f.endsWith(".toml"))
+      const mdFilesInSource = allFiles.filter(f => f.endsWith(".md"))
+      const mdFilesInSourceSet = new Set(mdFilesInSource)
+
+      for (const tomlFile of tomlFiles) {
+        const baseName = tomlFile.replace(/\.toml$/, "")
+        const mdFile = `${baseName}.md`
+
+        if (mdFilesInSourceSet.has(mdFile)) {
+          // Prefer existing .md over TOML conversion
+          cpSync(join(sourceCommandsDir, mdFile), join(outputCommandsDir, mdFile))
+          changedPaths.push(`plugins/${pluginName}/commands/${mdFile}`)
+          console.log(`  command synced: ${mdFile}`)
+        } else {
+          // Convert TOML → Markdown
+          const tomlContent = readFileSync(join(sourceCommandsDir, tomlFile), "utf-8")
+          const parsed = parseToml(tomlContent)
+          if (parsed) {
+            const { description, prompt } = parsed
+            const escapedPrompt = prompt.replace(/\{\{args\}\}/g, "$ARGUMENTS")
+            const mdContent = description
+              ? `---\ndescription: ${description}\n---\n\n${escapedPrompt}\n`
+              : `${escapedPrompt}\n`
+            writeFileSync(join(outputCommandsDir, mdFile), mdContent)
+            changedPaths.push(`plugins/${pluginName}/commands/${mdFile}`)
+            console.log(`  command converted: ${tomlFile} → ${mdFile}`)
+          } else {
+            console.warn(`  ! failed to parse TOML: ${tomlFile}`)
+          }
+        }
+      }
+
+      // Copy standalone .md files not paired with any TOML
+      for (const mdFile of mdFilesInSource) {
+        const baseName = mdFile.replace(/\.md$/, "")
+        if (!tomlFiles.includes(`${baseName}.toml`)) {
+          cpSync(join(sourceCommandsDir, mdFile), join(outputCommandsDir, mdFile))
+          changedPaths.push(`plugins/${pluginName}/commands/${mdFile}`)
+          console.log(`  command copied: ${mdFile}`)
+        }
+      }
+    }
+
+    // Copy LICENSE
+    const licenseNames = ["LICENSE", "LICENSE.md", "LICENSE.txt", "license", "license.md", "license.txt"]
+    for (const licenseName of licenseNames) {
+      const licensePath = join(extensionPath, licenseName)
+      if (existsSync(licensePath)) {
+        cpSync(licensePath, join(pluginDir, "LICENSE.md"))
+        changedPaths.push(`plugins/${pluginName}/LICENSE.md`)
+        break
+      }
+    }
+
+    // Copy CHANGELOG if present
+    const changelogNames = ["CHANGELOG.md", "CHANGELOG", "changelog.md", "changelog"]
+    for (const changelogName of changelogNames) {
+      const changelogPath = join(extensionPath, changelogName)
+      if (existsSync(changelogPath)) {
+        cpSync(changelogPath, join(pluginDir, "CHANGELOG.md"))
+        changedPaths.push(`plugins/${pluginName}/CHANGELOG.md`)
+        console.log(`  CHANGELOG.md copied`)
+        break
+      }
+    }
+
+    // Write SYNC.md
+    const date = new Date().toISOString().split("T")[0]
+    writeFileSync(
+      join(pluginDir, "SYNC.md"),
+      `# Sync Info\n\n- **Source:** \`external-plugins/${name}\`\n- **Git SHA:** \`${sha}\`\n- **Synced:** ${date}\n`,
+    )
+    changedPaths.push(`plugins/${pluginName}/SYNC.md`)
+
+    // Commit if anything changed
+    if (hasGitChanges(changedPaths)) {
+      if (sha === null) {
+        console.warn(`  ! WARNING: could not read git SHA for external-plugins/${name}. Commit will say 'unknown'.`)
+      }
+      const shortSha = sha?.slice(0, 7) ?? "unknown"
+      commitChanges(changedPaths, `chore(sync): sync extension ${name} to ${shortSha}`)
+      committed.push(name)
+      console.log(`  → committed: chore(sync): sync extension ${name} to ${shortSha}\n`)
+    } else {
+      console.log(`  → no changes\n`)
+    }
+  }
+
   if (committed.length === 0) {
     console.log("\nAll skills are up to date. Nothing to commit.")
   } else {
@@ -390,6 +674,10 @@ export async function checkUpdates() {
   }
   for (const name of Object.keys(vendors)) {
     const path = join(ROOT, "vendor", name)
+    if (existsSync(path)) execSafe("git fetch", path)
+  }
+  for (const name of Object.keys(extensions)) {
+    const path = join(ROOT, "external-plugins", name)
     if (existsSync(path)) execSafe("git fetch", path)
   }
   console.log("done\n")
@@ -412,6 +700,14 @@ export async function checkUpdates() {
     if (count > 0) updates.push({ name, type: "vendor", behind: count })
   }
 
+  for (const name of Object.keys(extensions)) {
+    const path = join(ROOT, "external-plugins", name)
+    if (!existsSync(path)) continue
+    const behind = execSafe("git rev-list HEAD..@{u} --count", path)
+    const count = behind ? Number.parseInt(behind) : 0
+    if (count > 0) updates.push({ name, type: "extension", behind: count })
+  }
+
   if (updates.length === 0) {
     console.log("All submodules are up to date.")
   } else {
@@ -430,10 +726,14 @@ export async function cleanup() {
   const expectedPaths = new Set([
     ...Object.keys(submodules).map(n => `sources/${n}`),
     ...Object.keys(vendors).map(n => `vendor/${n}`),
+    ...Object.keys(extensions).map(n => `external-plugins/${n}`),
     "vendor/antfu-skills",
   ])
   const registered = getRegisteredSubmodulePaths().filter(
-    p => p.startsWith("sources/") || (p.startsWith("vendor/") && p !== "vendor/antfu-skills"),
+    p =>
+      p.startsWith("sources/") ||
+      (p.startsWith("vendor/") && p !== "vendor/antfu-skills") ||
+      p.startsWith("external-plugins/"),
   )
   const extraSubmodules = registered.filter(p => !expectedPaths.has(p))
 

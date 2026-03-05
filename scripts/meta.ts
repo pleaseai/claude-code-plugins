@@ -148,3 +148,24 @@ export const vendors: Record<string, VendorMeta> = {
  * These live in vendor/antfu-skills/skills/ and are copied directly to plugins/{plugin}/skills/ by the sync script.
  */
 export const manual: string[] = ["antfu"]
+
+export interface ExtensionMeta {
+  /** Git repository URL */
+  source: string
+  /** Override plugin name (defaults to extension key name) */
+  pluginName?: string
+  /** Skip TOML command conversion */
+  skipCommands?: boolean
+}
+
+/**
+ * Type 4: Gemini CLI extensions maintained as git submodules in external-plugins/.
+ * Submodules stay in external-plugins/<name>/ as read-only sources.
+ * Generated plugin artifacts (plugin.json, hooks, commands) go to plugins/<name>/.
+ *
+ * To add a new extension:
+ *   1. Add an entry to `extensions` below
+ *   2. Run: bun scripts/cli.ts init
+ *   3. Run: bun scripts/cli.ts sync
+ */
+export const extensions: Record<string, ExtensionMeta> = {}
