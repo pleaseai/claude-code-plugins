@@ -87,7 +87,7 @@
       "tags": ["mcp", "monitoring"],
       "source": {
         "source": "github",
-        "repo": "amondnet/mcp-grafana"
+        "repo": "grafana/mcp-grafana"
       }
     },
     {
