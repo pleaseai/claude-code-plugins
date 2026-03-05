@@ -117,14 +117,14 @@ describe("exec", () => {
   })
 
   it("calls execSync with the command and utf-8 encoding, returns trimmed output", () => {
-    vi.mocked(execSync).mockReturnValue("  hello world  " as any)
+    vi.mocked(execSync).mockReturnValue("  hello world  ")
     const result = exec("echo hello")
     expect(execSync).toHaveBeenCalledWith("echo hello", expect.objectContaining({ encoding: "utf-8" }))
     expect(result).toBe("hello world")
   })
 
   it("uses provided cwd", () => {
-    vi.mocked(execSync).mockReturnValue("" as any)
+    vi.mocked(execSync).mockReturnValue("")
     exec("git status", "/some/dir")
     expect(execSync).toHaveBeenCalledWith("git status", expect.objectContaining({ cwd: "/some/dir" }))
   })
@@ -144,7 +144,7 @@ describe("execSafe", () => {
   })
 
   it("returns trimmed output on success", () => {
-    vi.mocked(execSync).mockReturnValue("  output  " as any)
+    vi.mocked(execSync).mockReturnValue("  output  ")
     expect(execSafe("git log")).toBe("output")
   })
 
@@ -168,14 +168,14 @@ describe("execFile", () => {
   })
 
   it("calls execFileSync with cmd + args and utf-8 encoding, returns trimmed output", () => {
-    vi.mocked(execFileSync).mockReturnValue("  result  " as any)
+    vi.mocked(execFileSync).mockReturnValue("  result  ")
     const result = execFile("git", ["status", "--short"])
     expect(execFileSync).toHaveBeenCalledWith("git", ["status", "--short"], expect.objectContaining({ encoding: "utf-8" }))
     expect(result).toBe("result")
   })
 
   it("uses provided cwd", () => {
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
     execFile("git", ["fetch"], "/repo")
     expect(execFileSync).toHaveBeenCalledWith("git", ["fetch"], expect.objectContaining({ cwd: "/repo" }))
   })
@@ -195,7 +195,7 @@ describe("execFileSafe", () => {
   })
 
   it("returns output on success", () => {
-    vi.mocked(execFileSync).mockReturnValue("abc" as any)
+    vi.mocked(execFileSync).mockReturnValue("abc")
     expect(execFileSafe("git", ["status"])).toBe("abc")
   })
 
@@ -219,7 +219,7 @@ describe("getGitSha", () => {
   })
 
   it("returns the HEAD sha for the given directory", () => {
-    vi.mocked(execSync).mockReturnValue("abc1234567890" as any)
+    vi.mocked(execSync).mockReturnValue("abc1234567890")
     const result = getGitSha("/some/repo")
     expect(execSync).toHaveBeenCalledWith("git rev-parse HEAD", expect.objectContaining({ cwd: "/some/repo" }))
     expect(result).toBe("abc1234567890")
@@ -244,22 +244,22 @@ describe("hasGitChanges", () => {
   })
 
   it("returns false when git status is empty", () => {
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
     expect(hasGitChanges(["some/path"])).toBe(false)
   })
 
   it("returns false when git status is whitespace only", () => {
-    vi.mocked(execFileSync).mockReturnValue("   " as any)
+    vi.mocked(execFileSync).mockReturnValue("   ")
     expect(hasGitChanges(["some/path"])).toBe(false)
   })
 
   it("returns true when git status has output", () => {
-    vi.mocked(execFileSync).mockReturnValue("M some/path\n" as any)
+    vi.mocked(execFileSync).mockReturnValue("M some/path\n")
     expect(hasGitChanges(["some/path"])).toBe(true)
   })
 
   it("passes all paths to git status --porcelain", () => {
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
     hasGitChanges(["plugins/foo", "plugins/bar"])
     expect(execFileSync).toHaveBeenCalledWith(
       "git",
@@ -306,7 +306,7 @@ describe("commitChanges", () => {
   })
 
   it("stages the given paths then commits with the message", () => {
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
     commitChanges(["plugins/foo/skills/bar"], "chore: test commit")
     expect(execFileSync).toHaveBeenNthCalledWith(
       1,
@@ -344,7 +344,7 @@ describe("checkUpdates", () => {
 
   it("reports vendors that are behind", async () => {
     vi.mocked(existsSync).mockReturnValue(true)
-    vi.mocked(execSync).mockReturnValue("3" as any)
+    vi.mocked(execSync).mockReturnValue("3")
 
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
@@ -413,12 +413,12 @@ describe("initSubmodules", () => {
       if (String(p).endsWith(".git")) return true
       return false
     })
-    vi.mocked(readFileSync).mockReturnValue(
-      [...Object.keys(await import("./meta.ts").then(m => m.submodules)).map(n => `path = sources/${n}`),
-       ...Object.keys(await import("./meta.ts").then(m => m.vendors)).map(n => `path = vendor/${n}`)].join("\n"),
-    )
+    const meta = await import("./meta.ts")
+    const submodulePaths = Object.keys(meta.submodules).map(n => `path = sources/${n}`)
+    const vendorPaths = Object.keys(meta.vendors).map(n => `path = vendor/${n}`)
+    vi.mocked(readFileSync).mockReturnValue([...submodulePaths, ...vendorPaths].join("\n"))
     vi.mocked(mkdirSync).mockReturnValue(undefined)
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
 
     vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
@@ -439,7 +439,7 @@ describe("initSubmodules", () => {
     })
     vi.mocked(readFileSync).mockReturnValue("")
     vi.mocked(mkdirSync).mockReturnValue(undefined)
-    vi.mocked(execFileSync).mockReturnValue("" as any)
+    vi.mocked(execFileSync).mockReturnValue("")
 
     vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
