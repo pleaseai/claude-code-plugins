@@ -8,5 +8,10 @@
   },
   "repository": "https://github.com/better-auth/skills",
   "license": "MIT",
-  "keywords": ["better-auth", "authentication", "auth", "typescript"]
+  "keywords": [
+    "better-auth",
+    "authentication",
+    "auth",
+    "typescript"
+  ]
 }

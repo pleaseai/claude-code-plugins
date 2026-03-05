@@ -8,5 +8,10 @@
   },
   "repository": "https://github.com/vercel-labs/agent-browser",
   "license": "Apache-2.0",
-  "keywords": ["agent-browser", "browser", "automation", "agents"]
+  "keywords": [
+    "agent-browser",
+    "browser",
+    "automation",
+    "agents"
+  ]
 }

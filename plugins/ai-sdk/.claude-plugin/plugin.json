@@ -8,5 +8,11 @@
   },
   "repository": "https://github.com/vercel/ai",
   "license": "Apache-2.0",
-  "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"]
+  "keywords": [
+    "ai-sdk",
+    "vercel",
+    "ai",
+    "typescript",
+    "llm"
+  ]
 }
