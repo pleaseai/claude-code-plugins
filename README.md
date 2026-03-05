@@ -50,7 +50,7 @@ Prototype, build & run modern apps users love with Firebase's backend, AI, and o
 #### Grafana
 A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities.
 
-**Install:** `/plugin install grafana@pleaseai` | **Repository:** [amondnet/mcp-grafana](https://github.com/amondnet/mcp-grafana)
+**Install:** `/plugin install grafana@pleaseai` | **Repository:** [grafana/mcp-grafana](https://github.com/grafana/mcp-grafana)
 
 #### MCP Neo4j
 Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling.
@@ -62,11 +62,6 @@ Control and inspect a live Chrome browser through MCP — automate actions, debu
 
 **Install:** `/plugin install chrome-devtools-mcp@pleaseai` | **Repository:** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
 
-
-#### Nuxt UI
-Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server.
-
-**Install:** `/plugin install nuxt-ui@pleaseai` | **Repository:** [pleaseai/nuxt-ui](https://github.com/pleaseai/nuxt-ui)
 
 #### Playwright CLI
 Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
@@ -80,92 +75,132 @@ Token-efficient browser automation CLI for coding agents — navigate, interact,
 #### Plugin Dev
 Best practices, guidelines, and validation tools for Claude Code plugin development.
 
-**Install:** `/plugin install plugin-dev@pleaseai`
+**Install:** `/plugin install plugin-dev@pleaseai` | **Source:** [plugins/plugin-dev](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/plugin-dev)
 
 #### Gatekeeper
 Auto-approve safe commands, AI-assisted review for the rest.
 
-**Install:** `/plugin install gatekeeper@pleaseai`
+**Install:** `/plugin install gatekeeper@pleaseai` | **Source:** [plugins/gatekeeper](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/gatekeeper)
 
 #### Cubic
 AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues.
 
-**Install:** `/plugin install cubic@pleaseai`
+**Install:** `/plugin install cubic@pleaseai` | **Source:** [plugins/cubic](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/cubic)
 
 #### MCP Dev
 Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools.
 
-**Install:** `/plugin install mcp-dev@pleaseai`
+**Install:** `/plugin install mcp-dev@pleaseai` | **Source:** [plugins/mcp-dev](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mcp-dev)
+
+#### Nuxt UI
+Nuxt UI component library with comprehensive documentation, templates, and examples via MCP server.
+
+**Install:** `/plugin install nuxt-ui@pleaseai` | **Source:** [plugins/nuxt-ui](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nuxt-ui)
 
 #### Vue
 Vue 3 core, best practices, router patterns, and testing.
 
-**Install:** `/plugin install vue@pleaseai`
+**Install:** `/plugin install vue@pleaseai` | **Source:** [plugins/vue](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vue)
 
 #### Nuxt
 Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing.
 
-**Install:** `/plugin install nuxt@pleaseai`
+**Install:** `/plugin install nuxt@pleaseai` | **Source:** [plugins/nuxt](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nuxt)
 
 #### Pinia
 Pinia official Vue state management library, type-safe and extensible.
 
-**Install:** `/plugin install pinia@pleaseai`
+**Install:** `/plugin install pinia@pleaseai` | **Source:** [plugins/pinia](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/pinia)
 
 #### VueUse
 VueUse composables for building concise, maintainable Vue.js / Nuxt features.
 
-**Install:** `/plugin install vueuse@pleaseai`
+**Install:** `/plugin install vueuse@pleaseai` | **Source:** [plugins/vueuse](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vueuse)
 
 #### Vite
 Vite build tool configuration, plugin API, SSR, and Rolldown migration.
 
-**Install:** `/plugin install vite@pleaseai`
+**Install:** `/plugin install vite@pleaseai` | **Source:** [plugins/vite](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vite)
 
 #### Vitest
 Vitest fast unit testing framework powered by Vite with Jest-compatible API.
 
-**Install:** `/plugin install vitest@pleaseai`
+**Install:** `/plugin install vitest@pleaseai` | **Source:** [plugins/vitest](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vitest)
 
 #### VitePress
 VitePress static site generator powered by Vite and Vue.
 
-**Install:** `/plugin install vitepress@pleaseai`
+**Install:** `/plugin install vitepress@pleaseai` | **Source:** [plugins/vitepress](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vitepress)
 
 #### UnoCSS
 UnoCSS instant atomic CSS engine, superset of Tailwind CSS.
 
-**Install:** `/plugin install unocss@pleaseai`
+**Install:** `/plugin install unocss@pleaseai` | **Source:** [plugins/unocss](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/unocss)
 
 #### Web Design
 Review UI code for Web Interface Guidelines compliance.
 
-**Install:** `/plugin install web-design@pleaseai`
+**Install:** `/plugin install web-design@pleaseai` | **Source:** [plugins/web-design](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/web-design)
 
 #### Turborepo
 Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization.
 
-**Install:** `/plugin install turborepo@pleaseai`
+**Install:** `/plugin install turborepo@pleaseai` | **Source:** [plugins/turborepo](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/turborepo)
 
 #### tsdown
 Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown.
 
-**Install:** `/plugin install tsdown@pleaseai`
+**Install:** `/plugin install tsdown@pleaseai` | **Source:** [plugins/tsdown](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/tsdown)
 
 #### Slidev
 Create and present web-based slides for developers using Markdown and Vue components.
 
-**Install:** `/plugin install slidev@pleaseai`
+**Install:** `/plugin install slidev@pleaseai` | **Source:** [plugins/slidev](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/slidev)
 
 #### pnpm
 Node.js package manager with strict dependency resolution and workspace support.
 
-**Install:** `/plugin install pnpm@pleaseai`
+**Install:** `/plugin install pnpm@pleaseai` | **Source:** [plugins/pnpm](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/pnpm)
 
 #### Antfu
 Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects.
 
-**Install:** `/plugin install antfu@pleaseai`
+**Install:** `/plugin install antfu@pleaseai` | **Source:** [plugins/antfu](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/antfu)
+
+#### Mastra
+Official agent skills for coding agents working with the Mastra AI framework.
+
+**Install:** `/plugin install mastra@pleaseai` | **Source:** [plugins/mastra](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mastra)
+
+#### Supabase
+Agent Skills to help developers using AI agents with Supabase.
+
+**Install:** `/plugin install supabase@pleaseai` | **Source:** [plugins/supabase](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/supabase)
+
+#### Prisma
+Official agent skills for Prisma ORM — schema design, migrations, queries, and database workflows.
+
+**Install:** `/plugin install prisma@pleaseai` | **Source:** [plugins/prisma](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/prisma)
+
+#### Better Auth
+Better Auth authentication framework skills for JavaScript/TypeScript projects.
+
+**Install:** `/plugin install better-auth@pleaseai` | **Source:** [plugins/better-auth](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/better-auth)
+
+#### Agent Browser
+Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows.
+
+**Install:** `/plugin install agent-browser@pleaseai` | **Source:** [plugins/agent-browser](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/agent-browser)
+
+#### AI SDK
+The AI Toolkit for TypeScript — official agent skills for building AI-powered applications and agents with Vercel AI SDK.
+
+**Install:** `/plugin install ai-sdk@pleaseai` | **Source:** [plugins/ai-sdk](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/ai-sdk)
+
+#### Slack Agent
+Skills for building Slack agents and bots with Chat SDK, Bolt for JavaScript, and Slack API integrations.
+
+**Install:** `/plugin install slack-agent@pleaseai` | **Source:** [plugins/slack-agent](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/slack-agent)
 
 ## Installation
 
@@ -190,7 +225,6 @@ Once the marketplace is added, install any plugin with:
 /plugin install grafana@pleaseai
 /plugin install mcp-neo4j@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
-/plugin install nuxt-ui@pleaseai
 /plugin install playwright-cli@pleaseai
 
 # Built-in plugins
@@ -198,6 +232,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install gatekeeper@pleaseai
 /plugin install cubic@pleaseai
 /plugin install mcp-dev@pleaseai
+/plugin install nuxt-ui@pleaseai
 /plugin install vue@pleaseai
 /plugin install nuxt@pleaseai
 /plugin install pinia@pleaseai
@@ -212,6 +247,13 @@ Once the marketplace is added, install any plugin with:
 /plugin install slidev@pleaseai
 /plugin install pnpm@pleaseai
 /plugin install antfu@pleaseai
+/plugin install mastra@pleaseai
+/plugin install supabase@pleaseai
+/plugin install prisma@pleaseai
+/plugin install better-auth@pleaseai
+/plugin install agent-browser@pleaseai
+/plugin install ai-sdk@pleaseai
+/plugin install slack-agent@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
