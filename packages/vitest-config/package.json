@@ -28,7 +28,7 @@
     "@pleaseai/typescript-config": "workspace:*",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
-    "eslint": "^9.33.0",
+    "eslint": "^10.0.2",
     "glob": "^11.0.1",
     "jsdom": "^26.0.0",
     "nyc": "^17.1.0",

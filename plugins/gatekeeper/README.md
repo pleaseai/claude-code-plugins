@@ -8,7 +8,7 @@ Gatekeeper eliminates repetitive permission dialogs for safe development command
 
 ### How It Works
 
-```
+```text
 Bash command
   │
   ▼
