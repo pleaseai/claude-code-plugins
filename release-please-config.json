@@ -284,17 +284,6 @@
           "jsonpath": "$.version"
         }
       ]
-    },
-    "plugins/nanobanana": {
-      "release-type": "simple",
-      "component": "nanobanana",
-      "extra-files": [
-        {
-          "type": "json",
-          "path": ".claude-plugin/plugin.json",
-          "jsonpath": "$.version"
-        }
-      ]
     }
   },
   "release-type": "node",
