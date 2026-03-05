@@ -1,5 +1,5 @@
 # Sync Info
 
 - **Source:** `vendor/agent-browser/skills/electron`
-- **Git SHA:** `139dd0ec5a912ad2146c1525225101af003dff6c`
-- **Synced:** 2026-03-04
+- **Git SHA:** `8f6ad817f10b151b647234882f2a0fef6d2b43d1`
+- **Synced:** 2026-03-05
