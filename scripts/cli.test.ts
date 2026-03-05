@@ -54,6 +54,7 @@ describe("getRegisteredSubmodulePaths", () => {
 
   afterEach(() => {
     vi.clearAllMocks()
+    vi.restoreAllMocks()
   })
 
   it("returns [] when .gitmodules does not exist", () => {
@@ -85,6 +86,7 @@ describe("getRegisteredSubmodulePaths", () => {
 describe("isSubmoduleRegistered", () => {
   afterEach(() => {
     vi.clearAllMocks()
+    vi.restoreAllMocks()
   })
 
   it("returns true when the path is listed in .gitmodules", () => {
@@ -109,7 +111,10 @@ describe("isSubmoduleRegistered", () => {
 // exec / execSafe
 // ---------------------------------------------------------------------------
 describe("exec", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("calls execSync with the command and utf-8 encoding, returns trimmed output", () => {
     vi.mocked(execSync).mockReturnValue("  hello world  " as any)
@@ -133,7 +138,10 @@ describe("exec", () => {
 })
 
 describe("execSafe", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("returns trimmed output on success", () => {
     vi.mocked(execSync).mockReturnValue("  output  " as any)
@@ -147,7 +155,6 @@ describe("execSafe", () => {
     })
     expect(execSafe("bad-cmd")).toBeNull()
     expect(stderrSpy).toHaveBeenCalledWith(expect.stringContaining("[warn]"))
-    stderrSpy.mockRestore()
   })
 })
 
@@ -155,7 +162,10 @@ describe("execSafe", () => {
 // execFile / execFileSafe
 // ---------------------------------------------------------------------------
 describe("execFile", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("calls execFileSync with cmd + args and utf-8 encoding, returns trimmed output", () => {
     vi.mocked(execFileSync).mockReturnValue("  result  " as any)
@@ -179,7 +189,10 @@ describe("execFile", () => {
 })
 
 describe("execFileSafe", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("returns output on success", () => {
     vi.mocked(execFileSync).mockReturnValue("abc" as any)
@@ -193,7 +206,6 @@ describe("execFileSafe", () => {
     })
     expect(execFileSafe("git", ["bad-arg"])).toBeNull()
     expect(stderrSpy).toHaveBeenCalledWith(expect.stringContaining("[warn]"))
-    stderrSpy.mockRestore()
   })
 })
 
@@ -201,7 +213,10 @@ describe("execFileSafe", () => {
 // getGitSha
 // ---------------------------------------------------------------------------
 describe("getGitSha", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("returns the HEAD sha for the given directory", () => {
     vi.mocked(execSync).mockReturnValue("abc1234567890" as any)
@@ -223,7 +238,10 @@ describe("getGitSha", () => {
 // hasGitChanges
 // ---------------------------------------------------------------------------
 describe("hasGitChanges", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("returns false when git status is empty", () => {
     vi.mocked(execFileSync).mockReturnValue("" as any)
@@ -263,7 +281,10 @@ describe("hasGitChanges", () => {
 // ensurePlugin
 // ---------------------------------------------------------------------------
 describe("ensurePlugin", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("creates the plugin/skills directory with recursive: true", () => {
     vi.mocked(mkdirSync).mockReturnValue(undefined)
@@ -279,7 +300,10 @@ describe("ensurePlugin", () => {
 // commitChanges
 // ---------------------------------------------------------------------------
 describe("commitChanges", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("stages the given paths then commits with the message", () => {
     vi.mocked(execFileSync).mockReturnValue("" as any)
@@ -303,25 +327,23 @@ describe("commitChanges", () => {
 // checkUpdates
 // ---------------------------------------------------------------------------
 describe("checkUpdates", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("prints 'All submodules are up to date' when nothing is behind", async () => {
-    // existsSync: all source/vendor paths return false so we skip fetching
     vi.mocked(existsSync).mockReturnValue(false)
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
-    const stdoutSpy = vi.spyOn(process.stdout, "write").mockImplementation(() => true)
+    vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
     await checkUpdates()
 
     expect(logSpy).toHaveBeenCalledWith(expect.stringContaining("up to date"))
-    logSpy.mockRestore()
-    stdoutSpy.mockRestore()
   })
 
   it("reports vendors that are behind", async () => {
-    // Let all paths exist so we attempt fetch and rev-list
     vi.mocked(existsSync).mockReturnValue(true)
-    // execSync: fetch returns empty, rev-list returns a count
     vi.mocked(execSync).mockReturnValue("3" as any)
 
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
@@ -329,10 +351,8 @@ describe("checkUpdates", () => {
 
     await checkUpdates()
 
-    // Should have logged at least one "commits behind" line
     const calls = logSpy.mock.calls.flat().join("\n")
     expect(calls).toContain("behind")
-    logSpy.mockRestore()
   })
 })
 
@@ -340,12 +360,13 @@ describe("checkUpdates", () => {
 // cleanup
 // ---------------------------------------------------------------------------
 describe("cleanup", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("prints 'Everything is clean' when there are no stale items", async () => {
-    // .gitmodules doesn't exist → no registered submodules → no extra ones
     vi.mocked(existsSync).mockReturnValue(false)
-    // readdirSync → no skills dirs to scan
     vi.mocked(readdirSync).mockReturnValue([])
 
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
@@ -353,21 +374,19 @@ describe("cleanup", () => {
     await cleanup()
 
     expect(logSpy).toHaveBeenCalledWith("Everything is clean.")
-    logSpy.mockRestore()
   })
 
   it("removes a stale skill directory not in SKILL_TO_PLUGIN", async () => {
     vi.mocked(existsSync).mockImplementation((p) => {
-      // Skills dirs exist so cleanup can scan them
       return String(p).includes("skills")
     })
     vi.mocked(readdirSync).mockReturnValue([
       { name: "stale-unknown-skill", isDirectory: () => true } as any,
     ])
     vi.mocked(rmSync).mockReturnValue(undefined)
-    vi.mocked(readFileSync).mockReturnValue("") // .gitmodules is empty
+    vi.mocked(readFileSync).mockReturnValue("")
 
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
+    vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
     await cleanup()
@@ -376,7 +395,6 @@ describe("cleanup", () => {
       expect.stringContaining("stale-unknown-skill"),
       expect.objectContaining({ recursive: true }),
     )
-    logSpy.mockRestore()
   })
 })
 
@@ -384,41 +402,37 @@ describe("cleanup", () => {
 // initSubmodules
 // ---------------------------------------------------------------------------
 describe("initSubmodules", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("skips sources that are already initialized (.git exists)", async () => {
-    // Registered and .git present → 'already initialized' branch
     vi.mocked(existsSync).mockImplementation((p) => {
-      // .gitmodules exists
       if (String(p).endsWith(".gitmodules")) return true
-      // All .git dirs exist → already initialized
       if (String(p).endsWith(".git")) return true
       return false
     })
     vi.mocked(readFileSync).mockReturnValue(
-      // Register every source and vendor so nothing triggers 'git submodule add'
       [...Object.keys(await import("./meta.ts").then(m => m.submodules)).map(n => `path = sources/${n}`),
        ...Object.keys(await import("./meta.ts").then(m => m.vendors)).map(n => `path = vendor/${n}`)].join("\n"),
     )
     vi.mocked(mkdirSync).mockReturnValue(undefined)
     vi.mocked(execFileSync).mockReturnValue("" as any)
 
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
+    vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
     await initSubmodules()
 
-    // 'git submodule add' should NOT have been called
     expect(execFileSync).not.toHaveBeenCalledWith(
       "git",
       expect.arrayContaining(["submodule", "add"]),
       expect.any(Object),
     )
-    logSpy.mockRestore()
   })
 
   it("runs 'git submodule add' for sources not yet registered", async () => {
-    // .gitmodules empty → nothing registered
     vi.mocked(existsSync).mockImplementation((p) => {
       if (String(p).endsWith(".gitmodules")) return true
       return false
@@ -427,7 +441,7 @@ describe("initSubmodules", () => {
     vi.mocked(mkdirSync).mockReturnValue(undefined)
     vi.mocked(execFileSync).mockReturnValue("" as any)
 
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
+    vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
     await initSubmodules()
@@ -437,7 +451,6 @@ describe("initSubmodules", () => {
       expect.arrayContaining(["submodule", "add"]),
       expect.any(Object),
     )
-    logSpy.mockRestore()
   })
 })
 
@@ -445,23 +458,22 @@ describe("initSubmodules", () => {
 // syncSubmodules — vendor not initialized
 // ---------------------------------------------------------------------------
 describe("syncSubmodules", () => {
-  afterEach(() => vi.clearAllMocks())
+  afterEach(() => {
+    vi.clearAllMocks()
+    vi.restoreAllMocks()
+  })
 
   it("warns and skips vendors that are not initialized", async () => {
-    // Nothing registered, nothing exists
     vi.mocked(existsSync).mockReturnValue(false)
     vi.mocked(readFileSync).mockReturnValue("")
     vi.mocked(readdirSync).mockReturnValue([])
 
     const warnSpy = vi.spyOn(console, "warn").mockImplementation(() => {})
-    const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
+    vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
     await syncSubmodules()
 
-    // Each vendor should produce a 'not initialized' warning
     expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("not initialized"))
-    warnSpy.mockRestore()
-    logSpy.mockRestore()
   })
 })
