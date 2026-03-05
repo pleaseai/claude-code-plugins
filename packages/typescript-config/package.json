@@ -6,6 +6,6 @@
   "devDependencies": {
     "std-env": "^3.9.0",
     "vitest": "^4.0.18",
-    "@vue/tsconfig": "^0.5.1"
+    "@vue/tsconfig": "^0.9.0"
   }
 }
