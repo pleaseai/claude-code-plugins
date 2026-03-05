@@ -1,0 +1,6 @@
+{
+  "name": "google-workspace-cli",
+  "version": "latest",
+  "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+  "contextFileName": "CONTEXT.md"
+}
