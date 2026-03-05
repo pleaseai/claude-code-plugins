@@ -327,6 +327,14 @@
       "name": "slack-agent",
       "description": "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt.",
       "source": "./plugins/slack-agent"
+    },
+    {
+      "name": "claude-md-management",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current",
+      "category": "tooling",
+      "keywords": ["claude-md", "memory", "audit", "quality"],
+      "tags": ["tooling", "maintenance"],
+      "source": "./plugins/claude-md-management"
     }
   ]
 }
