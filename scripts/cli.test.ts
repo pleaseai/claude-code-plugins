@@ -416,7 +416,8 @@ describe("initSubmodules", () => {
     const meta = await import("./meta.ts")
     const submodulePaths = Object.keys(meta.submodules).map(n => `path = sources/${n}`)
     const vendorPaths = Object.keys(meta.vendors).map(n => `path = vendor/${n}`)
-    vi.mocked(readFileSync).mockReturnValue([...submodulePaths, ...vendorPaths].join("\n"))
+    const extensionPaths = Object.keys(meta.extensions).map(n => `path = external-plugins/${n}`)
+    vi.mocked(readFileSync).mockReturnValue([...submodulePaths, ...vendorPaths, ...extensionPaths].join("\n"))
     vi.mocked(mkdirSync).mockReturnValue(undefined)
     vi.mocked(execFileSync).mockReturnValue("")
 

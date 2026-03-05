@@ -545,6 +545,42 @@ export async function syncSubmodules() {
       }
     }
 
+    // Copy skills/ directory if present
+    const sourceSkillsDir = join(extensionPath, "skills")
+    if (!config.skipSkills && existsSync(sourceSkillsDir)) {
+      const outputSkillsDir = join(pluginDir, "skills")
+      mkdirSync(outputSkillsDir, { recursive: true })
+
+      for (const entry of readdirSync(sourceSkillsDir, { withFileTypes: true })) {
+        if (!entry.isDirectory()) continue
+
+        const srcSkill = join(sourceSkillsDir, entry.name)
+        const destSkill = join(outputSkillsDir, entry.name)
+
+        process.stdout.write(`  skill synced: ${entry.name} ... `)
+        try {
+          rmSync(destSkill, { recursive: true, force: true })
+          mkdirSync(destSkill, { recursive: true })
+          cpSync(srcSkill, destSkill, { recursive: true })
+        } catch (e) {
+          const msg = e instanceof Error ? e.message : String(e)
+          console.error(`FAILED\n  ! could not copy skill ${entry.name}: ${msg}`)
+          rmSync(destSkill, { recursive: true, force: true })
+          continue
+        }
+
+        // Write SYNC.md to each skill
+        const skillDate = new Date().toISOString().split("T")[0]
+        writeFileSync(
+          join(destSkill, "SYNC.md"),
+          `# Sync Info\n\n- **Source:** \`external-plugins/${name}/skills/${entry.name}\`\n- **Git SHA:** \`${sha}\`\n- **Synced:** ${skillDate}\n`,
+        )
+
+        changedPaths.push(`plugins/${pluginName}/skills/${entry.name}`)
+        console.log("done")
+      }
+    }
+
     // Copy LICENSE
     const licenseNames = ["LICENSE", "LICENSE.md", "LICENSE.txt", "license", "license.md", "license.txt"]
     for (const licenseName of licenseNames) {

@@ -97,3 +97,6 @@
 [submodule "vendor/ai-sdk"]
 	path = vendor/ai-sdk
 	url = https://github.com/vercel/ai
+[submodule "external-plugins/google-workspace"]
+	path = external-plugins/google-workspace
+	url = https://github.com/googleworkspace/cli

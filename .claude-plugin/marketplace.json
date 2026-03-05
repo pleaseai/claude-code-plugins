@@ -332,6 +332,14 @@
       "keywords": ["claude-md", "memory", "audit", "quality"],
       "tags": ["tooling", "maintenance"],
       "source": "./plugins/claude-md-management"
+    },
+    {
+      "name": "google-workspace",
+      "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+      "category": "productivity",
+      "keywords": ["google-workspace", "gmail", "drive", "calendar", "docs", "sheets"],
+      "tags": ["google", "workspace"],
+      "source": "./plugins/google-workspace"
     }
   ]
 }
