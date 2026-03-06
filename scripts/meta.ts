@@ -67,12 +67,6 @@ export const vendors: Record<string, VendorMeta> = {
       "vue-testing-best-practices": "vue-testing-best-practices",
     },
   },
-  turborepo: {
-    source: "https://github.com/vercel/turborepo",
-    skills: {
-      turborepo: "turborepo",
-    },
-  },
   "web-design-guidelines": {
     source: "https://github.com/vercel-labs/agent-skills",
     skills: {

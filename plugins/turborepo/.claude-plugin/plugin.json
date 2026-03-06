@@ -3,16 +3,18 @@
   "version": "1.0.0",
   "description": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
   "author": {
-    "name": "Anthony Fu",
-    "url": "https://github.com/antfu"
+    "name": "Vercel",
+    "url": "https://github.com/vercel"
   },
-  "homepage": "https://github.com/antfu/skills/tree/main/skills/turborepo",
-  "repository": "https://github.com/antfu/skills",
+  "homepage": "https://github.com/vercel/turborepo",
+  "repository": "https://github.com/vercel/turborepo",
   "license": "MIT",
   "keywords": [
     "turborepo",
     "monorepo",
     "build-system",
-    "antfu"
-  ]
+    "vercel"
+  ],
+  "skills": "./.agents/skills/",
+  "commands": ["./.agents/skills/turborepo/command/"]
 }
