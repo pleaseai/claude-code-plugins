@@ -59,13 +59,7 @@ export const vendors: Record<string, VendorMeta> = {
       "vueuse-functions": "vueuse-functions",
     },
   },
-  tsdown: {
-    source: "https://github.com/rolldown/tsdown",
-    skills: {
-      tsdown: "tsdown",
-    },
-  },
-  "vuejs-ai": {
+"vuejs-ai": {
     source: "https://github.com/vuejs-ai/skills",
     skills: {
       "vue-best-practices": "vue-best-practices",
