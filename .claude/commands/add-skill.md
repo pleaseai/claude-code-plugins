@@ -145,7 +145,29 @@ Read `release-please-config.json` and add the new plugin package to the `package
 }
 ```
 
-## Step 6 — Summary Report
+## Step 6 — Update Documentation
+
+### README.md
+
+Read `README.md` and add an entry for the new plugin inside the **Built-in Plugins** section, immediately before the closing `## Installation` heading (or after the last `#### ...` plugin entry in that section):
+
+```markdown
+#### <Human-readable Plugin Name>
+<description from plugin.json>
+
+**Install:** `/plugin install <PLUGIN_NAME>@pleaseai` | **Source:** [plugins/<PLUGIN_NAME>](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/<PLUGIN_NAME>)
+```
+
+Use the Edit tool to insert the block before the last plugin entry or at the end of the Built-in Plugins list.
+
+### CLAUDE.md
+
+Read `CLAUDE.md` and check whether any section needs updating:
+
+- If CLAUDE.md contains a submodule or plugin source list (e.g. `external-plugins/*` mappings), add the new plugin's source repo there.
+- If no relevant section exists, no update is required — skip silently.
+
+## Step 7 — Summary Report
 
 ```
 ✓ Skill plugin added: <PLUGIN_NAME>
@@ -171,6 +193,8 @@ Changes made:
   plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json   (created)
   .claude-plugin/marketplace.json                    (updated)
   release-please-config.json                         (updated)
+  README.md                                          (updated)
+  CLAUDE.md                                          (updated, if applicable)
 
 To update the skills in the future:
   cd plugins/<PLUGIN_NAME> && bunx skills update
