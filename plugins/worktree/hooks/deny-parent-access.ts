@@ -20,9 +20,9 @@
  *   2 = unexpected error — tool call blocked as a security precaution
  */
 
-import { isAbsolute, normalize } from 'node:path'
+import { isAbsolute, normalize, resolve } from 'node:path'
 import process from 'node:process'
-import { detectWorktree } from './worktree-context'
+import { detectWorktree, resolveCwd } from './worktree-context'
 
 interface PreToolUseInput {
   tool_name?: string
@@ -115,19 +115,7 @@ async function main(): Promise<void> {
       process.exit(2)
     }
 
-    const rawCwd = hookInput.cwd
-    let cwd: string
-    if (rawCwd && isAbsolute(rawCwd)) {
-      cwd = rawCwd
-    }
-    else {
-      if (rawCwd) {
-        process.stderr.write(
-          `[deny-parent-access] Warning: cwd '${rawCwd}' is not absolute, falling back to process.cwd()\n`,
-        )
-      }
-      cwd = process.cwd()
-    }
+    const cwd = resolveCwd(hookInput.cwd, 'deny-parent-access')
 
     // Check if we're in a worktree
     const worktreeInfo = detectWorktree(cwd)
@@ -137,11 +125,14 @@ async function main(): Promise<void> {
     }
 
     // Extract the path being accessed
-    const filePath = extractPath(hookInput)
-    if (!filePath) {
+    const rawPath = extractPath(hookInput)
+    if (!rawPath) {
       // No path found — allow (tool might not have a path argument)
       process.exit(0)
     }
+
+    // Resolve relative paths against cwd to prevent bypass via paths like ../../secret.ts
+    const filePath = isAbsolute(rawPath) ? rawPath : resolve(cwd, rawPath)
 
     // Check if the path is under the parent project
     if (!isParentPath(filePath, worktreeInfo.parentProjectPath)) {

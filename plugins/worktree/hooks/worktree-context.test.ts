@@ -83,7 +83,9 @@ describe('detectWorktree — git fallback strategy (detectWorktreeViaGit)', () =
   test('returns null for main git repository root (not a linked worktree)', () => {
     // The project root is a real git repo but NOT a linked worktree.
     // git rev-parse --git-common-dir equals <toplevel>/.git → not a worktree.
-    const projectRoot = '/home/coder/IdeaProjects/engineering-standards'
+    // Navigate up from hooks/ → worktree/ → plugins/ → repo root (claude-code-plugins)
+    const { resolve: pathResolve } = require('node:path')
+    const projectRoot = pathResolve(import.meta.dir, '../../..')
     const result = detectWorktree(projectRoot)
     expect(result).toBeNull()
   })

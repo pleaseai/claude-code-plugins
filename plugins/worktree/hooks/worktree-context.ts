@@ -15,7 +15,7 @@
  */
 
 import { spawnSync } from 'node:child_process'
-import { isAbsolute, resolve } from 'node:path'
+import { isAbsolute, join, resolve } from 'node:path'
 import process from 'node:process'
 
 interface SessionStartInput {
@@ -75,7 +75,7 @@ function detectWorktreeViaGit(cwd: string): WorktreeInfo | null {
     // In a linked worktree: git common dir is the main repo's .git (outside toplevel)
     // git may return a relative path for --git-common-dir in some versions, so resolve to absolute
     const resolvedCommonDir = resolve(cwd, gitCommonDir)
-    const expectedMainGitDir = `${toplevel}/.git`
+    const expectedMainGitDir = join(toplevel, '.git')
     const isLinkedWorktree = resolvedCommonDir !== expectedMainGitDir
 
     if (!isLinkedWorktree) {
@@ -84,8 +84,10 @@ function detectWorktreeViaGit(cwd: string): WorktreeInfo | null {
 
     // The common dir is typically <parentProject>/.git
     // Resolve parent project path from resolved absolute common dir
-    const parentProjectPath = resolvedCommonDir.endsWith('/.git')
-      ? resolvedCommonDir.slice(0, -5)
+    // Use join('.git') comparison to handle both POSIX and Windows separators
+    const gitDirSuffix = join('x', '.git').slice(1) // sep + '.git'
+    const parentProjectPath = resolvedCommonDir.endsWith(gitDirSuffix)
+      ? resolvedCommonDir.slice(0, -gitDirSuffix.length)
       : resolvedCommonDir
 
     return {
@@ -137,6 +139,22 @@ Rules:
   - If you need to reference the parent project, use only the worktree path shown above`
 }
 
+/**
+ * Resolve the cwd from the hook input, falling back to process.cwd() if invalid.
+ * Exported so deny-parent-access.ts can reuse this logic.
+ */
+export function resolveCwd(rawCwd: string | undefined, hookName: string): string {
+  if (rawCwd && isAbsolute(rawCwd)) {
+    return rawCwd
+  }
+  if (rawCwd) {
+    process.stderr.write(
+      `[${hookName}] Warning: cwd '${rawCwd}' is not absolute, falling back to process.cwd()\n`,
+    )
+  }
+  return process.cwd()
+}
+
 async function main(): Promise<void> {
   try {
     const input = await Bun.stdin.text()
@@ -155,19 +173,7 @@ async function main(): Promise<void> {
       process.exit(0)
     }
 
-    const rawCwd = hookInput.cwd
-    let cwd: string
-    if (rawCwd && isAbsolute(rawCwd)) {
-      cwd = rawCwd
-    }
-    else {
-      if (rawCwd) {
-        process.stderr.write(
-          `[worktree-context] Warning: cwd '${rawCwd}' is not absolute, falling back to process.cwd()\n`,
-        )
-      }
-      cwd = process.cwd()
-    }
+    const cwd = resolveCwd(hookInput.cwd, 'worktree-context')
     const worktreeInfo = detectWorktree(cwd)
 
     if (!worktreeInfo) {

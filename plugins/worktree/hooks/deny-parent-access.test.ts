@@ -1,3 +1,4 @@
+import { resolve } from 'node:path'
 import { describe, expect, test } from 'bun:test'
 import { buildDenyResponse, extractPath, isParentPath } from './deny-parent-access'
 
@@ -240,6 +241,17 @@ describe('deny-parent-access integration scenarios', () => {
     const filePath = '/home/user/completely-different/project/file.ts'
     // Not a worktree → no check needed
     expect(isParentPath(filePath, parentProjectPath)).toBe(false)
+  })
+
+  test('relative path resolved against worktree cwd is correctly checked', () => {
+    // Simulate the main() fix: relative paths are resolved to absolute before isParentPath
+    // A relative path like '../../src/secret.ts' from the worktree dir escapes into parent
+    const worktreeCwd = `${parentProjectPath}/.claude/worktrees/feature-xyz`
+    const relativePath = '../../src/secret.ts'
+    const resolvedPath = resolve(worktreeCwd, relativePath)
+    // Resolves to /home/user/myproject/.claude/src/secret.ts — under parent → should deny
+    expect(isParentPath(resolvedPath, parentProjectPath)).toBe(true)
+    expect(isParentPath(resolvedPath, worktreeCwd)).toBe(false)
   })
 
   test('blocks Grep with parent project path', () => {
