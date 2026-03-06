@@ -38,7 +38,6 @@ export const SKILL_TO_PLUGIN: Record<string, string> = {
   "vue-router-best-practices": "vue",
   "vue-testing-best-practices": "vue",
   slidev: "slidev",
-turborepo: "turborepo",
   "vueuse-functions": "vueuse",
   "web-design-guidelines": "web-design",
   mastra: "mastra",
@@ -259,20 +258,6 @@ export async function syncSubmodules() {
 
       changedPaths.push(destRelative)
       console.log("done")
-    }
-
-    // turborepo: also sync command file
-    if (name === "turborepo") {
-      const turborepoCommandSrc = join(PLUGINS_DIR, "turborepo/skills/turborepo/command/turborepo.md")
-      if (existsSync(turborepoCommandSrc)) {
-        const commandsDir = join(PLUGINS_DIR, "turborepo/commands")
-        mkdirSync(commandsDir, { recursive: true })
-        const dest = join(commandsDir, "turborepo.md")
-        rmSync(dest, { force: true })
-        cpSync(turborepoCommandSrc, dest)
-        changedPaths.push("plugins/turborepo/commands/turborepo.md")
-        console.log("  turborepo command synced")
-      }
     }
 
     // Commit this vendor's changes
