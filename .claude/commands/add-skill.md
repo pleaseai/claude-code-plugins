@@ -42,7 +42,7 @@ Create the plugin directory and install each skill into it. Run the following fo
 
 ```bash
 mkdir -p plugins/<PLUGIN_NAME>
-cd plugins/<PLUGIN_NAME> && bunx skills add <OWNER_REPO> --skill <SKILL_NAME> --agent 'universal' -y
+(cd plugins/<PLUGIN_NAME> && bunx skills add <OWNER_REPO> --skill <SKILL_NAME> --agent 'universal' -y)
 ```
 
 `bunx skills add` run from `plugins/<PLUGIN_NAME>/` will:
@@ -55,7 +55,7 @@ If any command fails, stop and show the error.
 
 For each skill in `SKILL_NAMES`, check that the SKILL.md exists:
 ```bash
-ls plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md
+find plugins/<PLUGIN_NAME>/.agents/skills -name SKILL.md
 ```
 
 Then read `skills-lock.json`:
@@ -153,7 +153,7 @@ Read `README.md` and add an entry for the new plugin inside the **Built-in Plugi
 **Install:** `/plugin install <PLUGIN_NAME>@pleaseai` | **Source:** [plugins/<PLUGIN_NAME>](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/<PLUGIN_NAME>)
 ```
 
-Use the Edit tool to insert the block before the last plugin entry or at the end of the Built-in Plugins list.
+Use the Edit tool to insert the block after the last plugin entry or at the end of the Built-in Plugins list.
 
 ### CLAUDE.md
 
