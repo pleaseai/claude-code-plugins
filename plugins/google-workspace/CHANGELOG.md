@@ -1,5 +1,12 @@
 # @googleworkspace/cli
 
+## 1.0.0 (2026-03-06)
+
+
+### Features
+
+* **sync:** add google-workspace Gemini CLI extension as Type 4 plugin ([#70](https://github.com/pleaseai/claude-code-plugins/issues/70)) ([9405311](https://github.com/pleaseai/claude-code-plugins/commit/940531146b18086b53de18da05bdae4bce4e43fa))
+
 ## 0.4.4
 
 ### Patch Changes

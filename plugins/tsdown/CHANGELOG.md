@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.1.0...tsdown-v1.2.0) (2026-03-06)
+
+
+### Features
+
+* **nanobanana:** add nanobanana image generation plugin to marketplace ([#69](https://github.com/pleaseai/claude-code-plugins/issues/69)) ([11fbefe](https://github.com/pleaseai/claude-code-plugins/commit/11fbefe230e3f7d9b19c57ee8c3526215f572067))
+* **sync:** add google-workspace Gemini CLI extension as Type 4 plugin ([#70](https://github.com/pleaseai/claude-code-plugins/issues/70)) ([9405311](https://github.com/pleaseai/claude-code-plugins/commit/940531146b18086b53de18da05bdae4bce4e43fa))
+* **tsdown:** migrate from vendor sync to skills.sh ([#77](https://github.com/pleaseai/claude-code-plugins/issues/77)) ([0aa8a74](https://github.com/pleaseai/claude-code-plugins/commit/0aa8a74ba385c5a54637a2f5fdd9a787532a1ed6))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.0.0...tsdown-v1.1.0) (2026-03-05)
 
 
