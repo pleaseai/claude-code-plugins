@@ -3,16 +3,17 @@
   "version": "1.1.0",
   "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
   "author": {
-    "name": "Anthony Fu",
-    "url": "https://github.com/antfu"
+    "name": "Rolldown Contributors",
+    "url": "https://github.com/rolldown"
   },
-  "homepage": "https://github.com/antfu/skills/tree/main/skills/tsdown",
-  "repository": "https://github.com/antfu/skills",
+  "homepage": "https://github.com/rolldown/tsdown",
+  "repository": "https://github.com/rolldown/tsdown",
   "license": "MIT",
   "keywords": [
     "tsdown",
     "bundler",
     "typescript",
-    "antfu"
-  ]
+    "rolldown"
+  ],
+  "skills": "./.agents/skills/"
 }

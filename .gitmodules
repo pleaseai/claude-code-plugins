@@ -64,9 +64,6 @@
 [submodule "vendor/vueuse"]
 	path = vendor/vueuse
 	url = https://github.com/vueuse/skills
-[submodule "vendor/tsdown"]
-	path = vendor/tsdown
-	url = https://github.com/rolldown/tsdown
 [submodule "vendor/vuejs-ai"]
 	path = vendor/vuejs-ai
 	url = https://github.com/vuejs-ai/skills
