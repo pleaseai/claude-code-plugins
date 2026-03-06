@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "nuxt-seo": {
+      "source": "onmax/nuxt-skills",
+      "sourceType": "github",
+      "computedHash": "bffc66809f3a21055d2fd39d0bfa32eefdc681d2e93f4613fc3360addb3d3677"
+    }
+  }
+}
