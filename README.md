@@ -202,6 +202,11 @@ Neo4j MCP servers for graph database operations, memory management, Aura cloud m
 
 **Install:** `/plugin install mcp-neo4j@pleaseai` | **Source:** [plugins/neo4j](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/neo4j)
 
+#### Worktree
+Git worktree isolation: injects context at session start and blocks file access to the parent project path via PreToolUse hooks.
+
+**Install:** `/plugin install worktree@pleaseai` | **Source:** [plugins/worktree](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/worktree)
+
 ## Installation
 
 ### Add This Marketplace
@@ -254,6 +259,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install ai-sdk@pleaseai
 /plugin install slack-agent@pleaseai
 /plugin install mcp-neo4j@pleaseai
+/plugin install worktree@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
