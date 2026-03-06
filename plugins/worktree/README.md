@@ -52,9 +52,13 @@ The hook uses two strategies:
 ## Installation
 
 ```sh
-claude
+# Interactive (inside Claude Code session)
 /plugin marketplace add pleaseai/claude-code-plugins
 /plugin install worktree@pleaseai
+
+# Direct (with optional scope: user | project | local)
+claude plugin marketplace add pleaseai/claude-code-plugins --scope project
+claude plugin install worktree@pleaseai --scope project
 ```
 
 ## Development
