@@ -85,10 +85,10 @@ Proceed to create plugin? (yes/no)
 
 ## Step 3 — Create plugin.json
 
-Fetch repo metadata for description, author, and license:
+Fetch repo metadata for description and license:
 
 ```bash
-gh api repos/<owner>/<repo> --jq '{description: .description, owner: (.owner.name // .owner.login), license: (.license.spdx_id // "NOASSERTION")}'
+gh api repos/<owner>/<repo> --jq '{description: .description, license: (.license.spdx_id // "NOASSERTION")}'
 ```
 
 Also read the first skill's `plugins/<PLUGIN_NAME>/.agents/skills/<FIRST_SKILL_NAME>/SKILL.md` frontmatter — the `description` field there may give a better description than the repo's.
@@ -100,11 +100,6 @@ Create `plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json`:
   "name": "<PLUGIN_NAME>",
   "version": "1.0.0",
   "description": "<description from skill frontmatter or repo>",
-  "author": {
-    "name": "<human-readable owner name>",
-    "url": "https://github.com/<owner>"
-  },
-  "repository": "https://github.com/<owner>/<repo>",
   "license": "<SPDX from repo, or NOASSERTION if unknown>",
   "keywords": ["<PLUGIN_NAME>"],
   "skills": "./.agents/skills/"
