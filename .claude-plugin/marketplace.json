@@ -348,6 +348,14 @@
       "keywords": ["nuxt-seo", "nuxt", "seo", "sitemap", "og-image", "schema-org"],
       "tags": ["framework", "vue", "seo"],
       "source": "./plugins/nuxt-seo"
+    },
+    {
+      "name": "worktree",
+      "description": "Git worktree isolation: context injection and parent project access prevention",
+      "category": "tooling",
+      "keywords": ["worktree", "git", "isolation", "safety"],
+      "tags": ["tooling", "safety"],
+      "source": "./plugins/worktree"
     }
   ]
 }

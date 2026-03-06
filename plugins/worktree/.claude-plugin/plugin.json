@@ -1,0 +1,40 @@
+{
+  "name": "worktree",
+  "version": "1.0.0",
+  "description": "Git worktree isolation: context injection and parent project access prevention",
+  "keywords": [
+    "worktree",
+    "git",
+    "isolation",
+    "safety"
+  ],
+  "author": {
+    "name": "PassionFactory",
+    "email": "minsu.lee@passionfactory.ai"
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/worktree-context.ts\"",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Read|Grep|Glob|Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/deny-parent-access.ts\"",
+            "timeout": 3
+          }
+        ]
+      }
+    ]
+  }
+}
