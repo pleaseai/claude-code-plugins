@@ -15,6 +15,5 @@
     "build-system",
     "vercel"
   ],
-  "skills": "./.agents/skills/",
-  "commands": ["./.agents/skills/turborepo/command/"]
+  "skills": "./.agents/skills/"
 }
