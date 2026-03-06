@@ -51,12 +51,20 @@ The hook uses two strategies:
 
 ## Installation
 
-```sh
-# Interactive (inside Claude Code session)
-/plugin marketplace add pleaseai/claude-code-plugins
-/plugin install worktree@pleaseai
+1. Start the interactive `claude` shell:
+   ```sh
+   claude
+   ```
 
-# Direct (with optional scope: user | project | local)
+2. Within the shell, add the marketplace and install the plugin:
+   ```console
+   /plugin marketplace add pleaseai/claude-code-plugins
+   /plugin install worktree@pleaseai
+   ```
+
+Alternatively, install directly from the command line (with optional `--scope`: `user` | `project` | `local`):
+
+```sh
 claude plugin marketplace add pleaseai/claude-code-plugins --scope project
 claude plugin install worktree@pleaseai --scope project
 ```
@@ -72,8 +80,7 @@ bun test
 
 ```bash
 # SessionStart — worktree detected
-echo '{"cwd":"/path/to/project/.claude/worktrees/my-branch"}' \
-  | bun run hooks/worktree-context.ts
+echo '{"cwd":"/path/to/project/.claude/worktrees/my-branch"}' | bun run hooks/worktree-context.ts
 
 # PreToolUse — path denied (parent project access)
 echo '{
