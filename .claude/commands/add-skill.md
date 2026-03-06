@@ -55,7 +55,7 @@ If any command fails, stop and show the error.
 
 For each skill in `SKILL_NAMES`, check that the SKILL.md exists:
 ```bash
-find plugins/<PLUGIN_NAME>/.agents/skills -name SKILL.md
+ls plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md
 ```
 
 Then read `skills-lock.json`:
@@ -63,7 +63,7 @@ Then read `skills-lock.json`:
 cat plugins/<PLUGIN_NAME>/skills-lock.json
 ```
 
-Read `skills-lock.json` to extract the `source` value (e.g. `"vercel-labs/agent-skills"`) — used in Step 3's plugin.json `repository` field.
+Read `skills-lock.json` to extract the `source` value (e.g. `"vercel-labs/agent-skills"`) — used as reference for the plugin's upstream origin.
 
 Display the installed skill files and ask for confirmation to continue:
 
