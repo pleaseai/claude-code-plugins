@@ -4,30 +4,31 @@ description: Add a skills.sh skill as a plugin to the marketplace. Installs the 
 
 Add a skills.sh skill as a plugin to the marketplace.
 
-**Arguments:** `$ARGUMENTS` (format: `<plugin-name> <github-repo-url> [--skill <skill-name>]`)
+**Arguments:** `$ARGUMENTS` (format: `<plugin-name> <github-repo-url> [--skill <skill-name> [<skill-name2> ...]]`)
 
 **Examples:**
 - `/add-skill slack-agent https://github.com/vercel-labs/slack-agent-skill`
 - `/add-skill slack-agent https://github.com/vercel-labs/slack-agent-skill --skill slack-agent`
+- `/add-skill agent-skills https://github.com/vercel-labs/agent-skills --skill pr-review commit`
 
 ---
 
 ## Step 1 — Parse & Validate Input
 
 Parse `$ARGUMENTS` to extract:
-- `PLUGIN_NAME`: first token (e.g. `slack-agent`)
-- `REPO_URL`: second token (e.g. `https://github.com/vercel-labs/slack-agent-skill`)
-- `SKILL_NAME`: value after `--skill` flag, defaults to `PLUGIN_NAME`
-- `OWNER_REPO`: short form of the URL (e.g. `vercel-labs/slack-agent-skill`)
+- `PLUGIN_NAME`: first token (e.g. `agent-skills`)
+- `REPO_URL`: second token (e.g. `https://github.com/vercel-labs/agent-skills`)
+- `SKILL_NAMES`: all space-separated values after `--skill` flag until the end of arguments (e.g. `pr-review commit` → `["pr-review", "commit"]`). Defaults to `[PLUGIN_NAME]` if `--skill` is not provided.
+- `OWNER_REPO`: short form of the URL (e.g. `vercel-labs/agent-skills`)
 
 Validate:
 - Both `PLUGIN_NAME` and `REPO_URL` are present. If not, stop and show:
   ```
-  Usage: /add-skill <plugin-name> <github-repo-url> [--skill <skill-name>]
+  Usage: /add-skill <plugin-name> <github-repo-url> [--skill <skill-name> [<skill-name2> ...]]
   ```
 - `REPO_URL` matches `https://github.com/<owner>/<repo>`. Normalize to `<owner>/<repo>` short form.
 - `PLUGIN_NAME` contains only alphanumeric characters, hyphens, and underscores.
-- `SKILL_NAME` contains only alphanumeric characters, hyphens, and underscores.
+- Each name in `SKILL_NAMES` contains only alphanumeric characters, hyphens, and underscores.
 
 Check for conflicts:
 - `plugins/<PLUGIN_NAME>/` must NOT already exist
@@ -35,38 +36,46 @@ Check for conflicts:
 
 If either check fails, stop and report the conflict.
 
-## Step 2 — Install Skill inside Plugin Directory
+## Step 2 — Install Skills inside Plugin Directory
 
-Create the plugin directory and install the skill into it:
+Create the plugin directory and install each skill into it. Run the following for **each** name in `SKILL_NAMES`:
 
 ```bash
 mkdir -p plugins/<PLUGIN_NAME>
-cd plugins/<PLUGIN_NAME> && bunx skills add <OWNER_REPO> --skill <SKILL_NAME> --agent 'universal' -y
+(cd plugins/<PLUGIN_NAME> && bunx skills add <OWNER_REPO> --skill <SKILL_NAME> --agent 'universal' -y)
 ```
 
 `bunx skills add` run from `plugins/<PLUGIN_NAME>/` will:
 - Install skill files to `plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/`
-- Create `plugins/<PLUGIN_NAME>/skills-lock.json` scoped to this plugin
+- Append to (or create) `plugins/<PLUGIN_NAME>/skills-lock.json` scoped to this plugin
 
-If the command fails, stop and show the error.
+If any command fails, stop and show the error.
 
 **Verify installation:**
 
-Check that both files exist:
+For each skill in `SKILL_NAMES`, check that the SKILL.md exists:
 ```bash
 ls plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md
+```
+
+Then read `skills-lock.json`:
+```bash
 cat plugins/<PLUGIN_NAME>/skills-lock.json
 ```
 
-Read `skills-lock.json` to extract the `source` value (e.g. `"vercel-labs/slack-agent-skill"`) — used in Step 3's plugin.json `repository` field.
+Read `skills-lock.json` to extract the `source` value (e.g. `"vercel-labs/agent-skills"`) — used as reference for the plugin's upstream origin.
 
 Display the installed skill files and ask for confirmation to continue:
 
 ```
-Installed skill in plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/:
-  - SKILL.md
-  - README.md
-  - ...
+Installed skills in plugins/<PLUGIN_NAME>/.agents/skills/:
+  <SKILL_NAME_1>/
+    - SKILL.md
+    - README.md
+    - ...
+  <SKILL_NAME_2>/
+    - SKILL.md
+    - ...
 
 skills-lock.json created at plugins/<PLUGIN_NAME>/skills-lock.json
   source: <OWNER_REPO>
@@ -76,13 +85,13 @@ Proceed to create plugin? (yes/no)
 
 ## Step 3 — Create plugin.json
 
-Fetch repo metadata for description, author, and license:
+Fetch repo metadata for description and license:
 
 ```bash
-gh api repos/<owner>/<repo> --jq '{description: .description, owner: (.owner.name // .owner.login), license: (.license.spdx_id // "NOASSERTION")}'
+gh api repos/<owner>/<repo> --jq '{description: .description, license: (.license.spdx_id // "NOASSERTION")}'
 ```
 
-Also read `plugins/<PLUGIN_NAME>/.agents/skills/<SKILL_NAME>/SKILL.md` frontmatter — the `description` field there may give a better description than the repo's.
+Also read the first skill's `plugins/<PLUGIN_NAME>/.agents/skills/<FIRST_SKILL_NAME>/SKILL.md` frontmatter — the `description` field there may give a better description than the repo's.
 
 Create `plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json`:
 
@@ -91,18 +100,13 @@ Create `plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json`:
   "name": "<PLUGIN_NAME>",
   "version": "1.0.0",
   "description": "<description from skill frontmatter or repo>",
-  "author": {
-    "name": "<human-readable owner name>",
-    "url": "https://github.com/<owner>"
-  },
-  "repository": "https://github.com/<owner>/<repo>",
   "license": "<SPDX from repo, or NOASSERTION if unknown>",
   "keywords": ["<PLUGIN_NAME>"],
   "skills": "./.agents/skills/"
 }
 ```
 
-The `"skills"` field tells Claude Code to load skill directories from `.agents/skills/` relative to the plugin root — no file copying needed.
+The `"skills"` field tells Claude Code to load all skill directories from `.agents/skills/` relative to the plugin root — no file copying needed.
 
 ## Step 4 — Add Entry to `.claude-plugin/marketplace.json`
 
@@ -136,29 +140,58 @@ Read `release-please-config.json` and add the new plugin package to the `package
 }
 ```
 
-## Step 6 — Summary Report
+## Step 6 — Update Documentation
+
+### README.md
+
+Read `README.md` and add an entry for the new plugin inside the **Built-in Plugins** section, immediately before the closing `## Installation` heading (or after the last `#### ...` plugin entry in that section):
+
+```markdown
+#### <Human-readable Plugin Name>
+<description from plugin.json>
+
+**Install:** `/plugin install <PLUGIN_NAME>@pleaseai` | **Source:** [plugins/<PLUGIN_NAME>](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/<PLUGIN_NAME>)
+```
+
+Use the Edit tool to insert the block after the last plugin entry or at the end of the Built-in Plugins list.
+
+### CLAUDE.md
+
+Read `CLAUDE.md` and check whether any section needs updating:
+
+- If CLAUDE.md contains a submodule or plugin source list (e.g. `external-plugins/*` mappings), add the new plugin's source repo there.
+- If no relevant section exists, no update is required — skip silently.
+
+## Step 7 — Summary Report
 
 ```
 ✓ Skill plugin added: <PLUGIN_NAME>
 
 Source:
   https://github.com/<owner>/<repo>
-  Installed via: bunx skills add <OWNER_REPO> --skill <SKILL_NAME>
+  Installed via: bunx skills add <OWNER_REPO> --skill <SKILL_NAME_1>
+                                               --skill <SKILL_NAME_2>
+                                               ...
 
 Plugin structure:
   plugins/<PLUGIN_NAME>/
-  ├── .agents/skills/<SKILL_NAME>/   ← skill files (managed by skills.sh)
-  │   └── SKILL.md
-  ├── skills-lock.json               ← version lock (managed by skills.sh)
+  ├── .agents/skills/
+  │   ├── <SKILL_NAME_1>/   ← skill files (managed by skills.sh)
+  │   │   └── SKILL.md
+  │   └── <SKILL_NAME_2>/
+  │       └── SKILL.md
+  ├── skills-lock.json       ← version lock (managed by skills.sh)
   └── .claude-plugin/
-      └── plugin.json                ← "skills": "./.agents/skills/"
+      └── plugin.json        ← "skills": "./.agents/skills/"
 
 Changes made:
   plugins/<PLUGIN_NAME>/.claude-plugin/plugin.json   (created)
   .claude-plugin/marketplace.json                    (updated)
   release-please-config.json                         (updated)
+  README.md                                          (updated)
+  CLAUDE.md                                          (updated, if applicable)
 
-To update the skill in the future:
+To update the skills in the future:
   cd plugins/<PLUGIN_NAME> && bunx skills update
 
 To test:

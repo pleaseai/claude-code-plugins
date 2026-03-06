@@ -295,6 +295,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/nuxt-seo": {
+      "release-type": "simple",
+      "component": "nuxt-seo",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
