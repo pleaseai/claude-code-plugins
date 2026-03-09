@@ -27,8 +27,11 @@ fi
 
 if [ -z "$RTK_CMD" ]; then
   # Fall back to bunx @pleaseai/rtk (always latest, no version guard needed)
-  command -v bunx >/dev/null 2>&1 || passthrough
-  RTK_CMD="bunx @pleaseai/rtk"
+  if command -v bunx >/dev/null 2>&1; then
+    RTK_CMD="bunx @pleaseai/rtk"
+  else
+    passthrough
+  fi
 fi
 
 # Read hook input from stdin
@@ -45,7 +48,7 @@ REWRITTEN=$($RTK_CMD rewrite "$CMD" 2>/dev/null || true)
 [ -z "$REWRITTEN" ] && passthrough
 [ "$REWRITTEN" = "$CMD" ] && passthrough
 
-# Output the rewritten command with permissionDecision=allow
+# Output the rewritten command; let Claude handle the permission decision
 jq -n \
   --arg cmd "$REWRITTEN" \
-  '{updatedInput: {command: $cmd}, permissionDecision: "allow"}'
+  '{updatedInput: {command: $cmd}}'
