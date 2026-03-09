@@ -48,7 +48,7 @@ REWRITTEN=$($RTK_CMD rewrite "$CMD" 2>/dev/null || true)
 [ -z "$REWRITTEN" ] && passthrough
 [ "$REWRITTEN" = "$CMD" ] && passthrough
 
-# Output the rewritten command; let Claude handle the permission decision
+# Output the rewritten command wrapped in hookSpecificOutput per PreToolUse spec
 jq -n \
   --arg cmd "$REWRITTEN" \
-  '{updatedInput: {command: $cmd}}'
+  '{hookSpecificOutput: {hookEventName: "PreToolUse", updatedInput: {command: $cmd}}}'
