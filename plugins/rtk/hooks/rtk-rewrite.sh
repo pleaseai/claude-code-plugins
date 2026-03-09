@@ -72,23 +72,12 @@ CMD=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty')
 
 # Build the list of Claude Code settings files to check for deny rules.
 # Checks project-level (shared + local) and global (shared + local).
-DENY_SOURCES=()
-PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo "")
-if [ -z "$PROJECT_ROOT" ]; then
-  # Walk up from $PWD for non-git projects
-  _dir="$PWD"
-  while [ "$_dir" != "/" ]; do
-    if [ -f "$_dir/.claude/settings.json" ]; then
-      PROJECT_ROOT="$_dir"
-      break
-    fi
-    _dir=$(dirname "$_dir")
-  done
-fi
-if [ -n "$PROJECT_ROOT" ]; then
-  DENY_SOURCES+=("$PROJECT_ROOT/.claude/settings.json" "$PROJECT_ROOT/.claude/settings.local.json")
-fi
-DENY_SOURCES+=("$HOME/.claude/settings.json" "$HOME/.claude/settings.local.json")
+DENY_SOURCES=(
+  "${CLAUDE_PROJECT_DIR}/.claude/settings.json"
+  "${CLAUDE_PROJECT_DIR}/.claude/settings.local.json"
+  "$HOME/.claude/settings.json"
+  "$HOME/.claude/settings.local.json"
+)
 
 # If the original command matches a deny rule, let normal permission flow handle it
 _matches_deny "$CMD" "${DENY_SOURCES[@]}" && passthrough
