@@ -356,6 +356,14 @@
       "keywords": ["worktree", "git", "isolation", "safety"],
       "tags": ["tooling", "safety"],
       "source": "./plugins/worktree"
+    },
+    {
+      "name": "rtk",
+      "description": "Reduce LLM token consumption by 60-90% using RTK to filter and compress command outputs",
+      "category": "tooling",
+      "keywords": ["rtk", "token-optimization", "performance", "compression"],
+      "tags": ["tooling", "performance"],
+      "source": "./plugins/rtk"
     }
   ]
 }
