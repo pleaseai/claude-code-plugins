@@ -74,7 +74,7 @@ CMD=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty')
 # subcommands after a safe-looking prefix (e.g. "echo ok; sudo rm -rf /").
 # Passthrough so the normal permission system evaluates the full command.
 if [[ "$CMD" == *";"* || "$CMD" == *"&&"* || "$CMD" == *"||"* || \
-      "$CMD" == *"|"* || "$CMD" == *$'\n'* || \
+      "$CMD" == *"&"* || "$CMD" == *"|"* || "$CMD" == *$'\n'* || \
       "$CMD" == *'$('* || "$CMD" == *'`'* ]]; then
   passthrough
 fi
