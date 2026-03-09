@@ -2,6 +2,8 @@
 # RTK PreToolUse hook: delegates Bash command rewriting to `rtk rewrite`
 # Falls back to `bunx @pleaseai/rtk` when rtk binary is not installed.
 # Silently passes through if jq is not available.
+# Respects Claude Code deny rules: if the command matches a deny rule,
+# exits 0 so the normal permission system handles it.
 
 set -euo pipefail
 
@@ -13,6 +15,33 @@ passthrough() { exit 0; }
 
 # Require jq for JSON parsing
 command -v jq >/dev/null 2>&1 || passthrough
+
+# Check if a command matches any Bash(…) deny rule in the given settings files.
+# Returns 0 (true) if the command is denied, 1 (false) if safe to auto-allow.
+_matches_deny() {
+  local cmd="$1"
+  shift
+  local settings_file
+  for settings_file in "$@"; do
+    [ -f "$settings_file" ] || continue
+    local raw inner prefix
+    while IFS= read -r raw; do
+      [ -z "$raw" ] && continue
+      # Strip Bash( prefix and ) suffix
+      inner="${raw#Bash(}"
+      inner="${inner%)}"
+      if [[ "$inner" == *":*" ]]; then
+        # Wildcard pattern: Bash(sudo:*) → match "sudo" or "sudo ..."
+        prefix="${inner%:*}"
+        [[ "$cmd" == "$prefix" || "$cmd" == "$prefix "* ]] && return 0
+      else
+        # Exact pattern: Bash(git push --force) → prefix match
+        [[ "$cmd" == "$inner" || "$cmd" == "$inner "* ]] && return 0
+      fi
+    done < <(jq -r '.permissions.deny[]? | select(startswith("Bash("))' "$settings_file" 2>/dev/null)
+  done
+  return 1
+}
 
 # Determine RTK command: prefer native binary, fall back to bunx
 RTK_CMD=""
@@ -41,6 +70,29 @@ INPUT=$(cat)
 CMD=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty')
 [ -z "$CMD" ] && passthrough
 
+# Build the list of Claude Code settings files to check for deny rules.
+# Checks project-level (shared + local) and global (shared + local).
+DENY_SOURCES=()
+PROJECT_ROOT=$(git rev-parse --show-toplevel 2>/dev/null || echo "")
+if [ -z "$PROJECT_ROOT" ]; then
+  # Walk up from $PWD for non-git projects
+  _dir="$PWD"
+  while [ "$_dir" != "/" ]; do
+    if [ -f "$_dir/.claude/settings.json" ]; then
+      PROJECT_ROOT="$_dir"
+      break
+    fi
+    _dir=$(dirname "$_dir")
+  done
+fi
+if [ -n "$PROJECT_ROOT" ]; then
+  DENY_SOURCES+=("$PROJECT_ROOT/.claude/settings.json" "$PROJECT_ROOT/.claude/settings.local.json")
+fi
+DENY_SOURCES+=("$HOME/.claude/settings.json" "$HOME/.claude/settings.local.json")
+
+# If the original command matches a deny rule, let normal permission flow handle it
+_matches_deny "$CMD" "${DENY_SOURCES[@]}" && passthrough
+
 # Delegate rewrite logic entirely to rtk
 REWRITTEN=$($RTK_CMD rewrite "$CMD" 2>/dev/null || true)
 
@@ -48,8 +100,8 @@ REWRITTEN=$($RTK_CMD rewrite "$CMD" 2>/dev/null || true)
 [ -z "$REWRITTEN" ] && passthrough
 [ "$REWRITTEN" = "$CMD" ] && passthrough
 
-# Rewrite command and auto-approve: RTK is a transparent proxy, so bypassing
-# the permission prompt for rewritten commands is the intended behavior.
+# Rewrite command and auto-approve: RTK is a transparent proxy.
+# Deny-rule check above ensures we never auto-allow explicitly denied commands.
 jq -n \
   --arg cmd "$REWRITTEN" \
   '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "allow", permissionDecisionReason: "RTK rewrote command for token-efficient output", updatedInput: {command: $cmd}}}'
