@@ -1,0 +1,13 @@
+{
+  "name": "rtk",
+  "version": "1.0.0",
+  "description": "Reduce LLM token consumption by 60-90% using RTK (Rust Token Killer) to filter and compress command outputs",
+  "author": {
+    "name": "Minsu Lee",
+    "url": "https://github.com/amondnet"
+  },
+  "homepage": "https://github.com/rtk-ai/rtk",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": ["rtk", "token-optimization", "performance", "cli-proxy", "compression"]
+}
