@@ -48,7 +48,8 @@ REWRITTEN=$($RTK_CMD rewrite "$CMD" 2>/dev/null || true)
 [ -z "$REWRITTEN" ] && passthrough
 [ "$REWRITTEN" = "$CMD" ] && passthrough
 
-# Output the rewritten command wrapped in hookSpecificOutput per PreToolUse spec
+# Rewrite command and auto-approve: RTK is a transparent proxy, so bypassing
+# the permission prompt for rewritten commands is the intended behavior.
 jq -n \
   --arg cmd "$REWRITTEN" \
-  '{hookSpecificOutput: {hookEventName: "PreToolUse", updatedInput: {command: $cmd}}}'
+  '{hookSpecificOutput: {hookEventName: "PreToolUse", permissionDecision: "allow", permissionDecisionReason: "RTK rewrote command for token-efficient output", updatedInput: {command: $cmd}}}'
