@@ -70,6 +70,15 @@ INPUT=$(cat)
 CMD=$(printf '%s' "$INPUT" | jq -r '.tool_input.command // empty')
 [ -z "$CMD" ] && passthrough
 
+# Compound commands (;, &&, ||, |, newlines, $(), backticks) can hide denied
+# subcommands after a safe-looking prefix (e.g. "echo ok; sudo rm -rf /").
+# Passthrough so the normal permission system evaluates the full command.
+if [[ "$CMD" == *";"* || "$CMD" == *"&&"* || "$CMD" == *"||"* || \
+      "$CMD" == *"|"* || "$CMD" == *$'\n'* || \
+      "$CMD" == *'$('* || "$CMD" == *'`'* ]]; then
+  passthrough
+fi
+
 # Build the list of Claude Code settings files to check for deny rules.
 # Checks project-level (shared + local) and global (shared + local).
 DENY_SOURCES=(

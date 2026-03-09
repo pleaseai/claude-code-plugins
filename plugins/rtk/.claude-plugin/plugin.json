@@ -7,7 +7,6 @@
     "url": "https://github.com/rtk-ai"
   },
   "homepage": "https://github.com/rtk-ai/rtk",
-  "repository": "https://github.com/pleaseai/claude-code-plugins",
   "license": "MIT",
   "keywords": ["rtk", "token-optimization", "performance", "cli-proxy", "compression"]
 }
