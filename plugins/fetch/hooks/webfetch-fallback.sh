@@ -6,7 +6,7 @@ if [ -n "$URL" ]; then
   jq -n --arg url "$URL" '{
     "hookSpecificOutput": {
       "hookEventName": "PostToolUseFailure",
-      "additionalContext": ("WebFetch failed. Retry using the fetch MCP tools instead. Use mcp__fetch__fetch_markdown for general web pages, mcp__fetch__fetch_json for APIs, or mcp__fetch__fetch_readable for article content. The URL was: " + $url)
+      "additionalContext": ("WebFetch failed. Retry using the fetch MCP tools instead. Use mcp__fetch__fetch_markdown for general web pages, mcp__fetch__fetch_json for APIs, or mcp__fetch__fetch_readable for article content. The URL was: <url>" + $url + "</url>")
     }
   }'
 fi
