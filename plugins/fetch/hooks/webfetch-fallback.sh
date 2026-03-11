@@ -1,6 +1,5 @@
 #!/bin/bash
-INPUT=$(cat)
-URL=$(echo "$INPUT" | jq -r '.tool_input.url // empty')
+URL=$(jq -r '.tool_input.url // empty')
 
 if [ -n "$URL" ]; then
   jq -n --arg url "$URL" '{
