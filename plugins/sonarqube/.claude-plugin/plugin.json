@@ -1,0 +1,13 @@
+{
+  "name": "sonarqube",
+  "version": "1.0.0",
+  "description": "SonarQube CLI integration for code quality analysis, secret scanning, and issue tracking",
+  "author": {
+    "name": "SonarSource",
+    "url": "https://github.com/SonarSource"
+  },
+  "homepage": "https://github.com/SonarSource/sonarqube-cli",
+  "repository": "https://github.com/SonarSource/sonarqube-cli",
+  "license": "LGPL-3.0",
+  "keywords": ["sonarqube", "sonarcloud", "code-quality", "security", "secrets"]
+}
