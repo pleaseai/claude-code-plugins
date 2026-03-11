@@ -441,6 +441,20 @@ bun run test
 bun run typecheck
 ```
 
+## Plugin Validation
+
+Validate a plugin manifest or marketplace manifest using the Claude CLI:
+
+```bash
+# Validate a plugin
+claude plugin validate <path-to-plugin-dir>
+
+# Validate marketplace manifest
+claude plugin validate .claude-plugin/marketplace.json
+```
+
+Run this before committing new plugins or after modifying `plugin.json`.
+
 ## Key Files
 
 - `.claude-plugin/marketplace.json` - Marketplace configuration and plugin registry
