@@ -306,6 +306,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/markitdown": {
+      "release-type": "simple",
+      "component": "markitdown",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
