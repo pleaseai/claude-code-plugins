@@ -1,0 +1,18 @@
+{
+  "name": "fetch",
+  "version": "1.0.0",
+  "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts",
+  "author": {
+    "name": "fetch-mcp project",
+    "url": "https://github.com/zcaceres/fetch-mcp"
+  },
+  "homepage": "https://github.com/zcaceres/fetch-mcp",
+  "license": "MIT",
+  "keywords": ["fetch", "web", "html", "markdown", "youtube", "mcp"],
+  "mcpServers": {
+    "fetch": {
+      "command": "npx",
+      "args": ["-y", "mcp-fetch-server"]
+    }
+  }
+}
