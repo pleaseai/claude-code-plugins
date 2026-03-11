@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts",
   "author": {
-    "name": "zcaceres",
-    "url": "https://github.com/zcaceres"
+    "name": "fetch-mcp project",
+    "url": "https://github.com/zcaceres/fetch-mcp"
   },
   "homepage": "https://github.com/zcaceres/fetch-mcp",
   "repository": "https://github.com/zcaceres/fetch-mcp",
