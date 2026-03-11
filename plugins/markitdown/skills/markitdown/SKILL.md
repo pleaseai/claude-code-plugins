@@ -47,21 +47,22 @@ Do NOT use MarkItDown for:
 
 ### Basic document conversion
 
-Call `mcp__markitdown__convert_to_markdown` with the absolute file path:
+Call `mcp__markitdown__convert_to_markdown` with a `file://` URI:
 
 ```
-mcp__markitdown__convert_to_markdown(path="/absolute/path/to/document.docx")
+mcp__markitdown__convert_to_markdown(uri="file:///absolute/path/to/document.docx")
 ```
 
-The tool returns the document content as a Markdown string. Use this output directly to answer the user's question or to further process the content.
+The tool accepts `http:`, `https:`, `file:`, or `data:` URIs. For local files, always use the `file://` scheme with an absolute path (`file:///path/to/file`). The tool returns the document content as a Markdown string. Use this output directly to answer the user's question or to further process the content.
 
 ### Workflow for binary documents
 
 When the user asks to read, summarize, or analyze a `.docx`, `.pptx`, or `.xlsx` file:
 
-1. Call `mcp__markitdown__convert_to_markdown` with the file path
-2. Read the returned Markdown content
-3. Answer the user's question based on the extracted content
+1. Construct a `file://` URI from the absolute path (e.g. `file:///home/user/report.docx`)
+2. Call `mcp__markitdown__convert_to_markdown` with the `uri` argument
+3. Read the returned Markdown content
+4. Answer the user's question based on the extracted content
 
 Do not attempt to use the Read tool on these binary formats first — it will return unreadable binary data and waste time.
 
@@ -79,7 +80,7 @@ Word documents convert with full structure: headings, paragraphs, tables, and li
 
 ## Important Notes
 
-- **Always use absolute file paths**: Relative paths may fail depending on the working directory. When in doubt, resolve the path to absolute before calling the tool.
+- **Always use `file://` URIs with absolute paths**: Construct the URI as `file:///absolute/path/to/file`. Relative paths are not supported — resolve to absolute first if needed.
 - **The MCP server uses `uvx markitdown-mcp`**: It requires `uv` to be installed on the system. If the tool fails, check that `uv` is available.
 - **Large files**: Very large documents (hundreds of pages) may take longer to convert. This is expected behavior.
 - **Password-protected files**: MarkItDown cannot open password-protected Office documents or encrypted PDFs without the password.
