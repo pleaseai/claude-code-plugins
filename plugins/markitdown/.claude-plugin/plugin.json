@@ -9,7 +9,7 @@
   "homepage": "https://github.com/microsoft/markitdown",
   "repository": "https://github.com/microsoft/markitdown",
   "license": "MIT",
-  "keywords": ["markitdown", "pdf", "docx", "markdown", "conversion"],
+  "keywords": ["markitdown", "pdf", "docx", "pptx", "images", "markdown", "conversion"],
   "mcpServers": {
     "markitdown": {
       "command": "uvx",
