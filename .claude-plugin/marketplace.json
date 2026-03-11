@@ -372,6 +372,14 @@
       "keywords": ["fetch", "web", "html", "markdown", "youtube"],
       "tags": ["mcp", "web"],
       "source": "./plugins/fetch"
+    },
+    {
+      "name": "sonarqube",
+      "description": "SonarQube CLI integration for code quality analysis, secret scanning, and issue tracking",
+      "category": "security",
+      "keywords": ["sonarqube", "sonarcloud", "code-quality", "security", "secrets"],
+      "tags": ["security", "analysis"],
+      "source": "./plugins/sonarqube"
     }
   ]
 }
