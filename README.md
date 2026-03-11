@@ -207,6 +207,11 @@ Git worktree isolation: injects context at session start and blocks file access 
 
 **Install:** `/plugin install worktree@pleaseai` | **Source:** [plugins/worktree](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/worktree)
 
+#### MarkItDown
+Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using Microsoft's MarkItDown MCP server.
+
+**Install:** `/plugin install markitdown@pleaseai` | **Source:** [plugins/markitdown](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/markitdown)
+
 ## Installation
 
 ### Add This Marketplace
@@ -260,6 +265,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install slack-agent@pleaseai
 /plugin install mcp-neo4j@pleaseai
 /plugin install worktree@pleaseai
+/plugin install markitdown@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

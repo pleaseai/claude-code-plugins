@@ -356,6 +356,14 @@
       "keywords": ["worktree", "git", "isolation", "safety"],
       "tags": ["tooling", "safety"],
       "source": "./plugins/worktree"
+    },
+    {
+      "name": "markitdown",
+      "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
+      "category": "tooling",
+      "keywords": ["markitdown", "pdf", "docx", "pptx", "markdown", "conversion", "images"],
+      "tags": ["mcp", "conversion"],
+      "source": "./plugins/markitdown"
     }
   ]
 }
