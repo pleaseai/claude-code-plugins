@@ -364,6 +364,14 @@
       "keywords": ["markitdown", "pdf", "docx", "pptx", "markdown", "conversion", "images"],
       "tags": ["mcp", "conversion"],
       "source": "./plugins/markitdown"
+    },
+    {
+      "name": "fetch",
+      "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts",
+      "category": "tooling",
+      "keywords": ["fetch", "web", "html", "markdown", "youtube"],
+      "tags": ["mcp", "web"],
+      "source": "./plugins/fetch"
     }
   ]
 }
