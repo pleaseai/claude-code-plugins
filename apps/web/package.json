@@ -27,7 +27,7 @@
     "@iconify-json/heroicons": "^1.2.3",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.15.2",
-    "@nuxt/test-utils": "3.19.2",
+    "@nuxt/test-utils": "4.0.0",
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
     "eslint": "^10.0.2",
