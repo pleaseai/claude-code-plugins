@@ -212,6 +212,11 @@ Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using Microsoft's 
 
 **Install:** `/plugin install markitdown@pleaseai` | **Source:** [plugins/markitdown](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/markitdown)
 
+#### ast-grep
+Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search.
+
+**Install:** `/plugin install ast-grep@pleaseai` | **Source:** [plugins/ast-grep](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/ast-grep)
+
 ## Installation
 
 ### Add This Marketplace
