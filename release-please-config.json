@@ -317,6 +317,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/ast-grep": {
+      "release-type": "simple",
+      "component": "ast-grep",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
