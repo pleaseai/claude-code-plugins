@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-cat "${CLAUDE_PLUGIN_ROOT}/README.md"
+cat "${CLAUDE_PLUGIN_ROOT}/CONTEXT.md"
