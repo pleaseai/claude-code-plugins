@@ -217,6 +217,11 @@ Guide for writing ast-grep rules to perform structural code search and analysis.
 
 **Install:** `/plugin install ast-grep@pleaseai` | **Source:** [plugins/ast-grep](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/ast-grep)
 
+#### Chat SDK
+Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear.
+
+**Install:** `/plugin install chat-sdk@pleaseai` | **Source:** [plugins/chat-sdk](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/chat-sdk)
+
 ## Installation
 
 ### Add This Marketplace
@@ -271,6 +276,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install mcp-neo4j@pleaseai
 /plugin install worktree@pleaseai
 /plugin install markitdown@pleaseai
+/plugin install chat-sdk@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
