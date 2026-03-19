@@ -380,6 +380,14 @@
       "keywords": ["ast-grep", "code-search", "ast", "structural-search", "pattern-matching", "refactoring"],
       "tags": ["tooling", "search"],
       "source": "./plugins/ast-grep"
+    },
+    {
+      "name": "chat-sdk",
+      "description": "Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear",
+      "category": "development",
+      "keywords": ["chat-sdk", "chatbot", "slack", "teams", "discord", "linear", "github"],
+      "tags": ["framework", "chatbot"],
+      "source": "./plugins/chat-sdk"
     }
   ]
 }

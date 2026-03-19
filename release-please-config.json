@@ -328,6 +328,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/chat-sdk": {
+      "release-type": "simple",
+      "component": "chat-sdk",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
