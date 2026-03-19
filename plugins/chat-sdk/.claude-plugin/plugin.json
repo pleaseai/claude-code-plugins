@@ -7,6 +7,12 @@
     "name": "Vercel",
     "url": "https://github.com/vercel"
   },
-  "keywords": ["chat-sdk", "chatbot", "slack", "teams", "discord"],
+  "keywords": [
+    "chat-sdk",
+    "chatbot",
+    "slack",
+    "teams",
+    "discord"
+  ],
   "skills": "./.agents/skills/"
 }

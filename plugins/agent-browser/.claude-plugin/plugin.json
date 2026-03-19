@@ -1,6 +1,6 @@
 {
   "name": "agent-browser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows",
   "author": {
     "name": "Vercel Labs",
