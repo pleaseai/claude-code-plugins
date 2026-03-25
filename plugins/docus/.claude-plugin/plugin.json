@@ -1,0 +1,26 @@
+{
+  "name": "docus",
+  "version": "1.0.0",
+  "description": "Write beautiful documentations with Nuxt and Markdown.",
+  "author": {
+    "name": "Nuxt",
+    "url": "https://github.com/nuxt-content"
+  },
+  "homepage": "https://docus.dev",
+  "repository": "https://github.com/nuxt-content/docus",
+  "license": "MIT",
+  "keywords": [
+    "docus",
+    "nuxt",
+    "documentation",
+    "markdown",
+    "nuxt-content"
+  ],
+  "mcpServers": {
+    "docus": {
+      "type": "http",
+      "url": "https://docus.dev/mcp"
+    }
+  },
+  "skills": "./.agents/skills/"
+}

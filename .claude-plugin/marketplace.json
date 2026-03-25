@@ -388,6 +388,14 @@
       "keywords": ["chat-sdk", "chatbot", "slack", "teams", "discord", "linear", "github"],
       "tags": ["framework", "chatbot"],
       "source": "./plugins/chat-sdk"
+    },
+    {
+      "name": "docus",
+      "description": "Write beautiful documentations with Nuxt and Markdown.",
+      "category": "framework",
+      "keywords": ["docus", "nuxt", "documentation", "markdown", "nuxt-content"],
+      "tags": ["framework", "docs"],
+      "source": "./plugins/docus"
     }
   ]
 }
