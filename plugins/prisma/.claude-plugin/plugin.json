@@ -15,6 +15,7 @@
     "typescript",
     "migrations"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": {
     "prisma": {
       "command": "npx",

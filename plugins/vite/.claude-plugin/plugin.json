@@ -14,5 +14,6 @@
     "build-tool",
     "bundler",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

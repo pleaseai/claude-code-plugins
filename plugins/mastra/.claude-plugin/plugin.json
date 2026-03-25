@@ -13,5 +13,6 @@
     "ai",
     "framework",
     "agent"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

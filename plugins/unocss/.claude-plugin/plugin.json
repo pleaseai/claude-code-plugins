@@ -14,5 +14,6 @@
     "css",
     "atomic-css",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }
