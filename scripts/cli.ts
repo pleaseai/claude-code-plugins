@@ -214,7 +214,7 @@ export async function syncSubmodules() {
       try {
         rmSync(dest, { recursive: true, force: true })
         mkdirSync(dest, { recursive: true })
-        cpSync(src, dest, { recursive: true })
+        cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e)
         console.error(`FAILED\n  ! could not copy ${srcSkill}: ${msg}`)
