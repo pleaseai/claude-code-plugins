@@ -222,6 +222,11 @@ Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slac
 
 **Install:** `/plugin install chat-sdk@pleaseai` | **Source:** [plugins/chat-sdk](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/chat-sdk)
 
+#### Docus
+Write beautiful documentations with Nuxt and Markdown.
+
+**Install:** `/plugin install docus@pleaseai` | **Source:** [plugins/docus](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/docus)
+
 ## Installation
 
 ### Add This Marketplace
@@ -277,6 +282,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install worktree@pleaseai
 /plugin install markitdown@pleaseai
 /plugin install chat-sdk@pleaseai
+/plugin install docus@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
