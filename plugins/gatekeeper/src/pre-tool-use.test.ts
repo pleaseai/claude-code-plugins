@@ -75,11 +75,38 @@ describe('splitChainedCommands', () => {
     expect(splitChainedCommands('echo hello > >(tee output.txt)')).toBeNull()
   })
 
-  test('should return null for redirect operators outside quotes', () => {
+  test('should return null for unsafe redirect operators outside quotes', () => {
     expect(splitChainedCommands('echo test > file.txt')).toBeNull()
     expect(splitChainedCommands('echo test >> file.txt')).toBeNull()
     expect(splitChainedCommands('cat < file.txt')).toBeNull()
+  })
+
+  test('should treat safe fd redirects as part of the command (single)', () => {
+    // fd-to-fd redirects
+    expect(splitChainedCommands('echo test 2>&1')).toBeNull() // null = single (no chain ops)
+    expect(splitChainedCommands('echo test >&2')).toBeNull()
+    expect(splitChainedCommands('cmd 2>&-')).toBeNull()
+    expect(splitChainedCommands('cmd <&3')).toBeNull()
+    expect(splitChainedCommands('cmd <&-')).toBeNull()
+    // /dev/null redirects
     expect(splitChainedCommands('echo test 2>/dev/null')).toBeNull()
+    expect(splitChainedCommands('echo test >/dev/null')).toBeNull()
+    expect(splitChainedCommands('echo test >>/dev/null')).toBeNull()
+    expect(splitChainedCommands('echo test 2>>/dev/null')).toBeNull()
+    // /dev/null with whitespace
+    expect(splitChainedCommands('echo test > /dev/null')).toBeNull()
+    expect(splitChainedCommands('echo test 2> /dev/null')).toBeNull()
+  })
+
+  test('should split chains containing safe fd redirects', () => {
+    expect(splitChainedCommands('cd /path && bun test 2>&1')).toEqual([
+      'cd /path',
+      'bun test 2>&1',
+    ])
+    expect(splitChainedCommands('cmd1 2>/dev/null && cmd2')).toEqual([
+      'cmd1 2>/dev/null',
+      'cmd2',
+    ])
   })
 
   test('should return null when no chain operators present', () => {
@@ -711,10 +738,24 @@ describe('chain parsing: safe chains are allowed in Layer 1', () => {
     expectPassthrough(bash('npm test || npm install'))
   })
 
-  test('should passthrough redirect operators', () => {
+  test('should passthrough unsafe redirect operators', () => {
     expectPassthrough(bash('echo test > file.txt'))
     expectPassthrough(bash('echo test >> file.txt'))
     expectPassthrough(bash('cat < file.txt'))
+  })
+
+  test('should allow commands with safe fd redirects', () => {
+    expectAllow(bash('echo test 2>&1'))
+    expectAllow(bash('echo test 2>/dev/null'))
+    expectAllow(bash('echo test >/dev/null'))
+  })
+
+  test('should allow chain with safe fd redirects', () => {
+    expectAllow(bash('npm test && bun test --bail --timeout 120000 src/test.ts 2>&1'))
+  })
+
+  test('should passthrough pipe even with fd redirect before it', () => {
+    expectPassthrough(bash('ls 2>&1 | grep foo'))
   })
 
   test('should passthrough process substitution', () => {

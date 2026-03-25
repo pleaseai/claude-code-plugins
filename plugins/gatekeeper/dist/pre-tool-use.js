@@ -2,6 +2,9 @@
 import process from "node:process";
 
 // src/chain-parser.ts
+function isDigit(ch) {
+  return ch !== undefined && ch >= "0" && ch <= "9";
+}
 function parseChainedCommand(cmd) {
   if (/\$\(|`|\n|<\(|>\(/.test(cmd)) {
     return { kind: "unparseable" };
@@ -37,7 +40,32 @@ function parseChainedCommand(cmd) {
         current += ch;
         continue;
       }
-      if (ch === "<" || ch === ">") {
+      if (ch === ">" || ch === "<") {
+        if (ch === "<") {
+          if (cmd[i + 1] === "&" && (isDigit(cmd[i + 2]) || cmd[i + 2] === "-")) {
+            current += cmd.slice(i, i + 3);
+            i += 2;
+            continue;
+          }
+          return { kind: "unparseable" };
+        }
+        let j = i + 1;
+        if (cmd[j] === ">") {
+          j++;
+        }
+        if (cmd[j] === "&" && (isDigit(cmd[j + 1]) || cmd[j + 1] === "-")) {
+          current += cmd.slice(i, j + 2);
+          i = j + 1;
+          continue;
+        }
+        let k = j;
+        while (cmd[k] === " " || cmd[k] === "\t")
+          k++;
+        if (cmd.slice(k, k + 9) === "/dev/null") {
+          current += cmd.slice(i, k + 9);
+          i = k + 8;
+          continue;
+        }
         return { kind: "unparseable" };
       }
       const next = cmd[i + 1];

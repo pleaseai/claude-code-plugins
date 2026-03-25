@@ -6,6 +6,10 @@
  * caused the two functions to diverge and produce inconsistent security decisions.
  */
 
+function isDigit(ch: string | undefined): boolean {
+  return ch !== undefined && ch >= '0' && ch <= '9'
+}
+
 export type ParseResult
   /**
    * Reject and send to AI review. Covers: subshell, backtick, newline,
@@ -23,7 +27,9 @@ export type ParseResult
  *
  * Security invariants guaranteed by this function:
  * - $(), backtick, newline, <(), >() → unparseable  (subshell / process substitution)
- * - Unquoted < or >               → unparseable  (file redirect: arbitrary write/read)
+ * - Unquoted < or > to files      → unparseable  (file redirect: arbitrary write/read)
+ * - Safe fd redirects (2>&1, >&2, <&3, >&-) → allowed (fd-to-fd, no file I/O)
+ * - >/dev/null, >>/dev/null, N>/dev/null    → allowed (discard output, safe)
  * - ||                            → unparseable  (right side runs on LEFT failure; semantics differ)
  * - single |                      → unparseable  (pipe: stdout→stdin, context-dependent)
  * - Lone &                        → unparseable  (background execution; different semantics)
@@ -78,8 +84,47 @@ export function parseChainedCommand(cmd: string): ParseResult {
         continue
       }
 
-      // Redirect operators outside quotes → potential arbitrary file write/read
-      if (ch === '<' || ch === '>') {
+      // Redirect operators outside quotes — allow safe fd redirects and /dev/null
+      if (ch === '>' || ch === '<') {
+        // Check if preceded by a digit (e.g., the '2' in '2>&1' or '2>/dev/null')
+        // We already consumed that digit into `current`, so just note it for context.
+
+        if (ch === '<') {
+          // <&N or <&- → fd input redirect (safe)
+          if (cmd[i + 1] === '&' && (isDigit(cmd[i + 2]) || cmd[i + 2] === '-')) {
+            current += cmd.slice(i, i + 3)
+            i += 2
+            continue
+          }
+          // Any other < → unsafe
+          return { kind: 'unparseable' }
+        }
+
+        // ch === '>'
+        let j = i + 1
+
+        // >> (append) — advance past second >
+        if (cmd[j] === '>') {
+          j++
+        }
+
+        // >&N or >&- → fd-to-fd redirect (safe)
+        if (cmd[j] === '&' && (isDigit(cmd[j + 1]) || cmd[j + 1] === '-')) {
+          current += cmd.slice(i, j + 2)
+          i = j + 1
+          continue
+        }
+
+        // > /dev/null or >> /dev/null (with optional whitespace)
+        let k = j
+        while (cmd[k] === ' ' || cmd[k] === '\t') k++
+        if (cmd.slice(k, k + 9) === '/dev/null') {
+          current += cmd.slice(i, k + 9)
+          i = k + 8
+          continue
+        }
+
+        // Any other > or >> → unsafe (arbitrary file write)
         return { kind: 'unparseable' }
       }
 
