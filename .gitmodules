@@ -28,60 +28,12 @@
 [submodule "external-plugins/open-aware"]
 	path = external-plugins/open-aware
 	url = git@github.com:amondnet/open-aware.git
-[submodule "vendor/antfu-skills"]
-	path = vendor/antfu-skills
-	url = https://github.com/antfu/skills.git
 [submodule "external-plugins/playwright-cli"]
 	path = external-plugins/playwright-cli
 	url = git@github.com:pleaseai/playwright-cli.git
-[submodule "sources/vue"]
-	path = sources/vue
-	url = https://github.com/vuejs/docs
-[submodule "sources/nuxt"]
-	path = sources/nuxt
-	url = https://github.com/nuxt/nuxt
-[submodule "sources/vite"]
-	path = sources/vite
-	url = https://github.com/vitejs/vite
-[submodule "sources/unocss"]
-	path = sources/unocss
-	url = https://github.com/unocss/unocss
-[submodule "sources/pnpm"]
-	path = sources/pnpm
-	url = https://github.com/pnpm/pnpm.io
-[submodule "sources/pinia"]
-	path = sources/pinia
-	url = https://github.com/vuejs/pinia
-[submodule "sources/vitest"]
-	path = sources/vitest
-	url = https://github.com/vitest-dev/vitest
-[submodule "sources/vitepress"]
-	path = sources/vitepress
-	url = https://github.com/vuejs/vitepress
-[submodule "vendor/slidev"]
-	path = vendor/slidev
-	url = https://github.com/slidevjs/slidev
-[submodule "vendor/vueuse"]
-	path = vendor/vueuse
-	url = https://github.com/vueuse/skills
-[submodule "vendor/vuejs-ai"]
-	path = vendor/vuejs-ai
-	url = https://github.com/vuejs-ai/skills
 [submodule "vendor/web-design-guidelines"]
 	path = vendor/web-design-guidelines
 	url = https://github.com/vercel-labs/agent-skills
-[submodule "vendor/mastra"]
-	path = vendor/mastra
-	url = https://github.com/mastra-ai/skills
-[submodule "vendor/nuxt-ui"]
-	path = vendor/nuxt-ui
-	url = https://github.com/nuxt/ui
-[submodule "vendor/supabase"]
-	path = vendor/supabase
-	url = https://github.com/supabase/agent-skills
-[submodule "vendor/prisma"]
-	path = vendor/prisma
-	url = https://github.com/prisma/skills
 [submodule "vendor/better-auth"]
 	path = vendor/better-auth
 	url = https://github.com/better-auth/skills
