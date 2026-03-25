@@ -97,7 +97,7 @@ describe('splitChainedCommands', () => {
     expect(splitChainedCommands('echo test > /dev/null')).toBeNull()
     expect(splitChainedCommands('echo test 2> /dev/null')).toBeNull()
     // /dev/null — word-boundary check: must not approve /dev/nullicious etc.
-    expect(splitChainedCommands('echo test > /dev/nullicious')).toBeNull() // unsafe path, returns null via unparseable → single fallback
+    expect(evaluate(bash('echo test > /dev/nullicious'))).toBeNull() // unsafe redirect must remain passthrough
   })
 
   test('should split chains containing safe fd redirects', () => {
