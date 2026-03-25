@@ -14,5 +14,6 @@
     "vue3",
     "composition-api",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

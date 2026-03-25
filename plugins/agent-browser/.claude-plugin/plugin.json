@@ -13,5 +13,6 @@
     "browser",
     "automation",
     "agents"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

@@ -14,5 +14,6 @@
     "vue",
     "state-management",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

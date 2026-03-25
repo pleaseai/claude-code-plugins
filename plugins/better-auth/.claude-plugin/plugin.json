@@ -13,5 +13,6 @@
     "authentication",
     "auth",
     "typescript"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

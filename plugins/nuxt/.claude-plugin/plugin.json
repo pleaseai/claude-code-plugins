@@ -15,6 +15,7 @@
     "ssr",
     "antfu"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": {
     "nuxt-remote": {
       "type": "http",

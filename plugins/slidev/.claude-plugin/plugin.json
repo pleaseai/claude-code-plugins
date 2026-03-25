@@ -14,5 +14,6 @@
     "slides",
     "presentation",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

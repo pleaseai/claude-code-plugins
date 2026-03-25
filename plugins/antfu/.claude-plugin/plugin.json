@@ -14,5 +14,6 @@
     "conventions",
     "eslint",
     "typescript"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }
