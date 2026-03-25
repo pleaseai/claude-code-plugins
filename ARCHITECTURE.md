@@ -47,7 +47,7 @@ Nuxt 4 (Vue 3) web application for browsing the marketplace. Uses Nuxt UI v4 for
 
 ### `docs/`
 
-Development standards and reference documentation. Not user-facing — these guide contributors:
+Development standards and reference documentation for **human contributors**. Not user-facing — these guide contributors:
 - `commit-convention.md` — Conventional commit rules
 - `STANDARDS.md` — Engineering quality standards
 - `TDD.md`, `TESTING.md` — Testing methodology
@@ -55,6 +55,8 @@ Development standards and reference documentation. Not user-facing — these gui
 - `skills-generator.md` — Skill generation workflow
 - `adr/` — Architecture Decision Records
 - `lessons-learned/` — Post-implementation notes
+
+> **`docs/` vs `.please/docs/`**: `docs/` contains standards and guides written for human contributors. `.please/docs/` is the AI agent knowledge base — product context, decisions, and workflows maintained for Claude Code's `please-setup` plugin. They serve different audiences and are not interchangeable.
 
 ### `external-plugins/`
 
