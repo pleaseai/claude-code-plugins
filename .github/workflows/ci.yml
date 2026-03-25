@@ -31,6 +31,8 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: 'package.json'
 
       # ESLint 캐시 복원
       - name: Restore ESLint cache
@@ -66,6 +68,8 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -89,6 +93,8 @@ jobs:
 
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -113,7 +119,7 @@ jobs:
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: '1.2.22'
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
