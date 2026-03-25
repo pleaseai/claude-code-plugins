@@ -23,21 +23,8 @@ const PLUGINS_DIR = join(ROOT, "plugins")
 // skill dir name → plugin dir name
 // ---------------------------------------------------------------------------
 export const SKILL_TO_PLUGIN: Record<string, string> = {
-  // Type 1: generated directly into plugins/{plugin}/skills/{skill}/ via /generate-skill
-  vue: "vue",
   // Type 2: vendor submodules
   "web-design-guidelines": "web-design",
-  "nuxt-ui": "nuxt-ui",
-  "best-practices": "better-auth",
-  "create-auth": "better-auth",
-  emailAndPassword: "better-auth",
-  organization: "better-auth",
-  twoFactor: "better-auth",
-  "agent-browser": "agent-browser",
-  dogfood: "agent-browser",
-  electron: "agent-browser",
-  slack: "agent-browser",
-  "use-ai-sdk": "ai-sdk",
 }
 
 // ---------------------------------------------------------------------------

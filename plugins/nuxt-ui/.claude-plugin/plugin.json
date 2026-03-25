@@ -15,6 +15,7 @@
     "tailwind",
     "reka-ui"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": {
     "nuxt-ui": {
       "type": "http",

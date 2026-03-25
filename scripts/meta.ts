@@ -39,9 +39,7 @@ export interface VendorMeta {
  * Submodules are added at sources/{name}/ in this repo.
  * Skills are generated manually using /generate-skill <name>.
  */
-export const submodules: Record<string, string | SubmoduleMeta> = {
-  vue: "https://github.com/vuejs/docs",
-}
+export const submodules: Record<string, string | SubmoduleMeta> = {}
 
 /**
  * Type 2: Projects that already maintain their own skills/ directory.
@@ -53,38 +51,6 @@ export const vendors: Record<string, VendorMeta> = {
     source: "https://github.com/vercel-labs/agent-skills",
     skills: {
       "web-design-guidelines": "web-design-guidelines",
-    },
-  },
-  "nuxt-ui": {
-    source: "https://github.com/nuxt/ui",
-    skills: {
-      "nuxt-ui": "nuxt-ui",
-    },
-  },
-  "better-auth": {
-    source: "https://github.com/better-auth/skills",
-    skillsDir: "better-auth",
-    skills: {
-      "best-practices": "best-practices",
-      "create-auth": "create-auth",
-      emailAndPassword: "emailAndPassword",
-      organization: "organization",
-      twoFactor: "twoFactor",
-    },
-  },
-  "agent-browser": {
-    source: "https://github.com/vercel-labs/agent-browser",
-    skills: {
-      "agent-browser": "agent-browser",
-      dogfood: "dogfood",
-      electron: "electron",
-      slack: "slack",
-    },
-  },
-  "ai-sdk": {
-    source: "https://github.com/vercel/ai",
-    skills: {
-      "use-ai-sdk": "use-ai-sdk",
     },
   },
 }

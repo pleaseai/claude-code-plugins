@@ -14,5 +14,6 @@
     "ai",
     "typescript",
     "llm"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }
