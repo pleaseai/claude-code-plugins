@@ -117,8 +117,9 @@ export function parseChainedCommand(cmd: string): ParseResult {
 
         // > /dev/null or >> /dev/null (with optional whitespace)
         let k = j
-        while (cmd[k] === ' ' || cmd[k] === '\t') k++
-        if (cmd.slice(k, k + 9) === '/dev/null') {
+        while (k < cmd.length && (cmd[k] === ' ' || cmd[k] === '\t')) k++
+        const afterNull = cmd[k + 9]
+        if (cmd.slice(k, k + 9) === '/dev/null' && (afterNull === undefined || afterNull === ' ' || afterNull === '\t' || afterNull === ';' || afterNull === '&' || afterNull === '|' || afterNull === '>' || afterNull === '<')) {
           current += cmd.slice(i, k + 9)
           i = k + 8
           continue

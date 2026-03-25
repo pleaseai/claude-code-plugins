@@ -59,9 +59,10 @@ function parseChainedCommand(cmd) {
           continue;
         }
         let k = j;
-        while (cmd[k] === " " || cmd[k] === "\t")
+        while (k < cmd.length && (cmd[k] === " " || cmd[k] === "\t"))
           k++;
-        if (cmd.slice(k, k + 9) === "/dev/null") {
+        const afterNull = cmd[k + 9];
+        if (cmd.slice(k, k + 9) === "/dev/null" && (afterNull === undefined || afterNull === " " || afterNull === "\t" || afterNull === ";" || afterNull === "&" || afterNull === "|" || afterNull === ">" || afterNull === "<")) {
           current += cmd.slice(i, k + 9);
           i = k + 8;
           continue;
