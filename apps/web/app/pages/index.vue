@@ -217,14 +217,18 @@ onBeforeUnmount(() => {
   pendingScrollTimer.value?.stop()
 })
 
-// SEO Meta
+// SEO Meta + hreflang tags
+const i18nHead = useLocaleHead({ addSeoAttributes: true })
 useHead({
   title: () => t('seo.title'),
+  htmlAttrs: { lang: i18nHead.value.htmlAttrs?.lang },
+  link: [...(i18nHead.value.link ?? [])],
   meta: [
     {
       name: 'description',
       content: () => t('seo.description'),
     },
+    ...(i18nHead.value.meta ?? []),
   ],
 })
 </script>
