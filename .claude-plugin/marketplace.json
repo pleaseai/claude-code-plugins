@@ -396,6 +396,81 @@
       "keywords": ["docus", "nuxt", "documentation", "markdown", "nuxt-content"],
       "tags": ["framework", "docs"],
       "source": "./plugins/docus"
+    },
+    {
+      "name": "tosspayments",
+      "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration",
+      "category": "development",
+      "keywords": ["tosspayments", "payment", "checkout", "korea"],
+      "tags": ["mcp", "payment"],
+      "source": "./plugins/tosspayments"
+    },
+    {
+      "name": "stripe",
+      "description": "Stripe development plugin for Claude",
+      "category": "development",
+      "keywords": ["stripe", "payments", "webhooks", "api", "security"],
+      "tags": ["mcp", "payments"],
+      "source": {
+        "source": "git-subdir",
+        "url": "stripe/ai",
+        "path": "providers/claude/plugin",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/stripe/ai/tree/main/providers/claude/plugin"
+    },
+    {
+      "name": "vercel",
+      "description": "Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.",
+      "category": "deployment",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/vercel/vercel-plugin.git"
+      },
+      "homepage": "https://github.com/vercel/vercel-plugin"
+    },
+    {
+      "name": "sentry",
+      "description": "Sentry error monitoring integration. Access error reports, analyze stack traces, search issues by fingerprint, and debug production errors directly from your development environment.",
+      "category": "monitoring",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/getsentry/sentry-for-claude.git"
+      },
+      "homepage": "https://github.com/getsentry/sentry-for-claude/tree/main"
+    },
+    {
+      "name": "posthog",
+      "description": "Access PostHog analytics, feature flags, experiments, error tracking, and insights directly from Claude Code.",
+      "category": "monitoring",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/PostHog/ai-plugin.git",
+        "sha": "f2f37954ecef9f1afce4fa81b6a612454a96c410"
+      },
+      "homepage": "https://posthog.com/docs/model-context-protocol"
+    },
+    {
+      "name": "revenuecat",
+      "description": "Configure RevenueCat projects, apps, products, entitlements, and offerings directly from Claude Code. Manage your in-app purchase backend without leaving your development workflow.",
+      "category": "development",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/RevenueCat/rc-claude-code-plugin.git",
+        "sha": "af7cb77996aee4e7e3c109c5afec81f716139032"
+      },
+      "homepage": "https://www.revenuecat.com"
+    },
+    {
+      "name": "notion",
+      "description": "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless documentation workflows.",
+      "category": "productivity",
+      "keywords": ["notion", "productivity", "knowledge-base", "documentation", "database"],
+      "tags": ["productivity", "mcp"],
+      "source": {
+        "source": "github",
+        "repo": "makenotion/claude-code-notion-plugin"
+      }
     }
   ]
 }

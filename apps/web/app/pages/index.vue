@@ -76,7 +76,7 @@ function pluginMatchesSearch(plugin: Plugin, query: string): boolean {
   const searchFields = [
     plugin.name,
     plugin.description,
-    typeof plugin.source === 'string' ? plugin.source : plugin.source.repo,
+    typeof plugin.source === 'string' ? plugin.source : 'repo' in plugin.source ? plugin.source.repo : plugin.source.url,
   ]
 
   return searchFields.some(field =>

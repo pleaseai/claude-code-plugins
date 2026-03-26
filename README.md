@@ -63,6 +63,11 @@ Token-efficient browser automation CLI for coding agents — navigate, interact,
 
 **Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
 
+#### Vercel
+Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.
+
+**Install:** `/plugin install vercel@pleaseai` | **Repository:** [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin)
+
 ---
 
 ### Built-in Plugins
@@ -250,6 +255,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install grafana@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install playwright-cli@pleaseai
+/plugin install vercel@pleaseai
 
 # Built-in plugins
 /plugin install plugin-dev@pleaseai

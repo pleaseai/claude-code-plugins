@@ -3,10 +3,20 @@ import { useTimeoutFn } from '@vueuse/core'
 
 const { t } = useI18n()
 
-interface PluginSource {
+interface PluginSourceGitHub {
   source: 'github'
   repo: string
 }
+
+interface PluginSourceGitSubdir {
+  source: 'git-subdir'
+  url: string
+  path: string
+  ref?: string
+  sha?: string
+}
+
+type PluginSource = PluginSourceGitHub | PluginSourceGitSubdir
 
 interface Plugin {
   name: string
@@ -52,6 +62,11 @@ async function fetchPluginMetadata() {
     return
   }
 
+  // Only GitHub source plugins support metadata fetch
+  if (props.plugin.source.source !== 'github') {
+    return
+  }
+
   // GitHub plugin - fetch from GitHub
   loading.value = true
   try {
@@ -94,7 +109,7 @@ async function fetchPluginMetadata() {
     // Network-level errors (connection failed, CORS, etc.)
     console.error('Network error fetching plugin metadata:', {
       plugin: props.plugin.name,
-      repo: props.plugin.source.repo,
+      repo: props.plugin.source.source === 'github' ? props.plugin.source.repo : props.plugin.source.url,
       error: err instanceof Error ? err.message : String(err),
     })
   }
@@ -170,6 +185,17 @@ const githubSourceUrl = computed(() => {
     const url = `https://github.com/${repoPath}/${treePath}`
 
     return url
+  }
+  // git-subdir plugin
+  if (props.plugin.source.source === 'git-subdir') {
+    const url = props.plugin.source.url
+    const path = props.plugin.source.path
+    const ref = props.plugin.source.ref || 'main'
+    // Handle both full URLs and owner/repo shorthand
+    if (url.startsWith('http')) {
+      return `${url.replace(/\.git$/, '')}/tree/${ref}/${path}`
+    }
+    return `https://github.com/${url}/tree/${ref}/${path}`
   }
   // GitHub plugin
   return `https://github.com/${props.plugin.source.repo}`
@@ -308,7 +334,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.repo }}</span>
+              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.source === 'github' ? plugin.source.repo : plugin.source.url }}</span>
             </div>
           </div>
           <div class="shrink-0">
