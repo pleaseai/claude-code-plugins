@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@nuxt/content": "^3.7.1",
+    "@nuxtjs/i18n": "^9.5.3",
     "@nuxt/ui": "^4.0.1",
     "better-sqlite3": "^12.4.1",
     "nuxt": "^4.1.3",
