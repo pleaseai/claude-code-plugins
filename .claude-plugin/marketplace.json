@@ -406,6 +406,20 @@
       "source": "./plugins/tosspayments"
     },
     {
+      "name": "stripe",
+      "description": "Stripe development plugin for Claude",
+      "category": "development",
+      "keywords": ["stripe", "payments", "webhooks", "api", "security"],
+      "tags": ["mcp", "payments"],
+      "source": {
+        "source": "git-subdir",
+        "url": "stripe/ai",
+        "path": "providers/claude/plugin",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/stripe/ai/tree/main/providers/claude/plugin"
+    },
+    {
       "name": "vercel",
       "description": "Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.",
       "category": "deployment",

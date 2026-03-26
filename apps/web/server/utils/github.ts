@@ -78,10 +78,18 @@ export async function fetchGitHubStars(owner: string, repo: string): Promise<num
  * @param source - Plugin source (GitHub URL or repo string)
  * @returns Star count, or null if fetch fails
  */
-export async function fetchPluginStars(source: string | { source: string, repo: string }): Promise<number | null> {
-  // Handle object format with repo property
+export async function fetchPluginStars(source: string | { source: string, repo?: string, url?: string }): Promise<number | null> {
+  // Handle object format with repo property (github source)
   if (typeof source === 'object' && source.repo) {
     const parsed = parseGitHubRepo(source.repo)
+    if (!parsed)
+      return null
+    return fetchGitHubStars(parsed.owner, parsed.repo)
+  }
+
+  // Handle object format with url property (git-subdir source)
+  if (typeof source === 'object' && source.url) {
+    const parsed = parseGitHubRepo(source.url)
     if (!parsed)
       return null
     return fetchGitHubStars(parsed.owner, parsed.repo)

@@ -10,6 +10,13 @@ export const pluginSourceSchema = z.union([
     source: z.literal('github'),
     repo: z.string(),
   }),
+  z.object({
+    source: z.literal('git-subdir'),
+    url: z.string(),
+    path: z.string(),
+    ref: z.string().optional(),
+    sha: z.string().optional(),
+  }),
   z.string(),
 ])
 
