@@ -404,6 +404,16 @@
       "keywords": ["tosspayments", "payment", "checkout", "korea"],
       "tags": ["mcp", "payment"],
       "source": "./plugins/tosspayments"
+    },
+    {
+      "name": "vercel",
+      "description": "Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.",
+      "category": "deployment",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/vercel/vercel-plugin.git"
+      },
+      "homepage": "https://github.com/vercel/vercel-plugin"
     }
   ]
 }
