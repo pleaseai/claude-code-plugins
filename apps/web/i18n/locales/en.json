@@ -9,8 +9,7 @@
     "filterByMarketplace": "Filter by Marketplace:",
     "allMarketplaces": "All Marketplaces",
     "filteringBy": "Filtering by:",
-    "result": "result",
-    "results": "results",
+    "resultCount": "{count} results | {count} result | {count} results",
     "clearSearch": "Clear search"
   },
   "plugin": {
@@ -51,6 +50,7 @@
   },
   "error": {
     "failedToLoadPlugins": "Failed to load plugins",
+    "failedToLoadPluginsDescription": "An error occurred: {message}. Please try refreshing the page.",
     "pluginNotFound": "Plugin Not Found",
     "pluginNotFoundDescription": "The plugin \"{name}\" could not be found. It may have been removed or the link may be incorrect.",
     "navigationIssue": "Navigation Issue",
@@ -64,8 +64,7 @@
     "noPluginsMatchQuery": "No plugins match your search query: '{query}'"
   },
   "footer": {
-    "maintainedBy": "Marketplace maintained by",
-    "maintainerName": "Passion Factory"
+    "maintainedBy": "Marketplace maintained by {name}"
   },
   "seo": {
     "title": "Claude Code Plugin Marketplace",

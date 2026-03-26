@@ -9,8 +9,7 @@
     "filterByMarketplace": "\u6309\u5e02\u573a\u7b5b\u9009\uff1a",
     "allMarketplaces": "\u6240\u6709\u5e02\u573a",
     "filteringBy": "\u7b5b\u9009\u6761\u4ef6\uff1a",
-    "result": "\u4e2a\u7ed3\u679c",
-    "results": "\u4e2a\u7ed3\u679c",
+    "resultCount": "{count}\u4e2a\u7ed3\u679c",
     "clearSearch": "\u6e05\u9664\u641c\u7d22"
   },
   "plugin": {
@@ -51,6 +50,7 @@
   },
   "error": {
     "failedToLoadPlugins": "\u52a0\u8f7d\u63d2\u4ef6\u5931\u8d25",
+    "failedToLoadPluginsDescription": "\u53d1\u751f\u9519\u8bef\uff1a{message}\u3002\u8bf7\u5c1d\u8bd5\u5237\u65b0\u9875\u9762\u3002",
     "pluginNotFound": "\u672a\u627e\u5230\u63d2\u4ef6",
     "pluginNotFoundDescription": "\u65e0\u6cd5\u627e\u5230\u63d2\u4ef6\u300c{name}\u300d\u3002\u8be5\u63d2\u4ef6\u53ef\u80fd\u5df2\u88ab\u79fb\u9664\u6216\u94fe\u63a5\u4e0d\u6b63\u786e\u3002",
     "navigationIssue": "\u5bfc\u822a\u95ee\u9898",
@@ -64,8 +64,7 @@
     "noPluginsMatchQuery": "\u6ca1\u6709\u4e0e\u641c\u7d22\u8bcd\u300c{query}\u300d\u5339\u914d\u7684\u63d2\u4ef6"
   },
   "footer": {
-    "maintainedBy": "\u5e02\u573a\u7ef4\u62a4\u65b9\uff1a",
-    "maintainerName": "Passion Factory"
+    "maintainedBy": "\u5e02\u573a\u7ef4\u62a4\u65b9\uff1a{name}"
   },
   "seo": {
     "title": "Claude Code \u63d2\u4ef6\u5e02\u573a",

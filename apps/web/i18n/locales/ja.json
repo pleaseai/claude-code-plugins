@@ -9,8 +9,7 @@
     "filterByMarketplace": "マーケットプレイスで絞り込み:",
     "allMarketplaces": "すべてのマーケットプレイス",
     "filteringBy": "絞り込み:",
-    "result": "件",
-    "results": "件",
+    "resultCount": "{count}件",
     "clearSearch": "検索をクリア"
   },
   "plugin": {
@@ -51,6 +50,7 @@
   },
   "error": {
     "failedToLoadPlugins": "プラグインの読み込みに失敗しました",
+    "failedToLoadPluginsDescription": "エラーが発生しました: {message}。ページを更新してみてください。",
     "pluginNotFound": "プラグインが見つかりません",
     "pluginNotFoundDescription": "プラグイン「{name}」が見つかりませんでした。削除されたか、リンクが正しくない可能性があります。",
     "navigationIssue": "ナビゲーションの問題",
@@ -64,8 +64,7 @@
     "noPluginsMatchQuery": "検索クエリ「{query}」に一致するプラグインはありません"
   },
   "footer": {
-    "maintainedBy": "マーケットプレイス管理：",
-    "maintainerName": "Passion Factory"
+    "maintainedBy": "マーケットプレイス管理：{name}"
   },
   "seo": {
     "title": "Claude Code プラグインマーケットプレイス",

@@ -25,7 +25,7 @@ const searchQuery = defineModel<string>({ default: '' })
               variant="soft"
               size="sm"
             >
-              {{ filteredCount }} {{ filteredCount === 1 ? $t('search.result') : $t('search.results') }}
+              {{ $t('search.resultCount', { count: filteredCount }) }}
             </UBadge>
             <UButton
               v-if="searchQuery"

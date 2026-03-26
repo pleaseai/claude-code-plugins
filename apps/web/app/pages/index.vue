@@ -300,7 +300,7 @@ useHead({
         color="red"
         variant="soft"
         :title="$t('error.failedToLoadPlugins')"
-        :description="error.message"
+        :description="$t('error.failedToLoadPluginsDescription', { message: error.message })"
         class="mb-8"
       />
 
@@ -336,9 +336,11 @@ useHead({
     <!-- Footer Section -->
     <UContainer v-if="apiData" class="py-12 border-t border-default">
       <div class="text-center">
-        <p class="text-sm text-muted mb-2">
-          {{ $t('footer.maintainedBy') }} <span class="font-semibold">{{ $t('footer.maintainerName') }}</span>
-        </p>
+        <i18n-t keypath="footer.maintainedBy" tag="p" class="text-sm text-muted mb-2">
+          <template #name>
+            <span class="font-semibold">Passion Factory</span>
+          </template>
+        </i18n-t>
         <UButton
           to="mailto:support@passionfactory.ai"
           variant="ghost"

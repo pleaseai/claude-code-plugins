@@ -9,8 +9,7 @@
     "filterByMarketplace": "마켓플레이스 필터:",
     "allMarketplaces": "전체 마켓플레이스",
     "filteringBy": "필터 적용:",
-    "result": "개 결과",
-    "results": "개 결과",
+    "resultCount": "{count}개 결과",
     "clearSearch": "검색 초기화"
   },
   "plugin": {
@@ -51,6 +50,7 @@
   },
   "error": {
     "failedToLoadPlugins": "플러그인 로드 실패",
+    "failedToLoadPluginsDescription": "오류가 발생했습니다: {message}. 페이지를 새로고침해주세요.",
     "pluginNotFound": "플러그인을 찾을 수 없음",
     "pluginNotFoundDescription": "플러그인 \"{name}\"을(를) 찾을 수 없습니다. 삭제되었거나 링크가 올바르지 않을 수 있습니다.",
     "navigationIssue": "탐색 문제",
@@ -64,8 +64,7 @@
     "noPluginsMatchQuery": "검색어 '{query}'에 일치하는 플러그인이 없습니다"
   },
   "footer": {
-    "maintainedBy": "마켓플레이스 관리:",
-    "maintainerName": "Passion Factory"
+    "maintainedBy": "마켓플레이스 관리: {name}"
   },
   "seo": {
     "title": "Claude Code 플러그인 마켓플레이스",
