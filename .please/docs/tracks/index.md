@@ -6,6 +6,7 @@
 
 | Track | Feature | Type | Issue | Started | Status |
 |-------|---------|------|-------|---------|--------|
+| [web-i18n-20260326](active/web-i18n-20260326/plan.md) | Web i18n Support | feature | TBD | 2026-03-26 | planned |
 
 ## Recently Completed
 
