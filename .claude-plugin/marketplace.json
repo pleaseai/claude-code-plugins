@@ -414,6 +414,16 @@
         "url": "https://github.com/vercel/vercel-plugin.git"
       },
       "homepage": "https://github.com/vercel/vercel-plugin"
+    },
+    {
+      "name": "sentry",
+      "description": "Sentry error monitoring integration. Access error reports, analyze stack traces, search issues by fingerprint, and debug production errors directly from your development environment.",
+      "category": "monitoring",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/getsentry/sentry-for-claude.git"
+      },
+      "homepage": "https://github.com/getsentry/sentry-for-claude/tree/main"
     }
   ]
 }
