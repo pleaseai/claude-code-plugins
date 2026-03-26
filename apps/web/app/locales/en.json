@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "title": "Claude Code Plugin Marketplace",
+    "description": "Discover and install plugins to extend Claude Code's capabilities. Browse our collection of community-contributed plugins.",
+    "headline": "Explore Plugins"
+  },
+  "search": {
+    "placeholder": "Search by name, description, or repository...",
+    "filterByMarketplace": "Filter by Marketplace:",
+    "allMarketplaces": "All Marketplaces",
+    "filteringBy": "Filtering by:",
+    "result": "result",
+    "results": "results",
+    "clearSearch": "Clear search"
+  },
+  "plugin": {
+    "noDescription": "No description available",
+    "viewSource": "View Source",
+    "install": "Install",
+    "loading": "Loading...",
+    "viewInstallInstructions": "View installation instructions",
+    "badge": {
+      "fromMarketplace": "From {name} marketplace",
+      "developedByGoogle": "Developed by Google",
+      "developedByAnthropic": "Developed by Anthropic",
+      "includesContextFile": "Includes Context File",
+      "includesMcpServer": "Includes MCP Server",
+      "githubStars": "{count} GitHub stars"
+    }
+  },
+  "installModal": {
+    "title": "Installation Instructions",
+    "description": "Run these two commands in order",
+    "step1": "Add Marketplace",
+    "step2": "Install Plugin",
+    "copyCommand": "Copy command",
+    "copied": "Copied!",
+    "copyAllCommands": "Copy All Commands",
+    "allCommandsCopied": "All Commands Copied!",
+    "close": "Close",
+    "clipboardNotAvailable": "Clipboard Not Available",
+    "clipboardWarning": "Your browser doesn't support automatic copying. Please copy the commands manually using Ctrl+C (Cmd+C on Mac).",
+    "tip": "Tip: You can also select and copy the commands manually (Ctrl+C / Cmd+C)"
+  },
+  "alert": {
+    "communityPlugins": "Community Plugins",
+    "communityPluginsDescription": "These plugins are community-contributed. Please review the source code and documentation before installation."
+  },
+  "loading": {
+    "loadingPlugins": "Loading plugins..."
+  },
+  "error": {
+    "failedToLoadPlugins": "Failed to load plugins",
+    "pluginNotFound": "Plugin Not Found",
+    "pluginNotFoundDescription": "The plugin \"{name}\" could not be found. It may have been removed or the link may be incorrect.",
+    "navigationIssue": "Navigation Issue",
+    "navigationIssueDescription": "The plugin \"{name}\" was found but could not be displayed. Try refreshing the page.",
+    "copyFailed": "Copy Failed",
+    "copyFailedDescription": "Could not copy to clipboard. Please copy the command manually.",
+    "copyAllFailedDescription": "Could not copy commands to clipboard. Please copy them manually from above."
+  },
+  "empty": {
+    "noPluginsFound": "No plugins found",
+    "noPluginsMatchQuery": "No plugins match your search query: '{query}'"
+  },
+  "footer": {
+    "maintainedBy": "Marketplace maintained by",
+    "maintainerName": "Passion Factory"
+  },
+  "seo": {
+    "title": "Claude Code Plugin Marketplace",
+    "description": "Discover and install plugins to extend Claude Code capabilities"
+  },
+  "a11y": {
+    "viewOnGithub": "View on GitHub",
+    "clearSearch": "Clear search"
+  }
+}
