@@ -396,6 +396,14 @@
       "keywords": ["docus", "nuxt", "documentation", "markdown", "nuxt-content"],
       "tags": ["framework", "docs"],
       "source": "./plugins/docus"
+    },
+    {
+      "name": "tosspayments",
+      "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration",
+      "category": "development",
+      "keywords": ["tosspayments", "payment", "checkout", "korea"],
+      "tags": ["mcp", "payment"],
+      "source": "./plugins/tosspayments"
     }
   ]
 }
