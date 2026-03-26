@@ -247,6 +247,7 @@ useHead({
             variant="ghost"
             :aria-label="$t('a11y.viewOnGithub')"
           />
+          <LanguageSwitcher />
           <UColorModeButton />
         </div>
       </template>
