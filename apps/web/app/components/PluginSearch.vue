@@ -11,7 +11,7 @@ const searchQuery = defineModel<string>({ default: '' })
     <div class="relative">
       <UInput
         v-model="searchQuery"
-        placeholder="Search by name, description, or repository..."
+        :placeholder="$t('search.placeholder')"
         icon="i-heroicons-magnifying-glass"
         size="xl"
         class="w-full"
@@ -25,14 +25,14 @@ const searchQuery = defineModel<string>({ default: '' })
               variant="soft"
               size="sm"
             >
-              {{ filteredCount }} {{ filteredCount === 1 ? 'result' : 'results' }}
+              {{ filteredCount }} {{ filteredCount === 1 ? $t('search.result') : $t('search.results') }}
             </UBadge>
             <UButton
               v-if="searchQuery"
               variant="ghost"
               size="xs"
               icon="i-heroicons-x-mark"
-              aria-label="Clear search"
+              :aria-label="$t('a11y.clearSearch')"
               @click="searchQuery = ''"
             />
           </div>
@@ -42,7 +42,7 @@ const searchQuery = defineModel<string>({ default: '' })
 
     <div v-if="searchQuery" class="mt-2 text-xs text-muted flex items-center gap-1">
       <UIcon name="i-heroicons-funnel" />
-      <span>Filtering by: <span class="font-semibold">{{ searchQuery }}</span></span>
+      <span>{{ $t('search.filteringBy') }} <span class="font-semibold">{{ searchQuery }}</span></span>
     </div>
   </div>
 </template>

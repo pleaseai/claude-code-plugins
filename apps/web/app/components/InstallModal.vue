@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 interface Props {
   pluginName: string
   marketplaceJsonName?: string
@@ -75,8 +77,8 @@ async function copyCommand(command: string, type: keyof typeof copiedStates) {
     // Show user-facing error notification
     const toast = useToast()
     toast.add({
-      title: 'Copy Failed',
-      description: 'Could not copy to clipboard. Please copy the command manually.',
+      title: t('error.copyFailed'),
+      description: t('error.copyFailedDescription'),
       color: 'error',
       icon: 'i-heroicons-exclamation-triangle',
     })
@@ -115,8 +117,8 @@ async function copyAllCommands() {
     // Show user-facing error notification
     const toast = useToast()
     toast.add({
-      title: 'Copy Failed',
-      description: 'Could not copy commands to clipboard. Please copy them manually from above.',
+      title: t('error.copyFailed'),
+      description: t('error.copyAllFailedDescription'),
       color: 'error',
       icon: 'i-heroicons-exclamation-triangle',
     })
@@ -139,8 +141,8 @@ watch(isOpen, (newValue) => {
 <template>
   <UModal
     v-model:open="isOpen"
-    title="Installation Instructions"
-    description="Run these two commands in order"
+    :title="$t('installModal.title')"
+    :description="$t('installModal.description')"
   >
     <template #body>
       <div class="space-y-4">
@@ -150,8 +152,8 @@ watch(isOpen, (newValue) => {
           color="warning"
           variant="soft"
           icon="i-heroicons-exclamation-triangle"
-          title="Clipboard Not Available"
-          description="Your browser doesn't support automatic copying. Please copy the commands manually using Ctrl+C (Cmd+C on Mac)."
+          :title="$t('installModal.clipboardNotAvailable')"
+          :description="$t('installModal.clipboardWarning')"
         />
 
         <!-- Step 1: Add Marketplace -->
@@ -160,7 +162,7 @@ watch(isOpen, (newValue) => {
             <UBadge color="primary" variant="soft" size="sm">
               1
             </UBadge>
-            <span>Add Marketplace</span>
+            <span>{{ $t('installModal.step1') }}</span>
           </div>
           <div class="relative">
             <pre class="bg-default border border-default rounded-lg p-3 text-sm overflow-x-auto"><code>{{ marketplaceCommand }}</code></pre>
@@ -170,7 +172,7 @@ watch(isOpen, (newValue) => {
               size="xs"
               :icon="copiedStates.marketplace ? 'i-heroicons-check' : 'i-heroicons-clipboard-document'"
               class="absolute top-2 right-2"
-              :title="copiedStates.marketplace ? 'Copied!' : 'Copy command'"
+              :title="copiedStates.marketplace ? $t('installModal.copied') : $t('installModal.copyCommand')"
               @click="copyCommand(marketplaceCommand, 'marketplace')"
             />
           </div>
@@ -182,7 +184,7 @@ watch(isOpen, (newValue) => {
             <UBadge color="primary" variant="soft" size="sm">
               2
             </UBadge>
-            <span>Install Plugin</span>
+            <span>{{ $t('installModal.step2') }}</span>
           </div>
           <div class="relative">
             <pre class="bg-default border border-default rounded-lg p-3 text-sm overflow-x-auto"><code>{{ installCommand }}</code></pre>
@@ -192,7 +194,7 @@ watch(isOpen, (newValue) => {
               size="xs"
               :icon="copiedStates.install ? 'i-heroicons-check' : 'i-heroicons-clipboard-document'"
               class="absolute top-2 right-2"
-              :title="copiedStates.install ? 'Copied!' : 'Copy command'"
+              :title="copiedStates.install ? $t('installModal.copied') : $t('installModal.copyCommand')"
               @click="copyCommand(installCommand, 'install')"
             />
           </div>
@@ -207,14 +209,14 @@ watch(isOpen, (newValue) => {
             :icon="copiedStates.all ? 'i-heroicons-check-circle' : 'i-heroicons-clipboard-document-list'"
             @click="copyAllCommands"
           >
-            {{ copiedStates.all ? 'All Commands Copied!' : 'Copy All Commands' }}
+            {{ copiedStates.all ? $t('installModal.allCommandsCopied') : $t('installModal.copyAllCommands') }}
           </UButton>
         </div>
 
         <!-- Manual Copy Tip -->
         <div class="text-sm text-muted flex items-start gap-2">
           <UIcon name="i-heroicons-information-circle" class="shrink-0 mt-0.5" />
-          <span>Tip: You can also select and copy the commands manually (Ctrl+C / Cmd+C)</span>
+          <span>{{ $t('installModal.tip') }}</span>
         </div>
       </div>
     </template>
@@ -222,7 +224,7 @@ watch(isOpen, (newValue) => {
     <template #footer="{ close }">
       <div class="flex justify-end">
         <UButton
-          label="Close"
+          :label="$t('installModal.close')"
           color="neutral"
           variant="outline"
           @click="close"

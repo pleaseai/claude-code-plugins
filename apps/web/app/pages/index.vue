@@ -2,6 +2,7 @@
 import type { AggregatedPlugin, MarketplaceAPIResponse, Plugin } from '~/types/marketplace'
 import { useTimeoutFn } from '@vueuse/core'
 
+const { t } = useI18n()
 const searchQuery = ref('')
 const selectedMarketplace = ref<string | null>(null) // Filter by marketplace.json name
 const route = useRoute()
@@ -62,7 +63,7 @@ const marketplaceOptions = computed(() => {
     return []
 
   return [
-    { label: 'All Marketplaces', value: null },
+    { label: t('search.allMarketplaces'), value: null },
     ...apiData.value.marketplaces.map(m => ({
       label: `${m.marketplaceJsonName} (${m.pluginCount})`, // Use name from marketplace.json
       value: m.marketplaceJsonName,
@@ -156,8 +157,8 @@ watch([() => targetPluginName.value, pending], ([pluginName, isLoading]) => {
   if (!pluginExists) {
     // Plugin doesn't exist in marketplace data
     toast.add({
-      title: 'Plugin Not Found',
-      description: `The plugin "${pluginName}" could not be found. It may have been removed or the link may be incorrect.`,
+      title: t('error.pluginNotFound'),
+      description: t('error.pluginNotFoundDescription', { name: pluginName }),
       color: 'red',
       icon: 'i-heroicons-exclamation-triangle',
     })
@@ -197,8 +198,8 @@ watch([() => targetPluginName.value, pending], ([pluginName, isLoading]) => {
         // Max retries reached, show user feedback
         console.error(`[Plugin URL Navigation] Failed to scroll to "${pluginName}" after ${maxRetries} attempts`)
         toast.add({
-          title: 'Navigation Issue',
-          description: `The plugin "${pluginName}" was found but could not be displayed. Try refreshing the page.`,
+          title: t('error.navigationIssue'),
+          description: t('error.navigationIssueDescription', { name: pluginName }),
           color: 'orange',
           icon: 'i-heroicons-exclamation-circle',
         })
@@ -218,11 +219,11 @@ onBeforeUnmount(() => {
 
 // SEO Meta
 useHead({
-  title: 'Claude Code Plugin Marketplace',
+  title: () => t('seo.title'),
   meta: [
     {
       name: 'description',
-      content: 'Discover and install plugins to extend Claude Code capabilities',
+      content: () => t('seo.description'),
     },
   ],
 })
@@ -232,9 +233,9 @@ useHead({
   <div>
     <!-- Hero Section -->
     <UPageHero
-      title="Claude Code Plugin Marketplace"
-      description="Discover and install plugins to extend Claude Code's capabilities. Browse our collection of community-contributed plugins."
-      headline="Explore Plugins"
+      :title="$t('hero.title')"
+      :description="$t('hero.description')"
+      :headline="$t('hero.headline')"
     >
       <template #links>
         <div class="flex items-center gap-4">
@@ -244,7 +245,7 @@ useHead({
             icon="i-simple-icons-github"
             color="neutral"
             variant="ghost"
-            aria-label="View on GitHub"
+            :aria-label="$t('a11y.viewOnGithub')"
           />
           <UColorModeButton />
         </div>
@@ -259,12 +260,12 @@ useHead({
 
         <!-- Marketplace Filter -->
         <div v-if="marketplaceOptions.length > 0" class="flex items-center gap-2">
-          <label class="text-sm font-medium text-muted">Filter by Marketplace:</label>
+          <label class="text-sm font-medium text-muted">{{ $t('search.filterByMarketplace') }}</label>
           <USelectMenu
             v-model="selectedMarketplace"
             :items="marketplaceOptions"
             value-key="value"
-            placeholder="All Marketplaces"
+            :placeholder="$t('search.allMarketplaces')"
             class="w-64"
           />
         </div>
@@ -277,8 +278,8 @@ useHead({
         color="blue"
         variant="soft"
         class="mb-12"
-        title="Community Plugins"
-        description="These plugins are community-contributed. Please review the source code and documentation before installation."
+        :title="$t('alert.communityPlugins')"
+        :description="$t('alert.communityPluginsDescription')"
       />
 
       <!-- Loading State -->
@@ -286,7 +287,7 @@ useHead({
         <div class="text-center">
           <UIcon name="i-heroicons-arrow-path" class="animate-spin text-5xl text-primary mb-4" />
           <p class="text-muted">
-            Loading plugins...
+            {{ $t('loading.loadingPlugins') }}
           </p>
         </div>
       </div>
@@ -297,7 +298,7 @@ useHead({
         icon="i-heroicons-exclamation-triangle"
         color="red"
         variant="soft"
-        title="Failed to load plugins"
+        :title="$t('error.failedToLoadPlugins')"
         :description="error.message"
         class="mb-8"
       />
@@ -317,13 +318,13 @@ useHead({
       <div v-else class="text-center py-24">
         <UIcon name="i-heroicons-magnifying-glass" class="mx-auto text-5xl text-muted mb-4" />
         <h3 class="text-xl font-semibold mb-2">
-          No plugins found
+          {{ $t('empty.noPluginsFound') }}
         </h3>
         <p class="text-muted mb-6">
-          No plugins match your search query: '{{ searchQuery }}'
+          {{ $t('empty.noPluginsMatchQuery', { query: searchQuery }) }}
         </p>
         <UButton
-          label="Clear search"
+          :label="$t('search.clearSearch')"
           color="neutral"
           variant="outline"
           @click="searchQuery = ''"
@@ -335,7 +336,7 @@ useHead({
     <UContainer v-if="apiData" class="py-12 border-t border-default">
       <div class="text-center">
         <p class="text-sm text-muted mb-2">
-          Marketplace maintained by <span class="font-semibold">Passion Factory</span>
+          {{ $t('footer.maintainedBy') }} <span class="font-semibold">{{ $t('footer.maintainerName') }}</span>
         </p>
         <UButton
           to="mailto:support@passionfactory.ai"
