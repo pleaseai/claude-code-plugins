@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.3.0...web-v1.4.0) (2026-03-26)
+
+
+### Features
+
+* **marketplace:** add stripe plugin to marketplace ([#102](https://github.com/pleaseai/claude-code-plugins/issues/102)) ([22ae922](https://github.com/pleaseai/claude-code-plugins/commit/22ae9225e5b6911cf50a6e5b405aaaea48bd1557))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.2.0...web-v1.3.0) (2026-03-04)
 
 
