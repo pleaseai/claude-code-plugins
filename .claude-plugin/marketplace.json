@@ -424,6 +424,17 @@
         "url": "https://github.com/getsentry/sentry-for-claude.git"
       },
       "homepage": "https://github.com/getsentry/sentry-for-claude/tree/main"
+    },
+    {
+      "name": "posthog",
+      "description": "Access PostHog analytics, feature flags, experiments, error tracking, and insights directly from Claude Code.",
+      "category": "monitoring",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/PostHog/ai-plugin.git",
+        "sha": "f2f37954ecef9f1afce4fa81b6a612454a96c410"
+      },
+      "homepage": "https://posthog.com/docs/model-context-protocol"
     }
   ]
 }
