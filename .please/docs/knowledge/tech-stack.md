@@ -20,6 +20,7 @@
 - **Vue** 3.5.x + **Vue Router** 5.x
 - **Nuxt UI** v4 (component library)
 - **Nuxt Content** (markdown content management)
+- **@nuxtjs/i18n** 9.x (internationalization — en, ko, ja, zh)
 - **better-sqlite3** (local database)
 
 ## Testing
