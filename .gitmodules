@@ -37,3 +37,6 @@
 [submodule "external-plugins/google-workspace"]
 	path = external-plugins/google-workspace
 	url = https://github.com/googleworkspace/cli
+[submodule "external-plugins/revenuecat"]
+	path = external-plugins/revenuecat
+	url = https://github.com/RevenueCat/rc-claude-code-plugin.git
