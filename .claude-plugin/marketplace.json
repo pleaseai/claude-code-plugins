@@ -435,6 +435,17 @@
         "sha": "f2f37954ecef9f1afce4fa81b6a612454a96c410"
       },
       "homepage": "https://posthog.com/docs/model-context-protocol"
+    },
+    {
+      "name": "notion",
+      "description": "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless documentation workflows.",
+      "category": "productivity",
+      "keywords": ["notion", "productivity", "knowledge-base", "documentation", "database"],
+      "tags": ["productivity", "mcp"],
+      "source": {
+        "source": "github",
+        "repo": "makenotion/claude-code-notion-plugin"
+      }
     }
   ]
 }
