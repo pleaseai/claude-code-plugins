@@ -1,0 +1,78 @@
+{
+  "hero": {
+    "title": "Claude Code 플러그인 마켓플레이스",
+    "description": "Claude Code의 기능을 확장하는 플러그인을 탐색하고 설치하세요. 커뮤니티 기여 플러그인 컬렉션을 둘러보세요.",
+    "headline": "플러그인 탐색"
+  },
+  "search": {
+    "placeholder": "이름, 설명 또는 저장소로 검색...",
+    "filterByMarketplace": "마켓플레이스 필터:",
+    "allMarketplaces": "전체 마켓플레이스",
+    "filteringBy": "필터 적용:",
+    "result": "개 결과",
+    "results": "개 결과",
+    "clearSearch": "검색 초기화"
+  },
+  "plugin": {
+    "noDescription": "설명이 없습니다",
+    "viewSource": "소스 보기",
+    "install": "설치",
+    "loading": "로딩 중...",
+    "viewInstallInstructions": "설치 방법 보기",
+    "badge": {
+      "fromMarketplace": "{name} 마켓플레이스 제공",
+      "developedByGoogle": "Google 개발",
+      "developedByAnthropic": "Anthropic 개발",
+      "includesContextFile": "컨텍스트 파일 포함",
+      "includesMcpServer": "MCP 서버 포함",
+      "githubStars": "GitHub 스타 {count}개"
+    }
+  },
+  "installModal": {
+    "title": "설치 안내",
+    "description": "아래 두 명령어를 순서대로 실행하세요",
+    "step1": "마켓플레이스 추가",
+    "step2": "플러그인 설치",
+    "copyCommand": "명령어 복사",
+    "copied": "복사됨!",
+    "copyAllCommands": "전체 명령어 복사",
+    "allCommandsCopied": "전체 명령어 복사 완료!",
+    "close": "닫기",
+    "clipboardNotAvailable": "클립보드 사용 불가",
+    "clipboardWarning": "브라우저에서 자동 복사를 지원하지 않습니다. Ctrl+C (Mac: Cmd+C)로 직접 복사해주세요.",
+    "tip": "팁: Ctrl+C / Cmd+C로 명령어를 직접 선택하여 복사할 수도 있습니다"
+  },
+  "alert": {
+    "communityPlugins": "커뮤니티 플러그인",
+    "communityPluginsDescription": "이 플러그인은 커뮤니티에서 기여한 것입니다. 설치 전에 소스 코드와 문서를 검토해주세요."
+  },
+  "loading": {
+    "loadingPlugins": "플러그인 로딩 중..."
+  },
+  "error": {
+    "failedToLoadPlugins": "플러그인 로드 실패",
+    "pluginNotFound": "플러그인을 찾을 수 없음",
+    "pluginNotFoundDescription": "플러그인 \"{name}\"을(를) 찾을 수 없습니다. 삭제되었거나 링크가 올바르지 않을 수 있습니다.",
+    "navigationIssue": "탐색 문제",
+    "navigationIssueDescription": "플러그인 \"{name}\"을(를) 찾았지만 표시할 수 없습니다. 페이지를 새로고침해보세요.",
+    "copyFailed": "복사 실패",
+    "copyFailedDescription": "클립보드에 복사할 수 없습니다. 명령어를 직접 복사해주세요.",
+    "copyAllFailedDescription": "명령어를 클립보드에 복사할 수 없습니다. 위에서 직접 복사해주세요."
+  },
+  "empty": {
+    "noPluginsFound": "플러그인을 찾을 수 없음",
+    "noPluginsMatchQuery": "검색어 '{query}'에 일치하는 플러그인이 없습니다"
+  },
+  "footer": {
+    "maintainedBy": "마켓플레이스 관리:",
+    "maintainerName": "Passion Factory"
+  },
+  "seo": {
+    "title": "Claude Code 플러그인 마켓플레이스",
+    "description": "Claude Code 기능을 확장하는 플러그인을 탐색하고 설치하세요"
+  },
+  "a11y": {
+    "viewOnGithub": "GitHub에서 보기",
+    "clearSearch": "검색 초기화"
+  }
+}
