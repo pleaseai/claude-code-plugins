@@ -460,6 +460,17 @@
         "sha": "af7cb77996aee4e7e3c109c5afec81f716139032"
       },
       "homepage": "https://www.revenuecat.com"
+    },
+    {
+      "name": "notion",
+      "description": "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless documentation workflows.",
+      "category": "productivity",
+      "keywords": ["notion", "productivity", "knowledge-base", "documentation", "database"],
+      "tags": ["productivity", "mcp"],
+      "source": {
+        "source": "github",
+        "repo": "makenotion/claude-code-notion-plugin"
+      }
     }
   ]
 }
