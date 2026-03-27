@@ -4,6 +4,8 @@ import { useTimeoutFn } from '@vueuse/core'
 interface PluginSourceGitHub {
   source: 'github'
   repo: string
+  ref?: string
+  sha?: string
 }
 
 interface PluginSourceUrl {
@@ -81,21 +83,30 @@ async function fetchPluginMetadata() {
 
   // Build raw URL based on source type
   loading.value = true
-  let url: string
-  if (props.plugin.source.source === 'github') {
-    const ref = props.plugin.source.ref || 'main'
-    url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/${ref}/.claude-plugin/plugin.json`
-  }
-  else {
-    // url source - try to construct raw GitHub URL
-    const gitUrl = props.plugin.source.url.replace(/\.git$/, '')
-    const ref = props.plugin.source.ref || 'main'
-    const match = gitUrl.match(/github\.com\/([^/]+\/[^/]+)/)
-    if (!match) return
-    url = `https://raw.githubusercontent.com/${match[1]}/${ref}/.claude-plugin/plugin.json`
-  }
-
+  let url: string | undefined
   try {
+    let repoPath: string | undefined
+    let ref = 'main'
+
+    if (props.plugin.source.source === 'github') {
+      repoPath = props.plugin.source.repo
+      ref = props.plugin.source.ref || ref
+    }
+    else {
+      // url source - try to construct raw GitHub URL
+      const gitUrl = props.plugin.source.url.replace(/\.git$/, '')
+      const match = gitUrl.match(/github\.com\/([^/]+\/[^/]+)/)
+      if (match) {
+        repoPath = match[1]
+        ref = props.plugin.source.ref || ref
+      }
+    }
+
+    if (!repoPath) {
+      return
+    }
+
+    url = `https://raw.githubusercontent.com/${repoPath}/${ref}/.claude-plugin/plugin.json`
     const response = await fetch(url)
 
     if (!response.ok) {
@@ -321,6 +332,25 @@ const badges = computed<Badge[]>(() => {
   return badgeList
 })
 
+// Computed source text for display
+const sourceText = computed(() => {
+  const { source } = props.plugin
+  if (typeof source === 'string')
+    return source
+
+  switch (source.source) {
+    case 'github':
+      return source.repo
+    case 'npm':
+      return source.package
+    case 'url':
+    case 'git-subdir':
+      return source.url
+    default:
+      return ''
+  }
+})
+
 // Fetch metadata on mount
 onMounted(() => {
   fetchPluginMetadata()
@@ -368,7 +398,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.source === 'github' ? plugin.source.repo : plugin.source.source === 'npm' ? plugin.source.package : plugin.source.url }}</span>
+              <span class="truncate">{{ sourceText }}</span>
             </div>
           </div>
           <div class="shrink-0">

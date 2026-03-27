@@ -42,7 +42,7 @@ export default defineContentConfig({
               }),
               z.object({
                 source: z.literal('url'),
-                url: z.string(),
+                url: z.string().url(),
                 ref: z.string().optional(),
                 sha: z.string().optional(),
               }),
