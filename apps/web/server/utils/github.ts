@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 /**
  * GitHub API utilities for fetching repository information
  */
