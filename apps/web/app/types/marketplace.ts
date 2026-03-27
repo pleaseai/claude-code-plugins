@@ -14,6 +14,15 @@ export interface MarketplaceSource {
 export interface PluginSourceGitHub {
   source: 'github'
   repo: string
+  ref?: string
+  sha?: string
+}
+
+export interface PluginSourceUrl {
+  source: 'url'
+  url: string
+  ref?: string
+  sha?: string
 }
 
 export interface PluginSourceGitSubdir {
@@ -24,7 +33,14 @@ export interface PluginSourceGitSubdir {
   sha?: string
 }
 
-export type PluginSource = PluginSourceGitHub | PluginSourceGitSubdir
+export interface PluginSourceNpm {
+  source: 'npm'
+  package: string
+  version?: string
+  registry?: string
+}
+
+export type PluginSource = PluginSourceGitHub | PluginSourceUrl | PluginSourceGitSubdir | PluginSourceNpm
 
 export interface Plugin {
   name: string
