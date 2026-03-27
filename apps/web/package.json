@@ -4,7 +4,7 @@
   "version": "1.4.0",
   "private": true,
   "engines": {
-    "node": "22.x"
+    "node": "24.x"
   },
   "scripts": {
     "build": "nuxt build",
@@ -25,11 +25,13 @@
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.3",
+    "@iconify-json/simple-icons": "^1.2.75",
     "@nuxt/devtools": "latest",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/test-utils": "3.19.2",
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
+    "baseline-browser-mapping": "^2.10.11",
     "eslint": "^10.0.2",
     "typescript": "^5.9.3"
   }

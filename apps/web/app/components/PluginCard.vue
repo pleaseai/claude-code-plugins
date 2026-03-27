@@ -6,6 +6,13 @@ interface PluginSourceGitHub {
   repo: string
 }
 
+interface PluginSourceUrl {
+  source: 'url'
+  url: string
+  ref?: string
+  sha?: string
+}
+
 interface PluginSourceGitSubdir {
   source: 'git-subdir'
   url: string
@@ -14,7 +21,14 @@ interface PluginSourceGitSubdir {
   sha?: string
 }
 
-type PluginSource = PluginSourceGitHub | PluginSourceGitSubdir
+interface PluginSourceNpm {
+  source: 'npm'
+  package: string
+  version?: string
+  registry?: string
+}
+
+type PluginSource = PluginSourceGitHub | PluginSourceUrl | PluginSourceGitSubdir | PluginSourceNpm
 
 interface Plugin {
   name: string
@@ -60,22 +74,35 @@ async function fetchPluginMetadata() {
     return
   }
 
-  // Only GitHub source plugins support metadata fetch
-  if (props.plugin.source.source !== 'github') {
+  // Only GitHub and url source plugins support metadata fetch
+  if (props.plugin.source.source !== 'github' && props.plugin.source.source !== 'url') {
     return
   }
 
-  // GitHub plugin - fetch from GitHub
+  // Build raw URL based on source type
   loading.value = true
+  let url: string
+  if (props.plugin.source.source === 'github') {
+    const ref = props.plugin.source.ref || 'main'
+    url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/${ref}/.claude-plugin/plugin.json`
+  }
+  else {
+    // url source - try to construct raw GitHub URL
+    const gitUrl = props.plugin.source.url.replace(/\.git$/, '')
+    const ref = props.plugin.source.ref || 'main'
+    const match = gitUrl.match(/github\.com\/([^/]+\/[^/]+)/)
+    if (!match) return
+    url = `https://raw.githubusercontent.com/${match[1]}/${ref}/.claude-plugin/plugin.json`
+  }
+
   try {
-    const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
     const response = await fetch(url)
 
     if (!response.ok) {
       // Log specific HTTP error
       console.error(`Failed to fetch plugin metadata: HTTP ${response.status}`, {
         plugin: props.plugin.name,
-        repo: props.plugin.source.repo,
+        url,
         status: response.status,
         statusText: response.statusText,
       })
@@ -107,7 +134,7 @@ async function fetchPluginMetadata() {
     // Network-level errors (connection failed, CORS, etc.)
     console.error('Network error fetching plugin metadata:', {
       plugin: props.plugin.name,
-      repo: props.plugin.source.source === 'github' ? props.plugin.source.repo : props.plugin.source.url,
+      url,
       error: err instanceof Error ? err.message : String(err),
     })
   }
@@ -184,6 +211,10 @@ const githubSourceUrl = computed(() => {
 
     return url
   }
+  // url plugin
+  if (props.plugin.source.source === 'url') {
+    return props.plugin.source.url.replace(/\.git$/, '')
+  }
   // git-subdir plugin
   if (props.plugin.source.source === 'git-subdir') {
     const url = props.plugin.source.url
@@ -194,6 +225,11 @@ const githubSourceUrl = computed(() => {
       return `${url.replace(/\.git$/, '')}/tree/${ref}/${path}`
     }
     return `https://github.com/${url}/tree/${ref}/${path}`
+  }
+  // npm plugin
+  if (props.plugin.source.source === 'npm') {
+    const registry = props.plugin.source.registry || 'https://www.npmjs.com/package'
+    return `${registry}/${props.plugin.source.package}`
   }
   // GitHub plugin
   return `https://github.com/${props.plugin.source.repo}`
@@ -332,7 +368,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.source === 'github' ? plugin.source.repo : plugin.source.url }}</span>
+              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.source === 'github' ? plugin.source.repo : plugin.source.source === 'npm' ? plugin.source.package : plugin.source.url }}</span>
             </div>
           </div>
           <div class="shrink-0">

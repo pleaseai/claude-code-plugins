@@ -16,12 +16,12 @@ interface GitHubRepo {
  */
 export function parseGitHubRepo(source: string): { owner: string, repo: string } | null {
   try {
-    // Handle URL format: https://github.com/owner/repo
+    // Handle URL format: https://github.com/owner/repo or https://github.com/owner/repo.git
     if (source.startsWith('http')) {
       const url = new URL(source)
       const parts = url.pathname.split('/').filter(Boolean)
       if (parts.length >= 2) {
-        return { owner: parts[0], repo: parts[1] }
+        return { owner: parts[0], repo: parts[1].replace(/\.git$/, '') }
       }
     }
 
@@ -54,7 +54,7 @@ export async function fetchGitHubStars(owner: string, repo: string): Promise<num
       'User-Agent': 'claude-code-plugins-marketplace',
     }
 
-    const githubToken = import.meta.env.GITHUB_TOKEN
+    const githubToken = process.env.GITHUB_TOKEN
     if (githubToken) {
       headers.Authorization = `token ${githubToken}`
     }
