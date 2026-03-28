@@ -3,17 +3,16 @@
 # Reads JSON from stdin (tool_name, tool_input). Outputs hookSpecificOutput JSON on stdout.
 set -euo pipefail
 
-input=$(cat)
+mapfile -t values < <(jq -r '[.tool_name, .tool_input.file_path, .tool_input.content, .tool_input.new_string] | .[] // ""')
 
-tool_name=$(echo "$input" | jq -r '.tool_name // empty')
+tool_name=${values[0]:-""}
+file_path=${values[1]:-""}
 
 # Only handle Write and Edit tools
 case "$tool_name" in
   Write|Edit) ;;
   *) exit 0 ;;
 esac
-
-file_path=$(echo "$input" | jq -r '.tool_input.file_path // empty')
 
 # Only handle .vue files
 case "$file_path" in
@@ -23,10 +22,10 @@ esac
 
 # Extract relevant content based on tool type
 if [ "$tool_name" = "Write" ]; then
-  content=$(echo "$input" | jq -r '.tool_input.content // empty')
+  content=${values[2]:-""}
 elif [ "$tool_name" = "Edit" ]; then
   # Only check new_string — we care about components being added, not removed
-  content=$(echo "$input" | jq -r '.tool_input.new_string // empty')
+  content=${values[3]:-""}
 fi
 
 if [ -z "$content" ]; then
@@ -34,19 +33,22 @@ if [ -z "$content" ]; then
 fi
 
 # Detect Nuxt UI components (U followed by uppercase letter)
-components=$(echo "$content" | grep -oE '<U[A-Z][a-zA-Z]+' | sed 's/^<//' | sort -u | tr '\n' ', ' | sed 's/,$//')
+components_list=$(echo "$content" | grep -oE '<U[A-Z][a-zA-Z]+' | sed 's/^<//' | sort -u)
 
-if [ -z "$components" ]; then
+if [ -z "$components_list" ]; then
   exit 0
 fi
 
+components="<components>$(echo "$components_list" | tr '\n' ', ' | sed 's/, $//')</components>"
+
 # Build component-specific MCP suggestions
 mcp_suggestions=""
-for comp in $(echo "$components" | tr ',' '\n' | sed 's/^ //'); do
+while IFS= read -r comp; do
+  if [ -z "$comp" ]; then continue; fi
   # Strip the leading U to get the component name for MCP
   comp_name=$(echo "$comp" | sed 's/^U//')
-  mcp_suggestions="${mcp_suggestions}  - mcp__nuxt-ui-remote__get_component(component: \"${comp_name}\") for ${comp} API reference\n"
-done
+  mcp_suggestions="${mcp_suggestions}  - mcp__nuxt-ui-remote__get_component(component: \"${comp_name}\") for <component>${comp}</component> API reference\n"
+done <<< "$components_list"
 
 # Build guidance message
 message="Nuxt UI components detected: ${components}
