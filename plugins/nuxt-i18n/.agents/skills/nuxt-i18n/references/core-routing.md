@@ -71,7 +71,7 @@ definePageMeta({
 </script>
 ```
 
-Always use **named routes** with `localePath()` when custom paths are configured:
+Always use **named routes** (via `localePath()` or `<NuxtLinkLocale>`) when custom paths are configured:
 
 ```vue
 <template>
