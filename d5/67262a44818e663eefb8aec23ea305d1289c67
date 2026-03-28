@@ -1,0 +1,23 @@
+apps/web/nuxt.config.ts
+  ec9e10b4c8d7524e 10-12,14-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "d567262a44818e663eefb8aec23ea305d1289c67",
+  "prompts": {
+    "ec9e10b4c8d7524e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89e97a94-43b4-4195-901b-7a3673f87d9e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 9,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}
