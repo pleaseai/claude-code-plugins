@@ -7,6 +7,7 @@
 | Track | Feature | Type | Issue | Started | Status |
 |-------|---------|------|-------|---------|--------|
 | [nuxt-ui-hook-guidance-20260328](active/nuxt-ui-hook-guidance-20260328/plan.md) | Nuxt UI Hook Guidance | feature | TBD | 2026-03-28 | in_progress |
+| [nuxt-session-hook-20260328](active/nuxt-session-hook-20260328/) | Plugin Recommender | feature | — | 2026-03-28 | in_progress |
 
 ## Recently Completed
 

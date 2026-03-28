@@ -1,0 +1,19 @@
+{
+  "name": "please-plugins",
+  "version": "1.0.0",
+  "description": "Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace",
+  "author": {
+    "name": "Passion Factory",
+    "url": "https://github.com/pleaseai"
+  },
+  "homepage": "https://github.com/pleaseai/claude-code-plugins",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "please-plugins",
+    "discovery",
+    "marketplace",
+    "auto-detect",
+    "setup"
+  ]
+}
