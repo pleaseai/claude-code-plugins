@@ -1,0 +1,18 @@
+{
+  "name": "plugin-recommender",
+  "version": "1.0.0",
+  "description": "Detects npm packages in your project and recommends corresponding Claude Code plugins from the pleaseai marketplace",
+  "author": {
+    "name": "Passion Factory",
+    "url": "https://github.com/pleaseai"
+  },
+  "homepage": "https://github.com/pleaseai/claude-code-plugins",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "plugin-recommender",
+    "discovery",
+    "marketplace",
+    "auto-detect"
+  ]
+}
