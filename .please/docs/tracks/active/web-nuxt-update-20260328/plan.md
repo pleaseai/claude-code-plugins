@@ -96,3 +96,24 @@ The `apps/web/` marketplace frontend has 10 outdated packages spanning core fram
 - Decision: Incremental update approach
   Rationale: Isolates breakage sources; minor updates are safe to batch
   Date/Author: 2026-03-28 / Claude
+
+## Outcomes & Retrospective
+
+### What Was Shipped
+- All 10 outdated packages updated to latest versions
+- Nuxt 4.4 migration applied (createError statusCode → status)
+- TypeScript 6.0 major version bump
+- @nuxt/test-utils 4.0 major version bump
+- Tech-stack documentation updated
+
+### What Went Well
+- Code review caught two real issues (version regression and incorrect field rename)
+- Nuxt UI migration was a no-op — no affected components in use
+- Build verification confirmed clean compilation
+
+### What Could Improve
+- Git stash/restore during build testing caused package.json regression — avoid stash when testing builds
+- Verify `bun add` actually writes to correct workspace package.json in monorepos
+
+### Tech Debt Created
+- Vercel ISR symlink fails in worktree environments (nitropack bug, not our code)
