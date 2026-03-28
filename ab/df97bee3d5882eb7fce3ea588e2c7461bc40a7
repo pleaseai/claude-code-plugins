@@ -1,0 +1,25 @@
+apps/web/server/api/marketplaces.get.ts
+  ec9e10b4c8d7524e 136-137
+apps/web/nuxt.config.ts
+  ec9e10b4c8d7524e 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "abdf97bee3d5882eb7fce3ea588e2c7461bc40a7",
+  "prompts": {
+    "ec9e10b4c8d7524e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89e97a94-43b4-4195-901b-7a3673f87d9e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 6,
+      "total_deletions": 6,
+      "accepted_lines": 6,
+      "overriden_lines": 0
+    }
+  }
+}
