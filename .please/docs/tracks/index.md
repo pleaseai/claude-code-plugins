@@ -8,6 +8,7 @@
 |-------|---------|------|-------|---------|--------|
 | [nuxt-ui-hook-guidance-20260328](active/nuxt-ui-hook-guidance-20260328/plan.md) | Nuxt UI Hook Guidance | feature | TBD | 2026-03-28 | in_progress |
 | [nuxt-session-hook-20260328](active/nuxt-session-hook-20260328/) | Plugin Recommender | feature | — | 2026-03-28 | in_progress |
+| [add-code-intelligence-marketplace-20260328](active/add-code-intelligence-marketplace-20260328/plan.md) | Add code-intelligence marketplace | feature | - | 2026-03-28 | planned |
 
 ## Recently Completed
 
