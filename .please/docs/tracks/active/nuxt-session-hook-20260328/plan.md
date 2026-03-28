@@ -42,11 +42,21 @@ A single script handles both events via `hook_event_name` field from stdin JSON.
 
 ## Tasks
 
-- [ ] T001 Create plugin manifest (file: plugins/plugin-recommender/.claude-plugin/plugin.json)
-- [ ] T002 Create dependency detection hook (file: plugins/plugin-recommender/hooks/check-dependencies.ts) (depends on T001)
-- [ ] T003 Create hooks.json registration (file: plugins/plugin-recommender/hooks/hooks.json) (depends on T002)
-- [ ] T004 [P] Create unit tests for hook (file: plugins/plugin-recommender/hooks/check-dependencies.test.ts) (depends on T002)
-- [ ] T005 Add plugin-recommender to marketplace.json (file: .claude-plugin/marketplace.json) (depends on T001)
+- [x] T001 Create plugin manifest (file: plugins/plugin-recommender/.claude-plugin/plugin.json)
+- [x] T002 Create dependency detection hook (file: plugins/plugin-recommender/hooks/check-dependencies.ts) (depends on T001)
+- [x] T003 Create hooks.json registration (file: plugins/plugin-recommender/hooks/hooks.json) (depends on T002)
+- [x] T004 [P] Create unit tests for hook (file: plugins/plugin-recommender/hooks/check-dependencies.test.ts) (depends on T002)
+- [x] T005 Add plugin-recommender to marketplace.json (file: .claude-plugin/marketplace.json) (depends on T001)
+
+## Progress
+
+- [x] (2026-03-28 22:35 KST) T001 Create plugin manifest
+- [x] (2026-03-28 22:36 KST) T002 Create dependency detection hook
+  Evidence: `bun test` → 32 tests passed (62ms)
+- [x] (2026-03-28 22:37 KST) T003 Create hooks.json registration
+- [x] (2026-03-28 22:36 KST) T004 Create unit tests for hook
+  Evidence: `bun test` → 32 tests passed, 93 expect() calls
+- [x] (2026-03-28 22:38 KST) T005 Add plugin-recommender to marketplace.json
 
 ## Key Files
 
