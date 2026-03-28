@@ -1,0 +1,25 @@
+plugins/nuxt-i18n/.claude-plugin/plugin.json
+  4c40142ad305db30 6-7
+plugins/nuxt-i18n/.agents/skills/nuxt-i18n/references/core-routing.md
+  4c40142ad305db30 74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "8245b7a4a8b9f30d38a6b12ab4cd11a9a5eeb552",
+  "prompts": {
+    "4c40142ad305db30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae8df72b-6293-42fa-8c18-74485555358b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
