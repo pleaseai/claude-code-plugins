@@ -39,3 +39,10 @@ Nuxt i18n is an internationalization module for Nuxt powered by Vue i18n. It pro
 | Topic | Description | Reference |
 |-------|-------------|-----------|
 | API Reference | Composables, components, helper functions, instance properties | [api-reference](references/api-reference.md) |
+
+## Full Documentation
+
+For details beyond these references, fetch the complete official documentation:
+
+- **llms.txt** (overview): https://i18n.nuxtjs.org/llms.txt
+- **llms-full.txt** (full docs): https://i18n.nuxtjs.org/llms-full.txt
