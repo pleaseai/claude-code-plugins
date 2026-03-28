@@ -7,7 +7,6 @@
           {
             "type": "command",
             "command": "${CLAUDE_PROJECT_DIR}/hooks/deny-vendor-write.sh",
-            "if": "Write(*vendor*)|Edit(*vendor*)|MultiEdit(*vendor*)|NotebookEdit(*vendor*)|Write(*sources*)|Edit(*sources*)|MultiEdit(*sources*)|NotebookEdit(*sources*)",
             "timeout": 10
           }
         ]

@@ -40,12 +40,13 @@ Currently, **no hooks in this codebase use the `if` field**.
 
 - T-1: Add `if` field to markitdown PreToolUse hook
   - File: `plugins/markitdown/hooks/hooks.json`
-  - Pattern: `Read(*.pptx)|Read(*.docx)|Read(*.xlsx)|Read(*.xls)|Read(*.ppt)|Read(*.doc)`
+  - Approach: One hook entry per extension (permission rules don't support `|` alternation)
+  - Patterns: `Read(*.pptx)`, `Read(*.docx)`, `Read(*.xlsx)`, `Read(*.xls)`, `Read(*.ppt)`, `Read(*.doc)`
   - Test: Validate with `claude plugin validate plugins/markitdown`
 
-- T-2: Add `if` field to project settings deny-vendor-write hook
+- T-2: ~~Add `if` field to project settings deny-vendor-write hook~~ **DESCOPED**
   - File: `.claude/settings.json`
-  - Pattern: `Write(*vendor*)|Edit(*vendor*)|MultiEdit(*vendor*)|NotebookEdit(*vendor*)|Write(*sources*)|Edit(*sources*)|MultiEdit(*sources*)|NotebookEdit(*sources*)`
+  - Reason: Would require 8 separate hook entries (4 tool types × 2 paths) since `|` is not supported. Too verbose for the benefit; the script already handles filtering efficiently.
 
 - T-3: Document evaluation of skipped hooks in spec as decisions
 
@@ -70,7 +71,7 @@ Currently, **no hooks in this codebase use the `if` field**.
 | Task | Status |
 |------|--------|
 | T-1: markitdown `if` field | completed |
-| T-2: settings `if` field | completed |
+| T-2: settings `if` field | descoped — `|` not supported, 8 entries too verbose |
 | T-3: document skipped hooks | completed |
 
 ## Decision Log
@@ -80,10 +81,13 @@ Currently, **no hooks in this codebase use the `if` field**.
 | Skip worktree hook | Parent path is dynamic — static `if` pattern can't pre-filter |
 | Skip gatekeeper hooks | Script-level pattern matching is more flexible; `if` would duplicate logic |
 | Skip fetch hook | PostToolUseFailure on WebFetch is already very rare |
-| Use alternation syntax | `if` supports `\|` for OR — confirmed from Claude Code docs |
+| Descope settings hook | `|` alternation not supported in permission rules; 8 entries (4 tools × 2 paths) too verbose |
+| One entry per extension | Permission rules use gitignore spec — no alternation, each `if` takes a single pattern |
 
 ## Surprises & Discoveries
 
-- Permission rule syntax supports alternation with `|` operator (e.g., `Edit(*.py)|Write(*.py)`)
+- Permission rule syntax follows gitignore spec — `|` alternation is NOT supported
+- Each `if` field takes exactly one pattern (e.g., `Read(*.docx)`)
+- Multiple hook entries in the same `hooks` array with different `if` patterns achieves OR behavior
 - `if` is evaluated before process spawn, providing genuine performance benefit
-- Multi-tool matchers work with `if` by including each tool type in the pattern
+- For multi-tool matchers (Write|Edit|...) with multiple paths, `if` becomes impractical without alternation

@@ -7,7 +7,37 @@
           {
             "type": "command",
             "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
-            "if": "Read(*.pptx)|Read(*.docx)|Read(*.xlsx)|Read(*.xls)|Read(*.ppt)|Read(*.doc)",
+            "if": "Read(*.pptx)",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
+            "if": "Read(*.docx)",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
+            "if": "Read(*.xlsx)",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
+            "if": "Read(*.xls)",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
+            "if": "Read(*.ppt)",
+            "timeout": 5
+          },
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/check-binary-doc.sh",
+            "if": "Read(*.doc)",
             "timeout": 5
           }
         ]

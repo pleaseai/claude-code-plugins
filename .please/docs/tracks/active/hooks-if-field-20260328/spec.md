@@ -14,7 +14,7 @@ Claude Code hooks support an `if` field that uses permission rule syntax (e.g., 
 
 ### Functional Requirements
 
-- [ ] FR-1: Add `if` field to **markitdown** PreToolUse hook to filter `Read` calls to binary document extensions only (e.g., `*.pdf`, `*.docx`, `*.pptx`, `*.xlsx`, `*.xls`, `*.doc`, `*.ppt`)
+- [ ] FR-1: Add `if` field to **markitdown** PreToolUse hook to filter `Read` calls to binary document extensions only (e.g., `*.docx`, `*.pptx`, `*.xlsx`, `*.xls`, `*.doc`, `*.ppt`)
 - [ ] FR-2: Add `if` field to **project settings** PreToolUse hook (`deny-vendor-write.sh`) to filter edit operations to `vendor/` and `sources/` paths only
 - [ ] FR-3: Add `if` field to **worktree** PreToolUse hook (`deny-parent-access.ts`) to narrow file operation scope where beneficial
 - [ ] FR-4: Evaluate gatekeeper and fetch hooks — only add `if` if it meaningfully reduces false invocations without conflicting with existing script logic
