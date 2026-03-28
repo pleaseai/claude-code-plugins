@@ -18,5 +18,11 @@
   { "packages": ["stripe", "@stripe/stripe-js"], "pluginName": "stripe" },
   { "packages": ["@slidev/cli"], "pluginName": "slidev" },
   { "packages": ["tsdown"], "pluginName": "tsdown" },
-  { "packages": ["docus"], "pluginName": "docus" }
+  { "packages": ["docus", "@nuxt/content"], "pluginName": "docus" },
+  { "packages": ["@sentry/node", "@sentry/browser", "@sentry/vue", "@sentry/nuxt"], "pluginName": "sentry" },
+  { "packages": ["posthog-js", "posthog-node"], "pluginName": "posthog" },
+  { "packages": ["playwright", "@playwright/test"], "pluginName": "playwright-cli" },
+  { "packages": ["@tosspayments/tosspayments-sdk", "@tosspayments/payment-widget-sdk"], "pluginName": "tosspayments" },
+  { "packages": ["@slack/bolt", "@chat-adapter/slack"], "pluginName": "slack-agent" },
+  { "packages": ["neo4j-driver"], "pluginName": "mcp-neo4j" }
 ]

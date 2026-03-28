@@ -1,4 +1,5 @@
 [
   { "indicators": { "lockFiles": ["pnpm-lock.yaml"], "packageManager": "pnpm" }, "pluginName": "pnpm" },
-  { "indicators": { "lockFiles": ["turbo.json"], "packageManager": null }, "pluginName": "turborepo" }
+  { "indicators": { "lockFiles": ["turbo.json"], "packageManager": null }, "pluginName": "turborepo" },
+  { "indicators": { "lockFiles": ["pubspec.yaml"], "packageManager": null }, "pluginName": "flutter" }
 ]
