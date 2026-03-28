@@ -1,0 +1,35 @@
+.please/docs/knowledge/tech-stack.md
+  ec9e10b4c8d7524e 10
+.please/docs/tracks/active/web-nuxt-update-20260328/metadata.json
+  ec9e10b4c8d7524e 1-3,5,7,9-10
+apps/web/package.json
+  ec9e10b4c8d7524e 4,31,36
+.please/docs/tracks/active/web-nuxt-update-20260328/spec.md
+  ec9e10b4c8d7524e 1-54
+apps/web/server/api/marketplaces.get.ts
+  ec9e10b4c8d7524e 136-137
+.please/docs/tracks/active/web-nuxt-update-20260328/plan.md
+  ec9e10b4c8d7524e 1-33,40-76
+apps/web/nuxt.config.ts
+  ec9e10b4c8d7524e 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "7cfd3e4a0a998d7363c7edc210aaacf008e2e57e",
+  "prompts": {
+    "ec9e10b4c8d7524e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89e97a94-43b4-4195-901b-7a3673f87d9e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 191,
+      "overriden_lines": 0
+    }
+  }
+}
