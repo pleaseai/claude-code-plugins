@@ -7,7 +7,7 @@
 
 ## Languages
 
-- **TypeScript** 5.9.x (strict mode)
+- **TypeScript** 6.x (strict mode)
 
 ## Build & Monorepo
 
