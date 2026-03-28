@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.4.0...web-v1.4.1) (2026-03-27)
+
+
+### Bug Fixes
+
+* **web:** add url and npm plugin source types to marketplace schema ([#114](https://github.com/pleaseai/claude-code-plugins/issues/114)) ([9e9d0df](https://github.com/pleaseai/claude-code-plugins/commit/9e9d0dfbed20db5750965a333e0a2b5064b9bc92))
+
 ## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.3.0...web-v1.4.0) (2026-03-26)
 
 
