@@ -72,6 +72,11 @@ Vercel deployment platform integration. Manage deployments, check build status, 
 
 ### Built-in Plugins
 
+#### Please Plugins (Plugin Recommender)
+Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace.
+
+**Install:** `/plugin install please-plugins@pleaseai` | **Source:** [plugins/please-plugins](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/please-plugins)
+
 #### Plugin Dev
 Best practices, guidelines, and validation tools for Claude Code plugin development.
 
@@ -232,7 +237,26 @@ Write beautiful documentations with Nuxt and Markdown.
 
 **Install:** `/plugin install docus@pleaseai` | **Source:** [plugins/docus](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/docus)
 
-## Installation
+## Quick Start
+
+The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
+
+```bash
+# 1. Add the marketplace
+/plugin marketplace add pleaseai/claude-code-plugins
+
+# 2. Install the plugin recommender
+/plugin install please-plugins@pleaseai
+
+# 3. Scan your project and install recommended plugins
+/please-plugins:setup
+```
+
+The `please-plugins` plugin automatically detects your project's dependencies (`package.json`, lock files, `turbo.json`, etc.) and recommends matching plugins. It also watches for new package installs (`bun add`, `npm install`, `pnpm add`) and suggests plugins on the fly.
+
+**Supported ecosystems:** Nuxt, Vue, Vite, Vitest, Pinia, VueUse, Prisma, Supabase, Firebase, Playwright, Sentry, Stripe, Mastra, AI SDK, Turborepo, pnpm, and more.
+
+## Manual Installation
 
 ### Add This Marketplace
 
@@ -242,7 +266,7 @@ Write beautiful documentations with Nuxt and Markdown.
 
 ### Install a Plugin
 
-Once the marketplace is added, install any plugin with:
+Once the marketplace is added, install any plugin individually:
 
 ```bash
 # External plugins
@@ -258,6 +282,7 @@ Once the marketplace is added, install any plugin with:
 /plugin install vercel@pleaseai
 
 # Built-in plugins
+/plugin install please-plugins@pleaseai
 /plugin install plugin-dev@pleaseai
 /plugin install gatekeeper@pleaseai
 /plugin install cubic@pleaseai
