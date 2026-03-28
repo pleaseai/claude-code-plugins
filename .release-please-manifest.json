@@ -29,6 +29,7 @@
   "plugins/slack-agent": "1.0.0",
   "plugins/neo4j": "1.0.0",
   "plugins/google-workspace": "1.0.0",
+  "plugins/nuxt-i18n": "1.0.0",
   "plugins/nuxt-seo": "1.0.0",
   "plugins/markitdown": "1.0.0",
   "plugins/ast-grep": "1.0.0",
