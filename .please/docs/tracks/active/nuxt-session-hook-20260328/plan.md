@@ -1,4 +1,4 @@
-# Plan: Nuxt Plugin Dependency Detection Hooks
+# Plan: Plugin Recommender
 
 > Track: nuxt-session-hook-20260328
 > Spec: [spec.md](./spec.md)
@@ -12,89 +12,101 @@
 
 ## Purpose
 
-After this change, developers working in Nuxt projects will automatically see recommendations to install relevant Claude Code plugins (nuxt-ui, nuxt-seo, pinia, vueuse) based on packages detected in their `package.json`. Recommendations appear at session start (async, non-blocking) and after running package install commands like `bun add @nuxt/ui`. They can verify it works by starting a Claude Code session in a Nuxt project that has `@nuxt/ui` installed and seeing the plugin recommendation message.
+After this change, developers will automatically see recommendations to install relevant Claude Code plugins based on npm packages detected in their `package.json`. Recommendations appear at session start (async, non-blocking) and after running package install commands. They can verify it works by starting a Claude Code session in a project with `@nuxt/ui` and seeing the recommendation to install `nuxt-ui@pleaseai`.
 
 ## Context
 
-The `plugins/nuxt/` plugin currently provides skills and an MCP server for Nuxt development but has no hooks. When users work on Nuxt projects that use ecosystem packages like `@nuxt/ui`, `@nuxtjs/seo`, `pinia`, or `@vueuse/nuxt`, they may not know that corresponding Claude Code plugins exist in the `pleaseai` marketplace.
+The `pleaseai` marketplace offers many plugins that correspond to npm packages (nuxt, vue, pinia, vueuse, vitest, prisma, supabase, etc.), but users may not know these plugins exist. Currently there is no automatic discovery mechanism.
 
-This feature bridges that gap with two complementary hooks:
+This feature creates a standalone `plugin-recommender` plugin with two complementary hooks:
 
 1. **SessionStart hook** (`async: true`): Scans `package.json` at session start in the background, without blocking session initialization. Outputs `systemMessage` (user-facing) and `additionalContext` (Claude-facing).
 
 2. **PostToolUse hook** (`matcher: "Bash"`): Fires after `bun add`, `npm install/add`, `pnpm add/install` commands. When a user installs a matching package during the session, immediately recommends the corresponding plugin.
 
-Both hooks share the same detection logic in `check-dependencies.ts`. The existing `worktree-context.ts` hook provides the reference TypeScript pattern: stdin-based JSON input, pure functions for testability, and `import.meta.main` guard.
+Both hooks share detection logic in a single TypeScript file. The package-to-plugin mapping is a simple data array, making it trivial to add new mappings as plugins are added to the marketplace.
 
-Non-goals: No auto-installation, no monorepo workspace scanning, no Vue/Vite-only package detection.
+The existing `worktree-context.ts` hook provides the reference TypeScript pattern: stdin-based JSON input, pure functions for testability, and `import.meta.main` guard.
+
+Non-goals: No auto-installation, no monorepo workspace scanning, no non-npm ecosystems.
 
 ## Architecture Decision
 
-Single straightforward approach following the established TypeScript hook pattern from `plugins/worktree/hooks/worktree-context.ts`.
+Standalone plugin at `plugins/plugin-recommender/` rather than embedding hooks in individual framework plugins. This centralizes the recommendation logic and avoids duplication across plugins.
 
-The hook uses `hooks/hooks.json` (auto-loaded by Claude Code) rather than adding to `plugin.json`'s `hooks` field, following the convention documented in CLAUDE.md. Pure functions are exported for unit testing, and the `import.meta.main` guard separates the entry point from testable logic.
+The hook uses `hooks/hooks.json` (auto-loaded by Claude Code) rather than `plugin.json`'s `hooks` field. Pure functions are exported for unit testing, and `import.meta.main` guard separates entry point from testable logic.
 
 For installed plugin detection, the hook checks `.claude/settings.json` (project-level) and `~/.claude/settings.json` (user-level) for `enabledPlugins` entries matching `pluginName@pleaseai`.
 
-The hook handles both `SessionStart` and `PostToolUse` events via a single script. It reads `hook_event_name` from the stdin JSON input to determine the event type and adjusts behavior accordingly (e.g., PostToolUse reads `tool_input.command` to extract package names from the install command).
+A single script handles both events via `hook_event_name` field from stdin JSON.
 
 ## Tasks
 
-- [ ] T001 Create dependency detection hook (file: plugins/nuxt/hooks/check-dependencies.ts)
-- [ ] T002 Create hooks.json registration (file: plugins/nuxt/hooks/hooks.json) (depends on T001)
-- [ ] T003 Create unit tests for hook (file: plugins/nuxt/hooks/check-dependencies.test.ts) (depends on T001)
+- [ ] T001 Create plugin manifest (file: plugins/plugin-recommender/.claude-plugin/plugin.json)
+- [ ] T002 Create dependency detection hook (file: plugins/plugin-recommender/hooks/check-dependencies.ts) (depends on T001)
+- [ ] T003 Create hooks.json registration (file: plugins/plugin-recommender/hooks/hooks.json) (depends on T002)
+- [ ] T004 [P] Create unit tests for hook (file: plugins/plugin-recommender/hooks/check-dependencies.test.ts) (depends on T002)
+- [ ] T005 Add plugin-recommender to marketplace.json (file: .claude-plugin/marketplace.json) (depends on T001)
 
 ## Key Files
 
 ### Create
 
-- `plugins/nuxt/hooks/check-dependencies.ts` — Main hook with package detection, plugin status checking, and JSON output for both SessionStart and PostToolUse events
-- `plugins/nuxt/hooks/hooks.json` — Hook registration: SessionStart (async) + PostToolUse (matcher: Bash, if: package install commands)
-- `plugins/nuxt/hooks/check-dependencies.test.ts` — Unit tests for pure detection/filtering functions
+- `plugins/plugin-recommender/.claude-plugin/plugin.json` — Plugin manifest with name, version, description
+- `plugins/plugin-recommender/hooks/check-dependencies.ts` — Main hook with package detection, plugin status checking, and JSON output
+- `plugins/plugin-recommender/hooks/hooks.json` — Hook registration: SessionStart (async) + PostToolUse (matcher: Bash)
+- `plugins/plugin-recommender/hooks/check-dependencies.test.ts` — Unit tests for detection/filtering functions
+
+### Modify
+
+- `.claude-plugin/marketplace.json` — Add `plugin-recommender` entry
 
 ### Reuse (Reference)
 
 - `plugins/worktree/hooks/worktree-context.ts` — TypeScript hook pattern (stdin parsing, JSON output, `import.meta.main`)
 - `plugins/worktree/hooks/worktree-context.test.ts` — Test pattern for TypeScript hooks
-- `.claude-plugin/marketplace.json` — Plugin name reference for the `pleaseai` marketplace
 
 ## Verification
 
 ### Automated Tests
 
 - [ ] Detects `@nuxt/ui` in dependencies and returns `nuxt-ui` recommendation
-- [ ] Detects `@nuxtjs/seo` in dependencies and returns `nuxt-seo` recommendation
 - [ ] Detects `pinia` or `@pinia/nuxt` and returns `pinia` recommendation
-- [ ] Detects `@vueuse/nuxt` or `@vueuse/core` and returns `vueuse` recommendation
+- [ ] Detects `vitest` in devDependencies and returns `vitest` recommendation
+- [ ] Detects `@prisma/client` and returns `prisma` recommendation
+- [ ] Detects multiple packages and returns all recommendations
 - [ ] Returns empty result when no matching packages found
 - [ ] Returns empty result when all matching plugins are already installed
 - [ ] Handles missing `package.json` gracefully (no error, no output)
 - [ ] Handles malformed `package.json` gracefully
 - [ ] Output JSON has valid `hookSpecificOutput` with `systemMessage` and `additionalContext`
 - [ ] PostToolUse: extracts package name from `bun add @nuxt/ui` command
-- [ ] PostToolUse: extracts package name from `npm install pinia` command
+- [ ] PostToolUse: extracts package name from `npm install prisma` command
 - [ ] PostToolUse: extracts package name from `pnpm add @vueuse/nuxt` command
+- [ ] Adding a new mapping requires only a data change
 
 ### Observable Outcomes
 
-- After starting Claude Code in a Nuxt project with `@nuxt/ui` installed, the session shows a recommendation to install `nuxt-ui@pleaseai`
-- After running `bun add @nuxt/ui` in a session, the PostToolUse hook shows the recommendation
-- Running `echo '{"cwd":"/tmp","hook_event_name":"SessionStart"}' | bun run plugins/nuxt/hooks/check-dependencies.ts` exits silently (no `package.json`)
+- After starting Claude Code in a project with `@nuxt/ui` installed, the session shows a recommendation to install `nuxt-ui@pleaseai`
+- After running `bun add @prisma/client`, the PostToolUse hook shows the prisma recommendation
 
 ## Decision Log
 
+- Decision: Standalone `plugin-recommender` plugin instead of per-framework hooks
+  Rationale: Centralizes recommendation logic, avoids duplication, covers all npm-based plugins in one place
+  Date/Author: 2026-03-28 / user + Claude
 - Decision: Use `hooks/hooks.json` over `plugin.json` hooks field
-  Rationale: CLAUDE.md convention — `hooks/hooks.json` is auto-loaded, `plugin.json` hooks are for additional hook files only
+  Rationale: CLAUDE.md convention — `hooks/hooks.json` is auto-loaded
   Date/Author: 2026-03-28 / Claude
 - Decision: Check both project-level and user-level `.claude/settings.json` for installed plugins
-  Rationale: Users may have plugins enabled at project or global scope; checking both avoids false recommendations
+  Rationale: Users may have plugins enabled at project or global scope
   Date/Author: 2026-03-28 / Claude
 - Decision: Use `async: true` for SessionStart hook
   Rationale: Package detection is informational and should not block session initialization
   Date/Author: 2026-03-28 / user + Claude
 - Decision: Add PostToolUse hook for package install commands
-  Rationale: Recommend plugins immediately when a matching package is installed, not just at session start
+  Rationale: Recommend plugins immediately when a matching package is installed
   Date/Author: 2026-03-28 / user + Claude
 - Decision: Single script handles both events via `hook_event_name` field
-  Rationale: Shared detection logic avoids code duplication; event type determines input parsing behavior
+  Rationale: Shared detection logic avoids code duplication
   Date/Author: 2026-03-28 / Claude
