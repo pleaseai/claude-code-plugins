@@ -45,7 +45,7 @@ mcp_suggestions=""
 for comp in $(echo "$components" | tr ',' '\n' | sed 's/^ //'); do
   # Strip the leading U to get the component name for MCP
   comp_name=$(echo "$comp" | sed 's/^U//')
-  mcp_suggestions="${mcp_suggestions}  - mcp__nuxt-ui__get_component(component: \"${comp_name}\") for ${comp} API reference\n"
+  mcp_suggestions="${mcp_suggestions}  - mcp__nuxt-ui-remote__get_component(component: \"${comp_name}\") for ${comp} API reference\n"
 done
 
 # Build guidance message
@@ -61,7 +61,7 @@ Common v3→v4 mistakes to avoid:
 - DropdownMenu items use flat array with { type: 'separator' } instead of nested arrays for groups
 - UCard slots: header/body/footer (not default slot for body content)
 
-Use mcp__nuxt-ui__list_components to browse all available components."
+Use mcp__nuxt-ui-remote__list_components to browse all available components."
 
 jq -n --arg msg "$message" '{
   "hookSpecificOutput": {
