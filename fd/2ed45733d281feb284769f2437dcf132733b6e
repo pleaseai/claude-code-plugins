@@ -1,0 +1,23 @@
+.please/docs/tracks/active/hooks-if-field-20260328/metadata.json
+  4d736e4a98cc223a 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "fd2ed45733d281feb284769f2437dcf132733b6e",
+  "prompts": {
+    "4d736e4a98cc223a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3effe8d-5a2d-4363-a62a-a0e1f1d55627",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 1,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
