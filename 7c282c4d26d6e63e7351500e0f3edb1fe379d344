@@ -1,0 +1,47 @@
+skills/nuxt-i18n/GENERATION.md
+  4c40142ad305db30 1-4
+skills/nuxt-i18n/references/api-reference.md
+  4c40142ad305db30 1-193
+skills/nuxt-i18n/references/advanced-domains.md
+  4c40142ad305db30 1-91
+skills/nuxt-i18n/references/core-configuration.md
+  4c40142ad305db30 1-111
+skills/nuxt-i18n/references/features-per-component.md
+  4c40142ad305db30 1-55
+skills/nuxt-i18n/SKILL.md
+  4c40142ad305db30 1-41
+skills/nuxt-i18n/references/advanced-server-hooks.md
+  4c40142ad305db30 1-147
+skills/nuxt-i18n/references/core-routing.md
+  4c40142ad305db30 1-155
+skills/nuxt-i18n/references/features-seo.md
+  4c40142ad305db30 1-78
+skills/nuxt-i18n/references/features-lazy-loading.md
+  4c40142ad305db30 1-95
+plugins/nuxt-i18n/.claude-plugin/plugin.json
+  4c40142ad305db30 1-20
+.claude-plugin/marketplace.json
+  4c40142ad305db30 345-351
+skills/nuxt-i18n/references/features-detection-switching.md
+  4c40142ad305db30 1-145
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "7c282c4d26d6e63e7351500e0f3edb1fe379d344",
+  "prompts": {
+    "4c40142ad305db30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae8df72b-6293-42fa-8c18-74485555358b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 1143,
+      "total_deletions": 0,
+      "accepted_lines": 1143,
+      "overriden_lines": 0
+    }
+  }
+}
