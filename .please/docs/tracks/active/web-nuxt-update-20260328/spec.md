@@ -18,7 +18,7 @@ Update all outdated dependencies in `apps/web/` to their latest versions, includ
 ### Vue Ecosystem
 | Package | Current | Target |
 |---------|---------|--------|
-| vue | 3.5.30 | 3.5.31 |
+| vue | 3.5.22 | 3.5.31 |
 | vue-router | 5.0.3 | 5.0.4 |
 
 ### Dev Tools
