@@ -25,7 +25,7 @@ export interface PluginMapping {
 
 export interface ToolingMapping {
   indicators: {
-    lockFiles: string[]
+    files: string[]
     packageManager: string | null
   }
   pluginName: string
@@ -102,8 +102,8 @@ export function detectTooling(
     if (seen.has(mapping.pluginName)) continue
 
     // Check lock files
-    for (const lockFile of mapping.indicators.lockFiles) {
-      if (existsSync(join(cwd, lockFile))) {
+    for (const file of mapping.indicators.files) {
+      if (existsSync(join(cwd, file))) {
         matched.push({ packages: [], pluginName: mapping.pluginName })
         seen.add(mapping.pluginName)
         break

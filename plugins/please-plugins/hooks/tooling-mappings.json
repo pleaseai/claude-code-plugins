@@ -1,5 +1,5 @@
 [
-  { "indicators": { "lockFiles": ["pnpm-lock.yaml"], "packageManager": "pnpm" }, "pluginName": "pnpm" },
-  { "indicators": { "lockFiles": ["turbo.json"], "packageManager": null }, "pluginName": "turborepo" },
-  { "indicators": { "lockFiles": ["pubspec.yaml"], "packageManager": null }, "pluginName": "flutter" }
+  { "indicators": { "files": ["pnpm-lock.yaml"], "packageManager": "pnpm" }, "pluginName": "pnpm" },
+  { "indicators": { "files": ["turbo.json"], "packageManager": null }, "pluginName": "turborepo" },
+  { "indicators": { "files": ["pubspec.lock", "pubspec.yaml"], "packageManager": null }, "pluginName": "flutter" }
 ]

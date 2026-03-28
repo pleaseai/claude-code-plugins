@@ -138,8 +138,8 @@ describe('detectPackages', () => {
 
 describe('detectTooling', () => {
   const mappings: ToolingMapping[] = [
-    { indicators: { lockFiles: ['pnpm-lock.yaml'], packageManager: 'pnpm' }, pluginName: 'pnpm' },
-    { indicators: { lockFiles: ['turbo.json'], packageManager: null }, pluginName: 'turborepo' },
+    { indicators: { files: ['pnpm-lock.yaml'], packageManager: 'pnpm' }, pluginName: 'pnpm' },
+    { indicators: { files: ['turbo.json'], packageManager: null }, pluginName: 'turborepo' },
   ]
 
   test('detects pnpm from pnpm-lock.yaml', () => {
