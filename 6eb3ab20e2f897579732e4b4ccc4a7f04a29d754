@@ -1,0 +1,31 @@
+plugins/please-plugins/.claude-plugin/plugin.json
+  726d87e2ac093651 2,4,13,16-17
+release-please-config.json
+  726d87e2ac093651 353-363
+.claude-plugin/marketplace.json
+  726d87e2ac093651 476-477,479,481
+plugins/please-plugins/hooks/check-dependencies.ts
+  726d87e2ac093651 307
+.release-please-manifest.json
+  726d87e2ac093651 36-37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "6eb3ab20e2f897579732e4b4ccc4a7f04a29d754",
+  "prompts": {
+    "726d87e2ac093651": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "038979e0-e25b-4ccc-b55b-2bc79b441e0b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 23,
+      "total_deletions": 10,
+      "accepted_lines": 23,
+      "overriden_lines": 0
+    }
+  }
+}
