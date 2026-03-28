@@ -1,0 +1,31 @@
+.please/docs/tracks/active/hooks-if-field-20260328/metadata.json
+  4d736e4a98cc223a 1-3,5-7,9-10
+plugins/markitdown/hooks/hooks.json
+  4d736e4a98cc223a 7-9,41
+.please/docs/tracks/active/hooks-if-field-20260328/plan.md
+  4d736e4a98cc223a 1-42,45-46,48,50-72,76-83,86-88,92
+.please/docs/tracks/index.md
+  4d736e4a98cc223a 12
+.please/docs/tracks/active/hooks-if-field-20260328/spec.md
+  4d736e4a98cc223a 1-16,18-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "5250912f07742720524e10bf9392a36541388a43",
+  "prompts": {
+    "4d736e4a98cc223a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3effe8d-5a2d-4363-a62a-a0e1f1d55627",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 146,
+      "total_deletions": 2,
+      "accepted_lines": 182,
+      "overriden_lines": 0
+    }
+  }
+}
