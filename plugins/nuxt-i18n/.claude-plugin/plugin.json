@@ -1,0 +1,20 @@
+{
+  "name": "nuxt-i18n",
+  "version": "1.0.0",
+  "description": "Nuxt i18n internationalization module for locale routing, lazy-loaded translations, SEO, browser detection, and multi-domain setups. Use when working with @nuxtjs/i18n, locale switching, translated routes, or i18n composables.",
+  "author": {
+    "name": "Minsu Lee",
+    "url": "https://github.com/amondnet"
+  },
+  "homepage": "https://i18n.nuxtjs.org",
+  "repository": "https://github.com/nuxt-modules/i18n",
+  "license": "MIT",
+  "keywords": [
+    "nuxt",
+    "i18n",
+    "internationalization",
+    "vue-i18n",
+    "localization"
+  ],
+  "skills": "./.agents/skills/"
+}
