@@ -15,6 +15,5 @@
     "internationalization",
     "vue-i18n",
     "localization"
-  ],
-  "skills": "./.agents/skills/"
+  ]
 }
