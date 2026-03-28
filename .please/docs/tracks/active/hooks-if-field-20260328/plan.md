@@ -69,9 +69,9 @@ Currently, **no hooks in this codebase use the `if` field**.
 
 | Task | Status |
 |------|--------|
-| T-1: markitdown `if` field | pending |
-| T-2: settings `if` field | pending |
-| T-3: document skipped hooks | pending |
+| T-1: markitdown `if` field | completed |
+| T-2: settings `if` field | completed |
+| T-3: document skipped hooks | completed |
 
 ## Decision Log
 
