@@ -1,0 +1,51 @@
+skills/nuxt-i18n/references/core-routing.md
+  4c40142ad305db30 1-155
+skills/nuxt-i18n/references/features-detection-switching.md
+  4c40142ad305db30 1-145
+skills/nuxt-i18n/references/advanced-domains.md
+  4c40142ad305db30 1-91
+skills/nuxt-i18n/references/core-configuration.md
+  4c40142ad305db30 1-111
+skills/nuxt-i18n/references/api-reference.md
+  4c40142ad305db30 1-193
+release-please-config.json
+  4c40142ad305db30 7,12,17,22,27-34,36,38-45,47,49-56,58,60-67,69,71-78,80,82-89,91,93-100,102,104-111,113,115-122,124,126-133,135,137-144,146,148-155,157,159-166,168,170-177,179,181-188,190,192-199,201,203-210,212,214-221,223,225-232,234,236-243,245,247-254,256,258-265,267,269-276,278,280-287,289,291-309,311,313-320,322,324-331,333,335-342,344,346-353,355,357-363
+skills/nuxt-i18n/references/features-lazy-loading.md
+  4c40142ad305db30 1-95
+skills/nuxt-i18n/GENERATION.md
+  4c40142ad305db30 1-4
+skills/nuxt-i18n/references/advanced-server-hooks.md
+  4c40142ad305db30 1-147
+.release-please-manifest.json
+  4c40142ad305db30 32
+.claude-plugin/marketplace.json
+  4c40142ad305db30 25,36,48,59,70,81,92,100,111,119,127,131,135,139,141,143,147,149,151,159,163,167,175,183,187,191,199,203,207,215,219,223,227,229,231,239,247,255,263,274,282,290,298,306,314,322,327,335,343,345-351,355,359,367,375,383,391,399,403,407,415,429,439,449,460,471
+skills/nuxt-i18n/references/features-per-component.md
+  4c40142ad305db30 1-55
+skills/nuxt-i18n/SKILL.md
+  4c40142ad305db30 1-41
+skills/nuxt-i18n/references/features-seo.md
+  4c40142ad305db30 1-78
+plugins/nuxt-i18n/.claude-plugin/plugin.json
+  4c40142ad305db30 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "118b1787ac11a04e65251bdf62cd403e03e377cf",
+  "prompts": {
+    "4c40142ad305db30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae8df72b-6293-42fa-8c18-74485555358b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 12,
+      "total_deletions": 0,
+      "accepted_lines": 1490,
+      "overriden_lines": 0
+    }
+  }
+}
