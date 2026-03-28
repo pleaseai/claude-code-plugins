@@ -27,5 +27,62 @@
     "deny": [],
     "ask": []
   },
-  "language": "english"
+  "language": "english",
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": true,
+    "plugin-dev@claude-plugins-official": true,
+    "typescript-lsp@language-server-please": true,
+    "graphql-lsp@language-server-please": false,
+    "vue-lsp@language-server-please": true,
+    "eslint-lsp@language-server-please": true,
+    "skill-creator@claude-plugins-official": true,
+    "backend@passionfactory": false,
+    "bun@passionfactory": true,
+    "context@passionfactory": true,
+    "dev-tools@passionfactory": true,
+    "frontend@passionfactory": true,
+    "genkit@passionfactory": false,
+    "github@passionfactory": true,
+    "graphql@passionfactory": false,
+    "please@passionfactory": true,
+    "please-ai@passionfactory": false,
+    "review@passionfactory": true,
+    "reflexion@passionfactory": false,
+    "research@passionfactory": false,
+    "standards@passionfactory": true,
+    "testing@passionfactory": true,
+    "tidy-first@passionfactory": true,
+    "vuefire@passionfactory": false,
+    "auth-skills@better-auth-agent-skills": false,
+    "claude-md-management@passionfactory": true,
+    "nuxt@pleaseai": true,
+    "vue@pleaseai": true,
+    "turborepo@pleaseai": true,
+    "pinia@pleaseai": false,
+    "vitest@pleaseai": true,
+    "tsdown@pleaseai": false,
+    "vueuse@pleaseai": true,
+    "fetch@pleaseai": true,
+    "markitdown@pleaseai": true
+  },
+  "extraKnownMarketplaces": {
+    "passionfactory": {
+      "source": {
+        "source": "github",
+        "repo": "chatbot-pf/engineering-standards"
+      }
+    },
+    "language-server-please": {
+      "source": {
+        "source": "github",
+        "repo": "chatbot-pf/code-please"
+      }
+    },
+    "pleaseai": {
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/claude-code-plugins"
+      }
+    }
+  }
 }
