@@ -1,0 +1,25 @@
+plugins/nuxt-ui/hooks/check-vue-components.test.sh
+  0787473935d62d38 1-109
+plugins/nuxt-ui/hooks/check-vue-components.sh
+  0787473935d62d38 1-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "4c67bcf89f3b3dadba0d289b97dc4e4d70bc010d",
+  "prompts": {
+    "0787473935d62d38": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2619a04-bca9-4e4e-9c7f-cd04f17a5e8a",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 181,
+      "total_deletions": 1,
+      "accepted_lines": 181,
+      "overriden_lines": 0
+    }
+  }
+}
