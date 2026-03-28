@@ -361,6 +361,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/please-plugins": {
+      "release-type": "simple",
+      "component": "please-plugins",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

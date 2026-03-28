@@ -304,7 +304,7 @@ async function main(): Promise<void> {
   }
   catch (error) {
     const errorMessage = error instanceof Error ? error.message : String(error)
-    process.stderr.write(`[plugin-recommender] Hook error: ${errorMessage}\n`)
+    process.stderr.write(`[please-plugins] Hook error: ${errorMessage}\n`)
     process.exit(0)
   }
 }

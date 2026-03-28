@@ -481,12 +481,12 @@
       }
     },
     {
-      "name": "plugin-recommender",
-      "description": "Detects npm packages in your project and recommends corresponding Claude Code plugins from the pleaseai marketplace",
+      "name": "please-plugins",
+      "description": "Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace",
       "category": "tooling",
-      "keywords": ["plugin-recommender", "discovery", "marketplace", "auto-detect"],
+      "keywords": ["please-plugins", "discovery", "marketplace", "auto-detect", "setup"],
       "tags": ["tooling", "discovery"],
-      "source": "./plugins/plugin-recommender"
+      "source": "./plugins/please-plugins"
     }
   ]
 }
