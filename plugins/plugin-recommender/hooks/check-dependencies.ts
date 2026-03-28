@@ -23,6 +23,14 @@ export interface PluginMapping {
   pluginName: string
 }
 
+export interface ToolingMapping {
+  indicators: {
+    lockFiles: string[]
+    packageManager: string | null
+  }
+  pluginName: string
+}
+
 interface HookInput {
   cwd?: string
   hook_event_name?: string
@@ -45,8 +53,10 @@ interface HookOutput {
  * To add a new mapping, edit plugin-mappings.json.
  */
 import mappingsJson from './plugin-mappings.json'
+import toolingJson from './tooling-mappings.json'
 
 export const PLUGIN_MAPPINGS: PluginMapping[] = mappingsJson
+export const TOOLING_MAPPINGS: ToolingMapping[] = toolingJson as ToolingMapping[]
 
 /**
  * Detect which plugin mappings match packages in the given package.json content.
@@ -70,6 +80,43 @@ export function detectPackages(
         matched.push(mapping)
         seen.add(mapping.pluginName)
         break
+      }
+    }
+  }
+
+  return matched
+}
+
+/**
+ * Detect tooling plugins based on lock files and packageManager field.
+ */
+export function detectTooling(
+  cwd: string,
+  pkg: Record<string, unknown> | null,
+  mappings: ToolingMapping[],
+): PluginMapping[] {
+  const matched: PluginMapping[] = []
+  const seen = new Set<string>()
+
+  for (const mapping of mappings) {
+    if (seen.has(mapping.pluginName)) continue
+
+    // Check lock files
+    for (const lockFile of mapping.indicators.lockFiles) {
+      if (existsSync(join(cwd, lockFile))) {
+        matched.push({ packages: [], pluginName: mapping.pluginName })
+        seen.add(mapping.pluginName)
+        break
+      }
+    }
+    if (seen.has(mapping.pluginName)) continue
+
+    // Check packageManager field in package.json
+    if (mapping.indicators.packageManager && pkg) {
+      const pmField = pkg.packageManager as string | undefined
+      if (pmField && pmField.startsWith(mapping.indicators.packageManager)) {
+        matched.push({ packages: [], pluginName: mapping.pluginName })
+        seen.add(mapping.pluginName)
       }
     }
   }
@@ -208,9 +255,17 @@ function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
   }
   else {
     const pkg = loadPackageJson(cwd)
-    if (!pkg) return null
+    const tooling = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
-    detected = detectPackages(pkg, PLUGIN_MAPPINGS)
+    if (!pkg) {
+      detected = tooling
+    }
+    else {
+      const pkgDetected = detectPackages(pkg, PLUGIN_MAPPINGS)
+      // Merge, deduplicating by pluginName
+      const seen = new Set(pkgDetected.map(m => m.pluginName))
+      detected = [...pkgDetected, ...tooling.filter(m => !seen.has(m.pluginName))]
+    }
   }
 
   if (detected.length === 0) return null

@@ -1,11 +1,17 @@
 import { describe, expect, test } from 'bun:test'
+import { mkdtempSync, writeFileSync } from 'node:fs'
+import { join } from 'node:path'
+import { tmpdir } from 'node:os'
 import {
   buildOutput,
   detectPackages,
+  detectTooling,
   extractPackagesFromCommand,
   filterInstalledPlugins,
   type PluginMapping,
+  type ToolingMapping,
   PLUGIN_MAPPINGS,
+  TOOLING_MAPPINGS,
 } from './check-dependencies'
 
 describe('PLUGIN_MAPPINGS', () => {
@@ -127,6 +133,55 @@ describe('detectPackages', () => {
     const pkg = { name: 'test', version: '1.0.0' }
     const result = detectPackages(pkg, PLUGIN_MAPPINGS)
     expect(result).toHaveLength(0)
+  })
+})
+
+describe('detectTooling', () => {
+  const mappings: ToolingMapping[] = [
+    { indicators: { lockFiles: ['pnpm-lock.yaml'], packageManager: 'pnpm' }, pluginName: 'pnpm' },
+    { indicators: { lockFiles: ['turbo.json'], packageManager: null }, pluginName: 'turborepo' },
+  ]
+
+  test('detects pnpm from pnpm-lock.yaml', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'rec-'))
+    writeFileSync(join(dir, 'pnpm-lock.yaml'), '')
+    const result = detectTooling(dir, null, mappings)
+    expect(result).toContainEqual(expect.objectContaining({ pluginName: 'pnpm' }))
+  })
+
+  test('detects pnpm from packageManager field', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'rec-'))
+    const pkg = { packageManager: 'pnpm@9.0.0' }
+    const result = detectTooling(dir, pkg, mappings)
+    expect(result).toContainEqual(expect.objectContaining({ pluginName: 'pnpm' }))
+  })
+
+  test('detects turborepo from turbo.json', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'rec-'))
+    writeFileSync(join(dir, 'turbo.json'), '{}')
+    const result = detectTooling(dir, null, mappings)
+    expect(result).toContainEqual(expect.objectContaining({ pluginName: 'turborepo' }))
+  })
+
+  test('returns empty when no tooling indicators found', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'rec-'))
+    const result = detectTooling(dir, null, mappings)
+    expect(result).toHaveLength(0)
+  })
+
+  test('deduplicates when both lock file and packageManager match', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'rec-'))
+    writeFileSync(join(dir, 'pnpm-lock.yaml'), '')
+    const pkg = { packageManager: 'pnpm@9.0.0' }
+    const result = detectTooling(dir, pkg, mappings)
+    const pnpmResults = result.filter(r => r.pluginName === 'pnpm')
+    expect(pnpmResults).toHaveLength(1)
+  })
+
+  test('TOOLING_MAPPINGS contains expected entries', () => {
+    const pluginNames = TOOLING_MAPPINGS.map(m => m.pluginName)
+    expect(pluginNames).toContain('pnpm')
+    expect(pluginNames).toContain('turborepo')
   })
 })
 

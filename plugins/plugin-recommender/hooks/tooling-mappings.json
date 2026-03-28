@@ -1,0 +1,4 @@
+[
+  { "indicators": { "lockFiles": ["pnpm-lock.yaml"], "packageManager": "pnpm" }, "pluginName": "pnpm" },
+  { "indicators": { "lockFiles": ["turbo.json"], "packageManager": null }, "pluginName": "turborepo" }
+]
