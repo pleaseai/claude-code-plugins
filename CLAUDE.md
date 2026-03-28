@@ -482,3 +482,13 @@ Run this before committing new plugins or after modifying `plugin.json`.
 - Each plugin can be independently versioned and released
 - MCP servers provide the runtime interface between Claude Code and plugin functionality
 - Plugins are designed to be easily toggled on/off by users
+
+## Design Context
+
+See `.impeccable.md` for full design context. Key principles for the marketplace web app (`apps/web/`):
+
+1. **Content-first clarity** -- Plugin name, description, and install action should be instantly scannable.
+2. **Trust through polish** -- Consistent spacing, aligned elements, and refined details.
+3. **Efficient discovery** -- Users should find what they need in seconds.
+4. **Inclusive by default** -- WCAG AA, reduced motion, light/dark mode, Korean + English.
+5. **Design system loyalty** -- Use Nuxt UI components and Tailwind as intended. Consistency > novelty.
