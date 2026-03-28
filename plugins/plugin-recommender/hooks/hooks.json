@@ -20,7 +20,8 @@
           {
             "type": "command",
             "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10
+            "timeout": 10,
+            "if": "Bash(bun add *|npm install *|npm add *|pnpm add *|pnpm install *)"
           }
         ]
       }
