@@ -84,8 +84,8 @@ export function detectPackages(
 
   for (const mapping of mappings) {
     if (seen.has(mapping.pluginName)) continue
-    for (const pkg of mapping.packages) {
-      if (pkg in deps) {
+    for (const pkgName of mapping.packages) {
+      if (pkgName in deps) {
         matched.push(mapping)
         seen.add(mapping.pluginName)
         break
