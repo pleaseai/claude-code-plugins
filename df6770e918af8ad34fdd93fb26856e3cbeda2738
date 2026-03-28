@@ -1,0 +1,25 @@
+plugins/nuxt-i18n/.agents/skills/nuxt-i18n/references/core-configuration.md
+  4c40142ad305db30 59
+plugins/nuxt-i18n/.agents/skills/nuxt-i18n/references/features-seo.md
+  4c40142ad305db30 29-30,35,40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "df6770e918af8ad34fdd93fb26856e3cbeda2738",
+  "prompts": {
+    "4c40142ad305db30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae8df72b-6293-42fa-8c18-74485555358b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 2,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    }
+  }
+}
