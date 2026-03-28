@@ -1,0 +1,25 @@
+.please/docs/tracks/active/hooks-if-field-20260328/plan.md
+  4d736e4a98cc223a 43-44,47,49,74,84-85,89-91,93
+plugins/markitdown/hooks/hooks.json
+  4d736e4a98cc223a 10-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "72eaae6d1059ca9f67ab17baf5eeadff1237356b",
+  "prompts": {
+    "4d736e4a98cc223a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3effe8d-5a2d-4363-a62a-a0e1f1d55627",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 42,
+      "total_deletions": 9,
+      "accepted_lines": 42,
+      "overriden_lines": 0
+    }
+  }
+}
