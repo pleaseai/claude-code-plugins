@@ -3,7 +3,7 @@
 # Reads JSON from stdin (tool_name, tool_input). Outputs hookSpecificOutput JSON on stdout.
 set -euo pipefail
 
-mapfile -t values < <(jq -r '[.tool_name, .tool_input.file_path, .tool_input.content, .tool_input.new_string] | .[] // ""')
+mapfile -t values < <(jq -r '[.tool_name, .tool_input.file_path, (.tool_input.content // ""), (.tool_input.new_string // "")] | .[]')
 
 tool_name=${values[0]:-""}
 file_path=${values[1]:-""}
@@ -33,7 +33,7 @@ if [ -z "$content" ]; then
 fi
 
 # Detect Nuxt UI components (U followed by uppercase letter)
-components_list=$(echo "$content" | grep -oE '<U[A-Z][a-zA-Z]+' | sed 's/^<//' | sort -u)
+components_list=$(echo "$content" | grep -oE '<U[A-Z][a-zA-Z]+' | sed 's/^<//' | sort -u || true)
 
 if [ -z "$components_list" ]; then
   exit 0

@@ -24,7 +24,7 @@ A PreToolUse hook on Write/Edit that:
 - [ ] FR-1: Hook triggers on PreToolUse for Write and Edit tools when the target file has a `.vue` extension
 - [ ] FR-2: Hook parses the tool arguments (file content or edit strings) to detect Nuxt UI components by `U` prefix pattern (e.g., `UButton`, `UInput`, `UModal`)
 - [ ] FR-3: If no Nuxt UI components are detected, hook returns no guidance (silent pass-through)
-- [ ] FR-4: When Nuxt UI components are detected, hook returns a message reminding the LLM to use `mcp__nuxt-ui__get_component` and `mcp__nuxt-ui__list_components` MCP tools to verify correct API usage before proceeding
+- [ ] FR-4: When Nuxt UI components are detected, hook returns a message reminding the LLM to use `mcp__nuxt-ui-remote__get_component` and `mcp__nuxt-ui-remote__list_components` MCP tools to verify correct API usage before proceeding
 - [ ] FR-5: Hook message includes warnings about common Nuxt UI v3→v4 migration mistakes (e.g., deprecated props, renamed components, changed slot names)
 - [ ] FR-6: Hook message is component-specific — lists the detected components and suggests checking each one via MCP
 

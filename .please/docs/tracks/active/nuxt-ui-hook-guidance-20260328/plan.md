@@ -63,7 +63,7 @@ Shell script approach chosen over TypeScript for several reasons: the logic is s
 
 ### Observable Outcomes
 
-- After installing the nuxt-ui plugin and writing a `.vue` file with `<UButton>`, the LLM receives a message suggesting to call `mcp__nuxt-ui__get_component` with `component: "Button"` before proceeding
+- After installing the nuxt-ui plugin and writing a `.vue` file with `<UButton>`, the LLM receives a message suggesting to call `mcp__nuxt-ui-remote__get_component` with `component: "Button"` before proceeding
 - Running `echo '{"tool_name":"Write","tool_input":{"file_path":"app.vue","content":"<template><UButton /></template>"}}' | bash plugins/nuxt-ui/hooks/check-vue-components.sh` shows JSON output with guidance message
 
 ### Manual Testing

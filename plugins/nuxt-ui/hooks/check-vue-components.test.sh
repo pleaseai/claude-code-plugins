@@ -34,7 +34,15 @@ assert_empty() {
   local input="$2"
 
   local output
-  output=$(echo "$input" | bash "$HOOK" 2>/dev/null) || true
+  local exit_code=0
+  output=$(echo "$input" | bash "$HOOK" 2>/dev/null) || exit_code=$?
+
+  if [ "$exit_code" -ne 0 ]; then
+    echo "  FAIL: $desc (hook exited with code $exit_code)"
+    echo "    Input: $input"
+    FAIL=$((FAIL + 1))
+    return
+  fi
 
   if [ -z "$output" ]; then
     echo "  PASS: $desc"
