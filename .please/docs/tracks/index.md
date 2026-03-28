@@ -6,6 +6,7 @@
 
 | Track | Feature | Type | Issue | Started | Status |
 |-------|---------|------|-------|---------|--------|
+| [nuxt-ui-hook-guidance-20260328](active/nuxt-ui-hook-guidance-20260328/plan.md) | Nuxt UI Hook Guidance | feature | TBD | 2026-03-28 | in_progress |
 
 ## Recently Completed
 
