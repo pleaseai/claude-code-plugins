@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.4.1...web-v1.5.0) (2026-03-28)
+
+
+### Features
+
+* **marketplace:** add code-intelligence marketplace source ([#123](https://github.com/pleaseai/claude-code-plugins/issues/123)) ([5be65da](https://github.com/pleaseai/claude-code-plugins/commit/5be65daa040f0e1aeeaeeeec5fed3889c9bdfb5c))
+
 ## [1.4.1](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.4.0...web-v1.4.1) (2026-03-27)
 
 
