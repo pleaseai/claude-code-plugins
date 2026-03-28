@@ -133,8 +133,8 @@ export default defineEventHandler(async () => {
     const isAllFailed = errorMessage.includes('All marketplace sources')
 
     throw createError({
-      statusCode: isAllFailed ? 503 : 500,
-      message: errorMessage,
+      status: isAllFailed ? 503 : 500,
+      statusText: errorMessage,
       data: {
         timestamp: new Date().toISOString(),
       },
