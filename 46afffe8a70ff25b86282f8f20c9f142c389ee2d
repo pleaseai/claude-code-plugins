@@ -1,0 +1,25 @@
+plugins/please-plugins/hooks/plugin-mappings.json
+  726d87e2ac093651 21-27
+plugins/please-plugins/hooks/tooling-mappings.json
+  726d87e2ac093651 3-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "46afffe8a70ff25b86282f8f20c9f142c389ee2d",
+  "prompts": {
+    "726d87e2ac093651": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "038979e0-e25b-4ccc-b55b-2bc79b441e0b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 2,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
