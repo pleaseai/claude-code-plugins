@@ -19,7 +19,7 @@
     },
     "apps/web": {
       "name": "web",
-      "version": "1.4.0",
+      "version": "1.5.0",
       "dependencies": {
         "@nuxt/content": "^3.12.0",
         "@nuxt/ui": "^4.6.0",
