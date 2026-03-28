@@ -42,30 +42,11 @@ interface HookOutput {
 
 /**
  * Mapping of npm packages to marketplace plugin names.
- * To add a new mapping, simply add an entry to this array.
+ * To add a new mapping, edit plugin-mappings.json.
  */
-export const PLUGIN_MAPPINGS: PluginMapping[] = [
-  { packages: ['nuxt'], pluginName: 'nuxt' },
-  { packages: ['@nuxt/ui'], pluginName: 'nuxt-ui' },
-  { packages: ['@nuxtjs/seo', 'nuxt-seo-utils'], pluginName: 'nuxt-seo' },
-  { packages: ['vue'], pluginName: 'vue' },
-  { packages: ['pinia', '@pinia/nuxt'], pluginName: 'pinia' },
-  { packages: ['@vueuse/nuxt', '@vueuse/core'], pluginName: 'vueuse' },
-  { packages: ['vitest'], pluginName: 'vitest' },
-  { packages: ['unocss', '@unocss/nuxt'], pluginName: 'unocss' },
-  { packages: ['vitepress'], pluginName: 'vitepress' },
-  { packages: ['vite'], pluginName: 'vite' },
-  { packages: ['firebase', 'firebase-admin'], pluginName: 'firebase' },
-  { packages: ['@prisma/client', 'prisma'], pluginName: 'prisma' },
-  { packages: ['@supabase/supabase-js'], pluginName: 'supabase' },
-  { packages: ['better-auth'], pluginName: 'better-auth' },
-  { packages: ['ai', '@ai-sdk/openai'], pluginName: 'ai-sdk' },
-  { packages: ['mastra', '@mastra/core'], pluginName: 'mastra' },
-  { packages: ['stripe', '@stripe/stripe-js'], pluginName: 'stripe' },
-  { packages: ['@slidev/cli'], pluginName: 'slidev' },
-  { packages: ['tsdown'], pluginName: 'tsdown' },
-  { packages: ['docus'], pluginName: 'docus' },
-]
+import mappingsJson from './plugin-mappings.json'
+
+export const PLUGIN_MAPPINGS: PluginMapping[] = mappingsJson
 
 /**
  * Detect which plugin mappings match packages in the given package.json content.
