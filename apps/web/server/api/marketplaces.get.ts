@@ -134,7 +134,7 @@ export default defineEventHandler(async () => {
 
     throw createError({
       status: isAllFailed ? 503 : 500,
-      statusText: errorMessage,
+      message: errorMessage,
       data: {
         timestamp: new Date().toISOString(),
       },
