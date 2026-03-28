@@ -1,0 +1,25 @@
+.please/docs/tracks/active/nuxt-session-hook-20260328/plan.md
+  726d87e2ac093651 1,15,19,21,27,29,31,35,37,41,45-49,55-58,60,62,75-77,84,86,90-91,95-97,99,102,108,111
+.please/docs/tracks/active/nuxt-session-hook-20260328/spec.md
+  726d87e2ac093651 1,7,9-10,18-20,23,26,29-47,50-53,63,70,77,81-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "471012585f4678398d078d9c35eac9cf53764c99",
+  "prompts": {
+    "726d87e2ac093651": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "038979e0-e25b-4ccc-b55b-2bc79b441e0b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 75,
+      "total_deletions": 43,
+      "accepted_lines": 75,
+      "overriden_lines": 0
+    }
+  }
+}
