@@ -1,0 +1,25 @@
+.impeccable.md
+  c29017a254073634 1-26
+CLAUDE.md
+  c29017a254073634 484-494
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "6426d56bc6adf973a49fc5d436066d4612f97e9b",
+  "prompts": {
+    "c29017a254073634": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ca500205-b91d-46c9-ac24-d6418a069d68",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 37,
+      "total_deletions": 1,
+      "accepted_lines": 37,
+      "overriden_lines": 0
+    }
+  }
+}
