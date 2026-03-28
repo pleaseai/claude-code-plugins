@@ -1,0 +1,25 @@
+.please/docs/tracks/index.md
+  0daa600428a628ae 10
+.please/docs/tracks/active/add-code-intelligence-marketplace-20260328/metadata.json
+  0daa600428a628ae 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "168dc04e3908efbbe15f5b8412c0806e7fb64a55",
+  "prompts": {
+    "0daa600428a628ae": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2a864b8-8de3-4c20-a1af-f00b94801093",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 2,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
