@@ -35,9 +35,9 @@ Shell script approach chosen over TypeScript for several reasons: the logic is s
 
 ## Tasks
 
-- [ ] T001 Create PreToolUse hook script for Nuxt UI component detection (file: plugins/nuxt-ui/hooks/check-vue-components.sh)
-- [ ] T002 Create hooks.json configuration for nuxt-ui plugin (file: plugins/nuxt-ui/hooks/hooks.json) (depends on T001)
-- [ ] T003 Add hook integration test (file: plugins/nuxt-ui/hooks/check-vue-components.test.sh) (depends on T001)
+- [x] T001 Create PreToolUse hook script for Nuxt UI component detection (file: plugins/nuxt-ui/hooks/check-vue-components.sh)
+- [x] T002 Create hooks.json configuration for nuxt-ui plugin (file: plugins/nuxt-ui/hooks/hooks.json) (depends on T001)
+- [x] T003 Add hook integration test (file: plugins/nuxt-ui/hooks/check-vue-components.test.sh) (depends on T001)
 
 ## Key Files
 
