@@ -365,8 +365,16 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
 
 **Directory Structure:**
 - `.claude-plugin/plugin.json` must be at this exact path
-- `hooks/`, `commands/`, `agents/` directories at plugin root
+- `hooks/`, `commands/`, `agents/`, `skills/` directories at plugin root
 - Use `${CLAUDE_PLUGIN_ROOT}` for all path references
+
+**Skills Directory:**
+- Built-in plugins (`plugins/`) use `skills/` at plugin root (default path, no need to set `"skills"` in plugin.json)
+- `.agents/skills/` is used by skills.sh (`bunx skills add`) — same convention, different path
+- Do NOT create a `skills/<name>/` directory at the repository root for built-in plugins
+
+**Agent Memory:**
+- Review agents create memory files in `.claude/agent-memory/`. These are NOT auto-committed — commit them after review sessions
 
 **Hooks Auto-Loading:**
 - `hooks/hooks.json` is auto-loaded by Claude Code — do NOT reference it in `plugin.json`'s `hooks` field
