@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.2.0...nuxt-ui-v1.3.0) (2026-03-28)
+
+
+### Features
+
+* **nuxt-ui:** add PreToolUse hook for component guidance ([#121](https://github.com/pleaseai/claude-code-plugins/issues/121)) ([211691e](https://github.com/pleaseai/claude-code-plugins/commit/211691ed1db0e8b4ee23179d1c9b70a52de5dd3c))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.1.0...nuxt-ui-v1.2.0) (2026-03-19)
 
 
