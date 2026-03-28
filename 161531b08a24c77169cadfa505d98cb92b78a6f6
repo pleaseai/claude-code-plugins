@@ -1,0 +1,23 @@
+plugins/nuxt-ui/hooks/hooks.json
+  0787473935d62d38 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "161531b08a24c77169cadfa505d98cb92b78a6f6",
+  "prompts": {
+    "0787473935d62d38": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e2619a04-bca9-4e4e-9c7f-cd04f17a5e8a",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 19,
+      "total_deletions": 2,
+      "accepted_lines": 19,
+      "overriden_lines": 0
+    }
+  }
+}
