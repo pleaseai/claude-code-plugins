@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": "Claude Code プラグインマーケットプレイス",
+    "description": "Claude Codeの機能を拡張するプラグインを見つけてインストールしましょう。コミュニティ提供のプラグインコレクションをご覧ください。",
+    "headline": "プラグインを探す"
+  },
+  "search": {
+    "placeholder": "名前、説明、またはリポジトリで検索...",
+    "filterByMarketplace": "マーケットプレイスで絞り込み:",
+    "allMarketplaces": "すべてのマーケットプレイス",
+    "filteringBy": "絞り込み:",
+    "resultCount": "{count}件",
+    "clearSearch": "検索をクリア"
+  },
+  "plugin": {
+    "noDescription": "説明はありません",
+    "viewSource": "ソースを見る",
+    "install": "インストール",
+    "loading": "読み込み中...",
+    "viewInstallInstructions": "インストール手順を見る",
+    "badge": {
+      "fromMarketplace": "{name}マーケットプレイス提供",
+      "developedByGoogle": "Google開発",
+      "developedByAnthropic": "Anthropic開発",
+      "includesContextFile": "コンテキストファイル付き",
+      "includesMcpServer": "MCPサーバー付き",
+      "githubStars": "GitHubスター{count}個"
+    }
+  },
+  "installModal": {
+    "title": "インストール手順",
+    "description": "以下の2つのコマンドを順番に実行してください",
+    "step1": "マーケットプレイスを追加",
+    "step2": "プラグインをインストール",
+    "copyCommand": "コマンドをコピー",
+    "copied": "コピーしました！",
+    "copyAllCommands": "すべてのコマンドをコピー",
+    "allCommandsCopied": "すべてのコマンドをコピーしました！",
+    "close": "閉じる",
+    "clipboardNotAvailable": "クリップボード使用不可",
+    "clipboardWarning": "ブラウザが自動コピーに対応していません。Ctrl+C（Macの場合はCmd+C）で手動コピーしてください。",
+    "tip": "ヒント：Ctrl+C / Cmd+Cでコマンドを手動で選択してコピーすることもできます"
+  },
+  "alert": {
+    "communityPlugins": "コミュニティプラグイン",
+    "communityPluginsDescription": "これらのプラグインはコミュニティの貢献によるものです。インストール前にソースコードとドキュメントをご確認ください。"
+  },
+  "loading": {
+    "loadingPlugins": "プラグインを読み込み中..."
+  },
+  "error": {
+    "failedToLoadPlugins": "プラグインの読み込みに失敗しました",
+    "failedToLoadPluginsDescription": "エラーが発生しました: {message}。ページを更新してみてください。",
+    "pluginNotFound": "プラグインが見つかりません",
+    "pluginNotFoundDescription": "プラグイン「{name}」が見つかりませんでした。削除されたか、リンクが正しくない可能性があります。",
+    "navigationIssue": "ナビゲーションの問題",
+    "navigationIssueDescription": "プラグイン「{name}」は見つかりましたが、表示できませんでした。ページを更新してみてください。",
+    "copyFailed": "コピー失敗",
+    "copyFailedDescription": "クリップボードにコピーできませんでした。コマンドを手動でコピーしてください。",
+    "copyAllFailedDescription": "コマンドをクリップボードにコピーできませんでした。上記から手動でコピーしてください。"
+  },
+  "empty": {
+    "noPluginsFound": "プラグインが見つかりません",
+    "noPluginsMatchQuery": "検索クエリ「{query}」に一致するプラグインはありません"
+  },
+  "footer": {
+    "maintainedBy": "マーケットプレイス管理：{name}"
+  },
+  "seo": {
+    "title": "Claude Code プラグインマーケットプレイス",
+    "description": "Claude Codeの機能を拡張するプラグインを見つけてインストール"
+  },
+  "a11y": {
+    "viewOnGithub": "GitHubで見る",
+    "clearSearch": "検索をクリア"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "hero": {
+    "title": "Claude Code \u63d2\u4ef6\u5e02\u573a",
+    "description": "\u53d1\u73b0\u5e76\u5b89\u88c5\u6269\u5c55 Claude Code \u529f\u80fd\u7684\u63d2\u4ef6\u3002\u6d4f\u89c8\u6211\u4eec\u7684\u793e\u533a\u8d21\u732e\u63d2\u4ef6\u96c6\u5408\u3002",
+    "headline": "\u63a2\u7d22\u63d2\u4ef6"
+  },
+  "search": {
+    "placeholder": "\u6309\u540d\u79f0\u3001\u63cf\u8ff0\u6216\u4ed3\u5e93\u641c\u7d22...",
+    "filterByMarketplace": "\u6309\u5e02\u573a\u7b5b\u9009\uff1a",
+    "allMarketplaces": "\u6240\u6709\u5e02\u573a",
+    "filteringBy": "\u7b5b\u9009\u6761\u4ef6\uff1a",
+    "resultCount": "{count}\u4e2a\u7ed3\u679c",
+    "clearSearch": "\u6e05\u9664\u641c\u7d22"
+  },
+  "plugin": {
+    "noDescription": "\u6682\u65e0\u63cf\u8ff0",
+    "viewSource": "\u67e5\u770b\u6e90\u7801",
+    "install": "\u5b89\u88c5",
+    "loading": "\u52a0\u8f7d\u4e2d...",
+    "viewInstallInstructions": "\u67e5\u770b\u5b89\u88c5\u8bf4\u660e",
+    "badge": {
+      "fromMarketplace": "\u6765\u81ea {name} \u5e02\u573a",
+      "developedByGoogle": "Google \u5f00\u53d1",
+      "developedByAnthropic": "Anthropic \u5f00\u53d1",
+      "includesContextFile": "\u5305\u542b\u4e0a\u4e0b\u6587\u6587\u4ef6",
+      "includesMcpServer": "\u5305\u542b MCP \u670d\u52a1\u5668",
+      "githubStars": "{count} \u4e2a GitHub \u661f\u6807"
+    }
+  },
+  "installModal": {
+    "title": "\u5b89\u88c5\u8bf4\u660e",
+    "description": "\u6309\u987a\u5e8f\u8fd0\u884c\u4ee5\u4e0b\u4e24\u4e2a\u547d\u4ee4",
+    "step1": "\u6dfb\u52a0\u5e02\u573a",
+    "step2": "\u5b89\u88c5\u63d2\u4ef6",
+    "copyCommand": "\u590d\u5236\u547d\u4ee4",
+    "copied": "\u5df2\u590d\u5236\uff01",
+    "copyAllCommands": "\u590d\u5236\u6240\u6709\u547d\u4ee4",
+    "allCommandsCopied": "\u6240\u6709\u547d\u4ee4\u5df2\u590d\u5236\uff01",
+    "close": "\u5173\u95ed",
+    "clipboardNotAvailable": "\u526a\u8d34\u677f\u4e0d\u53ef\u7528",
+    "clipboardWarning": "\u60a8\u7684\u6d4f\u89c8\u5668\u4e0d\u652f\u6301\u81ea\u52a8\u590d\u5236\u3002\u8bf7\u4f7f\u7528 Ctrl+C\uff08Mac \u4e0a\u4e3a Cmd+C\uff09\u624b\u52a8\u590d\u5236\u3002",
+    "tip": "\u63d0\u793a\uff1a\u60a8\u4e5f\u53ef\u4ee5\u624b\u52a8\u9009\u62e9\u5e76\u590d\u5236\u547d\u4ee4\uff08Ctrl+C / Cmd+C\uff09"
+  },
+  "alert": {
+    "communityPlugins": "\u793e\u533a\u63d2\u4ef6",
+    "communityPluginsDescription": "\u8fd9\u4e9b\u63d2\u4ef6\u7531\u793e\u533a\u8d21\u732e\u3002\u5b89\u88c5\u524d\u8bf7\u67e5\u770b\u6e90\u4ee3\u7801\u548c\u6587\u6863\u3002"
+  },
+  "loading": {
+    "loadingPlugins": "\u6b63\u5728\u52a0\u8f7d\u63d2\u4ef6..."
+  },
+  "error": {
+    "failedToLoadPlugins": "\u52a0\u8f7d\u63d2\u4ef6\u5931\u8d25",
+    "failedToLoadPluginsDescription": "\u53d1\u751f\u9519\u8bef\uff1a{message}\u3002\u8bf7\u5c1d\u8bd5\u5237\u65b0\u9875\u9762\u3002",
+    "pluginNotFound": "\u672a\u627e\u5230\u63d2\u4ef6",
+    "pluginNotFoundDescription": "\u65e0\u6cd5\u627e\u5230\u63d2\u4ef6\u300c{name}\u300d\u3002\u8be5\u63d2\u4ef6\u53ef\u80fd\u5df2\u88ab\u79fb\u9664\u6216\u94fe\u63a5\u4e0d\u6b63\u786e\u3002",
+    "navigationIssue": "\u5bfc\u822a\u95ee\u9898",
+    "navigationIssueDescription": "\u627e\u5230\u4e86\u63d2\u4ef6\u300c{name}\u300d\u4f46\u65e0\u6cd5\u663e\u793a\u3002\u8bf7\u5c1d\u8bd5\u5237\u65b0\u9875\u9762\u3002",
+    "copyFailed": "\u590d\u5236\u5931\u8d25",
+    "copyFailedDescription": "\u65e0\u6cd5\u590d\u5236\u5230\u526a\u8d34\u677f\u3002\u8bf7\u624b\u52a8\u590d\u5236\u547d\u4ee4\u3002",
+    "copyAllFailedDescription": "\u65e0\u6cd5\u5c06\u547d\u4ee4\u590d\u5236\u5230\u526a\u8d34\u677f\u3002\u8bf7\u4ece\u4e0a\u65b9\u624b\u52a8\u590d\u5236\u3002"
+  },
+  "empty": {
+    "noPluginsFound": "\u672a\u627e\u5230\u63d2\u4ef6",
+    "noPluginsMatchQuery": "\u6ca1\u6709\u4e0e\u641c\u7d22\u8bcd\u300c{query}\u300d\u5339\u914d\u7684\u63d2\u4ef6"
+  },
+  "footer": {
+    "maintainedBy": "\u5e02\u573a\u7ef4\u62a4\u65b9\uff1a{name}"
+  },
+  "seo": {
+    "title": "Claude Code \u63d2\u4ef6\u5e02\u573a",
+    "description": "\u53d1\u73b0\u5e76\u5b89\u88c5\u6269\u5c55 Claude Code \u529f\u80fd\u7684\u63d2\u4ef6"
+  },
+  "a11y": {
+    "viewOnGithub": "\u5728 GitHub \u4e0a\u67e5\u770b",
+    "clearSearch": "\u6e05\u9664\u641c\u7d22"
+  }
+}

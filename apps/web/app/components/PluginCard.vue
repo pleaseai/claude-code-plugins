@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { useTimeoutFn } from '@vueuse/core'
 
+const { t } = useI18n()
+
 interface PluginSourceGitHub {
   source: 'github'
   repo: string
@@ -161,7 +163,7 @@ const displayVersion = computed(() => {
 
 // Computed description - prefer marketplace.json, fallback to metadata
 const displayDescription = computed(() => {
-  return props.plugin.description || pluginMetadata.value?.description || 'No description available'
+  return props.plugin.description || pluginMetadata.value?.description || t('plugin.noDescription')
 })
 
 // Extract author name from either marketplace.json or fetched metadata
@@ -266,7 +268,7 @@ const badges = computed<Badge[]>(() => {
       icon: isOfficial ? 'i-heroicons-shield-check' : 'i-heroicons-building-storefront',
       label: props.plugin.marketplaceJsonName,
       color: isOfficial ? 'primary' : 'success',
-      title: `From ${props.plugin.marketplaceJsonName} marketplace`,
+      title: t('plugin.badge.fromMarketplace', { name: props.plugin.marketplaceJsonName }),
     })
   }
 
@@ -277,7 +279,7 @@ const badges = computed<Badge[]>(() => {
       icon: 'i-simple-icons-google',
       label: 'Google',
       color: 'warning',
-      title: 'Developed by Google',
+      title: t('plugin.badge.developedByGoogle'),
     })
   }
   else if (displayAuthor.value === 'Anthropic') {
@@ -286,7 +288,7 @@ const badges = computed<Badge[]>(() => {
       icon: 'i-simple-icons-anthropic',
       label: 'Anthropic',
       color: 'error',
-      title: 'Developed by Anthropic',
+      title: t('plugin.badge.developedByAnthropic'),
     })
   }
 
@@ -297,7 +299,7 @@ const badges = computed<Badge[]>(() => {
       icon: 'i-heroicons-document-text',
       label: 'Context',
       color: 'info',
-      title: 'Includes Context File',
+      title: t('plugin.badge.includesContextFile'),
     })
   }
 
@@ -307,7 +309,7 @@ const badges = computed<Badge[]>(() => {
       icon: 'i-heroicons-server',
       label: 'MCP',
       color: 'primary',
-      title: 'Includes MCP Server',
+      title: t('plugin.badge.includesMcpServer'),
     })
   }
 
@@ -325,7 +327,7 @@ const badges = computed<Badge[]>(() => {
       icon: 'i-heroicons-star',
       label: formatStars(props.plugin.stars),
       color: 'warning',
-      title: `${props.plugin.stars.toLocaleString()} GitHub stars`,
+      title: t('plugin.badge.githubStars', { count: props.plugin.stars.toLocaleString() }),
     })
   }
 
@@ -416,7 +418,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
               color="neutral"
               size="sm"
             >
-              Loading...
+              {{ $t('plugin.loading') }}
             </UBadge>
           </div>
         </div>
@@ -466,7 +468,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
           icon="i-simple-icons-github"
           class="flex-1 justify-center"
         >
-          View Source
+          {{ $t('plugin.viewSource') }}
         </UButton>
 
         <UButton
@@ -475,10 +477,10 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
           size="sm"
           icon="i-heroicons-arrow-down-tray"
           :class="githubSourceUrl ? 'flex-1 justify-center' : 'w-full justify-center'"
-          title="View installation instructions"
+          :title="$t('plugin.viewInstallInstructions')"
           @click="openInstallModal"
         >
-          Install
+          {{ $t('plugin.install') }}
         </UButton>
       </div>
     </template>
