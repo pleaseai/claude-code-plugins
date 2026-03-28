@@ -1,0 +1,23 @@
+CLAUDE.md
+  4c40142ad305db30 368,371-377
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "a26014f511a56b671146756fceb8616c862f1808",
+  "prompts": {
+    "4c40142ad305db30": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae8df72b-6293-42fa-8c18-74485555358b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 1,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
