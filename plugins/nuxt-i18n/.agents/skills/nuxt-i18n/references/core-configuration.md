@@ -56,7 +56,7 @@ Auto-resolved from `<rootDir>/i18n/i18n.config.{ts,js,mjs}`. Configurable via `v
 | `baseUrl` | `string` | `''` | Base URL for SEO hreflang |
 | `langDir` | `string` | `'locales'` | Translation files directory (relative to `i18n/`) |
 | `detectBrowserLanguage` | `object \| false` | see docs | Browser language detection config |
-| `customRoutes` | `'meta' \| 'config'` | `'page'` | Route customization method |
+| `customRoutes` | `'page' \| 'meta' \| 'config'` | `'page'` | Route customization method |
 | `pages` | `object` | `{}` | Custom route paths (when `customRoutes: 'config'`) |
 | `skipSettingLocaleOnNavigate` | `boolean` | `false` | Delay locale switch for transitions |
 | `differentDomains` | `boolean` | `false` | Per-locale domain mapping |

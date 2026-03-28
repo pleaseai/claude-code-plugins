@@ -26,15 +26,18 @@ export default defineNuxtConfig({
 
 ## Setup with Meta Components
 
+`useLocaleHead()` returns a `Ref` — use `.value` in `<script>`, access directly in `<template>` (Vue auto-unwraps refs):
+
 ```vue [layouts/default.vue]
 <script setup>
 const route = useRoute()
 const { t } = useI18n()
-const head = useLocaleHead()
+const head = useLocaleHead() // Ref<I18nHeadMetaInfo>
 const title = computed(() => t(route.meta.title ?? 'TBD', t('layouts.title')))
 </script>
 
 <template>
+  <!-- Refs are auto-unwrapped in templates, so head.htmlAttrs works (no .value needed) -->
   <Html :lang="head.htmlAttrs.lang" :dir="head.htmlAttrs.dir">
     <Head>
       <Title>{{ title }}</Title>
