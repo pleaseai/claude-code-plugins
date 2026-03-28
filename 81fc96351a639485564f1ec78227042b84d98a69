@@ -1,0 +1,23 @@
+.please/docs/tracks/active/nuxt-session-hook-20260328/plan.md
+  726d87e2ac093651 45-59
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "81fc96351a639485564f1ec78227042b84d98a69",
+  "prompts": {
+    "726d87e2ac093651": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "038979e0-e25b-4ccc-b55b-2bc79b441e0b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 15,
+      "total_deletions": 5,
+      "accepted_lines": 15,
+      "overriden_lines": 0
+    }
+  }
+}
