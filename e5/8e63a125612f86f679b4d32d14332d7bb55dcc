@@ -1,0 +1,23 @@
+.please/docs/tracks/active/web-nuxt-update-20260328/plan.md
+  ec9e10b4c8d7524e 34-39,72-93
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "e58e63a125612f86f679b4d32d14332d7bb55dcc",
+  "prompts": {
+    "ec9e10b4c8d7524e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "89e97a94-43b4-4195-901b-7a3673f87d9e",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 23,
+      "total_deletions": 1,
+      "accepted_lines": 28,
+      "overriden_lines": 0
+    }
+  }
+}
