@@ -296,6 +296,17 @@
         }
       ]
     },
+    "plugins/nuxt-i18n": {
+      "release-type": "simple",
+      "component": "nuxt-i18n",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
     "plugins/nuxt-seo": {
       "release-type": "simple",
       "component": "nuxt-seo",
