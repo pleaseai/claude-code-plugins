@@ -92,3 +92,21 @@ Shell script approach chosen over TypeScript for several reasons: the logic is s
 - Decision: Use `additionalContext` (non-blocking) instead of `decision: deny`
   Rationale: Hook should guide, not block — the LLM may already have correct knowledge from the skill
   Date/Author: 2026-03-28 / Claude
+
+## Outcomes & Retrospective
+
+### What Was Shipped
+- PreToolUse hook for nuxt-ui plugin that detects U* components in .vue files and injects MCP guidance
+- hooks.json configuration with Write|Edit matcher
+- 8-case test suite for the hook script
+
+### What Went Well
+- Shell script approach kept it simple — no build step, single file, fast execution
+- TDD caught the component detection pattern early
+- Review caught critical MCP tool prefix mismatch (nuxt-ui vs nuxt-ui-remote for HTTP-type servers)
+
+### What Could Improve
+- HTTP-type MCP server naming convention (`-remote` suffix) should be documented as a gotcha
+
+### Tech Debt Created
+- None
