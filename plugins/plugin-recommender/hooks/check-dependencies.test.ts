@@ -208,6 +208,13 @@ describe('extractPackagesFromCommand', () => {
     expect(extractPackagesFromCommand('pnpm install')).toEqual([])
     expect(extractPackagesFromCommand('bun install')).toEqual([])
   })
+
+  test('strips version/tag suffixes from package names', () => {
+    expect(extractPackagesFromCommand('bun add pinia@latest')).toEqual(['pinia'])
+    expect(extractPackagesFromCommand('npm install vitest@^2.0.0')).toEqual(['vitest'])
+    expect(extractPackagesFromCommand('pnpm add @prisma/client@latest')).toEqual(['@prisma/client'])
+    expect(extractPackagesFromCommand('bun add @nuxt/ui@3.0.0')).toEqual(['@nuxt/ui'])
+  })
 })
 
 describe('buildOutput', () => {

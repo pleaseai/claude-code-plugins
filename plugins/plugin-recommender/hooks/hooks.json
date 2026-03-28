@@ -20,32 +20,7 @@
           {
             "type": "command",
             "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10,
-            "if": "Bash(bun add *)"
-          },
-          {
-            "type": "command",
-            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10,
-            "if": "Bash(npm install *)"
-          },
-          {
-            "type": "command",
-            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10,
-            "if": "Bash(npm add *)"
-          },
-          {
-            "type": "command",
-            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10,
-            "if": "Bash(pnpm add *)"
-          },
-          {
-            "type": "command",
-            "command": "bun run \"${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts\"",
-            "timeout": 10,
-            "if": "Bash(pnpm install *)"
+            "timeout": 10
           }
         ]
       }

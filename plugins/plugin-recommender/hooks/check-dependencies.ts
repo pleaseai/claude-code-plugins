@@ -109,8 +109,12 @@ export function extractPackagesFromCommand(command: string): string[] {
   const args = installMatch[1].trim()
   if (!args) return []
 
-  // Split by whitespace and filter out flags (starting with -)
-  return args.split(/\s+/).filter(arg => !arg.startsWith('-') && arg.length > 0)
+  // Split by whitespace, filter out flags (starting with -), and strip version/tag suffixes
+  // e.g. pkg@latest → pkg, pkg@^1.0.0 → pkg, but @scope/pkg stays @scope/pkg
+  return args
+    .split(/\s+/)
+    .filter(arg => !arg.startsWith('-') && arg.length > 0)
+    .map(arg => arg.replace(/(?<=.)@.*$/, ''))
 }
 
 /**
@@ -181,6 +185,42 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
   }
 }
 
+/**
+ * Detect plugin mappings for a given hook event.
+ * Returns null if no relevant packages are detected.
+ */
+function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
+  const cwd = hookInput.cwd || process.cwd()
+  const eventName = hookInput.hook_event_name || 'SessionStart'
+
+  let detected: PluginMapping[]
+
+  if (eventName === 'PostToolUse') {
+    const command = hookInput.tool_input?.command
+    if (!command) return null
+
+    const installedPackages = extractPackagesFromCommand(command)
+    if (installedPackages.length === 0) return null
+
+    detected = PLUGIN_MAPPINGS.filter(mapping =>
+      mapping.packages.some(pkg => installedPackages.includes(pkg)),
+    )
+  }
+  else {
+    const pkg = loadPackageJson(cwd)
+    if (!pkg) return null
+
+    detected = detectPackages(pkg, PLUGIN_MAPPINGS)
+  }
+
+  if (detected.length === 0) return null
+
+  const enabledPlugins = loadEnabledPlugins(cwd)
+  const recommendations = filterInstalledPlugins(detected, enabledPlugins)
+
+  return recommendations.length > 0 ? recommendations : null
+}
+
 async function main(): Promise<void> {
   try {
     const input = await Bun.stdin.text()
@@ -196,57 +236,10 @@ async function main(): Promise<void> {
       process.exit(0)
     }
 
-    const cwd = hookInput.cwd || process.cwd()
     const eventName = hookInput.hook_event_name || 'SessionStart'
+    const recommendations = detectForEvent(hookInput)
 
-    // For PostToolUse, check if the command is a package install
-    if (eventName === 'PostToolUse') {
-      const command = hookInput.tool_input?.command
-      if (!command) {
-        process.exit(0)
-      }
-
-      const installedPackages = extractPackagesFromCommand(command)
-      if (installedPackages.length === 0) {
-        process.exit(0)
-      }
-
-      // Filter mappings to only those matching the installed packages
-      const relevantMappings = PLUGIN_MAPPINGS.filter(mapping =>
-        mapping.packages.some(pkg => installedPackages.includes(pkg)),
-      )
-
-      if (relevantMappings.length === 0) {
-        process.exit(0)
-      }
-
-      const enabledPlugins = loadEnabledPlugins(cwd)
-      const recommendations = filterInstalledPlugins(relevantMappings, enabledPlugins)
-
-      if (recommendations.length === 0) {
-        process.exit(0)
-      }
-
-      const output = buildOutput(recommendations, eventName)
-      process.stdout.write(`${JSON.stringify(output)}\n`)
-      process.exit(0)
-    }
-
-    // SessionStart: scan package.json
-    const pkg = loadPackageJson(cwd)
-    if (!pkg) {
-      process.exit(0)
-    }
-
-    const detected = detectPackages(pkg, PLUGIN_MAPPINGS)
-    if (detected.length === 0) {
-      process.exit(0)
-    }
-
-    const enabledPlugins = loadEnabledPlugins(cwd)
-    const recommendations = filterInstalledPlugins(detected, enabledPlugins)
-
-    if (recommendations.length === 0) {
+    if (!recommendations) {
       process.exit(0)
     }
 
