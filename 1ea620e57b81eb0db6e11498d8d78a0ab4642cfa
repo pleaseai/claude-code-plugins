@@ -1,0 +1,27 @@
+plugins/please-plugins/hooks/check-dependencies.test.ts
+  726d87e2ac093651 141-142
+plugins/please-plugins/hooks/tooling-mappings.json
+  726d87e2ac093651 2-4
+plugins/please-plugins/hooks/check-dependencies.ts
+  726d87e2ac093651 28,105-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "1ea620e57b81eb0db6e11498d8d78a0ab4642cfa",
+  "prompts": {
+    "726d87e2ac093651": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "038979e0-e25b-4ccc-b55b-2bc79b441e0b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 8,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
