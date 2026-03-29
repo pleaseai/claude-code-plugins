@@ -91,3 +91,22 @@ Bun's built-in `Bun.Glob` provides synchronous, fast glob resolution without add
 - Decision: Merge all workspace deps into a single flat record rather than per-package detection
   Rationale: Simpler implementation, aligns with user preference from spec, `detectPackages()` API unchanged
   Date/Author: 2026-03-29 / Claude
+
+## Outcomes & Retrospective
+
+### What Was Shipped
+- Workspace resolution for npm/yarn/Bun `workspaces` and `pnpm-workspace.yaml`
+- Dependency aggregation across all workspace packages
+- Workspace-aware source tracking (e.g., `apps/web: @nuxt/ui`)
+- Extracted `workspace-resolver.ts` module to maintain file size guideline
+
+### What Went Well
+- Existing test infrastructure made TDD straightforward
+- Clean extraction of workspace logic into separate module during review
+- All 62 tests passing with zero regressions
+
+### What Could Improve
+- Initial implementation exceeded 500 LOC guideline; caught during review phase
+
+### Tech Debt Created
+- None
