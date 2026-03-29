@@ -1,0 +1,25 @@
+plugins/please-plugins/hooks/workspace-resolver.ts
+  b3f742aecc12859b 8,20,40,42-44,53,93-98,104-107,110-111,122-124
+plugins/please-plugins/hooks/check-dependencies.test.ts
+  b3f742aecc12859b 493-495,518-521
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "31fbf42f110b52eefa8e2b37f275829d9a4f8180",
+  "prompts": {
+    "b3f742aecc12859b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3e15dd-3c14-4d4d-9fa2-05d6d946059f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 29,
+      "total_deletions": 24,
+      "accepted_lines": 29,
+      "overriden_lines": 0
+    }
+  }
+}
