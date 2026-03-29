@@ -4,10 +4,12 @@ import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import {
   buildOutput,
+  collectAllDependencies,
   detectPackages,
   detectTooling,
   extractPackagesFromCommand,
   filterInstalledPlugins,
+  resolveWorkspacePackages,
   scanForSetup,
   type DetectedPlugin,
   type PluginMapping,
@@ -380,5 +382,208 @@ describe('scanForSetup', () => {
     const result = scanForSetup(dir)
     const pnpmResults = result.detected.filter(d => d.pluginName === 'pnpm')
     expect(pnpmResults).toHaveLength(1)
+  })
+
+  test('detects plugins from workspace packages', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    // Root package.json with workspaces but no matching deps
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      workspaces: ['apps/*'],
+      devDependencies: { 'typescript': '^5.0.0' },
+    }))
+    // Workspace package with matching deps
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), JSON.stringify({
+      dependencies: { '@nuxt/ui': '^3.0.0' },
+    }))
+    const result = scanForSetup(dir)
+    expect(result.detected).toContainEqual({ pluginName: 'nuxt-ui', source: 'apps/web: @nuxt/ui' })
+  })
+
+  test('detects plugins from pnpm workspace packages', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'root' }))
+    writeFileSync(join(dir, 'pnpm-workspace.yaml'), 'packages:\n  - "packages/*"\n')
+    mkdirSync(join(dir, 'packages', 'api'), { recursive: true })
+    writeFileSync(join(dir, 'packages', 'api', 'package.json'), JSON.stringify({
+      dependencies: { '@prisma/client': '^5.0.0' },
+    }))
+    const result = scanForSetup(dir)
+    expect(result.detected).toContainEqual({ pluginName: 'prisma', source: 'packages/api: @prisma/client' })
+  })
+
+  test('merges root and workspace deps without duplicates', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      workspaces: ['apps/*'],
+      devDependencies: { 'vitest': '^4.0.0' },
+    }))
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), JSON.stringify({
+      dependencies: { '@nuxt/ui': '^3.0.0', 'vitest': '^4.0.0' },
+    }))
+    const result = scanForSetup(dir)
+    const pluginNames = result.detected.map(d => d.pluginName)
+    // vitest detected from root (no workspace prefix), nuxt-ui from workspace
+    expect(pluginNames).toContain('vitest')
+    expect(pluginNames).toContain('nuxt-ui')
+    const vitestResult = result.detected.find(d => d.pluginName === 'vitest')
+    expect(vitestResult?.source).toBe('vitest') // root, no prefix
+  })
+})
+
+describe('resolveWorkspacePackages', () => {
+  test('resolves npm workspaces glob patterns', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: ['apps/*', 'packages/*'] }
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), '{}')
+    mkdirSync(join(dir, 'packages', 'shared'), { recursive: true })
+    writeFileSync(join(dir, 'packages', 'shared', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    expect(result).toHaveLength(2)
+    expect(result).toContainEqual(join(dir, 'apps', 'web'))
+    expect(result).toContainEqual(join(dir, 'packages', 'shared'))
+  })
+
+  test('resolves pnpm-workspace.yaml patterns', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    writeFileSync(join(dir, 'pnpm-workspace.yaml'), 'packages:\n  - "apps/*"\n  - "packages/*"\n')
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, null)
+    expect(result).toHaveLength(1)
+    expect(result).toContainEqual(join(dir, 'apps', 'web'))
+  })
+
+  test('returns empty array when no workspaces configured', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const result = resolveWorkspacePackages(dir, { name: 'test' })
+    expect(result).toHaveLength(0)
+  })
+
+  test('skips directories without package.json', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: ['apps/*'] }
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    // No package.json in apps/web
+    mkdirSync(join(dir, 'apps', 'api'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'api', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    expect(result).toHaveLength(1)
+    expect(result).toContainEqual(join(dir, 'apps', 'api'))
+  })
+
+  test('handles yarn workspaces { packages: [...] } format', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: { packages: ['apps/*'] } }
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    expect(result).toHaveLength(1)
+  })
+
+  test('merges npm workspaces and pnpm-workspace.yaml without duplicates', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: ['apps/*'] }
+    writeFileSync(join(dir, 'pnpm-workspace.yaml'), 'packages:\n  - "apps/*"\n')
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    // Both sources resolve to the same directory; deduplication ensures exactly one entry
+    expect(result).toHaveLength(1)
+    expect(result).toContainEqual(join(dir, 'apps', 'web'))
+  })
+
+  test('handles exact directory paths (no globs)', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: ['tools/cli'] }
+    mkdirSync(join(dir, 'tools', 'cli'), { recursive: true })
+    writeFileSync(join(dir, 'tools', 'cli', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    expect(result).toHaveLength(1)
+    expect(result).toContainEqual(join(dir, 'tools', 'cli'))
+  })
+
+  test('skips negation patterns', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'ws-'))
+    const pkg = { workspaces: ['packages/*', '!packages/internal'] }
+    mkdirSync(join(dir, 'packages', 'shared'), { recursive: true })
+    writeFileSync(join(dir, 'packages', 'shared', 'package.json'), '{}')
+    mkdirSync(join(dir, 'packages', 'internal'), { recursive: true })
+    writeFileSync(join(dir, 'packages', 'internal', 'package.json'), '{}')
+    const result = resolveWorkspacePackages(dir, pkg)
+    // Negation patterns are skipped (not filtered), so internal still appears from "packages/*"
+    // This is a known limitation — true negation filtering is out of scope
+    // Both shared and internal match the "packages/*" glob, so we expect exactly 2 results
+    expect(result).toHaveLength(2)
+    expect(result).toContainEqual(join(dir, 'packages', 'shared'))
+    expect(result).toContainEqual(join(dir, 'packages', 'internal'))
+  })
+})
+
+describe('collectAllDependencies', () => {
+  test('merges root and workspace deps', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'collect-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      workspaces: ['apps/*'],
+      dependencies: { 'express': '^4.0.0' },
+    }))
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), JSON.stringify({
+      dependencies: { '@nuxt/ui': '^3.0.0' },
+    }))
+    const result = collectAllDependencies(dir)
+    expect(result.deps).toHaveProperty('express')
+    expect(result.deps).toHaveProperty('@nuxt/ui')
+    expect(result.sources).not.toHaveProperty('express') // root dep, no source entry
+    expect(result.sources['@nuxt/ui']).toBe('apps/web')
+  })
+
+  test('root deps take priority over workspace deps', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'collect-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      workspaces: ['apps/*'],
+      devDependencies: { 'vitest': '^4.0.0' },
+    }))
+    mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'web', 'package.json'), JSON.stringify({
+      devDependencies: { 'vitest': '^3.0.0' },
+    }))
+    const result = collectAllDependencies(dir)
+    expect(result.deps['vitest']).toBe('^4.0.0') // root version wins
+    expect(result.sources).not.toHaveProperty('vitest') // no workspace source for root dep
+  })
+
+  test('skips malformed workspace package.json', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'collect-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      workspaces: ['apps/*'],
+    }))
+    mkdirSync(join(dir, 'apps', 'broken'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'broken', 'package.json'), 'not valid json')
+    mkdirSync(join(dir, 'apps', 'good'), { recursive: true })
+    writeFileSync(join(dir, 'apps', 'good', 'package.json'), JSON.stringify({
+      dependencies: { 'pinia': '^2.0.0' },
+    }))
+    const result = collectAllDependencies(dir)
+    expect(result.deps).toHaveProperty('pinia')
+  })
+
+  test('returns empty deps when no package.json', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'collect-'))
+    const result = collectAllDependencies(dir)
+    expect(Object.keys(result.deps)).toHaveLength(0)
+    expect(Object.keys(result.sources)).toHaveLength(0)
+  })
+
+  test('works with non-monorepo (no workspaces)', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'collect-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      dependencies: { 'express': '^4.0.0' },
+    }))
+    const result = collectAllDependencies(dir)
+    expect(result.deps).toHaveProperty('express')
+    expect(Object.keys(result.sources)).toHaveLength(0)
   })
 })

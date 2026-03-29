@@ -64,6 +64,17 @@ interface HookOutput {
  */
 import mappingsJson from './plugin-mappings.json'
 import toolingJson from './tooling-mappings.json'
+import { collectAllDependencies as _collectAllDependencies, resolveWorkspacePackages } from './workspace-resolver'
+export type { AggregatedDeps } from './workspace-resolver'
+export { resolveWorkspacePackages }
+
+/**
+ * Collect and merge dependencies from root and all workspace packages.
+ * Convenience wrapper that binds the local loadPackageJson.
+ */
+export function collectAllDependencies(cwd: string) {
+  return _collectAllDependencies(cwd, loadPackageJson)
+}
 
 export const PLUGIN_MAPPINGS: PluginMapping[] = mappingsJson
 export const TOOLING_MAPPINGS: ToolingMapping[] = toolingJson as ToolingMapping[]
@@ -245,18 +256,24 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
 /**
  * Resolve the source identifier for a detected package plugin.
  * Returns the first matching package name found in dependencies.
+ * When depSources is provided, prefixes workspace path for workspace-origin deps.
  */
 function resolvePackageSource(
   pluginName: string,
-  pkg: Record<string, unknown>,
+  deps: Record<string, string>,
   mappings: PluginMapping[],
+  depSources?: Record<string, string>,
 ): string {
-  const deps = {
-    ...(pkg.dependencies as Record<string, string> | undefined),
-    ...(pkg.devDependencies as Record<string, string> | undefined),
-  }
   const mapping = mappings.find(m => m.pluginName === pluginName)
-  return mapping?.packages.find(p => p in deps) ?? pluginName
+  const matchedPkg = mapping?.packages.find(p => p in deps)
+  if (!matchedPkg) return pluginName
+
+  // If the matched package came from a workspace, prefix with the workspace path
+  if (depSources && matchedPkg in depSources) {
+    return `${depSources[matchedPkg]}: ${matchedPkg}`
+  }
+
+  return matchedPkg
 }
 
 /**
@@ -289,13 +306,18 @@ function resolveToolingSource(
 /**
  * Scan project for setup command. Returns detected plugins with source info,
  * separated into not-yet-installed and already-installed lists.
+ * Scans root and all workspace packages.
  */
 export function scanForSetup(cwd: string): SetupOutput {
   const pkg = loadPackageJson(cwd)
   const enabledPlugins = loadEnabledPlugins(cwd)
 
-  // Reuse existing detection logic
-  const pkgMatches = pkg ? detectPackages(pkg, PLUGIN_MAPPINGS) : []
+  // Collect deps from root + workspace packages
+  const { deps: allDeps, sources: depSources } = collectAllDependencies(cwd)
+
+  // Detect packages using aggregated deps
+  const aggregatedPkg = { dependencies: allDeps } as Record<string, unknown>
+  const pkgMatches = Object.keys(allDeps).length > 0 ? detectPackages(aggregatedPkg, PLUGIN_MAPPINGS) : []
   const toolingMatches = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
   // Merge, deduplicating by pluginName
@@ -311,7 +333,7 @@ export function scanForSetup(cwd: string): SetupOutput {
     const isTooling = toolingMatches.some(m => m.pluginName === match.pluginName) && !pkgMatches.some(m => m.pluginName === match.pluginName)
     const source = isTooling
       ? resolveToolingSource(match.pluginName, cwd, pkg, TOOLING_MAPPINGS)
-      : resolvePackageSource(match.pluginName, pkg!, PLUGIN_MAPPINGS)
+      : resolvePackageSource(match.pluginName, allDeps, PLUGIN_MAPPINGS, depSources)
 
     if (key in enabledPlugins) {
       installed.push(match.pluginName)
@@ -349,11 +371,15 @@ function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
     const pkg = loadPackageJson(cwd)
     const tooling = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
-    if (!pkg) {
+    // Collect deps from root + workspace packages
+    const { deps: allDeps } = collectAllDependencies(cwd)
+
+    if (Object.keys(allDeps).length === 0) {
       detected = tooling
     }
     else {
-      const pkgDetected = detectPackages(pkg, PLUGIN_MAPPINGS)
+      const aggregatedPkg = { dependencies: allDeps } as Record<string, unknown>
+      const pkgDetected = detectPackages(aggregatedPkg, PLUGIN_MAPPINGS)
       // Merge, deduplicating by pluginName
       const seen = new Set(pkgDetected.map(m => m.pluginName))
       detected = [...pkgDetected, ...tooling.filter(m => !seen.has(m.pluginName))]
