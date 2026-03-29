@@ -35,9 +35,9 @@ Fix `/please-plugins:setup` command that fails to find root `package.json` due t
 
 ### Phase 2: Rewrite setup.md to use script delegation
 
-- [ ] T-5: Replace Steps 1-2 in `setup.md` with single `bun run` invocation of `check-dependencies.ts --setup`
-- [ ] T-6: Update Step 3 to parse JSON output and present results using `AskUserQuestion`
-- [ ] T-7: Ensure Step 4 (install) and Step 5 (summary) remain unchanged
+- [x] T-5: Replace Steps 1-2 in `setup.md` with single `bun run` invocation of `check-dependencies.ts --setup`
+- [x] T-6: Update Step 3 to parse JSON output and present results using `AskUserQuestion`
+- [x] T-7: Ensure Step 4 (install) and Step 5 (summary) remain unchanged
 
 ### Phase 3: Verification
 
