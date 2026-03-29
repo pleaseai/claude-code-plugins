@@ -38,10 +38,10 @@ Bun's built-in `Bun.Glob` provides synchronous, fast glob resolution without add
 
 ## Tasks
 
-- [ ] T001 Add workspace resolution function `resolveWorkspacePackages` (file: plugins/please-plugins/hooks/check-dependencies.ts)
-- [ ] T002 Add dependency aggregation function `collectAllDependencies` (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T001)
-- [ ] T003 Integrate workspace scanning into `scanForSetup` and `detectForEvent` (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T002)
-- [ ] T004 Enhance source tracking for workspace-origin dependencies (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T003)
+- [x] T001 Add workspace resolution function `resolveWorkspacePackages` (file: plugins/please-plugins/hooks/check-dependencies.ts)
+- [x] T002 Add dependency aggregation function `collectAllDependencies` (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T001)
+- [x] T003 Integrate workspace scanning into `scanForSetup` and `detectForEvent` (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T002)
+- [x] T004 Enhance source tracking for workspace-origin dependencies (file: plugins/please-plugins/hooks/check-dependencies.ts) (depends on T003)
 
 ## Key Files
 

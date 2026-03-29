@@ -13,8 +13,8 @@
  *   0 with no output   = no recommendations needed
  */
 
-import { existsSync, readFileSync } from 'node:fs'
-import { join } from 'node:path'
+import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { join, relative } from 'node:path'
 import { homedir } from 'node:os'
 import process from 'node:process'
 
@@ -39,6 +39,13 @@ export interface DetectedPlugin {
 export interface SetupOutput {
   detected: DetectedPlugin[]
   installed: string[]
+}
+
+export interface AggregatedDeps {
+  /** Merged dependencies from root + all workspace packages */
+  deps: Record<string, string>
+  /** Maps package name → relative workspace path (only for workspace-origin deps) */
+  sources: Record<string, string>
 }
 
 interface HookInput {
@@ -67,6 +74,170 @@ import toolingJson from './tooling-mappings.json'
 
 export const PLUGIN_MAPPINGS: PluginMapping[] = mappingsJson
 export const TOOLING_MAPPINGS: ToolingMapping[] = toolingJson as ToolingMapping[]
+
+/**
+ * Resolve glob patterns to directories containing package.json files.
+ * Handles simple glob patterns like "apps/*", "packages/*" without external deps.
+ */
+function resolveGlobPatterns(cwd: string, patterns: string[]): string[] {
+  const dirs: string[] = []
+
+  for (const pattern of patterns) {
+    // Handle negation patterns (e.g., "!packages/internal")
+    if (pattern.startsWith('!')) continue
+
+    // Simple glob: "dir/*" → list entries of "dir/"
+    if (pattern.endsWith('/*') || pattern.endsWith('\\*')) {
+      const base = pattern.replace(/[/\\]\*$/, '')
+      const basePath = join(cwd, base)
+      try {
+        if (!existsSync(basePath)) continue
+        const entries = readdirSync(basePath)
+        for (const entry of entries) {
+          const fullPath = join(basePath, entry)
+          try {
+            if (statSync(fullPath).isDirectory() && existsSync(join(fullPath, 'package.json'))) {
+              dirs.push(fullPath)
+            }
+          }
+          catch { /* skip inaccessible entries */ }
+        }
+      }
+      catch { /* skip inaccessible base */ }
+    }
+    // Exact directory path (no glob)
+    else if (!pattern.includes('*')) {
+      const fullPath = join(cwd, pattern)
+      try {
+        if (existsSync(fullPath) && statSync(fullPath).isDirectory() && existsSync(join(fullPath, 'package.json'))) {
+          dirs.push(fullPath)
+        }
+      }
+      catch { /* skip inaccessible */ }
+    }
+    // For more complex globs (e.g., "packages/**"), fall back to simple one-level resolution
+    else {
+      const base = pattern.split('*')[0].replace(/[/\\]$/, '')
+      if (!base) continue
+      const basePath = join(cwd, base)
+      try {
+        if (!existsSync(basePath)) continue
+        const entries = readdirSync(basePath)
+        for (const entry of entries) {
+          const fullPath = join(basePath, entry)
+          try {
+            if (statSync(fullPath).isDirectory() && existsSync(join(fullPath, 'package.json'))) {
+              dirs.push(fullPath)
+            }
+          }
+          catch { /* skip */ }
+        }
+      }
+      catch { /* skip */ }
+    }
+  }
+
+  return dirs
+}
+
+/**
+ * Resolve workspace package directories from root package.json and/or pnpm-workspace.yaml.
+ * Returns absolute paths to workspace directories that contain a package.json.
+ */
+export function resolveWorkspacePackages(
+  cwd: string,
+  rootPkg: Record<string, unknown> | null,
+): string[] {
+  const patterns: string[] = []
+
+  // npm/yarn/Bun: read "workspaces" field from root package.json
+  if (rootPkg) {
+    const workspaces = rootPkg.workspaces
+    if (Array.isArray(workspaces)) {
+      patterns.push(...workspaces.filter((w): w is string => typeof w === 'string'))
+    }
+    // yarn also supports { packages: [...] } form
+    else if (workspaces && typeof workspaces === 'object' && 'packages' in workspaces) {
+      const pkgs = (workspaces as Record<string, unknown>).packages
+      if (Array.isArray(pkgs)) {
+        patterns.push(...pkgs.filter((w): w is string => typeof w === 'string'))
+      }
+    }
+  }
+
+  // pnpm: read pnpm-workspace.yaml
+  const pnpmWorkspacePath = join(cwd, 'pnpm-workspace.yaml')
+  try {
+    if (existsSync(pnpmWorkspacePath)) {
+      const content = readFileSync(pnpmWorkspacePath, 'utf-8')
+      // Simple YAML parsing for "packages:" array
+      const lines = content.split('\n')
+      let inPackages = false
+      for (const line of lines) {
+        const trimmed = line.trim()
+        if (trimmed === 'packages:') {
+          inPackages = true
+          continue
+        }
+        if (inPackages) {
+          if (trimmed.startsWith('- ')) {
+            const value = trimmed.slice(2).trim().replace(/^['"]|['"]$/g, '')
+            if (value && !patterns.includes(value)) {
+              patterns.push(value)
+            }
+          }
+          else if (trimmed && !trimmed.startsWith('#')) {
+            // End of packages list
+            break
+          }
+        }
+      }
+    }
+  }
+  catch { /* skip malformed pnpm-workspace.yaml */ }
+
+  if (patterns.length === 0) return []
+
+  return resolveGlobPatterns(cwd, patterns)
+}
+
+/**
+ * Collect and merge dependencies from root package.json and all workspace packages.
+ * Returns merged deps and a source map for workspace-origin deps.
+ */
+export function collectAllDependencies(cwd: string): AggregatedDeps {
+  const rootPkg = loadPackageJson(cwd)
+  const deps: Record<string, string> = {}
+  const sources: Record<string, string> = {}
+
+  // Add root deps first
+  if (rootPkg) {
+    Object.assign(deps, rootPkg.dependencies as Record<string, string> | undefined)
+    Object.assign(deps, rootPkg.devDependencies as Record<string, string> | undefined)
+  }
+
+  // Add workspace deps, tracking sources for non-root packages
+  const workspaceDirs = resolveWorkspacePackages(cwd, rootPkg)
+  for (const dir of workspaceDirs) {
+    const pkg = loadPackageJson(dir)
+    if (!pkg) continue
+
+    const relPath = relative(cwd, dir)
+    const wsDeps = {
+      ...(pkg.dependencies as Record<string, string> | undefined),
+      ...(pkg.devDependencies as Record<string, string> | undefined),
+    }
+
+    for (const [name, version] of Object.entries(wsDeps)) {
+      if (!(name in deps)) {
+        deps[name] = version
+        sources[name] = relPath
+      }
+    }
+  }
+
+  return { deps, sources }
+}
 
 /**
  * Detect which plugin mappings match packages in the given package.json content.
@@ -245,18 +416,24 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
 /**
  * Resolve the source identifier for a detected package plugin.
  * Returns the first matching package name found in dependencies.
+ * When depSources is provided, prefixes workspace path for workspace-origin deps.
  */
 function resolvePackageSource(
   pluginName: string,
-  pkg: Record<string, unknown>,
+  deps: Record<string, string>,
   mappings: PluginMapping[],
+  depSources?: Record<string, string>,
 ): string {
-  const deps = {
-    ...(pkg.dependencies as Record<string, string> | undefined),
-    ...(pkg.devDependencies as Record<string, string> | undefined),
-  }
   const mapping = mappings.find(m => m.pluginName === pluginName)
-  return mapping?.packages.find(p => p in deps) ?? pluginName
+  const matchedPkg = mapping?.packages.find(p => p in deps)
+  if (!matchedPkg) return pluginName
+
+  // If the matched package came from a workspace, prefix with the workspace path
+  if (depSources && matchedPkg in depSources) {
+    return `${depSources[matchedPkg]}: ${matchedPkg}`
+  }
+
+  return matchedPkg
 }
 
 /**
@@ -289,13 +466,18 @@ function resolveToolingSource(
 /**
  * Scan project for setup command. Returns detected plugins with source info,
  * separated into not-yet-installed and already-installed lists.
+ * Scans root and all workspace packages.
  */
 export function scanForSetup(cwd: string): SetupOutput {
   const pkg = loadPackageJson(cwd)
   const enabledPlugins = loadEnabledPlugins(cwd)
 
-  // Reuse existing detection logic
-  const pkgMatches = pkg ? detectPackages(pkg, PLUGIN_MAPPINGS) : []
+  // Collect deps from root + workspace packages
+  const { deps: allDeps, sources: depSources } = collectAllDependencies(cwd)
+
+  // Detect packages using aggregated deps
+  const aggregatedPkg = { dependencies: allDeps } as Record<string, unknown>
+  const pkgMatches = Object.keys(allDeps).length > 0 ? detectPackages(aggregatedPkg, PLUGIN_MAPPINGS) : []
   const toolingMatches = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
   // Merge, deduplicating by pluginName
@@ -311,7 +493,7 @@ export function scanForSetup(cwd: string): SetupOutput {
     const isTooling = toolingMatches.some(m => m.pluginName === match.pluginName) && !pkgMatches.some(m => m.pluginName === match.pluginName)
     const source = isTooling
       ? resolveToolingSource(match.pluginName, cwd, pkg, TOOLING_MAPPINGS)
-      : resolvePackageSource(match.pluginName, pkg!, PLUGIN_MAPPINGS)
+      : resolvePackageSource(match.pluginName, allDeps, PLUGIN_MAPPINGS, depSources)
 
     if (key in enabledPlugins) {
       installed.push(match.pluginName)
@@ -349,11 +531,15 @@ function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
     const pkg = loadPackageJson(cwd)
     const tooling = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
-    if (!pkg) {
+    // Collect deps from root + workspace packages
+    const { deps: allDeps } = collectAllDependencies(cwd)
+
+    if (Object.keys(allDeps).length === 0) {
       detected = tooling
     }
     else {
-      const pkgDetected = detectPackages(pkg, PLUGIN_MAPPINGS)
+      const aggregatedPkg = { dependencies: allDeps } as Record<string, unknown>
+      const pkgDetected = detectPackages(aggregatedPkg, PLUGIN_MAPPINGS)
       // Merge, deduplicating by pluginName
       const seen = new Set(pkgDetected.map(m => m.pluginName))
       detected = [...pkgDetected, ...tooling.filter(m => !seen.has(m.pluginName))]
