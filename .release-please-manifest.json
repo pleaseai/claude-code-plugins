@@ -35,5 +35,5 @@
   "plugins/ast-grep": "1.0.0",
   "plugins/chat-sdk": "1.0.0",
   "plugins/docus": "1.0.0",
-  "plugins/please-plugins": "1.1.0"
+  "plugins/please-plugins": "1.2.0"
 }
