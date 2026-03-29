@@ -1,0 +1,25 @@
+plugins/please-plugins/commands/setup.md
+  eb88cf35535cf3d9 3,8,12,15-27,30-31,33,35,37,39,41,47,50-51,58,68
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/plan.md
+  eb88cf35535cf3d9 38-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "4c55228ac09201a8ddf0db85f851744fe7b01892",
+  "prompts": {
+    "eb88cf35535cf3d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a03f2dc-2b9f-4033-a86f-af500b66872c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 32,
+      "total_deletions": 26,
+      "accepted_lines": 32,
+      "overriden_lines": 0
+    }
+  }
+}
