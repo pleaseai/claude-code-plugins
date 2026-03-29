@@ -1,0 +1,29 @@
+.please/docs/tracks/active/setup-monorepo-scan-20260329/spec.md
+  b3f742aecc12859b 1-43
+.please/docs/tracks/active/setup-monorepo-scan-20260329/plan.md
+  b3f742aecc12859b 1-93
+.please/docs/tracks/active/setup-monorepo-scan-20260329/metadata.json
+  b3f742aecc12859b 1-10
+.please/docs/tracks/index.md
+  b3f742aecc12859b 15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "97b615fc6cab3a7a8cb4cfecda94aeeaeebe19ae",
+  "prompts": {
+    "b3f742aecc12859b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3e15dd-3c14-4d4d-9fa2-05d6d946059f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 151,
+      "total_deletions": 4,
+      "accepted_lines": 147,
+      "overriden_lines": 0
+    }
+  }
+}
