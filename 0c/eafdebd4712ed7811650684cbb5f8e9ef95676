@@ -1,0 +1,27 @@
+plugins/please-plugins/hooks/check-dependencies.test.ts
+  eb88cf35535cf3d9 11-12,14,311-385
+plugins/please-plugins/hooks/check-dependencies.ts
+  eb88cf35535cf3d9 34-43,246-315,361-377
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/plan.md
+  eb88cf35535cf3d9 31-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "0ceafdebd4712ed7811650684cbb5f8e9ef95676",
+  "prompts": {
+    "eb88cf35535cf3d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a03f2dc-2b9f-4033-a86f-af500b66872c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 181,
+      "total_deletions": 5,
+      "accepted_lines": 180,
+      "overriden_lines": 0
+    }
+  }
+}
