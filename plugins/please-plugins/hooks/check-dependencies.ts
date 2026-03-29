@@ -31,6 +31,16 @@ export interface ToolingMapping {
   pluginName: string
 }
 
+export interface DetectedPlugin {
+  pluginName: string
+  source: string
+}
+
+export interface SetupOutput {
+  detected: DetectedPlugin[]
+  installed: string[]
+}
+
 interface HookInput {
   cwd?: string
   hook_event_name?: string
@@ -233,6 +243,77 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
 }
 
 /**
+ * Scan project for setup command. Returns detected plugins with source info,
+ * separated into not-yet-installed and already-installed lists.
+ */
+export function scanForSetup(cwd: string): SetupOutput {
+  const pkg = loadPackageJson(cwd)
+  const enabledPlugins = loadEnabledPlugins(cwd)
+
+  const allDetected: DetectedPlugin[] = []
+  const seen = new Set<string>()
+
+  // Detect from package dependencies
+  if (pkg) {
+    const deps: Record<string, string> = {
+      ...(pkg.dependencies as Record<string, string> | undefined),
+      ...(pkg.devDependencies as Record<string, string> | undefined),
+    }
+
+    for (const mapping of PLUGIN_MAPPINGS) {
+      if (seen.has(mapping.pluginName)) continue
+      for (const pkgName of mapping.packages) {
+        if (pkgName in deps) {
+          allDetected.push({ pluginName: mapping.pluginName, source: pkgName })
+          seen.add(mapping.pluginName)
+          break
+        }
+      }
+    }
+  }
+
+  // Detect from tooling indicators
+  for (const mapping of TOOLING_MAPPINGS) {
+    if (seen.has(mapping.pluginName)) continue
+
+    // Check lock files
+    for (const file of mapping.indicators.files) {
+      if (existsSync(join(cwd, file))) {
+        allDetected.push({ pluginName: mapping.pluginName, source: file })
+        seen.add(mapping.pluginName)
+        break
+      }
+    }
+    if (seen.has(mapping.pluginName)) continue
+
+    // Check packageManager field
+    if (mapping.indicators.packageManager && pkg) {
+      const pmField = pkg.packageManager as string | undefined
+      if (pmField && pmField.startsWith(mapping.indicators.packageManager)) {
+        allDetected.push({ pluginName: mapping.pluginName, source: `packageManager:${pmField}` })
+        seen.add(mapping.pluginName)
+      }
+    }
+  }
+
+  // Split into installed vs not-installed
+  const installed: string[] = []
+  const detected: DetectedPlugin[] = []
+
+  for (const plugin of allDetected) {
+    const key = `${plugin.pluginName}@pleaseai`
+    if (enabledPlugins && key in enabledPlugins) {
+      installed.push(plugin.pluginName)
+    }
+    else {
+      detected.push(plugin)
+    }
+  }
+
+  return { detected, installed }
+}
+
+/**
  * Detect plugin mappings for a given hook event.
  * Returns null if no relevant packages are detected.
  */
@@ -277,6 +358,23 @@ function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
 }
 
 async function main(): Promise<void> {
+  // --setup mode: output structured JSON for the setup command
+  if (process.argv.includes('--setup')) {
+    try {
+      const cwd = process.cwd()
+      const result = scanForSetup(cwd)
+      process.stdout.write(`${JSON.stringify(result)}\n`)
+      process.exit(0)
+    }
+    catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
+      process.stderr.write(`[please-plugins] Setup error: ${errorMessage}\n`)
+      process.exit(1)
+    }
+    return
+  }
+
+  // Hook mode: read from stdin
   try {
     const input = await Bun.stdin.text()
     if (!input.trim()) {

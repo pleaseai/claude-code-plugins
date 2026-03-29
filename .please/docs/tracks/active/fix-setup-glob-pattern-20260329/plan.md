@@ -28,10 +28,10 @@ Fix `/please-plugins:setup` command that fails to find root `package.json` due t
 
 ### Phase 1: Add `--setup` CLI mode to check-dependencies.ts
 
-- [ ] T-1: Add `SetupOutput` interface with `detected` and `installed` arrays, tracking source package/file per match
-- [ ] T-2: Add `scanForSetup(cwd: string)` function that calls `loadPackageJson`, `detectPackages`, `detectTooling`, `loadEnabledPlugins`, and returns `SetupOutput`
-- [ ] T-3: Update `main()` to check `process.argv` for `--setup` flag and branch to `scanForSetup()` with JSON stdout
-- [ ] T-4: Write tests for `scanForSetup()` — success, no package.json, no matches, with installed plugins
+- [x] T-1: Add `SetupOutput` interface with `detected` and `installed` arrays, tracking source package/file per match
+- [x] T-2: Add `scanForSetup(cwd: string)` function that calls `loadPackageJson`, `detectPackages`, `detectTooling`, `loadEnabledPlugins`, and returns `SetupOutput`
+- [x] T-3: Update `main()` to check `process.argv` for `--setup` flag and branch to `scanForSetup()` with JSON stdout
+- [x] T-4: Write tests for `scanForSetup()` — success, no package.json, no matches, with installed plugins
 
 ### Phase 2: Rewrite setup.md to use script delegation
 
