@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { mkdtempSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import {
@@ -360,7 +360,6 @@ describe('scanForSetup', () => {
       dependencies: { '@nuxt/ui': '^3.0.0', 'pinia': '^2.0.0' },
     }))
     // Simulate nuxt-ui already installed
-    const mkdirSync = require('node:fs').mkdirSync
     mkdirSync(join(dir, '.claude'), { recursive: true })
     writeFileSync(join(dir, '.claude', 'settings.json'), JSON.stringify({
       enabledPlugins: { 'nuxt-ui@pleaseai': true },

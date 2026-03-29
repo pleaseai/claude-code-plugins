@@ -302,7 +302,7 @@ export function scanForSetup(cwd: string): SetupOutput {
 
   for (const plugin of allDetected) {
     const key = `${plugin.pluginName}@pleaseai`
-    if (enabledPlugins && key in enabledPlugins) {
+    if (key in enabledPlugins) {
       installed.push(plugin.pluginName)
     }
     else {
