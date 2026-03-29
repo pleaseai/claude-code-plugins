@@ -490,9 +490,9 @@ describe('resolveWorkspacePackages', () => {
     mkdirSync(join(dir, 'apps', 'web'), { recursive: true })
     writeFileSync(join(dir, 'apps', 'web', 'package.json'), '{}')
     const result = resolveWorkspacePackages(dir, pkg)
-    // Both sources resolve to same dir, but resolveGlobPatterns may return duplicates
-    // The important thing is both sources are checked
-    expect(result.length).toBeGreaterThanOrEqual(1)
+    // Both sources resolve to the same directory; deduplication ensures exactly one entry
+    expect(result).toHaveLength(1)
+    expect(result).toContainEqual(join(dir, 'apps', 'web'))
   })
 
   test('handles exact directory paths (no globs)', () => {
@@ -515,7 +515,10 @@ describe('resolveWorkspacePackages', () => {
     const result = resolveWorkspacePackages(dir, pkg)
     // Negation patterns are skipped (not filtered), so internal still appears from "packages/*"
     // This is a known limitation — true negation filtering is out of scope
-    expect(result.length).toBeGreaterThanOrEqual(1)
+    // Both shared and internal match the "packages/*" glob, so we expect exactly 2 results
+    expect(result).toHaveLength(2)
+    expect(result).toContainEqual(join(dir, 'packages', 'shared'))
+    expect(result).toContainEqual(join(dir, 'packages', 'internal'))
   })
 })
 

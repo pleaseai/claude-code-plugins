@@ -5,7 +5,7 @@
  * and pnpm-workspace.yaml, then aggregates dependencies across all packages.
  */
 
-import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs'
+import { existsSync, readFileSync, statSync } from 'node:fs'
 import { join, relative } from 'node:path'
 
 export interface AggregatedDeps {
@@ -17,17 +17,13 @@ export interface AggregatedDeps {
 
 /**
  * Resolve glob patterns to directories containing package.json files.
- * Handles simple glob patterns like "apps/*", "packages/*" without external deps.
+ * Uses Bun.Glob for accurate pattern matching (handles multi-segment patterns like "apps/*\/src").
  */
 function resolveGlobPatterns(cwd: string, patterns: string[]): string[] {
   const dirs: string[] = []
 
   for (const pattern of patterns) {
     if (pattern.startsWith('!')) continue
-
-    const base = pattern.includes('*')
-      ? pattern.split('*')[0].replace(/[/\\]$/, '')
-      : null
 
     // Exact directory path (no glob)
     if (!pattern.includes('*')) {
@@ -41,14 +37,11 @@ function resolveGlobPatterns(cwd: string, patterns: string[]): string[] {
       continue
     }
 
-    // Glob pattern: list entries of the base directory
-    if (!base) continue
-    const basePath = join(cwd, base)
+    // Glob pattern: use Bun.Glob for correct multi-segment matching
     try {
-      if (!existsSync(basePath)) continue
-      const entries = readdirSync(basePath)
-      for (const entry of entries) {
-        const fullPath = join(basePath, entry)
+      const glob = new Bun.Glob(pattern)
+      for (const match of glob.scanSync({ cwd, onlyFiles: false })) {
+        const fullPath = join(cwd, match)
         try {
           if (statSync(fullPath).isDirectory() && existsSync(join(fullPath, 'package.json'))) {
             dirs.push(fullPath)
@@ -57,7 +50,7 @@ function resolveGlobPatterns(cwd: string, patterns: string[]): string[] {
         catch { /* skip inaccessible entries */ }
       }
     }
-    catch { /* skip inaccessible base */ }
+    catch { /* skip inaccessible or invalid patterns */ }
   }
 
   return dirs
@@ -97,18 +90,25 @@ export function resolveWorkspacePackages(
       let inPackages = false
       for (const line of lines) {
         const trimmed = line.trim()
-        if (trimmed === 'packages:') {
+        // Skip full-line comments and empty lines
+        if (!trimmed || trimmed.startsWith('#')) {
+          continue
+        }
+        // Match "packages:" key, optionally with inline comment
+        if (/^packages\s*:/.test(trimmed)) {
           inPackages = true
           continue
         }
         if (inPackages) {
           if (trimmed.startsWith('- ')) {
-            const value = trimmed.slice(2).trim().replace(/^['"]|['"]$/g, '')
-            if (value && !patterns.includes(value)) {
-              patterns.push(value)
+            // Strip inline comments and surrounding quotes
+            const raw = trimmed.slice(2).replace(/#.*$/, '').trim().replace(/^['"]|['"]$/g, '')
+            if (raw && !patterns.includes(raw)) {
+              patterns.push(raw)
             }
           }
-          else if (trimmed && !trimmed.startsWith('#')) {
+          else if (/^\w/.test(trimmed)) {
+            // A new top-level key signals end of packages list
             break
           }
         }
@@ -119,7 +119,9 @@ export function resolveWorkspacePackages(
 
   if (patterns.length === 0) return []
 
-  return resolveGlobPatterns(cwd, patterns)
+  // Deduplicate resolved paths (multiple workspace config sources may resolve to the same dir)
+  const resolved = resolveGlobPatterns(cwd, patterns)
+  return [...new Set(resolved)]
 }
 
 /**
