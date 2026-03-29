@@ -1,0 +1,27 @@
+plugins/please-plugins/hooks/check-dependencies.ts
+  b3f742aecc12859b 16-17,44-50,79-241,419,423,425,428-436,469,475-480,496,534-537,541-542
+plugins/please-plugins/hooks/check-dependencies.test.ts
+  b3f742aecc12859b 7,12,14,387-586
+.please/docs/tracks/active/setup-monorepo-scan-20260329/plan.md
+  b3f742aecc12859b 41-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "0de6b7f51d17de3096bcbe3431e0d545edcb03b5",
+  "prompts": {
+    "b3f742aecc12859b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd3e15dd-3c14-4d4d-9fa2-05d6d946059f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 406,
+      "total_deletions": 17,
+      "accepted_lines": 406,
+      "overriden_lines": 0
+    }
+  }
+}
