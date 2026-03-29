@@ -1,0 +1,25 @@
+plugins/please-plugins/hooks/check-dependencies.test.ts
+  eb88cf35535cf3d9 2
+plugins/please-plugins/hooks/check-dependencies.ts
+  eb88cf35535cf3d9 305
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "627214ec27a2af9e3ddb836145a8c21772be1060",
+  "prompts": {
+    "eb88cf35535cf3d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a03f2dc-2b9f-4033-a86f-af500b66872c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 3,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    }
+  }
+}
