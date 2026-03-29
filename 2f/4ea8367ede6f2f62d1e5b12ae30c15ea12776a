@@ -1,0 +1,25 @@
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/metadata.json
+  eb88cf35535cf3d9 4,6
+.please/docs/tracks/index.md
+  eb88cf35535cf3d9 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "2f4ea8367ede6f2f62d1e5b12ae30c15ea12776a",
+  "prompts": {
+    "eb88cf35535cf3d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a03f2dc-2b9f-4033-a86f-af500b66872c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
