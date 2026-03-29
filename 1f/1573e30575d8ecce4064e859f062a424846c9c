@@ -1,0 +1,23 @@
+plugins/please-plugins/hooks/check-dependencies.ts
+  eb88cf35535cf3d9 246-247,249-260,262-273,275-277,279-282,286-287,289,297-299,301-303,305,309-314,317,320
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.22",
+  "base_commit_sha": "1f1573e30575d8ecce4064e859f062a424846c9c",
+  "prompts": {
+    "eb88cf35535cf3d9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2a03f2dc-2b9f-4033-a86f-af500b66872c",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 60,
+      "total_deletions": 49,
+      "accepted_lines": 60,
+      "overriden_lines": 0
+    }
+  }
+}
