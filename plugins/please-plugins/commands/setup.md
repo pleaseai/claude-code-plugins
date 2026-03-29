@@ -1,55 +1,61 @@
 ---
 description: Scan project dependencies and install recommended Claude Code plugins
-allowed-tools: Read, Bash, Glob, Grep, AskUserQuestion
+allowed-tools: Read, Bash, AskUserQuestion
 ---
 
 # Plugin Recommender Setup
 
-Scan the current project's `package.json` and tooling files to detect packages that have corresponding Claude Code plugins in the `pleaseai` marketplace, then help the user install them.
+Scan the current project's dependencies and tooling files to detect packages that have corresponding Claude Code plugins in the `pleaseai` marketplace, then help the user install them.
 
 ## Step 1: Scan Dependencies
 
-Read `package.json` in the current working directory. If it doesn't exist, inform the user and stop.
-
-Read the plugin mappings and tooling mappings from the plugin's data files:
+Run the dependency scanner script to detect matching plugins:
 
 ```bash
-cat "${CLAUDE_PLUGIN_ROOT}/hooks/plugin-mappings.json"
-cat "${CLAUDE_PLUGIN_ROOT}/hooks/tooling-mappings.json"
+bun run "${CLAUDE_PLUGIN_ROOT}/hooks/check-dependencies.ts" --setup
 ```
 
-Parse the project's `dependencies` and `devDependencies` to find matches against the plugin mappings. Also check for tooling indicators:
-- Lock files: `pnpm-lock.yaml`, `turbo.json`
-- `packageManager` field in `package.json`
+Parse the JSON output. The script returns:
 
-## Step 2: Check Installed Plugins
+```json
+{
+  "detected": [
+    { "pluginName": "nuxt-ui", "source": "@nuxt/ui" },
+    { "pluginName": "turborepo", "source": "turbo.json" }
+  ],
+  "installed": ["vitest"]
+}
+```
 
-Read `.claude/settings.json` (project-level) to check which plugins are already installed. Look for entries in `enabledPlugins` matching `<pluginName>@pleaseai`.
+- `detected`: Plugins that are available but not yet installed, with the source package or file that triggered the match.
+- `installed`: Plugin names that are already installed.
 
-## Step 3: Show Results
+If the script exits with a non-zero code, inform the user of the error and stop.
 
-Present the scan results to the user, categorized:
+## Step 2: Show Results
+
+If `detected` is empty and `installed` is empty: inform the user "No matching plugins found for this project's dependencies."
+
+If `detected` is empty and `installed` is not empty: inform the user "All recommended plugins are already installed!"
+
+Otherwise, present the scan results:
 
 ```
 AskUserQuestion({
   questions: [{
     header: "Plugins",
-    question: "Detected packages and their plugin status:\n\n{for each detected plugin: ✅ installed / ⬜ not installed — source package}\n\nSelect plugins to install:",
+    question: "Detected packages and their plugin status:\n\n{for each installed plugin: ✅ {pluginName}}\n{for each detected plugin: ⬜ {pluginName} — {source}}\n\nSelect plugins to install:",
     multiSelect: true,
     options: [
-      // Only list NOT-installed plugins as selectable options
-      { label: "{pluginName}", description: "Detected: {source package or tooling indicator}" },
+      // Only list detected (not-installed) plugins as selectable options
+      { label: "{pluginName}", description: "Detected: {source}" },
       ...
     ]
   }]
 })
 ```
 
-If all detected plugins are already installed, inform the user: "All recommended plugins are already installed!"
-
-If no packages match any plugin mappings, inform the user: "No matching plugins found for this project's dependencies."
-
-## Step 4: Install Selected Plugins
+## Step 3: Install Selected Plugins
 
 For each selected plugin, run the install command:
 
@@ -59,7 +65,7 @@ claude plugin install {pluginName}@pleaseai
 
 Show the result of each installation.
 
-## Step 5: Summary
+## Step 4: Summary
 
 Show a summary of what was installed:
 

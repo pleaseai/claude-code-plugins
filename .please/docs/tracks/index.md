@@ -11,6 +11,7 @@
 | [add-code-intelligence-marketplace-20260328](active/add-code-intelligence-marketplace-20260328/plan.md) | Add code-intelligence marketplace | feature | - | 2026-03-28 | planned |
 | [hooks-if-field-20260328](active/hooks-if-field-20260328/) | Add `if` field to hooks | feature | — | 2026-03-28 | planned |
 | [web-nuxt-update-20260328](active/web-nuxt-update-20260328/plan.md) | Web App Dependency Update | chore | #126 | 2026-03-28 | in_progress |
+| [fix-setup-glob-pattern-20260329](active/fix-setup-glob-pattern-20260329/plan.md) | Fix setup command package.json discovery | bugfix | #129 | 2026-03-29 | in_progress |
 
 ## Recently Completed
 

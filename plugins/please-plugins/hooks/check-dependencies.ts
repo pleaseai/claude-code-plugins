@@ -31,6 +31,16 @@ export interface ToolingMapping {
   pluginName: string
 }
 
+export interface DetectedPlugin {
+  pluginName: string
+  source: string
+}
+
+export interface SetupOutput {
+  detected: DetectedPlugin[]
+  installed: string[]
+}
+
 interface HookInput {
   cwd?: string
   hook_event_name?: string
@@ -233,6 +243,88 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
 }
 
 /**
+ * Resolve the source identifier for a detected package plugin.
+ * Returns the first matching package name found in dependencies.
+ */
+function resolvePackageSource(
+  pluginName: string,
+  pkg: Record<string, unknown>,
+  mappings: PluginMapping[],
+): string {
+  const deps = {
+    ...(pkg.dependencies as Record<string, string> | undefined),
+    ...(pkg.devDependencies as Record<string, string> | undefined),
+  }
+  const mapping = mappings.find(m => m.pluginName === pluginName)
+  return mapping?.packages.find(p => p in deps) ?? pluginName
+}
+
+/**
+ * Resolve the source identifier for a detected tooling plugin.
+ * Returns the matched lock file name or packageManager field value.
+ */
+function resolveToolingSource(
+  pluginName: string,
+  cwd: string,
+  pkg: Record<string, unknown> | null,
+  mappings: ToolingMapping[],
+): string {
+  const mapping = mappings.find(m => m.pluginName === pluginName)
+  if (!mapping) return pluginName
+
+  for (const file of mapping.indicators.files) {
+    if (existsSync(join(cwd, file))) return file
+  }
+
+  if (mapping.indicators.packageManager && pkg) {
+    const pmField = pkg.packageManager as string | undefined
+    if (pmField && pmField.startsWith(mapping.indicators.packageManager)) {
+      return `packageManager:${pmField}`
+    }
+  }
+
+  return pluginName
+}
+
+/**
+ * Scan project for setup command. Returns detected plugins with source info,
+ * separated into not-yet-installed and already-installed lists.
+ */
+export function scanForSetup(cwd: string): SetupOutput {
+  const pkg = loadPackageJson(cwd)
+  const enabledPlugins = loadEnabledPlugins(cwd)
+
+  // Reuse existing detection logic
+  const pkgMatches = pkg ? detectPackages(pkg, PLUGIN_MAPPINGS) : []
+  const toolingMatches = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
+
+  // Merge, deduplicating by pluginName
+  const seen = new Set(pkgMatches.map(m => m.pluginName))
+  const allMatches = [...pkgMatches, ...toolingMatches.filter(m => !seen.has(m.pluginName))]
+
+  // Annotate each match with a source identifier and split into installed vs not-installed
+  const installed: string[] = []
+  const detected: DetectedPlugin[] = []
+
+  for (const match of allMatches) {
+    const key = `${match.pluginName}@pleaseai`
+    const isTooling = toolingMatches.some(m => m.pluginName === match.pluginName) && !pkgMatches.some(m => m.pluginName === match.pluginName)
+    const source = isTooling
+      ? resolveToolingSource(match.pluginName, cwd, pkg, TOOLING_MAPPINGS)
+      : resolvePackageSource(match.pluginName, pkg!, PLUGIN_MAPPINGS)
+
+    if (key in enabledPlugins) {
+      installed.push(match.pluginName)
+    }
+    else {
+      detected.push({ pluginName: match.pluginName, source })
+    }
+  }
+
+  return { detected, installed }
+}
+
+/**
  * Detect plugin mappings for a given hook event.
  * Returns null if no relevant packages are detected.
  */
@@ -277,6 +369,23 @@ function detectForEvent(hookInput: HookInput): PluginMapping[] | null {
 }
 
 async function main(): Promise<void> {
+  // --setup mode: output structured JSON for the setup command
+  if (process.argv.includes('--setup')) {
+    try {
+      const cwd = process.cwd()
+      const result = scanForSetup(cwd)
+      process.stdout.write(`${JSON.stringify(result)}\n`)
+      process.exit(0)
+    }
+    catch (error) {
+      const errorMessage = error instanceof Error ? error.message : String(error)
+      process.stderr.write(`[please-plugins] Setup error: ${errorMessage}\n`)
+      process.exit(1)
+    }
+    return
+  }
+
+  // Hook mode: read from stdin
   try {
     const input = await Bun.stdin.text()
     if (!input.trim()) {

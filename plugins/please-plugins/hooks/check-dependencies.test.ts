@@ -1,5 +1,5 @@
 import { describe, expect, test } from 'bun:test'
-import { mkdtempSync, writeFileSync } from 'node:fs'
+import { mkdirSync, mkdtempSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { tmpdir } from 'node:os'
 import {
@@ -8,7 +8,10 @@ import {
   detectTooling,
   extractPackagesFromCommand,
   filterInstalledPlugins,
+  scanForSetup,
+  type DetectedPlugin,
   type PluginMapping,
+  type SetupOutput,
   type ToolingMapping,
   PLUGIN_MAPPINGS,
   TOOLING_MAPPINGS,
@@ -303,5 +306,79 @@ describe('buildOutput', () => {
     expect(output.systemMessage).toContain('nuxt-ui@pleaseai')
     expect(output.systemMessage).toContain('pinia@pleaseai')
     expect(output.systemMessage).toContain('vitest@pleaseai')
+  })
+})
+
+describe('scanForSetup', () => {
+  test('detects packages and returns DetectedPlugin with source', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      dependencies: { '@nuxt/ui': '^3.0.0', 'pinia': '^2.0.0' },
+    }))
+    const result = scanForSetup(dir)
+    expect(result.detected).toContainEqual({ pluginName: 'nuxt-ui', source: '@nuxt/ui' })
+    expect(result.detected).toContainEqual({ pluginName: 'pinia', source: 'pinia' })
+  })
+
+  test('detects tooling indicators with source', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({ name: 'test' }))
+    writeFileSync(join(dir, 'turbo.json'), '{}')
+    const result = scanForSetup(dir)
+    expect(result.detected).toContainEqual({ pluginName: 'turborepo', source: 'turbo.json' })
+  })
+
+  test('detects packageManager field as source', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      name: 'test',
+      packageManager: 'pnpm@9.0.0',
+    }))
+    const result = scanForSetup(dir)
+    expect(result.detected).toContainEqual({ pluginName: 'pnpm', source: 'packageManager:pnpm@9.0.0' })
+  })
+
+  test('returns empty detected when no package.json exists', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    const result = scanForSetup(dir)
+    expect(result.detected).toHaveLength(0)
+    expect(result.installed).toHaveLength(0)
+  })
+
+  test('returns empty detected when no matching packages', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      dependencies: { 'express': '^4.0.0' },
+    }))
+    const result = scanForSetup(dir)
+    expect(result.detected).toHaveLength(0)
+  })
+
+  test('separates installed plugins from detected', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      dependencies: { '@nuxt/ui': '^3.0.0', 'pinia': '^2.0.0' },
+    }))
+    // Simulate nuxt-ui already installed
+    mkdirSync(join(dir, '.claude'), { recursive: true })
+    writeFileSync(join(dir, '.claude', 'settings.json'), JSON.stringify({
+      enabledPlugins: { 'nuxt-ui@pleaseai': true },
+    }))
+    const result = scanForSetup(dir)
+    expect(result.installed).toContain('nuxt-ui')
+    expect(result.detected.map(d => d.pluginName)).not.toContain('nuxt-ui')
+    expect(result.detected).toContainEqual({ pluginName: 'pinia', source: 'pinia' })
+  })
+
+  test('deduplicates plugins when detected from both packages and tooling', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'setup-'))
+    writeFileSync(join(dir, 'package.json'), JSON.stringify({
+      name: 'test',
+      packageManager: 'pnpm@9.0.0',
+    }))
+    writeFileSync(join(dir, 'pnpm-lock.yaml'), '')
+    const result = scanForSetup(dir)
+    const pnpmResults = result.detected.filter(d => d.pluginName === 'pnpm')
+    expect(pnpmResults).toHaveLength(1)
   })
 })
