@@ -243,6 +243,50 @@ function loadPackageJson(cwd: string): Record<string, unknown> | null {
 }
 
 /**
+ * Resolve the source identifier for a detected package plugin.
+ * Returns the first matching package name found in dependencies.
+ */
+function resolvePackageSource(
+  pluginName: string,
+  pkg: Record<string, unknown>,
+  mappings: PluginMapping[],
+): string {
+  const deps = {
+    ...(pkg.dependencies as Record<string, string> | undefined),
+    ...(pkg.devDependencies as Record<string, string> | undefined),
+  }
+  const mapping = mappings.find(m => m.pluginName === pluginName)
+  return mapping?.packages.find(p => p in deps) ?? pluginName
+}
+
+/**
+ * Resolve the source identifier for a detected tooling plugin.
+ * Returns the matched lock file name or packageManager field value.
+ */
+function resolveToolingSource(
+  pluginName: string,
+  cwd: string,
+  pkg: Record<string, unknown> | null,
+  mappings: ToolingMapping[],
+): string {
+  const mapping = mappings.find(m => m.pluginName === pluginName)
+  if (!mapping) return pluginName
+
+  for (const file of mapping.indicators.files) {
+    if (existsSync(join(cwd, file))) return file
+  }
+
+  if (mapping.indicators.packageManager && pkg) {
+    const pmField = pkg.packageManager as string | undefined
+    if (pmField && pmField.startsWith(mapping.indicators.packageManager)) {
+      return `packageManager:${pmField}`
+    }
+  }
+
+  return pluginName
+}
+
+/**
  * Scan project for setup command. Returns detected plugins with source info,
  * separated into not-yet-installed and already-installed lists.
  */
@@ -250,63 +294,30 @@ export function scanForSetup(cwd: string): SetupOutput {
   const pkg = loadPackageJson(cwd)
   const enabledPlugins = loadEnabledPlugins(cwd)
 
-  const allDetected: DetectedPlugin[] = []
-  const seen = new Set<string>()
+  // Reuse existing detection logic
+  const pkgMatches = pkg ? detectPackages(pkg, PLUGIN_MAPPINGS) : []
+  const toolingMatches = detectTooling(cwd, pkg, TOOLING_MAPPINGS)
 
-  // Detect from package dependencies
-  if (pkg) {
-    const deps: Record<string, string> = {
-      ...(pkg.dependencies as Record<string, string> | undefined),
-      ...(pkg.devDependencies as Record<string, string> | undefined),
-    }
+  // Merge, deduplicating by pluginName
+  const seen = new Set(pkgMatches.map(m => m.pluginName))
+  const allMatches = [...pkgMatches, ...toolingMatches.filter(m => !seen.has(m.pluginName))]
 
-    for (const mapping of PLUGIN_MAPPINGS) {
-      if (seen.has(mapping.pluginName)) continue
-      for (const pkgName of mapping.packages) {
-        if (pkgName in deps) {
-          allDetected.push({ pluginName: mapping.pluginName, source: pkgName })
-          seen.add(mapping.pluginName)
-          break
-        }
-      }
-    }
-  }
-
-  // Detect from tooling indicators
-  for (const mapping of TOOLING_MAPPINGS) {
-    if (seen.has(mapping.pluginName)) continue
-
-    // Check lock files
-    for (const file of mapping.indicators.files) {
-      if (existsSync(join(cwd, file))) {
-        allDetected.push({ pluginName: mapping.pluginName, source: file })
-        seen.add(mapping.pluginName)
-        break
-      }
-    }
-    if (seen.has(mapping.pluginName)) continue
-
-    // Check packageManager field
-    if (mapping.indicators.packageManager && pkg) {
-      const pmField = pkg.packageManager as string | undefined
-      if (pmField && pmField.startsWith(mapping.indicators.packageManager)) {
-        allDetected.push({ pluginName: mapping.pluginName, source: `packageManager:${pmField}` })
-        seen.add(mapping.pluginName)
-      }
-    }
-  }
-
-  // Split into installed vs not-installed
+  // Annotate each match with a source identifier and split into installed vs not-installed
   const installed: string[] = []
   const detected: DetectedPlugin[] = []
 
-  for (const plugin of allDetected) {
-    const key = `${plugin.pluginName}@pleaseai`
+  for (const match of allMatches) {
+    const key = `${match.pluginName}@pleaseai`
+    const isTooling = toolingMatches.some(m => m.pluginName === match.pluginName) && !pkgMatches.some(m => m.pluginName === match.pluginName)
+    const source = isTooling
+      ? resolveToolingSource(match.pluginName, cwd, pkg, TOOLING_MAPPINGS)
+      : resolvePackageSource(match.pluginName, pkg!, PLUGIN_MAPPINGS)
+
     if (key in enabledPlugins) {
-      installed.push(plugin.pluginName)
+      installed.push(match.pluginName)
     }
     else {
-      detected.push(plugin)
+      detected.push({ pluginName: match.pluginName, source })
     }
   }
 
