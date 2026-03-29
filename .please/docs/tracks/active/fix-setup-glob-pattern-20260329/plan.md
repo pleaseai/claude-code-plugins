@@ -41,8 +41,8 @@ Fix `/please-plugins:setup` command that fails to find root `package.json` due t
 
 ### Phase 3: Verification
 
-- [ ] T-8: Run existing `check-dependencies.test.ts` — all must pass (regression)
-- [ ] T-9: Manual verification in a project with `node_modules/`
+- [x] T-8: Run existing `check-dependencies.test.ts` — all must pass (regression)
+- [x] T-9: Manual verification in a project with `node_modules/`
 
 ## Key Files
 
