@@ -11,7 +11,6 @@ import {
   filterInstalledPlugins,
   resolveWorkspacePackages,
   scanForSetup,
-  type AggregatedDeps,
   type DetectedPlugin,
   type PluginMapping,
   type SetupOutput,
