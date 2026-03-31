@@ -218,7 +218,7 @@ function classifyWriteEdit(filePath) {
     }
   }
   const resolvedPath = path.resolve(filePath);
-  if (!resolvedPath.startsWith("/") || resolvedPath.startsWith(process.cwd()) || resolvedPath.includes("/node_modules/")) {
+  if (resolvedPath.startsWith(process.cwd()) || resolvedPath.includes(`${path.sep}node_modules${path.sep}`)) {
     return { decision: "allow", reason: "Safe project file write" };
   }
   return null;

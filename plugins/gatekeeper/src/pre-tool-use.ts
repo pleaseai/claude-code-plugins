@@ -151,9 +151,9 @@ export function classifyWriteEdit(filePath: string): { decision: Decision, reaso
     }
   }
 
-  // Project-relative paths are generally safe; resolve to absolute path first to prevent path traversal
+  // Resolve to absolute path first to prevent path traversal; allow only within project root
   const resolvedPath = path.resolve(filePath)
-  if (!resolvedPath.startsWith('/') || resolvedPath.startsWith(process.cwd()) || resolvedPath.includes('/node_modules/')) {
+  if (resolvedPath.startsWith(process.cwd()) || resolvedPath.includes(`${path.sep}node_modules${path.sep}`)) {
     return { decision: 'allow', reason: 'Safe project file write' }
   }
 
