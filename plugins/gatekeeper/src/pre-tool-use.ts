@@ -3,6 +3,7 @@ import type {
   PreToolUseHookSpecificOutput,
   SyncHookJSONOutput,
 } from '@anthropic-ai/claude-agent-sdk'
+import path from 'node:path'
 import process from 'node:process'
 import { parseChainedCommand } from './chain-parser'
 
@@ -71,7 +72,7 @@ export const SOFT_DENY_RULES: Rule[] = [
 
   // Security weakening — only match --no-verify on commit (not push, which just skips pre-push hook)
   { pattern: /^git\s+commit(?:\s+\S+)*\s--no-verify\b/i, reason: 'Skipping commit verification needs user intent verification' },
-  { pattern: /\bchmod\s+777\b/i, reason: 'Broad permission change needs user intent verification' },
+  { pattern: /\bchmod\s+\S*777\b/i, reason: 'Broad permission change needs user intent verification' },
 
   // Expose local services
   { pattern: /\b(nc|ncat|socat)\s+-l/i, reason: 'Exposing local service needs user intent verification' },
@@ -81,7 +82,7 @@ export const SOFT_DENY_RULES: Rule[] = [
   { pattern: /\b(crontab|systemctl\s+enable|ssh-keygen|ssh-copy-id)\b/i, reason: 'Unauthorized persistence needs user intent verification' },
 
   // Permission grants (IAM/RBAC)
-  { pattern: /\b(?:gcloud\s+\S+\s+add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: 'Permission grant needs user intent verification' },
+  { pattern: /\b(?:gcloud(?:\s+\S+)*\s+add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: 'Permission grant needs user intent verification' },
 
   // Logging/audit tampering
   { pattern: /\bsystemctl\s+stop\s+\S*log/i, reason: 'Logging tampering needs user intent verification' },
@@ -150,8 +151,9 @@ export function classifyWriteEdit(filePath: string): { decision: Decision, reaso
     }
   }
 
-  // Project-relative paths are generally safe
-  if (!filePath.startsWith('/') || filePath.includes('/node_modules/')) {
+  // Project-relative paths are generally safe; resolve to absolute path first to prevent path traversal
+  const resolvedPath = path.resolve(filePath)
+  if (!resolvedPath.startsWith('/') || resolvedPath.startsWith(process.cwd()) || resolvedPath.includes('/node_modules/')) {
     return { decision: 'allow', reason: 'Safe project file write' }
   }
 
@@ -162,10 +164,10 @@ export function classifyWriteEdit(filePath: string): { decision: Decision, reaso
 // ─── WebFetch: URL-based classification ─────────────────────────────────────
 
 const WEBFETCH_SOFT_DENY_PATTERNS: Rule[] = [
-  { pattern: /\b(pastebin\.com|paste\.ee|hastebin\.com|dpaste\.org|ghostbin\.com|rentry\.co)\b/i, reason: 'Paste service needs user intent verification' },
-  { pattern: /\b(transfer\.sh|file\.io|0x0\.st|tmpfiles\.org)\b/i, reason: 'File sharing service needs user intent verification' },
+  { pattern: /^https?:\/\/(?:[^/]+\.)?(pastebin\.com|paste\.ee|hastebin\.com|dpaste\.org|ghostbin\.com|rentry\.co)(?:\/|$)/i, reason: 'Paste service needs user intent verification' },
+  { pattern: /^https?:\/\/(?:[^/]+\.)?(transfer\.sh|file\.io|0x0\.st|tmpfiles\.org)(?:\/|$)/i, reason: 'File sharing service needs user intent verification' },
   { pattern: /\.(sh|bash|ps1|bat|cmd)(\?|$)/i, reason: 'Script download needs user intent verification' },
-  { pattern: /\braw\.githubusercontent\.com\/.*\.(sh|py|rb|js)$/i, reason: 'Raw script download needs user intent verification' },
+  { pattern: /\braw\.githubusercontent\.com\/.*\.(sh|py|rb|js)(?:\?|$)/i, reason: 'Raw script download needs user intent verification' },
 ]
 
 export function classifyWebFetch(url: string): { decision: Decision, reason: string } | null {
@@ -180,7 +182,7 @@ export function classifyWebFetch(url: string): { decision: Decision, reason: str
   }
 
   // Localhost and known dev services are safe
-  if (/^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?/i.test(url)) {
+  if (/^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?(?:[/?#]|$)/i.test(url)) {
     return { decision: 'allow', reason: 'Safe localhost request' }
   }
 
