@@ -503,6 +503,14 @@
       "keywords": ["vinext", "nextjs", "vite", "migration", "cloudflare"],
       "tags": ["framework", "migration"],
       "source": "./plugins/vinext"
+    },
+    {
+      "name": "next",
+      "description": "Next.js best practices, caching patterns, and upgrade guidance",
+      "category": "framework",
+      "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
+      "tags": ["framework", "react"],
+      "source": "./plugins/next"
     }
   ]
 }

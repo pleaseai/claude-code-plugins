@@ -363,6 +363,9 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
 - Use Skills instead for better token efficiency and intelligent activation
 - Only use hooks for non-MCP tool automation (validation, formatting, etc.)
 
+**Plugin Naming:**
+- Use the canonical short name matching the npm package (e.g. `next` not `nextjs`, `vue` not `vuejs`)
+
 **Directory Structure:**
 - `.claude-plugin/plugin.json` must be at this exact path
 - `hooks/`, `commands/`, `agents/`, `skills/` directories at plugin root
@@ -410,6 +413,10 @@ Skills in `plugins/*/skills/` that contain a `SYNC.md` file are vendor-synced an
 cat plugins/<plugin>/skills/<skill>/SYNC.md
 ```
 Skip any code review suggestions targeting vendor-synced skill files.
+
+### Skills.sh Installed Skills (Read-Only)
+
+Skills installed via `bunx skills add` live under `plugins/*/.agents/skills/` and are tracked by `skills-lock.json`. These are also vendor-managed — do not modify directly. Fix upstream instead.
 
 ## Development Standards
 
