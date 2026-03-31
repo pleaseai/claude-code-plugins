@@ -7,6 +7,12 @@
     "url": "https://github.com/cloudflare/vinext"
   },
   "license": "MIT",
-  "keywords": ["vinext", "nextjs", "vite", "migration", "cloudflare"],
+  "keywords": [
+    "vinext",
+    "nextjs",
+    "vite",
+    "migration",
+    "cloudflare"
+  ],
   "skills": "./.agents/skills/"
 }
