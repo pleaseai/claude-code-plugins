@@ -1,0 +1,23 @@
+plugins/gatekeeper/README.md
+  e7f89610e2767315 3,7,12,16-26,29,31-72,79,84,86-114,116-125,146-155,159-163,165-166,171-173
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "de981f42b83b12d7b525eb7e2dc92ba36768b0d6",
+  "prompts": {
+    "e7f89610e2767315": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3e049f0-41ef-4a91-a05c-5ceefce11be7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 120,
+      "total_deletions": 26,
+      "accepted_lines": 120,
+      "overriden_lines": 0
+    }
+  }
+}
