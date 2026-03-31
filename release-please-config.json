@@ -383,6 +383,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/vinext": {
+      "release-type": "simple",
+      "component": "vinext",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
