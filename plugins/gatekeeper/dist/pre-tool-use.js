@@ -1,7 +1,7 @@
-// src/pre-tool-use.ts
+// plugins/gatekeeper/src/pre-tool-use.ts
 import process from "node:process";
 
-// src/chain-parser.ts
+// plugins/gatekeeper/src/chain-parser.ts
 function isDigit(ch) {
   return ch !== undefined && ch >= "0" && ch <= "9";
 }
@@ -124,7 +124,7 @@ function parseChainedCommand(cmd) {
   return { kind: "chain", parts: trimmed };
 }
 
-// src/pre-tool-use.ts
+// plugins/gatekeeper/src/pre-tool-use.ts
 var HARD_DENY_RULES = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: "Filesystem root deletion blocked" },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: "Destructive wildcard deletion from root blocked" },
@@ -162,7 +162,8 @@ var SOFT_DENY_RULES = [
   { pattern: /^(terraform|pulumi)\s+apply\b/i, reason: "Infrastructure apply needs user intent verification" },
   { pattern: /^(terraform|pulumi)\s+destroy\b/i, reason: "Infrastructure destroy needs user intent verification" },
   { pattern: /^kubectl\s+(apply|delete)\b/i, reason: "Kubernetes mutation needs user intent verification" },
-  { pattern: /\b(\.claude\/settings|CLAUDE\.md)\b/i, reason: "Agent self-modification needs user intent verification" },
+  { pattern: /(?:^|\s)\.claude\/settings/i, reason: "Agent self-modification needs user intent verification" },
+  { pattern: /\bCLAUDE\.md\b/i, reason: "Agent self-modification needs user intent verification" },
   { pattern: /^git\s+commit\s+.*--no-verify\b/i, reason: "Skipping commit verification needs user intent verification" },
   { pattern: /\bchmod\s+777\b/i, reason: "Broad permission change needs user intent verification" },
   { pattern: /\b(nc|ncat|socat)\s+-l/i, reason: "Exposing local service needs user intent verification" },

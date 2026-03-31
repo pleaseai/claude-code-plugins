@@ -65,8 +65,9 @@ export const SOFT_DENY_RULES: Rule[] = [
   { pattern: /^(terraform|pulumi)\s+destroy\b/i, reason: 'Infrastructure destroy needs user intent verification' },
   { pattern: /^kubectl\s+(apply|delete)\b/i, reason: 'Kubernetes mutation needs user intent verification' },
 
-  // Self-modification
-  { pattern: /\b(\.claude\/settings|CLAUDE\.md)\b/i, reason: 'Agent self-modification needs user intent verification' },
+  // Self-modification — split into two patterns because \b doesn't match before `.` (non-word char)
+  { pattern: /(?:^|\s)\.claude\/settings/i, reason: 'Agent self-modification needs user intent verification' },
+  { pattern: /\bCLAUDE\.md\b/i, reason: 'Agent self-modification needs user intent verification' },
 
   // Security weakening — only match --no-verify on commit (not push, which just skips pre-push hook)
   { pattern: /^git\s+commit\s+.*--no-verify\b/i, reason: 'Skipping commit verification needs user intent verification' },
