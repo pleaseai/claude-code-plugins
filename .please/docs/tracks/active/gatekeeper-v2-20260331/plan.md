@@ -34,18 +34,18 @@ The PermissionRequest prompt is rewritten with the full auto-mode rule set from 
 
 ## Tasks
 
-- [ ] T001 Refactor DENY_RULES to HARD_DENY_RULES and add SOFT_DENY_RULES for Bash (file: plugins/gatekeeper/src/pre-tool-use.ts)
-- [ ] T002 Add Write/Edit classifier with path-based rules (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
-- [ ] T003 Add WebFetch classifier with URL-based rules (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
-- [ ] T004 Add safe tools instant-allow list and refactor evaluate() dispatcher (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
-- [ ] T005 Add tests for 3-tier Bash decisions (hard_deny, soft_deny, allow) (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T001)
-- [ ] T006 [P] Add tests for Write/Edit classifier (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T002)
-- [ ] T007 [P] Add tests for WebFetch classifier (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T003)
-- [ ] T008 [P] Add tests for safe tools allowlist and unknown tool passthrough (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T004)
-- [ ] T009 Rewrite PermissionRequest prompt with full auto-mode coverage and intent judgment (file: plugins/gatekeeper/hooks/hooks.json) (depends on T004)
-- [ ] T010 Update hook matchers from Bash to empty string and evaluate model change (file: plugins/gatekeeper/hooks/hooks.json) (depends on T009)
-- [ ] T011 Rewrite README.md with 3-tier architecture, all-tool coverage tables, and soft_deny documentation (file: plugins/gatekeeper/README.md) (depends on T010)
-- [ ] T012 Build dist bundle and verify all tests pass (depends on T005, T006, T007, T008, T010)
+- [x] T001 Refactor DENY_RULES to HARD_DENY_RULES and add SOFT_DENY_RULES for Bash (file: plugins/gatekeeper/src/pre-tool-use.ts)
+- [x] T002 Add Write/Edit classifier with path-based rules (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
+- [x] T003 Add WebFetch classifier with URL-based rules (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
+- [x] T004 Add safe tools instant-allow list and refactor evaluate() dispatcher (file: plugins/gatekeeper/src/pre-tool-use.ts) (depends on T001)
+- [x] T005 Add tests for 3-tier Bash decisions (hard_deny, soft_deny, allow) (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T001)
+- [x] T006 [P] Add tests for Write/Edit classifier (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T002)
+- [x] T007 [P] Add tests for WebFetch classifier (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T003)
+- [x] T008 [P] Add tests for safe tools allowlist and unknown tool passthrough (file: plugins/gatekeeper/src/pre-tool-use.test.ts) (depends on T004)
+- [x] T009 Rewrite PermissionRequest prompt with full auto-mode coverage and intent judgment (file: plugins/gatekeeper/hooks/hooks.json) (depends on T004)
+- [x] T010 Update hook matchers from Bash to empty string and evaluate model change (file: plugins/gatekeeper/hooks/hooks.json) (depends on T009)
+- [x] T011 Rewrite README.md with 3-tier architecture, all-tool coverage tables, and soft_deny documentation (file: plugins/gatekeeper/README.md) (depends on T010)
+- [x] T012 Build dist bundle and verify all tests pass (depends on T005, T006, T007, T008, T010)
 
 ## Key Files
 
@@ -93,6 +93,23 @@ The PermissionRequest prompt is rewritten with the full auto-mode rule set from 
 - [ ] AC-8: All existing tests pass
 - [ ] AC-9: New tests cover all classifications
 - [ ] AC-10: README reflects new architecture
+
+## Progress
+
+- [x] (2026-03-31 21:40 KST) T001 Refactor DENY_RULES to HARD_DENY_RULES and add SOFT_DENY_RULES for Bash
+- [x] (2026-03-31 21:40 KST) T002 Add Write/Edit classifier with path-based rules
+- [x] (2026-03-31 21:40 KST) T003 Add WebFetch classifier with URL-based rules
+- [x] (2026-03-31 21:40 KST) T004 Add safe tools instant-allow list and refactor evaluate() dispatcher
+- [x] (2026-03-31 21:40 KST) T005 Add tests for 3-tier Bash decisions
+- [x] (2026-03-31 21:40 KST) T006 Add tests for Write/Edit classifier
+- [x] (2026-03-31 21:40 KST) T007 Add tests for WebFetch classifier
+- [x] (2026-03-31 21:40 KST) T008 Add tests for safe tools allowlist and unknown tool passthrough
+  Evidence: `bun test` → 246 pass, 0 fail, 835 assertions (51ms)
+- [x] (2026-03-31 21:43 KST) T009 Rewrite PermissionRequest prompt with full auto-mode coverage
+- [x] (2026-03-31 21:43 KST) T010 Update hook matchers from Bash to empty string, switch model to haiku
+- [x] (2026-03-31 21:43 KST) T011 Rewrite README.md with 3-tier architecture
+- [x] (2026-03-31 21:45 KST) T012 Build dist bundle and verify all tests pass
+  Evidence: `bun build` → pre-tool-use.js 15.47 KB; `bun test` → 246 pass, 0 fail
 
 ## Decision Log
 
