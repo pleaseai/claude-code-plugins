@@ -2,6 +2,10 @@
   "name": "next",
   "version": "1.0.0",
   "description": "Next.js best practices, caching patterns, and upgrade guidance",
+  "author": {
+    "name": "Vercel",
+    "url": "https://nextjs.org"
+  },
   "license": "NOASSERTION",
   "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
   "skills": "./.agents/skills/"
