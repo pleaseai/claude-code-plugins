@@ -1,0 +1,29 @@
+.claude-plugin/marketplace.json
+  96882909d4353d28 490-497
+README.md
+  96882909d4353d28 240-244
+plugins/wordpress/.claude-plugin/plugin.json
+  96882909d4353d28 1-8
+release-please-config.json
+  96882909d4353d28 375-385
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "71ce86f03446d0fd0aff3bc7a7880f7400ba1908",
+  "prompts": {
+    "96882909d4353d28": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48bf2bf3-2c72-4b61-83e6-eeb3b8db879f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 32,
+      "total_deletions": 0,
+      "accepted_lines": 32,
+      "overriden_lines": 0
+    }
+  }
+}
