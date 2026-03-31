@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.2.0...gatekeeper-v1.3.0) (2026-03-31)
+
+
+### Features
+
+* **gatekeeper:** v2 — all-tool coverage + auto-mode rules ([#136](https://github.com/pleaseai/claude-code-plugins/issues/136)) ([fe1cb78](https://github.com/pleaseai/claude-code-plugins/commit/fe1cb78e7fa7ccbfc51430a81e78a027aa6f83e1))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.1.1...gatekeeper-v1.2.0) (2026-03-03)
 
 
