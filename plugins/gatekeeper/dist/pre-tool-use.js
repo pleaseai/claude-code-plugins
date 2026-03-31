@@ -1,7 +1,7 @@
-// plugins/gatekeeper/src/pre-tool-use.ts
+// src/pre-tool-use.ts
 import process from "node:process";
 
-// plugins/gatekeeper/src/chain-parser.ts
+// src/chain-parser.ts
 function isDigit(ch) {
   return ch !== undefined && ch >= "0" && ch <= "9";
 }
@@ -124,7 +124,7 @@ function parseChainedCommand(cmd) {
   return { kind: "chain", parts: trimmed };
 }
 
-// plugins/gatekeeper/src/pre-tool-use.ts
+// src/pre-tool-use.ts
 var HARD_DENY_RULES = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: "Filesystem root deletion blocked" },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: "Destructive wildcard deletion from root blocked" },
@@ -153,24 +153,24 @@ var HARD_DENY_RULES = [
 ];
 var SOFT_DENY_RULES = [
   { pattern: /^git\s+push\s+--force(?:-with-lease)?\b/i, reason: "Force push needs user intent verification" },
-  { pattern: /^git\s+push\s+.*\s-(?!-)\S*f/i, reason: "Force push (short flag) needs user intent verification" },
-  { pattern: /^git\s+push\s+(?:.*\s)?(?:origin\s+)?(main|master)\s*$/i, reason: "Push to default branch needs user intent verification" },
+  { pattern: /^git\s+push(?:\s+\S+)*\s-(?!-)\S*f/i, reason: "Force push (short flag) needs user intent verification" },
+  { pattern: /^git\s+push\s+(?:\S+\s+)?(?:origin\s+)?(?:main|master)\s*$/i, reason: "Push to default branch needs user intent verification" },
   { pattern: /^git\s+reset\s+--hard\b/i, reason: "Hard reset needs user intent verification" },
   { pattern: /^git\s+clean\s+-[a-z]*f/i, reason: "Git clean needs user intent verification" },
-  { pattern: /^git\s+branch\s+-[a-zA-Z]*D/i, reason: "Force branch delete needs user intent verification" },
+  { pattern: /^git\s+branch\s+-[a-z]*D/i, reason: "Force branch delete needs user intent verification" },
   { pattern: /^npm\s+publish\b/i, reason: "Package publish needs user intent verification" },
   { pattern: /^(terraform|pulumi)\s+apply\b/i, reason: "Infrastructure apply needs user intent verification" },
   { pattern: /^(terraform|pulumi)\s+destroy\b/i, reason: "Infrastructure destroy needs user intent verification" },
   { pattern: /^kubectl\s+(apply|delete)\b/i, reason: "Kubernetes mutation needs user intent verification" },
   { pattern: /(?:^|\s)\.claude\/settings/i, reason: "Agent self-modification needs user intent verification" },
   { pattern: /\bCLAUDE\.md\b/i, reason: "Agent self-modification needs user intent verification" },
-  { pattern: /^git\s+commit\s+.*--no-verify\b/i, reason: "Skipping commit verification needs user intent verification" },
+  { pattern: /^git\s+commit(?:\s+\S+)*\s--no-verify\b/i, reason: "Skipping commit verification needs user intent verification" },
   { pattern: /\bchmod\s+777\b/i, reason: "Broad permission change needs user intent verification" },
   { pattern: /\b(nc|ncat|socat)\s+-l/i, reason: "Exposing local service needs user intent verification" },
   { pattern: /\bpython3?\s+-m\s+http\.server/i, reason: "Exposing HTTP server needs user intent verification" },
   { pattern: /\b(crontab|systemctl\s+enable|ssh-keygen|ssh-copy-id)\b/i, reason: "Unauthorized persistence needs user intent verification" },
-  { pattern: /\b(gcloud\s+.*add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: "Permission grant needs user intent verification" },
-  { pattern: /\bsystemctl\s+stop\s+.*log/i, reason: "Logging tampering needs user intent verification" }
+  { pattern: /\b(?:gcloud\s+\S+\s+add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: "Permission grant needs user intent verification" },
+  { pattern: /\bsystemctl\s+stop\s+\S*log/i, reason: "Logging tampering needs user intent verification" }
 ];
 var ALLOW_RULES = [
   {
@@ -236,7 +236,7 @@ function classifyWebFetch(url) {
       return { decision: "soft_deny", reason: rule.reason };
     }
   }
-  if (/^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?/i.test(url)) {
+  if (/^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?/i.test(url)) {
     return { decision: "allow", reason: "Safe localhost request" };
   }
   return null;

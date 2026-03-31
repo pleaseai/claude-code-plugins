@@ -53,11 +53,11 @@ export const HARD_DENY_RULES: Rule[] = [
 export const SOFT_DENY_RULES: Rule[] = [
   // Git destructive operations
   { pattern: /^git\s+push\s+--force(?:-with-lease)?\b/i, reason: 'Force push needs user intent verification' },
-  { pattern: /^git\s+push\s+.*\s-(?!-)\S*f/i, reason: 'Force push (short flag) needs user intent verification' },
-  { pattern: /^git\s+push\s+(?:.*\s)?(?:origin\s+)?(main|master)\s*$/i, reason: 'Push to default branch needs user intent verification' },
+  { pattern: /^git\s+push(?:\s+\S+)*\s-(?!-)\S*f/i, reason: 'Force push (short flag) needs user intent verification' },
+  { pattern: /^git\s+push\s+(?:\S+\s+)?(?:origin\s+)?(?:main|master)\s*$/i, reason: 'Push to default branch needs user intent verification' },
   { pattern: /^git\s+reset\s+--hard\b/i, reason: 'Hard reset needs user intent verification' },
   { pattern: /^git\s+clean\s+-[a-z]*f/i, reason: 'Git clean needs user intent verification' },
-  { pattern: /^git\s+branch\s+-[a-zA-Z]*D/i, reason: 'Force branch delete needs user intent verification' },
+  { pattern: /^git\s+branch\s+-[a-z]*D/i, reason: 'Force branch delete needs user intent verification' },
 
   // Deploy/publish
   { pattern: /^npm\s+publish\b/i, reason: 'Package publish needs user intent verification' },
@@ -70,7 +70,7 @@ export const SOFT_DENY_RULES: Rule[] = [
   { pattern: /\bCLAUDE\.md\b/i, reason: 'Agent self-modification needs user intent verification' },
 
   // Security weakening — only match --no-verify on commit (not push, which just skips pre-push hook)
-  { pattern: /^git\s+commit\s+.*--no-verify\b/i, reason: 'Skipping commit verification needs user intent verification' },
+  { pattern: /^git\s+commit(?:\s+\S+)*\s--no-verify\b/i, reason: 'Skipping commit verification needs user intent verification' },
   { pattern: /\bchmod\s+777\b/i, reason: 'Broad permission change needs user intent verification' },
 
   // Expose local services
@@ -81,10 +81,10 @@ export const SOFT_DENY_RULES: Rule[] = [
   { pattern: /\b(crontab|systemctl\s+enable|ssh-keygen|ssh-copy-id)\b/i, reason: 'Unauthorized persistence needs user intent verification' },
 
   // Permission grants (IAM/RBAC)
-  { pattern: /\b(gcloud\s+.*add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: 'Permission grant needs user intent verification' },
+  { pattern: /\b(?:gcloud\s+\S+\s+add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: 'Permission grant needs user intent verification' },
 
   // Logging/audit tampering
-  { pattern: /\bsystemctl\s+stop\s+.*log/i, reason: 'Logging tampering needs user intent verification' },
+  { pattern: /\bsystemctl\s+stop\s+\S*log/i, reason: 'Logging tampering needs user intent verification' },
 ]
 
 // ─── Bash: Allow rules (safe commands, instant approve) ─────────────────────
@@ -180,7 +180,7 @@ export function classifyWebFetch(url: string): { decision: Decision, reason: str
   }
 
   // Localhost and known dev services are safe
-  if (/^https?:\/\/(localhost|127\.0\.0\.1|0\.0\.0\.0)(:\d+)?/i.test(url)) {
+  if (/^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?/i.test(url)) {
     return { decision: 'allow', reason: 'Safe localhost request' }
   }
 
