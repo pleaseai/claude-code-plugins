@@ -319,6 +319,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install markitdown@pleaseai
 /plugin install chat-sdk@pleaseai
 /plugin install docus@pleaseai
+/plugin install wordpress@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
