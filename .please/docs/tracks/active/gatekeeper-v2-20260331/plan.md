@@ -120,3 +120,28 @@ The PermissionRequest prompt is rewritten with the full auto-mode rule set from 
 - Decision: soft_deny returns null (passthrough) rather than a new decision type
   Rationale: Claude Code hook protocol already supports null = passthrough to next hook. No SDK changes needed.
   Date/Author: 2026-03-31 / Claude
+
+## Surprises & Discoveries
+
+- Observation: `\b` word boundary fails before `.` (non-word character) in regex patterns
+  Evidence: `/\b\.claude\/settings/` never matches because `\b` requires word↔non-word boundary, but `.` preceded by space/start is non-word↔non-word. Fixed by using `(?:^|\s)` instead.
+
+## Outcomes & Retrospective
+
+### What Was Shipped
+- 3-tier decision system (hard_deny / soft_deny / allow) in PreToolUse hook
+- All-tool coverage: Bash, Write/Edit, WebFetch, safe tools allowlist
+- Rewritten PermissionRequest AI prompt with full auto-mode coverage (7 ALLOW, 25+ DENY rules)
+- Switched Layer 2 model from sonnet to haiku
+- Comprehensive README rewrite
+
+### What Went Well
+- Existing test suite caught regression immediately when `evaluateSingleCommand` return type changed
+- Modular classifier pattern allowed incremental implementation without breaking existing behavior
+- Issue #135 with detailed gap analysis made rule coverage straightforward
+
+### What Could Improve
+- Regex word boundary behavior with non-word characters caught by review — could add a regex-specific test helper
+
+### Tech Debt Created
+- None identified
