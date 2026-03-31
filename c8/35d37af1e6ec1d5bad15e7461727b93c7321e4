@@ -1,0 +1,23 @@
+.gemini/styleguide.md
+  80a5628ac35d409c 29-51,58-60
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "c835d37af1e6ec1d5bad15e7461727b93c7321e4",
+  "prompts": {
+    "80a5628ac35d409c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e08bcf51-45d1-433f-a8a9-0bd8b1fa42a6",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 26,
+      "total_deletions": 1,
+      "accepted_lines": 26,
+      "overriden_lines": 0
+    }
+  }
+}
