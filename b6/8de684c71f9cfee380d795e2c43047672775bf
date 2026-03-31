@@ -1,0 +1,31 @@
+plugins/react/.claude-plugin/plugin.json
+  798b0f20631067a9 1-8
+plugins/react-native/.claude-plugin/plugin.json
+  798b0f20631067a9 1-8
+README.md
+  798b0f20631067a9 250-259,339-340
+release-please-config.json
+  798b0f20631067a9 397-418
+.claude-plugin/marketplace.json
+  798b0f20631067a9 506-521
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "b68de684c71f9cfee380d795e2c43047672775bf",
+  "prompts": {
+    "798b0f20631067a9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "348d0f83-2c7c-45c4-9c01-6ce16805a370",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 66,
+      "total_deletions": 0,
+      "accepted_lines": 66,
+      "overriden_lines": 0
+    }
+  }
+}
