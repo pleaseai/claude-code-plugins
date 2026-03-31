@@ -252,6 +252,16 @@ Next.js best practices, caching patterns, and upgrade guidance.
 
 **Install:** `/plugin install next@pleaseai` | **Source:** [plugins/next](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/next)
 
+#### React
+React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering.
+
+**Install:** `/plugin install react@pleaseai` | **Source:** [plugins/react](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/react)
+
+#### React Native
+React Native and Expo best practices for building performant mobile apps.
+
+**Install:** `/plugin install react-native@pleaseai` | **Source:** [plugins/react-native](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/react-native)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -331,6 +341,9 @@ Once the marketplace is added, install any plugin individually:
 /plugin install docus@pleaseai
 /plugin install wordpress@pleaseai
 /plugin install vinext@pleaseai
+/plugin install next@pleaseai
+/plugin install react@pleaseai
+/plugin install react-native@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

@@ -405,6 +405,28 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/react": {
+      "release-type": "simple",
+      "component": "react",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/react-native": {
+      "release-type": "simple",
+      "component": "react-native",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

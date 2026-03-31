@@ -511,6 +511,22 @@
       "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
       "tags": ["framework", "react"],
       "source": "./plugins/next"
+    },
+    {
+      "name": "react",
+      "description": "React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering",
+      "category": "framework",
+      "keywords": ["react", "nextjs", "vercel", "performance", "view-transitions"],
+      "tags": ["framework", "frontend"],
+      "source": "./plugins/react"
+    },
+    {
+      "name": "react-native",
+      "description": "React Native and Expo best practices for building performant mobile apps",
+      "category": "mobile",
+      "keywords": ["react-native", "expo", "mobile", "performance"],
+      "tags": ["framework", "mobile"],
+      "source": "./plugins/react-native"
     }
   ]
 }
