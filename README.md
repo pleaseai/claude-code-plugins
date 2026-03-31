@@ -237,6 +237,11 @@ Write beautiful documentations with Nuxt and Markdown.
 
 **Install:** `/plugin install docus@pleaseai` | **Source:** [plugins/docus](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/docus)
 
+#### WordPress
+Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices.
+
+**Install:** `/plugin install wordpress@pleaseai` | **Source:** [plugins/wordpress](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/wordpress)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
