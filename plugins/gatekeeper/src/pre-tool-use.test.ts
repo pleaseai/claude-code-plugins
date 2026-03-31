@@ -4,7 +4,7 @@ import type {
   SyncHookJSONOutput,
 } from '@anthropic-ai/claude-agent-sdk'
 import { describe, expect, test } from 'bun:test'
-import { evaluate, evaluateSingleCommand, isGitPushNonForce, splitChainedCommands } from './pre-tool-use'
+import { classifyWebFetch, classifyWriteEdit, evaluate, evaluateSingleCommand, isGitPushNonForce, splitChainedCommands } from './pre-tool-use'
 
 const STUB_BASE = {
   session_id: 'test-session',
@@ -211,38 +211,38 @@ describe('evaluateSingleCommand', () => {
     expect(evaluateSingleCommand('\t')).toBeNull()
   })
 
-  test('should return deny for DENY rule matches', () => {
+  test('should return hard_deny for HARD_DENY rule matches', () => {
     const result = evaluateSingleCommand('rm -rf /')
     expect(result).not.toBeNull()
-    expect(result!.decision).toBe('deny')
+    expect(result!.decision).toBe('hard_deny')
     expect(result!.reason).toBe('Filesystem root deletion blocked')
   })
 
-  test('should return deny for rm -rf ~ (home directory)', () => {
+  test('should return hard_deny for rm -rf ~ (home directory)', () => {
     const result = evaluateSingleCommand('rm -rf ~')
     expect(result).not.toBeNull()
-    expect(result!.decision).toBe('deny')
+    expect(result!.decision).toBe('hard_deny')
     expect(result!.reason).toBe('Home directory deletion blocked')
   })
 
-  test('should return deny for node -e (inline code execution)', () => {
+  test('should return hard_deny for node -e (inline code execution)', () => {
     const result = evaluateSingleCommand('node -e "require(\'child_process\').exec(\'evil\')"')
     expect(result).not.toBeNull()
-    expect(result!.decision).toBe('deny')
+    expect(result!.decision).toBe('hard_deny')
     expect(result!.reason).toBe('Inline interpreter code execution blocked')
   })
 
-  test('should return deny for python3 -c (inline code execution)', () => {
+  test('should return hard_deny for python3 -c (inline code execution)', () => {
     const result = evaluateSingleCommand('python3 -c "import os; os.system(\'rm -rf /\')"')
     expect(result).not.toBeNull()
-    expect(result!.decision).toBe('deny')
+    expect(result!.decision).toBe('hard_deny')
     expect(result!.reason).toBe('Inline interpreter code execution blocked')
   })
 
-  test('should return deny for find -exec', () => {
+  test('should return hard_deny for find -exec', () => {
     const result = evaluateSingleCommand('find / -name "*.sh" -exec sh {} \\;')
     expect(result).not.toBeNull()
-    expect(result!.decision).toBe('deny')
+    expect(result!.decision).toBe('hard_deny')
     expect(result!.reason).toBe('find -exec/-execdir/-delete blocked: potential arbitrary command execution or recursive deletion')
   })
 
@@ -278,31 +278,43 @@ describe('evaluateSingleCommand', () => {
     expect(evaluateSingleCommand('  npm test')).toBeNull()
   })
 
-  test('deny takes priority over allow in evaluateSingleCommand', () => {
-    // node -e matches DENY (inline execution) before ALLOW (build/runtime)
+  test('hard_deny takes priority over allow in evaluateSingleCommand', () => {
+    // node -e matches HARD_DENY (inline execution) before ALLOW (build/runtime)
     const result = evaluateSingleCommand('node -e "code"')
-    expect(result!.decision).toBe('deny')
-    // find -exec matches DENY before ALLOW (file inspection)
+    expect(result!.decision).toBe('hard_deny')
+    // find -exec matches HARD_DENY before ALLOW (file inspection)
     const findResult = evaluateSingleCommand('find . -exec cat {} \\;')
-    expect(findResult!.decision).toBe('deny')
+    expect(findResult!.decision).toBe('hard_deny')
   })
 })
 
 // ─── Passthrough (non-Bash, empty) ───────────────────────────────────────────
 
 describe('passthrough', () => {
-  test('should passthrough non-Bash tools', () => {
-    expectPassthrough({
+  test('should allow safe tools (Read, Glob, Grep)', () => {
+    expectAllow({
       ...STUB_BASE,
       tool_name: 'Read',
-      tool_input: { command: 'ls' },
-    })
+      tool_input: { file_path: '/tmp/test.ts' },
+    }, 'Safe tool: Read')
+    expectAllow({
+      ...STUB_BASE,
+      tool_name: 'Glob',
+      tool_input: { pattern: '*.ts' },
+    }, 'Safe tool: Glob')
+    expectAllow({
+      ...STUB_BASE,
+      tool_name: 'Grep',
+      tool_input: { pattern: 'foo' },
+    }, 'Safe tool: Grep')
+  })
+
+  test('should passthrough unknown tools', () => {
     expectPassthrough({
       ...STUB_BASE,
-      tool_name: 'Write',
-      tool_input: { command: 'echo' },
+      tool_name: 'SomeUnknownTool',
+      tool_input: {},
     })
-    expectPassthrough({ ...STUB_BASE, tool_name: 'Edit', tool_input: {} })
   })
 
   test('should passthrough when command is empty', () => {
@@ -519,13 +531,17 @@ describe('allow: git write operations', () => {
 
 // ─── ALLOW: Git push ─────────────────────────────────────────────────────────
 
-describe('allow: git push (non-force)', () => {
-  test('should allow git push', () => {
+describe('git push decisions', () => {
+  test('should allow git push (no target)', () => {
     expectAllow(bash('git push'), 'Safe git push (non-force)')
   })
 
-  test('should allow git push origin main', () => {
-    expectAllow(bash('git push origin main'), 'Safe git push (non-force)')
+  test('should soft_deny git push origin main (push to default branch)', () => {
+    expectPassthrough(bash('git push origin main'))
+  })
+
+  test('should soft_deny git push origin master (push to default branch)', () => {
+    expectPassthrough(bash('git push origin master'))
   })
 
   test('should allow git push -u origin feature', () => {
@@ -535,15 +551,19 @@ describe('allow: git push (non-force)', () => {
     )
   })
 
-  test('should passthrough git push --force', () => {
+  test('should soft_deny git push --force (force push)', () => {
     expectPassthrough(bash('git push --force origin main'))
   })
 
-  test('should passthrough git push -f', () => {
+  test('should soft_deny git push --force-with-lease', () => {
+    expectPassthrough(bash('git push --force-with-lease origin feature'))
+  })
+
+  test('should soft_deny git push -f', () => {
     expectPassthrough(bash('git push -f origin main'))
   })
 
-  test('should passthrough git push with combined short flags containing f', () => {
+  test('should soft_deny git push with combined short flags containing f', () => {
     expectPassthrough(bash('git push -vf origin feature'))
   })
 
@@ -828,5 +848,181 @@ describe('edge cases', () => {
     // Security regression: leading whitespace must not bypass DENY rules
     expectDeny(bash('  rm -rf /'))
     expectDeny(bash('\trm -rf ~'))
+  })
+})
+
+// ─── Soft deny: Bash commands ───────────────────────────────────────────────
+
+describe('soft_deny: bash commands', () => {
+  const SOFT_DENY_COMMANDS = [
+    'git push --force origin main',
+    'git push -f origin main',
+    'git push origin main',
+    'git push origin master',
+    'git reset --hard',
+    'git reset --hard HEAD~1',
+    'git clean -fd',
+    'git clean -f',
+    'git branch -D feature',
+    'npm publish',
+    'npm publish --access public',
+    'terraform apply',
+    'pulumi apply',
+    'kubectl apply -f deploy.yaml',
+    'kubectl delete pod my-pod',
+    'chmod 777 /tmp/dir',
+    'git commit --no-verify -m "skip hooks"',
+    'nc -l 8080',
+    'python3 -m http.server 8080',
+    'crontab -e',
+    'systemctl enable myservice',
+  ]
+
+  for (const cmd of SOFT_DENY_COMMANDS) {
+    test(`should soft_deny (passthrough): ${cmd}`, () => {
+      expectPassthrough(bash(cmd))
+    })
+  }
+
+  test('evaluateSingleCommand returns soft_deny for git push --force', () => {
+    const result = evaluateSingleCommand('git push --force origin main')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('soft_deny')
+  })
+
+  test('evaluateSingleCommand returns soft_deny for npm publish', () => {
+    const result = evaluateSingleCommand('npm publish')
+    expect(result).not.toBeNull()
+    expect(result!.decision).toBe('soft_deny')
+  })
+
+  test('chain with soft_deny part should passthrough', () => {
+    expectPassthrough(bash('npm test && git push --force origin main'))
+    expectPassthrough(bash('npm test && npm publish'))
+  })
+})
+
+// ─── Write/Edit classifier ──────────────────────────────────────────────────
+
+describe('Write/Edit classifier', () => {
+  function writeInput(filePath: string): PreToolUseHookInput {
+    return { ...STUB_BASE, tool_name: 'Write', tool_input: { file_path: filePath } }
+  }
+
+  function editInput(filePath: string): PreToolUseHookInput {
+    return { ...STUB_BASE, tool_name: 'Edit', tool_input: { file_path: filePath, old_string: 'a', new_string: 'b' } }
+  }
+
+  test('should soft_deny Write to .env file', () => {
+    expectPassthrough(writeInput('.env'))
+    expectPassthrough(writeInput('.env.local'))
+    expectPassthrough(writeInput('path/to/.env'))
+    expectPassthrough(writeInput('/home/user/project/.env.production'))
+  })
+
+  test('should soft_deny Write to .claude/settings', () => {
+    expectPassthrough(writeInput('.claude/settings.json'))
+    expectPassthrough(writeInput('/home/user/.claude/settings'))
+  })
+
+  test('should soft_deny Write to CLAUDE.md', () => {
+    expectPassthrough(writeInput('CLAUDE.md'))
+    expectPassthrough(writeInput('/project/CLAUDE.md'))
+  })
+
+  test('should soft_deny Write to CI/CD configs', () => {
+    expectPassthrough(writeInput('.github/workflows/ci.yml'))
+    expectPassthrough(writeInput('.gitlab-ci.yml'))
+    expectPassthrough(writeInput('Jenkinsfile'))
+    expectPassthrough(writeInput('.circleci/config.yml'))
+  })
+
+  test('should allow Write to project-relative paths', () => {
+    expectAllow(writeInput('src/index.ts'), 'Safe project file write')
+    expectAllow(writeInput('package.json'), 'Safe project file write')
+    expectAllow(writeInput('tests/test.ts'), 'Safe project file write')
+  })
+
+  test('should passthrough Write to absolute paths outside project', () => {
+    expectPassthrough(writeInput('/etc/hosts'))
+    expectPassthrough(writeInput('/usr/local/bin/script'))
+  })
+
+  test('should soft_deny Edit to .env file', () => {
+    expectPassthrough(editInput('.env'))
+  })
+
+  test('should allow Edit to project-relative paths', () => {
+    expectAllow(editInput('src/index.ts'), 'Safe project file write')
+  })
+
+  test('classifyWriteEdit returns correct decisions', () => {
+    expect(classifyWriteEdit('.env')).toEqual({ decision: 'soft_deny', reason: 'Writing to .env file needs user intent verification' })
+    expect(classifyWriteEdit('src/index.ts')).toEqual({ decision: 'allow', reason: 'Safe project file write' })
+    expect(classifyWriteEdit('/etc/hosts')).toBeNull()
+    expect(classifyWriteEdit('')).toBeNull()
+  })
+})
+
+// ─── WebFetch classifier ────────────────────────────────────────────────────
+
+describe('WebFetch classifier', () => {
+  function webfetchInput(url: string): PreToolUseHookInput {
+    return { ...STUB_BASE, tool_name: 'WebFetch', tool_input: { url } }
+  }
+
+  test('should soft_deny fetch to paste services', () => {
+    expectPassthrough(webfetchInput('https://pastebin.com/raw/abc123'))
+    expectPassthrough(webfetchInput('https://hastebin.com/raw/abc'))
+    expectPassthrough(webfetchInput('https://dpaste.org/abc'))
+  })
+
+  test('should soft_deny fetch to file sharing services', () => {
+    expectPassthrough(webfetchInput('https://transfer.sh/abc/file.txt'))
+    expectPassthrough(webfetchInput('https://file.io/abc'))
+    expectPassthrough(webfetchInput('https://0x0.st/abc'))
+  })
+
+  test('should soft_deny script downloads', () => {
+    expectPassthrough(webfetchInput('https://example.com/install.sh'))
+    expectPassthrough(webfetchInput('https://example.com/setup.bash'))
+    expectPassthrough(webfetchInput('https://raw.githubusercontent.com/org/repo/main/script.sh'))
+  })
+
+  test('should allow localhost requests', () => {
+    expectAllow(webfetchInput('http://localhost:3000/api/data'), 'Safe localhost request')
+    expectAllow(webfetchInput('http://127.0.0.1:8080/health'), 'Safe localhost request')
+  })
+
+  test('should passthrough other URLs to AI', () => {
+    expectPassthrough(webfetchInput('https://api.example.com/data'))
+    expectPassthrough(webfetchInput('https://github.com/org/repo'))
+  })
+
+  test('classifyWebFetch returns correct decisions', () => {
+    expect(classifyWebFetch('https://pastebin.com/raw/abc')).toEqual({ decision: 'soft_deny', reason: 'Paste service needs user intent verification' })
+    expect(classifyWebFetch('http://localhost:3000')).toEqual({ decision: 'allow', reason: 'Safe localhost request' })
+    expect(classifyWebFetch('https://example.com')).toBeNull()
+    expect(classifyWebFetch('')).toBeNull()
+  })
+})
+
+// ─── Safe tools allowlist ───────────────────────────────────────────────────
+
+describe('safe tools allowlist', () => {
+  const SAFE_TOOL_NAMES = ['Read', 'Glob', 'Grep', 'LS', 'Search', 'TaskCreate', 'TaskUpdate', 'TaskList', 'TaskGet', 'TodoRead', 'TodoWrite', 'NotebookRead']
+
+  for (const toolName of SAFE_TOOL_NAMES) {
+    test(`should instant-allow: ${toolName}`, () => {
+      expectAllow(
+        { ...STUB_BASE, tool_name: toolName, tool_input: {} },
+        `Safe tool: ${toolName}`,
+      )
+    })
+  }
+
+  test('should passthrough unknown tools (fail-open)', () => {
+    expectPassthrough({ ...STUB_BASE, tool_name: 'CustomTool', tool_input: {} })
+    expectPassthrough({ ...STUB_BASE, tool_name: 'Agent', tool_input: {} })
   })
 })
