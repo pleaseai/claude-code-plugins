@@ -1,0 +1,8 @@
+{
+  "name": "wordpress",
+  "version": "1.0.0",
+  "description": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
+  "license": "NOASSERTION",
+  "keywords": ["wordpress", "blocks", "themes", "plugins", "gutenberg", "php"],
+  "skills": "./.agents/skills/"
+}

@@ -372,6 +372,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/wordpress": {
+      "release-type": "simple",
+      "component": "wordpress",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

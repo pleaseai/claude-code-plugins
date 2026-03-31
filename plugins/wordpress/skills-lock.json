@@ -1,0 +1,75 @@
+{
+  "version": 1,
+  "skills": {
+    "blueprint": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "1bac422b386d74aba6abac2e8db31645a9a126d08673afa04d65604dbc5e6c0d"
+    },
+    "wordpress-router": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "7e1ab6a500f78ecbadde3b9f8277370f7f5d8bc01c014c7bb94f6d5948f2d109"
+    },
+    "wp-abilities-api": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "55cf587899a61413f42139915b35637fcf61c9526eedf291f3e4f49114253466"
+    },
+    "wp-block-development": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "663b1974050e443c3888e714a7204768a45459d07ad0d8102a2f2eca56bb8f9d"
+    },
+    "wp-block-themes": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "ec31dc2e2a224299225fed1be6f6a94085b3fbfdcf57f22d673949063abf24bc"
+    },
+    "wp-interactivity-api": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "50ffcda715b63dfb0f9ca2a2543b9a070fe68f7da89b321295902426e918966c"
+    },
+    "wp-performance": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "580d879ffecd41835e297cbf222443bff6bebf7aaa0efb46852d743249330f9b"
+    },
+    "wp-phpstan": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "66fc5a465493bfa6993459d56d0781f5bfed31dbf0d98f2d538cd5400a10cf65"
+    },
+    "wp-playground": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "1125d6cd0d9097ae478d4b067cf02f2b2e5f0c6690209aa05c97a3e13dbb8921"
+    },
+    "wp-plugin-development": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "3c13a9d2e6e346c9f933918fdf4d191cdba9f2cfe24f87cbcd763d090bbd8014"
+    },
+    "wp-project-triage": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "8df079d09f518217580c8eae57d6edf1827b6a8aabe7d6ec5858ca07cdd81e4d"
+    },
+    "wp-rest-api": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "07d98b54fb41b6dccb0bae9f1a5b0d786776e9438ff5eba17d9dec7db89e5104"
+    },
+    "wp-wpcli-and-ops": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "b04471067f1577112c37870ee564cd06f0787487dc764edf4229f73e3b5981ca"
+    },
+    "wpds": {
+      "source": "wordpress/agent-skills",
+      "sourceType": "github",
+      "computedHash": "1a05f741c9a43026507c8c9641b2dbde4b4928a14038f97322c36ee8b1e88470"
+    }
+  }
+}
