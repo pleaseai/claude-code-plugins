@@ -1,0 +1,29 @@
+plugins/next/.claude-plugin/plugin.json
+  80a5628ac35d409c 1-8
+README.md
+  80a5628ac35d409c 245-249
+release-please-config.json
+  80a5628ac35d409c 386-396
+.claude-plugin/marketplace.json
+  80a5628ac35d409c 498-505
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "58cef94808178a38693cc9c99377a25c64c81480",
+  "prompts": {
+    "80a5628ac35d409c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "e08bcf51-45d1-433f-a8a9-0bd8b1fa42a6",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 32,
+      "total_deletions": 0,
+      "accepted_lines": 32,
+      "overriden_lines": 0
+    }
+  }
+}
