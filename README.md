@@ -247,6 +247,11 @@ Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — co
 
 **Install:** `/plugin install vinext@pleaseai` | **Source:** [plugins/vinext](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vinext)
 
+#### Next.js
+Next.js best practices, caching patterns, and upgrade guidance.
+
+**Install:** `/plugin install next@pleaseai` | **Source:** [plugins/next](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/next)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

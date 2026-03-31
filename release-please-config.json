@@ -394,6 +394,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/next": {
+      "release-type": "simple",
+      "component": "next",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
