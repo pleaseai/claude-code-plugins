@@ -1,0 +1,25 @@
+.please/docs/tracks/index.md
+  e7f89610e2767315 16
+.please/docs/tracks/active/gatekeeper-v2-20260331/metadata.json
+  e7f89610e2767315 4,6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "d787722a5a8a722367221c96a0b5016d8ad9c131",
+  "prompts": {
+    "e7f89610e2767315": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3e049f0-41ef-4a91-a05c-5ceefce11be7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 3,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
