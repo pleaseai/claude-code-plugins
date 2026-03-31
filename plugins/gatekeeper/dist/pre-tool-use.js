@@ -1,4 +1,5 @@
 // src/pre-tool-use.ts
+import path from "node:path";
 import process from "node:process";
 
 // src/chain-parser.ts
@@ -125,7 +126,7 @@ function parseChainedCommand(cmd) {
 }
 
 // src/pre-tool-use.ts
-var DENY_RULES = [
+var HARD_DENY_RULES = [
   { pattern: /^rm\s+-rf\s+\/(?:\s|$)/i, reason: "Filesystem root deletion blocked" },
   { pattern: /^rm\s+-rf\s+\/\*(?:\s|$)/i, reason: "Destructive wildcard deletion from root blocked" },
   { pattern: /^rm\s+-rf\s+~(?:\/|$)/i, reason: "Home directory deletion blocked" },
@@ -150,6 +151,27 @@ var DENY_RULES = [
     pattern: /^find\b.*\s(-exec|-execdir|-delete)\b/i,
     reason: "find -exec/-execdir/-delete blocked: potential arbitrary command execution or recursive deletion"
   }
+];
+var SOFT_DENY_RULES = [
+  { pattern: /^git\s+push\s+--force(?:-with-lease)?\b/i, reason: "Force push needs user intent verification" },
+  { pattern: /^git\s+push(?:\s+\S+)*\s-(?!-)\S*f/i, reason: "Force push (short flag) needs user intent verification" },
+  { pattern: /^git\s+push\s+(?:\S+\s+)?(?:origin\s+)?(?:main|master)\s*$/i, reason: "Push to default branch needs user intent verification" },
+  { pattern: /^git\s+reset\s+--hard\b/i, reason: "Hard reset needs user intent verification" },
+  { pattern: /^git\s+clean\s+-[a-z]*f/i, reason: "Git clean needs user intent verification" },
+  { pattern: /^git\s+branch\s+-[a-z]*D/i, reason: "Force branch delete needs user intent verification" },
+  { pattern: /^npm\s+publish\b/i, reason: "Package publish needs user intent verification" },
+  { pattern: /^(terraform|pulumi)\s+apply\b/i, reason: "Infrastructure apply needs user intent verification" },
+  { pattern: /^(terraform|pulumi)\s+destroy\b/i, reason: "Infrastructure destroy needs user intent verification" },
+  { pattern: /^kubectl\s+(apply|delete)\b/i, reason: "Kubernetes mutation needs user intent verification" },
+  { pattern: /(?:^|\s)\.claude\/settings/i, reason: "Agent self-modification needs user intent verification" },
+  { pattern: /\bCLAUDE\.md\b/i, reason: "Agent self-modification needs user intent verification" },
+  { pattern: /^git\s+commit(?:\s+\S+)*\s--no-verify\b/i, reason: "Skipping commit verification needs user intent verification" },
+  { pattern: /\bchmod\s+\S*777\b/i, reason: "Broad permission change needs user intent verification" },
+  { pattern: /\b(nc|ncat|socat)\s+-l/i, reason: "Exposing local service needs user intent verification" },
+  { pattern: /\bpython3?\s+-m\s+http\.server/i, reason: "Exposing HTTP server needs user intent verification" },
+  { pattern: /\b(crontab|systemctl\s+enable|ssh-keygen|ssh-copy-id)\b/i, reason: "Unauthorized persistence needs user intent verification" },
+  { pattern: /\b(?:gcloud(?:\s+\S+)*\s+add-iam|aws\s+iam|az\s+role\s+assignment)\b/i, reason: "Permission grant needs user intent verification" },
+  { pattern: /\bsystemctl\s+stop\s+\S*log/i, reason: "Logging tampering needs user intent verification" }
 ];
 var ALLOW_RULES = [
   {
@@ -177,6 +199,64 @@ var ALLOW_RULES = [
     reason: "Safe docker read operation"
   }
 ];
+var WRITE_EDIT_SOFT_DENY_PATTERNS = [
+  { pattern: /(?:^|[/\\])\.env(?:\.|$)/i, reason: "Writing to .env file needs user intent verification" },
+  { pattern: /(?:^|[/\\])\.claude[/\\]settings/i, reason: "Writing to .claude/settings needs user intent verification" },
+  { pattern: /(?:^|[/\\])CLAUDE\.md$/i, reason: "Writing to CLAUDE.md needs user intent verification" },
+  { pattern: /(?:^|[/\\])\.github[/\\]workflows[/\\]/i, reason: "Writing to CI/CD config needs user intent verification" },
+  { pattern: /(?:^|[/\\])\.gitlab-ci\.yml$/i, reason: "Writing to CI/CD config needs user intent verification" },
+  { pattern: /(?:^|[/\\])Jenkinsfile$/i, reason: "Writing to CI/CD config needs user intent verification" },
+  { pattern: /(?:^|[/\\])\.circleci[/\\]/i, reason: "Writing to CI/CD config needs user intent verification" }
+];
+function classifyWriteEdit(filePath) {
+  if (!filePath) {
+    return null;
+  }
+  for (const rule of WRITE_EDIT_SOFT_DENY_PATTERNS) {
+    if (rule.pattern.test(filePath)) {
+      return { decision: "soft_deny", reason: rule.reason };
+    }
+  }
+  const resolvedPath = path.resolve(filePath);
+  if (resolvedPath === process.cwd() || resolvedPath.startsWith(`${process.cwd()}${path.sep}`)) {
+    return { decision: "allow", reason: "Safe project file write" };
+  }
+  return null;
+}
+var WEBFETCH_SOFT_DENY_PATTERNS = [
+  { pattern: /^https?:\/\/(?:[^/]+\.)?(pastebin\.com|paste\.ee|hastebin\.com|dpaste\.org|ghostbin\.com|rentry\.co)(?:\/|$)/i, reason: "Paste service needs user intent verification" },
+  { pattern: /^https?:\/\/(?:[^/]+\.)?(transfer\.sh|file\.io|0x0\.st|tmpfiles\.org)(?:\/|$)/i, reason: "File sharing service needs user intent verification" },
+  { pattern: /\.(sh|bash|ps1|bat|cmd)(\?|$)/i, reason: "Script download needs user intent verification" },
+  { pattern: /\braw\.githubusercontent\.com\/.*\.(sh|py|rb|js)(?:\?|$)/i, reason: "Raw script download needs user intent verification" }
+];
+function classifyWebFetch(url) {
+  if (!url) {
+    return null;
+  }
+  for (const rule of WEBFETCH_SOFT_DENY_PATTERNS) {
+    if (rule.pattern.test(url)) {
+      return { decision: "soft_deny", reason: rule.reason };
+    }
+  }
+  if (/^https?:\/\/(?:localhost|127\.0\.0\.1|0\.0\.0\.0)(?::\d+)?(?:[/?#]|$)/i.test(url)) {
+    return { decision: "allow", reason: "Safe localhost request" };
+  }
+  return null;
+}
+var SAFE_TOOLS = new Set([
+  "Read",
+  "Glob",
+  "Grep",
+  "LS",
+  "Search",
+  "TaskCreate",
+  "TaskUpdate",
+  "TaskList",
+  "TaskGet",
+  "TodoRead",
+  "TodoWrite",
+  "NotebookRead"
+]);
 function isGitPushNonForce(cmd) {
   return /^git\s+push\b/i.test(cmd) && !/--force(?:-with-lease)?\b|\s-(?!-)\S*f/i.test(cmd);
 }
@@ -197,9 +277,14 @@ function evaluateSingleCommand(cmd) {
   if (!cmd.trim()) {
     return null;
   }
-  for (const rule of DENY_RULES) {
+  for (const rule of HARD_DENY_RULES) {
     if (rule.pattern.test(cmd)) {
-      return { decision: "deny", reason: rule.reason };
+      return { decision: "hard_deny", reason: rule.reason };
+    }
+  }
+  for (const rule of SOFT_DENY_RULES) {
+    if (rule.pattern.test(cmd)) {
+      return { decision: "soft_deny", reason: rule.reason };
     }
   }
   for (const rule of ALLOW_RULES) {
@@ -212,15 +297,27 @@ function evaluateSingleCommand(cmd) {
   }
   return null;
 }
-function evaluate(input) {
-  if (input.tool_name !== "Bash") {
-    return null;
+function decisionToOutput(decision, reason, label) {
+  switch (decision) {
+    case "hard_deny":
+      process.stderr.write(`gatekeeper: deny "${label}" — ${reason}
+`);
+      return makeDecision("deny", reason);
+    case "soft_deny":
+      process.stderr.write(`gatekeeper: soft_deny "${label}" — ${reason}
+`);
+      return null;
+    case "allow":
+      process.stderr.write(`gatekeeper: allow "${label}" — ${reason}
+`);
+      return makeDecision("allow", reason);
   }
-  const cmd = (input.tool_input?.command ?? "").trim();
+}
+function evaluateBash(cmd) {
   if (!cmd) {
     return null;
   }
-  for (const rule of DENY_RULES) {
+  for (const rule of HARD_DENY_RULES) {
     if (rule.pattern.test(cmd)) {
       process.stderr.write(`gatekeeper: deny "${cmd}" — ${rule.reason}
 `);
@@ -236,9 +333,7 @@ function evaluate(input) {
   if (parsed.kind === "single") {
     const result = evaluateSingleCommand(cmd);
     if (result) {
-      process.stderr.write(`gatekeeper: ${result.decision} "${cmd}" — ${result.reason}
-`);
-      return makeDecision(result.decision, result.reason);
+      return decisionToOutput(result.decision, result.reason, cmd);
     }
     process.stderr.write(`gatekeeper: passthrough "${cmd}" — no matching rule
 `);
@@ -248,13 +343,13 @@ function evaluate(input) {
   let firstAllowedResult = null;
   for (const part of parsed.parts) {
     const result = evaluateSingleCommand(part);
-    if (result?.decision === "deny") {
+    if (result?.decision === "hard_deny") {
       process.stderr.write(`gatekeeper: deny "${cmd}" — part "${part}": ${result.reason}
 `);
       return makeDecision("deny", result.reason);
     }
-    if (result === null) {
-      process.stderr.write(`gatekeeper: passthrough "${cmd}" — unknown part "${part}"
+    if (result?.decision === "soft_deny" || result === null) {
+      process.stderr.write(`gatekeeper: passthrough "${cmd}" — ${result ? "soft_deny" : "unknown"} part "${part}"
 `);
       return null;
     }
@@ -272,6 +367,42 @@ function evaluate(input) {
   process.stderr.write(`gatekeeper: allow "${cmd}" — ${compositeReason}
 `);
   return makeDecision("allow", compositeReason);
+}
+function evaluate(input) {
+  const toolName = input.tool_name;
+  const toolInput = input.tool_input;
+  if (SAFE_TOOLS.has(toolName)) {
+    process.stderr.write(`gatekeeper: allow "${toolName}" — safe tool
+`);
+    return makeDecision("allow", `Safe tool: ${toolName}`);
+  }
+  if (toolName === "Bash") {
+    const cmd = (toolInput?.command ?? "").trim();
+    return evaluateBash(cmd);
+  }
+  if (toolName === "Write" || toolName === "Edit") {
+    const filePath = toolInput?.file_path ?? "";
+    const result = classifyWriteEdit(filePath);
+    if (result) {
+      return decisionToOutput(result.decision, result.reason, `${toolName}:${filePath}`);
+    }
+    process.stderr.write(`gatekeeper: passthrough "${toolName}:${filePath}" — no matching rule
+`);
+    return null;
+  }
+  if (toolName === "WebFetch") {
+    const url = toolInput?.url ?? "";
+    const result = classifyWebFetch(url);
+    if (result) {
+      return decisionToOutput(result.decision, result.reason, `WebFetch:${url}`);
+    }
+    process.stderr.write(`gatekeeper: passthrough "WebFetch:${url}" — no matching rule
+`);
+    return null;
+  }
+  process.stderr.write(`gatekeeper: passthrough "${toolName}" — unknown tool
+`);
+  return null;
 }
 function readStdin() {
   return new Promise((resolve, reject) => {
@@ -320,6 +451,9 @@ export {
   isGitPushNonForce,
   evaluateSingleCommand,
   evaluate,
-  DENY_RULES,
+  classifyWriteEdit,
+  classifyWebFetch,
+  SOFT_DENY_RULES,
+  HARD_DENY_RULES,
   ALLOW_RULES
 };
