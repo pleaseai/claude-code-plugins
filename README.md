@@ -242,6 +242,11 @@ Expert-level WordPress knowledge for AI coding assistants — blocks, themes, pl
 
 **Install:** `/plugin install wordpress@pleaseai` | **Source:** [plugins/wordpress](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/wordpress)
 
+#### Vinext
+Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversion, and deployment setup.
+
+**Install:** `/plugin install vinext@pleaseai` | **Source:** [plugins/vinext](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vinext)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -320,6 +325,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install chat-sdk@pleaseai
 /plugin install docus@pleaseai
 /plugin install wordpress@pleaseai
+/plugin install vinext@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
