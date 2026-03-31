@@ -1,0 +1,29 @@
+release-please-config.json
+  69cee957cc3b1737 375,387-396
+plugins/vinext/.claude-plugin/plugin.json
+  69cee957cc3b1737 1-4,9-12
+README.md
+  69cee957cc3b1737 245-249,328
+.claude-plugin/marketplace.json
+  69cee957cc3b1737 490-491,500-505
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "6abc555d10c7dd775fdf0f26991c1fbcfc0161f1",
+  "prompts": {
+    "69cee957cc3b1737": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "921c7040-5ea9-4244-9011-10ffab71ad52",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 33,
+      "total_deletions": 0,
+      "accepted_lines": 33,
+      "overriden_lines": 0
+    }
+  }
+}
