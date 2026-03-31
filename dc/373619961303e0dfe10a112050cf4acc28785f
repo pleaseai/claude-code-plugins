@@ -1,0 +1,23 @@
+README.md
+  96882909d4353d28 322
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "dc373619961303e0dfe10a112050cf4acc28785f",
+  "prompts": {
+    "96882909d4353d28": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "48bf2bf3-2c72-4b61-83e6-eeb3b8db879f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 1,
+      "total_deletions": 0,
+      "accepted_lines": 1,
+      "overriden_lines": 0
+    }
+  }
+}
