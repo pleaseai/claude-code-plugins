@@ -1,0 +1,25 @@
+plugins/gatekeeper/src/pre-tool-use.test.ts
+  e7f89610e2767315 7,214,217,221,224,228,231,235,238,242,245,281-282,284-285,287,294-295,298-312,315-316,534-535,539-540,543-544,554,558-559,562,566,853-1028
+plugins/gatekeeper/src/pre-tool-use.ts
+  e7f89610e2767315 9-10,18-21,51-86,88-89,129-167,169-205,239,250,255-256,258,262-263,265,269,284,286-289,291-300,302,304-307,312-313,333,341,345,349-351,372-418
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.23",
+  "base_commit_sha": "233e31fce8ecb2bb80aa9e42e0cb89352d8f7ad2",
+  "prompts": {
+    "e7f89610e2767315": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b3e049f0-41ef-4a91-a05c-5ceefce11be7",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>",
+      "messages": [],
+      "total_additions": 445,
+      "total_deletions": 56,
+      "accepted_lines": 440,
+      "overriden_lines": 0
+    }
+  }
+}
