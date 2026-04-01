@@ -427,6 +427,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/tiptap": {
+      "release-type": "simple",
+      "component": "tiptap",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
