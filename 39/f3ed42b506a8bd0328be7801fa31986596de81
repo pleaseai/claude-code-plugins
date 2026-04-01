@@ -1,0 +1,29 @@
+release-please-config.json
+  b1f5b41f43fb8749 430-440
+README.md
+  b1f5b41f43fb8749 265-269
+.claude-plugin/marketplace.json
+  b1f5b41f43fb8749 530-537
+plugins/tiptap/.claude-plugin/plugin.json
+  b1f5b41f43fb8749 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.3",
+  "base_commit_sha": "39f3ed42b506a8bd0328be7801fa31986596de81",
+  "prompts": {
+    "b1f5b41f43fb8749": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "18cda207-aa09-4462-bab3-d187042f2b2d",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 32,
+      "total_deletions": 0,
+      "accepted_lines": 32,
+      "overriden_lines": 0
+    }
+  }
+}
