@@ -262,6 +262,11 @@ React Native and Expo best practices for building performant mobile apps.
 
 **Install:** `/plugin install react-native@pleaseai` | **Source:** [plugins/react-native](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/react-native)
 
+#### Tiptap
+Helps coding agents integrate and work with the Tiptap rich text editor — extensions, collaboration, comments, AI, and document conversion.
+
+**Install:** `/plugin install tiptap@pleaseai` | **Source:** [plugins/tiptap](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/tiptap)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

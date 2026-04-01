@@ -527,6 +527,14 @@
       "keywords": ["react-native", "expo", "mobile", "performance"],
       "tags": ["framework", "mobile"],
       "source": "./plugins/react-native"
+    },
+    {
+      "name": "tiptap",
+      "description": "Helps coding agents integrate and work with the Tiptap rich text editor — extensions, collaboration, comments, AI, and document conversion",
+      "category": "framework",
+      "keywords": ["tiptap", "rich-text-editor", "prosemirror", "wysiwyg"],
+      "tags": ["framework", "editor"],
+      "source": "./plugins/tiptap"
     }
   ]
 }
