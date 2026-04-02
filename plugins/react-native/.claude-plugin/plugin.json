@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "React Native and Expo best practices for building performant mobile apps",
   "license": "MIT",
-  "keywords": ["react-native", "expo", "mobile", "performance"],
+  "keywords": [
+    "react-native",
+    "expo",
+    "mobile",
+    "performance"
+  ],
   "skills": "./.agents/skills/"
 }

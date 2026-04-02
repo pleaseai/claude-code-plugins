@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering",
   "license": "MIT",
-  "keywords": ["react", "nextjs", "vercel", "performance", "view-transitions"],
+  "keywords": [
+    "react",
+    "nextjs",
+    "vercel",
+    "performance",
+    "view-transitions"
+  ],
   "skills": "./.agents/skills/"
 }
