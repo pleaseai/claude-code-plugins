@@ -535,6 +535,14 @@
       "keywords": ["tiptap", "rich-text-editor", "prosemirror", "wysiwyg"],
       "tags": ["framework", "editor"],
       "source": "./plugins/tiptap"
+    },
+    {
+      "name": "emulate",
+      "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+      "category": "development",
+      "keywords": ["emulate", "api-emulation", "local-development", "testing"],
+      "tags": ["tooling", "testing"],
+      "source": "./plugins/emulate"
     }
   ]
 }
