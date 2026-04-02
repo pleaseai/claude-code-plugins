@@ -7,6 +7,12 @@
     "url": "https://nextjs.org"
   },
   "license": "NOASSERTION",
-  "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "ssr",
+    "rsc"
+  ],
   "skills": "./.agents/skills/"
 }

@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Helps coding agents integrate and work with the Tiptap rich text editor. Use when building or modifying a rich text editor with Tiptap, installing Tiptap extensions, or implementing features like collaboration, comments, AI, or document conversion.",
   "license": "MIT",
-  "keywords": ["tiptap", "rich-text-editor", "prosemirror"],
+  "keywords": [
+    "tiptap",
+    "rich-text-editor",
+    "prosemirror"
+  ],
   "skills": "./.agents/skills/"
 }

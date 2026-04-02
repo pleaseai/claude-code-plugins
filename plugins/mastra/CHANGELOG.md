@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.1.0...mastra-v1.2.0) (2026-04-02)
+
+
+### Features
+
+* **mastra:** add MCP docs server configuration ([#143](https://github.com/pleaseai/claude-code-plugins/issues/143)) ([82838dc](https://github.com/pleaseai/claude-code-plugins/commit/82838dc9e2aa5e46322d7145840b1015f1454335))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.0.0...mastra-v1.1.0) (2026-03-19)
 
 
