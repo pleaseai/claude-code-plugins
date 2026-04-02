@@ -1,0 +1,23 @@
+plugins/mastra/.claude-plugin/plugin.json
+  6813b691ae4300b2 17-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.4",
+  "base_commit_sha": "1be2f28328ca6cdbe651549979bad122daeea18e",
+  "prompts": {
+    "6813b691ae4300b2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "79b7f088-808b-4659-8fe7-76a78454ee2d",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 7,
+      "total_deletions": 0,
+      "accepted_lines": 7,
+      "overriden_lines": 0
+    }
+  }
+}
