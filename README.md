@@ -267,6 +267,11 @@ Helps coding agents integrate and work with the Tiptap rich text editor — exte
 
 **Install:** `/plugin install tiptap@pleaseai` | **Source:** [plugins/tiptap](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/tiptap)
 
+#### Emulate
+Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS.
+
+**Install:** `/plugin install emulate@pleaseai` | **Source:** [plugins/emulate](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/emulate)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -349,6 +354,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install next@pleaseai
 /plugin install react@pleaseai
 /plugin install react-native@pleaseai
+/plugin install emulate@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
