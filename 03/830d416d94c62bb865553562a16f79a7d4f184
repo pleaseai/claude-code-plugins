@@ -1,0 +1,29 @@
+.claude-plugin/marketplace.json
+  ea9c206b4e50d786 538-545
+README.md
+  ea9c206b4e50d786 270-274,357
+release-please-config.json
+  ea9c206b4e50d786 441-451
+plugins/emulate/.claude-plugin/plugin.json
+  ea9c206b4e50d786 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.4",
+  "base_commit_sha": "03830d416d94c62bb865553562a16f79a7d4f184",
+  "prompts": {
+    "ea9c206b4e50d786": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1528976-2c21-4cea-aaaa-a7f41ea5e21f",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 33,
+      "total_deletions": 0,
+      "accepted_lines": 33,
+      "overriden_lines": 0
+    }
+  }
+}
