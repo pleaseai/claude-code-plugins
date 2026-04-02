@@ -41,5 +41,6 @@
   "plugins/next": "1.0.0",
   "plugins/react": "1.0.0",
   "plugins/react-native": "1.0.0",
-  "plugins/tiptap": "1.0.0"
+  "plugins/tiptap": "1.0.0",
+  "plugins/emulate": "1.0.0"
 }
