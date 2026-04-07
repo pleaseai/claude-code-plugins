@@ -1,0 +1,31 @@
+release-please-config.json
+  18578345c7ee3d55 452-462
+plugins/playwright/.claude-plugin/plugin.json
+  18578345c7ee3d55 1-8
+README.md
+  18578345c7ee3d55 275-279,363
+plugins/playwright/README.md
+  18578345c7ee3d55 1-21
+.claude-plugin/marketplace.json
+  18578345c7ee3d55 546-553
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.5",
+  "base_commit_sha": "4b18048cb8b18d97d0b148e6ae2b73399be0d47d",
+  "prompts": {
+    "18578345c7ee3d55": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "edc768d5-06b5-4566-a1ef-04543a041daf",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 57,
+      "total_deletions": 3,
+      "accepted_lines": 54,
+      "overriden_lines": 0
+    }
+  }
+}
