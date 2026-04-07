@@ -543,6 +543,14 @@
       "keywords": ["emulate", "api-emulation", "local-development", "testing"],
       "tags": ["tooling", "testing"],
       "source": "./plugins/emulate"
+    },
+    {
+      "name": "playwright",
+      "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps via concise CLI commands instead of verbose MCP schemas",
+      "category": "development",
+      "keywords": ["playwright", "browser", "automation", "testing"],
+      "tags": ["tooling", "testing"],
+      "source": "./plugins/playwright"
     }
   ]
 }

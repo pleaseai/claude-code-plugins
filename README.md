@@ -272,6 +272,11 @@ Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, 
 
 **Install:** `/plugin install emulate@pleaseai` | **Source:** [plugins/emulate](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/emulate)
 
+#### Playwright
+Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps via concise CLI commands instead of verbose MCP schemas. Best suited for high-throughput coding agents that balance browser automation with large codebases within limited context windows.
+
+**Install:** `/plugin install playwright@pleaseai` | **Source:** [plugins/playwright](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/playwright)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -355,6 +360,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install react@pleaseai
 /plugin install react-native@pleaseai
 /plugin install emulate@pleaseai
+/plugin install playwright@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

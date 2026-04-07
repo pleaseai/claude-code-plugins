@@ -449,6 +449,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/playwright": {
+      "release-type": "simple",
+      "component": "playwright",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

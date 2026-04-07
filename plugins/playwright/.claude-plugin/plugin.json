@@ -1,0 +1,8 @@
+{
+  "name": "playwright",
+  "version": "1.0.0",
+  "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps via concise CLI commands instead of verbose MCP schemas",
+  "license": "Apache-2.0",
+  "keywords": ["playwright", "browser", "automation", "testing"],
+  "skills": "./.agents/skills/"
+}
