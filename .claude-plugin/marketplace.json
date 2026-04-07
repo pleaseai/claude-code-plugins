@@ -543,6 +543,17 @@
       "keywords": ["emulate", "api-emulation", "local-development", "testing"],
       "tags": ["tooling", "testing"],
       "source": "./plugins/emulate"
+    },
+    {
+      "name": "ask",
+      "description": "ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries",
+      "category": "development",
+      "keywords": ["documentation", "registry", "library", "agent-skills", "ask"],
+      "tags": ["tooling", "documentation"],
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/ask"
+      }
     }
   ]
 }
