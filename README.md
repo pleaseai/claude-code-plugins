@@ -272,6 +272,11 @@ Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, 
 
 **Install:** `/plugin install emulate@pleaseai` | **Source:** [plugins/emulate](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/emulate)
 
+#### ASK
+ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
+
+**Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -355,6 +360,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install react@pleaseai
 /plugin install react-native@pleaseai
 /plugin install emulate@pleaseai
+/plugin install ask@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
