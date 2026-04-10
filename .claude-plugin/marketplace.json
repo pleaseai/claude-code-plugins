@@ -554,6 +554,20 @@
         "source": "github",
         "repo": "pleaseai/ask"
       }
+    },
+    {
+      "name": "gemini",
+      "description": "Gemini CLI integration for Claude Code — use Google's Gemini models from within Claude Code",
+      "category": "ai",
+      "keywords": ["gemini", "google", "ai", "cli"],
+      "tags": ["ai", "cli"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/gemini-plugin-cc",
+        "path": "plugins/gemini",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini"
     }
   ]
 }

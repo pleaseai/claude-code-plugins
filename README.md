@@ -68,6 +68,11 @@ Vercel deployment platform integration. Manage deployments, check build status, 
 
 **Install:** `/plugin install vercel@pleaseai` | **Repository:** [vercel/vercel-plugin](https://github.com/vercel/vercel-plugin)
 
+#### Gemini
+Gemini CLI integration for Claude Code — use Google's Gemini models from within Claude Code.
+
+**Install:** `/plugin install gemini@pleaseai` | **Repository:** [pleaseai/gemini-plugin-cc](https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini)
+
 ---
 
 ### Built-in Plugins
@@ -320,6 +325,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install playwright-cli@pleaseai
 /plugin install vercel@pleaseai
+/plugin install gemini@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
