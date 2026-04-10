@@ -29,7 +29,7 @@
     "skills:cleanup": "bun scripts/cli.ts cleanup"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.6.1",
+    "@antfu/eslint-config": "^8.1.1",
     "eslint": "^10.0.2",
     "@pleaseai/vitest-config": "workspace:*",
     "@commitlint/cli": "^20.4.3",
