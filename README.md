@@ -277,6 +277,11 @@ ASK (Agent Skills Kit) — AI agent skills for managing library documentation re
 
 **Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
 
+#### Gemini
+Gemini CLI integration for Claude Code — use Google's Gemini models from within Claude Code.
+
+**Install:** `/plugin install gemini@pleaseai` | **Source:** [pleaseai/gemini-plugin-cc](https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -361,6 +366,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install react-native@pleaseai
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
+/plugin install gemini@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
