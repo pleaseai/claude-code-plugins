@@ -26,7 +26,7 @@
   "devDependencies": {
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
-    "@vitest/coverage-v8": "^4.0.18",
+    "@vitest/coverage-v8": "^4.1.4",
     "@vitest/ui": "^4.0.18",
     "eslint": "^10.0.2",
     "glob": "^11.0.1",
