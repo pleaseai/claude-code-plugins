@@ -1,0 +1,25 @@
+README.md
+  d17100d34a2eedfa 280-284,369
+.claude-plugin/marketplace.json
+  d17100d34a2eedfa 557-570
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.6",
+  "base_commit_sha": "ee99697f8767ba264c062c8c62c77a57f0c740ef",
+  "prompts": {
+    "d17100d34a2eedfa": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "19efa1e5-b79d-4e57-8165-504e886a0cb8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 20,
+      "total_deletions": 0,
+      "accepted_lines": 20,
+      "overriden_lines": 0
+    }
+  }
+}
