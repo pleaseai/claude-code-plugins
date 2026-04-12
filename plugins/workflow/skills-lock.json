@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "skills": {
+    "workflow": {
+      "source": "vercel/workflow",
+      "sourceType": "github",
+      "computedHash": "5c19da8b46834f37ecd2d7f75da5f013b3c7c2fb7577c2ef192ad72770bfc57a"
+    }
+  }
+}

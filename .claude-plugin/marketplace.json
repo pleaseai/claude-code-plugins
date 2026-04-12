@@ -584,6 +584,14 @@
       "keywords": ["git-ai", "git", "ai", "code-tracking"],
       "tags": ["tooling", "git"],
       "source": "./plugins/git-ai"
+    },
+    {
+      "name": "workflow",
+      "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
+      "category": "development",
+      "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
+      "tags": ["framework", "workflow"],
+      "source": "./plugins/workflow"
     }
   ]
 }
