@@ -1,0 +1,36 @@
+plugins/git-ai/.agents/skills/git-ai-search/SKILL.md
+  f552082b06d73e22 1-389
+.claude-plugin/marketplace.json
+  f552082b06d73e22 571-572,581-586
+plugins/git-ai/.agents/skills/prompt-analysis/SKILL.md
+  f552082b06d73e22 1-587
+plugins/git-ai/.claude-plugin/plugin.json
+  f552082b06d73e22 1-8
+plugins/git-ai/skills-lock.json
+  f552082b06d73e22 1-20
+release-please-config.json
+  f552082b06d73e22 452,464-473
+README.md
+  f552082b06d73e22 290-294
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "dc14b931b350f21267d1d98b96d1654784d02efd",
+  "prompts": {
+    "f552082b06d73e22": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f008ff8f-be0a-4480-b588-e6de82a57a3d",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 2144,
+      "total_deletions": 0,
+      "accepted_lines": 1025,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/901704b07fb59fa585df4ffcf39edcc67da1d61b24be0caa86265d62fc521d21"
+    }
+  }
+}
