@@ -1,0 +1,8 @@
+{
+  "name": "git-ai",
+  "version": "1.0.0",
+  "description": "A Git extension for tracking the AI-generated code in your repos",
+  "license": "Apache-2.0",
+  "keywords": ["git-ai", "git", "ai", "code-tracking"],
+  "skills": "./.agents/skills/"
+}

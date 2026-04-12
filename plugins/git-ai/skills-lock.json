@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "skills": {
+    "ask": {
+      "source": "git-ai-project/git-ai",
+      "sourceType": "github",
+      "computedHash": "4078ed1606c491e95cfd892a701ab01d4f842fda2a2a14322f3989a776b75a85"
+    },
+    "git-ai-search": {
+      "source": "git-ai-project/git-ai",
+      "sourceType": "github",
+      "computedHash": "7d940c8210fb8823036486e68db9541f011f166fb897dd55a623c765827b980b"
+    },
+    "prompt-analysis": {
+      "source": "git-ai-project/git-ai",
+      "sourceType": "github",
+      "computedHash": "2836b2e21be407f19a239b9a316f15974d95b67716aa9271332cb40280c3e99a"
+    }
+  }
+}

@@ -576,6 +576,14 @@
       "keywords": ["pdf", "extraction", "parsing", "markdown", "rag"],
       "tags": ["skill", "document"],
       "source": "./plugins/edgeparse"
+    },
+    {
+      "name": "git-ai",
+      "description": "A Git extension for tracking the AI-generated code in your repos",
+      "category": "development",
+      "keywords": ["git-ai", "git", "ai", "code-tracking"],
+      "tags": ["tooling", "git"],
+      "source": "./plugins/git-ai"
     }
   ]
 }
