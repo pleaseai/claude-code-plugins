@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "skills": {
+    "edgeparse": {
+      "source": "raphaelmansuy/edgeparse",
+      "sourceType": "github"
+    }
+  }
+}

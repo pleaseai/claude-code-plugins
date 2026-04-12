@@ -449,6 +449,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/edgeparse": {
+      "release-type": "simple",
+      "component": "edgeparse",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",

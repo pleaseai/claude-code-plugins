@@ -282,6 +282,11 @@ ASK (Agent Skills Kit) — AI agent skills for managing library documentation re
 
 **Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
 
+#### EdgeParse
+Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements.
+
+**Install:** `/plugin install edgeparse@pleaseai` | **Source:** [plugins/edgeparse](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/edgeparse)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

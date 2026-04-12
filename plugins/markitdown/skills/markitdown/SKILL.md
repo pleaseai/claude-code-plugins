@@ -40,7 +40,7 @@ Do NOT use MarkItDown for:
 
 - **Plain text files** (`.txt`, `.md`, `.csv`, `.json`, `.xml`, `.html`): Use Claude's native Read tool — it handles these perfectly and is faster.
 - **Source code files** (`.py`, `.js`, `.ts`, `.java`, etc.): Use the Read tool directly.
-- **PDF files when only basic reading is needed**: Claude's Read tool natively supports PDF. Only use MarkItDown for PDFs when you need specific Markdown formatting or when the PDF is complex.
+- **PDF files**: For PDF extraction, prefer **EdgeParse** (`edgeparse` plugin) — it is faster, preserves document structure (headings, tables, bounding boxes), and supports page ranges and borderless tables. Only fall back to MarkItDown for PDFs when EdgeParse is not installed.
 - **Images when the user wants visual analysis**: Use Claude's native image understanding instead of OCR-only text extraction.
 
 ## How to Use
