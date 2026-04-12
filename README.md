@@ -292,6 +292,11 @@ A Git extension for tracking the AI-generated code in your repos.
 
 **Install:** `/plugin install git-ai@pleaseai` | **Source:** [plugins/git-ai](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/git-ai)
 
+#### Workflow
+Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript.
+
+**Install:** `/plugin install workflow@pleaseai` | **Source:** [plugins/workflow](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/workflow)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -377,6 +382,7 @@ Once the marketplace is added, install any plugin individually:
 /plugin install react-native@pleaseai
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
+/plugin install workflow@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
