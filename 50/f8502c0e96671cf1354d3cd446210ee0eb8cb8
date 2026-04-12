@@ -1,0 +1,37 @@
+plugins/edgeparse/.agents/skills/edgeparse/references/api.md
+  e0480b97cf366657 1-228
+plugins/edgeparse/skills-lock.json
+  e0480b97cf366657 1-9
+plugins/edgeparse/.claude-plugin/plugin.json
+  e0480b97cf366657 1-14
+plugins/edgeparse/.agents/skills/edgeparse/references/patterns.md
+  e0480b97cf366657 1-308
+release-please-config.json
+  e0480b97cf366657 452-462
+plugins/markitdown/skills/markitdown/SKILL.md
+  e0480b97cf366657 43
+.claude-plugin/marketplace.json
+  e0480b97cf366657 571-578
+README.md
+  e0480b97cf366657 285-289
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "50f8502c0e96671cf1354d3cd446210ee0eb8cb8",
+  "prompts": {
+    "e0480b97cf366657": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "945eb3a5-c8a0-4762-9946-f690d5b5eb34",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 848,
+      "total_deletions": 1,
+      "accepted_lines": 848,
+      "overriden_lines": 0
+    }
+  }
+}
