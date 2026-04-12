@@ -1,0 +1,32 @@
+plugins/workflow/skills-lock.json
+  86379241a09f3ed6 1-10
+README.md
+  86379241a09f3ed6 295-299,385
+plugins/workflow/.claude-plugin/plugin.json
+  86379241a09f3ed6 1-8
+release-please-config.json
+  86379241a09f3ed6 463,475-484
+.claude-plugin/marketplace.json
+  86379241a09f3ed6 579-580,589-594
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "ec6eac5d9b969cfcd2bf7a274976b3ebbf98170a",
+  "prompts": {
+    "86379241a09f3ed6": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "36362278-3887-42dd-a6f6-c947b4df3230",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 43,
+      "total_deletions": 0,
+      "accepted_lines": 40,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/ce4e40c89d985d2144f8ad284666d650de3ab3b7b8312f4b977b016623548195"
+    }
+  }
+}
