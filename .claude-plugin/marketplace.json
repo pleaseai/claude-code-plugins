@@ -568,6 +568,14 @@
         "ref": "main"
       },
       "homepage": "https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini"
+    },
+    {
+      "name": "edgeparse",
+      "description": "Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements",
+      "category": "document",
+      "keywords": ["pdf", "extraction", "parsing", "markdown", "rag"],
+      "tags": ["skill", "document"],
+      "source": "./plugins/edgeparse"
     }
   ]
 }
