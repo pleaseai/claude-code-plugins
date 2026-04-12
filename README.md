@@ -287,6 +287,11 @@ Extract structured content from any PDF — headings, tables, paragraphs, lists,
 
 **Install:** `/plugin install edgeparse@pleaseai` | **Source:** [plugins/edgeparse](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/edgeparse)
 
+#### Git AI
+A Git extension for tracking the AI-generated code in your repos.
+
+**Install:** `/plugin install git-ai@pleaseai` | **Source:** [plugins/git-ai](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/git-ai)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

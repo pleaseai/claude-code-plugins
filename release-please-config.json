@@ -460,6 +460,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/git-ai": {
+      "release-type": "simple",
+      "component": "git-ai",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
