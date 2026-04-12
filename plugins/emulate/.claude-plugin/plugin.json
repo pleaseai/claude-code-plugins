@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
   "license": "Apache-2.0",
-  "keywords": ["emulate", "api-emulation", "local-development", "testing"],
+  "keywords": [
+    "emulate",
+    "api-emulation",
+    "local-development",
+    "testing"
+  ],
   "skills": "./.agents/skills/"
 }

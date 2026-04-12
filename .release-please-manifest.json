@@ -31,7 +31,7 @@
   "plugins/google-workspace": "1.0.0",
   "plugins/nuxt-i18n": "1.1.0",
   "plugins/nuxt-seo": "1.0.0",
-  "plugins/markitdown": "1.1.0",
+  "plugins/markitdown": "1.2.0",
   "plugins/ast-grep": "1.0.0",
   "plugins/chat-sdk": "1.0.0",
   "plugins/docus": "1.0.0",
@@ -41,5 +41,7 @@
   "plugins/next": "1.0.0",
   "plugins/react": "1.0.0",
   "plugins/react-native": "1.0.0",
-  "plugins/tiptap": "1.0.0"
+  "plugins/tiptap": "1.0.0",
+  "plugins/emulate": "1.0.0",
+  "plugins/edgeparse": "1.0.0"
 }
