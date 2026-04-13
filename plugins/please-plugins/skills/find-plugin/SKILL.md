@@ -35,8 +35,8 @@ Skills offer richer descriptions than the top-level plugin metadata. Scan skill 
 # List all available skill directories
 find ~/.claude/plugins/marketplaces/pleaseai/plugins/*/skills -maxdepth 1 -type d 2>/dev/null
 
-# Search skill descriptions for the user's query terms
-grep -ril "<search-terms>" ~/.claude/plugins/marketplaces/pleaseai/plugins/*/skills/*/SKILL.md 2>/dev/null
+# Search skill descriptions for the user's query terms (covers both skills/ and .agents/skills/ layouts)
+grep -rilF "<search-terms>" ~/.claude/plugins/marketplaces/pleaseai/plugins/*/{skills,.agents/skills}/*/SKILL.md 2>/dev/null
 ```
 
 Read the SKILL.md frontmatter (`name` and `description` fields) of matching skills to understand what each one provides.
@@ -49,7 +49,7 @@ Score each plugin against the user's query:
 2. **Skill-level match** — a skill description within the plugin matches the query
 3. **Semantic match** — the plugin's description addresses the user's underlying need even without exact keyword overlap
 
-Prioritize plugins that solve the user's immediate problem over tangentially related ones.
+Prioritize plugins that solve the user's immediate problem over tangentially related ones. Deduplicate the combined results from Step 1 and Step 2 before ranking — the same plugin may appear in both the catalog and skill search.
 
 ## Step 4: Present Recommendations
 
@@ -72,10 +72,10 @@ If a plugin is already installed, indicate that:
 
 Check installed status from the installed plugins registry:
 ```bash
-cat ~/.claude/plugins/installed_plugins.json
+jq -r '.plugins | keys[]' ~/.claude/plugins/installed_plugins.json
 ```
 
-Look for keys matching `{plugin-name}@pleaseai` in the `plugins` object. A plugin is installed if its key exists in this file.
+Check if `{plugin-name}@pleaseai` appears in the output. A plugin is installed if its key exists in this file.
 
 ## Step 5: Offer Installation
 
