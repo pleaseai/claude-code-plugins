@@ -1,0 +1,24 @@
+plugins/please-plugins/skills/find-plugin/SKILL.md
+  e25028f676334117 38-39,52,75,78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "2851cd3cc48d6c3153de082aae7670e91d0a8bc7",
+  "prompts": {
+    "e25028f676334117": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7f1c9e7a-53b4-4938-b7b1-52eeff59d98b",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 5,
+      "accepted_lines": 5,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/34de3ffc4705e11bfef4f562c3228720b5252054b2d4b4ae33a156ac59a4c050"
+    }
+  }
+}
