@@ -297,6 +297,11 @@ Workflow SDK: Build durable, reliable, and observable apps and AI Agents in Type
 
 **Install:** `/plugin install workflow@pleaseai` | **Source:** [plugins/workflow](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/workflow)
 
+#### Portless
+Replace port numbers with stable, named local URLs. For humans and agents.
+
+**Install:** `/plugin install portless@pleaseai` | **Source:** [plugins/portless](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/portless)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

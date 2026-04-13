@@ -482,6 +482,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/portless": {
+      "release-type": "simple",
+      "component": "portless",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
