@@ -1,0 +1,32 @@
+.claude-plugin/marketplace.json
+  f1dfa3c53f589277 595-602
+README.md
+  f1dfa3c53f589277 300-304
+plugins/portless/skills-lock.json
+  f1dfa3c53f589277 1-10
+plugins/portless/.claude-plugin/plugin.json
+  f1dfa3c53f589277 1-8
+release-please-config.json
+  f1dfa3c53f589277 485-495
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.2.8",
+  "base_commit_sha": "c895c9db4090d0f1be4ef1898757fbb65708a52f",
+  "prompts": {
+    "f1dfa3c53f589277": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "66837973-56ae-4c0a-bf12-0f59ac0543ef",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 338,
+      "total_deletions": 0,
+      "accepted_lines": 338,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/e5bf4b3f2e30383eff22d2ee15621bb488124b667797f1d90166defd0f07e6f7"
+    }
+  }
+}
