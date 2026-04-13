@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
   "license": "Apache-2.0",
-  "keywords": ["portless", "localhost", "dev-server", "proxy"],
+  "keywords": [
+    "portless",
+    "localhost",
+    "dev-server",
+    "proxy"
+  ],
   "skills": "./.agents/skills/"
 }
