@@ -3,6 +3,12 @@
   "version": "1.0.0",
   "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
   "license": "Apache-2.0",
-  "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
+  "keywords": [
+    "workflow",
+    "durable",
+    "vercel",
+    "typescript",
+    "ai-agents"
+  ],
   "skills": "./.agents/skills/"
 }

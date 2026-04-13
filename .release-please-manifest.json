@@ -43,5 +43,8 @@
   "plugins/react-native": "1.0.0",
   "plugins/tiptap": "1.0.0",
   "plugins/emulate": "1.0.0",
-  "plugins/edgeparse": "1.0.0"
+  "plugins/edgeparse": "1.0.0",
+  "plugins/git-ai": "1.0.0",
+  "plugins/workflow": "1.0.0",
+  "plugins/portless": "1.0.0"
 }
