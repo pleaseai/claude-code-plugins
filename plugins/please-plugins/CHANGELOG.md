@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.2.0...please-plugins-v1.3.0) (2026-04-13)
+
+
+### Features
+
+* **please-plugins:** add find-plugin skill for marketplace discovery ([#156](https://github.com/pleaseai/claude-code-plugins/issues/156)) ([8dd7abb](https://github.com/pleaseai/claude-code-plugins/commit/8dd7abbefb30938bd1ae4079268c81abc33c3950))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.1.0...please-plugins-v1.2.0) (2026-03-31)
 
 
