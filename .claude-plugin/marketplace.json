@@ -592,6 +592,14 @@
       "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
       "tags": ["framework", "workflow"],
       "source": "./plugins/workflow"
+    },
+    {
+      "name": "portless",
+      "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
+      "category": "development",
+      "keywords": ["portless", "localhost", "dev-server", "proxy"],
+      "tags": ["tooling", "dev-server"],
+      "source": "./plugins/portless"
     }
   ]
 }
