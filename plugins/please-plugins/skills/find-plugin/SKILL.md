@@ -36,7 +36,7 @@ Skills offer richer descriptions than the top-level plugin metadata. Scan skill 
 find ~/.claude/plugins/marketplaces/pleaseai/plugins/*/skills -maxdepth 1 -type d 2>/dev/null
 
 # Search skill descriptions for the user's query terms (covers both skills/ and .agents/skills/ layouts)
-grep -rilF "<search-terms>" ~/.claude/plugins/marketplaces/pleaseai/plugins/*/{skills,.agents/skills}/*/SKILL.md 2>/dev/null
+grep -rilFi "<search-terms>" ~/.claude/plugins/marketplaces/pleaseai/plugins/*/{skills,.agents/skills}/*/SKILL.md 2>/dev/null
 ```
 
 Read the SKILL.md frontmatter (`name` and `description` fields) of matching skills to understand what each one provides.
