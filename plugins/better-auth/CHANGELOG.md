@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.1.0...better-auth-v1.2.0) (2026-04-23)
+
+
+### Features
+
+* **better-auth:** add use-better-auth workflow skill ([#159](https://github.com/pleaseai/claude-code-plugins/issues/159)) ([0945eb2](https://github.com/pleaseai/claude-code-plugins/commit/0945eb2b955c8f37dcd0b98fcdf972986030e88a))
+
 ## [1.2.0] - 2026-04-23
 
 
