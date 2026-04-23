@@ -23,7 +23,7 @@
   "plugins/nuxt-ui": "1.3.0",
   "plugins/supabase": "1.1.0",
   "plugins/prisma": "1.1.0",
-  "plugins/better-auth": "1.1.0",
+  "plugins/better-auth": "1.2.0",
   "plugins/agent-browser": "1.1.0",
   "plugins/ai-sdk": "1.1.0",
   "plugins/slack-agent": "1.0.0",
