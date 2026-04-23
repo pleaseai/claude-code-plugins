@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.2.0...mastra-v1.3.0) (2026-04-23)
+
+
+### Features
+
+* **mastra:** add use-mastra workflow skill ([#161](https://github.com/pleaseai/claude-code-plugins/issues/161)) ([dd0ad46](https://github.com/pleaseai/claude-code-plugins/commit/dd0ad46ae87c29a88c54f8dbb91a68b36c369e99))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.1.0...mastra-v1.2.0) (2026-04-02)
 
 
