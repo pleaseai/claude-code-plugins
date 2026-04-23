@@ -75,14 +75,16 @@ await run.start({ inputData });
 
 ## Agent forgets previous messages across turns
 
-**Cause.** One of: (a) no `storage` on `Memory`, (b) `threadId` differs between calls, (c) `resourceId` missing or changing.
+**Cause.** One of: (a) no `storage` on `Memory`, (b) `memory.thread` differs between calls, (c) `memory.resource` missing or changing.
 
 **Fix.** Keep both IDs stable across a single user's conversation:
 
 ```ts
 await agent.generate("…", {
-  threadId: "user-42::support",
-  resourceId: "user-42",
+  memory: {
+    thread: "user-42::support",
+    resource: "user-42",
+  },
 });
 ```
 

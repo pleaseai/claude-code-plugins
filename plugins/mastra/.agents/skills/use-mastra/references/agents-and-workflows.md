@@ -51,10 +51,12 @@ export const mastra = new Mastra({
   storage,
 });
 
-// 5. Invocation — threadId + resourceId must be stable across turns for memory to persist.
+// 5. Invocation — thread + resource IDs must be stable across turns for memory to persist.
 await supportAgent.generate("What's the weather in Berlin?", {
-  threadId: "user-42::support",
-  resourceId: "user-42",
+  memory: {
+    thread: "user-42::support",
+    resource: "user-42",
+  },
 });
 ```
 
@@ -130,7 +132,7 @@ const doc = MDocument.fromText(sourceText);
 const chunks = await doc.chunk({ strategy: "recursive", size: 512, overlap: 50 });
 
 // Use your vector store's `upsert` + your embedder to persist the chunks; then wire a
-// vector-query tool into an agent via `createTool` from @mastra/rag.
+// vector-query tool into an agent via `createVectorQueryTool` from @mastra/rag.
 ```
 
 Verify against installed version before shipping:
