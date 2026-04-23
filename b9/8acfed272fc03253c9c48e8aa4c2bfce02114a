@@ -1,0 +1,26 @@
+plugins/mastra/.agents/skills/use-mastra/references/common-errors.md
+  1d284058d78160ca 78,84-87
+plugins/mastra/.agents/skills/use-mastra/references/agents-and-workflows.md
+  1d284058d78160ca 54,56-59,135
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "b98acfed272fc03253c9c48e8aa4c2bfce02114a",
+  "prompts": {
+    "1d284058d78160ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92bb7f1f-14a7-456f-a37a-6c00279500a1",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 37,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/01b1e9b3887410f57ad3330e2afa615d8bf5ae9d38a3cd4b46bb0242a468906b"
+    }
+  }
+}
