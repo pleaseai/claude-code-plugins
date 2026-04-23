@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0] - 2026-04-23
+
+
+### Features
+
+* **better-auth:** add hand-written `use-better-auth` skill for grounding agent work in the installed version via the `ask` CLI, mirroring Vercel's `use-ai-sdk` workflow skill
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.0.0...better-auth-v1.1.0) (2026-03-19)
 
 
