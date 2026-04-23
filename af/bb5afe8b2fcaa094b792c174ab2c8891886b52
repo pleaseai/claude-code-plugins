@@ -1,0 +1,26 @@
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  1d284058d78160ca 1-3
+.claude/agent-memory/review-review-cubic-reviewer/pr161-mastra-skill.md
+  1d284058d78160ca 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.2",
+  "base_commit_sha": "afbb5afe8b2fcaa094b792c174ab2c8891886b52",
+  "prompts": {
+    "1d284058d78160ca": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "92bb7f1f-14a7-456f-a37a-6c00279500a1",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 31,
+      "total_deletions": 7,
+      "accepted_lines": 53,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/ba378696d951b43ea7771d57c5c193daee8d5216d5c817504b230093a437494b"
+    }
+  }
+}
