@@ -302,6 +302,11 @@ Replace port numbers with stable, named local URLs. For humans and agents.
 
 **Install:** `/plugin install portless@pleaseai` | **Source:** [plugins/portless](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/portless)
 
+#### Zod
+TypeScript-first schema validation with static type inference — version-aware skill covering Zod v3 and v4 differences (entry points, error formatting, refinements).
+
+**Install:** `/plugin install zod@pleaseai` | **Source:** [plugins/zod](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/zod)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

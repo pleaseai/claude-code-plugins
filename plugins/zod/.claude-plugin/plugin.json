@@ -1,0 +1,21 @@
+{
+  "name": "zod",
+  "version": "1.0.0",
+  "description": "TypeScript-first schema validation with static type inference - version-aware skill for Zod v3 and v4",
+  "author": {
+    "name": "Zod",
+    "url": "https://github.com/colinhacks/zod"
+  },
+  "homepage": "https://zod.dev",
+  "repository": "https://github.com/colinhacks/zod",
+  "license": "MIT",
+  "keywords": [
+    "zod",
+    "validation",
+    "schema",
+    "typescript"
+  ],
+  "skills": [
+    "./skills/"
+  ]
+}

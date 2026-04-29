@@ -600,6 +600,14 @@
       "keywords": ["portless", "localhost", "dev-server", "proxy"],
       "tags": ["tooling", "dev-server"],
       "source": "./plugins/portless"
+    },
+    {
+      "name": "zod",
+      "description": "TypeScript-first schema validation with static type inference - version-aware skill for Zod v3 and v4",
+      "category": "development",
+      "keywords": ["zod", "validation", "schema", "typescript"],
+      "tags": ["validation", "typescript"],
+      "source": "./plugins/zod"
     }
   ]
 }
