@@ -234,31 +234,39 @@ z.string().refine((val) => val.includes("@"), {
 ### Multi-issue refinement
 
 ```ts
-// v4 — preferred: .check()
-const UniqueStringArray = z.array(z.string()).check((ctx) => {
-  if (ctx.value.length > 3) {
-    ctx.issues.push({
+// both — .superRefine() is the canonical multi-issue API in v3 and v4
+const UniqueStringArray = z.array(z.string()).superRefine((val, ctx) => {
+  if (val.length > 3) {
+    ctx.addIssue({
       code: "too_big",
       maximum: 3,
       origin: "array",
       inclusive: true,
       message: "Too many items",
-      input: ctx.value,
+      input: val,
     });
   }
+  if (val.length !== new Set(val).size) {
+    ctx.addIssue({
+      code: "custom",
+      message: "No duplicates allowed",
+      input: val,
+    });
+  }
+});
+```
+
+`.check()` is a lower-level v4-only alternative — more verbose but faster in hot paths. Use it when you need raw control of issue objects:
+
+```ts
+// v4 only — lower-level
+const UniqueStringArrayCheck = z.array(z.string()).check((ctx) => {
   if (ctx.value.length !== new Set(ctx.value).size) {
     ctx.issues.push({
       code: "custom",
       message: "No duplicates allowed",
       input: ctx.value,
     });
-  }
-});
-
-// v3 — .superRefine() (also still works in v4 but is deprecated)
-const UniqueStringArrayV3 = z.array(z.string()).superRefine((val, ctx) => {
-  if (val.length !== new Set(val).size) {
-    ctx.addIssue({ code: z.ZodIssueCode.custom, message: "No duplicates" });
   }
 });
 ```
@@ -335,7 +343,6 @@ type UserId = z.infer<typeof UserId>;    // string & { [BRAND]: "UserId" }
 ## What to avoid
 
 - `z.lazy(() => ...)` in v4 — use a getter instead. `z.lazy` still exists for non-object recursion but the getter pattern is the canonical solution.
-- `.superRefine()` in v4 — deprecated; use `.check()`.
 - `z.string({ message, errorMap })` separate options — use unified `error` (v4) or stick with v3 syntax.
 - `err.format()` on v4 — use `z.treeifyError(err)`.
 - Mixing `zod` and `zod/mini` schemas in the same parse path — pick one.

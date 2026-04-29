@@ -71,7 +71,7 @@ Surface the relevant row whenever rewriting code between versions.
 | --- | --- | --- |
 | Simple refinement | `.refine(fn, "msg")` | `.refine(fn, "msg")` (unchanged) |
 | Async refinement | `.refine(async fn, "msg")` + `parseAsync` | `.refine(async fn, "msg")` + `parseAsync` (unchanged) |
-| Multi-issue refinement | `.superRefine((val, ctx) => { ctx.addIssue(...) })` | `.check(({ value, issues }) => { issues.push(...) })`. `.superRefine` still works but is deprecated. |
+| Multi-issue refinement | `.superRefine((val, ctx) => { ctx.addIssue(...) })` (canonical v3 API) | `.superRefine` remains the recommended high-level API; `.check(({ value, issues }) => { issues.push(...) })` is a lower-level alternative for perf-sensitive paths |
 | Replace value during validation | `.transform(fn)` (changes inferred type) | `.transform(fn)` or `.overwrite(fn)` (overwrite preserves the type) |
 
 ### Schema methods
@@ -99,7 +99,7 @@ Surface the relevant row whenever rewriting code between versions.
 - `z.prettifyError(err)` — human-readable error string.
 - `z.treeifyError(err)` — replaces deprecated `z.formatError(err)`.
 - `.overwrite(fn)` — like `.transform` but preserves the inferred type.
-- `.check(...)` (chainable on schemas; replaces `.superRefine`).
+- `.check(...)` (chainable on schemas; lower-level alternative to `.superRefine` for full control over generated issue objects).
 - `z.config({ customError })` — global error map registration.
 - `zod/mini` — functional, tree-shakable variant.
 

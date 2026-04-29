@@ -35,7 +35,7 @@ Zod 4 (released 2026) was a major rewrite. Many APIs that were canonical in v3 a
 
 - `err.format()` / `err.flatten()` (v3 instance methods) — in v4 these are top-level functions: `z.treeifyError(err)` / `z.flattenError(err)`. `z.formatError()` exists but is **deprecated** in favour of `z.treeifyError()`.
 - `z.string({ message, errorMap })` (v3) — v4 unifies these into a single `error` param: `z.string({ error: "Bad!" })` or `z.string({ error: (iss) => "..." })`.
-- `.superRefine()` — deprecated in v4. Use `.check()` instead.
+- `.superRefine()` is **still the recommended** v4 API for multi-issue refinements. `.check()` exists as a lower-level, more verbose alternative for performance-sensitive paths — not as a replacement.
 - `error instanceof z.ZodError` — works for the regular `zod` package; for `zod/mini` use `error instanceof z.core.$ZodError` (the parent class).
 - Codecs (`z.codec(...)`) — only exist in `zod@4.1+`. Do not suggest them on v3 or earlier 4.x.
 
@@ -45,7 +45,7 @@ When working with Zod:
 2. Verify every API name, method signature, and option shape against the source or bundled `.d.ts` before generating code. Never invent method names.
 3. Cross-reference upstream docs **at the matching version pin** ([`references/versions.md`](references/versions.md) has the v4.3.6 / v3.25.76 links) — not `main`, which tracks the latest release.
 4. Run typecheck after every change. Zod schemas are heavily inferred and silent type drift is rare.
-5. Surface deprecations to the user instead of silently emitting either pattern (e.g. `.superRefine` works but is deprecated in v4 — say so).
+5. Surface API trade-offs to the user instead of silently emitting either pattern (e.g. `.superRefine` is recommended in v4; `.check()` is a lower-level alternative for performance-sensitive paths — clarify when relevant).
 
 If documentation cannot be found locally or remotely to back an answer, say so explicitly.
 
@@ -115,7 +115,7 @@ node -e "const v=require('zod/package.json').version; console.log(v.startsWith('
 
 | Detected | Default import | Errors API | Refinement API | Codecs |
 | --- | --- | --- | --- | --- |
-| v4 (≥4.0.0) | `import * as z from "zod"` | `z.treeifyError`, `z.prettifyError`, `z.flattenError` | `.refine()`, `.check()` | `z.codec()` (4.1+) |
+| v4 (≥4.0.0) | `import * as z from "zod"` | `z.treeifyError`, `z.prettifyError`, `z.flattenError` | `.refine()`, `.superRefine()`, `.check()` (low-level) | `z.codec()` (4.1+) |
 | v3 (≥3.0, <4.0) | `import { z } from "zod"` | `err.format()`, `err.flatten()` | `.refine()`, `.superRefine()` | — |
 | v3.25.x bridge | `import * as z from "zod/v4"` opt-in to v4 alongside v3 | per the chosen path | per the chosen path | — |
 
@@ -165,8 +165,7 @@ Before searching source code, check the most common Zod failure modes:
 2. **`Cannot read property 'parseAsync' of undefined`** — usually an import-path mismatch (`zod` vs `zod/mini`); methods on Mini schemas live on top-level functions instead.
 3. **`Type 'ZodError' is not assignable to type '$ZodError'`** — mixing `zod` and `zod/mini` schemas in the same code path.
 4. **Async refinement throws "Synchronous parsing not supported"** — switch the call site from `parse` to `parseAsync` (or `safeParse` to `safeParseAsync`).
-5. **`.superRefine` flagged as deprecated** (v4) — replace with `.check()` per [`references/parsing-and-errors.md`](references/parsing-and-errors.md).
-6. **Custom error not surfacing** — confirm you're using the unified `error` param (v4) and not the legacy `message`/`errorMap` shape (v3).
+5. **Custom error not surfacing** — confirm you're using the unified `error` param (v4) and not the legacy `message`/`errorMap` shape (v3).
 
 If the symptom is not listed, resolve the source and grep the error string:
 
