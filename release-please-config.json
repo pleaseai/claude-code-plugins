@@ -493,6 +493,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/zod": {
+      "release-type": "simple",
+      "component": "zod",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
