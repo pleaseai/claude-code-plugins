@@ -63,7 +63,7 @@
     "tsdown@pleaseai": false,
     "vueuse@pleaseai": true,
     "fetch@pleaseai": true,
-    "markitdown@pleaseai": true
+    "ask@pleaseai": true
   },
   "extraKnownMarketplaces": {
     "passionfactory": {
