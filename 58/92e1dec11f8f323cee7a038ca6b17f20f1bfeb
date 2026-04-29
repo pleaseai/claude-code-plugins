@@ -1,0 +1,28 @@
+release-please-config.json
+  3d0ea749a26ca9b1 496-506
+.claude-plugin/marketplace.json
+  3d0ea749a26ca9b1 603-610
+README.md
+  3d0ea749a26ca9b1 305-309
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "5892e1dec11f8f323cee7a038ca6b17f20f1bfeb",
+  "prompts": {
+    "3d0ea749a26ca9b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04a57b66-51b6-4690-81a0-6963e0b699e9",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 519,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/18f46adc91babea44a9d2e22710f1a20c477fd25636eb1218b130df823c4f533"
+    }
+  }
+}
