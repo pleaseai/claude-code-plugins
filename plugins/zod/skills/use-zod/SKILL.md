@@ -5,13 +5,15 @@ description: 'Answer questions about the Zod schema validation library and help 
 
 ## Prerequisites
 
-Before writing Zod code, verify the installed version and entry points in the current project:
+Verify the `ask` CLI is available (`which ask`). It is the primary tool for reading the exact version installed in this project — it resolves the version from the lockfile, fetches docs/source once, and caches them at `~/.ask/`. If `ask` is not installed, fall back to `node_modules/zod/` and the official site at https://zod.dev (which tracks the latest published v4, not necessarily the installed version).
+
+Before writing Zod code, verify the installed version and entry points:
 
 ```bash
-# installed version (drives everything below)
+# installed version — drives everything below
 cat node_modules/zod/package.json 2>/dev/null | jq -r .version
 
-# subpath exports — confirms which import paths resolve
+# subpath exports — confirms which import paths resolve (zod, zod/mini, zod/v3, zod/v4)
 cat node_modules/zod/package.json 2>/dev/null | jq '.exports | keys'
 ```
 
@@ -39,14 +41,71 @@ Zod 4 (released 2026) was a major rewrite. Many APIs that were canonical in v3 a
 
 When working with Zod:
 
-1. Resolve the installed version first (`node_modules/zod/package.json`).
-2. If unsure whether an API exists in the installed version, grep the bundled `.d.ts`: `rg -n "treeifyError|formatError" node_modules/zod/dist`.
-3. Check upstream docs **at the matching version pin** (links below in [`references/versions.md`](references/versions.md)) — not at `main`, which tracks the latest release.
+1. Resolve the installed version against the local checkout with `ask` (see [Finding Documentation](#finding-documentation) below).
+2. Verify every API name, method signature, and option shape against the source or bundled `.d.ts` before generating code. Never invent method names.
+3. Cross-reference upstream docs **at the matching version pin** ([`references/versions.md`](references/versions.md) has the v4.3.6 / v3.25.76 links) — not `main`, which tracks the latest release.
 4. Run typecheck after every change. Zod schemas are heavily inferred and silent type drift is rare.
-5. Never invent method names. If the user references an API you don't recognise, look it up before answering.
-6. Surface deprecations to the user instead of silently emitting either pattern.
+5. Surface deprecations to the user instead of silently emitting either pattern (e.g. `.superRefine` works but is deprecated in v4 — say so).
 
 If documentation cannot be found locally or remotely to back an answer, say so explicitly.
+
+## Finding Documentation
+
+Resolve the source checkout and docs directory once with `ask`; reuse the paths across reads:
+
+```bash
+SRC=$(ask src zod)                  # checkout root
+DOCS=$(ask docs zod | head -n1)     # candidate docs dir
+```
+
+Both pin to the version in the project's lockfile. To inspect a specific version regardless of the project, append `@version`:
+
+```bash
+SRC_V4=$(ask src zod@4.3.6)
+SRC_V3=$(ask src zod@3.25.76)
+```
+
+### Read the README and docs content
+
+```bash
+cat "$DOCS/README.md"
+ls "$SRC/packages/docs/content"             # v4 docs source (mdx)
+cat "$SRC/packages/docs/content/api.mdx"    # full API reference
+cat "$SRC/packages/docs/content/error-formatting.mdx"
+cat "$SRC/packages/docs/content/error-customization.mdx"
+cat "$SRC/packages/docs/content/codecs.mdx" # v4.1+ only
+```
+
+### Verify a symbol exists in the installed version
+
+```bash
+# top-level functions (v4): treeifyError, prettifyError, flattenError, codec, config
+rg -n "^export (function|const) (treeifyError|prettifyError|flattenError|codec|config)\\b" "$SRC/packages/zod/src"
+
+# instance methods on schemas
+rg -n "(\\.refine|\\.check|\\.superRefine|\\.overwrite|\\.transform|\\.parseAsync)\\b" "$SRC/packages/zod/src"
+
+# subpath exports
+cat "$SRC/packages/zod/package.json" | jq '.exports | keys'
+```
+
+### Find canonical example shapes (tests are the most reliable source)
+
+```bash
+fd -e test.ts . "$SRC/packages/zod/tests"
+rg -n "discriminatedUnion|z\\.codec|treeifyError" "$SRC/packages/zod/tests"
+```
+
+### Fallback when `ask` is unavailable
+
+```bash
+SRC=./node_modules/zod
+ls $SRC/dist
+rg "treeifyError" $SRC/dist                 # confirm v4 helpers shipped in this build
+cat $SRC/package.json | jq .version
+```
+
+Use https://zod.dev only to cross-reference — it always tracks the latest published v4.
 
 ## Version detection — branch v4 vs v3 paths
 
@@ -109,11 +168,11 @@ Before searching source code, check the most common Zod failure modes:
 5. **`.superRefine` flagged as deprecated** (v4) — replace with `.check()` per [`references/parsing-and-errors.md`](references/parsing-and-errors.md).
 6. **Custom error not surfacing** — confirm you're using the unified `error` param (v4) and not the legacy `message`/`errorMap` shape (v3).
 
-If the symptom is not listed:
+If the symptom is not listed, resolve the source and grep the error string:
 
 ```bash
-# resolve the error string inside installed source
-rg -n "error string fragment" node_modules/zod/dist
+rg -n "error string fragment" "$(ask src zod)/packages/zod/src"
+# fallback: rg -n "error string fragment" node_modules/zod/dist
 ```
 
 ## References

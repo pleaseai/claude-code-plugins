@@ -120,9 +120,27 @@ Always link the user to docs at the version that matches their installed package
 
 ## When in doubt
 
-1. `cat node_modules/zod/package.json | jq .version` — read the actual version.
-2. `cat node_modules/zod/package.json | jq '.exports | keys'` — confirm available subpaths.
-3. `rg -n "<symbol>" node_modules/zod/dist` — verify the symbol exists in the installed build before suggesting it.
+Prefer `ask` over `node_modules/` — it resolves the project's lockfile-pinned version and gives you full source (with comments and tests), not just the compiled output.
+
+```bash
+SRC=$(ask src zod)
+cat "$SRC/packages/zod/package.json" | jq .version           # actual installed version
+cat "$SRC/packages/zod/package.json" | jq '.exports | keys'  # available subpaths
+rg -n "<symbol>" "$SRC/packages/zod/src"                     # verify symbol exists
+```
+
+Pin to a specific version regardless of the project:
+
+```bash
+ask src zod@4.3.6   # latest v4
+ask src zod@3.25.76 # latest v3 (with v4 bridge)
+```
+
+Fallback when `ask` is unavailable:
+
+1. `cat node_modules/zod/package.json | jq .version`
+2. `cat node_modules/zod/package.json | jq '.exports | keys'`
+3. `rg -n "<symbol>" node_modules/zod/dist`
 
 <!--
 Source references:
