@@ -1,0 +1,26 @@
+plugins/better-auth/.claude-plugin/plugin.json
+  4b9bee18f0f4561d 3
+plugins/mastra/.claude-plugin/plugin.json
+  4b9bee18f0f4561d 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "fc14f9e53bea0897a44bef31c6039747c6f550fe",
+  "prompts": {
+    "4b9bee18f0f4561d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7a839c60-6b83-4f29-9fa9-d7b24e21740d",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 2,
+      "total_deletions": 16,
+      "accepted_lines": 1689,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/6cf8759598020709d07bf5e626a4ea793aafba21e8b7edc497146e85ae61139b"
+    }
+  }
+}
