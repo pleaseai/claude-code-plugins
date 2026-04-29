@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.3.0...mastra-v1.3.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* **plugins:** move hand-written skills from .agents/skills/ to skills/ ([#164](https://github.com/pleaseai/claude-code-plugins/issues/164)) ([ae33182](https://github.com/pleaseai/claude-code-plugins/commit/ae3318228f07d9c1fbc028b0b1a1fc9e44bb3102))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.2.0...mastra-v1.3.0) (2026-04-23)
 
 

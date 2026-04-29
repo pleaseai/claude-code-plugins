@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.2.0...better-auth-v1.2.1) (2026-04-29)
+
+
+### Bug Fixes
+
+* **plugins:** move hand-written skills from .agents/skills/ to skills/ ([#164](https://github.com/pleaseai/claude-code-plugins/issues/164)) ([ae33182](https://github.com/pleaseai/claude-code-plugins/commit/ae3318228f07d9c1fbc028b0b1a1fc9e44bb3102))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.1.0...better-auth-v1.2.0) (2026-04-23)
 
 
