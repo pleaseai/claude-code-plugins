@@ -1,5 +1,20 @@
 # Changelog
 
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.3.1...mastra-v1.4.0) (2026-04-29)
+
+
+### Features
+
+* **mastra:** add mastra vendor and plugin to marketplace ([#46](https://github.com/pleaseai/claude-code-plugins/issues/46)) ([b840555](https://github.com/pleaseai/claude-code-plugins/commit/b84055558780c3aa7c91ace0df4628dd3dececbd))
+* **mastra:** add MCP docs server configuration ([#143](https://github.com/pleaseai/claude-code-plugins/issues/143)) ([82838dc](https://github.com/pleaseai/claude-code-plugins/commit/82838dc9e2aa5e46322d7145840b1015f1454335))
+* **mastra:** add use-mastra workflow skill ([#161](https://github.com/pleaseai/claude-code-plugins/issues/161)) ([dd0ad46](https://github.com/pleaseai/claude-code-plugins/commit/dd0ad46ae87c29a88c54f8dbb91a68b36c369e99))
+* **nanobanana:** add nanobanana image generation plugin to marketplace ([#69](https://github.com/pleaseai/claude-code-plugins/issues/69)) ([11fbefe](https://github.com/pleaseai/claude-code-plugins/commit/11fbefe230e3f7d9b19c57ee8c3526215f572067))
+
+
+### Bug Fixes
+
+* **plugins:** move hand-written skills from .agents/skills/ to skills/ ([#164](https://github.com/pleaseai/claude-code-plugins/issues/164)) ([ae33182](https://github.com/pleaseai/claude-code-plugins/commit/ae3318228f07d9c1fbc028b0b1a1fc9e44bb3102))
+
 ## [1.3.1](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.3.0...mastra-v1.3.1) (2026-04-29)
 
 
