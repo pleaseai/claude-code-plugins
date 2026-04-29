@@ -1,6 +1,6 @@
 {
   "name": "better-auth",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
   "author": {
     "name": "Better Auth",
@@ -14,5 +14,5 @@
     "auth",
     "typescript"
   ],
-  "skills": "./.agents/skills/"
+  "skills": ["./skills/", "./.agents/skills/"]
 }
