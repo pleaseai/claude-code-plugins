@@ -1,0 +1,32 @@
+plugins/zod/skills/use-zod/references/versions.md
+  3d0ea749a26ca9b1 1-135
+plugins/zod/.claude-plugin/plugin.json
+  3d0ea749a26ca9b1 1-21
+plugins/zod/skills/use-zod/SKILL.md
+  3d0ea749a26ca9b1 1-123
+plugins/zod/skills/use-zod/references/schemas.md
+  3d0ea749a26ca9b1 1-350
+plugins/zod/skills/use-zod/references/parsing-and-errors.md
+  3d0ea749a26ca9b1 1-243
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "bb393acb4cbc2e36ca839fe6b0d2a5bb63550d35",
+  "prompts": {
+    "3d0ea749a26ca9b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04a57b66-51b6-4690-81a0-6963e0b699e9",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 1379,
+      "total_deletions": 2,
+      "accepted_lines": 1377,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/b8cc3c1878575ba6d9302cda326c231079ebc73d621bdb35976ee1fdfdfed2d2"
+    }
+  }
+}
