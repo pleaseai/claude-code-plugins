@@ -14,5 +14,5 @@
     "auth",
     "typescript"
   ],
-  "skills": "./.agents/skills/"
+  "skills": ["./skills/", "./.agents/skills/"]
 }
