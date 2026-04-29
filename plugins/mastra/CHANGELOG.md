@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1] - 2026-04-29
+
+
+### Bug Fixes
+
+* **mastra:** move hand-written `use-mastra` skill from `.agents/skills/` to `skills/` per repo convention. `.agents/skills/` is reserved for vendor-managed skills.sh-installed skills tracked in `skills-lock.json`. The `skills` field in `plugin.json` now uses array form `["./skills/", "./.agents/skills/"]` so both default and vendor paths load. No skill content changed.
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.2.0...mastra-v1.3.0) (2026-04-23)
 
 
