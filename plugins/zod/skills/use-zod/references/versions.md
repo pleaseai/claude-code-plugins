@@ -81,7 +81,7 @@ Surface the relevant row whenever rewriting code between versions.
 | Reject extra object keys | `z.object({...}).strict()` | `z.strictObject({...})` or `z.object({...}).strict()` |
 | Preserve extra object keys | `z.object({...}).passthrough()` | `z.object({...}).loose()` (also: `z.looseObject({...})`) |
 | Pick / omit / partial / required | `.pick`, `.omit`, `.partial`, `.required` | same — but `ZodObject` generics were redesigned, so chained `.extend().omit()` is much cheaper for `tsc` |
-| Recursive schemas | `const Tree: z.ZodType<Node> = z.lazy(() => z.object({...}))` (`z.lazy` + explicit annotation) | Getter pattern: `z.object({ name: z.string(), get children() { return z.array(Self); } })` — annotation only needed for inference edge cases |
+| Recursive schemas | `const Tree: z.ZodType<Node> = z.lazy(() => z.object({...}))` (`z.lazy` + explicit annotation) | Getter pattern: `const Tree = z.object({ name: z.string(), get children() { return z.array(Tree); } })` — schema variable references itself; annotation only needed for inference edge cases |
 | Coercion | `z.coerce.number()` | `z.coerce.number()` (unchanged) |
 | Branded types | `.brand<"Id">()` | `.brand<"Id">()` (unchanged) |
 

@@ -31,7 +31,7 @@ Detect the package manager from the lockfile (`pnpm-lock.yaml` → pnpm, `bun.lo
 
 ## Critical: Do Not Trust Internal Knowledge
 
-Zod 4 (released 2026) was a major rewrite. Many APIs that were canonical in v3 are now deprecated, renamed, or removed. Examples that are commonly miswritten from training data:
+Zod 4 (released 2025) was a major rewrite. Many APIs that were canonical in v3 are now deprecated, renamed, or removed. Examples that are commonly miswritten from training data:
 
 - `err.format()` / `err.flatten()` (v3 instance methods) — in v4 these are top-level functions: `z.treeifyError(err)` / `z.flattenError(err)`. `z.formatError()` exists but is **deprecated** in favour of `z.treeifyError()`.
 - `z.string({ message, errorMap })` (v3) — v4 unifies these into a single `error` param: `z.string({ error: "Bad!" })` or `z.string({ error: (iss) => "..." })`.
