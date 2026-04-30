@@ -1,0 +1,30 @@
+.claude/agent-memory/review-review-issue-fixer/MEMORY.md
+  3d0ea749a26ca9b1 1-3
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  3d0ea749a26ca9b1 4
+.claude/agent-memory/review-review-issue-fixer/project_zod_skill_fixes.md
+  3d0ea749a26ca9b1 1-16
+.claude/agent-memory/review-review-cubic-reviewer/pr168-zod-plugin.md
+  3d0ea749a26ca9b1 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "64dfe09a0ae63e6a6b2da43542e74fbe6b6f21f2",
+  "prompts": {
+    "3d0ea749a26ca9b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "04a57b66-51b6-4690-81a0-6963e0b699e9",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 519,
+      "overriden_lines": 0,
+      "messages_url": "https://usegitai.com/cas/7d0a4a86ac786d063b23f9529a2384303d8ee66d90ffdfa01da3ebcb27369d1b"
+    }
+  }
+}
