@@ -1,0 +1,20 @@
+plugins/sonarqube/skills/sonarqube/SKILL.md
+  s_52c6e01092dde2::t_16a5269bf00db4 21,24-27
+  s_52c6e01092dde2::t_b7a55827073de0 107
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.9",
+  "base_commit_sha": "2529efc82755b540af194e708532212495c605f1",
+  "prompts": {},
+  "sessions": {
+    "s_52c6e01092dde2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3f54e4ce-e408-4883-bf2b-5888fba3149e",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
