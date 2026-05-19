@@ -18,10 +18,13 @@ Use the `sonar` CLI to scan for secrets, query SonarQube/SonarCloud issues, and 
 
 ## Prerequisites
 
-The `sonar` CLI must be installed. If not found in PATH, inform the user:
+The `sonar` CLI must be installed. If not found in PATH, inform the user. Recommend downloading the installer first so it can be inspected before execution:
 
 ```sh
-curl -fsSL https://sonar.io/install | bash
+# Download the installer script
+curl -fsSL -o sonar-installer.sh https://sonar.io/install
+# Inspect the script, then run it:
+# bash sonar-installer.sh
 ```
 
 Do not run the installation command automatically. Let the user decide.
@@ -101,7 +104,7 @@ sonar integrate claude
 2. Run `sonar list issues --project <key>` with appropriate filters
 3. Parse results and present issues sorted by severity (BLOCKER > CRITICAL > MAJOR > MINOR > INFO)
 4. For each issue, report: rule, message, file, line, severity
-5. Offer to investigate or fix specific issues using Edit tool
+5. Offer to investigate or summarize specific issues; defer fixes to a separate workflow
 
 ## Notes
 
