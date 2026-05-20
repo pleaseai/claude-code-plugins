@@ -1,0 +1,25 @@
+plugins/graphite/commands/create.md
+  s_90121b114c6c43::t_1042ca8c5b23e7 15
+plugins/graphite/commands/fold.md
+  s_90121b114c6c43::t_8831d27f84cb26 16,21
+plugins/graphite/commands/modify.md
+  s_90121b114c6c43::t_42d64a164f3950 18-19,21
+plugins/graphite/commands/squash.md
+  s_90121b114c6c43::t_34158c5442b974 20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "3781ee2110fce9935dbcf0880e1ec050da9ef546",
+  "prompts": {},
+  "sessions": {
+    "s_90121b114c6c43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3e3c4e8-fc34-4559-bac4-16a104a85642",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
