@@ -504,6 +504,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/graphite": {
+      "release-type": "simple",
+      "component": "graphite",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
