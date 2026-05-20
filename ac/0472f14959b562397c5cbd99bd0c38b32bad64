@@ -1,0 +1,21 @@
+plugins/bun/.codex-plugin/plugin.json
+  s_90cc8bb42f707a::t_3f8b0cca70c7cb 1-40
+plugins/bun/README.md
+  s_90cc8bb42f707a::t_4079a858b5f633 1-76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "ac0472f14959b562397c5cbd99bd0c38b32bad64",
+  "prompts": {},
+  "sessions": {
+    "s_90cc8bb42f707a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6452771d-083a-49c4-a02b-2523e10aabf5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
