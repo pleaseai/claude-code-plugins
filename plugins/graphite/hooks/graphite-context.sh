@@ -44,8 +44,13 @@ $GT_NOTE
 EOF
 )
 
-# Emit as SessionStart additionalContext (JSON form, same convention as the
-# repo-level hooks/context.sh). Fall back to plain stdout if jq is missing.
+# Emit as SessionStart additionalContext. Claude Code accepts BOTH forms:
+#   - JSON `{hookSpecificOutput: {hookEventName, additionalContext}}` (preferred,
+#     same convention as the repo-level hooks/context.sh)
+#   - Plain stdout (treated verbatim as additionalContext)
+# We prefer JSON when `jq` is available and fall back to plain stdout otherwise
+# — both are valid hook outputs, this is graceful degradation, not a contract
+# violation.
 if command -v jq >/dev/null 2>&1; then
   jq -n --arg context "$CONTEXT" '{
     "hookSpecificOutput": {
