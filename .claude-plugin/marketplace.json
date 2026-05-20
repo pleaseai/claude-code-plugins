@@ -586,6 +586,14 @@
       "source": "./plugins/git-ai"
     },
     {
+      "name": "graphite",
+      "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track branches, and collaborate on shared stacks",
+      "category": "development",
+      "keywords": ["graphite", "gt", "stacked-prs", "stacking", "git", "github", "pull-request", "code-review"],
+      "tags": ["tooling", "git", "github"],
+      "source": "./plugins/graphite"
+    },
+    {
       "name": "workflow",
       "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
       "category": "development",
