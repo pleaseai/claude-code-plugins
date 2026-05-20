@@ -10,7 +10,9 @@ The `SKILL.md` format is shared by Claude Code, Cursor, Codex CLI, Gemini CLI, G
 |------|----------|-------------|
 | Claude Code | `.claude-plugin/plugin.json` | `./skills/` |
 | Codex | `.codex-plugin/plugin.json` | `./skills/` |
-| Antigravity | _(none — discovers by file location)_ | copy `./skills/use-bun/` into `.agents/skills/` or `~/.gemini/antigravity/skills/` |
+| Antigravity | `plugin.json` (at plugin root) | `./skills/` |
+
+All three tools read the same `skills/use-bun/SKILL.md`. Antigravity additionally accepts `mcp_config.json`, `hooks.json`, and `rules/` at plugin root if needed (this plugin uses none of them).
 
 ## Install
 
@@ -27,22 +29,28 @@ Install via the Codex marketplace using this repository, or manually copy the pl
 
 ### Antigravity
 
-Antigravity discovers skills by directory location — there is no per-plugin manifest. Copy `skills/use-bun/` into one of:
+Antigravity recognises this directory as a plugin via the root `plugin.json` marker file. Copy the entire plugin directory into Antigravity's plugin location, or copy only the skill if you prefer skill-level install:
 
-- **Workspace scope** (project-only): `<workspace-root>/.agents/skills/use-bun/`
-- **Global scope** (all projects): `~/.gemini/antigravity/skills/use-bun/`
+**Plugin install** (recommended — preserves the `plugin.json` namespace):
 
 ```bash
-# Workspace install (run from your project root)
-mkdir -p .agents/skills
-cp -R <path-to-this-plugin>/skills/use-bun .agents/skills/
+# Workspace scope (project-only)
+mkdir -p .agents/plugins
+cp -R <path-to-this-plugin> .agents/plugins/bun
 
-# Global install
+# Global scope (all projects)
+mkdir -p ~/.gemini/antigravity/plugins
+cp -R <path-to-this-plugin> ~/.gemini/antigravity/plugins/bun
+```
+
+**Skill-only install** (skip the plugin namespace, drop the skill directly):
+
+```bash
 mkdir -p ~/.gemini/antigravity/skills
 cp -R <path-to-this-plugin>/skills/use-bun ~/.gemini/antigravity/skills/
 ```
 
-See the [Authoring Google Antigravity Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab for background.
+See the [Antigravity plugins docs](https://antigravity.google/docs/plugins) and the [Authoring Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab for background.
 
 ## Prerequisites
 
@@ -55,6 +63,7 @@ See the [Authoring Google Antigravity Skills](https://codelabs.developers.google
 plugins/bun/
 ├── .claude-plugin/plugin.json     # Claude Code manifest
 ├── .codex-plugin/plugin.json      # Codex manifest
+├── plugin.json                     # Antigravity marker file
 ├── README.md                       # this file
 └── skills/use-bun/
     ├── SKILL.md                    # entry point — universal across all tools
@@ -72,5 +81,7 @@ plugins/bun/
 ## Notes on Antigravity portability
 
 Antigravity skills use the same `SKILL.md` schema as Claude Code: YAML frontmatter with `name` (optional, defaults to directory name) and `description` (required). The skill body is Markdown. This skill follows that schema, so it works in Antigravity without modification.
+
+The plugin marker file (`plugin.json` at plugin root) is minimal — `{"name": "bun"}` — since Antigravity only requires the file to exist to recognise the directory as a plugin namespace.
 
 The `${CLAUDE_SKILL_DIR}` env var referenced in `SKILL.md` is a Claude Code convention. Antigravity uses similar conventions (notably it sets `${CLAUDE_SKILL_DIR}` in many runners for cross-compat). If your Antigravity install does not set it, the helper script can also be invoked by relative path from the skill directory: `./scripts/resolve-bun-version.sh`.
