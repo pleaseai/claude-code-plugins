@@ -1,0 +1,21 @@
+.claude/agent-memory/review-review-cubic-reviewer/pr170-graphite-commands.md
+  s_90121b114c6c43::t_47f2818832ae1f 1-19
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_90121b114c6c43::t_99a2e486fa6869 4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "2701ec898a0c41318791ab342a8699a65f8c5034",
+  "prompts": {},
+  "sessions": {
+    "s_90121b114c6c43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3e3c4e8-fc34-4559-bac4-16a104a85642",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
