@@ -616,6 +616,14 @@
       "keywords": ["zod", "validation", "schema", "typescript"],
       "tags": ["validation", "typescript"],
       "source": "./plugins/zod"
+    },
+    {
+      "name": "bun",
+      "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler - version-aware skill backed by the ask CLI",
+      "category": "development",
+      "keywords": ["bun", "runtime", "package-manager", "test-runner", "bundler", "javascript", "typescript"],
+      "tags": ["runtime", "tooling"],
+      "source": "./plugins/bun"
     }
   ]
 }
