@@ -77,6 +77,8 @@ The skill loads automatically when the user mentions Graphite, `gt`, stacked PRs
 - Handle worktrees: run stack commands from each owning worktree
 - Avoid `git rebase` on tracked branches (corrupts Graphite metadata)
 
+A `SessionStart` hook also detects `.graphite_repo_config` inside the git common dir (worktree-safe via `git rev-parse --git-common-dir`) and injects a short notice so Claude reaches for `gt` from the first turn — even before any keyword in the conversation triggers the skill. If the `gt` CLI is missing, the hook surfaces the install command instead.
+
 ## Links
 
 - [Graphite docs](https://graphite.com/docs)
