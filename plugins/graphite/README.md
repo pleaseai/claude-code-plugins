@@ -9,6 +9,7 @@ Stacked pull-request workflow with the Graphite CLI (`gt`). Teaches Claude to dr
 The plugin includes:
 
 - A **skill** (`graphite`) that activates whenever stacked-PR or `gt` work comes up. It documents the mental model, the golden path, conflict-resolution patterns, worktree handling, and multi-trunk setups.
+- A **setup skill** (`graphite-setup`) that activates when configuring a repo for Graphite — GitHub branch protection, merge queue choice (Graphite / GitHub native / external), CI triggers, ignoring `graphite-base/*` branches, and stack-aware CI Optimizations.
 - **15 slash commands** covering basic workflows (`create`, `submit`, `sync`, `log`, `checkout`, `modify`) and advanced operations (`restack`, `absorb`, `split`, `squash`, `fold`, `track`, `reorder`, `move`, `get`).
 
 ## Prerequisites
@@ -85,3 +86,10 @@ A `SessionStart` hook also detects `.graphite_repo_config` inside the git common
 - [CLI quick start](https://graphite.com/docs/cli-quick-start)
 - [Command cheatsheet](https://graphite.com/docs/cheatsheet)
 - [Command reference](https://graphite.com/docs/command-reference)
+
+### Setup & configuration (covered by the `graphite-setup` skill)
+
+- [GitHub configuration guidelines](https://graphite.com/docs/github-configuration-guidelines)
+- [Setup: merge queue integration](https://graphite.com/docs/setup-merge-queue-integration)
+- [Setup: recommended CI settings](https://graphite.com/docs/setup-recommended-ci-settings)
+- [Stacking and CI](https://graphite.com/docs/stacking-and-ci)
