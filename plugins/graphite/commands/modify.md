@@ -15,9 +15,10 @@ Apply working-tree changes to the current branch and automatically restack every
   ```
 - **New commit** — adds a new commit on the same branch.
   ```
-  gt modify -cam "fix tests"
-  gt modify -c              # use already-staged changes
+  gt modify -cam "fix tests"        # stage all + new commit with message
+  gt modify -cm "fix tests"         # already-staged changes + new commit with message
   ```
+  Always pass `-m "<message>"` — `gt modify -c` alone opens `$EDITOR` for the message, which hangs in a non-interactive shell.
 - **Into a downstack branch** — amend changes into an ancestor branch, then restack upward.
   ```
   gt modify --into <ancestor-branch>

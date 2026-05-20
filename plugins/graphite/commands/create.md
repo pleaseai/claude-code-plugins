@@ -12,7 +12,7 @@ Create a new Graphite-tracked branch on top of the current branch, carrying the 
 2. Run `gt ls` to show the current stack so the user can confirm where the new branch lands.
 3. Build the command:
    - If `$ARGUMENTS` looks like a commit message (contains spaces or `:`), use `gt create -am "$ARGUMENTS"` — Graphite derives the branch name from the message.
-   - If `$ARGUMENTS` is a single token, treat it as a branch name: `gt create -am "..." $ARGUMENTS`. Ask the user for a commit message if one wasn't provided.
+   - If `$ARGUMENTS` is a single token, treat it as a branch name. Ask the user for a commit message, then run: `gt create -am "<message>" $ARGUMENTS`.
    - If `$ARGUMENTS` is empty, ask the user for a commit message (or branch name) before proceeding.
 4. Run the command and report the new branch and updated `gt ls`.
 

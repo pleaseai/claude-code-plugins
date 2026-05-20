@@ -17,7 +17,7 @@ Collapse a multi-commit branch into a single commit. User input: `$ARGUMENTS`.
 2. Run `gt squash` — Graphite opens `$EDITOR` with all the commit messages concatenated so you can craft a final message.
    - `gt squash -m "<message>"` skips the editor with a preset message.
    - `gt squash -n` / `--no-edit` reuses the first commit's message untouched.
-3. Auto-restack runs for everything upstack. Resolve conflicts the usual way: `gt add .` → `gt continue -a`.
+3. `gt squash` rewrites the branch's SHA. Upstack children now point at the old SHA — run `gt restack` to bring them onto the new commit. If `gt restack` hits conflicts, resolve in editor → `gt add .` → `gt continue -a`.
 4. `gt submit -u` (or `gt submit --stack -u`) to force-push the updated branch to the PR.
 
 ## Notes
