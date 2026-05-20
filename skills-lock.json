@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "skills": {
+    "plugin-creator": {
+      "source": "openai/codex",
+      "ref": "main",
+      "sourceType": "github",
+      "skillPath": "codex-rs/skills/src/assets/samples/plugin-creator/SKILL.md",
+      "computedHash": "8418cad5f734eb75ef49a2a9e2e42c043fa29c1e12ccfc2bf3ae54557c92f17a"
+    }
+  }
+}
