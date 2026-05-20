@@ -38,7 +38,7 @@ This repository is configured for **Graphite stacked PRs** (\`.graphite_repo_con
 
 - Prefer \`gt\` over raw \`git\` for branch creation, rebasing, and pushes. Plain \`git\` is still fine for staging, diffing, logs, and inspection.
 - Never run \`git rebase\` on a tracked branch — it wipes Graphite metadata. Use \`gt modify\`, \`gt restack\`, or \`gt move\` instead.
-- The \`graphite:graphite\` skill has the full workflow (golden path, conflict resolution, worktrees, multi-trunk). Load it via the Skill tool when stacked-PR work begins.
+- The \`graphite:graphite\` skill (background, auto-activating) carries the full workflow — golden path, conflict resolution, worktrees, multi-trunk. It will load itself once stacked-PR work appears in context.
 
 $GT_NOTE
 EOF
