@@ -3,9 +3,8 @@
   "version": "1.0.0",
   "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track existing branches, and collaborate on shared stacks",
   "author": {
-    "name": "Passion Factory",
-    "email": "support@passionfactory.ai",
-    "url": "https://github.com/pleaseai"
+    "name": "Graphite",
+    "url": "https://github.com/withgraphite"
   },
   "homepage": "https://graphite.com/docs",
   "repository": "https://github.com/pleaseai/claude-code-plugins",

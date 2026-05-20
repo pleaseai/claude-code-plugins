@@ -47,5 +47,6 @@
   "plugins/git-ai": "1.0.0",
   "plugins/workflow": "1.0.0",
   "plugins/portless": "1.0.0",
-  "plugins/zod": "1.0.0"
+  "plugins/zod": "1.0.0",
+  "plugins/graphite": "1.0.0"
 }
