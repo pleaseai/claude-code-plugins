@@ -243,8 +243,8 @@ For coverage details see [`node-compat.md`](node-compat.md).
 Before generating non-trivial Bun runtime code, sanity-check the API surface:
 
 ```bash
-BUN_VER="v$(bun --version)"
-BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_VER}")
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
+BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_REF}")
 
 # Confirm an API exists at this version
 rg -n "Bun\.SQL|class SQL" "${BUN_SRC}/packages/bun-types/bun.d.ts"

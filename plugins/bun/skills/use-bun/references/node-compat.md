@@ -42,8 +42,8 @@ For most application code this is invisible. For libraries that use `--allow-nat
 For the authoritative list, read at the installed version:
 
 ```bash
-BUN_VER="v$(bun --version)"
-BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_VER}")
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
+BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_REF}")
 cat "${BUN_SRC}/docs/runtime/nodejs-compat.mdx"
 ```
 
@@ -121,8 +121,8 @@ Install Bun types: `bun add -d @types/bun` (provides `Bun.*`, `bun:*` ambient de
 ## Verifying a specific API
 
 ```bash
-BUN_VER="v$(bun --version)"
-BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_VER}")
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
+BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_REF}")
 
 # Find Bun's implementation of a Node module
 rg -l "function createServer" "${BUN_SRC}/src/js/node"

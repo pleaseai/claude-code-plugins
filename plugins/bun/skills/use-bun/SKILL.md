@@ -7,20 +7,18 @@ description: 'Answer questions about Bun — the all-in-one JavaScript/TypeScrip
 
 Verify the `ask` CLI is available (`which ask`). It is the primary tool for reading the exact Bun version installed in the project — it fetches the version-tagged source from GitHub once and caches it at `~/.ask/`. If `ask` is not installed, fall back to the local `bun` binary's built-in help and the official docs at https://bun.com/docs (which always tracks the latest release).
 
-Before writing Bun-specific code, detect the project's Bun version:
+Before writing Bun-specific code, detect the project's Bun version. The skill bundles a helper that resolves it in the correct priority order (`.bun-version` → `package.json.packageManager` → `engines.bun` → global `bun`):
 
 ```bash
-# 1. Installed runtime — drives every API surface check
-bun --version
+# Resolve project pin; GitHub release tags use the `bun-vX.Y.Z` form
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)" || exit 1
+echo "$BUN_REF"   # e.g. bun-v1.3.14
 
-# 2. Project pin (if any) — overrides the global runtime
-cat .bun-version 2>/dev/null
-cat package.json 2>/dev/null | jq -r '.packageManager // empty'   # e.g. "bun@1.3.14"
-cat package.json 2>/dev/null | jq -r '.engines.bun // empty'
-
-# 3. Lockfile format — Bun migrated from binary bun.lockb to text bun.lock at 1.1.21
+# Lockfile format — Bun migrated from binary bun.lockb to text bun.lock at 1.1.21
 ls bun.lock bun.lockb 2>/dev/null
 ```
+
+See [`references/versions.md`](references/versions.md) for the resolution rules and the underlying script (`scripts/resolve-bun-version.sh`).
 
 If Bun is not installed, install it once:
 
@@ -48,7 +46,7 @@ Bun ships fast — APIs land, change shape, or move modules between minor releas
 
 When working with Bun:
 
-1. Resolve the installed version against the project (`bun --version`, then check `package.json.packageManager` and `.bun-version`).
+1. Resolve the installed version against the project via `${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh` (which checks `.bun-version`, `package.json.packageManager`, `engines.bun`, then global `bun --version` in priority order).
 2. Verify every API name, method signature, and CLI flag against the version-tagged source via `ask` before generating code. **Do not invent flag names** — Bun's CLI has many short forms and aliases, but only the documented ones are stable.
 3. Cross-reference the upstream docs **at the matching version tag** ([`references/versions.md`](references/versions.md) for the `ask` pin recipe) — not `main`, which tracks unreleased changes.
 4. Use `bun --print '<expr>'` or a quick REPL (`bun repl`) to confirm behaviour before committing complex API uses.
@@ -61,17 +59,17 @@ If documentation cannot be found locally or remotely to back an answer, say so e
 Bun's source and docs live in one repo: `github:oven-sh/bun`. Use `ask` with the matching tag:
 
 ```bash
-# Pin the installed runtime — replace 1.3.14 with `bun --version` output
-BUN_VER="v$(bun --version)"
+# Resolve project pin (see Prerequisites above) — GitHub tags use `bun-v` prefix
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
 
 # Source tree (single line — pass to rg/fd/cat)
-ask src "github:oven-sh/bun@${BUN_VER}"
+ask src "github:oven-sh/bun@${BUN_REF}"
 
 # Doc candidates (one per line; the docs/ folder will be first)
-ask docs "github:oven-sh/bun@${BUN_VER}"
+ask docs "github:oven-sh/bun@${BUN_REF}"
 
 # Convenience
-BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_VER}")
+BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_REF}")
 ls "${BUN_SRC}/docs"                                   # MDX docs by topic
 rg "Bun\.serve" "${BUN_SRC}/docs/runtime/http/server.mdx"
 rg "fn serve" "${BUN_SRC}/src/bun.js"                  # implementation

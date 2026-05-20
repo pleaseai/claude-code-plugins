@@ -4,36 +4,34 @@ Bun lives at `github:oven-sh/bun`. There is **no separate `bun` npm package** fo
 
 ## Resolve the installed version
 
+Use the bundled helper script. It walks the standard sources in priority order:
+
+1. `.bun-version` — explicit project pin
+2. `package.json` `"packageManager": "bun@X.Y.Z"` — corepack-style pin
+3. `package.json` `"engines": { "bun": "..." }` — engine constraint
+4. Global `bun` on `$PATH` — runtime fallback
+
+The script returns a bare version like `1.3.14`. **`ask` / GitHub need the full tag form `bun-vX.Y.Z`** (not `vX.Y.Z` — that tag does not exist):
+
 ```bash
-# Order of authority (highest wins):
-# 1. .bun-version          — explicit project pin
-# 2. package.json "packageManager": "bun@X.Y.Z"
-# 3. package.json "engines": { "bun": "..." }
-# 4. global bun installed at $PATH (bun --version)
-
-resolve_bun_version() {
-  if [ -f .bun-version ]; then
-    cat .bun-version
-  elif jq -e '.packageManager | startswith("bun@")' package.json >/dev/null 2>&1; then
-    jq -r '.packageManager | sub("^bun@"; "")' package.json
-  else
-    bun --version 2>/dev/null
-  fi
-}
-
-BUN_VER="v$(resolve_bun_version)"   # e.g. v1.3.14
-echo "Resolved: ${BUN_VER}"
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
+echo "Resolved: ${BUN_REF}"   # e.g. bun-v1.3.14
+ask src "github:oven-sh/bun@${BUN_REF}"
 ```
+
+The script exits non-zero with a message on stderr if no version source is available; chain with `|| exit 1` when the next step requires a version.
+
+If you want to inspect the resolution logic, read `${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh` directly — it is ~30 lines of bash.
 
 ## Fetch docs / source at that version
 
 ```bash
 # One-shot reads — paths print to stdout, progress to stderr
-ask docs "github:oven-sh/bun@${BUN_VER}"   # candidate doc dirs
-ask src  "github:oven-sh/bun@${BUN_VER}"   # checkout root
+ask docs "github:oven-sh/bun@${BUN_REF}"   # candidate doc dirs
+ask src  "github:oven-sh/bun@${BUN_REF}"   # checkout root
 
 # Common idiom
-BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_VER}")
+BUN_SRC=$(ask src "github:oven-sh/bun@${BUN_REF}")
 rg "Bun\.serve" "${BUN_SRC}/docs"
 cat "${BUN_SRC}/docs/runtime/http/server.mdx"
 ```
@@ -54,18 +52,28 @@ ask docs github:oven-sh/bun@main
 
 If both files exist, Bun reads `bun.lock` and ignores `bun.lockb`. Remove the binary copy when migrating.
 
-## Stable release tags (for `ask` pinning)
+## Release tag format
 
-Bun follows `vMAJOR.MINOR.PATCH`. Latest tags as of writing:
+GitHub release tags for Bun are **`bun-vMAJOR.MINOR.PATCH`** (e.g. `bun-v1.3.14`). Plain `vX.Y.Z` tags do **not** exist — `ask` / curl against `v1.3.14` returns HTTP 404.
 
-- `v1.3.14` — last 1.3.x patch release  
-- `v1.3.0` — minor (Sept 2025)
-- `v1.2.0` — minor; catalogs + isolated installs
-- `v1.1.21` — switch to text `bun.lock`
-- `v1.1.0` — bundler `--compile` stabilisation, fullstack dev server
-- `v1.0.0` — first stable
+Verify against the live release list before pinning to an old version:
 
-Always verify by checking the local install: `bun --version` is the truth for the current machine. `main` may contain unreleased APIs that won't work for users on a tagged release.
+```bash
+gh release list --repo oven-sh/bun --limit 30
+gh release view bun-v1.3.14 --repo oven-sh/bun        # release notes
+```
+
+Landmark minor releases (verified via `gh release view`):
+
+| Tag | Published | Notable changes |
+|-----|-----------|----------------|
+| `bun-v1.3.0` | 2025-10-10 | 1.3 minor — see release notes |
+| `bun-v1.2.0` | 2025-01-22 | 1.2 minor — catalogs, isolated installs landed in 1.2.x |
+| `bun-v1.1.21` | 2024-07-27 | Text `bun.lock` becomes default lockfile |
+| `bun-v1.1.0` | 2024-04-01 | 1.1 minor |
+| `bun-v1.0.0` | 2023-09-08 | First stable release |
+
+Always verify by checking the local install — `bun --version` is the truth for the current machine. `main` may contain unreleased APIs that won't work for users on a tagged release. Do **not** trust the bullet-point summaries above as authoritative changelog entries — they are landmarks, not full notes. Run `gh release view bun-v<X.Y.Z> --repo oven-sh/bun` for the real release notes.
 
 ## Documentation entry points in the source tree
 
