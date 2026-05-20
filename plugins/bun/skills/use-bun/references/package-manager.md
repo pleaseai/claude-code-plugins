@@ -1,6 +1,6 @@
 # Bun Package Manager
 
-Drop-in replacement for `npm`/`yarn`/`pnpm`. Reads `package.json`, writes `bun.lock` (text JSONC since 1.1.21).
+Drop-in replacement for `npm`/`yarn`/`pnpm`. Reads `package.json`, writes `bun.lock` (text JSONC; the default lockfile format since Bun 1.2.0).
 
 ## CLI essentials
 
@@ -156,7 +156,7 @@ dev = true               # install devDependencies
 peer = true              # install peerDependencies (Bun does this by default)
 production = false       # set true in CI / Docker to skip dev deps
 exact = false            # write exact versions (no ^ or ~) on bun add
-saveTextLockfile = true  # default since 1.1.21
+saveTextLockfile = true  # default since 1.2.0
 linker = "hoisted"       # or "isolated"
 frozenLockfile = false   # true in CI
 
@@ -194,7 +194,7 @@ After migration, commit `bun.lock` and **remove the old lockfile** to avoid drif
 
 ## Common gotchas
 
-- **Lockfile diffs in PR**: `bun.lock` is text JSONC, reviewable in diffs. The old `bun.lockb` is binary — if you still see it, run `bun install` once to regenerate as text, then delete `.lockb`.
+- **Lockfile diffs in PR**: `bun.lock` is text JSONC, reviewable in diffs. The old `bun.lockb` is binary — if you still see it, run `bun install` once to regenerate as text, then delete `bun.lockb`.
 - **`workspace:` not on disk**: `workspace:` paths are resolved by Bun, not by `node_modules` symlinks (default linker is hoisted). If you need a symlinked tree, set `linker = "isolated"`.
 - **Lifecycle scripts silently skipped**: a freshly cloned project may have native modules (e.g. `sharp`, `better-sqlite3`) that look broken because their postinstall didn't run. Check `bun pm untrusted` and add to `trustedDependencies`.
 - **`catalog:` resolution at publish**: `bun publish` / `bun pm pack` rewrite the protocol; consumers see the concrete version. Do not write `catalog:` references manually outside a monorepo root.

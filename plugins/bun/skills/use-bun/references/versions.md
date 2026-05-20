@@ -14,7 +14,7 @@ Use the bundled helper script. It walks the standard sources in priority order:
 The script returns a bare version like `1.3.14`. **`ask` / GitHub need the full tag form `bun-vX.Y.Z`** (not `vX.Y.Z` — that tag does not exist):
 
 ```bash
-BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)"
+BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)" || exit 1
 echo "Resolved: ${BUN_REF}"   # e.g. bun-v1.3.14
 ask src "github:oven-sh/bun@${BUN_REF}"
 ```
@@ -47,8 +47,8 @@ ask docs github:oven-sh/bun@main
 
 | Version | Lockfile | Notes |
 |---------|----------|-------|
-| < 1.1.21 | `bun.lockb` (binary) | Not human-readable; diffs unreadable in PR review |
-| ≥ 1.1.21 | `bun.lock` (text JSONC) | Default. Migrates on first `bun install` |
+| < 1.2.0 | `bun.lockb` (binary) | Default before 1.2; not human-readable, diffs unreadable in PR review |
+| ≥ 1.2.0 | `bun.lock` (text JSONC) | New default. Existing `bun.lockb` migrates via `bun install --save-text-lockfile --frozen-lockfile --lockfile-only` |
 
 If both files exist, Bun reads `bun.lock` and ignores `bun.lockb`. Remove the binary copy when migrating.
 
@@ -68,8 +68,8 @@ Landmark minor releases (verified via `gh release view`):
 | Tag | Published | Notable changes |
 |-----|-----------|----------------|
 | `bun-v1.3.0` | 2025-10-10 | 1.3 minor — see release notes |
-| `bun-v1.2.0` | 2025-01-22 | 1.2 minor — catalogs, isolated installs landed in 1.2.x |
-| `bun-v1.1.21` | 2024-07-27 | Text `bun.lock` becomes default lockfile |
+| `bun-v1.2.0` | 2025-01-22 | 1.2 minor — catalogs, isolated installs, text `bun.lock` becomes the default lockfile |
+| `bun-v1.1.21` | 2024-07-27 | 1.1.x patch (text-lockfile work landed in the 1.1.x series; the default switch came at 1.2) |
 | `bun-v1.1.0` | 2024-04-01 | 1.1 minor |
 | `bun-v1.0.0` | 2023-09-08 | First stable release |
 

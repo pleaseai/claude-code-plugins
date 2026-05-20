@@ -88,7 +88,7 @@ Built-in loaders by extension:
 | `.html` | `html` | entry point — bundles linked `<script>`/`<link>` |
 | `.node` | `napi` | Native Node-API addon |
 | `.wasm` | `wasm` | streaming-compiled WebAssembly |
-| `.sqlite` | `sqlite` | embedded SQLite db (when `target=bun` with embed) |
+| `.sqlite` (via `import db from "./x.sqlite" with { type: "sqlite" }`) | `sqlite` | SQLite db import — only with `target=bun`, requires the explicit `with { type: "sqlite" }` import attribute. Set `embed: "true"` on the attribute to embed the db file in the bundle. |
 
 Override per extension with `loader: { ".svg": "file" }`. Available loaders: `js`, `jsx`, `ts`, `tsx`, `json`, `toml`, `text`, `file`, `napi`, `wasm`, `css`, `html`.
 

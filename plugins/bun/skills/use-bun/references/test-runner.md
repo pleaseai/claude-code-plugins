@@ -72,8 +72,7 @@ calc.add(1, 2);
 expect(spy).toHaveBeenCalledWith(1, 2);
 spy.mockRestore();                       // un-spy
 
-// Module mock — replace a whole import (Bun 1.1+)
-import { mock } from "bun:test";
+// Module mock — replace a whole import (mock and mock.module come from the bun:test import at the top of the file)
 mock.module("./logger", () => ({
   log: mock(() => {}),
   error: mock(() => {}),
@@ -178,7 +177,7 @@ coveragePathIgnorePatterns = ["**/node_modules/**", "**/*.test.ts"]
 | `jest.mock("./mod")` factory | `mock.module("./mod", () => ({ ... }))` |
 | `jest.useFakeTimers()` | `jest.useFakeTimers()` (supported alias) |
 | `vi.*` (Vitest) | not exported — replace with `mock`/`spyOn`/`jest.*` |
-| `setup-files`, `setupFilesAfterEach` | `preload` in `bunfig.toml` |
+| `setupFiles`, `setupFilesAfterEnv` | `preload` in `bunfig.toml` |
 | `--testNamePattern` | `-t` |
 | `--coverage` | `--coverage` |
 | `*.test.ts` (Jest default) | same |

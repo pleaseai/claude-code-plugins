@@ -14,7 +14,7 @@ Before writing Bun-specific code, detect the project's Bun version. The skill bu
 BUN_REF="bun-v$(${CLAUDE_SKILL_DIR}/scripts/resolve-bun-version.sh)" || exit 1
 echo "$BUN_REF"   # e.g. bun-v1.3.14
 
-# Lockfile format — Bun migrated from binary bun.lockb to text bun.lock at 1.1.21
+# Lockfile format — Bun migrated from binary bun.lockb to text bun.lock at 1.2.0
 ls bun.lock bun.lockb 2>/dev/null
 ```
 
@@ -34,13 +34,13 @@ curl -fsSL https://bun.sh/install | bash
 Bun ships fast — APIs land, change shape, or move modules between minor releases. Common pitfalls from outdated training data:
 
 - **`Bun.serve` routes (`routes: { "/users/:id": handler }`)** — requires **Bun 1.2.3+**. Before that you wrote `fetch(req)` with manual URL parsing. Do not suggest `routes` on older versions.
-- **`bun.lock` (text JSONC)** vs **`bun.lockb` (binary)** — Bun **1.1.21+** writes `bun.lock` by default. The binary `bun.lockb` is still readable but no longer produced. If you see both, the text one wins.
+- **`bun.lock` (text JSONC)** vs **`bun.lockb` (binary)** — Bun **1.2.0+** writes `bun.lock` by default (the text format was introduced as opt-in earlier and became the default at 1.2). Existing `bun.lockb` files migrate via `bun install --save-text-lockfile --frozen-lockfile --lockfile-only`. If you see both, the text one wins.
 - **Catalogs (`catalog:` / `catalogs:` in `package.json` / `bunfig.toml`)** — added in **Bun 1.2+**. Not available earlier.
 - **Isolated installs (`linker = "isolated"`)** — added in **Bun 1.2.x**. Earlier versions only support `hoisted`.
 - **`bun:sql` / `Bun.SQL`** — Postgres client landed in **Bun 1.2+**; native MySQL/SQLite are different surfaces (`bun:sqlite` has always existed).
 - **`Bun.RedisClient` / `Bun.redis`** — Valkey/Redis client is recent (**Bun 1.2.x**). Older code uses third-party libs.
 - **`bun build --compile`** — single-file executables stabilised in **1.1+**; flags like `--bytecode`, `--target=bun-linux-x64-baseline`, and Windows cross-compile are newer.
-- **`mock.module()`** — module mocking in `bun:test` was added in **1.1+**. Earlier code uses `mock()` only.
+- **`mock.module()`** — module mocking in `bun:test`. Stable across all current Bun releases; very old (early 1.0.x) versions only had `mock()` for function-level mocks. If you need to support a specific pre-1.1 version, verify the API against that release's docs.
 - **`Bun.$` (shell)** — promoted from experimental in **Bun 1.0.24+**. API stabilised since.
 - **`trustedDependencies` in `package.json`** — Bun does **not** run installed dependencies' lifecycle scripts by default for security; you must allowlist via this field. Different default than npm/yarn.
 

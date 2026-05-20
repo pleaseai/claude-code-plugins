@@ -82,7 +82,7 @@ const isBun = !!(process as any).versions.bun;
 Bun supports:
 - **CJS importing ESM**: via `require()` — works (unlike Node, which restricts this).
 - **ESM importing CJS**: via `import` — default import gets `module.exports`, named imports work for static analysis.
-- **Top-level `await`** in both formats.
+- **Top-level `await`** in ESM only. CommonJS modules do not support top-level `await` (Bun matches Node here — top-level `await` is a language-level feature of ESM).
 - **`require()` from ESM files** — Bun-specific convenience; portable code should not rely on this.
 
 ## TypeScript without compilation

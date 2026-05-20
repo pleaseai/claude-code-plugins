@@ -69,8 +69,8 @@ Bun.stdin;  Bun.stdout;  Bun.stderr;   // all BunFile-compatible
 const proc = Bun.spawn(["ls", "-la"], {
   cwd: "./some/dir",
   env: { ...process.env, FOO: "bar" },
-  stdin: "pipe" | "inherit" | Bun.file("input.txt") | request,
-  stdout: "pipe" | "inherit" | "ignore",
+  stdin: "pipe",   // also accepts: "inherit", Bun.file("input.txt"), a Request/Response, ReadableStream, Blob, TypedArray
+  stdout: "pipe",  // also accepts: "inherit", "ignore"
   onExit(proc, exitCode, signalCode, error) { /* … */ },
 });
 

@@ -18,8 +18,12 @@
 set -euo pipefail
 
 if [ -f .bun-version ]; then
-  tr -d '[:space:]' < .bun-version
-  exit 0
+  ver=$(tr -d '[:space:]' < .bun-version)
+  if [ -n "$ver" ]; then
+    printf '%s' "$ver"
+    exit 0
+  fi
+  echo "resolve-bun-version: .bun-version is empty, falling back to next source" >&2
 fi
 
 if [ -f package.json ] && command -v jq >/dev/null 2>&1; then
