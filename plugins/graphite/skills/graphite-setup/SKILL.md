@@ -119,7 +119,7 @@ jobs:
 
   test:
     needs: optimize_ci
-    if: needs.optimize_ci.outputs.skip == 'false'
+    if: needs.optimize_ci.outputs.skip != 'true'
     runs-on: ubuntu-latest
     steps: ...
 ```
