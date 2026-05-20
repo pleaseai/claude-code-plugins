@@ -48,5 +48,6 @@
   "plugins/workflow": "1.0.0",
   "plugins/portless": "1.0.0",
   "plugins/zod": "1.0.0",
-  "plugins/graphite": "1.0.0"
+  "plugins/graphite": "1.0.0",
+  "plugins/bun": "1.0.0"
 }
