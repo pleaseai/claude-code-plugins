@@ -1,0 +1,55 @@
+plugins/graphite/.claude-plugin/plugin.json
+  s_90121b114c6c43::t_6863061707cdcc 1-23
+plugins/graphite/commands/move.md
+  s_90121b114c6c43::t_85dab0bbcef27e 1-28
+plugins/graphite/commands/absorb.md
+  s_90121b114c6c43::t_c8cad88e56ed75 1-28
+plugins/graphite/commands/create.md
+  s_90121b114c6c43::t_e0dbda8740fe78 1-26
+plugins/graphite/commands/restack.md
+  s_90121b114c6c43::t_3d098443360318 1-35
+plugins/graphite/commands/track.md
+  s_90121b114c6c43::t_eecae436b14c56 1-33
+plugins/graphite/commands/submit.md
+  s_90121b114c6c43::t_5ca96390095b96 1-33
+plugins/graphite/commands/log.md
+  s_90121b114c6c43::t_7160dd195d1aa3 1-25
+plugins/graphite/README.md
+  s_90121b114c6c43::t_461d796a13c361 1-85
+plugins/graphite/commands/modify.md
+  s_90121b114c6c43::t_9679dd70303f02 1-48
+plugins/graphite/skills/graphite/SKILL.md
+  s_90121b114c6c43::t_244276ad7ca93d 1-196
+plugins/graphite/commands/checkout.md
+  s_90121b114c6c43::t_c291e700b51747 1-29
+plugins/graphite/commands/get.md
+  s_90121b114c6c43::t_6c90416f614218 1-34
+.claude-plugin/marketplace.json
+  s_90121b114c6c43::t_d571d5cd70963a 589-595
+plugins/graphite/commands/sync.md
+  s_90121b114c6c43::t_2e5716d8d3178a 1-28
+plugins/graphite/commands/squash.md
+  s_90121b114c6c43::t_e2dcec4f882a0e 1-26
+plugins/graphite/commands/fold.md
+  s_90121b114c6c43::t_05d768bd3b467e 1-26
+plugins/graphite/commands/split.md
+  s_90121b114c6c43::t_df4823fe85933d 1-29
+plugins/graphite/commands/reorder.md
+  s_90121b114c6c43::t_effb233b9ed35a 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "bea558fd6f108380d86b80f40633fb06b29cd875",
+  "prompts": {},
+  "sessions": {
+    "s_90121b114c6c43": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d3e3c4e8-fc34-4559-bac4-16a104a85642",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
