@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.1.0...graphite-v1.2.0) (2026-05-20)
+
+
+### Features
+
+* **graphite:** add graphite-setup skill for repo/CI configuration ([#177](https://github.com/pleaseai/claude-code-plugins/issues/177)) ([f1691d9](https://github.com/pleaseai/claude-code-plugins/commit/f1691d93587f310e4931d2ae7e2b25bbe7e66173))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.0.0...graphite-v1.1.0) (2026-05-20)
 
 
