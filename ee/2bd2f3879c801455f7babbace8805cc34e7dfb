@@ -1,0 +1,19 @@
+plugins/graphite/.claude-plugin/plugin.json
+  s_4e14d235728111::t_eb481304fcbbf4 6-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "ee2bd2f3879c801455f7babbace8805cc34e7dfb",
+  "prompts": {},
+  "sessions": {
+    "s_4e14d235728111": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b905f5ad-3eb3-4b2d-a17a-aec34662303b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
