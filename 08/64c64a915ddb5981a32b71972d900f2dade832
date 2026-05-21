@@ -1,0 +1,41 @@
+scripts/multi-format.test.ts
+  s_2d3cf70a57a6da::t_217fa88eaa5ca6 146-162
+  s_2d3cf70a57a6da::t_5dab68d42d91d1 200-209
+  s_2d3cf70a57a6da::t_636cd81c0d37b4 273-285
+plugins/worktree/plugin.json
+  s_2d3cf70a57a6da::t_63a734f5fb45d0 6
+plugins/claude-md-management/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_63a734f5fb45d0 6
+scripts/multi-format.ts
+  s_2d3cf70a57a6da::t_a62d0ce16a95b4 158-171,173-176
+  s_2d3cf70a57a6da::t_de271e6ad14080 203-204
+  s_2d3cf70a57a6da::t_fc7090dd5ea3ac 402-404,406-407,414-420
+  s_2d3cf70a57a6da::t_f6469dfdb7f9d8 220-228
+  s_2d3cf70a57a6da::t_025b531ea83e07 276-277
+  s_2d3cf70a57a6da::t_b6fa19b488315f 1
+  s_2d3cf70a57a6da::t_50b38bb2f4a8aa 291-294
+  s_2d3cf70a57a6da::t_d623540f882517 450-458
+  s_2d3cf70a57a6da::t_074f5812a3efbb 190
+plugins/claude-md-management/plugin.json
+  s_2d3cf70a57a6da::t_63a734f5fb45d0 6
+plugins/google-workspace/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_c45a11aa22dd78 16,19,28
+plugins/worktree/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_63a734f5fb45d0 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "0864c64a915ddb5981a32b71972d900f2dade832",
+  "prompts": {},
+  "sessions": {
+    "s_2d3cf70a57a6da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46345824-28a8-4234-b3e2-abad95a1652b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
