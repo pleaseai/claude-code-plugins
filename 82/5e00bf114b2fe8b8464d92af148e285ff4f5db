@@ -1,0 +1,377 @@
+plugins/neo4j/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-28
+plugins/bun/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 12,14-20
+  s_2d3cf70a57a6da::t_e762c0a74afc60 35
+  s_2d3cf70a57a6da::t_ab937c2a629094 9-11,13,21
+plugins/google-workspace/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-16
+plugins/ast-grep/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,11,13-19
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-10,12,20-31,33
+  s_2d3cf70a57a6da::t_44d2095e9fa689 32
+plugins/next/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/tsdown/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/mastra/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/nuxt/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-21
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,22-34
+plugins/plugin-dev/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8,23-35
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 9-22
+plugins/tiptap/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-11
+plugins/antfu/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/gatekeeper/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/vue/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+plugins/tosspayments/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-21
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,22-35
+plugins/mcp-dev/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-34
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+plugins/slidev/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+plugins/worktree/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-28
+plugins/wordpress/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-14
+plugins/mastra/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/react-native/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-26,28
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 27
+plugins/web-design/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-32
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+plugins/markitdown/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-47
+plugins/emulate/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-26,28
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 27
+plugins/vitepress/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/pinia/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/fetch/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-11
+plugins/supabase/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-21
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,22-32
+plugins/markitdown/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-36
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+plugins/neo4j/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-28
+plugins/pnpm/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/google-workspace/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-3
+plugins/wordpress/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-28,30
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+plugins/slidev/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/markitdown/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-10
+plugins/docus/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,22-35
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-21
+plugins/nuxt-ui/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/portless/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-12,14-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 27
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,13,20-26,28
+plugins/unocss/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+plugins/nuxt-seo/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-14
+plugins/graphite/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/unocss/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/prisma/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/git-ai/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 27
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-26,28
+plugins/workflow/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 28
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-27,29
+plugins/nuxt/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/ai-sdk/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/ai-sdk/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-29,31
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 30
+plugins/nuxt-ui/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/neo4j/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-5
+plugins/google-workspace/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30
+plugins/better-auth/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/prisma/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/claude-md-management/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-9
+plugins/markitdown/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-21
+plugins/edgeparse/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/slack-agent/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 26
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-25,27
+plugins/worktree/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-15
+plugins/tsdown/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+plugins/tosspayments/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/fetch/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-16
+plugins/tosspayments/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-11
+plugins/markitdown/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-10
+plugins/pinia/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+plugins/tosspayments/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-11
+plugins/fetch/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-11
+plugins/nuxt-i18n/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/please-plugins/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-30
+plugins/vitest/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/better-auth/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_e762c0a74afc60 30
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-29,31
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+plugins/graphite/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-22
+plugins/vue/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/nuxt-ui/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/mastra/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/pnpm/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+plugins/supabase/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/next/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-28,30
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+plugins/google-workspace/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-3
+plugins/vite/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+plugins/graphite/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-36
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+plugins/vitepress/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+plugins/please-plugins/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/docus/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/nuxt-ui/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,22-33
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-21
+plugins/chat-sdk/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/react/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-13
+plugins/tiptap/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,13,20-25,27
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-12,14-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 26
+plugins/please-plugins/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-33
+plugins/prisma/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-21
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,22-33
+plugins/docus/.mcp.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/react-native/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/nuxt-i18n/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-33
+plugins/git-ai/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/turborepo/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+plugins/mcp-dev/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-20
+plugins/bun/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 3-20
+plugins/ast-grep/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/vinext/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/zod/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+.agents/plugins/marketplace.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-644
+plugins/supabase/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/plugin-dev/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-5
+plugins/zod/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-31,33
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_e762c0a74afc60 32
+plugins/cubic/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-34
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+plugins/emulate/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/nuxt-ui/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/portless/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/gatekeeper/hooks.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-30
+plugins/agent-browser/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/nuxt/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/react/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 28
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-27,29
+plugins/nuxt-seo/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,13,20-28,30
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-12,14-19
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+plugins/edgeparse/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 32
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-31,33
+plugins/claude-md-management/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-22
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+plugins/vueuse/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/turborepo/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/supabase/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-17
+plugins/mastra/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-21
+  s_2d3cf70a57a6da::t_e762c0a74afc60 31
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,22-30,32-33
+plugins/workflow/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-13
+plugins/fetch/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/docus/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-8
+plugins/vueuse/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+plugins/slack-agent/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-14
+plugins/vite/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/google-workspace/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-15
+plugins/prisma/mcp_config.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-12
+plugins/nuxt/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/ast-grep/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-19
+plugins/web-design/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-18
+plugins/vitest/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-11,13,21-30,32
+plugins/agent-browser/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-28,30
+plugins/chat-sdk/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-28,30
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+plugins/gatekeeper/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-30
+plugins/fetch/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-34
+plugins/cubic/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-20
+plugins/neo4j/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,8-9,20-22
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-7,10-19
+plugins/vinext/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_44d2095e9fa689 29
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-7,21-28,30
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 8-20
+plugins/antfu/.codex-plugin/plugin.json
+  s_2d3cf70a57a6da::t_ab937c2a629094 1-4,9-10,13,21-30,32
+  s_2d3cf70a57a6da::t_44d2095e9fa689 31
+  s_2d3cf70a57a6da::t_fbfc74e10e71e5 5-8,11-12,14-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "825e00bf114b2fe8b8464d92af148e285ff4f5db",
+  "prompts": {},
+  "sessions": {
+    "s_2d3cf70a57a6da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46345824-28a8-4234-b3e2-abad95a1652b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
