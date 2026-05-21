@@ -1,6 +1,6 @@
 {
   "name": "edgeparse",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements",
   "author": {
     "name": "Raphael Mansuy",
