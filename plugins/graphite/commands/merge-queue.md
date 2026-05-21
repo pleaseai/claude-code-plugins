@@ -8,9 +8,27 @@ Add or remove the configured Graphite merge-queue label on a pull request. User 
 
 Graphite's merge queue is driven entirely by a label — applying it enqueues; removing it dequeues. For stacked PRs, the label cascades to dependent PRs automatically (label the topmost PR you want merged; do not iterate).
 
+## Bail out if Graphite is disabled
+
+Before reading `merge-queue` config at all, check whether the repo has opted out:
+
+```bash
+GRAPHITE_DISABLED="$(
+  awk '
+    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
+    /^[^[:space:]#]/                { in_graphite=0 }
+    in_graphite && /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/ { print 1; exit }
+  ' .please/config.yml 2>/dev/null
+)"
+if [ "$GRAPHITE_DISABLED" = "1" ]; then
+  echo "graphite.enabled: false in .please/config.yml — repo opted out of Graphite. Skipping."
+  exit 0
+fi
+```
+
 ## Bail out for non-Graphite queue modes
 
-Before doing anything, resolve `graphite.merge-queue.mode` from `.please/config.yml`. Only proceed with the label flow if mode is `graphite`. Otherwise stop and direct the user to the right path:
+Once enabled, resolve `graphite.merge-queue.mode` from `.please/config.yml`. Only proceed with the label flow if mode is `graphite`. Otherwise stop and direct the user to the right path:
 
 | Mode | What to do instead |
 |---|---|

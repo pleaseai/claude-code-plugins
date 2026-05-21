@@ -21,7 +21,9 @@ Source docs (cite when proposing actions):
 - The merge queue **takes ownership of the merge** once a PR is enqueued. Graphite rebases the PR onto trunk, reruns required CI, and merges only after CI passes.
 - **One label = one queue ticket.** Adding the configured merge label to a PR enqueues it. Removing the label dequeues it. There is no separate `/queue` command on Graphite's side — the label IS the queue API.
 - **`merge when ready`**: if the label is applied before the PR is approved or CI passes, Graphite enables "merge when ready" and queues automatically when the PR becomes mergeable.
-- **Stacks cascade.** Labeling a PR mid-stack also labels its dependents (you cannot merge a parent without its children getting queued behind it). Removing the label cascades downstack in the same way.
+- **Stacks cascade.** Labeling a PR mid-stack also labels its descendants (upstack), and Graphite separately enqueues all ancestors (downstack) as queue dependencies — you cannot merge a parent without its children getting queued, and you cannot merge a child until its ancestors land. Removing the label cascades upstack in the same way (descendants drop out of the queue); downstack ancestors are unaffected.
+
+> **Graphite stack terminology.** *Downstack* = toward trunk (ancestors). *Upstack* = away from trunk (descendants). Label propagation cascades **upstack**; queue dependencies pull in **downstack** ancestors.
 - **Fast-track is single-PR only.** It does not apply to stacks. It still requires a rebase + CI rerun — it just jumps the queue position.
 - **A Graphite account is required.** If the user labeling the PR has no Graphite account, the queue removes the label and prompts for account creation. Treat that as "labeled by the wrong user," not a queue bug.
 
@@ -50,6 +52,19 @@ graphite:
     label: "merge-queue"          # used only when mode: graphite (must match Graphite settings)
     # remove-label: "merge-queue-remove"  # optional: separate dequeue label
 ```
+
+**Bail-out check (run first):** if `graphite.enabled` is explicitly `false` in `.please/config.yml`, do not read or act on any `merge-queue` config — the repo has opted out of Graphite. Skip the rest of this skill and tell the user the repo is opted out.
+
+```bash
+# True if graphite is explicitly disabled — exit early when this prints "1".
+awk '
+  /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
+  /^[^[:space:]#]/                { in_graphite=0 }
+  in_graphite && /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/ { print 1; exit }
+' .please/config.yml 2>/dev/null
+```
+
+If the bail-out check passes (or `.please/config.yml` is absent / `enabled` is unset / set to `true`), proceed.
 
 **Mode resolution order** (use the first that exists):
 1. `graphite.merge-queue.mode` in `.please/config.yml`.
@@ -108,10 +123,10 @@ Default to operating on the **current branch's PR** unless the user names one. U
 When the user says "queue the stack" in a Graphite repo:
 
 1. Run `gt ls` to show the stack shape.
-2. Identify the **topmost** branch the user wants merged. Label that PR's parent chain by labeling the **topmost PR** — Graphite cascades the label downstack to every dependent PR automatically, so you don't need to label each PR individually.
-3. If the user wants only part of the stack queued (e.g. "queue up to branch X"), label X — everything below X queues automatically; everything above X is not queued.
+2. Identify the **topmost** branch the user wants merged. Label that PR — Graphite enqueues it plus all downstack ancestors (queue dependencies), so you don't need to label each ancestor individually. If the topmost PR has any upstack descendants, the label also cascades upstack and queues them.
+3. To queue only "up to branch X" (X not at the top), label X — Graphite queues X plus all downstack ancestors AND all upstack descendants via the label cascade. There is no way to selectively queue downstack-only via labels; if the user wants to stop short of the top, the upstack descendants must be either out of scope (closed/merged) or you must hold off labeling until they are.
 
-Do not loop and label each PR with `gh pr edit` — that's redundant and risks racing the cascade.
+Do not loop and label each PR with `gh pr edit` — that's redundant and races the cascade.
 
 ## Dequeueing
 
@@ -119,7 +134,7 @@ Do not loop and label each PR with `gh pr edit` — that's redundant and risks r
 gh pr edit --remove-label "$MERGE_LABEL"
 ```
 
-Removing the label from a mid-stack PR cascades **downstack** (dependents drop out of the queue). Branches above the dequeued PR in the stack are unaffected.
+Removing the label from a mid-stack PR cascades **upstack** (descendants drop out of the queue). Downstack ancestors are unaffected — they remain queued if they had been labeled separately.
 
 Tell the user that dequeueing while CI is mid-rerun cancels the in-flight rebase but does not roll back any rebase that already landed on trunk.
 
@@ -142,14 +157,14 @@ If the label is present but the PR isn't merging, the cause is almost always one
 
 | Action | Effect |
 |---|---|
-| Label PR at top of stack | Queues the top; cascades down (every ancestor PR also queues, in dependency order) |
-| Label PR mid-stack | Queues that PR and every PR below it; PRs above are untouched |
-| Label PR at bottom (just above trunk) | Queues only that PR |
-| Remove label from top | Dequeues top; PRs below remain queued |
-| Remove label from mid-stack | Dequeues that PR and every PR below it |
+| Label PR at top of stack | Queues the top and all ancestors (downstack) |
+| Label PR mid-stack | Queues that PR, all ancestors (downstack), and all descendants (upstack) |
+| Label PR at bottom (just above trunk) | Queues that PR and all descendants (upstack) |
+| Remove label from top | Dequeues top; descendants (if any) are also dequeued; ancestors remain |
+| Remove label from mid-stack | Dequeues that PR and all descendants (upstack); ancestors remain |
 | Approve a queued PR after labeling | "Merge when ready" fires automatically once mergeable |
 
-The cascade direction is **from labeled PR toward trunk**, because Graphite must merge ancestors before descendants. This is the opposite of git's "downstack" terminology — be explicit when explaining to the user.
+The cascade direction for label propagation is **upstack** (away from trunk). However, Graphite ensures all **downstack** ancestors are also enqueued to satisfy dependencies.
 
 ## Common failure modes
 
