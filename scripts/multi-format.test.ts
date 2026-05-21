@@ -1,0 +1,194 @@
+import { describe, expect, test } from "vitest"
+import {
+  extractMcpServersFile,
+  toAntigravityManifest,
+  toCodexManifest,
+  toCodexMarketplaceEntry,
+  type ClaudePluginManifest,
+  type MarketplaceEntry,
+} from "./multi-format.ts"
+
+const baseClaude: ClaudePluginManifest = {
+  name: "demo-plugin",
+  version: "1.2.3",
+  description: "Demo plugin for tests. Multiple sentences here.",
+  author: { name: "Alice", url: "https://example.com" },
+  homepage: "https://example.com/demo",
+  repository: "https://github.com/example/demo",
+  license: "MIT",
+  keywords: ["demo", "test"],
+}
+
+describe("toCodexManifest", () => {
+  test("maps required fields and synthesises full interface block", () => {
+    const result = toCodexManifest(baseClaude, undefined)
+    expect(result.name).toBe("demo-plugin")
+    expect(result.version).toBe("1.2.3")
+    expect(result.interface.displayName).toBe("Demo Plugin")
+    expect(result.interface.category).toBe("Productivity")
+    expect(result.interface.developerName).toBe("Alice")
+    expect(result.interface.websiteURL).toBe("https://example.com/demo")
+    expect(result.interface.shortDescription).toBeTypeOf("string")
+    expect(result.interface.longDescription).toBe(baseClaude.description)
+    expect(result.interface.capabilities).toContain("Skill")
+    expect(Array.isArray(result.interface.defaultPrompt)).toBe(true)
+    expect(result.interface.defaultPrompt.length).toBeGreaterThan(0)
+  })
+
+  test("defaults author to Community when missing (validator requires non-empty)", () => {
+    const claude: ClaudePluginManifest = { name: "x" }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.author.name).toBe("Community")
+    expect(result.interface.developerName).toBe("Community")
+  })
+
+  test("drops http:// author url (validator requires https://)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, author: { name: "X", url: "http://insecure" } }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.author.url).toBeUndefined()
+  })
+
+  test("derives Tool capability when mcpServers present", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, mcpServers: { x: {} } }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.interface.capabilities).toContain("Tool")
+  })
+
+  test("coerces non-semver version into 1.0.0", () => {
+    const claude: ClaudePluginManifest = { name: "x", version: "2024-01-01" }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.version).toBe("1.0.0")
+  })
+
+  test("defaultPrompt entries respect 128 char cap", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, name: "x".repeat(200) }
+    const result = toCodexManifest(claude, undefined)
+    for (const p of result.interface.defaultPrompt) {
+      expect(p.length).toBeLessThanOrEqual(128)
+    }
+  })
+
+  test("prefers marketplace displayName and category over derived values", () => {
+    const entry: MarketplaceEntry = { name: "demo-plugin", displayName: "Demo!", category: "security" }
+    const result = toCodexManifest(baseClaude, entry)
+    expect(result.interface.displayName).toBe("Demo!")
+    expect(result.interface.category).toBe("Security")
+  })
+
+  test("drops hooks field when present (Codex validator rejects it)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, hooks: "./hooks.json" }
+    const result = toCodexManifest(claude, undefined) as unknown as Record<string, unknown>
+    expect(result.hooks).toBeUndefined()
+  })
+
+  test("converts inline mcpServers into a file reference", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, mcpServers: { foo: { command: "node" } } }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.mcpServers).toBe("./.mcp.json")
+  })
+
+  test("preserves mcpServers string reference unchanged", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, mcpServers: "./custom-mcp.json" as unknown as Record<string, unknown> }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.mcpServers).toBe("./custom-mcp.json")
+  })
+
+  test("omits mcpServers field when manifest has none", () => {
+    const result = toCodexManifest(baseClaude, undefined)
+    expect(result.mcpServers).toBeUndefined()
+  })
+
+  test("falls back to version 1.0.0 when missing", () => {
+    const claude: ClaudePluginManifest = { name: "x" }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.version).toBe("1.0.0")
+  })
+
+  test("uses marketplace description as fallback for plugin description", () => {
+    const claude: ClaudePluginManifest = { name: "x" }
+    const entry: MarketplaceEntry = { name: "x", description: "from market" }
+    const result = toCodexManifest(claude, entry)
+    expect(result.description).toBe("from market")
+  })
+
+  test("omits websiteURL when homepage is not https", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, homepage: "http://insecure.example.com" }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.interface.websiteURL).toBeUndefined()
+  })
+
+  test("truncates shortDescription at sentence boundary", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, description: "First sentence. Second sentence." }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.interface.shortDescription).toBe("First sentence")
+  })
+
+  test("normalises [./skills/] array to ./skills/ (Codex requires string)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, skills: ["./skills/"] }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.skills).toBe("./skills/")
+  })
+
+  test("omits skills when path is incompatible with Codex (e.g. .agents/skills/)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, skills: "./.agents/skills/" }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.skills).toBeUndefined()
+  })
+})
+
+describe("toAntigravityManifest", () => {
+  test("produces flat manifest with only present fields", () => {
+    const claude: ClaudePluginManifest = { name: "x" }
+    const result = toAntigravityManifest(claude) as unknown as Record<string, unknown>
+    expect(result).toEqual({ name: "x" })
+  })
+
+  test("preserves common metadata fields", () => {
+    const result = toAntigravityManifest(baseClaude)
+    expect(result.name).toBe("demo-plugin")
+    expect(result.version).toBe("1.2.3")
+    expect(result.author?.name).toBe("Alice")
+    expect(result.keywords).toEqual(["demo", "test"])
+  })
+
+  test("does not include skills or hooks paths (Antigravity discovers by directory)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, skills: "./skills/", hooks: "./hooks.json" }
+    const result = toAntigravityManifest(claude) as unknown as Record<string, unknown>
+    expect(result.skills).toBeUndefined()
+    expect(result.hooks).toBeUndefined()
+  })
+})
+
+describe("extractMcpServersFile", () => {
+  test("returns null when no inline mcpServers", () => {
+    expect(extractMcpServersFile({ name: "x" })).toBeNull()
+  })
+
+  test("returns null when mcpServers is a string reference", () => {
+    expect(extractMcpServersFile({ name: "x", mcpServers: "./mcp.json" as unknown as Record<string, unknown> })).toBeNull()
+  })
+
+  test("wraps inline servers in { mcpServers: ... } envelope", () => {
+    const claude: ClaudePluginManifest = { name: "x", mcpServers: { foo: { command: "node" } } }
+    const result = extractMcpServersFile(claude)
+    expect(result).toEqual({ mcpServers: { foo: { command: "node" } } })
+  })
+})
+
+describe("toCodexMarketplaceEntry", () => {
+  test("emits AVAILABLE/ON_INSTALL policy with derived category", () => {
+    const entry: MarketplaceEntry = { name: "demo", category: "Database" }
+    const result = toCodexMarketplaceEntry(entry, "demo-dir")
+    expect(result).toEqual({
+      name: "demo",
+      source: { source: "local", path: "./plugins/demo-dir" },
+      policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" },
+      category: "Database",
+    })
+  })
+
+  test("defaults category to Productivity when missing", () => {
+    const result = toCodexMarketplaceEntry({ name: "x" }, "x")
+    expect(result.category).toBe("Productivity")
+  })
+})

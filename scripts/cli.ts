@@ -15,6 +15,7 @@ import { dirname, join, resolve } from "node:path"
 import type { SubmoduleMeta } from "./meta.ts"
 import { extensions, submodules, vendors } from "./meta.ts"
 import { convertMcpServerPaths, parseToml } from "./extension-helpers.ts"
+import { generateForPlugin, toCodexMarketplace, writeIfChanged, type ClaudeMarketplace, type MarketplaceEntry } from "./multi-format.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
 const PLUGINS_DIR = join(ROOT, "plugins")
@@ -689,6 +690,70 @@ export async function cleanup() {
 }
 
 // ---------------------------------------------------------------------------
+// multi-format
+// ---------------------------------------------------------------------------
+/**
+ * Generate Codex and Antigravity manifests for every local plugin so the
+ * same plugin directory loads in all three runtimes. See scripts/multi-format.ts
+ * for the format mapping rules.
+ */
+export async function generateMultiFormat() {
+  const marketplaceJsonPath = join(ROOT, ".claude-plugin", "marketplace.json")
+  if (!existsSync(marketplaceJsonPath)) {
+    console.error(`! marketplace not found: ${marketplaceJsonPath}`)
+    process.exit(1)
+  }
+
+  const marketplaceJson = JSON.parse(readFileSync(marketplaceJsonPath, "utf-8")) as ClaudeMarketplace
+  const entriesByPluginDir = new Map<string, MarketplaceEntry>()
+  for (const entry of marketplaceJson.plugins) {
+    if (typeof entry.source === "string" && entry.source.startsWith("./plugins/")) {
+      const dirName = entry.source.replace(/^\.\/plugins\//, "")
+      entriesByPluginDir.set(dirName, entry)
+    }
+  }
+
+  console.log("Generating Codex + Antigravity manifests for local plugins...\n")
+  let pluginsProcessed = 0
+  let filesWritten = 0
+  const pluginDirs = readdirSync(PLUGINS_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+    .sort()
+
+  for (const dirName of pluginDirs) {
+    const pluginDir = join(PLUGINS_DIR, dirName)
+    const entry = entriesByPluginDir.get(dirName)
+    const result = generateForPlugin(pluginDir, entry)
+    if (result.reason) {
+      console.log(`  ${dirName}: skipped (${result.reason})`)
+      continue
+    }
+    pluginsProcessed++
+    if (result.written.length === 0) {
+      console.log(`  ${dirName}: up to date`)
+    } else {
+      console.log(`  ${dirName}: wrote ${result.written.length} file(s)`)
+      filesWritten += result.written.length
+    }
+  }
+
+  // Generate Codex marketplace.json from the Claude one.
+  const codexMarketplace = toCodexMarketplace(marketplaceJson)
+  const codexMarketplacePath = join(ROOT, ".agents", "plugins", "marketplace.json")
+  const codexWritten = writeIfChanged(codexMarketplacePath, JSON.stringify(codexMarketplace, null, 2) + "\n")
+  console.log()
+  if (codexWritten) {
+    console.log(`Codex marketplace written: ${codexMarketplacePath}`)
+    filesWritten++
+  } else {
+    console.log(`Codex marketplace up to date: ${codexMarketplacePath}`)
+  }
+
+  console.log(`\nDone. Processed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 if (import.meta.main) {
@@ -707,14 +772,18 @@ if (import.meta.main) {
     case "cleanup":
       await cleanup()
       break
+    case "multi-format":
+      await generateMultiFormat()
+      break
     default:
       console.log("Usage: bun scripts/cli.ts <command>")
       console.log()
       console.log("Commands:")
-      console.log("  init     Add vendor submodules to this repo")
-      console.log("  sync     Update submodules and sync skills directly to plugins/")
-      console.log("  check    Check for available upstream updates")
-      console.log("  cleanup  Remove stale submodules and plugin skills")
+      console.log("  init          Add vendor submodules to this repo")
+      console.log("  sync          Update submodules and sync skills directly to plugins/")
+      console.log("  check         Check for available upstream updates")
+      console.log("  cleanup       Remove stale submodules and plugin skills")
+      console.log("  multi-format  Generate Codex + Antigravity manifests for local plugins")
       process.exit(1)
   }
 }
