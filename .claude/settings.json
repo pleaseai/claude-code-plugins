@@ -31,10 +31,10 @@
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "typescript-lsp@language-server-please": true,
-    "graphql-lsp@language-server-please": false,
-    "vue-lsp@language-server-please": true,
-    "eslint-lsp@language-server-please": true,
+    "typescript-lsp@code-intelligence": true,
+    "graphql-lsp@code-intelligence": false,
+    "vue-lsp@code-intelligence": true,
+    "eslint-lsp@code-intelligence": true,
     "skill-creator@claude-plugins-official": true,
     "backend@passionfactory": false,
     "bun@passionfactory": true,
@@ -72,7 +72,7 @@
         "repo": "chatbot-pf/engineering-standards"
       }
     },
-    "language-server-please": {
+    "code-intelligence": {
       "source": {
         "source": "github",
         "repo": "chatbot-pf/code-please"
