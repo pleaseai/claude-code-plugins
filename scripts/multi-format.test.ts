@@ -1,9 +1,16 @@
-import { describe, expect, test } from "vitest"
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs"
+import { tmpdir } from "node:os"
+import { join } from "node:path"
+import { afterEach, beforeEach, describe, expect, test } from "vitest"
 import {
   extractMcpServersFile,
+  generateForPlugin,
+  readClaudeManifest,
   toAntigravityManifest,
   toCodexManifest,
+  toCodexMarketplace,
   toCodexMarketplaceEntry,
+  type ClaudeMarketplace,
   type ClaudePluginManifest,
   type MarketplaceEntry,
 } from "./multi-format.ts"
@@ -172,6 +179,128 @@ describe("extractMcpServersFile", () => {
     const claude: ClaudePluginManifest = { name: "x", mcpServers: { foo: { command: "node" } } }
     const result = extractMcpServersFile(claude)
     expect(result).toEqual({ mcpServers: { foo: { command: "node" } } })
+  })
+})
+
+describe("readClaudeManifest", () => {
+  let tempDir: string
+  beforeEach(() => { tempDir = mkdtempSync(join(tmpdir(), "claude-plugins-test-")) })
+  afterEach(() => { rmSync(tempDir, { recursive: true, force: true }) })
+
+  test("returns null when no manifest file exists", () => {
+    expect(readClaudeManifest(tempDir)).toBeNull()
+  })
+
+  test("reads .claude-plugin/plugin.json when present", () => {
+    mkdirSync(join(tempDir, ".claude-plugin"))
+    writeFileSync(join(tempDir, ".claude-plugin", "plugin.json"), JSON.stringify({ name: "x" }))
+    expect(readClaudeManifest(tempDir)).toEqual({ name: "x" })
+  })
+
+  test("falls back to root plugin.json when .claude-plugin/ absent", () => {
+    writeFileSync(join(tempDir, "plugin.json"), JSON.stringify({ name: "y" }))
+    expect(readClaudeManifest(tempDir)).toEqual({ name: "y" })
+  })
+
+  test("throws (does not swallow) when manifest JSON is malformed", () => {
+    mkdirSync(join(tempDir, ".claude-plugin"))
+    writeFileSync(join(tempDir, ".claude-plugin", "plugin.json"), "{ broken json")
+    expect(() => readClaudeManifest(tempDir)).toThrow(/plugin\.json/)
+  })
+})
+
+describe("toCodexMarketplace", () => {
+  test("filters out non-local plugin entries (github/object sources)", () => {
+    const input: ClaudeMarketplace = {
+      name: "test-market",
+      plugins: [
+        { name: "local-one", source: "./plugins/local-one" as unknown as object },
+        { name: "from-github", source: { source: "github", repo: "org/repo" } as unknown as object },
+        { name: "local-two", source: "./plugins/local-two" as unknown as object },
+      ],
+    }
+    const result = toCodexMarketplace(input)
+    expect(result.plugins.map(p => p.name)).toEqual(["local-one", "local-two"])
+  })
+
+  test("extracts directory name from local source path", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      plugins: [{ name: "alias", source: "./plugins/real-dir" as unknown as object }],
+    }
+    const result = toCodexMarketplace(input)
+    expect(result.plugins[0]!.source.path).toBe("./plugins/real-dir")
+  })
+
+  test("inherits marketplace name and seeds interface.displayName", () => {
+    const input: ClaudeMarketplace = { name: "vendor-xyz", plugins: [] }
+    const result = toCodexMarketplace(input)
+    expect(result.name).toBe("vendor-xyz")
+    expect(result.interface.displayName).toBe("vendor-xyz")
+  })
+
+  test("defaults name to 'personal' when marketplace lacks one", () => {
+    const result = toCodexMarketplace({ plugins: [] })
+    expect(result.name).toBe("personal")
+  })
+})
+
+describe("generateForPlugin", () => {
+  let tempDir: string
+  beforeEach(() => { tempDir = mkdtempSync(join(tmpdir(), "gen-test-")) })
+  afterEach(() => { rmSync(tempDir, { recursive: true, force: true }) })
+
+  function writeNestedClaude(manifest: ClaudePluginManifest) {
+    mkdirSync(join(tempDir, ".claude-plugin"))
+    writeFileSync(join(tempDir, ".claude-plugin", "plugin.json"), JSON.stringify(manifest))
+  }
+
+  test("returns reason when no Claude manifest exists", () => {
+    const result = generateForPlugin(tempDir, undefined)
+    expect(result.reason).toBeTruthy()
+    expect(result.written).toEqual([])
+  })
+
+  test("writes Codex and Antigravity manifests when only nested manifest exists", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    const result = generateForPlugin(tempDir, undefined)
+    expect(result.written.some(p => p.endsWith(".codex-plugin/plugin.json"))).toBe(true)
+    expect(result.written.some(p => p.endsWith("plugin.json") && !p.includes(".codex-plugin"))).toBe(true)
+  })
+
+  test("preserves existing root plugin.json when Claude manifest lives at root (no .claude-plugin/)", () => {
+    const original = { name: "rootonly", version: "1.0.0", description: "stays", author: { name: "A" } }
+    writeFileSync(join(tempDir, "plugin.json"), JSON.stringify(original, null, 2))
+    const result = generateForPlugin(tempDir, undefined)
+    // The Antigravity write must be skipped — overwriting would clobber the source of truth.
+    expect(result.skipped.some(s => s.includes("Claude manifest already at root"))).toBe(true)
+    const rootContent = JSON.parse(require("node:fs").readFileSync(join(tempDir, "plugin.json"), "utf-8"))
+    expect(rootContent).toEqual(original)
+  })
+
+  test("emits .mcp.json and mcp_config.json when manifest has inline mcpServers", () => {
+    writeNestedClaude({
+      name: "x", version: "1.0.0", description: "d", author: { name: "A" },
+      mcpServers: { foo: { command: "node" } },
+    })
+    const result = generateForPlugin(tempDir, undefined)
+    expect(result.written.some(p => p.endsWith(".mcp.json"))).toBe(true)
+    expect(result.written.some(p => p.endsWith("mcp_config.json"))).toBe(true)
+  })
+
+  test("does not emit MCP files when manifest has no inline mcpServers", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    const result = generateForPlugin(tempDir, undefined)
+    expect(result.written.some(p => p.endsWith(".mcp.json"))).toBe(false)
+    expect(result.written.some(p => p.endsWith("mcp_config.json"))).toBe(false)
+  })
+
+  test("mirrors hooks/hooks.json to root hooks.json for Antigravity", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    mkdirSync(join(tempDir, "hooks"))
+    writeFileSync(join(tempDir, "hooks", "hooks.json"), '{"hooks":{}}')
+    const result = generateForPlugin(tempDir, undefined)
+    expect(result.written.some(p => p.endsWith("/hooks.json") && !p.includes("/hooks/"))).toBe(true)
   })
 })
 

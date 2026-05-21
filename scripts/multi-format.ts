@@ -303,10 +303,12 @@ export function readClaudeManifest(pluginDir: string): ClaudePluginManifest | nu
   const root = join(pluginDir, "plugin.json")
   const path = existsSync(nested) ? nested : existsSync(root) ? root : null
   if (!path) return null
+  // Parse errors must surface — a malformed manifest is a real failure that
+  // would silently drop the plugin from generation if collapsed to null.
   try {
     return JSON.parse(readFileSync(path, "utf-8")) as ClaudePluginManifest
-  } catch {
-    return null
+  } catch (err) {
+    throw new Error(`Failed to parse ${path}: ${(err as Error).message}`)
   }
 }
 

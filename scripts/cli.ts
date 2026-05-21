@@ -716,6 +716,8 @@ export async function generateMultiFormat() {
   console.log("Generating Codex + Antigravity manifests for local plugins...\n")
   let pluginsProcessed = 0
   let filesWritten = 0
+  const benignSkipped: string[] = []
+  const failed: { name: string; error: string }[] = []
   const pluginDirs = readdirSync(PLUGINS_DIR, { withFileTypes: true })
     .filter(d => d.isDirectory())
     .map(d => d.name)
@@ -724,17 +726,24 @@ export async function generateMultiFormat() {
   for (const dirName of pluginDirs) {
     const pluginDir = join(PLUGINS_DIR, dirName)
     const entry = entriesByPluginDir.get(dirName)
-    const result = generateForPlugin(pluginDir, entry)
-    if (result.reason) {
-      console.log(`  ${dirName}: skipped (${result.reason})`)
-      continue
-    }
-    pluginsProcessed++
-    if (result.written.length === 0) {
-      console.log(`  ${dirName}: up to date`)
-    } else {
-      console.log(`  ${dirName}: wrote ${result.written.length} file(s)`)
-      filesWritten += result.written.length
+    try {
+      const result = generateForPlugin(pluginDir, entry)
+      if (result.reason) {
+        console.log(`  ${dirName}: skipped (${result.reason})`)
+        benignSkipped.push(dirName)
+        continue
+      }
+      pluginsProcessed++
+      if (result.written.length === 0) {
+        console.log(`  ${dirName}: up to date`)
+      } else {
+        console.log(`  ${dirName}: wrote ${result.written.length} file(s)`)
+        filesWritten += result.written.length
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error(`  ${dirName}: FAILED — ${msg}`)
+      failed.push({ name: dirName, error: msg })
     }
   }
 
@@ -750,7 +759,14 @@ export async function generateMultiFormat() {
     console.log(`Codex marketplace up to date: ${codexMarketplacePath}`)
   }
 
-  console.log(`\nDone. Processed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
+  console.log(`\nProcessed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
+  if (benignSkipped.length > 0) console.log(`Skipped (no manifest): ${benignSkipped.join(", ")}`)
+  if (failed.length > 0) {
+    console.error(`\n${failed.length} plugin(s) failed:`)
+    for (const f of failed) console.error(`  - ${f.name}: ${f.error}`)
+    process.exit(1)
+  }
+  console.log("Done.")
 }
 
 // ---------------------------------------------------------------------------
