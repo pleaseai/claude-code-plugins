@@ -10,7 +10,8 @@ The plugin includes:
 
 - A **skill** (`graphite`) that activates whenever stacked-PR or `gt` work comes up. It documents the mental model, the golden path, conflict-resolution patterns, worktree handling, and multi-trunk setups.
 - A **setup skill** (`graphite-setup`) that activates when configuring a repo for Graphite — GitHub branch protection, merge queue choice (Graphite / GitHub native / external), CI triggers, ignoring `graphite-base/*` branches, and stack-aware CI Optimizations.
-- **15 slash commands** covering basic workflows (`create`, `submit`, `sync`, `log`, `checkout`, `modify`) and advanced operations (`restack`, `absorb`, `split`, `squash`, `fold`, `track`, `reorder`, `move`, `get`).
+- A **merge-queue skill** (`graphite-merge-queue`) that handles runtime operation of Graphite's queue — label-based enqueueing, stack cascade rules, dequeueing, and reading the configured label from `.please/config.yml`.
+- **16 slash commands** covering basic workflows (`create`, `submit`, `sync`, `log`, `checkout`, `modify`), advanced operations (`restack`, `absorb`, `split`, `squash`, `fold`, `track`, `reorder`, `move`, `get`), and merge-queue operation (`merge-queue`).
 
 ## Prerequisites
 
@@ -67,6 +68,28 @@ claude
 | `/graphite:reorder` | Interactively reorder branches in the stack |
 | `/graphite:move` | Rebase the current branch (and dependents) onto a new parent |
 | `/graphite:get` | Fetch a teammate's stack to collaborate |
+| `/graphite:merge-queue` | Enqueue (or dequeue with `--remove`) the current PR via Graphite's merge label |
+
+### Merge queue configuration
+
+Graphite supports four merge-queue postures. Declare which one your repo uses so the plugin picks the right merge path:
+
+```yaml
+graphite:
+  enabled: true
+  merge-queue:
+    mode: graphite          # graphite | github-native | external | none
+    label: "merge-queue"     # used only when mode: graphite (must match Graphite settings)
+```
+
+| `mode` | What `/graphite:merge-queue` does |
+|---|---|
+| `graphite` | Applies/removes the configured label — Graphite enqueues |
+| `github-native` | Refuses; directs you to `gh pr merge --auto` |
+| `external` | Refuses; directs you to the external tool's enqueue mechanism |
+| `none` / unset | Refuses; directs you to `gt submit --merge` or `gh pr merge` |
+
+Fallback chain for the label (when `mode: graphite`): `graphite.merge-queue.label` → `$MERGE_QUEUE_LABEL` → `merge-queue`.
 
 ## How it works
 
@@ -93,3 +116,8 @@ A `SessionStart` hook also detects `.graphite_repo_config` inside the git common
 - [Setup: merge queue integration](https://graphite.com/docs/setup-merge-queue-integration)
 - [Setup: recommended CI settings](https://graphite.com/docs/setup-recommended-ci-settings)
 - [Stacking and CI](https://graphite.com/docs/stacking-and-ci)
+
+### Merge queue (covered by the `graphite-merge-queue` skill)
+
+- [Get started with Merge Queue](https://graphite.com/docs/get-started-merge-queue)
+- [Set up the Merge Queue](https://graphite.com/docs/set-up-merge-queue)
