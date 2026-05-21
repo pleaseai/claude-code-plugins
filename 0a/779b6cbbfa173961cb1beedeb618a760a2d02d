@@ -1,0 +1,40 @@
+plugins/bun/skills/use-bun/references/test-runner.md
+  s_90cc8bb42f707a::t_bb5f09d21c8719 75
+  s_90cc8bb42f707a::t_dd20ffd8793609 180
+plugins/bun/skills/use-bun/references/bundler.md
+  s_90cc8bb42f707a::t_b7491fbd973ff5 91
+plugins/bun/skills/use-bun/SKILL.md
+  s_90cc8bb42f707a::t_d49f6e34b399bf 37
+  s_90cc8bb42f707a::t_38669888d2012f 43
+  s_90cc8bb42f707a::t_a707db50cfdbb3 17
+plugins/bun/skills/use-bun/references/node-compat.md
+  s_90cc8bb42f707a::t_f2355f5048afd1 85
+plugins/bun/skills/use-bun/references/runtime-apis.md
+  s_90cc8bb42f707a::t_0ae1ab28ccec48 72-73
+plugins/bun/skills/use-bun/references/versions.md
+  s_90cc8bb42f707a::t_97023208885379 17
+  s_90cc8bb42f707a::t_95e25670b569fb 71-72
+  s_90cc8bb42f707a::t_cb412896bf8d7d 50-51
+plugins/bun/skills/use-bun/references/package-manager.md
+  s_90cc8bb42f707a::t_825c0cb3096ec6 3
+  s_90cc8bb42f707a::t_1b0535ded0df39 197
+  s_90cc8bb42f707a::t_89a645ce3ff8b4 159
+plugins/bun/skills/use-bun/scripts/resolve-bun-version.sh
+  s_90cc8bb42f707a::t_b4494d7f7df2a8 21-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "0a779b6cbbfa173961cb1beedeb618a760a2d02d",
+  "prompts": {},
+  "sessions": {
+    "s_90cc8bb42f707a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6452771d-083a-49c4-a02b-2523e10aabf5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

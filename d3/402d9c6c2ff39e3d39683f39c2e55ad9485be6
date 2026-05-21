@@ -1,0 +1,21 @@
+.claude/agent-memory/review-review-cubic-reviewer/pr171-graphite-session-start-hook.md
+  s_2f50c101f33104::t_15ab9c68a33a05 1-16
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_2f50c101f33104::t_dc75e92d52899b 5
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "d3402d9c6c2ff39e3d39683f39c2e55ad9485be6",
+  "prompts": {},
+  "sessions": {
+    "s_2f50c101f33104": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1f30205-8d4a-48ec-bb99-eb3734560fc4",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

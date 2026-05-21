@@ -1,0 +1,19 @@
+plugins/bun/plugin.json
+  s_3a0d52300e892e::t_3e1375f6907f60 2-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "f0a16696be14af9ff7684830dbdd8b074b629ab2",
+  "prompts": {},
+  "sessions": {
+    "s_3a0d52300e892e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ebc04096-ba66-4279-ac45-7f5c2e0a76e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

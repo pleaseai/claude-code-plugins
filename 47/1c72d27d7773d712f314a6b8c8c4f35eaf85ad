@@ -1,0 +1,34 @@
+plugins/bun/skills/use-bun/scripts/resolve-bun-version.sh
+  s_90cc8bb42f707a::t_d859f67e1e1cf6 1-7,12-15,17-47
+  s_90cc8bb42f707a::t_8285163571d133 8-11,16
+plugins/bun/skills/use-bun/SKILL.md
+  s_90cc8bb42f707a::t_697b35812fde3f 62-63,66,69,72
+  s_90cc8bb42f707a::t_205f5b3ec5372c 10,17,21
+  s_90cc8bb42f707a::t_a9267533907cbd 49
+  s_90cc8bb42f707a::t_ac11efbbae8a03 13-15
+plugins/bun/skills/use-bun/references/runtime-apis.md
+  s_90cc8bb42f707a::t_ff9ba134ea88ef 246-247
+plugins/bun/skills/use-bun/references/node-compat.md
+  s_90cc8bb42f707a::t_6db69c29f08df3 45-46,124-125
+plugins/bun/skills/use-bun/references/versions.md
+  s_90cc8bb42f707a::t_7048f940d6f1cb 30-31,34
+  s_90cc8bb42f707a::t_a0b0d56c928148 55-64,66,68-74,76
+  s_90cc8bb42f707a::t_8609a175b66a9c 14-15,17-19
+  s_90cc8bb42f707a::t_781a806b37d30f 7-13,22-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "471c72d27d7773d712f314a6b8c8c4f35eaf85ad",
+  "prompts": {},
+  "sessions": {
+    "s_90cc8bb42f707a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6452771d-083a-49c4-a02b-2523e10aabf5",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

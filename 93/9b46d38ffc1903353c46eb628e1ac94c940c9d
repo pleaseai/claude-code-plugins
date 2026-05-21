@@ -1,0 +1,21 @@
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_3a0d52300e892e::t_fff62656189f2a 7
+.claude/agent-memory/review-review-cubic-reviewer/pr176-release-please-bun.md
+  s_3a0d52300e892e::t_4d2bc331574dbb 1-17
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "939b46d38ffc1903353c46eb628e1ac94c940c9d",
+  "prompts": {},
+  "sessions": {
+    "s_3a0d52300e892e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ebc04096-ba66-4279-ac45-7f5c2e0a76e0",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

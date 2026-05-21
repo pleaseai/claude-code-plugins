@@ -1,0 +1,23 @@
+plugins/graphite/hooks/graphite-context.sh
+  s_2f50c101f33104::t_01c3fd1d12308b 1-58
+plugins/graphite/hooks/hooks.json
+  s_2f50c101f33104::t_e134de0e82d555 1-17
+plugins/graphite/README.md
+  s_2f50c101f33104::t_9894cd59abc3bc 80-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.10",
+  "base_commit_sha": "bf12217f59ec4e75f44ce6d80395f94c29a8a06d",
+  "prompts": {},
+  "sessions": {
+    "s_2f50c101f33104": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d1f30205-8d4a-48ec-bb99-eb3734560fc4",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

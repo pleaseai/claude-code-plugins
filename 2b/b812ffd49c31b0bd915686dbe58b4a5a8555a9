@@ -1,0 +1,21 @@
+.release-please-manifest.json
+  s_4e14d235728111::t_5811ec06eabd7b 50-51
+release-please-config.json
+  s_4e14d235728111::t_a1fdb8411e1bc3 507-517
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "2bb812ffd49c31b0bd915686dbe58b4a5a8555a9",
+  "prompts": {},
+  "sessions": {
+    "s_4e14d235728111": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "b905f5ad-3eb3-4b2d-a17a-aec34662303b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}

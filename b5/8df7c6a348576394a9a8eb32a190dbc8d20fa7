@@ -1,0 +1,22 @@
+plugins/graphite/skills/graphite-setup/SKILL.md
+  s_f69137aa15b0ce::t_3af0dc9c1d056e 1-160
+plugins/graphite/README.md
+  s_f69137aa15b0ce::t_662bf9009b0e00 12
+  s_f69137aa15b0ce::t_f886acb2198c77 89-95
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "b58df7c6a348576394a9a8eb32a190dbc8d20fa7",
+  "prompts": {},
+  "sessions": {
+    "s_f69137aa15b0ce": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "79207489-2df8-4ad7-a10b-876a335d9641",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
