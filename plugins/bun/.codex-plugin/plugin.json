@@ -6,6 +6,20 @@
     "name": "Bun",
     "url": "https://github.com/oven-sh/bun"
   },
+  "interface": {
+    "displayName": "Bun",
+    "shortDescription": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler",
+    "longDescription": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler. Use when running bun commands, calling Bun.* APIs, or working with bun.lock projects.",
+    "developerName": "Bun",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Bun for my current task."
+    ],
+    "websiteURL": "https://bun.com"
+  },
   "homepage": "https://bun.com",
   "repository": "https://github.com/oven-sh/bun",
   "license": "MIT",
@@ -18,23 +32,5 @@
     "javascript",
     "typescript"
   ],
-  "skills": "./skills/",
-  "interface": {
-    "displayName": "Bun",
-    "shortDescription": "Version-aware skill for the Bun JavaScript runtime, package manager, test runner, and bundler.",
-    "longDescription": "Bundles a single use-bun skill that uses the ask CLI to pin docs and source to the exact Bun version installed in the project. Covers Bun.serve, Bun.file, Bun.spawn, Bun.$ (shell), bun:sqlite, Bun.SQL, the bun:test runner, the bundler with --compile executables, the package manager with workspaces/catalogs/isolated installs, and Node.js compatibility.",
-    "developerName": "Passion Factory",
-    "category": "Developer Tools",
-    "capabilities": [
-      "Interactive",
-      "Write"
-    ],
-    "websiteURL": "https://bun.com",
-    "defaultPrompt": [
-      "How do I start an HTTP server with Bun.serve and routes?",
-      "Set up a Bun workspaces monorepo with shared catalog versions.",
-      "Write a bun:test suite that mocks a module and snapshots output."
-    ],
-    "brandColor": "#FBF0DF"
-  }
+  "skills": "./skills/"
 }

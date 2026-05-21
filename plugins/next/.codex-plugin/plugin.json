@@ -1,0 +1,30 @@
+{
+  "name": "next",
+  "version": "1.0.0",
+  "description": "Next.js best practices, caching patterns, and upgrade guidance",
+  "author": {
+    "name": "Vercel",
+    "url": "https://nextjs.org"
+  },
+  "interface": {
+    "displayName": "Next",
+    "shortDescription": "Next.js best practices, caching patterns, and upgrade guidance",
+    "longDescription": "Next.js best practices, caching patterns, and upgrade guidance",
+    "developerName": "Vercel",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Next for my current task."
+    ]
+  },
+  "license": "NOASSERTION",
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "ssr",
+    "rsc"
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "name": "nuxt-ui",
+  "version": "1.3.0",
+  "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
+  "author": {
+    "name": "Nuxt",
+    "url": "https://github.com/nuxt"
+  },
+  "interface": {
+    "displayName": "Nuxt Ui",
+    "shortDescription": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
+    "longDescription": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
+    "developerName": "Nuxt",
+    "category": "Ui",
+    "capabilities": [
+      "Skill",
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Nuxt Ui for my current task."
+    ]
+  },
+  "repository": "https://github.com/nuxt/ui",
+  "license": "MIT",
+  "keywords": [
+    "nuxt-ui",
+    "vue",
+    "ui",
+    "tailwind",
+    "reka-ui"
+  ],
+  "mcpServers": "./.mcp.json"
+}

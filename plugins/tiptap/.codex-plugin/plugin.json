@@ -1,0 +1,27 @@
+{
+  "name": "tiptap",
+  "version": "1.0.0",
+  "description": "Helps coding agents integrate and work with the Tiptap rich text editor. Use when building or modifying a rich text editor with Tiptap, installing Tiptap extensions, or implementing features like collaboration, comments, AI, or document conversion.",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Tiptap",
+    "shortDescription": "Helps coding agents integrate and work with the Tiptap rich text editor",
+    "longDescription": "Helps coding agents integrate and work with the Tiptap rich text editor. Use when building or modifying a rich text editor with Tiptap, installing Tiptap extensions, or implementing features like collaboration, comments, AI, or document conversion.",
+    "developerName": "Community",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Tiptap for my current task."
+    ]
+  },
+  "license": "MIT",
+  "keywords": [
+    "tiptap",
+    "rich-text-editor",
+    "prosemirror"
+  ]
+}

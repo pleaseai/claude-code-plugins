@@ -1,0 +1,30 @@
+{
+  "name": "gatekeeper",
+  "version": "1.3.0",
+  "description": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
+  "author": {
+    "name": "Minsu Lee",
+    "url": "https://github.com/amondnet"
+  },
+  "interface": {
+    "displayName": "Gatekeeper",
+    "shortDescription": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
+    "longDescription": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
+    "developerName": "Minsu Lee",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Gatekeeper for my current task."
+    ]
+  },
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "permissions",
+    "gatekeeper",
+    "hook"
+  ]
+}

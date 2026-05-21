@@ -1,0 +1,27 @@
+{
+  "name": "worktree",
+  "version": "1.0.0",
+  "description": "Git worktree isolation: context injection and parent project access prevention",
+  "author": {
+    "name": "PassionFactory"
+  },
+  "interface": {
+    "displayName": "Worktree",
+    "shortDescription": "Git worktree isolation: context injection and parent project access prevention",
+    "longDescription": "Git worktree isolation: context injection and parent project access prevention",
+    "developerName": "PassionFactory",
+    "category": "Tooling",
+    "capabilities": [
+      "Interactive"
+    ],
+    "defaultPrompt": [
+      "Help me use Worktree for my current task."
+    ]
+  },
+  "keywords": [
+    "worktree",
+    "git",
+    "isolation",
+    "safety"
+  ]
+}

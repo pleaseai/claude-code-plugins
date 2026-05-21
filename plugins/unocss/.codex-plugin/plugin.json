@@ -1,0 +1,32 @@
+{
+  "name": "unocss",
+  "version": "1.0.0",
+  "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS. Use when configuring UnoCSS, writing utility rules, shortcuts, or working with presets like Wind, Icons, Attributify.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Unocss",
+    "shortDescription": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS",
+    "longDescription": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS. Use when configuring UnoCSS, writing utility rules, shortcuts, or working with presets like Wind, Icons, Attributify.",
+    "developerName": "Anthony Fu",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Unocss for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/unocss"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/unocss",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "unocss",
+    "css",
+    "atomic-css",
+    "antfu"
+  ]
+}

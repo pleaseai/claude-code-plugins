@@ -1,0 +1,28 @@
+{
+  "name": "react-native",
+  "version": "1.0.0",
+  "description": "React Native and Expo best practices for building performant mobile apps",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "React Native",
+    "shortDescription": "React Native and Expo best practices for building performant mobile apps",
+    "longDescription": "React Native and Expo best practices for building performant mobile apps",
+    "developerName": "Community",
+    "category": "Mobile",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use React Native for my current task."
+    ]
+  },
+  "license": "MIT",
+  "keywords": [
+    "react-native",
+    "expo",
+    "mobile",
+    "performance"
+  ]
+}

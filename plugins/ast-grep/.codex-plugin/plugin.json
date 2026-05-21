@@ -1,0 +1,33 @@
+{
+  "name": "ast-grep",
+  "version": "1.0.0",
+  "description": "Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search.",
+  "author": {
+    "name": "Herrington Darkholme"
+  },
+  "interface": {
+    "displayName": "Ast Grep",
+    "shortDescription": "Guide for writing ast-grep rules to perform structural code search and analysis",
+    "longDescription": "Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search.",
+    "developerName": "Herrington Darkholme",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Ast Grep for my current task."
+    ],
+    "websiteURL": "https://github.com/ast-grep/agent-skill"
+  },
+  "homepage": "https://github.com/ast-grep/agent-skill",
+  "repository": "https://github.com/ast-grep/agent-skill",
+  "license": "MIT",
+  "keywords": [
+    "ast-grep",
+    "code-search",
+    "ast",
+    "structural-search",
+    "pattern-matching",
+    "refactoring"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "vinext",
+  "version": "1.0.0",
+  "description": "Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversion, and deployment setup",
+  "author": {
+    "name": "Cloudflare",
+    "url": "https://github.com/cloudflare/vinext"
+  },
+  "interface": {
+    "displayName": "Vinext",
+    "shortDescription": "Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversi...",
+    "longDescription": "Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversion, and deployment setup",
+    "developerName": "Cloudflare",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Vinext for my current task."
+    ]
+  },
+  "license": "MIT",
+  "keywords": [
+    "vinext",
+    "nextjs",
+    "vite",
+    "migration",
+    "cloudflare"
+  ]
+}

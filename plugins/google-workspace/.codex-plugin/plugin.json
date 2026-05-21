@@ -1,0 +1,29 @@
+{
+  "name": "google-workspace-cli",
+  "version": "1.0.0",
+  "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+  "author": {
+    "name": "googleworkspace",
+    "url": "https://github.com/googleworkspace"
+  },
+  "interface": {
+    "displayName": "Google Workspace Cli",
+    "shortDescription": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+    "longDescription": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
+    "developerName": "googleworkspace",
+    "category": "Productivity",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Google Workspace Cli for my current task."
+    ],
+    "websiteURL": "https://github.com/googleworkspace/cli"
+  },
+  "homepage": "https://github.com/googleworkspace/cli",
+  "repository": "https://github.com/googleworkspace/cli",
+  "license": "Apache-2.0",
+  "keywords": [
+    "google-workspace"
+  ]
+}

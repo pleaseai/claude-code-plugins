@@ -1,0 +1,33 @@
+{
+  "name": "prisma",
+  "version": "1.1.0",
+  "description": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows",
+  "author": {
+    "name": "Prisma",
+    "url": "https://github.com/prisma"
+  },
+  "interface": {
+    "displayName": "Prisma",
+    "shortDescription": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows",
+    "longDescription": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows",
+    "developerName": "Prisma",
+    "category": "Database",
+    "capabilities": [
+      "Skill",
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Prisma for my current task."
+    ]
+  },
+  "repository": "https://github.com/prisma/skills",
+  "license": "MIT",
+  "keywords": [
+    "prisma",
+    "orm",
+    "database",
+    "typescript",
+    "migrations"
+  ],
+  "mcpServers": "./.mcp.json"
+}

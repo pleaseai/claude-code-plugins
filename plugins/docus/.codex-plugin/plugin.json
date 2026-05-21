@@ -1,0 +1,35 @@
+{
+  "name": "docus",
+  "version": "1.0.0",
+  "description": "Write beautiful documentations with Nuxt and Markdown.",
+  "author": {
+    "name": "Nuxt",
+    "url": "https://github.com/nuxt-content"
+  },
+  "interface": {
+    "displayName": "Docus",
+    "shortDescription": "Write beautiful documentations with Nuxt and Markdown.",
+    "longDescription": "Write beautiful documentations with Nuxt and Markdown.",
+    "developerName": "Nuxt",
+    "category": "Framework",
+    "capabilities": [
+      "Skill",
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Docus for my current task."
+    ],
+    "websiteURL": "https://docus.dev"
+  },
+  "homepage": "https://docus.dev",
+  "repository": "https://github.com/nuxt-content/docus",
+  "license": "MIT",
+  "keywords": [
+    "docus",
+    "nuxt",
+    "documentation",
+    "markdown",
+    "nuxt-content"
+  ],
+  "mcpServers": "./.mcp.json"
+}

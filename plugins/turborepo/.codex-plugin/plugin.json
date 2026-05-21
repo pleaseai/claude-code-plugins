@@ -1,0 +1,32 @@
+{
+  "name": "turborepo",
+  "version": "1.1.0",
+  "description": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
+  "author": {
+    "name": "Vercel",
+    "url": "https://github.com/vercel"
+  },
+  "interface": {
+    "displayName": "Turborepo",
+    "shortDescription": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
+    "longDescription": "Turborepo monorepo build system guidance for task pipelines, caching, CI optimization, and the turbo CLI",
+    "developerName": "Vercel",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Turborepo for my current task."
+    ],
+    "websiteURL": "https://github.com/vercel/turborepo"
+  },
+  "homepage": "https://github.com/vercel/turborepo",
+  "repository": "https://github.com/vercel/turborepo",
+  "license": "MIT",
+  "keywords": [
+    "turborepo",
+    "monorepo",
+    "build-system",
+    "vercel"
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "name": "antfu",
+  "version": "1.0.0",
+  "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Antfu",
+    "shortDescription": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
+    "longDescription": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
+    "developerName": "Anthony Fu",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Antfu for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/antfu"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/antfu",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "antfu",
+    "conventions",
+    "eslint",
+    "typescript"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "name": "emulate",
+  "version": "1.0.0",
+  "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Emulate",
+    "shortDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+    "longDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+    "developerName": "Community",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Emulate for my current task."
+    ]
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "emulate",
+    "api-emulation",
+    "local-development",
+    "testing"
+  ]
+}

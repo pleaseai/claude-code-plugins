@@ -1,0 +1,32 @@
+{
+  "name": "vue",
+  "version": "1.1.0",
+  "description": "Vue 3 core, best practices, router patterns, and testing",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Vue",
+    "shortDescription": "Vue 3 core, best practices, router patterns, and testing",
+    "longDescription": "Vue 3 core, best practices, router patterns, and testing",
+    "developerName": "Anthony Fu",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Vue for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/vue"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vue",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "vue3",
+    "composition-api",
+    "antfu"
+  ]
+}
