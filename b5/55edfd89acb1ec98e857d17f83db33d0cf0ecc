@@ -1,0 +1,34 @@
+plugins/portone/skills/portone-guide/SKILL.md
+  s_5eefb7f28f2292::t_1b17c37b660cca 15-30
+plugins/portone/.codex-plugin/plugin.json
+  s_5eefb7f28f2292::t_b9ac811b583790 1-40
+plugins/portone/README.md
+  s_5eefb7f28f2292::t_acaf6bc6542ab8 1-114
+.release-please-manifest.json
+  s_5eefb7f28f2292::t_df0262f5787b76 52-53
+.claude-plugin/marketplace.json
+  s_5eefb7f28f2292::t_beb2d400542c05 417,422
+  s_5eefb7f28f2292::t_9752cad143880d 418-421,423-424
+plugins/portone/.claude-plugin/plugin.json
+  s_5eefb7f28f2292::t_2a149b0c00b214 2
+release-please-config.json
+  s_5eefb7f28f2292::t_ceacfd14438255 539-559
+plugins/portone/plugin.json
+  s_5eefb7f28f2292::t_8a272a168526c1 1-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "b555edfd89acb1ec98e857d17f83db33d0cf0ecc",
+  "prompts": {},
+  "sessions": {
+    "s_5eefb7f28f2292": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a035a73-0a7c-4854-aa53-d352fe22ac92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
