@@ -55,14 +55,14 @@ graphite:
 
 **Bail-out check (run first):** if `graphite.enabled` is explicitly `false` in `.please/config.yml`, do not read or act on any `merge-queue` config — the repo has opted out of Graphite. The centralized parser sets `GRAPHITE_DISABLED=1` in that case (see [Centralized parser](#centralized-parser--scriptsread-merge-queue-configsh) below); when you see that, stop and tell the user the repo is opted out.
 
-**Mode resolution order** (use the first that exists):
-1. `graphite.merge-queue.mode` in `.please/config.yml`.
-2. The `GRAPHITE_MERGE_QUEUE_MODE` environment variable.
-3. Fall back to `none` — assume no queue rather than silently labeling.
+**Mode resolution order** (env var takes precedence — it's an explicit per-invocation override):
+1. The `GRAPHITE_MERGE_QUEUE_MODE` environment variable.
+2. `graphite.merge-queue.mode` in `.please/config.yml`.
+3. Fall back to empty (and ask the user) — assume no queue rather than silently labeling.
 
-**Label resolution order** (use the first that exists; only meaningful when `mode: graphite`):
-1. `graphite.merge-queue.label` in `.please/config.yml`.
-2. The `MERGE_QUEUE_LABEL` environment variable.
+**Label resolution order** (env var takes precedence; only meaningful when effective mode is `graphite`):
+1. The `MERGE_QUEUE_LABEL` environment variable.
+2. `graphite.merge-queue.label` in `.please/config.yml`.
 3. Fall back to `merge-queue` (the most common default).
 
 If `mode` is unset, ask: "Which merge queue does this repo use — Graphite's, GitHub-native, an external tool, or none?" — then offer to persist the answer.

@@ -96,7 +96,22 @@ awk '
     return s
   }
 
+  # Single-quote a value so that `eval` of the emitted KEY=VALUE line is safe
+  # regardless of whether the YAML value contains shell metacharacters
+  # ($ ` ; & | < > ( ) space etc.). Replaces every embedded single quote with
+  # the standard '\'' close-escape-reopen sequence.
+  #
+  # Built using sprintf("%c", 39) to avoid nested single-quote escaping
+  # inside this awk program (which is itself wrapped in shell single
+  # quotes).
+  function shell_quote(s,    q, esc) {
+    q   = sprintf("%c", 39)         # one literal single quote
+    esc = q "\\" q q                # the '\'' sequence
+    gsub(q, esc, s)
+    return q s q
+  }
+
   END {
-    printf "GRAPHITE_DISABLED=%d\nMERGE_MODE=%s\nMERGE_LABEL=%s\n", disabled, mode, label
+    printf "GRAPHITE_DISABLED=%d\nMERGE_MODE=%s\nMERGE_LABEL=%s\n", disabled, shell_quote(mode), shell_quote(label)
   }
 ' "$CONFIG_FILE"
