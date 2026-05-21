@@ -1,0 +1,21 @@
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_5eefb7f28f2292::t_ffc84834b28dbd 9
+.claude/agent-memory/review-review-cubic-reviewer/pr184-portone-plugin.md
+  s_5eefb7f28f2292::t_ba817f7ea1081c 1-18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "5602b3b0f1175e531d308fe47a2dd378bb4652b9",
+  "prompts": {},
+  "sessions": {
+    "s_5eefb7f28f2292": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a035a73-0a7c-4854-aa53-d352fe22ac92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
