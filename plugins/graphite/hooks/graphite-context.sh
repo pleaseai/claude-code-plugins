@@ -37,10 +37,15 @@ GIT_TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null || true)"
 if [ -n "$GIT_TOPLEVEL" ] && [ -f "$GIT_TOPLEVEL/.please/config.yml" ]; then
   PLEASE_CONFIG_FILE="$GIT_TOPLEVEL/.please/config.yml"
   if awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-    /^[^[:space:]#]/                { in_graphite=0 }
-    in_graphite && /^[[:space:]]+enabled:[[:space:]]*true([[:space:]]|#|$)/ {
-      found=1; exit
+    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
+    /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
+    in_graphite && /^[[:space:]]*($|#)/ { next }
+    in_graphite {
+      match($0, /^[[:space:]]*/)
+      indent=RLENGTH
+      if (child_indent==0) child_indent=indent
+      if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*true([[:space:]]|#|$)/) { found=1; exit }
+      if (indent < child_indent) { in_graphite=0; child_indent=0 }
     }
     END { exit !found }
   ' "$PLEASE_CONFIG_FILE"; then
