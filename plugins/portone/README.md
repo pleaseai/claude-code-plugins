@@ -18,9 +18,9 @@
 
 ### 슬래시 커맨드
 
-#### `/start`
+#### `/portone:start`
 
-결제 연동 코드를 대화형으로 생성합니다.
+결제 연동 코드를 대화형으로 생성합니다. Phase 4에서 `integration-validator` 에이전트가 자동으로 생성된 코드를 검증합니다.
 
 ```
 /portone:start                    # 대화형으로 모든 옵션 선택
@@ -35,16 +35,6 @@
 - `keyin`: 수기결제 (카드 직접 입력)
 - `identity`: 본인인증
 
-#### `/review`
-
-기존 포트원 연동 코드를 검토합니다.
-
-```
-/portone:review                  # 프로젝트 전체 검토
-/portone:review src/payment/     # 특정 디렉토리 검토
-/portone:review src/api/pay.ts   # 특정 파일 검토
-```
-
 ### Claude Code 에이전트
 
 플러그인은 다음 상황에서 자동으로 에이전트를 활성화합니다:
@@ -54,7 +44,7 @@
 - "정기결제 연동 코드 작성해줘"
 - "카드 결제 코드 만들어줘"
 
-#### Integration Reviewer
+#### Integration Validator
 - "포트원 연동 코드 검토해줘"
 - "결제 연동 보안 점검해줘"
 - "PG 연동 코드 리뷰해줘"

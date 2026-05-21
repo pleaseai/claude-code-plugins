@@ -178,11 +178,10 @@ Launch the **integration-validator** agent.
 위 단계를 순차적으로 실행합니다:
 
 1. **Phase 1** 시작: $ARGUMENTS 를 확인하고, 없으면 AskUserQuestion으로 버전, 결제 유형, PG사를 물어봅니다.
-2. **Phase 2**: 프로젝트 환경을 분석합니다.
-3. **Phase 3**: Launch the **payment-code-generator** agent.
-4. **Phase 4**: Launch the **integration-validator** agent. 검증 실패 시 Phase 3으로 돌아갑니다.
-5. **Phase 5**: 변경사항을 VCS에 커밋합니다.
-6. **Phase 6**: 최종 안내를 제공합니다.
+2. **Phase 3**: Launch the **payment-code-generator** agent. 에이전트가 프로젝트 환경(프레임워크/언어)을 분석한 뒤 코드를 생성합니다.
+3. **Phase 4**: Launch the **integration-validator** agent. 검증 실패 시 Phase 3으로 돌아갑니다.
+4. **Phase 5**: 변경사항을 VCS에 커밋합니다.
+5. **Phase 6**: 최종 안내를 제공합니다.
 
 ---
 

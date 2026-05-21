@@ -168,19 +168,21 @@ const response = await PortOne.requestPayment({
 
 ### 백엔드
 
-**결제 검증 (V2):**
+**결제 검증 (V2 — 공식 Server SDK 사용 권장):**
 ```javascript
-const response = await fetch(
-  `https://api.portone.io/payments/${paymentId}`,
-  {
-    headers: {
-      Authorization: `PortOne ${PORTONE_API_SECRET}`,
-    },
-  }
-);
+import * as PortOne from "@portone/server-sdk";
+
+const portoneClient = PortOne.PortOneClient({
+  secret: process.env.PORTONE_API_SECRET,
+});
+
+// 결제 조회 및 검증
+const payment = await portoneClient.payment.getPayment({ paymentId });
+
+// payment.amount.total, payment.status 등을 주문 정보와 대조하여 검증
 ```
 
-**중요**: V2 API 호출 시 `Bearer` 대신 `PortOne` 인증 스킴 우선 사용.
+SDK는 `PortOne` 인증 스킴을 자동으로 사용하며, PG별 응답 차이를 정규화한 타입 안전한 결과를 반환한다. 직접 `fetch`를 호출해야 하는 경우 `Authorization: PortOne <SECRET>` 헤더를 사용한다 (`Bearer`는 호환용일 뿐 V2에서는 `PortOne` 스킴이 우선).
 
 ## Security Considerations
 
@@ -223,14 +225,44 @@ if (response.code) {
 - 타임아웃 고려
 
 ### 웹훅 처리
+
+웹훅 페이로드를 처리하기 전에 반드시 시그니처를 검증한다. HMAC 검증은 파싱된 JSON이 아닌 **원본 raw 바디**에 대해 수행해야 하므로, JSON 파서보다 먼저 `express.raw()` 미들웨어를 적용한다.
+
 ```javascript
-app.post("/webhook", async (req, res) => {
-  const { payment_id, status } = req.body;
-  // 결제 상태 업데이트
-  // 주문 처리
-  res.status(200).send("OK");
-});
+import express from "express";
+import * as PortOne from "@portone/server-sdk";
+
+app.post(
+  "/webhook",
+  express.raw({ type: "application/json" }),
+  async (req, res) => {
+    try {
+      // express.raw()는 req.body를 Buffer로 전달하지만,
+      // @portone/server-sdk의 verify()는 string 페이로드를 요구한다.
+      // UTF-8로 디코딩해도 HMAC이 계산된 바이트 시퀀스는 보존된다.
+      const payload =
+        req.body instanceof Buffer ? req.body.toString("utf8") : req.body;
+
+      // 시그니처 검증 — 페이로드 처리보다 먼저 수행
+      const webhook = await PortOne.Webhook.verify(
+        process.env.PORTONE_WEBHOOK_SECRET,
+        payload,
+        req.headers,
+      );
+      // 검증 통과 — 결제 상태 업데이트, 주문 처리 (멱등성 보장)
+      res.status(200).send("OK");
+    } catch (e) {
+      // 검증 실패한 웹훅은 거부
+      if (e instanceof PortOne.Webhook.WebhookVerificationError) {
+        return res.status(401).send("Invalid webhook signature");
+      }
+      throw e;
+    }
+  },
+);
 ```
+
+**주의**: `app.use(express.json())`을 전역으로 사용하는 경우, **웹훅 라우트는 반드시 그 이전에 등록**해야 한다. Express 바디 파서는 스트림 기반이라 전역 JSON 파서가 먼저 실행되면 바디가 이미 소비되어 라우트 단의 `express.raw()`로 원본 바이트를 다시 읽을 수 없다. 이 경우 HMAC 검증이 항상 실패한다.
 
 ## Common Integration Patterns
 
@@ -260,9 +292,4 @@ app.post("/webhook", async (req, res) => {
 
 ## Additional Resources
 
-### Reference Files
-- **`references/v2-integration-details.md`** - V2 연동 상세 가이드
-- **`references/webhook-patterns.md`** - 웹훅 처리 패턴
-
-### MCP Documentation
 포트원 MCP 서버 도구를 통해 최신 문서와 API 스키마를 항상 조회할 수 있다. 코드 작성 전 반드시 예시 코드와 문서를 확인한다.

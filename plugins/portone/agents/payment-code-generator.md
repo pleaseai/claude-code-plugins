@@ -31,7 +31,7 @@ description: |
   </example>
 model: inherit
 color: cyan
-tools: Read, Write, Glob, Grep, AskUserQuestion, mcp__portone__readPortoneV2FrontendCode, mcp__portone__readPortoneV2BackendCode, mcp__portone__readPortoneOpenapiSchema, mcp__portone__readPortoneOpenapiSchemaSummary, mcp__portone__listPortoneDocs, mcp__portone__readPortoneDoc, mcp__portone__regexSearchPortoneDocs
+tools: Read, Write, Glob, Grep, Bash, TodoWrite, AskUserQuestion, Task, Skill, mcp__portone__readPortoneV2FrontendCode, mcp__portone__readPortoneV2BackendCode, mcp__portone__readPortoneOpenapiSchema, mcp__portone__readPortoneOpenapiSchemaSummary, mcp__portone__listPortoneDocs, mcp__portone__readPortoneDoc, mcp__portone__regexSearchPortoneDocs
 ---
 
 You are a PortOne payment integration code generator specializing in creating production-ready payment code for Korean e-commerce and subscription services.
