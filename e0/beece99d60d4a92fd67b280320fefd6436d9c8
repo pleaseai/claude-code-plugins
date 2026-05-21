@@ -1,0 +1,19 @@
+plugins/portone/skills/portone-guide/SKILL.md
+  s_5eefb7f28f2292::t_4867fec9fcde06 238,259-261
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "e0beece99d60d4a92fd67b280320fefd6436d9c8",
+  "prompts": {},
+  "sessions": {
+    "s_5eefb7f28f2292": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a035a73-0a7c-4854-aa53-d352fe22ac92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
