@@ -1,0 +1,34 @@
+plugins/portone/agents/payment-code-generator.md
+  s_5eefb7f28f2292::t_ff741e9ccb3a83 34
+plugins/portone/agents/integration-validator.md
+  s_5eefb7f28f2292::t_60336c1b06ec0e 43
+  s_5eefb7f28f2292::t_380668b9fcdc71 134
+plugins/portone/commands/start.md
+  s_5eefb7f28f2292::t_57d71178535725 181-184
+plugins/portone/README.md
+  s_5eefb7f28f2292::t_c692825a0d78c0 21,23,47
+plugins/portone/skills/portone-guide/SKILL.md
+  s_5eefb7f28f2292::t_f5453e0475e698 173,175-177
+  s_5eefb7f28f2292::t_001d0d0ef0ebe8 171,174,178-182,185
+  s_5eefb7f28f2292::t_627677c4ade84c 265
+  s_5eefb7f28f2292::t_12f05483932d95 228-230,232-239,246-248,250-262
+  s_5eefb7f28f2292::t_9d64fcfb3f4dfd 240-245,249
+.claude/agent-memory/review-review-documentation-analyzer/project-doc-conventions.md
+  s_5eefb7f28f2292::t_3df8def546643b 8-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "9e56a15d5a69a83b8c53fd85bbf9c5bfc557cc97",
+  "prompts": {},
+  "sessions": {
+    "s_5eefb7f28f2292": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8a035a73-0a7c-4854-aa53-d352fe22ac92",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
