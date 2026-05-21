@@ -235,7 +235,7 @@ import * as PortOne from "@portone/server-sdk";
 app.post(
   "/webhook",
   express.raw({ type: "application/json" }),
-  async (req, res) => {
+  async (req, res, next) => {
     try {
       // express.raw()는 req.body를 Buffer로 전달하지만,
       // @portone/server-sdk의 verify()는 string 페이로드를 요구한다.
@@ -256,7 +256,9 @@ app.post(
       if (e instanceof PortOne.Webhook.WebhookVerificationError) {
         return res.status(401).send("Invalid webhook signature");
       }
-      throw e;
+      // Express 4의 async 라우트 핸들러는 throw된 에러를 자동으로
+      // 에러 미들웨어로 전달하지 않으므로 next(e)로 명시 전달한다.
+      next(e);
     }
   },
 );
