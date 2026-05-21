@@ -1,11 +1,19 @@
 # ARCHITECTURE.md
 
 > Bird's-eye view of the Claude Code Plugins Marketplace repository.
-> Last updated: 2026-03-25
+> Last updated: 2026-05-21
 
 ## Overview
 
-This repository is a **curated marketplace of plugins for Claude Code**, maintained by Passion Factory. It aggregates plugins from multiple sources — external git submodules, vendor-synced skill repositories, auto-converted Gemini CLI extensions, and hand-crafted built-in plugins — into a single installable marketplace. Users add the marketplace with `/plugin marketplace add pleaseai/claude-code-plugins` and install individual plugins with `/plugin install <name>@pleaseai`.
+This repository is a **curated, multi-runtime plugin marketplace** maintained by Passion Factory. It aggregates plugins from multiple sources — external git submodules, vendor-synced skill repositories, auto-converted Gemini CLI extensions, and hand-crafted built-in plugins — into a single installable marketplace that targets **three AI coding runtimes**:
+
+| Runtime | Primary install command |
+|---|---|
+| **Claude Code** | `/plugin marketplace add pleaseai/claude-code-plugins` then `/plugin install <name>@pleaseai` |
+| **Codex CLI** | Codex marketplace auto-generated at `.agents/plugins/marketplace.json` |
+| **Google Antigravity** | File-based install — copy `plugins/<name>/` into Antigravity's plugins location |
+
+The Claude Code plugin manifest (`.claude-plugin/plugin.json`) is the **source of truth**. Codex and Antigravity manifests are auto-generated from it via `scripts/multi-format.ts`. Shared assets (`skills/`, `commands/`, `hooks/`) live once per plugin and are referenced by every runtime — only the manifest layer differs.
 
 The codebase is structured as a **Turborepo monorepo** using Bun workspaces. It contains a Nuxt 4 web frontend for browsing plugins, shared configuration packages, and a CLI-driven pipeline (`scripts/cli.ts`) that manages the lifecycle of syncing, generating, and validating plugin artifacts.
 
@@ -13,9 +21,11 @@ The codebase is structured as a **Turborepo monorepo** using Bun workspaces. It 
 
 | File / Path | Purpose |
 |---|---|
-| `.claude-plugin/marketplace.json` | **Start here.** The marketplace manifest — defines all installable plugins, their metadata, and source locations |
-| `scripts/cli.ts` | Plugin management CLI: `init` (add submodules), `sync` (generate artifacts), `check` (upstream updates), `cleanup` (remove stale) |
+| `.claude-plugin/marketplace.json` | **Start here.** The Claude Code marketplace manifest — defines all installable plugins, their metadata, and source locations |
+| `.agents/plugins/marketplace.json` | Codex marketplace — auto-generated from the Claude marketplace, scoped to locally maintained plugins |
+| `scripts/cli.ts` | Plugin management CLI: `init` (add submodules), `sync` (generate artifacts), `check` (upstream updates), `cleanup` (remove stale), `multi-format` (Codex + Antigravity manifests) |
 | `scripts/meta.ts` | Source registry — declares all plugin sources (Types 1-4) and their mappings |
+| `scripts/multi-format.ts` | Codex + Antigravity manifest generator — converts the Claude manifest into per-runtime artifacts |
 | `apps/web/nuxt.config.ts` | Web marketplace application entry point (Nuxt 4) |
 | `turbo.json` | Turborepo task pipeline configuration |
 | `package.json` | Root workspace definition — workspaces: `packages/*`, `apps/*`, `plugins/*` |
@@ -24,14 +34,15 @@ The codebase is structured as a **Turborepo monorepo** using Bun workspaces. It 
 
 ```
 claude-code-plugins/
-├── .claude-plugin/          # Marketplace manifest
+├── .claude-plugin/          # Claude Code marketplace manifest
+├── .agents/                 # Codex marketplace + plugin staging (auto-generated)
 ├── apps/
 │   └── web/                 # Nuxt 4 marketplace frontend
 ├── docs/                    # Development standards & guides
 ├── external-plugins/        # Type 4: Git submodules (read-only sources)
 ├── hooks/                   # Repository-level Claude Code hooks
 ├── packages/                # Shared configuration packages
-├── plugins/                 # All installable plugin artifacts
+├── plugins/                 # All installable plugin artifacts (multi-runtime)
 ├── scripts/                 # Build tooling & sync pipeline
 ├── sources/                 # Type 1: Documentation submodules for skill generation
 └── vendor/                  # Type 2/3: Vendor skill submodules
@@ -39,7 +50,17 @@ claude-code-plugins/
 
 ### `.claude-plugin/`
 
-Contains `marketplace.json` — the single source of truth for which plugins are available in the marketplace. Each entry specifies the plugin's name, description, category, keywords, and source location.
+Contains `marketplace.json` — the single source of truth for which plugins are available in the **Claude Code** marketplace. Each entry specifies the plugin's name, description, category, keywords, and source location. This file is hand-authored; the Codex marketplace at `.agents/plugins/marketplace.json` is derived from it.
+
+### `.agents/`
+
+Codex CLI workspace directory. Contains:
+
+- `plugins/marketplace.json` — Codex marketplace, auto-generated from `.claude-plugin/marketplace.json` (local plugins only)
+- `plugins/<name>/` (only for Codex-only staging when needed)
+- `skills/` — skills.sh-managed installations (tracked by root `skills-lock.json`)
+
+The marketplace file here is regenerated by `bun scripts/cli.ts multi-format`. Do not hand-edit.
 
 ### `apps/web/`
 
@@ -80,17 +101,26 @@ Shared configuration packages published under the `@pleaseai` scope:
 
 ### `plugins/`
 
-**The output directory.** Contains all installable plugin artifacts, whether manually maintained or auto-generated. Each plugin follows the standard Claude Code plugin structure:
+**The output directory.** Contains all installable plugin artifacts, whether manually maintained or auto-generated. Each plugin ships manifests for **all three runtimes** so the same directory can be installed into Claude Code, Codex, or Antigravity:
 
 ```
 plugins/<name>/
 ├── .claude-plugin/
-│   └── plugin.json       # Plugin manifest (required)
-├── skills/               # Skill definitions (SKILL.md files)
-├── commands/             # Slash commands (markdown)
-├── hooks/                # Plugin-specific hooks
-└── SYNC.md               # Present if auto-generated (do not edit)
+│   └── plugin.json       # Claude Code manifest (source of truth — hand-authored)
+├── .codex-plugin/
+│   └── plugin.json       # Codex manifest (auto-generated)
+├── plugin.json           # Antigravity marker file (auto-generated, root-level)
+├── .mcp.json             # Codex MCP config (auto-generated, only when inline mcpServers)
+├── mcp_config.json       # Antigravity MCP config (auto-generated, only when inline mcpServers)
+├── hooks.json            # Antigravity hooks mirror (auto-generated from hooks/hooks.json)
+├── hooks/                # Plugin-specific hooks (shared across runtimes)
+│   └── hooks.json        # Claude Code auto-loads this; Antigravity mirror lives at root
+├── skills/               # Skill definitions (SKILL.md — universal format)
+├── commands/             # Slash commands (markdown — Claude Code + Codex)
+└── SYNC.md               # Present if auto-generated by skills:sync (do not edit)
 ```
+
+Only `.claude-plugin/plugin.json` and the shared asset directories are hand-authored. Everything else is regenerated by `bun scripts/cli.ts multi-format`. See `scripts/multi-format.ts` for the field-by-field conversion rules.
 
 **Plugin categories by origin:**
 
@@ -108,9 +138,10 @@ Build tooling for the plugin pipeline:
 
 | File | Purpose |
 |---|---|
-| `cli.ts` | Main CLI — `init`, `sync`, `check`, `cleanup` commands |
+| `cli.ts` | Main CLI — `init`, `sync`, `check`, `cleanup`, `multi-format` commands |
 | `meta.ts` | Source registry — Type 1 submodules, Type 2 vendors, Type 4 extensions |
 | `extension-helpers.ts` | Gemini CLI extension conversion utilities (TOML parsing, MCP path conversion) |
+| `multi-format.ts` | Codex + Antigravity manifest generator — converts the Claude manifest, splits inline `mcpServers` into companion files, mirrors hooks for Antigravity |
 | `generate-antfu-plugins.ts` | Generate plugin manifests for antfu-style plugins |
 | `*.test.ts` | Unit tests for the scripts |
 
@@ -141,17 +172,56 @@ external-plugins/<name>/           →  plugins/<name>/
   <contextFileName>                →  hooks/ + context file
 ```
 
+## Multi-Runtime Manifest System
+
+Plugins target three runtimes from a single source directory. The Claude Code manifest is hand-authored; the rest is generated.
+
+| Runtime | Manifest path | MCP companion file | Hooks file | Marketplace |
+|---|---|---|---|---|
+| **Claude Code** (source of truth) | `.claude-plugin/plugin.json` | inline `mcpServers` | `hooks/hooks.json` (auto-loaded) | `.claude-plugin/marketplace.json` |
+| **Codex CLI** | `.codex-plugin/plugin.json` | `.mcp.json` | (uses `hooks/` directory) | `.agents/plugins/marketplace.json` |
+| **Antigravity** | `plugin.json` (root) | `mcp_config.json` | `hooks.json` (root) | (file-based — no marketplace registry) |
+
+**Conversion rules** (implemented in `scripts/multi-format.ts`):
+
+- **Claude → Codex**
+  - Inline `mcpServers` extracted to `.mcp.json`; manifest field becomes `"./.mcp.json"`
+  - `hooks` manifest field is dropped (Codex validation rejects it; the `hooks/` directory still functions)
+  - Codex-specific `interface` block (displayName, capabilities, defaultPrompt, category) synthesised from the marketplace entry
+  - Version coerced to strict semver (`MAJOR.MINOR.PATCH`); falls back to `1.0.0` for date-stamp versions
+  - Author email stripped to avoid leaking contributor addresses into downstream artifacts
+
+- **Claude → Antigravity**
+  - Flat root manifest; only `name` is required, other fields preserved when present
+  - Inline `mcpServers` extracted to `mcp_config.json`
+  - `hooks/hooks.json` content mirrored to root `hooks.json`
+  - `skills/` reused as-is (same `SKILL.md` schema)
+
+**Generation:**
+
+```bash
+bun scripts/cli.ts multi-format
+# or:
+bun run plugins:multi-format
+```
+
+Writes are idempotent — `writeIfChanged()` skips files whose content already matches, so re-running produces no diff when nothing has changed. The Codex marketplace at `.agents/plugins/marketplace.json` is also regenerated, filtered to local plugins (`source: "./plugins/..."`).
+
+**Collision handling**: a few plugins (`bun`, `plugin-dev`) historically use a root-level `plugin.json` as their Claude Code manifest. The generator detects this and skips writing an Antigravity manifest there — both runtimes can read the same file.
+
 ## Architecture Invariants
 
 These rules must be maintained. Violating them will break the sync pipeline or marketplace integrity.
 
-1. **Never edit auto-generated files.** Any file in `plugins/` that has a `SYNC.md` marker is managed by the sync pipeline. Manual edits will be overwritten. To modify, change the upstream source and re-sync.
+1. **Never edit auto-generated files.** Any file in `plugins/` that has a `SYNC.md` marker is managed by the sync pipeline. The same rule applies to `.codex-plugin/plugin.json`, root `plugin.json`, `.mcp.json`, `mcp_config.json`, root `hooks.json`, and `.agents/plugins/marketplace.json` — all are produced by `multi-format`. Manual edits will be overwritten. To modify, change the Claude Code source manifest and re-run.
 
 2. **`external-plugins/` is read-only.** These are git submodules pointing to upstream repos. Changes must be made in the upstream repository and pulled via `git submodule update`.
 
-3. **Every installable plugin must be in `marketplace.json`.** The marketplace manifest is the single source of truth for what users can install. A plugin existing in `plugins/` but absent from `marketplace.json` is not installable.
+3. **Every installable plugin must be in `marketplace.json`.** The Claude marketplace manifest is the single source of truth for what users can install. A plugin existing in `plugins/` but absent from `marketplace.json` is not installable, and will also not appear in the auto-generated Codex marketplace.
 
-4. **Plugin manifests live at `.claude-plugin/plugin.json`.** This exact path is required by Claude Code. No alternative locations are supported.
+4. **Plugin manifests live at `.claude-plugin/plugin.json`.** This exact path is required by Claude Code and is the source of truth for Codex/Antigravity generation. The handful of plugins using root-level `plugin.json` (e.g. `bun`, `plugin-dev`) are a legacy exception — new plugins should use `.claude-plugin/plugin.json`.
+
+4a. **The Claude manifest is the source of truth.** Codex and Antigravity manifests must never be authored independently. If a runtime needs a field that the Claude manifest doesn't carry, extend the marketplace entry or the converter in `scripts/multi-format.ts` instead of hand-editing the generated output.
 
 5. **`hooks/hooks.json` is auto-loaded.** Claude Code automatically discovers `hooks/hooks.json` in each plugin. Do NOT reference it in `plugin.json`'s `hooks` field — that field is for additional hook files only.
 
@@ -206,4 +276,5 @@ bun run skills:init            # Add submodules from meta.ts
 bun run skills:sync            # Sync vendor skills + convert extensions
 bun run skills:check           # Check for upstream updates
 bun run skills:cleanup         # Remove stale submodules and skills
+bun run plugins:multi-format   # Generate Codex + Antigravity manifests from Claude source
 ```
