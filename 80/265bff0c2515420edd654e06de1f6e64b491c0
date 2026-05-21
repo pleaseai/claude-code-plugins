@@ -1,0 +1,26 @@
+scripts/multi-format.test.ts
+  s_2d3cf70a57a6da::t_1b40a1b0376cb7 1-4,7-8,11,13
+  s_2d3cf70a57a6da::t_da78b13fbf21a0 185-306
+.claude/agent-memory/review-review-silent-failure-hunter/MEMORY.md
+  s_2d3cf70a57a6da::t_1e542b050ce252 33-60
+scripts/cli.ts
+  s_2d3cf70a57a6da::t_bb525995417560 719-720,729-746,762-769
+scripts/multi-format.ts
+  s_2d3cf70a57a6da::t_16f23e8ab56b4c 306-307,310-311
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "80265bff0c2515420edd654e06de1f6e64b491c0",
+  "prompts": {},
+  "sessions": {
+    "s_2d3cf70a57a6da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "46345824-28a8-4234-b3e2-abad95a1652b",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
