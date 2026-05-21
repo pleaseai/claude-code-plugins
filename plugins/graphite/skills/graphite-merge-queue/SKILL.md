@@ -53,27 +53,7 @@ graphite:
     # remove-label: "merge-queue-remove"  # optional: separate dequeue label
 ```
 
-**Bail-out check (run first):** if `graphite.enabled` is explicitly `false` in `.please/config.yml`, do not read or act on any `merge-queue` config — the repo has opted out of Graphite. Skip the rest of this skill and tell the user the repo is opted out.
-
-```bash
-# True if graphite is explicitly disabled — exit early when this prints "1".
-# Depth-tracked: only matches `enabled: false` at the immediate child level of
-# `graphite:`, so a nested `graphite.merge-queue.enabled: false` does not
-# trigger a false bail-out. (Mirrors hooks/graphite-context.sh.)
-awk '
-  /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
-  /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
-  in_graphite && /^[[:space:]]*($|#)/ { next }
-  in_graphite {
-    match($0, /^[[:space:]]*/); indent = RLENGTH
-    if (child_indent == 0) child_indent = indent
-    if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/) { print 1; exit }
-    if (indent < child_indent) { in_graphite = 0; child_indent = 0 }
-  }
-' .please/config.yml 2>/dev/null
-```
-
-If the bail-out check passes (or `.please/config.yml` is absent / `enabled` is unset / set to `true`), proceed.
+**Bail-out check (run first):** if `graphite.enabled` is explicitly `false` in `.please/config.yml`, do not read or act on any `merge-queue` config — the repo has opted out of Graphite. The centralized parser sets `GRAPHITE_DISABLED=1` in that case (see [Centralized parser](#centralized-parser--scriptsread-merge-queue-configsh) below); when you see that, stop and tell the user the repo is opted out.
 
 **Mode resolution order** (use the first that exists):
 1. `graphite.merge-queue.mode` in `.please/config.yml`.
@@ -87,27 +67,33 @@ If the bail-out check passes (or `.please/config.yml` is absent / `enabled` is u
 
 If `mode` is unset, ask: "Which merge queue does this repo use — Graphite's, GitHub-native, an external tool, or none?" — then offer to persist the answer.
 
-### Reading the label without `yq`
+### Centralized parser — `scripts/read-merge-queue-config.sh`
 
-The existing graphite hook parses `.please/config.yml` with awk to avoid a hard `yq` dependency. Use the same approach when you need the label from a shell:
+The plugin ships a single shell script that reads the disabled gate, mode, and label from `.please/config.yml` with one depth-tracked awk pass. Both this skill and the `/graphite:merge-queue` slash command call it; do not re-implement the parsing.
 
 ```bash
-# Print the configured merge-queue label, or "merge-queue" if missing.
-awk '
-  /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-  /^[^[:space:]#]/                { in_graphite=0; in_mq=0 }
-  in_graphite && /^[[:space:]]+merge-queue:[[:space:]]*(#.*)?$/ { in_mq=1; next }
-  in_mq && /^[[:space:]]+label:[[:space:]]*/ {
-    sub(/^[[:space:]]+label:[[:space:]]*/, "")
-    sub(/[[:space:]]+#.*$/, "")        # strip inline comment
-    sub(/[[:space:]]+$/, "")            # strip trailing whitespace
-    gsub(/^["'\'']|["'\'']$/, "")      # strip surrounding quotes
-    print; exit
-  }
-' .please/config.yml 2>/dev/null || echo "merge-queue"
+# Outputs three KEY=VALUE lines you can `eval`.
+eval "$("${CLAUDE_PLUGIN_ROOT}/scripts/read-merge-queue-config.sh")"
+# Variables now set:
+#   GRAPHITE_DISABLED  — 1 iff graphite.enabled: false at the immediate
+#                        child of graphite: (else 0).
+#   MERGE_MODE         — graphite.merge-queue.mode, or empty.
+#   MERGE_LABEL        — graphite.merge-queue.label, or empty.
+
+# Apply env-var overrides:
+MERGE_MODE="${GRAPHITE_MERGE_QUEUE_MODE:-$MERGE_MODE}"
+MERGE_LABEL="${MERGE_QUEUE_LABEL:-${MERGE_LABEL:-merge-queue}}"
 ```
 
-Prefer `yq` when available (`yq '.graphite.merge-queue.label // "merge-queue"' .please/config.yml`), but never make `yq` a hard requirement — many repos won't have it installed.
+How the parser works (read `scripts/read-merge-queue-config.sh` for the awk):
+
+- Tracks the indent of the first child of `graphite:` so only direct children (`enabled`, `merge-queue`) match — nested `enabled` keys (e.g. `graphite.merge-queue.enabled`) cannot trigger a false bail-out.
+- Tracks the indent of the first child of `merge-queue:` the same way, so only direct children (`mode`, `label`) are read.
+- Strips inline `# comment` trailers and surrounding quotes from the value.
+
+Prefer `yq` if available (`yq '.graphite.merge-queue.label' .please/config.yml`), but never make `yq` a hard requirement — many repos won't have it installed. The shell script is the no-dependency fallback.
+
+> **Known limitation:** the comment-stripping regex (`[[:space:]]+#`) does not respect quoted strings. A label like `"feature # tag"` would be truncated at the inner ` #`. Workaround for affected users: set `MERGE_QUEUE_LABEL` in the environment — env-var resolution happens before the YAML parse. If real-world users hit this, swap the parser for a quote-aware implementation in one place (`scripts/read-merge-queue-config.sh`).
 
 ## Enqueueing a PR (the golden path)
 

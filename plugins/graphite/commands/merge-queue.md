@@ -8,35 +8,32 @@ Add or remove the configured Graphite merge-queue label on a pull request. User 
 
 Graphite's merge queue is driven entirely by a label — applying it enqueues; removing it dequeues. For stacked PRs, the label cascades to dependent PRs automatically (label the topmost PR you want merged; do not iterate).
 
-## Bail out if Graphite is disabled
+## Resolve config (enabled gate, mode, label)
 
-Before reading `merge-queue` config at all, check whether the repo has opted out:
+All parsing is centralized in `${CLAUDE_PLUGIN_ROOT}/scripts/read-merge-queue-config.sh`, which emits three `KEY=VALUE` lines. `eval` the output, then apply env-var overrides:
 
 ```bash
-# Depth-tracked: only the immediate child `enabled: false` under `graphite:`
-# bails out. A nested `graphite.merge-queue.enabled: false` does not match.
-GRAPHITE_DISABLED="$(
-  awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
-    /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
-    in_graphite && /^[[:space:]]*($|#)/ { next }
-    in_graphite {
-      match($0, /^[[:space:]]*/); indent = RLENGTH
-      if (child_indent == 0) child_indent = indent
-      if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/) { print 1; exit }
-      if (indent < child_indent) { in_graphite = 0; child_indent = 0 }
-    }
-  ' .please/config.yml 2>/dev/null
-)"
+eval "$("${CLAUDE_PLUGIN_ROOT}/scripts/read-merge-queue-config.sh")"
+
+# Env-var overrides (caller can force a value without editing .please/config.yml)
+MERGE_MODE="${GRAPHITE_MERGE_QUEUE_MODE:-$MERGE_MODE}"
+MERGE_LABEL="${MERGE_QUEUE_LABEL:-${MERGE_LABEL:-merge-queue}}"
+
+# 1. Bail if graphite is disabled.
 if [ "$GRAPHITE_DISABLED" = "1" ]; then
   echo "graphite.enabled: false in .please/config.yml — repo opted out of Graphite. Skipping."
   exit 0
 fi
+
+# 2. Dispatch on mode. Only `graphite` continues with the label flow.
+case "$MERGE_MODE" in
+  graphite) ;;  # continue below
+  "")       echo "merge-queue.mode not configured in .please/config.yml. Ask the user which mode the repo uses, then persist it."; exit 0 ;;
+  *)        echo "Repo uses '$MERGE_MODE' merge queue, not Graphite's. Skipping label flow."; exit 0 ;;
+esac
 ```
 
-## Bail out for non-Graphite queue modes
-
-Once enabled, resolve `graphite.merge-queue.mode` from `.please/config.yml`. Only proceed with the label flow if mode is `graphite`. Otherwise stop and direct the user to the right path:
+### Modes that this command does NOT handle
 
 | Mode | What to do instead |
 |---|---|
@@ -45,57 +42,11 @@ Once enabled, resolve `graphite.merge-queue.mode` from `.please/config.yml`. Onl
 | `none` | `gt submit --merge` for stacks, or `gh pr merge` for a single PR |
 | unset | Ask the user which mode the repo uses, then offer to persist it to `.please/config.yml` |
 
-```bash
-MERGE_MODE="$(
-  awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-    /^[^[:space:]#]/                { in_graphite=0; in_mq=0 }
-    in_graphite && /^[[:space:]]+merge-queue:[[:space:]]*(#.*)?$/ { in_mq=1; next }
-    in_mq && /^[[:space:]]+mode:[[:space:]]*/ {
-      sub(/^[[:space:]]+mode:[[:space:]]*/, "")
-      sub(/[[:space:]]+#.*$/, "")
-      sub(/[[:space:]]+$/, "")
-      gsub(/^["'\'']|["'\'']$/, "")
-      print; exit
-    }
-  ' .please/config.yml 2>/dev/null
-)"
-MERGE_MODE="${MERGE_MODE:-${GRAPHITE_MERGE_QUEUE_MODE:-}}"
+### Resolution precedence
 
-case "$MERGE_MODE" in
-  graphite) ;;  # continue below
-  "")       echo "merge-queue.mode not configured. Ask the user, then persist to .please/config.yml."; exit 0 ;;
-  *)        echo "Repo uses '$MERGE_MODE' merge queue, not Graphite's. Skipping label flow."; exit 0 ;;
-esac
-```
-
-## Resolve the merge label
-
-Only relevant when `mode: graphite`. Read the label name from configuration, in this order:
-
-1. `graphite.merge-queue.label` in `.please/config.yml` at the repo root.
-2. `$MERGE_QUEUE_LABEL` environment variable.
-3. Fall back to `merge-queue`.
-
-Shell snippet (works without `yq`):
-
-```bash
-MERGE_LABEL="$(
-  awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-    /^[^[:space:]#]/                { in_graphite=0; in_mq=0 }
-    in_graphite && /^[[:space:]]+merge-queue:[[:space:]]*(#.*)?$/ { in_mq=1; next }
-    in_mq && /^[[:space:]]+label:[[:space:]]*/ {
-      sub(/^[[:space:]]+label:[[:space:]]*/, "")
-      sub(/[[:space:]]+#.*$/, "")
-      sub(/[[:space:]]+$/, "")
-      gsub(/^["'\'']|["'\'']$/, "")
-      print; exit
-    }
-  ' .please/config.yml 2>/dev/null
-)"
-MERGE_LABEL="${MERGE_LABEL:-${MERGE_QUEUE_LABEL:-merge-queue}}"
-```
+- **Mode:** `GRAPHITE_MERGE_QUEUE_MODE` env var → `graphite.merge-queue.mode` in `.please/config.yml` → empty (caller asks).
+- **Label:** `MERGE_QUEUE_LABEL` env var → `graphite.merge-queue.label` in `.please/config.yml` → `merge-queue` (default).
+- **Disabled gate:** only `graphite.enabled: false` at the immediate child of `graphite:` triggers bail-out; the script's depth-tracking ignores nested `enabled` keys.
 
 If `.please/config.yml` has no label and the user hasn't named one, tell them: the default `merge-queue` will be used; persist it to `.please/config.yml` by adding:
 
@@ -110,7 +61,7 @@ graphite:
 1. Resolve `MERGE_LABEL` as above. Print it back to the user so they can confirm the right queue is targeted.
 2. Resolve the target PR: a `<pr-number>` argument wins; otherwise default to the current branch's PR (`gh pr view --json number`).
 3. Run `gh pr view <pr> --json state,mergeable,reviewDecision,statusCheckRollup,labels` and show the result. If the PR is closed/merged, stop. If required checks are failing, surface that and ask whether to apply the label anyway (Graphite will hold it as "merge when ready").
-4. For a Graphite stack, run `gt ls` and identify the topmost PR the user wants merged. Apply the label to **that** PR only — Graphite cascades downstack automatically. Do not loop.
+4. For a Graphite stack, run `gt ls` and identify the topmost PR the user wants merged. Apply the label to **that** PR only — Graphite enqueues it plus all downstack ancestors as queue dependencies, and cascades the label upstack to any descendants. Do not loop.
 5. Apply or remove the label:
    - Default / `--stack`: `gh pr edit <pr> --add-label "$MERGE_LABEL"`
    - `--remove`: `gh pr edit <pr> --remove-label "$MERGE_LABEL"`
