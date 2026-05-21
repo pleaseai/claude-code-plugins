@@ -1,0 +1,34 @@
+{
+  "name": "cubic",
+  "version": "0.1.0",
+  "description": "AI-powered code review using Cubic CLI. Detects bugs, security vulnerabilities, and style issues before commits.",
+  "author": {
+    "name": "Minsu Lee",
+    "url": "https://github.com/amondnet"
+  },
+  "interface": {
+    "displayName": "Cubic",
+    "shortDescription": "AI-powered code review using Cubic CLI",
+    "longDescription": "AI-powered code review using Cubic CLI. Detects bugs, security vulnerabilities, and style issues before commits.",
+    "developerName": "Minsu Lee",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Cubic for my current task."
+    ],
+    "websiteURL": "https://cubic.dev"
+  },
+  "homepage": "https://cubic.dev",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "ai-review",
+    "cubic",
+    "linting",
+    "security",
+    "bugs"
+  ]
+}

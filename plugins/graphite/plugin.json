@@ -1,0 +1,22 @@
+{
+  "name": "graphite",
+  "version": "1.2.0",
+  "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track existing branches, and collaborate on shared stacks",
+  "author": {
+    "name": "Graphite",
+    "url": "https://github.com/withgraphite"
+  },
+  "homepage": "https://graphite.com/docs",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "graphite",
+    "gt",
+    "stacked-prs",
+    "stacking",
+    "git",
+    "github",
+    "pull-request",
+    "code-review"
+  ]
+}

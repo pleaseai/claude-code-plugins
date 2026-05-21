@@ -1,0 +1,32 @@
+{
+  "name": "pinia",
+  "version": "1.0.0",
+  "description": "Pinia official Vue state management library, type-safe and extensible. Use when defining stores, working with state/getters/actions, or implementing store patterns in Vue apps.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Pinia",
+    "shortDescription": "Pinia official Vue state management library, type-safe and extensible",
+    "longDescription": "Pinia official Vue state management library, type-safe and extensible. Use when defining stores, working with state/getters/actions, or implementing store patterns in Vue apps.",
+    "developerName": "Anthony Fu",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Pinia for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/pinia"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/pinia",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "pinia",
+    "vue",
+    "state-management",
+    "antfu"
+  ]
+}

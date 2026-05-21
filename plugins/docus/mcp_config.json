@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "docus": {
+      "type": "http",
+      "url": "https://docus.dev/mcp"
+    }
+  }
+}

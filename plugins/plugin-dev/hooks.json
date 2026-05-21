@@ -1,0 +1,5 @@
+{
+  "description": "Validate plugin manifests when modified",
+  "hooks": {
+  }
+}

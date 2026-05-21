@@ -1,0 +1,32 @@
+{
+  "name": "slidev",
+  "version": "1.1.0",
+  "description": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, and animations",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Slidev",
+    "shortDescription": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, and animations",
+    "longDescription": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, and animations",
+    "developerName": "Anthony Fu",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Slidev for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/slidev"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/slidev",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "slidev",
+    "slides",
+    "presentation",
+    "antfu"
+  ]
+}

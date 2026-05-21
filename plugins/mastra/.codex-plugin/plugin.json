@@ -1,0 +1,33 @@
+{
+  "name": "mastra",
+  "version": "1.4.0",
+  "description": "Official agent skills for coding agents working with the Mastra AI framework",
+  "author": {
+    "name": "Mastra AI",
+    "url": "https://github.com/mastra-ai"
+  },
+  "interface": {
+    "displayName": "Mastra",
+    "shortDescription": "Official agent skills for coding agents working with the Mastra AI framework",
+    "longDescription": "Official agent skills for coding agents working with the Mastra AI framework",
+    "developerName": "Mastra AI",
+    "category": "Ai",
+    "capabilities": [
+      "Skill",
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Mastra for my current task."
+    ]
+  },
+  "repository": "https://github.com/mastra-ai/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mastra",
+    "ai",
+    "framework",
+    "agent"
+  ],
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json"
+}

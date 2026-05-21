@@ -1,0 +1,17 @@
+{
+  "description": "Inject Graphite context at session start when .git/.graphite_repo_config is present",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/graphite-context.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

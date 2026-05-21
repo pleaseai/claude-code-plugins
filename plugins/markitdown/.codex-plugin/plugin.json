@@ -1,0 +1,36 @@
+{
+  "name": "markitdown",
+  "version": "1.2.0",
+  "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
+  "author": {
+    "name": "Microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "interface": {
+    "displayName": "Markitdown",
+    "shortDescription": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
+    "longDescription": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
+    "developerName": "Microsoft",
+    "category": "Tooling",
+    "capabilities": [
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Markitdown for my current task."
+    ],
+    "websiteURL": "https://github.com/microsoft/markitdown"
+  },
+  "homepage": "https://github.com/microsoft/markitdown",
+  "repository": "https://github.com/microsoft/markitdown",
+  "license": "MIT",
+  "keywords": [
+    "markitdown",
+    "pdf",
+    "docx",
+    "pptx",
+    "images",
+    "markdown",
+    "conversion"
+  ],
+  "mcpServers": "./.mcp.json"
+}
