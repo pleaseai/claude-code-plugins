@@ -4,7 +4,6 @@
   "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
   "author": {
     "name": "Passion Factory",
-    "email": "support@passionfactory.ai",
     "url": "https://github.com/pleaseai"
   },
   "interface": {

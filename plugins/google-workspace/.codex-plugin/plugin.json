@@ -13,10 +13,10 @@
     "developerName": "googleworkspace",
     "category": "Productivity",
     "capabilities": [
-      "Tool"
+      "Skill"
     ],
     "defaultPrompt": [
-      "Use Google Workspace Cli for my current task."
+      "Help me use Google Workspace Cli for my current task."
     ],
     "websiteURL": "https://github.com/googleworkspace/cli"
   },
@@ -25,6 +25,5 @@
   "license": "Apache-2.0",
   "keywords": [
     "google-workspace"
-  ],
-  "mcpServers": "./.mcp.json"
+  ]
 }

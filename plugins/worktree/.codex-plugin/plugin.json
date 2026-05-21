@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Git worktree isolation: context injection and parent project access prevention",
   "author": {
-    "name": "PassionFactory",
-    "email": "minsu.lee@passionfactory.ai"
+    "name": "PassionFactory"
   },
   "interface": {
     "displayName": "Worktree",

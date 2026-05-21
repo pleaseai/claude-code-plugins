@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 
 /**
@@ -155,12 +155,25 @@ function normalizeVersion(value: string | undefined): string {
   return /^\d+\.\d+\.\d+(?:[-+].+)?$/.test(value) ? value : "1.0.0"
 }
 
+/**
+ * Strip personal contact details from an author block before propagating
+ * it to a generated manifest. Email is removed to avoid leaking individual
+ * contributor addresses into every downstream marketplace artifact;
+ * `name` and a validated https URL stay so attribution is preserved.
+ */
+function sanitiseAuthor(src: ClaudePluginManifest["author"]): { name?: string; url?: string } | undefined {
+  if (!src) return undefined
+  const out: { name?: string; url?: string } = {}
+  if (src.name) out.name = src.name
+  if (isHttpsUrl(src.url)) out.url = src.url
+  return out
+}
+
 function pickAuthor(claude: ClaudePluginManifest): CodexAuthor {
-  const src = claude.author
-  if (!src?.name) return { name: "Community" }
-  const author: CodexAuthor = { name: src.name }
-  if (src.email) author.email = src.email
-  if (isHttpsUrl(src.url)) author.url = src.url
+  const sanitised = sanitiseAuthor(claude.author)
+  if (!sanitised?.name) return { name: "Community" }
+  const author: CodexAuthor = { name: sanitised.name }
+  if (sanitised.url) author.url = sanitised.url
   return author
 }
 
@@ -174,7 +187,7 @@ function pickAuthor(claude: ClaudePluginManifest): CodexAuthor {
 function deriveCapabilities(claude: ClaudePluginManifest): string[] {
   const caps: string[] = []
   if (claude.skills) caps.push("Skill")
-  if (claude.mcpServers) caps.push("Tool")
+  if (extractMcpServersFile(claude) !== null || typeof claude.mcpServers === "string") caps.push("Tool")
   if (claude.hooks || claude.commands) caps.push("Interactive")
   if (caps.length === 0) caps.push("Skill")
   return caps
@@ -187,7 +200,8 @@ function deriveCapabilities(claude: ClaudePluginManifest): string[] {
  * override this after the first generation.
  */
 function deriveDefaultPrompts(claude: ClaudePluginManifest, displayName: string): string[] {
-  const verbHint = claude.mcpServers ? "Use" : "Help me use"
+  const hasTool = extractMcpServersFile(claude) !== null || typeof claude.mcpServers === "string"
+  const verbHint = hasTool ? "Use" : "Help me use"
   const prompt = `${verbHint} ${displayName} for my current task.`
   return prompt.length <= 128 ? [prompt] : [prompt.slice(0, 125) + "..."]
 }
@@ -203,7 +217,15 @@ export function toCodexManifest(
   claude: ClaudePluginManifest,
   entry: MarketplaceEntry | undefined,
 ): CodexManifest {
-  const hasInlineMcp = claude.mcpServers && typeof claude.mcpServers === "object"
+  // Empty mcpServers ({}) is treated as "none" so we don't emit a manifest
+  // field that points at a non-existent .mcp.json file (Codex validator
+  // requires the companion file when the field is present).
+  const hasInlineMcp =
+    claude.mcpServers !== undefined &&
+    claude.mcpServers !== null &&
+    typeof claude.mcpServers === "object" &&
+    !Array.isArray(claude.mcpServers) &&
+    Object.keys(claude.mcpServers as Record<string, unknown>).length > 0
   const hasMcpString = typeof claude.mcpServers === "string"
   const description = claude.description ?? entry?.description ?? claude.name
   const displayName = pickDisplayName(claude, entry)
@@ -251,7 +273,8 @@ export function toAntigravityManifest(claude: ClaudePluginManifest): Antigravity
   const manifest: AntigravityManifest = { name: claude.name }
   if (claude.version) manifest.version = claude.version
   if (claude.description) manifest.description = claude.description
-  if (claude.author) manifest.author = claude.author
+  const author = sanitiseAuthor(claude.author)
+  if (author) manifest.author = author
   if (claude.homepage) manifest.homepage = claude.homepage
   if (claude.repository) manifest.repository = claude.repository
   if (claude.license) manifest.license = claude.license
@@ -265,8 +288,10 @@ export function toAntigravityManifest(claude: ClaudePluginManifest): Antigravity
  * Returns null when the manifest has no inline servers.
  */
 export function extractMcpServersFile(claude: ClaudePluginManifest): { mcpServers: Record<string, unknown> } | null {
-  if (!claude.mcpServers || typeof claude.mcpServers !== "object") return null
-  return { mcpServers: claude.mcpServers as Record<string, unknown> }
+  if (!claude.mcpServers || typeof claude.mcpServers !== "object" || Array.isArray(claude.mcpServers)) return null
+  const servers = claude.mcpServers as Record<string, unknown>
+  if (Object.keys(servers).length === 0) return null
+  return { mcpServers: servers }
 }
 
 /**
@@ -374,16 +399,25 @@ export function generateForPlugin(
     result.skipped.push(`${rootPath} (Claude manifest already at root)`)
   }
 
-  // 3. MCP server config files (only when inline servers exist)
+  // 3. MCP server config files (only when inline servers exist and are non-empty).
+  // When the manifest stops referencing MCP servers (or sets `mcpServers: {}`),
+  // remove any stale generated files so they don't linger as empty noise.
   const mcpFile = extractMcpServersFile(claude)
+  const codexMcp = join(pluginDir, ".mcp.json")
+  const antigravityMcp = join(pluginDir, "mcp_config.json")
   if (mcpFile) {
-    const codexMcp = join(pluginDir, ".mcp.json")
     if (writeIfChanged(codexMcp, stringify(mcpFile))) result.written.push(codexMcp)
     else result.skipped.push(codexMcp)
 
-    const antigravityMcp = join(pluginDir, "mcp_config.json")
     if (writeIfChanged(antigravityMcp, stringify(mcpFile))) result.written.push(antigravityMcp)
     else result.skipped.push(antigravityMcp)
+  } else {
+    for (const stale of [codexMcp, antigravityMcp]) {
+      if (existsSync(stale)) {
+        rmSync(stale)
+        result.written.push(`${stale} (removed: empty mcpServers)`)
+      }
+    }
   }
 
   // 4. Antigravity expects hooks.json at root if hooks exist.
@@ -413,12 +447,15 @@ export function toCodexMarketplace(claudeMarketplace: ClaudeMarketplace): {
   interface: { displayName: string }
   plugins: CodexMarketplaceEntry[]
 } {
-  const localPlugins = claudeMarketplace.plugins.filter(p => typeof p.source === "string" && p.source.startsWith("./plugins/"))
-  const entries = localPlugins.map(p => {
-    const path = p.source as string
-    const dirName = path.replace(/^\.\/plugins\//, "")
-    return toCodexMarketplaceEntry(p, dirName)
-  })
+  const seen = new Set<string>()
+  const entries: CodexMarketplaceEntry[] = []
+  for (const p of claudeMarketplace.plugins) {
+    if (typeof p.source !== "string" || !p.source.startsWith("./plugins/")) continue
+    if (seen.has(p.name)) continue
+    seen.add(p.name)
+    const dirName = p.source.replace(/^\.\/plugins\//, "")
+    entries.push(toCodexMarketplaceEntry(p, dirName))
+  }
   return {
     name: claudeMarketplace.name ?? "personal",
     interface: { displayName: claudeMarketplace.name ?? "Personal" },

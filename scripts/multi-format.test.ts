@@ -143,6 +143,23 @@ describe("toCodexManifest", () => {
   })
 })
 
+describe("author sanitisation", () => {
+  test("strips author.email from Codex manifest (privacy: no personal addresses in generated artifacts)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, author: { name: "A", email: "a@example.com", url: "https://example.com" } }
+    const result = toCodexManifest(claude, undefined) as unknown as Record<string, unknown>
+    const author = result.author as Record<string, unknown>
+    expect(author.email).toBeUndefined()
+    expect(author.name).toBe("A")
+  })
+
+  test("strips author.email from Antigravity manifest", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, author: { name: "A", email: "a@example.com" } }
+    const result = toAntigravityManifest(claude) as unknown as Record<string, unknown>
+    const author = result.author as Record<string, unknown>
+    expect(author.email).toBeUndefined()
+  })
+})
+
 describe("toAntigravityManifest", () => {
   test("produces flat manifest with only present fields", () => {
     const claude: ClaudePluginManifest = { name: "x" }
@@ -179,6 +196,16 @@ describe("extractMcpServersFile", () => {
     const claude: ClaudePluginManifest = { name: "x", mcpServers: { foo: { command: "node" } } }
     const result = extractMcpServersFile(claude)
     expect(result).toEqual({ mcpServers: { foo: { command: "node" } } })
+  })
+
+  test("returns null for empty mcpServers object (avoid writing empty .mcp.json)", () => {
+    const claude: ClaudePluginManifest = { name: "x", mcpServers: {} }
+    expect(extractMcpServersFile(claude)).toBeNull()
+  })
+
+  test("returns null when mcpServers is mistakenly an array", () => {
+    const claude: ClaudePluginManifest = { name: "x", mcpServers: [] as unknown as Record<string, unknown> }
+    expect(extractMcpServersFile(claude)).toBeNull()
   })
 })
 
@@ -242,6 +269,19 @@ describe("toCodexMarketplace", () => {
   test("defaults name to 'personal' when marketplace lacks one", () => {
     const result = toCodexMarketplace({ plugins: [] })
     expect(result.name).toBe("personal")
+  })
+
+  test("deduplicates plugin entries by name (defensive — keeps first occurrence)", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      plugins: [
+        { name: "dup", source: "./plugins/dir-a" as unknown as object },
+        { name: "dup", source: "./plugins/dir-b" as unknown as object },
+      ],
+    }
+    const result = toCodexMarketplace(input)
+    expect(result.plugins).toHaveLength(1)
+    expect(result.plugins[0]!.source.path).toBe("./plugins/dir-a")
   })
 })
 
