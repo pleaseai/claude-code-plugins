@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.2.0...graphite-v1.3.0) (2026-05-21)
+
+
+### Features
+
+* add multi-format plugin manifest generator (Codex + Antigravity) ([#185](https://github.com/pleaseai/claude-code-plugins/issues/185)) ([269eaf3](https://github.com/pleaseai/claude-code-plugins/commit/269eaf3d459a0543b396f92b2aa3691106414e71))
+* **graphite:** also activate context hook via .please/config.yml opt-in ([#181](https://github.com/pleaseai/claude-code-plugins/issues/181)) ([bf9cca1](https://github.com/pleaseai/claude-code-plugins/commit/bf9cca1c60479bb537be920ca68a7ab0d53cdc2b))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.1.0...graphite-v1.2.0) (2026-05-20)
 
 
