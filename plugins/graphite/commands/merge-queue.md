@@ -13,11 +13,19 @@ Graphite's merge queue is driven entirely by a label — applying it enqueues; r
 Before reading `merge-queue` config at all, check whether the repo has opted out:
 
 ```bash
+# Depth-tracked: only the immediate child `enabled: false` under `graphite:`
+# bails out. A nested `graphite.merge-queue.enabled: false` does not match.
 GRAPHITE_DISABLED="$(
   awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-    /^[^[:space:]#]/                { in_graphite=0 }
-    in_graphite && /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/ { print 1; exit }
+    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
+    /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
+    in_graphite && /^[[:space:]]*($|#)/ { next }
+    in_graphite {
+      match($0, /^[[:space:]]*/); indent = RLENGTH
+      if (child_indent == 0) child_indent = indent
+      if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/) { print 1; exit }
+      if (indent < child_indent) { in_graphite = 0; child_indent = 0 }
+    }
   ' .please/config.yml 2>/dev/null
 )"
 if [ "$GRAPHITE_DISABLED" = "1" ]; then

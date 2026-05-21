@@ -57,10 +57,19 @@ graphite:
 
 ```bash
 # True if graphite is explicitly disabled — exit early when this prints "1".
+# Depth-tracked: only matches `enabled: false` at the immediate child level of
+# `graphite:`, so a nested `graphite.merge-queue.enabled: false` does not
+# trigger a false bail-out. (Mirrors hooks/graphite-context.sh.)
 awk '
-  /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; next }
-  /^[^[:space:]#]/                { in_graphite=0 }
-  in_graphite && /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/ { print 1; exit }
+  /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
+  /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
+  in_graphite && /^[[:space:]]*($|#)/ { next }
+  in_graphite {
+    match($0, /^[[:space:]]*/); indent = RLENGTH
+    if (child_indent == 0) child_indent = indent
+    if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*false([[:space:]]|#|$)/) { print 1; exit }
+    if (indent < child_indent) { in_graphite = 0; child_indent = 0 }
+  }
 ' .please/config.yml 2>/dev/null
 ```
 
