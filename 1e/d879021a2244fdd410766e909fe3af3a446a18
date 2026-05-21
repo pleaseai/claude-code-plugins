@@ -1,0 +1,25 @@
+plugins/graphite/scripts/read-merge-queue-config.sh
+  s_248556fa515c1d::t_102b5c8a851977 1-102
+plugins/graphite/skills/graphite-merge-queue/SKILL.md
+  s_248556fa515c1d::t_1269fe5cd700bd 56
+  s_248556fa515c1d::t_838d49c572bb14 70,72,75-85,88-96
+plugins/graphite/commands/merge-queue.md
+  s_248556fa515c1d::t_95815e7c7e4dbe 11,13,16-22,28-34,36,45,47-49
+  s_248556fa515c1d::t_42e2d8fb9fe374 64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.11",
+  "base_commit_sha": "1ed879021a2244fdd410766e909fe3af3a446a18",
+  "prompts": {},
+  "sessions": {
+    "s_248556fa515c1d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f44b9f7a-140b-4a17-a88b-345c80a4e51d",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
