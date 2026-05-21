@@ -49,5 +49,6 @@
   "plugins/portless": "1.0.0",
   "plugins/zod": "1.0.0",
   "plugins/graphite": "1.2.0",
-  "plugins/bun": "1.1.0"
+  "plugins/bun": "1.1.0",
+  "plugins/portone": "1.0.0"
 }
