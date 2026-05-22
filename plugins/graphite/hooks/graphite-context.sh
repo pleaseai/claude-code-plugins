@@ -5,7 +5,11 @@
 #   1. `.graphite_repo_config` exists inside the git common dir
 #      (the real .git directory, resolved via `git rev-parse --git-common-dir`
 #      so this also works inside `git worktree` checkouts and subdirectories).
-#   2. `.please/config.yml` at the repo root sets `graphite.enabled: true`
+#   2. `.please/config.yml` at the repo root opts in via:
+#         workflow:
+#           stacked_pr:
+#             enabled: true
+#             tool: graphite
 #      — lets a project opt in before `gt init` has been run.
 
 set -euo pipefail
@@ -27,25 +31,41 @@ if [ -f "$GRAPHITE_CONFIG_FILE" ]; then
   HAS_GRAPHITE_CONFIG=1
 fi
 
-# Check `.please/config.yml` for `graphite.enabled: true` at the repo root.
-# Parsed with awk to avoid a hard dependency on `yq` — matches the top-level
-# `graphite:` key followed by an indented `enabled: true` before any other
-# top-level key appears.
+# Check `.please/config.yml` for the Graphite opt-in at the repo root:
+#   workflow:
+#     stacked_pr:
+#       enabled: true
+#       tool: graphite
+# Parsed with awk to avoid a hard dependency on `yq` — walks the top-level
+# `workflow:` block, descends into its `stacked_pr:` child, and requires
+# both `enabled: true` and `tool: graphite` before the block ends.
 PLEASE_CONFIG_FILE=""
 HAS_PLEASE_OPT_IN=0
 GIT_TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null || true)"
 if [ -n "$GIT_TOPLEVEL" ] && [ -f "$GIT_TOPLEVEL/.please/config.yml" ]; then
   PLEASE_CONFIG_FILE="$GIT_TOPLEVEL/.please/config.yml"
   if awk '
-    /^graphite:[[:space:]]*(#.*)?$/ { in_graphite=1; child_indent=0; next }
-    /^[^[:space:]#]/                { in_graphite=0; child_indent=0 }
-    in_graphite && /^[[:space:]]*($|#)/ { next }
-    in_graphite {
+    /^workflow:[[:space:]]*(#.*)?$/ { in_workflow=1; child_indent=0; in_stacked=0; stacked_child_indent=0; next }
+    /^[^[:space:]#]/                { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0 }
+    in_workflow && /^[[:space:]]*($|#)/ { next }
+    in_workflow {
       match($0, /^[[:space:]]*/)
       indent=RLENGTH
       if (child_indent==0) child_indent=indent
-      if (indent == child_indent && $0 ~ /^[[:space:]]+enabled:[[:space:]]*true([[:space:]]|#|$)/) { found=1; exit }
-      if (indent < child_indent) { in_graphite=0; child_indent=0 }
+      if (indent < child_indent) { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0; next }
+      if (in_stacked) {
+        if (stacked_child_indent==0) stacked_child_indent=indent
+        if (indent < stacked_child_indent) { in_stacked=0; stacked_child_indent=0 }
+        else if (indent == stacked_child_indent) {
+          if ($0 ~ /^[[:space:]]+enabled:[[:space:]]*true([[:space:]]|#|$)/) found_enabled=1
+          if ($0 ~ /^[[:space:]]+tool:[[:space:]]*graphite([[:space:]]|#|$)/) found_tool=1
+          if (found_enabled && found_tool) { found=1; exit }
+        }
+      }
+      if (indent == child_indent && $0 ~ /^[[:space:]]+stacked_pr:[[:space:]]*(#.*)?$/) {
+        in_stacked=1
+        stacked_child_indent=0
+      }
     }
     END { exit !found }
   ' "$PLEASE_CONFIG_FILE"; then
@@ -59,11 +79,11 @@ fi
 
 # Build a short, accurate detection note for the injected context.
 if [ "$HAS_GRAPHITE_CONFIG" -eq 1 ] && [ "$HAS_PLEASE_OPT_IN" -eq 1 ]; then
-  DETECTION_NOTE="\`.graphite_repo_config\` detected at \`$GRAPHITE_CONFIG_FILE\`; also opted in via \`graphite.enabled: true\` in \`$PLEASE_CONFIG_FILE\`"
+  DETECTION_NOTE="\`.graphite_repo_config\` detected at \`$GRAPHITE_CONFIG_FILE\`; also opted in via \`workflow.stacked_pr.tool: graphite\` in \`$PLEASE_CONFIG_FILE\`"
 elif [ "$HAS_GRAPHITE_CONFIG" -eq 1 ]; then
   DETECTION_NOTE="\`.graphite_repo_config\` detected at \`$GRAPHITE_CONFIG_FILE\`"
 else
-  DETECTION_NOTE="opted in via \`graphite.enabled: true\` in \`$PLEASE_CONFIG_FILE\` (run \`gt init\` if not already initialized)"
+  DETECTION_NOTE="opted in via \`workflow.stacked_pr.tool: graphite\` in \`$PLEASE_CONFIG_FILE\` (run \`gt init\` if not already initialized)"
 fi
 
 # Detect whether the `gt` CLI is on PATH so we can tailor the guidance.
