@@ -1,0 +1,23 @@
+plugins/graphite/hooks/graphite-context.sh
+  s_571ea5b1c52885::t_949335babe309f 48-49,55,68-69
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_571ea5b1c52885::t_ac0f0fd16c9fc8 8
+.claude/agent-memory/review-review-cubic-reviewer/pr189-graphite-awk-state-reset.md
+  s_571ea5b1c52885::t_66fa80f9607cd5 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "8ca51c2f6d57eddb81be6b3f44b69b7f4a3dfd37",
+  "prompts": {},
+  "sessions": {
+    "s_571ea5b1c52885": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb492cdd-fc72-44e0-ae9b-70293d8c6dc4",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
