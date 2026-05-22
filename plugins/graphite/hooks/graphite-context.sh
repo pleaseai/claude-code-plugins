@@ -45,14 +45,14 @@ GIT_TOPLEVEL="$(git rev-parse --show-toplevel 2>/dev/null || true)"
 if [ -n "$GIT_TOPLEVEL" ] && [ -f "$GIT_TOPLEVEL/.please/config.yml" ]; then
   PLEASE_CONFIG_FILE="$GIT_TOPLEVEL/.please/config.yml"
   if awk '
-    /^workflow:[[:space:]]*(#.*)?$/ { in_workflow=1; child_indent=0; in_stacked=0; stacked_child_indent=0; next }
-    /^[^[:space:]#]/                { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0 }
+    /^workflow:[[:space:]]*(#.*)?$/ { in_workflow=1; child_indent=0; in_stacked=0; stacked_child_indent=0; found_enabled=0; found_tool=0; next }
+    /^[^[:space:]#]/                { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0; found_enabled=0; found_tool=0 }
     in_workflow && /^[[:space:]]*($|#)/ { next }
     in_workflow {
       match($0, /^[[:space:]]*/)
       indent=RLENGTH
       if (child_indent==0) child_indent=indent
-      if (indent < child_indent) { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0; next }
+      if (indent < child_indent) { in_workflow=0; child_indent=0; in_stacked=0; stacked_child_indent=0; found_enabled=0; found_tool=0; next }
       if (in_stacked) {
         if (stacked_child_indent==0) stacked_child_indent=indent
         if (indent < stacked_child_indent) { in_stacked=0; stacked_child_indent=0 }
@@ -65,6 +65,8 @@ if [ -n "$GIT_TOPLEVEL" ] && [ -f "$GIT_TOPLEVEL/.please/config.yml" ]; then
       if (indent == child_indent && $0 ~ /^[[:space:]]+stacked_pr:[[:space:]]*(#.*)?$/) {
         in_stacked=1
         stacked_child_indent=0
+        found_enabled=0
+        found_tool=0
       }
     }
     END { exit !found }
