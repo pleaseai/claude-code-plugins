@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.3.0...graphite-v2.0.0) (2026-05-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **graphite:** repos that used the old schema   graphite:     enabled: true will no longer be detected via the .please/config.yml path. The .graphite_repo_config file-based detection path is unaffected.
+
+### Features
+
+* **graphite:** add merge queue label workflow with mode-aware dispatch ([#186](https://github.com/pleaseai/claude-code-plugins/issues/186)) ([f0da5e8](https://github.com/pleaseai/claude-code-plugins/commit/f0da5e8b476966ef75c36f8422ca0a767f879b72))
+* **graphite:** migrate opt-in to workflow.stacked_pr.tool ([#189](https://github.com/pleaseai/claude-code-plugins/issues/189)) ([8e33377](https://github.com/pleaseai/claude-code-plugins/commit/8e33377faf5d1dab0503d8293d00b49f6b1e56f8))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.2.0...graphite-v1.3.0) (2026-05-21)
 
 
