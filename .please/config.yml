@@ -19,3 +19,13 @@ review:
   gemini:
     enabled: true
     default-flags: "--sandbox"
+
+# Graphite stacked-PR workflow (consumed by the graphite plugin)
+graphite:
+  enabled: true
+  merge-queue:
+    # Which merge-queue mode this repo uses. One of:
+    #   graphite | github-native | external | none
+    # When unset, the plugin assumes `none` and uses the direct-merge path.
+    mode: graphite
+    label: "merge-queue"   # used only when mode: graphite (must match Graphite settings)

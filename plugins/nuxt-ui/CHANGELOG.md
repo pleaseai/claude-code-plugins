@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.3.0...nuxt-ui-v1.4.0) (2026-05-21)
+
+
+### Features
+
+* add multi-format plugin manifest generator (Codex + Antigravity) ([#185](https://github.com/pleaseai/claude-code-plugins/issues/185)) ([269eaf3](https://github.com/pleaseai/claude-code-plugins/commit/269eaf3d459a0543b396f92b2aa3691106414e71))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.2.0...nuxt-ui-v1.3.0) (2026-03-28)
 
 
