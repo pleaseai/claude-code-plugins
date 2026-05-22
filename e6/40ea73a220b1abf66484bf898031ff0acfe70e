@@ -1,0 +1,251 @@
+plugins/antfu/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/edgeparse/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/docus/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/pnpm/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/wordpress/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+ARCHITECTURE.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 4,8-16,24-26,28,37-38,45,53-63,104,109-120,123-124,141,144,175-211,216,220-222,224,279
+plugins/zod/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/git-ai/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/nuxt/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vitest/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vitepress/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/next/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/markitdown/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/ai-sdk/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/mastra/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/antfu/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/tiptap/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/react-native/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+release-please-config.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 539-559
+.claude/agent-memory/review-review-cubic-reviewer/pr181-graphite-please-config-opt-in.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-16
+plugins/agent-browser/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/better-auth/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/nuxt/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/graphite/scripts/read-merge-queue-config.sh
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-117
+plugins/portone/skills/portone-guide/SKILL.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-297
+plugins/slidev/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/react/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vueuse/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/portone/agents/integration-validator.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-253
+plugins/vueuse/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/google-workspace/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/portless/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/nuxt-seo/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/neo4j/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/pinia/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/react/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/nuxt-i18n/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vite/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/next/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/slack-agent/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/please-plugins/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/portone/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-4
+plugins/chat-sdk/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/react-native/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/graphite/README.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 13-14,71-92,119-123
+plugins/git-ai/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/portless/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/tsdown/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/gatekeeper/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/supabase/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/ai-sdk/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/agent-browser/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/pnpm/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/vite/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/nuxt-ui/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/slack-agent/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+README.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 8,14-22,339-341,345-381,384-386,388,466-486
+plugins/emulate/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/nuxt-seo/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/graphite/commands/merge-queue.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-81
+.claude-plugin/marketplace.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 417-424
+plugins/better-auth/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/pinia/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/tiptap/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/bun/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/gatekeeper/package.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 4
+plugins/bun/.codex-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/bun/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/ast-grep/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/portone/.codex-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-40
+plugins/vitepress/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/edgeparse/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/portone/README.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-104
+plugins/portone/commands/start.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-188
+.claude/agent-memory/review-review-cubic-reviewer/pr184-portone-plugin.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-24
+plugins/graphite/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vue/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/mastra/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/vinext/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/nuxt-ui/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/prisma/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/vinext/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/slidev/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/vitest/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/gatekeeper/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/docus/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/unocss/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/tsdown/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/graphite/skills/graphite-merge-queue/SKILL.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-181
+plugins/turborepo/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+.claude/agent-memory/review-review-documentation-analyzer/project-doc-conventions.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 8-11
+plugins/workflow/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+.please/config.yml
+  s_571ea5b1c52885::t_d9c9f3dce1640e 22-31
+plugins/emulate/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/wordpress/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/please-plugins/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/portone/agents/payment-code-generator.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-175
+plugins/workflow/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/portone/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-8
+plugins/vue/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/web-design/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/bun/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/nuxt-i18n/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/ast-grep/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/unocss/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/portone/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 1-31
+plugins/supabase/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/chat-sdk/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/google-workspace/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/graphite/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-10
+plugins/markitdown/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/prisma/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/turborepo/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+plugins/web-design/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+.release-please-manifest.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 7-53
+plugins/neo4j/CHANGELOG.md
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3-9
+plugins/zod/.claude-plugin/plugin.json
+  s_571ea5b1c52885::t_d9c9f3dce1640e 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.0",
+  "base_commit_sha": "e640ea73a220b1abf66484bf898031ff0acfe70e",
+  "prompts": {},
+  "sessions": {
+    "s_571ea5b1c52885": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "eb492cdd-fc72-44e0-ae9b-70293d8c6dc4",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
