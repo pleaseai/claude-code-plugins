@@ -45,21 +45,21 @@ _RPG unavailable in this workspace (`rpg.json` absent) — file-level impact bel
 
 ## Tasks
 
-- [ ] T001 Fetch all 4 upstream SKILL.md files verbatim from `github/awesome-copilot/plugins/java-development/skills/` and write them to `plugins/java-development/skills/{name}/SKILL.md` (files: `plugins/java-development/skills/java-docs/SKILL.md`, `plugins/java-development/skills/java-junit/SKILL.md`, `plugins/java-development/skills/java-springboot/SKILL.md`, `plugins/java-development/skills/create-spring-boot-java-project/SKILL.md`). Verify SHA256 matches upstream after copy.
+- [x] T001 Fetch all 4 upstream SKILL.md files verbatim from `github/awesome-copilot/plugins/java-development/skills/` and write them to `plugins/java-development/skills/{name}/SKILL.md` (files: `plugins/java-development/skills/java-docs/SKILL.md`, `plugins/java-development/skills/java-junit/SKILL.md`, `plugins/java-development/skills/java-springboot/SKILL.md`, `plugins/java-development/skills/create-spring-boot-java-project/SKILL.md`). Verify SHA256 matches upstream after copy.
 
-- [ ] T002 [P] Create Claude Code plugin manifest at `plugins/java-development/.claude-plugin/plugin.json` with `name=java-development`, `version=1.0.0`, MIT license, author `Awesome Copilot Community`, repository `https://github.com/github/awesome-copilot`, keywords `[java, springboot, quarkus, jpa, junit, javadoc]`, and `"skills": ["./skills/"]`. Mirrors upstream description.
+- [x] T002 [P] Create Claude Code plugin manifest at `plugins/java-development/.claude-plugin/plugin.json` with `name=java-development`, `version=1.0.0`, MIT license, author `Awesome Copilot Community`, repository `https://github.com/github/awesome-copilot`, keywords `[java, springboot, quarkus, jpa, junit, javadoc]`, and `"skills": ["./skills/"]`. Mirrors upstream description.
 
-- [ ] T003 [P] Add `LICENSE` file at `plugins/java-development/LICENSE` containing the MIT license text with copyright line attributing the Awesome Copilot Community + a "Portions imported from github/awesome-copilot" notice (file: `plugins/java-development/LICENSE`).
+- [x] T003 [P] Add `LICENSE` file at `plugins/java-development/LICENSE` containing the MIT license text with copyright line attributing the Awesome Copilot Community + a "Portions imported from github/awesome-copilot" notice (file: `plugins/java-development/LICENSE`).
 
-- [ ] T004 [P] Author `plugins/java-development/README.md` documenting: source (link to upstream tree URL pinned to commit/branch), included skills list with descriptions, installation command (`/plugin install java-development@pleaseai`), and attribution notice (file: `plugins/java-development/README.md`).
+- [x] T004 [P] Author `plugins/java-development/README.md` documenting: source (link to upstream tree URL pinned to commit/branch), included skills list with descriptions, installation command (`/plugin install java-development@pleaseai`), and attribution notice (file: `plugins/java-development/README.md`).
 
-- [ ] T005 Register the plugin in `.claude-plugin/marketplace.json` by appending an entry with `name=java-development`, description matching upstream, `category=language`, `keywords` matching plugin.json, `tags=["skills", "language"]`, and `"source": "./plugins/java-development"` (file: `.claude-plugin/marketplace.json`) (depends on T002).
+- [x] T005 Register the plugin in `.claude-plugin/marketplace.json` by appending an entry with `name=java-development`, description matching upstream, `category=language`, `keywords` matching plugin.json, `tags=["skills", "language"]`, and `"source": "./plugins/java-development"` (file: `.claude-plugin/marketplace.json`) (depends on T002).
 
-- [ ] T006 Run `bun scripts/cli.ts multi-format` to generate Codex (`plugins/java-development/.codex-plugin/plugin.json`) and Antigravity (`plugins/java-development/plugin.json`) artifacts from the Claude manifest. Verify both files are generated and valid JSON (depends on T002, T005).
+- [x] T006 Run `bun scripts/cli.ts multi-format` to generate Codex (`plugins/java-development/.codex-plugin/plugin.json`) and Antigravity (`plugins/java-development/plugin.json`) artifacts from the Claude manifest. Verify both files are generated and valid JSON (depends on T002, T005).
 
-- [ ] T007 Validate the plugin and marketplace with `claude plugin validate plugins/java-development/` and `claude plugin validate .claude-plugin/marketplace.json`. Both must exit 0 (depends on T001, T002, T005, T006).
+- [x] T007 Validate the plugin and marketplace with `claude plugin validate plugins/java-development/` and `claude plugin validate .claude-plugin/marketplace.json`. Both must exit 0 (depends on T001, T002, T005, T006).
 
-- [ ] T008 Final review: read each new/modified file once, confirm no upstream skill content was mutated (diff against fetched originals), confirm marketplace entry follows the project's existing built-in-plugin conventions, and update this plan's Progress checklist (depends on T001-T007).
+- [x] T008 Final review: read each new/modified file once, confirm no upstream skill content was mutated (diff against fetched originals), confirm marketplace entry follows the project's existing built-in-plugin conventions, and update this plan's Progress checklist (depends on T001-T007).
 
 ## Dependencies
 
@@ -94,14 +94,14 @@ T004 ──┘
 
 ## Progress
 
-- [ ] T001 — Copy 4 SKILL.md files from upstream
-- [ ] T002 — Author Claude plugin manifest
-- [ ] T003 — Add LICENSE file
-- [ ] T004 — Author README
-- [ ] T005 — Register in marketplace.json
-- [ ] T006 — Run multi-format generator
-- [ ] T007 — Validate plugin + marketplace
-- [ ] T008 — Final review and consistency check
+- [x] T001 — Copy 4 SKILL.md files from upstream (2026-05-28)
+- [x] T002 — Author Claude plugin manifest (2026-05-28)
+- [x] T003 — Add LICENSE file (2026-05-28)
+- [x] T004 — Author README (2026-05-28)
+- [x] T005 — Register in marketplace.json (2026-05-28)
+- [x] T006 — Run multi-format generator (2026-05-28)
+- [x] T007 — Validate plugin + marketplace (2026-05-28)
+- [x] T008 — Final review and consistency check (2026-05-28)
 
 ## Decision Log
 
@@ -111,4 +111,7 @@ T004 ──┘
 
 ## Surprises & Discoveries
 
-_(To be filled during implementation.)_
+- **Upstream LICENSE is GitHub, Inc., not "Awesome Copilot Community"**: spec.md said the LICENSE should attribute the Awesome Copilot Community, but the upstream LICENSE actually says `Copyright GitHub, Inc.`. We preserved the upstream copyright accurately and added an "imported from" notice below it. Author field in plugin.json still uses "Awesome Copilot Community" since that's the community brand for the plugin collection.
+- **`bun scripts/cli.ts multi-format` regenerated 93 unrelated plugin manifests**: pre-existing drift (e.g., ai-sdk plugin.json was v1.1.0 in Codex/Antigravity files but v1.2.0 in the Claude source). We reverted those changes to keep this PR focused; a separate chore-track can sync all runtimes when desired.
+- **`claude plugin validate .claude-plugin/marketplace.json` warns on `homepage` and `repository`** fields — these are pre-existing schema mismatches not introduced by our entry. Validation still passes with exit 0.
+- **jq pretty-print would have churned the entire marketplace.json**: existing entries use inline JSON arrays (`"keywords": ["a", "b"]`) but jq's default reformats them multi-line. Used text-based Edit instead to preserve formatting and keep the diff to +8 lines.
