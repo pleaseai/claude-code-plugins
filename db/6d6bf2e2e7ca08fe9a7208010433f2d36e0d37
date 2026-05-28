@@ -1,0 +1,25 @@
+plugins/java-development/skills/create-spring-boot-java-project/SKILL.md
+  s_3262800becd84f::t_27460ed80cdbfc 1-163
+plugins/java-development/skills/java-docs/SKILL.md
+  s_3262800becd84f::t_27460ed80cdbfc 1-23
+plugins/java-development/skills/java-junit/SKILL.md
+  s_3262800becd84f::t_27460ed80cdbfc 1-63
+plugins/java-development/skills/java-springboot/SKILL.md
+  s_3262800becd84f::t_27460ed80cdbfc 1-65
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "db6d6bf2e2e7ca08fe9a7208010433f2d36e0d37",
+  "prompts": {},
+  "sessions": {
+    "s_3262800becd84f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7230065d-3fd9-4d53-9093-93246af89877",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
