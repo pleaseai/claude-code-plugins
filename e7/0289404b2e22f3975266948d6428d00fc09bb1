@@ -1,0 +1,19 @@
+.please/docs/tracks/active/awesome-copilot-java-20260528/metadata.json
+  s_3262800becd84f::t_ccfeda58829523 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "e70289404b2e22f3975266948d6428d00fc09bb1",
+  "prompts": {},
+  "sessions": {
+    "s_3262800becd84f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7230065d-3fd9-4d53-9093-93246af89877",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
