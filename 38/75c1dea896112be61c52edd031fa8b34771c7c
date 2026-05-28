@@ -1,0 +1,26 @@
+.please/docs/tracks/active/awesome-copilot-java-20260528/plan.md
+  s_3262800becd84f::t_98037d5992c47d 1-114
+.please/docs/tracks/active/awesome-copilot-java-20260528/metadata.json
+  s_3262800becd84f::t_ef1f18df3461d1 4,6-7,9-10
+  s_3262800becd84f::t_672c5a4efc09ca 1-3,5,8,11
+.please/docs/tracks/active/awesome-copilot-java-20260528/spec.md
+  s_3262800becd84f::t_449666ee563695 1-59
+.please/docs/tracks.jsonl
+  s_3262800becd84f::t_383ce54f14bdec 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "3875c1dea896112be61c52edd031fa8b34771c7c",
+  "prompts": {},
+  "sessions": {
+    "s_3262800becd84f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7230065d-3fd9-4d53-9093-93246af89877",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
