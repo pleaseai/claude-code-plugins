@@ -1,0 +1,33 @@
+.please/docs/tracks/active/awesome-copilot-java-20260528/plan.md
+  s_3262800becd84f::t_77a0c815d1b0d4 60
+  s_3262800becd84f::t_82a9fd813a5f12 97
+  s_3262800becd84f::t_2c802d57927181 114-117
+  s_3262800becd84f::t_edb7298db9022c 98-100
+  s_3262800becd84f::t_c950e0b81bc836 50
+  s_3262800becd84f::t_63c2a46252353c 104
+  s_3262800becd84f::t_0676d758786bd4 58
+  s_3262800becd84f::t_f655d6aaed7693 54
+  s_3262800becd84f::t_52d894c07cc9fb 103
+  s_3262800becd84f::t_925c9d35256055 102
+  s_3262800becd84f::t_f1d885c75532c7 52
+  s_3262800becd84f::t_11c3bee21e44f4 62
+  s_3262800becd84f::t_fcb2b561f4b8e6 101
+  s_3262800becd84f::t_6fe6056aa8dea0 48
+  s_3262800becd84f::t_d773322836a057 56
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "548f975b8f2f346fd690eb94d6c3445f1b39ac48",
+  "prompts": {},
+  "sessions": {
+    "s_3262800becd84f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7230065d-3fd9-4d53-9093-93246af89877",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <amond@amond.net>"
+    }
+  }
+}
