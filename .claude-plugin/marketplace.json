@@ -633,6 +633,14 @@
       "keywords": ["bun", "runtime", "package-manager", "test-runner", "bundler", "javascript", "typescript"],
       "tags": ["runtime", "tooling"],
       "source": "./plugins/bun"
+    },
+    {
+      "name": "java-development",
+      "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot",
+      "category": "language",
+      "keywords": ["java", "springboot", "quarkus", "jpa", "junit", "javadoc"],
+      "tags": ["language", "skills"],
+      "source": "./plugins/java-development"
     }
   ]
 }
