@@ -461,6 +461,18 @@
       "category": "Development"
     },
     {
+      "name": "portone",
+      "source": {
+        "source": "local",
+        "path": "./plugins/portone"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "please-plugins",
       "source": {
         "source": "local",
@@ -639,6 +651,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Development"
+    },
+    {
+      "name": "java-development",
+      "source": {
+        "source": "local",
+        "path": "./plugins/java-development"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Language"
     }
   ]
 }
