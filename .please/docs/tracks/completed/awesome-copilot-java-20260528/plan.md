@@ -115,3 +115,28 @@ T004 ──┘
 - **`bun scripts/cli.ts multi-format` regenerated 93 unrelated plugin manifests**: pre-existing drift (e.g., ai-sdk plugin.json was v1.1.0 in Codex/Antigravity files but v1.2.0 in the Claude source). We reverted those changes to keep this PR focused; a separate chore-track can sync all runtimes when desired.
 - **`claude plugin validate .claude-plugin/marketplace.json` warns on `homepage` and `repository`** fields — these are pre-existing schema mismatches not introduced by our entry. Validation still passes with exit 0.
 - **jq pretty-print would have churned the entire marketplace.json**: existing entries use inline JSON arrays (`"keywords": ["a", "b"]`) but jq's default reformats them multi-line. Used text-based Edit instead to preserve formatting and keep the diff to +8 lines.
+
+## Outcomes & Retrospective
+
+### What Was Shipped
+
+PR #191 introduces `plugins/java-development/` as a built-in marketplace plugin importing GitHub's awesome-copilot Java Development collection. Four SKILL.md files (java-docs, java-junit, java-springboot, create-spring-boot-java-project) are copied byte-identical from upstream; Claude Code, Codex, and Antigravity manifests are generated and validated; `LICENSE` and `README.md` preserve MIT attribution to GitHub, Inc. and the Awesome Copilot Community.
+
+### What Went Well
+
+- One-iteration code review with zero critical/important findings — the structural conformance to `plugins/bun/` paid off.
+- SHA-pinned copy verification (git blob SHA vs upstream API) gave a deterministic guarantee that no upstream content was mutated. Worth reusing for future awesome-copilot imports.
+- Splitting the workspace schema migration (v2→v5) from the track commits kept the PR diff focused on the actual feature.
+- Used text-based `Edit` for `.claude-plugin/marketplace.json` instead of `jq` rewrite, keeping the diff to +8 lines.
+
+### What Could Improve
+
+- `bun scripts/cli.ts multi-format` regenerates ALL plugin manifests, not just the new one — needed manual reversion of 93 unrelated files. A `--only <plugin>` flag on the script would make targeted imports much cleaner.
+- `.claude-plugin/marketplace.json` validation surfaces 2 warnings on `homepage`/`repository` schema mismatches that aren't this PR's concern. Worth a separate chore-track to schema-fix the marketplace.json header.
+- Initial spec assumed copyright would be "Awesome Copilot Community" but the upstream LICENSE actually attributes "GitHub, Inc." — should fetch the upstream LICENSE during spec authoring for future third-party imports.
+
+### Tech Debt Created
+
+- **Manual sync drift**: This plugin will fall out of sync with upstream over time. No automated mechanism captures upstream updates. Mitigation: future tracks re-copy when meaningful upstream changes land.
+- **Unrelated runtime-manifest drift not fixed**: 93 plugins still have stale `.codex-plugin/plugin.json` / root `plugin.json` versions vs the Claude source. Deserves a dedicated `chore(multi-format): re-sync stale runtime manifests` track.
+- **`ARCHITECTURE.md` doesn't yet mention `plugins/java-development/`**: not in scope here, but worth a `/standards:architecture-md update` pass during the next architecture refresh.
