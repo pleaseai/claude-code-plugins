@@ -1,4 +1,4 @@
-schema_version: 2          # Config schema version (do not edit manually)
+schema_version: 5          # Config schema version (do not edit manually)
 
 language: en   # Output language (ko | en)
 
@@ -29,3 +29,13 @@ graphite:
     # When unset, the plugin assumes `none` and uses the direct-merge path.
     mode: graphite
     label: "merge-queue"   # used only when mode: graphite (must match Graphite settings)
+
+# Workflow policies (optional)
+# Populated by /please:setup when a stack tool is detected and user opts in.
+# The `tool` field selects which CLI drives the stack (currently only `graphite`).
+# workflow:
+#   stacked_pr:
+#     enabled: true                  # Use stacked PR workflow (one PR per branch in stack)
+#     tool: graphite                 # graphite | git-spice | none
+#     split_phases: true             # If plan.md has `### Phase N:` headings, create a stacked branch per phase
+#     branch_prefix: tracks/         # Branch prefix (single-phase: tracks/{track_id}; multi-phase: tracks/{track_id}/phase-N-{slug})
