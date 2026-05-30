@@ -1,7 +1,5 @@
 # Java Development
 
-[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fjava-development)](https://tessl.io/registry/pleaseai/java-development)
-
 Comprehensive collection of skills for Java development including Spring Boot, JUnit, and Javadoc best practices. Imported from GitHub's [awesome-copilot](https://github.com/github/awesome-copilot/tree/main/plugins/java-development) community plugin.
 
 ## Installation
