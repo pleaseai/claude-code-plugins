@@ -1,0 +1,21 @@
+plugins/bun/README.md
+  s_270f20c27ddfc8::t_235c7ef6179242 74
+.github/workflows/tessl-skill-review.yml
+  s_270f20c27ddfc8::t_f019f576c71c1c 3-5,7-10,12-13,22,28-29,45,47,49-51
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "2a2452c9fc22e2361954b3b01362448c391e03ba",
+  "prompts": {},
+  "sessions": {
+    "s_270f20c27ddfc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8ef88d5-40d2-4649-b554-2ccfc8d4c0be",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
