@@ -653,6 +653,18 @@
       "category": "Development"
     },
     {
+      "name": "tessl",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tessl"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "java-development",
       "source": {
         "source": "local",

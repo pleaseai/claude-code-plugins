@@ -1,0 +1,21 @@
+{
+  "name": "tessl",
+  "version": "1.0.0",
+  "description": "Tessl CLI toolkit for agent-native, spec-driven development — create, develop, lint, pack, and publish Tessl plugins and skills to the Tessl registry. Use when running tessl commands, authoring SKILL.md or rules, installing plugins, or publishing on push via setup-tessl CI.",
+  "author": {
+    "name": "Tessl",
+    "url": "https://github.com/tesslio"
+  },
+  "homepage": "https://tessl.io",
+  "repository": "https://github.com/tesslio",
+  "license": "MIT",
+  "keywords": [
+    "tessl",
+    "cli",
+    "skills",
+    "plugins",
+    "spec-driven",
+    "agent-native",
+    "registry"
+  ]
+}

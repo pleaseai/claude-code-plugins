@@ -635,6 +635,15 @@
       "source": "./plugins/bun"
     },
     {
+      "name": "tessl",
+      "description": "Tessl CLI toolkit for agent-native, spec-driven development — create, develop, lint, pack, and publish Tessl plugins and skills to the registry, including setup-tessl + skill-review CI publishing",
+      "category": "development",
+      "keywords": ["tessl", "cli", "skills", "plugins", "spec-driven", "agent-native", "registry"],
+      "tags": ["cli", "skills", "tooling"],
+      "source": "./plugins/tessl",
+      "homepage": "https://tessl.io"
+    },
+    {
       "name": "java-development",
       "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot",
       "category": "language",
