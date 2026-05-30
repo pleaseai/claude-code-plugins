@@ -1,0 +1,24 @@
+.github/workflows/tessl-publish.yml
+  s_270f20c27ddfc8::t_60f7fd8ecbf0bc 1-50
+.github/workflows/tessl-skill-review.yml
+  s_270f20c27ddfc8::t_9db17ea24fe355 51
+  s_270f20c27ddfc8::t_5d4bbdbfdfed43 1-50
+plugins/bun/README.md
+  s_270f20c27ddfc8::t_53b7cabd485897 71-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "18c10a82fb9ab6f0fd9cac41f975bd3861eb5596",
+  "prompts": {},
+  "sessions": {
+    "s_270f20c27ddfc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8ef88d5-40d2-4649-b554-2ccfc8d4c0be",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
