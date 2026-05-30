@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/bun-v1.2.0...bun-v1.3.0) (2026-05-30)
+
+
+### Features
+
+* **bun:** add Tessl plugin manifest for registry publishing ([#194](https://github.com/pleaseai/claude-code-plugins/issues/194)) ([78830be](https://github.com/pleaseai/claude-code-plugins/commit/78830be291fd5c71467e8783d3c92c49260ef527))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/bun-v1.1.0...bun-v1.2.0) (2026-05-21)
 
 

@@ -1,7 +1,7 @@
 {
   "name": "pleaseai/cubic",
   "description": "AI-powered code review using Cubic CLI. Detects bugs, security vulnerabilities, and style issues before commits.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": {
     "name": "Minsu Lee",
     "url": "https://github.com/amondnet"

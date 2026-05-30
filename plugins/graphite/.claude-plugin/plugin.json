@@ -1,6 +1,6 @@
 {
   "name": "graphite",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track existing branches, and collaborate on shared stacks",
   "author": {
     "name": "Graphite",

@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v2.0.0...graphite-v2.1.0) (2026-05-30)
+
+
+### Features
+
+* publish skill plugins to Tessl registry with badges ([#197](https://github.com/pleaseai/claude-code-plugins/issues/197)) ([b9cb8c3](https://github.com/pleaseai/claude-code-plugins/commit/b9cb8c3067dc9984b1c068390e6eb390ac57251e))
+
 ## [2.0.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v1.3.0...graphite-v2.0.0) (2026-05-22)
 
 
