@@ -1,33 +1,43 @@
 name: Tessl Publish
 
-# Publishes the bun plugin to the Tessl registry as `pleaseai/bun` whenever
-# release-please cuts a bun release. release-please tags components as
-# `<component>-v<version>` (e.g. `bun-v1.3.0`) using a GitHub App token, so
-# the tag push triggers this workflow. The checked-out tag already has the
-# bumped version in plugins/bun/.tessl-plugin/plugin.json, so `tessl plugin
-# publish` publishes exactly that version.
+# Publishes a plugin to the Tessl registry when release-please cuts a release
+# for it. release-please tags components as `<component>-v<version>` (e.g.
+# `bun-v1.3.0`, `graphite-v2.1.0`) using a GitHub App token, so the tag push
+# triggers this workflow. The component name matches the plugin directory under
+# plugins/, and the checked-out tag already has the bumped version in
+# plugins/<component>/.tessl-plugin/plugin.json, so `tessl plugin publish`
+# publishes exactly that version.
+#
+# Only components that ship a .tessl-plugin/plugin.json are published; tags for
+# any other component (apps/web, packages/*, plugins without a Tessl manifest)
+# resolve to a missing manifest and the job no-ops.
 #
 # Requires repository secret TESSL_TOKEN (create via `tessl api-key create`).
 # When the secret is absent the job no-ops with a warning instead of failing.
 on:
   push:
     tags:
-      - 'bun-v*'
+      - '*-v*'
 
 permissions:
   id-token: write
   contents: read
 
 jobs:
-  publish-bun:
-    name: Publish pleaseai/bun to Tessl
+  publish:
+    name: Publish released plugin to Tessl
     runs-on: ubuntu-latest
     steps:
-      - name: Check TESSL_TOKEN is configured
+      - name: Resolve component and check TESSL_TOKEN
         id: guard
         env:
           TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
+          TAG: ${{ github.ref_name }}
         run: |
+          # release-please tags components as <component>-v<version>; strip the
+          # trailing -v<version> to recover the plugin directory name.
+          component="${TAG%-v*}"
+          echo "component=$component" >> "$GITHUB_OUTPUT"
           if [ -z "$TESSL_TOKEN" ]; then
             echo "::warning::TESSL_TOKEN not configured — skipping Tessl publish"
             echo "skip=true" >> "$GITHUB_OUTPUT"
@@ -39,12 +49,27 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
-      - name: Set up Tessl CLI
+      - name: Verify plugin has a Tessl manifest
         if: steps.guard.outputs.skip != 'true'
+        id: manifest
+        env:
+          COMPONENT: ${{ steps.guard.outputs.component }}
+        run: |
+          if [ -f "plugins/$COMPONENT/.tessl-plugin/plugin.json" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::notice::plugins/$COMPONENT has no .tessl-plugin/plugin.json — not a Tessl plugin, skipping"
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Set up Tessl CLI
+        if: steps.guard.outputs.skip != 'true' && steps.manifest.outputs.publish == 'true'
         uses: tesslio/setup-tessl@25ec223fc0da33b41b8044ff5ab2b85235f4f91e # v2
         with:
           token: ${{ secrets.TESSL_TOKEN }}
 
       - name: Publish plugin
-        if: steps.guard.outputs.skip != 'true'
-        run: tessl plugin publish plugins/bun
+        if: steps.guard.outputs.skip != 'true' && steps.manifest.outputs.publish == 'true'
+        env:
+          COMPONENT: ${{ steps.guard.outputs.component }}
+        run: tessl plugin publish "plugins/$COMPONENT"

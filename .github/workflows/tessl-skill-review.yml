@@ -1,8 +1,10 @@
 name: Tessl Skill Review
 
-# Reviews the use-bun SKILL.md on PRs that touch it using the official
-# tesslio/skill-review action, which runs `tessl skill review` on changed
-# SKILL.md files and posts the quality scores as a PR comment.
+# Reviews changed SKILL.md files on PRs using the official tesslio/skill-review
+# action, which runs `tessl skill review` and posts the quality scores as a PR
+# comment. Covers every plugin that ships a .tessl-plugin/plugin.json: the
+# detect job derives which published plugins had skills changed in the PR, and
+# the review job fans out over them via a matrix.
 #
 # Auth: the skill-review composite runs tesslio/setup-tessl WITHOUT a token, and
 # the tessl CLI authenticates from the TESSL_TOKEN env var — so it is provided at
@@ -15,16 +17,60 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'plugins/bun/skills/**'
+      - 'plugins/**/skills/**'
 
 permissions:
   contents: read
   pull-requests: write # required for the action to post its review comment
 
 jobs:
-  review-use-bun:
-    name: Review use-bun skill
+  detect:
+    name: Detect changed published plugins
     runs-on: ubuntu-latest
+    outputs:
+      plugins: ${{ steps.changed.outputs.plugins }}
+      any: ${{ steps.changed.outputs.any }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Find changed plugins with a Tessl manifest
+        id: changed
+        env:
+          BASE: ${{ github.event.pull_request.base.sha }}
+          HEAD: ${{ github.event.pull_request.head.sha }}
+        run: |
+          dirs="$(git diff --name-only "$BASE" "$HEAD" \
+            | grep -E '^plugins/[^/]+/skills/' \
+            | sed -E 's#^(plugins/[^/]+)/.*#\1#' | sort -u || true)"
+          published=()
+          while IFS= read -r d; do
+            [ -n "$d" ] || continue
+            if [ -f "$d/.tessl-plugin/plugin.json" ]; then
+              published+=("$d")
+            fi
+          done <<< "$dirs"
+          if [ "${#published[@]}" -eq 0 ]; then
+            echo "any=false" >> "$GITHUB_OUTPUT"
+            echo "plugins=[]" >> "$GITHUB_OUTPUT"
+          else
+            json="$(printf '%s\n' "${published[@]}" | jq -R . | jq -cs .)"
+            echo "any=true" >> "$GITHUB_OUTPUT"
+            echo "plugins=$json" >> "$GITHUB_OUTPUT"
+            printf 'Reviewing: %s\n' "${published[@]}"
+          fi
+
+  review:
+    name: Review ${{ matrix.plugin }}
+    needs: detect
+    if: needs.detect.outputs.any == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        plugin: ${{ fromJSON(needs.detect.outputs.plugins) }}
     env:
       TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
     steps:
@@ -46,6 +92,6 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         uses: tesslio/skill-review@22e928dd837202b2b1d1397e0114c92e0fae5ead # main (no tagged release)
         with:
-          path: plugins/bun
+          path: ${{ matrix.plugin }}
           comment: 'true'
           fail-threshold: '0'
