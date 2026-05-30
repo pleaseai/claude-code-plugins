@@ -1,5 +1,5 @@
 ---
-name: Find Plugin
+name: find-plugin
 description: Helps users discover and install Claude Code plugins from the pleaseai marketplace. Use this skill whenever a user asks "how do I do X", "find a plugin for X", "is there a plugin that can...", "recommend a plugin", "what plugins are available", wants to extend Claude Code capabilities, or mentions a technology/framework and could benefit from a plugin they haven't installed yet. Also use when the user is stuck on a task that an available plugin could solve, even if they don't explicitly ask for a plugin.
 allowed-tools: Bash, Read, Glob, Grep
 ---
