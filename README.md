@@ -449,6 +449,8 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
 /plugin install workflow@pleaseai
+/plugin install portless@pleaseai
+/plugin install zod@pleaseai
 /plugin install bun@pleaseai
 ```
 
