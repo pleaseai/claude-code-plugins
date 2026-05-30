@@ -1,0 +1,43 @@
+.agents/plugins/marketplace.json
+  s_270f20c27ddfc8::t_2c0d1dcd4713cf 656-666
+plugins/tessl/skills/use-tessl/references/plugins.md
+  s_270f20c27ddfc8::t_ea0c8d9b730be7 1-96
+plugins/tessl/skills/use-tessl/references/cli-commands.md
+  s_270f20c27ddfc8::t_3b16db40eee093 1-90
+plugins/tessl/.codex-plugin/plugin.json
+  s_270f20c27ddfc8::t_2c0d1dcd4713cf 1-36
+plugins/tessl/README.md
+  s_270f20c27ddfc8::t_84bece46bc7b1d 1-90
+plugins/tessl/skills/use-tessl/references/skills.md
+  s_270f20c27ddfc8::t_da03c55095ba07 1-89
+.release-please-manifest.json
+  s_270f20c27ddfc8::t_29825397681292 53
+plugins/tessl/skills/use-tessl/references/ci-publishing.md
+  s_270f20c27ddfc8::t_0f489cc6521fd1 1-103
+plugins/tessl/.claude-plugin/plugin.json
+  s_270f20c27ddfc8::t_f7ae1444c8509a 1-24
+.claude-plugin/marketplace.json
+  s_270f20c27ddfc8::t_241421a0619d0b 638-645
+plugins/tessl/plugin.json
+  s_270f20c27ddfc8::t_2c0d1dcd4713cf 1-21
+release-please-config.json
+  s_270f20c27ddfc8::t_2c14b0d57e9194 540-545
+plugins/tessl/skills/use-tessl/SKILL.md
+  s_270f20c27ddfc8::t_027b34ba17ff72 1-148
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "a745c2c998004380ab52a0c7641cba4123da4174",
+  "prompts": {},
+  "sessions": {
+    "s_270f20c27ddfc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8ef88d5-40d2-4649-b554-2ccfc8d4c0be",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
