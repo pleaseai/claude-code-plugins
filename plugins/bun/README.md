@@ -11,8 +11,9 @@ The `SKILL.md` format is shared by Claude Code, Cursor, Codex CLI, Gemini CLI, G
 | Claude Code | `.claude-plugin/plugin.json` | `./skills/` |
 | Codex | `.codex-plugin/plugin.json` | `./skills/` |
 | Antigravity | `plugin.json` (at plugin root) | `./skills/` |
+| Tessl | `.tessl-plugin/plugin.json` | `skills/use-bun` |
 
-All three tools read the same `skills/use-bun/SKILL.md`. Antigravity additionally accepts `mcp_config.json`, `hooks.json`, and `rules/` at plugin root if needed (this plugin uses none of them).
+All tools read the same `skills/use-bun/SKILL.md`. Antigravity additionally accepts `mcp_config.json`, `hooks.json`, and `rules/` at plugin root if needed (this plugin uses none of them). Tessl publishes the skill to its registry as `pleaseai/bun` (see [Tessl](#tessl) below).
 
 ## Install
 
@@ -52,6 +53,26 @@ cp -R <path-to-this-plugin>/skills/use-bun ~/.gemini/antigravity/skills/
 
 See the [Antigravity plugins docs](https://antigravity.google/docs/plugins) and the [Authoring Skills](https://codelabs.developers.google.com/getting-started-with-antigravity-skills) codelab for background.
 
+### Tessl
+
+This plugin ships a [Tessl](https://tessl.io) manifest (`.tessl-plugin/plugin.json`) so the `use-bun` skill can be published to and installed from the Tessl registry as `pleaseai/bun`.
+
+```bash
+# Install from the registry
+tessl install pleaseai/bun
+
+# Validate / publish from this directory (maintainers)
+tessl plugin lint plugins/bun
+tessl plugin publish            # requires `tessl login` or a TESSL_TOKEN
+```
+
+The manifest `version` is kept in sync with the other manifests by release-please (it is a `$.version` extra-file alongside `.claude-plugin`, `.codex-plugin`, and root `plugin.json`). Tessl caps a skill's `description` at 1024 characters, so `skills/use-bun/SKILL.md` keeps its description within that limit.
+
+CI automates this (requires a `TESSL_TOKEN` repo secret; both jobs no-op without it):
+
+- **`.github/workflows/tessl-publish.yml`** — publishes to the registry when release-please tags a release (`bun-v*`).
+- **`.github/workflows/tessl-skill-review.yml`** — runs the [`tesslio/skill-review`](https://github.com/tesslio/skill-review) action on PRs that touch `plugins/bun/skills/**`, posting the skill's quality score as a PR comment.
+
 ## Prerequisites
 
 - Bun installed (`curl -fsSL https://bun.sh/install | bash`)
@@ -64,6 +85,7 @@ plugins/bun/
 ├── .claude-plugin/plugin.json     # Claude Code manifest
 ├── .codex-plugin/plugin.json      # Codex manifest
 ├── plugin.json                     # Antigravity marker file
+├── .tessl-plugin/plugin.json      # Tessl plugin manifest (pleaseai/bun)
 ├── README.md                       # this file
 └── skills/use-bun/
     ├── SKILL.md                    # entry point — universal across all tools
