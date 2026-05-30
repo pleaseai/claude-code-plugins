@@ -26,7 +26,7 @@
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.75",
-    "@nuxt/devtools": "latest",
+    "@nuxt/devtools": "4.0.0-alpha.6",
     "@nuxt/eslint": "^1.15.2",
     "@nuxt/test-utils": "^4.0.0",
     "@pleaseai/eslint-config": "workspace:*",
