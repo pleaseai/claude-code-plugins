@@ -71,7 +71,7 @@ The manifest `version` is kept in sync with the other manifests by release-pleas
 CI automates this (requires a `TESSL_TOKEN` repo secret; both jobs no-op without it):
 
 - **`.github/workflows/tessl-publish.yml`** — publishes to the registry when release-please tags a release (`bun-v*`).
-- **`.github/workflows/tessl-skill-review.yml`** — runs `tessl skill review` on PRs that touch `plugins/bun/skills/**`.
+- **`.github/workflows/tessl-skill-review.yml`** — runs the [`tesslio/skill-review`](https://github.com/tesslio/skill-review) action on PRs that touch `plugins/bun/skills/**`, posting the skill's quality score as a PR comment.
 
 ## Prerequisites
 
