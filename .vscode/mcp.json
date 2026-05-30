@@ -1,10 +1,5 @@
 {
-  "context": {
-    "fileName": [
-      "CLAUDE.md"
-    ]
-  },
-  "mcpServers": {
+  "servers": {
     "tessl": {
       "type": "stdio",
       "command": "tessl",
