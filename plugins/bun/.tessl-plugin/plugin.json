@@ -1,0 +1,8 @@
+{
+  "name": "pleaseai/bun",
+  "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler. Version-aware skill backed by the ask CLI.",
+  "version": "1.2.0",
+  "skills": [
+    "skills/use-bun"
+  ]
+}
