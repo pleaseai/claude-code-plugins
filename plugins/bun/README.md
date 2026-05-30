@@ -1,5 +1,7 @@
 # bun
 
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fbun)](https://tessl.io/registry/pleaseai/bun)
+
 Version-aware skill for the Bun JavaScript/TypeScript toolkit — runtime, package manager, test runner, and bundler. Ships a single `use-bun` skill that uses the [`ask`](https://github.com/pleaseai/ask) CLI to pin docs and source to the exact Bun version installed in the project.
 
 ## Compatibility

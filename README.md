@@ -315,6 +315,13 @@ TypeScript-first schema validation with static type inference — version-aware 
 
 **Install:** `/plugin install zod@pleaseai` | **Source:** [plugins/zod](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/zod)
 
+#### Bun
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fbun)](https://tessl.io/registry/pleaseai/bun)
+
+Version-aware skill for the Bun JavaScript/TypeScript toolkit — runtime, package manager, test runner, and bundler.
+
+**Install:** `/plugin install bun@pleaseai` | **Source:** [plugins/bun](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/bun)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -442,6 +449,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
 /plugin install workflow@pleaseai
+/plugin install bun@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
