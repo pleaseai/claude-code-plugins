@@ -1,0 +1,15 @@
+{
+  "name": "pleaseai/java-development",
+  "description": "Comprehensive collection of prompts and instructions for Java development including Spring Boot, Quarkus, testing, documentation, and best practices.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Awesome Copilot Community",
+    "url": "https://github.com/github/awesome-copilot"
+  },
+  "skills": [
+    "skills/create-spring-boot-java-project",
+    "skills/java-docs",
+    "skills/java-junit",
+    "skills/java-springboot"
+  ]
+}

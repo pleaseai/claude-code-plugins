@@ -1,8 +1,12 @@
 name: Tessl Skill Review
 
-# Reviews the use-bun SKILL.md on PRs that touch it using the official
-# tesslio/skill-review action, which runs `tessl skill review` on changed
-# SKILL.md files and posts the quality scores as a PR comment.
+# Reviews changed SKILL.md files on PRs using the official tesslio/skill-review
+# action, which runs `tessl skill review` and posts the quality scores as a PR
+# comment. The action scans the PR diff for changed SKILL.md files (as
+# repo-relative paths) under the `path` root, so `path` is the repo root (`.`)
+# and every plugin's skills are covered — not just one. (Passing a sub-directory
+# as `path` double-prefixes the repo-relative changed paths and fails with
+# "SKILL.md not found at plugins/<dir>/plugins/<dir>/...".)
 #
 # Auth: the skill-review composite runs tesslio/setup-tessl WITHOUT a token, and
 # the tessl CLI authenticates from the TESSL_TOKEN env var — so it is provided at
@@ -15,15 +19,15 @@ on:
   pull_request:
     branches: [main]
     paths:
-      - 'plugins/bun/skills/**'
+      - 'plugins/**/skills/**'
 
 permissions:
   contents: read
   pull-requests: write # required for the action to post its review comment
 
 jobs:
-  review-use-bun:
-    name: Review use-bun skill
+  review:
+    name: Review changed skills
     runs-on: ubuntu-latest
     env:
       TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
@@ -46,6 +50,6 @@ jobs:
         if: steps.guard.outputs.skip != 'true'
         uses: tesslio/skill-review@22e928dd837202b2b1d1397e0114c92e0fae5ead # main (no tagged release)
         with:
-          path: plugins/bun
+          path: '.'
           comment: 'true'
           fail-threshold: '0'

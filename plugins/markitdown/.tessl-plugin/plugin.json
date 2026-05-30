@@ -1,0 +1,12 @@
+{
+  "name": "pleaseai/markitdown",
+  "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
+  "version": "1.3.0",
+  "author": {
+    "name": "Microsoft",
+    "url": "https://github.com/microsoft"
+  },
+  "skills": [
+    "skills/markitdown"
+  ]
+}

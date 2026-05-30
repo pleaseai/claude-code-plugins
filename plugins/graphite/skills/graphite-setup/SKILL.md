@@ -15,6 +15,21 @@ Source docs (cite when proposing changes):
 - [Setup: recommended CI settings](https://graphite.com/docs/setup-recommended-ci-settings)
 - [Stacking and CI](https://graphite.com/docs/stacking-and-ci)
 
+## Onboarding a repo — do this in order
+
+Work top-down. Each step has a checkpoint; if it fails, fix that step before moving on — a later step won't compensate for an earlier misconfiguration.
+
+1. **Repo settings** — disable the single-push branch limit, enable auto-delete head branches ([GitHub repository settings](#github-repository-settings)).
+   - ✅ Checkpoint: `gt submit --stack` on a 2-branch test stack pushes both branches without a "too many branches in one push" error.
+2. **Branch protection** — turn off the four Graphite-breaking settings; keep the recommended safe ones (tables below).
+   - ✅ Checkpoint: open a test PR, approve it, then push an amend — the approval is **not** dismissed and the PR stays mergeable.
+3. **CI triggers** — add `branches-ignore: "**/graphite-base/**"` and ensure CI runs on every stacked PR, not just trunk ([CI configuration](#ci-configuration)).
+   - ✅ Checkpoint: push a 2-PR stack; both PRs get CI runs, and no job fails with "branch not found" on a `graphite-base/*` ref.
+4. **Merge queue** — pick exactly one mode ([Merge queue: pick one](#merge-queue-pick-one)); skip if you aren't using a queue.
+   - ✅ Checkpoint: only one queue is active — if you chose Graphite's, GitHub's native queue is off in branch protection.
+5. **(Optional) CI Optimizations** — only for teams with tall stacks and ≥~10 active stackers ([CI Optimizations](#ci-optimizations-stack-aware-skipping)).
+   - ✅ Checkpoint: a known-skippable intermediate PR shows its CI skipped, while the base and top PRs still run.
+
 ## When to reach for this skill
 
 - The user just installed Graphite on a new repo and asks "what do I need to configure?"
@@ -114,7 +129,10 @@ jobs:
     steps:
       - id: check
         run: |
-          # Call Graphite's CI optimization API; set steps.check.outputs.skip
+          # Set steps.check.outputs.skip from Graphite's CI-optimization endpoint.
+          # Prefer Graphite's official CI-optimization Action over a hand-rolled
+          # API call — see the stacking-and-ci doc (linked above) for the current
+          # action name, its inputs, and the exact output field to read.
           ...
 
   test:

@@ -1,5 +1,5 @@
 ---
-name: Fetching Web Content
+name: fetch
 description: Fetch web content in multiple formats using fetch MCP tools. Use when WebFetch fails with 403/access errors, when fetching HTML pages, JSON APIs, plain text, readable article content, or YouTube transcripts. Triggers on mentions of fetching URLs, web scraping, reading web pages, downloading content, or accessing online resources.
 allowed-tools: mcp__fetch__fetch_html, mcp__fetch__fetch_markdown, mcp__fetch__fetch_txt, mcp__fetch__fetch_json, mcp__fetch__fetch_readable, mcp__fetch__fetch_youtube_transcript
 ---

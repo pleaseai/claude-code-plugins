@@ -7,7 +7,7 @@ user-invocable: false
 
 # Graphite CLI (`gt`) — Stacked PR Workflow
 
-Graphite is a CLI on top of git that makes **stacks of small PRs** ergonomic. A stack is a sequence of branches where each builds on its parent; each branch maps to one PR. The CLI is invoked as `gt` (not `graphite`).
+Invoke the CLI as `gt` (not `graphite`). A stack is a chain of branches where each builds on its parent and maps to one PR.
 
 When the user is in a Graphite repo (`.git/.graphite_repo_config` present) or mentions stacked PRs / `gt` / Graphite, prefer `gt` over raw `git` for branch creation, rebasing, and pushes. Plain git still works for staging, diffing, logs, and inspection.
 

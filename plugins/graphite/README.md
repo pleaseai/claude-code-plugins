@@ -1,5 +1,7 @@
 # graphite
 
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fgraphite)](https://tessl.io/registry/pleaseai/graphite)
+
 Stacked pull-request workflow with the Graphite CLI (`gt`). Teaches Claude to drive `gt` for creating, syncing, restacking, and submitting branch stacks.
 
 ## Overview

@@ -1,5 +1,7 @@
 # PortOne Integration Plugin
 
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fportone)](https://tessl.io/registry/pleaseai/portone)
+
 포트원(PortOne) 결제 연동 코드 생성 및 검토를 도와주는 Claude Code 플러그인입니다.
 
 ## 기능

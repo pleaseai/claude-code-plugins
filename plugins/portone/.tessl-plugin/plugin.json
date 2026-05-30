@@ -1,0 +1,12 @@
+{
+  "name": "pleaseai/portone",
+  "description": "\ud3ec\ud2b8\uc6d0(PortOne) \uacb0\uc81c \uc5f0\ub3d9 \ucf54\ub4dc \uc0dd\uc131 \ubc0f \uac80\ud1a0 \ud50c\ub7ec\uadf8\uc778. V1/V2 API\ub97c \uc9c0\uc6d0\ud558\uba70, MCP \uc11c\ubc84\ub97c \ud1b5\ud574 \ucd5c\uc2e0 \ubb38\uc11c\uc640 \uc608\uc2dc \ucf54\ub4dc\ub97c \ud65c\uc6a9\ud569\ub2c8\ub2e4.",
+  "version": "1.1.0",
+  "author": {
+    "name": "PortOne",
+    "url": "https://portone.io"
+  },
+  "skills": [
+    "skills/portone-guide"
+  ]
+}
