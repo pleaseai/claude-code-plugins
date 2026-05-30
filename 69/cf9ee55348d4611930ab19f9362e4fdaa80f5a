@@ -1,0 +1,19 @@
+.mcp.json
+  s_6e88783f54903f::t_e2822c28838318 2-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "69cf9ee55348d4611930ab19f9362e4fdaa80f5a",
+  "prompts": {},
+  "sessions": {
+    "s_6e88783f54903f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2932aba2-10a0-4f1d-83fc-65d1be19949f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
