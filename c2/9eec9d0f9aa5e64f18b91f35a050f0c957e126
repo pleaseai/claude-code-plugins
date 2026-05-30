@@ -1,0 +1,19 @@
+plugins/claude-md-management/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_6bad3cf18c04a5 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "c29eec9d0f9aa5e64f18b91f35a050f0c957e126",
+  "prompts": {},
+  "sessions": {
+    "s_78b14fe1b7409d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98b21855-3836-4279-8161-175adac4944f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
