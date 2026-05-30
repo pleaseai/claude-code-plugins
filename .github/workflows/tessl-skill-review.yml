@@ -1,0 +1,51 @@
+name: Tessl Skill Review
+
+# Runs `tessl skill review` on the use-bun skill for PRs that touch it, so the
+# skill's quality/compliance score (and the 1024-char description limit) are
+# checked before merge. Review output is written to the Actions log.
+#
+# This uses the inline `setup-tessl` + `tessl skill review` form rather than the
+# tesslio/skill-review wrapper action, which is currently unreleased (no tags).
+#
+# Requires repository secret TESSL_TOKEN. When absent the job no-ops with a
+# warning instead of failing the PR. To gate merges on a minimum score, add
+# `--threshold <0-100>` to the review command (it exits non-zero below the bar).
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'plugins/bun/skills/**'
+
+permissions:
+  contents: read
+
+jobs:
+  review-use-bun:
+    name: Review use-bun skill
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check TESSL_TOKEN is configured
+        id: guard
+        env:
+          TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
+        run: |
+          if [ -z "$TESSL_TOKEN" ]; then
+            echo "::warning::TESSL_TOKEN not configured — skipping Tessl skill review"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.guard.outputs.skip != 'true'
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Tessl CLI
+        if: steps.guard.outputs.skip != 'true'
+        uses: tesslio/setup-tessl@25ec223fc0da33b41b8044ff5ab2b85235f4f91e # v2
+        with:
+          token: ${{ secrets.TESSL_TOKEN }}
+
+      - name: Review skill
+        if: steps.guard.outputs.skip != 'true'
+        run: tessl skill review plugins/bun/skills/use-bun/SKILL.md

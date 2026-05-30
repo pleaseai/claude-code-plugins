@@ -1,0 +1,50 @@
+name: Tessl Publish
+
+# Publishes the bun plugin to the Tessl registry as `pleaseai/bun` whenever
+# release-please cuts a bun release. release-please tags components as
+# `<component>-v<version>` (e.g. `bun-v1.3.0`) using a GitHub App token, so
+# the tag push triggers this workflow. The checked-out tag already has the
+# bumped version in plugins/bun/.tessl-plugin/plugin.json, so `tessl plugin
+# publish` publishes exactly that version.
+#
+# Requires repository secret TESSL_TOKEN (create via `tessl api-key create`).
+# When the secret is absent the job no-ops with a warning instead of failing.
+on:
+  push:
+    tags:
+      - 'bun-v*'
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  publish-bun:
+    name: Publish pleaseai/bun to Tessl
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check TESSL_TOKEN is configured
+        id: guard
+        env:
+          TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
+        run: |
+          if [ -z "$TESSL_TOKEN" ]; then
+            echo "::warning::TESSL_TOKEN not configured — skipping Tessl publish"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Checkout
+        if: steps.guard.outputs.skip != 'true'
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      - name: Set up Tessl CLI
+        if: steps.guard.outputs.skip != 'true'
+        uses: tesslio/setup-tessl@25ec223fc0da33b41b8044ff5ab2b85235f4f91e # v2
+        with:
+          token: ${{ secrets.TESSL_TOKEN }}
+
+      - name: Publish plugin
+        if: steps.guard.outputs.skip != 'true'
+        run: tessl plugin publish plugins/bun

@@ -68,6 +68,11 @@ tessl plugin publish            # requires `tessl login` or a TESSL_TOKEN
 
 The manifest `version` is kept in sync with the other manifests by release-please (it is a `$.version` extra-file alongside `.claude-plugin`, `.codex-plugin`, and root `plugin.json`). Tessl caps a skill's `description` at 1024 characters, so `skills/use-bun/SKILL.md` keeps its description within that limit.
 
+CI automates this (requires a `TESSL_TOKEN` repo secret; both jobs no-op without it):
+
+- **`.github/workflows/tessl-publish.yml`** — publishes to the registry when release-please tags a release (`bun-v*`).
+- **`.github/workflows/tessl-skill-review.yml`** — runs `tessl skill review` on PRs that touch `plugins/bun/skills/**`.
+
 ## Prerequisites
 
 - Bun installed (`curl -fsSL https://bun.sh/install | bash`)
