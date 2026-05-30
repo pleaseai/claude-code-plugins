@@ -1,0 +1,27 @@
+release-please-config.json
+  s_270f20c27ddfc8::t_5889d5925eb7f5 537-541
+plugins/bun/.tessl-plugin/plugin.json
+  s_270f20c27ddfc8::t_118bf8cfafe850 1-8
+plugins/bun/README.md
+  s_270f20c27ddfc8::t_7304a8ffde7ac4 14,16
+  s_270f20c27ddfc8::t_93b84fb4c34457 56-70
+  s_270f20c27ddfc8::t_449123c31755d0 83
+plugins/bun/skills/use-bun/SKILL.md
+  s_270f20c27ddfc8::t_313b10ba03b10e 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "91c21995abe0459d2d10d157cb5378945c77df9f",
+  "prompts": {},
+  "sessions": {
+    "s_270f20c27ddfc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8ef88d5-40d2-4649-b554-2ccfc8d4c0be",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
