@@ -1,0 +1,19 @@
+plugins/graphite/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_89e9ed95a6e78b 1-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "3734877ef3b769bb35da45397cb0e68037bfc62b",
+  "prompts": {},
+  "sessions": {
+    "s_78b14fe1b7409d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98b21855-3836-4279-8161-175adac4944f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}

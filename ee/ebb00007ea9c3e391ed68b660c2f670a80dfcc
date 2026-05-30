@@ -1,0 +1,45 @@
+plugins/java-development/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-15
+plugins/mcp-dev/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/please-plugins/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/portone/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/web-design/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/better-auth/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/mastra/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/zod/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/nuxt-i18n/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/claude-md-management/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/cubic/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/fetch/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/markitdown/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-12
+plugins/google-workspace/.tessl-plugin/plugin.json
+  s_78b14fe1b7409d::t_22e6ecb3da11ac 1-118
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "eeebb00007ea9c3e391ed68b660c2f670a80dfcc",
+  "prompts": {},
+  "sessions": {
+    "s_78b14fe1b7409d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98b21855-3836-4279-8161-175adac4944f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}

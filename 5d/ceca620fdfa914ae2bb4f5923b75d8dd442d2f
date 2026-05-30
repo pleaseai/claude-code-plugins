@@ -1,0 +1,49 @@
+plugins/zod/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/mcp-dev/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/cubic/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/claude-md-management/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/nuxt-i18n/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/mastra/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/portone/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 3-4
+plugins/java-development/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 3-4
+plugins/markitdown/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/google-workspace/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/web-design/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/fetch/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+plugins/graphite/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 3-4
+plugins/please-plugins/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+README.md
+  s_78b14fe1b7409d::t_2492f2ca2559db 89-90,106-107,113-114,165-166,197-198,214-215,246-247,328-329,341-389,520-526
+plugins/better-auth/README.md
+  s_78b14fe1b7409d::t_214283bce527e4 1-7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "5dceca620fdfa914ae2bb4f5923b75d8dd442d2f",
+  "prompts": {},
+  "sessions": {
+    "s_78b14fe1b7409d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98b21855-3836-4279-8161-175adac4944f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}

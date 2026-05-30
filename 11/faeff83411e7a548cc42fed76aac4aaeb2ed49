@@ -1,0 +1,23 @@
+plugins/please-plugins/skills/find-plugin/SKILL.md
+  s_78b14fe1b7409d::t_2d9f294421723e 2
+plugins/cubic/skills/cubic-review/SKILL.md
+  s_78b14fe1b7409d::t_4b7a7e5d495929 2
+plugins/fetch/skills/fetch/SKILL.md
+  s_78b14fe1b7409d::t_44283566e21628 2
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "11faeff83411e7a548cc42fed76aac4aaeb2ed49",
+  "prompts": {},
+  "sessions": {
+    "s_78b14fe1b7409d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "98b21855-3836-4279-8161-175adac4944f",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
