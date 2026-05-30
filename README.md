@@ -86,6 +86,8 @@ Gemini CLI integration for Claude Code — use Google's Gemini models from withi
 ### Built-in Plugins
 
 #### Please Plugins (Plugin Recommender)
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fplease-plugins)](https://tessl.io/registry/pleaseai/please-plugins)
+
 Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace.
 
 **Install:** `/plugin install please-plugins@pleaseai` | **Source:** [plugins/please-plugins](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/please-plugins)
@@ -101,11 +103,15 @@ Auto-approve safe commands, AI-assisted review for the rest.
 **Install:** `/plugin install gatekeeper@pleaseai` | **Source:** [plugins/gatekeeper](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/gatekeeper)
 
 #### Cubic
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fcubic)](https://tessl.io/registry/pleaseai/cubic)
+
 AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues.
 
 **Install:** `/plugin install cubic@pleaseai` | **Source:** [plugins/cubic](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/cubic)
 
 #### MCP Dev
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fmcp-dev)](https://tessl.io/registry/pleaseai/mcp-dev)
+
 Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools.
 
 **Install:** `/plugin install mcp-dev@pleaseai` | **Source:** [plugins/mcp-dev](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mcp-dev)
@@ -156,6 +162,8 @@ UnoCSS instant atomic CSS engine, superset of Tailwind CSS.
 **Install:** `/plugin install unocss@pleaseai` | **Source:** [plugins/unocss](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/unocss)
 
 #### Web Design
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fweb-design)](https://tessl.io/registry/pleaseai/web-design)
+
 Review UI code for Web Interface Guidelines compliance.
 
 **Install:** `/plugin install web-design@pleaseai` | **Source:** [plugins/web-design](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/web-design)
@@ -186,6 +194,8 @@ Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript proje
 **Install:** `/plugin install antfu@pleaseai` | **Source:** [plugins/antfu](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/antfu)
 
 #### Mastra
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fmastra)](https://tessl.io/registry/pleaseai/mastra)
+
 Official agent skills for coding agents working with the Mastra AI framework.
 
 **Install:** `/plugin install mastra@pleaseai` | **Source:** [plugins/mastra](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mastra)
@@ -201,6 +211,8 @@ Official agent skills for Prisma ORM — schema design, migrations, queries, and
 **Install:** `/plugin install prisma@pleaseai` | **Source:** [plugins/prisma](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/prisma)
 
 #### Better Auth
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fbetter-auth)](https://tessl.io/registry/pleaseai/better-auth)
+
 Better Auth authentication framework skills for JavaScript/TypeScript projects.
 
 **Install:** `/plugin install better-auth@pleaseai` | **Source:** [plugins/better-auth](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/better-auth)
@@ -231,6 +243,8 @@ Git worktree isolation: injects context at session start and blocks file access 
 **Install:** `/plugin install worktree@pleaseai` | **Source:** [plugins/worktree](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/worktree)
 
 #### MarkItDown
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fmarkitdown)](https://tessl.io/registry/pleaseai/markitdown)
+
 Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using Microsoft's MarkItDown MCP server.
 
 **Install:** `/plugin install markitdown@pleaseai` | **Source:** [plugins/markitdown](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/markitdown)
@@ -311,6 +325,8 @@ Replace port numbers with stable, named local URLs. For humans and agents.
 **Install:** `/plugin install portless@pleaseai` | **Source:** [plugins/portless](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/portless)
 
 #### Zod
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fzod)](https://tessl.io/registry/pleaseai/zod)
+
 TypeScript-first schema validation with static type inference — version-aware skill covering Zod v3 and v4 differences (entry points, error formatting, refinements).
 
 **Install:** `/plugin install zod@pleaseai` | **Source:** [plugins/zod](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/zod)
@@ -321,6 +337,55 @@ TypeScript-first schema validation with static type inference — version-aware 
 Version-aware skill for the Bun JavaScript/TypeScript toolkit — runtime, package manager, test runner, and bundler.
 
 **Install:** `/plugin install bun@pleaseai` | **Source:** [plugins/bun](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/bun)
+
+#### Graphite
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fgraphite)](https://tessl.io/registry/pleaseai/graphite)
+
+Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track existing branches, and collaborate on shared stacks
+
+**Install:** `/plugin install graphite@pleaseai` | **Source:** [plugins/graphite](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/graphite)
+
+#### Claude MD Management
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fclaude-md-management)](https://tessl.io/registry/pleaseai/claude-md-management)
+
+Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current.
+
+**Install:** `/plugin install claude-md-management@pleaseai` | **Source:** [plugins/claude-md-management](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/claude-md-management)
+
+#### Fetch
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Ffetch)](https://tessl.io/registry/pleaseai/fetch)
+
+Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts
+
+**Install:** `/plugin install fetch@pleaseai` | **Source:** [plugins/fetch](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/fetch)
+
+#### Java Development
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fjava-development)](https://tessl.io/registry/pleaseai/java-development)
+
+Comprehensive collection of prompts and instructions for Java development including Spring Boot, Quarkus, testing, documentation, and best practices.
+
+**Install:** `/plugin install java-development@pleaseai` | **Source:** [plugins/java-development](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/java-development)
+
+#### Nuxt i18n
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fnuxt-i18n)](https://tessl.io/registry/pleaseai/nuxt-i18n)
+
+Nuxt i18n internationalization module for locale routing, lazy-loaded translations, SEO, browser detection, and multi-domain setups. Use when working with @nuxtjs/i18n, locale switching, translated routes, or i18n composables.
+
+**Install:** `/plugin install nuxt-i18n@pleaseai` | **Source:** [plugins/nuxt-i18n](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nuxt-i18n)
+
+#### PortOne
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fportone)](https://tessl.io/registry/pleaseai/portone)
+
+포트원(PortOne) 결제 연동 코드 생성 및 검토 플러그인. V1/V2 API를 지원하며, MCP 서버를 통해 최신 문서와 예시 코드를 활용합니다.
+
+**Install:** `/plugin install portone@pleaseai` | **Source:** [plugins/portone](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/portone)
+
+#### Google Workspace
+[![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fgoogle-workspace)](https://tessl.io/registry/pleaseai/google-workspace)
+
+CLI tool for managing Google Workspace resources dynamically using Discovery APIs.
+
+**Install:** `/plugin install google-workspace@pleaseai` | **Source:** [plugins/google-workspace](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/google-workspace)
 
 ## Quick Start
 
@@ -452,6 +517,13 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install portless@pleaseai
 /plugin install zod@pleaseai
 /plugin install bun@pleaseai
+/plugin install graphite@pleaseai
+/plugin install claude-md-management@pleaseai
+/plugin install fetch@pleaseai
+/plugin install java-development@pleaseai
+/plugin install nuxt-i18n@pleaseai
+/plugin install portone@pleaseai
+/plugin install google-workspace@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
