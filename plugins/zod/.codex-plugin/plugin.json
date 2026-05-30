@@ -1,6 +1,6 @@
 {
   "name": "zod",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "TypeScript-first schema validation with static type inference - version-aware skill for Zod v3 and v4",
   "author": {
     "name": "Zod",
