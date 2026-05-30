@@ -1,0 +1,12 @@
+{
+  "name": "pleaseai/better-auth",
+  "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+  "version": "1.4.0",
+  "author": {
+    "name": "Better Auth",
+    "url": "https://github.com/better-auth"
+  },
+  "skills": [
+    "skills/use-better-auth"
+  ]
+}

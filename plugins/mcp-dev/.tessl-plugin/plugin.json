@@ -1,0 +1,12 @@
+{
+  "name": "pleaseai/mcp-dev",
+  "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "Anthropic",
+    "url": "https://github.com/anthropics"
+  },
+  "skills": [
+    "skills/mcp-builder"
+  ]
+}
