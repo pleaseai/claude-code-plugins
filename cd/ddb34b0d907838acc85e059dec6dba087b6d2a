@@ -1,0 +1,19 @@
+.please/docs/tracks/tech-debt-tracker.md
+  s_3262800becd84f::t_e03fb96c359f4d 9-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "cdddb34b0d907838acc85e059dec6dba087b6d2a",
+  "prompts": {},
+  "sessions": {
+    "s_3262800becd84f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7230065d-3fd9-4d53-9093-93246af89877",
+        "model": "claude-opus-4-7"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
