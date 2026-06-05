@@ -633,6 +633,18 @@
       "source": "./plugins/bun"
     },
     {
+      "name": "modern-web-guidance",
+      "description": "Keep your coding agent up to date with the latest web best practices from the Google Chrome team",
+      "category": "development",
+      "keywords": ["web", "best-practices", "chrome", "baseline", "css", "performance"],
+      "tags": ["skill", "web"],
+      "source": {
+        "source": "github",
+        "repo": "GoogleChrome/modern-web-guidance"
+      },
+      "homepage": "https://github.com/GoogleChrome/modern-web-guidance"
+    },
+    {
       "name": "java-development",
       "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot",
       "category": "language",
