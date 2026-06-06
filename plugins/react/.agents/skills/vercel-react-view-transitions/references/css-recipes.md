@@ -1,22 +1,10 @@
-# CSS Animation Recipes for View Transitions
+# CSS Animation Recipes
 
-Ready-to-use CSS snippets for common view transition animations. Use these class names with `<ViewTransition>` props.
-
-## Table of Contents
-
-1. [Timing Variables](#timing-variables)
-2. [Fade](#fade)
-3. [Slide (Vertical)](#slide-vertical)
-4. [Directional Navigation (Forward / Back)](#directional-navigation)
-5. [Shared Element Morph](#shared-element-morph)
-6. [Scale](#scale)
-7. [Reduced Motion](#reduced-motion)
+Ready-to-use CSS for `<ViewTransition>` props. Copy into your global stylesheet.
 
 ---
 
 ## Timing Variables
-
-Define timing as CSS custom properties so durations are adjustable in one place. Use staggered timing — the enter animation delays by the exit duration so the old content leaves before the new content appears:
 
 ```css
 :root {
@@ -26,11 +14,7 @@ Define timing as CSS custom properties so durations are adjustable in one place.
 }
 ```
 
-All recipes below reference these variables.
-
 ### Shared Keyframes
-
-These reusable keyframes are used across multiple recipes:
 
 ```css
 @keyframes fade {
@@ -49,8 +33,6 @@ These reusable keyframes are used across multiple recipes:
 }
 ```
 
-The `slide` keyframe uses a CSS variable for direction — set `--slide-offset: -60px` for left, `60px` for right. The same keyframe with `animation-direction: reverse` handles the exit.
-
 ---
 
 ## Fade
@@ -64,16 +46,11 @@ The `slide` keyframe uses a CSS variable for direction — set `--slide-offset: 
 }
 ```
 
-Usage:
-```jsx
-<ViewTransition enter="fade-in" exit="fade-out" />
-```
+Usage: `<ViewTransition enter="fade-in" exit="fade-out" />`
 
 ---
 
 ## Slide (Vertical)
-
-Slide down on exit, slide up on enter — the most common pattern for Suspense fallback-to-content transitions. Uses staggered timing with a fade:
 
 ```css
 ::view-transition-old(.slide-down) {
@@ -90,16 +67,8 @@ Slide down on exit, slide up on enter — the most common pattern for Suspense f
 
 Usage:
 ```jsx
-<Suspense
-  fallback={
-    <ViewTransition exit="slide-down">
-      <Skeleton />
-    </ViewTransition>
-  }
->
-  <ViewTransition default="none" enter="slide-up">
-    <Content />
-  </ViewTransition>
+<Suspense fallback={<ViewTransition exit="slide-down"><Skeleton /></ViewTransition>}>
+  <ViewTransition default="none" enter="slide-up"><Content /></ViewTransition>
 </Suspense>
 ```
 
@@ -108,8 +77,6 @@ Usage:
 ## Directional Navigation
 
 ### Separate Enter/Exit Classes
-
-Used with the two-layer pattern where `enter` and `exit` map to different class names:
 
 ```css
 ::view-transition-new(.slide-from-right) {
@@ -139,20 +106,7 @@ Used with the two-layer pattern where `enter` and `exit` map to different class 
 }
 ```
 
-Usage with the two-layer pattern:
-```jsx
-<ViewTransition
-  enter={{ "nav-forward": "slide-from-right", default: "none" }}
-  exit={{ "nav-forward": "slide-to-left", default: "none" }}
-  default="none"
->
-  {children}
-</ViewTransition>
-```
-
 ### Single-Class Approach
-
-Alternatively, a single CSS class name targets both `::view-transition-old` and `::view-transition-new` with different animations. This keeps the JSX simple — `enter="nav-forward"` / `exit="nav-forward"`:
 
 ```css
 ::view-transition-old(.nav-forward) {
@@ -182,44 +136,9 @@ Alternatively, a single CSS class name targets both `::view-transition-old` and 
 }
 ```
 
-Usage with transition types:
-```jsx
-<ViewTransition
-  default="none"
-  enter={{
-    'nav-forward': 'nav-forward',
-    'nav-back': 'nav-back',
-    default: 'none',
-  }}
-  exit={{
-    'nav-forward': 'nav-forward',
-    'nav-back': 'nav-back',
-    default: 'none',
-  }}
->
-  {children}
-</ViewTransition>
-```
-
-Triggering with `transitionTypes` on `next/link`:
-```jsx
-<Link href="/products/1" transitionTypes={['nav-forward']}>Next</Link>
-<Link href="/products" transitionTypes={['nav-back']}>Back</Link>
-```
-
-Or programmatically:
-```jsx
-startTransition(() => {
-  addTransitionType('nav-forward');
-  router.push('/next-page');
-});
-```
-
 ---
 
 ## Shared Element Morph
-
-For shared element transitions, control the morph duration on `::view-transition-group` and add a motion blur on `::view-transition-image-pair` to smooth fast-moving elements:
 
 ```css
 ::view-transition-group(.morph) {
@@ -235,14 +154,29 @@ For shared element transitions, control the morph duration on `::view-transition
 }
 ```
 
-The blur at 30% creates a subtle motion-blur effect — fast-moving elements can be visually jarring, and this smooths the transition without adding perceptible delay.
+Usage: `<ViewTransition name={`product-${id}`} share="morph" />`
 
-Usage:
-```jsx
-<ViewTransition name={`product-${id}`} share="morph">
-  <Image src={product.image} alt={product.name} />
-</ViewTransition>
+**Note:** Shared element transitions take raster snapshots. For text with significant size differences (e.g., `<h3>` → `<h1>`), the old snapshot gets scaled up, producing a visible ghost artifact. Use `text-morph` for text shared elements.
+
+## Text Morph
+
+Avoids raster scaling artifacts on text by hiding the old snapshot and showing the new text at full resolution:
+
+```css
+::view-transition-group(.text-morph) {
+  animation-duration: var(--duration-move);
+}
+::view-transition-old(.text-morph) {
+  display: none;
+}
+::view-transition-new(.text-morph) {
+  animation: none;
+  object-fit: none;
+  object-position: left top;
+}
 ```
+
+Usage: `<ViewTransition name={`title-${id}`} share="text-morph" />`
 
 ---
 
@@ -266,29 +200,35 @@ Usage:
 }
 ```
 
-Usage:
-```jsx
-<ViewTransition enter="scale-in" exit="scale-out" />
-```
+Usage: `<ViewTransition enter="scale-in" exit="scale-out" />`
 
 ---
 
 ## Persistent Element Isolation
 
-Prevent sticky headers, navbars, and sidebars from being captured in page content's transition snapshot. Give them a `viewTransitionName` in JSX, then disable animation on their group:
-
 ```css
-::view-transition-group(dashboard-header) {
+::view-transition-group(persistent-nav) {
   animation: none;
   z-index: 100;
+}
+```
+
+### Backdrop-Blur Workaround
+
+For elements with `backdrop-filter`, hide the old snapshot to avoid flash:
+
+```css
+::view-transition-old(persistent-nav) {
+  display: none;
+}
+::view-transition-new(persistent-nav) {
+  animation: none;
 }
 ```
 
 ---
 
 ## Reduced Motion
-
-Always include this in your global stylesheet to respect user preferences:
 
 ```css
 @media (prefers-reduced-motion: reduce) {

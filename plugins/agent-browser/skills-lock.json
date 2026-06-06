@@ -4,7 +4,8 @@
     "agent-browser": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
-      "computedHash": "34bde65aabea7d757dffb84f68e9f25bc79a12b77042511515b9c820a1d107f8"
+      "skillPath": "skills/agent-browser/SKILL.md",
+      "computedHash": "228f87d57035100d9dc6efcfc05aafd4b6e3962adacaa04b8217ab2fadb15dc8"
     },
     "dogfood": {
       "source": "vercel-labs/agent-browser",

@@ -4,7 +4,8 @@
     "chat-sdk": {
       "source": "vercel/chat",
       "sourceType": "github",
-      "computedHash": "cdd25b149ccf824b029644cff565d04dd49f1743bb1a5e8a649a3adfe82e977c"
+      "skillPath": "skills/chat/SKILL.md",
+      "computedHash": "09d4e01406d4dd438b66298ac81abf3b7609a31e2f6791d211c301e7fac789ef"
     }
   }
 }

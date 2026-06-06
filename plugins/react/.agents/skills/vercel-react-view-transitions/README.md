@@ -11,14 +11,16 @@ An agent skill for implementing smooth, native-feeling animations using React's 
 - **CSS pseudo-elements** — `::view-transition-old`, `::view-transition-new`, `::view-transition-group`
 - **Next.js integration** — `experimental.viewTransition`, the `transitionTypes` prop on `next/link`, App Router patterns
 - **Accessibility** — `prefers-reduced-motion` handling
-- **Ready-to-use CSS recipes** — fade, slide, scale, flip, directional navigation
+- **Ready-to-use CSS recipes** — fade, slide, scale, directional navigation
 
 ## Skill Structure
 
 ```
-react-view-transition-skill/
+react-view-transitions/
 ├── SKILL.md                      # Core skill (always loaded)
+├── AGENTS.md                     # Full compiled document (all references expanded)
 └── references/
+    ├── implementation.md         # Step-by-step implementation workflow
     ├── patterns.md               # Real-world patterns, events API, troubleshooting
     ├── nextjs.md                 # Next.js-specific patterns
     └── css-recipes.md            # Copy-paste CSS animations
@@ -37,5 +39,4 @@ npx skills install https://github.com/vercel-labs/react-view-transitions-skill
 - [React `<ViewTransition>` docs](https://react.dev/reference/react/ViewTransition)
 - [React `addTransitionType` docs](https://react.dev/reference/react/addTransitionType)
 - [Next.js `viewTransition` config](https://nextjs.org/docs/app/api-reference/config/next-config-js/viewTransition)
-- [next16-conferences](https://github.com/aurorascharff/next16-conferences) — real-world example app
 - [Next.js App Router Playground (view transitions)](https://github.com/vercel/next-app-router-playground/tree/main/app/view-transitions) — Vercel's reference implementation

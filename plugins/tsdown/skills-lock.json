@@ -4,7 +4,8 @@
     "tsdown": {
       "source": "rolldown/tsdown",
       "sourceType": "github",
-      "computedHash": "3585dec9d286d35da6da40f6682586d1582a78234773148c7e291c5d604dba9e"
+      "skillPath": "skills/tsdown/SKILL.md",
+      "computedHash": "a8f14400a614f62686c580510a265cae97a925a43214d1833a3d8f31293c0033"
     }
   }
 }
