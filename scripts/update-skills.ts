@@ -194,8 +194,9 @@ function updateDir(dir: string): DirResult {
 
   if (plan.runUpdate) {
     const res = runSkills(buildUpdateArgs(), absDir)
-    // `skills update` exits 0 even on per-skill failures — surface them.
-    if (/Failed to update/i.test(res.output)) {
+    // `skills update` exits 0 even on per-skill failures — catch both a
+    // non-zero exit and the CLI's own failure message.
+    if (!res.ok || /Failed to update/i.test(res.output)) {
       failures.push("skills update reported a failure (see logs)")
     }
   }
