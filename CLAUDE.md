@@ -443,6 +443,16 @@ Skip any code review suggestions targeting vendor-synced skill files.
 
 Skills installed via `bunx skills add` live under `plugins/*/.agents/skills/` and are tracked by `skills-lock.json`. These are also vendor-managed — do not modify directly. Fix upstream instead.
 
+**Auto-updating to latest upstream:** every `skills-lock.json` in the repo is refreshed by `scripts/update-skills.ts`:
+
+```bash
+bun run skills:update-locks          # refresh all lock dirs to latest upstream
+bun run skills:update-locks:check    # report what would change, leave the tree clean
+bun scripts/update-skills.ts plugins/vue   # limit to specific lock dirs
+```
+
+The script runs `skills update` for entries with a tracked `skillPath` and falls back to `skills add <source> --skill <name>` for legacy entries that lack one (backfilling `skillPath` for next time). The `.github/workflows/update-skills.yml` workflow runs it weekly and opens a `fix:` PR when anything changed, so release-please bumps each affected plugin on merge.
+
 ## Development Standards
 
 Read these documents **only when relevant to the current task** — do not load them all upfront:
