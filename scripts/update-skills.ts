@@ -29,7 +29,7 @@
  */
 import { execFileSync } from "node:child_process"
 import { appendFileSync, existsSync, readFileSync } from "node:fs"
-import { dirname, join, relative, resolve } from "node:path"
+import { dirname, isAbsolute, join, relative, resolve } from "node:path"
 
 const ROOT = resolve(import.meta.dirname!, "..")
 
@@ -97,7 +97,7 @@ export function findLockDirs(): string[] {
   // ignored paths are naturally excluded.
   const out = git(["ls-files", "skills-lock.json", "**/skills-lock.json"])
   if (!out) return []
-  return out
+  const dirs = out
     .split("\n")
     .map((f) => f.trim())
     .filter(Boolean)
@@ -105,6 +105,9 @@ export function findLockDirs(): string[] {
       const dir = dirname(f)
       return dir === "." ? "." : dir
     })
+  // `skills-lock.json` and `**/skills-lock.json` can both match the root file —
+  // dedupe so a directory is never processed twice.
+  return Array.from(new Set(dirs))
 }
 
 /**
@@ -167,15 +170,27 @@ export interface DirResult {
 }
 
 function updateDir(dir: string): DirResult {
-  const absDir = dir === "." ? ROOT : join(ROOT, dir)
-  const lockPath = join(absDir, "skills-lock.json")
+  const absDir = resolve(ROOT, dir)
   const failures: string[] = []
 
+  // Keep explicit-dir arguments from escaping the repo root (path traversal).
+  const rel = relative(ROOT, absDir)
+  if (rel.startsWith("..") || isAbsolute(rel)) {
+    return { dir, changed: false, failures: [`path ${dir} is outside the repository root`] }
+  }
+
+  const lockPath = join(absDir, "skills-lock.json")
   if (!existsSync(lockPath)) {
     return { dir, changed: false, failures: [`missing ${relative(ROOT, lockPath)}`] }
   }
 
-  const plan = planForLock(readFileSync(lockPath, "utf-8"))
+  let plan: LockPlan
+  try {
+    plan = planForLock(readFileSync(lockPath, "utf-8"))
+  } catch (e) {
+    const msg = e instanceof Error ? e.message : String(e)
+    return { dir, changed: false, failures: [`failed to parse ${relative(ROOT, lockPath)}: ${msg}`] }
+  }
 
   if (plan.runUpdate) {
     const res = runSkills(buildUpdateArgs(), absDir)

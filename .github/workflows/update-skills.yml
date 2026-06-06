@@ -34,9 +34,10 @@ jobs:
         id: guard
         env:
           APP_ID: ${{ secrets.APP_ID }}
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
-          if [ -z "$APP_ID" ]; then
-            echo "::warning::APP_ID secret is not set — skipping skills update"
+          if [ -z "$APP_ID" ] || [ -z "$PRIVATE_KEY" ]; then
+            echo "::warning::APP_ID/PRIVATE_KEY secrets are not set — skipping skills update"
             echo "skip=true" >> "$GITHUB_OUTPUT"
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
