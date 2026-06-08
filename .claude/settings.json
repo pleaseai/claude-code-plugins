@@ -35,24 +35,7 @@
     "vue-lsp@code-intelligence": true,
     "eslint-lsp@code-intelligence": true,
     "skill-creator@claude-plugins-official": true,
-    "backend@passionfactory": false,
-    "bun@passionfactory": true,
-    "context@passionfactory": true,
-    "dev-tools@passionfactory": true,
-    "frontend@passionfactory": true,
-    "genkit@passionfactory": false,
-    "github@passionfactory": true,
-    "graphql@passionfactory": false,
-    "please@passionfactory": true,
-    "review@passionfactory": true,
-    "reflexion@passionfactory": false,
-    "research@passionfactory": true,
-    "standards@passionfactory": true,
-    "testing@passionfactory": true,
-    "tidy-first@passionfactory": true,
-    "vuefire@passionfactory": false,
     "auth-skills@better-auth-agent-skills": false,
-    "claude-md-management@passionfactory": true,
     "nuxt@pleaseai": true,
     "vue@pleaseai": true,
     "turborepo@pleaseai": true,
@@ -65,12 +48,6 @@
     "modern-web-guidance@pleaseai": true
   },
   "extraKnownMarketplaces": {
-    "passionfactory": {
-      "source": {
-        "source": "github",
-        "repo": "chatbot-pf/engineering-standards"
-      }
-    },
     "code-intelligence": {
       "source": {
         "source": "github",
