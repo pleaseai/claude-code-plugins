@@ -1,0 +1,12 @@
+# .worktreeinclude — files to copy into an Orca/conductor worktree.
+# .gitignore syntax. Only files that match a pattern AND are gitignored get copied.
+# Claude Code --worktree handles this automatically; external tools (orca) run
+#   bunx @pleaseai/worktreeinclude <source> <target> from the setup hook.
+
+# Root environment variables
+.env
+.env.local
+.env.*.local
+
+# Claude Code local settings (permissions, enabled plugins, etc.)
+.claude/settings.local.json
