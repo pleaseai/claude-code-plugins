@@ -1,0 +1,34 @@
+{
+  "name": "semble",
+  "version": "0.1.0",
+  "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+  "author": {
+    "name": "Minish Lab",
+    "url": "https://github.com/MinishLab"
+  },
+  "interface": {
+    "displayName": "Semble",
+    "shortDescription": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+    "longDescription": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+    "developerName": "Minish Lab",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Semble for my current task."
+    ],
+    "websiteURL": "https://github.com/MinishLab/semble"
+  },
+  "homepage": "https://github.com/MinishLab/semble",
+  "repository": "https://github.com/MinishLab/semble",
+  "license": "MIT",
+  "keywords": [
+    "semble",
+    "code-search",
+    "semantic-search",
+    "embeddings",
+    "grep",
+    "codebase"
+  ]
+}

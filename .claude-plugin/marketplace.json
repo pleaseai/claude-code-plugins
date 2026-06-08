@@ -382,6 +382,14 @@
       "source": "./plugins/fetch"
     },
     {
+      "name": "semble",
+      "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+      "category": "development",
+      "keywords": ["semble", "code-search", "semantic-search", "embeddings", "grep", "codebase"],
+      "tags": ["skill", "search"],
+      "source": "./plugins/semble"
+    },
+    {
       "name": "ast-grep",
       "description": "Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search.",
       "category": "development",
