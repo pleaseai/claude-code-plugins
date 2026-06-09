@@ -13,6 +13,7 @@
     "developerName": "Minish Lab",
     "category": "Development",
     "capabilities": [
+      "Skill",
       "Tool"
     ],
     "defaultPrompt": [
@@ -31,5 +32,6 @@
     "grep",
     "codebase"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

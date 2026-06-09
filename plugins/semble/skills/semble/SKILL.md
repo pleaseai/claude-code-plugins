@@ -1,7 +1,7 @@
 ---
 name: semble
 description: Semantic code search using the Semble MCP server. Use when exploring an unfamiliar codebase, finding code by what it does rather than exact text, locating an implementation, understanding how a feature works, or discovering related code. Triggers on requests like "where is X handled", "find the code that does Y", "how does Z work", "search the codebase for", or any semantic/exploratory code question where grep's literal matching is a poor fit.
-allowed-tools: mcp__semble__search, mcp__semble__find_related, Read
+allowed-tools: mcp__semble__search, mcp__semble__find_related, Grep, Read
 ---
 
 # Semble - Semantic Code Search
