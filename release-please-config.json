@@ -20,6 +20,27 @@
       "package-name": "@pleaseai/vitest-config",
       "component": "vitest-config"
     },
+    "plugins/skillopt-sleep": {
+      "release-type": "simple",
+      "component": "skillopt-sleep",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
     "plugins/gatekeeper": {
       "release-type": "node",
       "package-name": "gatekeeper",

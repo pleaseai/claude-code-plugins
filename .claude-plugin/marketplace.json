@@ -659,6 +659,14 @@
       "keywords": ["java", "springboot", "quarkus", "jpa", "junit", "javadoc"],
       "tags": ["language", "skills"],
       "source": "./plugins/java-development"
+    },
+    {
+      "name": "skillopt-sleep",
+      "description": "Nightly offline self-evolution for your local Claude agent: review past sessions, replay recurring tasks on your own budget, and consolidate validated CLAUDE.md memory + SKILL.md skills behind a held-out gate. Self-contained (vendored, zero third-party deps).",
+      "category": "productivity",
+      "keywords": ["skillopt", "sleep", "self-improvement", "memory-consolidation", "skills", "continual-learning"],
+      "tags": ["productivity", "skills", "hooks"],
+      "source": "./plugins/skillopt-sleep"
     }
   ]
 }
