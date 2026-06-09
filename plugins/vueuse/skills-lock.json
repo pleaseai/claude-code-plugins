@@ -4,7 +4,8 @@
     "vueuse-functions": {
       "source": "vueuse/skills",
       "sourceType": "github",
-      "computedHash": "51467c2364e36ee5f40d1e83c94a6f53be3c12431bd8dcc81a650b8e195ae591"
+      "skillPath": "skills/vueuse-functions/SKILL.md",
+      "computedHash": "9b6b0afdbc577317e8c29e6ac0ee6890a2ec95d5ad7c8ce66247c1a62b95621d"
     }
   }
 }

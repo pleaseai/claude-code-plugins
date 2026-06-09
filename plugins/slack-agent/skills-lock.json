@@ -4,7 +4,8 @@
     "slack-agent": {
       "source": "vercel-labs/slack-agent-skill",
       "sourceType": "github",
-      "computedHash": "61bbe24383873700163c8b5b0dd928e52792206b0d9ff777bb14fa5ff7c854cf"
+      "skillPath": "SKILL.md",
+      "computedHash": "c40b751775659892fa9f3eb28f77d570243e07c85c575b24ee0fb19dc824f43f"
     }
   }
 }
