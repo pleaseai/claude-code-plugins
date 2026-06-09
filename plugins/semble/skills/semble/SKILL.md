@@ -1,14 +1,14 @@
 ---
 name: semble
-description: Semantic code search using the Semble CLI. Use when exploring an unfamiliar codebase, finding code by what it does rather than exact text, locating an implementation, understanding how a feature works, or discovering related code. Triggers on requests like "where is X handled", "find the code that does Y", "how does Z work", "search the codebase for", or any semantic/exploratory code question where grep's literal matching is a poor fit.
-allowed-tools: Bash, Read
+description: Semantic code search using the Semble MCP server. Use when exploring an unfamiliar codebase, finding code by what it does rather than exact text, locating an implementation, understanding how a feature works, or discovering related code. Triggers on requests like "where is X handled", "find the code that does Y", "how does Z work", "search the codebase for", or any semantic/exploratory code question where grep's literal matching is a poor fit.
+allowed-tools: mcp__semble__search, mcp__semble__find_related, Read
 ---
 
 # Semble - Semantic Code Search
 
-Semble finds code by **meaning**, not literal text. Describe what code does (or name a symbol) and Semble returns the most relevant chunks ranked by semantic similarity. It builds and caches an index automatically on first run and invalidates it when files change.
+Semble finds code by **meaning**, not literal text. Describe what code does (or name a symbol) and Semble returns the most relevant chunks ranked by semantic similarity. It builds and caches an index automatically on first use and refreshes it when files change.
 
-Prefer Semble over Grep/Glob for any exploratory or semantic question. Reserve grep for exhaustive literal matches or confirming an exact string.
+Prefer Semble over Grep/Glob/Read for any exploratory or semantic question. Reserve grep for exhaustive literal matches or confirming an exact string.
 
 ## When to Use
 
@@ -19,45 +19,36 @@ Prefer Semble over Grep/Glob for any exploratory or semantic question. Reserve g
 
 ## How to Use
 
-Run `semble` via `Bash`. If `semble` is not on `$PATH`, use `uvx --from "semble[mcp]" semble` in its place (requires [`uv`](https://docs.astral.sh/uv/)).
+This plugin provides the Semble MCP server, which exposes two tools.
 
-### Search by description or symbol
+### `mcp__semble__search`
 
-```bash
-semble search "authentication flow" ./my-project
-semble search "save_pretrained" ./my-project
-semble search "save model to disk" ./my-project --top-k 10
-```
+Find relevant code with a natural-language or code query.
 
-Results are cached automatically on first run and invalidated when files change. `path` defaults to the current directory when omitted; git URLs are accepted.
+- `query` (required) — natural language or code, e.g. `"authentication flow"`, `"save model to disk"`, or a symbol like `save_pretrained`.
+- `repo` (optional) — the project root to index. When working in a local project, pass the absolute project root. For remote code, pass an explicit `https://` git URL. **Never guess or infer URLs.**
+- `top_k` (optional, default 5) — number of results to return.
 
-### Widen the content scope
+The index is built on first use and cached for the session; it refreshes automatically when files change.
 
-By default Semble searches code. Widen the scope when the answer may live elsewhere:
+### `mcp__semble__find_related`
 
-```bash
-semble search "deployment guide" ./my-project --content docs    # documentation and prose
-semble search "database host port" ./my-project --content config # config files (yaml, toml, ...)
-semble search "authentication" ./my-project --content all        # code, docs, and config
-```
+Find code semantically similar to a specific location — use after `search` to explore connected implementations or callers.
 
-### Find related code
-
-Pass a `file_path` and `line` from a prior search result to discover similar implementations:
-
-```bash
-semble find-related src/auth.py 42 ./my-project
-```
+- `file_path` (required) — use the `file_path` from a prior `search` result.
+- `line` (required) — 1-indexed line number from that result.
+- `repo` (optional) — same as above.
+- `top_k` (optional, default 5).
 
 ## Recommended Workflow
 
-1. Start with `semble search` to find relevant chunks; the index is built and cached automatically.
-2. Switch content scope to `docs`, `config`, or `all` when a code-only search misses the target.
-3. Inspect full files (with `Read`) only when a returned chunk lacks enough context.
-4. Use `semble find-related` on a promising result to explore connected implementations.
-5. Fall back to grep only for exhaustive literal matching.
+1. Start with `mcp__semble__search`, passing the project root as `repo`; the index builds and caches automatically.
+2. Inspect full files (with `Read`) only when a returned chunk lacks enough context.
+3. Use `mcp__semble__find_related` on a promising result to explore connected implementations.
+4. Fall back to grep only for exhaustive literal matching.
 
 ## Important Notes
 
-- **`uv` is required** when running via `uvx`. Install `uv` if `semble` is not already on `$PATH`.
-- Indexing happens on first search and is cached; subsequent searches are fast and refresh automatically when files change.
+- The MCP server runs via `uvx --from "semble[mcp]" semble`, so [`uv`](https://docs.astral.sh/uv/) must be installed. No API key is required.
+- The first search in a session indexes the repo (downloads a small embedding model on first ever run); subsequent searches are fast and refresh automatically when files change.
+- Content scope (code vs. docs/config) is fixed at server launch. By default Semble indexes code; append `--content docs`, `--content config`, or `--content all` to the server args to widen it.

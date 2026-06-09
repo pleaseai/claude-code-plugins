@@ -1,18 +1,21 @@
 # semble
 
-Semantic code search — find code by description or symbol name instead of grep, powered by the [Semble](https://github.com/MinishLab/semble) CLI.
+Semantic code search — find code by description or symbol name instead of grep, powered by the [Semble](https://github.com/MinishLab/semble) MCP server.
 
 **Install:** `/plugin install semble@pleaseai`
 
 ## What it does
 
-Semble finds code by **meaning**, not literal text. Describe what code does (or name a symbol) and it returns the most relevant chunks ranked by semantic similarity. The index is built and cached automatically on first run and refreshes when files change.
+Semble finds code by **meaning**, not literal text. Describe what code does (or name a symbol) and it returns the most relevant chunks ranked by semantic similarity. The index is built and cached automatically on first use and refreshes when files change.
 
-This plugin ships a **skill** (`semble`) that activates automatically when you explore an unfamiliar codebase, search by intent, or ask how a feature works — driving the `semble` CLI for you.
+This plugin ships:
+
+- An **MCP server** (`semble`) exposing two tools — `search` and `find_related`.
+- A **skill** (`semble`) that activates automatically when you explore an unfamiliar codebase, search by intent, or ask how a feature works — driving the Semble MCP tools for you.
 
 ## Requirements
 
-Semble runs via [`uv`](https://docs.astral.sh/uv/) (`uvx`). Install `uv` if `semble` is not already on your `$PATH`:
+The MCP server runs via [`uv`](https://docs.astral.sh/uv/) (`uvx --from "semble[mcp]" semble`). Install `uv` if it is not already available:
 
 ```sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -24,19 +27,12 @@ No API key is required.
 
 Once installed, just ask exploratory questions and the skill will use Semble automatically — for example "where is authentication handled?" or "find the code that retries failed requests".
 
-By default Semble searches code. It can also search documentation (`docs`), config files (`config`), or everything (`all`).
+The MCP tools:
 
-### CLI
+- `search(query, repo, top_k)` — find relevant code by description or symbol. Pass the project root (or an explicit `https://` git URL) as `repo`.
+- `find_related(file_path, line, repo, top_k)` — given a result location, find semantically similar code elsewhere.
 
-The same capabilities are available directly on the command line:
-
-```sh
-semble search "authentication flow" ./my-project
-semble search "save model to disk" --content all
-semble find-related src/auth.py 42 ./my-project
-```
-
-If `semble` is not on `$PATH`, use `uvx --from "semble[mcp]" semble` in its place.
+By default Semble indexes code. To also index documentation, config, or all file types, append a content flag to the server args (`--content docs`, `--content config`, or `--content all`).
 
 ## Links
 

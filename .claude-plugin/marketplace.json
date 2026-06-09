@@ -383,10 +383,10 @@
     },
     {
       "name": "semble",
-      "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+      "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server",
       "category": "development",
       "keywords": ["semble", "code-search", "semantic-search", "embeddings", "grep", "codebase"],
-      "tags": ["skill", "search"],
+      "tags": ["mcp", "skill", "search"],
       "source": "./plugins/semble"
     },
     {

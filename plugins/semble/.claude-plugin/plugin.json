@@ -1,7 +1,7 @@
 {
   "name": "semble",
   "version": "0.1.0",
-  "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble CLI",
+  "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server",
   "author": {
     "name": "Minish Lab",
     "url": "https://github.com/MinishLab"
@@ -16,5 +16,15 @@
     "embeddings",
     "grep",
     "codebase"
-  ]
+  ],
+  "mcpServers": {
+    "semble": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "semble[mcp]",
+        "semble"
+      ]
+    }
+  }
 }
