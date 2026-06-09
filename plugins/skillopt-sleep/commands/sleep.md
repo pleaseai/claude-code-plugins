@@ -35,12 +35,31 @@ The engine is the `skillopt_sleep` Python package in this repo. Use the
 | `adopt`   | apply the latest staged proposal to live `CLAUDE.md` / `SKILL.md` (backs up first) |
 | `harvest` | debug: print the recurring tasks mined from recent sessions |
 
-Default backend is `mock` (deterministic, no API spend). To use real Anthropic
-budget for genuine improvement, add `--backend anthropic`.
+Default backend is `mock` (deterministic, no API spend). For genuine improvement,
+use the backend that **matches the runtime you are running in**, driving that
+agent's own CLI:
+
+- **Claude Code** → `--backend claude`
+- **Codex** → `--backend codex`
+
+`anthropic` is **not** a valid backend; the runner only accepts `mock`, `claude`,
+or `codex`.
 
 ## Steps to follow
 
 1. **Run the requested action** via the bundled runner above. Capture stdout.
+   For the cycle actions (`run` / `dry-run`), append the backend matching your
+   runtime (`--backend claude` in Claude Code, `--backend codex` in Codex) so the
+   replay uses that agent's CLI rather than the `mock` default:
+
+   ```bash
+   # Claude Code
+   "${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" <action> --project "$(pwd)" --scope invoked --backend claude
+   # Codex
+   "${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" <action> --project "$(pwd)" --scope invoked --backend codex
+   ```
+
+   `status`, `harvest`, and `adopt` do not need a backend.
 2. **For `run` / `dry-run`:** after it completes, `Read` the generated
    `report.md` in the staging dir it prints, and show the user:
    - held-out score: baseline → candidate (the proof it helped)
