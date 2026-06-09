@@ -32,7 +32,15 @@ The MCP tools:
 - `search(query, repo, top_k)` — find relevant code by description or symbol. Pass the project root (or an explicit `https://` git URL) as `repo`.
 - `find_related(file_path, line, repo, top_k)` — given a result location, find semantically similar code elsewhere.
 
-By default Semble indexes code. To also index documentation, config, or all file types, append a content flag to the server args (`--content docs`, `--content config`, or `--content all`).
+### Content scope
+
+By default the MCP server indexes only code files. To also index documentation, config, or everything, append `--content docs`, `--content config`, or `--content all` to the server command.
+
+The plugin bundles the server in code-only mode. To run it with a wider scope, register it manually instead — for example, in Claude Code:
+
+```sh
+claude mcp add semble -s user -- uvx --from "semble[mcp]" semble --content all
+```
 
 ## Links
 
