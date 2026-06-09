@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "semble": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "semble[mcp]",
+        "semble"
+      ]
+    }
+  }
+}
