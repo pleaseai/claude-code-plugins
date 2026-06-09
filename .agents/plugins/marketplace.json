@@ -675,6 +675,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Language"
+    },
+    {
+      "name": "skillopt-sleep",
+      "source": {
+        "source": "local",
+        "path": "./plugins/skillopt-sleep"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }
