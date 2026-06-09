@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.3.0...tsdown-v1.3.1) (2026-06-09)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#203](https://github.com/pleaseai/claude-code-plugins/issues/203)) ([7adbc30](https://github.com/pleaseai/claude-code-plugins/commit/7adbc308ae491301df674aaad90b84d06052b780))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.2.0...tsdown-v1.3.0) (2026-05-21)
 
 

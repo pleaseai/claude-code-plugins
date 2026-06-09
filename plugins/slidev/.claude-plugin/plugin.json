@@ -1,6 +1,6 @@
 {
   "name": "slidev",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, and animations",
   "author": {
     "name": "Anthony Fu",

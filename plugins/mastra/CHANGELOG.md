@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.6.0...mastra-v1.6.1) (2026-06-09)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#203](https://github.com/pleaseai/claude-code-plugins/issues/203)) ([7adbc30](https://github.com/pleaseai/claude-code-plugins/commit/7adbc308ae491301df674aaad90b84d06052b780))
+
 ## [1.6.0](https://github.com/pleaseai/claude-code-plugins/compare/mastra-v1.5.0...mastra-v1.6.0) (2026-05-30)
 
 
