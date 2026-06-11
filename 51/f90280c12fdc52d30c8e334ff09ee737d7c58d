@@ -1,0 +1,21 @@
+plugins/rtk/skills/rtk-optimization/SKILL.md
+  s_de474642c9b6a5::t_2ca87b59e33f50 52-55
+plugins/rtk/README.md
+  s_de474642c9b6a5::t_5250c1eeff5730 66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "51f90280c12fdc52d30c8e334ff09ee737d7c58d",
+  "prompts": {},
+  "sessions": {
+    "s_de474642c9b6a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf2eeb61-4f6f-42f5-89f8-2d569528fd58",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
