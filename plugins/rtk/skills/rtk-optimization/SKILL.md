@@ -49,7 +49,10 @@ which rtk             # Verify correct binary
 
 ## Initialization
 
-This plugin already installs the Claude Code hook — no `rtk init` needed. Only use `rtk init` (per-project) or `rtk init --global` (system-wide) when setting up RTK *without* this plugin; running both registers the hook twice.
+This plugin already installs the Claude Code hook — no `rtk init` needed.
+
+- `rtk init --global` patches `~/.claude/settings.json` with a `rtk hook claude` PreToolUse entry — the non-plugin alternative to this plugin. Don't combine them: the hook would fire twice (redundant, not harmful).
+- `rtk init` (per-project) installs no hook — it only injects RTK instructions into the project `CLAUDE.md` and creates a `.rtk/filters.toml` filter template.
 
 ## How the Plugin Works
 

@@ -63,7 +63,7 @@ rtk gain
 rtk discover
 ```
 
-> **Note**: Do **not** run `rtk init` when using this plugin. `rtk init` (per-project) and `rtk init --global` (system-wide) install the same Claude Code hook directly into your settings — this plugin already provides it. Running both would register the hook twice. Choose one: this plugin *or* `rtk init`.
+> **Note on `rtk init`**: This plugin replaces the hook part of `rtk init --global`, which patches `~/.claude/settings.json` with a `rtk hook claude` PreToolUse entry — don't combine the two, or the rewrite hook fires twice (RTK detects already-prefixed commands, so it's redundant rather than harmful). The per-project `rtk init` installs **no hook** — it only injects RTK instructions into the project's `CLAUDE.md` and creates a `.rtk/filters.toml` template, so it's safe (but unnecessary) alongside this plugin.
 
 ## Manual Usage (without the plugin)
 
