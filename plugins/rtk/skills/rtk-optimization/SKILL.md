@@ -7,26 +7,13 @@ description: RTK (Rust Token Killer) reduces LLM token consumption by 60-90% by 
 
 RTK is a high-performance CLI proxy written in Rust. It intercepts commands like `git status`, `npm install`, etc., and rewrites their output to be dramatically more token-efficient.
 
-## Key Meta-Commands
+## Meta Commands (always use rtk directly)
 
-### Check token savings for a command
 ```bash
-rtk gain <command>
-# Example: rtk gain git status
-# Shows how many tokens are saved vs raw output
-```
-
-### Discover which commands RTK can optimize
-```bash
-rtk discover
-# Lists all commands RTK knows how to compress
-```
-
-### Run a command through the RTK proxy manually
-```bash
-rtk proxy <command>
-# Example: rtk proxy npm install
-# Runs the command and filters its output
+rtk gain              # Show token savings analytics
+rtk gain --history    # Show command usage history with savings
+rtk discover          # Analyze Claude Code history for missed opportunities
+rtk proxy <cmd>       # Execute raw command without filtering (for debugging)
 ```
 
 ### Run a specific command with RTK rewriting
@@ -39,30 +26,54 @@ rtk <command> [args...]
 ## Installation
 
 ```bash
+# Quick install (Linux/macOS)
+curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh
+
 # macOS/Linux via Homebrew
 brew install rtk-ai/tap/rtk
 
-# Or via cargo
-cargo install rtk
+# Or via cargo (use the explicit Git URL — plain `cargo install rtk`
+# may install the wrong package due to a name collision)
+cargo install --git https://github.com/rtk-ai/rtk rtk
 ```
 
-## Initialization (sets up shell hooks globally)
+## Installation Verification
 
 ```bash
-rtk init -g
-# Or install as a Claude Code plugin instead:
-# /plugin install rtk@pleaseai
+rtk --version         # Should show: rtk X.Y.Z
+rtk gain              # Should work (not "command not found")
+which rtk             # Verify correct binary
 ```
+
+⚠️ **Name collision**: If `rtk gain` fails, you may have reachingforthejack/rtk (Rust Type Kit) installed instead.
+
+## Initialization
+
+This plugin already installs the Claude Code hook — no `rtk init` needed. Only use `rtk init` (per-project) or `rtk init --global` (system-wide) when setting up RTK *without* this plugin; running both registers the hook twice.
 
 ## How the Plugin Works
 
-When installed as a Claude Code plugin, RTK's `PreToolUse` hook intercepts every `Bash` tool call and rewrites commands through `rtk rewrite` before execution. This is transparent to Claude — commands run normally but produce compressed, token-efficient output.
+When installed as a Claude Code plugin, RTK's `PreToolUse` hook intercepts every `Bash` tool call and rewrites commands through `rtk rewrite` before execution. This is transparent to Claude — commands run normally but produce compressed, token-efficient output. All rewrite and permission logic lives in the `rtk rewrite` binary (deny rules pass through to Claude Code's native handling; ask rules rewrite but still prompt the user).
+
+## Configuration
+
+Config file: `~/.config/rtk/config.toml` (Linux) or `~/Library/Application Support/rtk/config.toml` (macOS). View with `rtk config`, create with `rtk config --create`.
+
+```toml
+# Exclude commands from auto-rewriting (prefix, subcommand, or ^regex)
+[hooks]
+exclude_commands = ["git rebase", "docker exec"]
+```
+
+- `RTK_DISABLED=1 <command>` — disable RTK for a single invocation
+- `RTK_HOOK_AUDIT=1` — enable hook audit logging
+- Per-project overrides: `.rtk/filters.toml` in the project root
 
 ## Requirements
 
 - RTK >= 0.23.0
 - `jq` (for JSON parsing in the hook script)
-- If either is missing, the hook silently passes through — safe to install without RTK
+- If either is missing, the hook warns once on stderr and passes through — safe to install without RTK
 
 ## Token Savings Examples
 

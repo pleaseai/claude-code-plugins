@@ -8,7 +8,16 @@ RTK is a high-performance CLI proxy written in Rust. It intercepts commands like
 
 This plugin installs a `PreToolUse` hook on the `Bash` tool. Every time Claude runs a shell command, the hook checks whether RTK can rewrite it to produce more compact output. The rewrite is transparent: the command runs normally, but produces compressed output.
 
-The hook gracefully no-ops if:
+All rewrite and permission logic lives in the `rtk rewrite` binary — its exit codes tell the hook what to do:
+
+| Exit code | Meaning | Hook behavior |
+|-----------|---------|---------------|
+| 0 | Rewrite found, no deny/ask rule matched | Rewrite and auto-allow |
+| 1 | No RTK equivalent | Pass through unchanged |
+| 2 | Deny rule matched | Pass through (Claude Code's native deny handles it) |
+| 3 | Ask rule matched | Rewrite, but let Claude Code prompt the user |
+
+The hook gracefully no-ops (with a stderr warning) if:
 - RTK is not installed
 - RTK version is below 0.23.0
 - `jq` is not available
@@ -16,11 +25,17 @@ The hook gracefully no-ops if:
 
 ## Prerequisites
 
-- **RTK >= 0.23.0** — Install via Homebrew or Cargo:
+- **RTK >= 0.23.0** — Install via the quick-install script, Homebrew, or Cargo:
   ```bash
+  # Quick install (Linux/macOS)
+  curl -fsSL https://raw.githubusercontent.com/rtk-ai/rtk/master/install.sh | sh
+
+  # Homebrew (macOS/Linux)
   brew install rtk-ai/tap/rtk
-  # or
-  cargo install rtk
+
+  # Cargo — use the explicit Git URL; plain `cargo install rtk` may install
+  # the wrong package (name collision with Rust Type Kit)
+  cargo install --git https://github.com/rtk-ai/rtk rtk
   ```
 - **jq** — usually pre-installed; `brew install jq` or `apt install jq`
 
@@ -37,15 +52,18 @@ claude
 After installation, verify RTK is working:
 
 ```bash
-# Check RTK version
+# Check RTK version (should show: rtk X.Y.Z)
 rtk --version
 
-# See token savings for a command
-rtk gain git status
+# Show token savings analytics (should work — if it fails, you may have
+# the unrelated reachingforthejack/rtk "Rust Type Kit" installed instead)
+rtk gain
 
-# Discover which commands RTK can optimize
+# Analyze Claude Code history for missed optimization opportunities
 rtk discover
 ```
+
+> **Note**: Do **not** run `rtk init` when using this plugin. `rtk init` (per-project) and `rtk init --global` (system-wide) install the same Claude Code hook directly into your settings — this plugin already provides it. Running both would register the hook twice. Choose one: this plugin *or* `rtk init`.
 
 ## Manual Usage (without the plugin)
 
@@ -57,8 +75,9 @@ rtk git status
 rtk npm install
 rtk proxy <any-command>
 
-# Set up shell hooks globally (alternative to this plugin)
-rtk init -g
+# Set up Claude Code hooks without this plugin (alternative)
+rtk init           # per-project
+rtk init --global  # system-wide
 ```
 
 ## Notes
