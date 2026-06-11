@@ -1,0 +1,27 @@
+plugins/rtk/hooks/rtk-rewrite.sh
+  s_de474642c9b6a5::t_8c5abfec22b48e 2-14,16-19,21-23,26-41,43-44,48,50-51,54-56,58-79,81-101
+plugins/rtk/README.md
+  s_de474642c9b6a5::t_9b2119618bdf17 55,58-60,62
+  s_de474642c9b6a5::t_1d4a83c91325fa 66-67,78-80
+  s_de474642c9b6a5::t_74660b0ecf5bbf 11-20,28,30-33,35-38
+plugins/rtk/skills/rtk-optimization/SKILL.md
+  s_de474642c9b6a5::t_43e45f69ddf589 10,13-16,29-31,35-37,40,43-45,48
+  s_de474642c9b6a5::t_f0d58605c5a3dc 50-52
+  s_de474642c9b6a5::t_f21b0a419e8963 56-70,76
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "9b797bc9c3d1f64725d8a115e9552d1e13d143ec",
+  "prompts": {},
+  "sessions": {
+    "s_de474642c9b6a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf2eeb61-4f6f-42f5-89f8-2d569528fd58",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
