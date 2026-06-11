@@ -1,0 +1,328 @@
+.please/docs/tracks/active/gatekeeper-v2-20260331/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+package.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 29-32,38,43-44
+plugins/vitepress/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/nuxt-seo/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-14
+plugins/ai-sdk/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-31
+plugins/vitest/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/agent-browser/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+plugins/portone/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-40
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-75
+plugins/next/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+.please/docs/tracks/active/hooks-if-field-20260328/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-93
+.please/docs/knowledge/product-guidelines.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-37
+.claude/agent-memory/review-review-silent-failure-hunter/MEMORY.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 33-60
+.mcp.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 2-12
+plugins/docus/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-35
+plugins/edgeparse/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-33
+plugins/prisma/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-33
+.github/workflows/update-skills.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-112
+plugins/antfu/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/supabase/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+ARCHITECTURE.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-280
+plugins/tsdown/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.claude/settings.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 2-15,30-62
+.please/docs/knowledge/workflow.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-143
+plugins/ast-grep/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-33
+plugins/tiptap/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-11
+.agents/skills/plugin-creator/scripts/validate_plugin.py
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-586
+plugins/react-native/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-28
+.claude/agent-memory/review-review-documentation-analyzer/MEMORY.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-3
+.gitignore
+  s_de474642c9b6a5::t_a9b3ed453f5073 162-165
+.please/docs/tracks/completed/awesome-copilot-java-20260528/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-59
+plugins/chat-sdk/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+.codex/config.toml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-4
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.please/docs/product-specs/plugins/marketplace.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-103
+.github/workflows/tessl-publish.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-75
+plugins/vitest/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.vscode/mcp.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-12
+.agents/skills/plugin-creator/SKILL.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-191
+plugins/next/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+plugins/slack-agent/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-27
+plugins/vinext/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+.please/docs/tracks/active/setup-monorepo-scan-20260329/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-112
+.please/docs/tracks/active/web-nuxt-update-20260328/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-119
+.agents/skills/plugin-creator/references/plugin-json-spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-191
+.please/docs/product-specs/plugins/marketplace.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-88
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-50
+.please/docs/tracks/active/hooks-if-field-20260328/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-44
+.please/docs/tracks/completed/awesome-copilot-java-20260528/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-13
+plugins/neo4j/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-22
+.please/docs/tracks/active/setup-monorepo-scan-20260329/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.please/docs/tracks/active/nuxt-ui-hook-guidance-20260328/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-56
+.github/workflows/release-please.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 16,21
+plugins/tsdown/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/emulate/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-28
+.please/docs/tracks/active/hooks-if-field-20260328/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.please/docs/tracks/active/nuxt-session-hook-20260328/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.please/docs/tracks/active/nuxt-session-hook-20260328/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-83
+.please/docs/tracks/active/web-nuxt-update-20260328/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.gemini/styleguide.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 29-51,58-60
+plugins/pinia/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/nuxt-ui/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-33
+plugins/pnpm/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.release-please-manifest.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 3-4,8-59
+.please/docs/tracks.jsonl
+  s_de474642c9b6a5::t_a9b3ed453f5073 1
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+plugins/react/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-29
+plugins/vueuse/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/antfu/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/nuxt/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/vueuse/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/pinia/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/vitepress/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+.claude/agent-memory/review-review-cubic-reviewer/pr170-graphite-commands.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-19
+plugins/turborepo/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+.impeccable.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-26
+plugins/gatekeeper/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+.please/docs/tracks/active/add-code-intelligence-marketplace-20260328/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-29
+plugins/vue/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.please/docs/tracks/active/setup-monorepo-scan-20260329/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-43
+.agents/skills/plugin-creator/assets/plugin-creator-small.svg
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-3
+.please/docs/tracks/active/fix-setup-glob-pattern-20260329/investigation.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-69
+.please/config.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-41
+plugins/portone/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-4
+plugins/docus/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-19
+.claude/agent-memory/review-review-cubic-reviewer/pr181-graphite-please-config-opt-in.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-16
+.gitmodules
+  s_de474642c9b6a5::t_a9b3ed453f5073 40-42
+.please/docs/tracks/active/add-code-intelligence-marketplace-20260328/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+plugins/vue/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/react-native/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-12
+.please/docs/decisions/index.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-6
+.please/INDEX.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-35
+.claude/agent-memory/review-review-documentation-analyzer/project-doc-conventions.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-18
+plugins/tiptap/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-27
+plugins/slidev/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/edgeparse/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-19
+plugins/portless/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-12
+plugins/unocss/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/unocss/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+.claude/agent-memory/review-review-cubic-reviewer/pr184-portone-plugin.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-24
+.gemini/settings.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-17
+plugins/portless/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-28
+.please/docs/knowledge/tech-stack.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-39
+.please/docs/product-specs/index.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-63
+.please/docs/tracks/active/nuxt-ui-hook-guidance-20260328/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-112
+.agents/skills/plugin-creator/agents/openai.yaml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-6
+.agents/skills/plugin-creator/scripts/create_basic_plugin.py
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-292
+.github/workflows/ci.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 8,19-52,55-56,62,65,70-72,76,94-95,101,104,109-111,121-122,128,131,136-138,148-149,155,158,163,165
+.please/docs/tracks/tech-debt-tracker.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-17
+CLAUDE.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 74-98,391-393,396,399-406,442-455,494-507,526-536
+plugins/nuxt/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-34
+plugins/wordpress/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+plugins/vite/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/chat-sdk/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-17
+.please/docs/tracks/active/add-code-intelligence-marketplace-20260328/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-24
+plugins/ast-grep/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-19
+plugins/workflow/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-13
+.please/docs/tracks/active/gatekeeper-v2-20260331/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-147
+plugins/react/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-13
+.please/docs/knowledge/product.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-32
+.claude/agent-memory/review-review-cubic-reviewer/pr161-mastra-skill.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-17
+plugins/pnpm/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/vite/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.github/workflows/tessl-skill-review.yml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-55
+.claude/agent-memory/review-review-cubic-reviewer/pr176-release-please-bun.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-17
+.please/docs/tracks/active/nuxt-ui-hook-guidance-20260328/metadata.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-10
+.worktreeinclude
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-12
+plugins/emulate/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-12
+.claude/agent-memory/review-review-cubic-reviewer/pr172-release-please-graphite.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-17
+plugins/workflow/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-29
+plugins/neo4j/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-5
+plugins/turborepo/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.please/docs/tracks/active/nuxt-session-hook-20260328/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-122
+plugins/slidev/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+plugins/supabase/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-32
+.claude/agent-memory/review-review-cubic-reviewer/pr189-graphite-awk-state-reset.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-8
+plugins/agent-browser/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+plugins/git-ai/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-28
+plugins/nuxt-seo/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+.please/docs/product-specs/index.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-7
+plugins/ai-sdk/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+.please/docs/tracks/active/gatekeeper-v2-20260331/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-57
+.please/docs/tracks/completed/awesome-copilot-java-20260528/plan.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-142
+plugins/wordpress/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-14
+orca.yaml
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-22
+.cursor/mcp.json
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-12
+.please/docs/tracks/active/web-nuxt-update-20260328/spec.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-54
+plugins/slack-agent/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-14
+plugins/gatekeeper/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+.agents/plugins/marketplace.json
+  s_de474642c9b6a5::t_7a3f81cae374e7 392-403
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-391,404-704
+plugins/nuxt-ui/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+.claude/agent-memory/review-review-cubic-reviewer/pr171-graphite-session-start-hook.md
+  s_de474642c9b6a5::t_a9b3ed453f5073 1-16
+plugins/prisma/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-18
+plugins/git-ai/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-12
+plugins/vinext/.codex-plugin/plugin.json
+  s_de474642c9b6a5::t_258d8e6a4ba0af 1-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.6",
+  "base_commit_sha": "757bd32fc981c0948b95037af6b09a5143aa68f0",
+  "prompts": {},
+  "sessions": {
+    "s_de474642c9b6a5": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cf2eeb61-4f6f-42f5-89f8-2d569528fd58",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
