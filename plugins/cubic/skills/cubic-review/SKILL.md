@@ -1,5 +1,5 @@
 ---
-name: Code Review via Cubic CLI
+name: cubic-review
 description: Run AI-powered code reviews using Cubic CLI to detect bugs, security vulnerabilities, and style issues in local changes. Use when the user says "review my code," "check my changes for bugs," "run cubic review," "review this diff," "pre-commit check," "find issues before I push," "analyze my branch changes," or "code quality check." Triggers on mentions of cubic, code review, diff review, pre-commit checks, bug detection, and code quality validation.
 allowed-tools: Bash, Read, Edit
 ---

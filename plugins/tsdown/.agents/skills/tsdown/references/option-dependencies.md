@@ -14,6 +14,7 @@ These are **NOT bundled** by default:
 
 - **`dependencies`** - Installed automatically with your package
 - **`peerDependencies`** - User must install manually
+- **`optionalDependencies`** - May or may not be installed depending on platform/config
 
 ### Conditionally Bundled
 
@@ -31,7 +32,7 @@ export default defineConfig({
   deps: {
     neverBundle: ['react', /^@myorg\//],
     alwaysBundle: ['some-package'],
-    onlyAllowBundle: ['cac', 'bumpp'],
+    onlyBundle: ['cac', 'bumpp'],
     skipNodeModulesBundle: true,
   },
 })
@@ -71,7 +72,7 @@ export default defineConfig({
 })
 ```
 
-### `deps.onlyAllowBundle`
+### `deps.onlyBundle`
 
 Whitelist of dependencies allowed to be bundled from node_modules. Throws an error if any unlisted dependency is bundled:
 
@@ -79,7 +80,7 @@ Whitelist of dependencies allowed to be bundled from node_modules. Throws an err
 export default defineConfig({
   entry: ['src/index.ts'],
   deps: {
-    onlyAllowBundle: [
+    onlyBundle: [
       'cac',               // Allow bundling cac
       'bumpp',             // Allow bundling bumpp
       /^my-utils/,         // Regex patterns supported
@@ -97,7 +98,7 @@ export default defineConfig({
 
 ### `deps.skipNodeModulesBundle`
 
-Skip resolving and bundling ALL node_modules:
+Skip bundling ALL node_modules:
 
 ```ts
 export default defineConfig({
@@ -108,7 +109,7 @@ export default defineConfig({
 })
 ```
 
-**Result:** No dependencies from node_modules are parsed or bundled.
+**Result:** No dependencies from node_modules are bundled.
 
 **Note:** Cannot be used together with `alwaysBundle`.
 
@@ -235,7 +236,8 @@ tsdown --deps.skip-node-modules-bundle
 |---|---|
 | `external` | `deps.neverBundle` |
 | `noExternal` | `deps.alwaysBundle` |
-| `inlineOnly` | `deps.onlyAllowBundle` |
+| `inlineOnly` | `deps.onlyBundle` |
+| `deps.onlyAllowBundle` | `deps.onlyBundle` |
 | `skipNodeModulesBundle` | `deps.skipNodeModulesBundle` |
 
 ## Examples by Use Case
@@ -318,7 +320,7 @@ export default defineConfig({
 
 ### Missing Dependency at Runtime
 
-Ensure it's in `dependencies` or `peerDependencies`:
+Ensure it's in `dependencies`, `peerDependencies`, or `optionalDependencies`:
 
 ```json
 {
@@ -353,13 +355,13 @@ export default defineConfig({
 ## Summary
 
 **Default behavior:**
-- `dependencies` & `peerDependencies` → External
+- `dependencies`, `peerDependencies`, & `optionalDependencies` → External
 - `devDependencies` & phantom deps → Bundled if imported
 
 **Override (under `deps`):**
 - `neverBundle` → Force external
 - `alwaysBundle` → Force bundled
-- `onlyAllowBundle` → Whitelist bundled deps
+- `onlyBundle` → Whitelist bundled deps
 - `skipNodeModulesBundle` → Skip all node_modules
 
 **Declaration files:**

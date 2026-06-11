@@ -1,0 +1,30 @@
+{
+  "name": "wordpress",
+  "version": "1.0.0",
+  "description": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Wordpress",
+    "shortDescription": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
+    "longDescription": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
+    "developerName": "Community",
+    "category": "Framework",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Wordpress for my current task."
+    ]
+  },
+  "license": "NOASSERTION",
+  "keywords": [
+    "wordpress",
+    "blocks",
+    "themes",
+    "plugins",
+    "gutenberg",
+    "php"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "portone",
+  "version": "1.2.0",
+  "description": "포트원(PortOne) 결제 연동 코드 생성 및 검토 플러그인. V1/V2 API를 지원하며, MCP 서버를 통해 최신 문서와 예시 코드를 활용합니다.",
+  "author": {
+    "name": "PortOne",
+    "url": "https://portone.io"
+  },
+  "homepage": "https://portone.io",
+  "repository": "https://github.com/portone-io/portone-cli",
+  "license": "MIT",
+  "keywords": [
+    "portone",
+    "payment",
+    "pg",
+    "billing",
+    "결제",
+    "포트원",
+    "mcp"
+  ],
+  "mcpServers": {
+    "portone": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@portone/mcp-server@latest"
+      ]
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "pleaseai/graphite",
+  "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track existing branches, collaborate on shared stacks, configure repo/CI for Graphite, and operate the merge queue.",
+  "version": "2.1.0",
+  "author": {
+    "name": "Graphite",
+    "url": "https://github.com/withgraphite"
+  },
+  "skills": [
+    "skills/graphite",
+    "skills/graphite-setup",
+    "skills/graphite-merge-queue"
+  ]
+}

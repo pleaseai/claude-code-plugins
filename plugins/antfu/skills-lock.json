@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "antfu": {
+      "source": "antfu/skills",
+      "sourceType": "github",
+      "skillPath": "skills/antfu/SKILL.md",
+      "computedHash": "e6629200b1f033c78150985fb1b1ec2aa848a378c0637f9a850cb33f650bce19"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "name": "portone",
+  "version": "1.2.0",
+  "description": "PortOne payment integration workflow, code generation, and validation for Codex.",
+  "author": {
+    "name": "PortOne",
+    "url": "https://portone.io"
+  },
+  "homepage": "https://portone.io",
+  "repository": "https://github.com/portone-io/portone-cli",
+  "license": "MIT",
+  "keywords": [
+    "portone",
+    "payment",
+    "billing",
+    "checkout",
+    "identity"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "PortOne",
+    "shortDescription": "Generate and validate PortOne payment integrations.",
+    "longDescription": "Adds PortOne payment integration workflows for implementation, review, and official-document-guided troubleshooting in Codex.",
+    "developerName": "PortOne",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://portone.io/",
+    "privacyPolicyURL": "https://privacy.portone.io/",
+    "termsOfServiceURL": "https://terms.portone.io/global/en/feb2024",
+    "defaultPrompt": [
+      "포트원 V2 일반결제 연동 코드를 구현해줘.",
+      "프로젝트의 포트원 연동 코드를 검토해줘.",
+      "포트원 빌링키 결제 흐름을 프로젝트에 맞게 추가해줘."
+    ],
+    "brandColor": "#0D9488"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "vitest",
+  "version": "1.0.0",
+  "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API. Use when writing tests, mocking, configuring coverage, or working with test filtering and fixtures.",
+  "author": {
+    "name": "Anthony Fu",
+    "url": "https://github.com/antfu"
+  },
+  "interface": {
+    "displayName": "Vitest",
+    "shortDescription": "Vitest fast unit testing framework powered by Vite with Jest-compatible API",
+    "longDescription": "Vitest fast unit testing framework powered by Vite with Jest-compatible API. Use when writing tests, mocking, configuring coverage, or working with test filtering and fixtures.",
+    "developerName": "Anthony Fu",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Vitest for my current task."
+    ],
+    "websiteURL": "https://github.com/antfu/skills/tree/main/skills/vitest"
+  },
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vitest",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "vitest",
+    "testing",
+    "unit-test",
+    "antfu"
+  ]
+}

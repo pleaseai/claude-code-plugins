@@ -1,5 +1,26 @@
 # @googleworkspace/cli
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/google-workspace-v1.1.0...google-workspace-v1.2.0) (2026-05-30)
+
+
+### Features
+
+* publish skill plugins to Tessl registry with badges ([#197](https://github.com/pleaseai/claude-code-plugins/issues/197)) ([b9cb8c3](https://github.com/pleaseai/claude-code-plugins/commit/b9cb8c3067dc9984b1c068390e6eb390ac57251e))
+
+## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/google-workspace-v1.0.0...google-workspace-v1.1.0) (2026-05-21)
+
+
+### Features
+
+* add multi-format plugin manifest generator (Codex + Antigravity) ([#185](https://github.com/pleaseai/claude-code-plugins/issues/185)) ([269eaf3](https://github.com/pleaseai/claude-code-plugins/commit/269eaf3d459a0543b396f92b2aa3691106414e71))
+
+## 1.0.0 (2026-03-19)
+
+
+### Features
+
+* **sync:** add google-workspace Gemini CLI extension as Type 4 plugin ([#70](https://github.com/pleaseai/claude-code-plugins/issues/70)) ([9405311](https://github.com/pleaseai/claude-code-plugins/commit/940531146b18086b53de18da05bdae4bce4e43fa))
+
 ## 0.4.4
 
 ### Patch Changes

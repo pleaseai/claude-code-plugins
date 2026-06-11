@@ -1,0 +1,15 @@
+# Changelog
+
+## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/vinext-v1.0.0...vinext-v1.1.0) (2026-05-21)
+
+
+### Features
+
+* add multi-format plugin manifest generator (Codex + Antigravity) ([#185](https://github.com/pleaseai/claude-code-plugins/issues/185)) ([269eaf3](https://github.com/pleaseai/claude-code-plugins/commit/269eaf3d459a0543b396f92b2aa3691106414e71))
+
+## 1.0.0 (2026-03-31)
+
+
+### Features
+
+* **vinext:** add vinext plugin to marketplace ([#138](https://github.com/pleaseai/claude-code-plugins/issues/138)) ([e9c9c80](https://github.com/pleaseai/claude-code-plugins/commit/e9c9c8098f3fe0478ab1b6f1ffa14b68c9ce02bc))

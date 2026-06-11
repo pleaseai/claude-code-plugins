@@ -5,6 +5,7 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened]
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -15,26 +16,64 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
+  # Graphite CI optimizer gate. On PRs, asks the Graphite API whether this
+  # PR's position in its stack means CI can be skipped (e.g., it's a mid-stack
+  # PR that will be retested when the top of the stack runs). On pushes to
+  # main, the optimizer is bypassed so post-merge CI always runs.
+  # Docs: https://graphite.com/docs/stacking-and-ci
+  optimize_ci:
+    name: Optimize CI
+    runs-on: ubuntu-latest
+    timeout-minutes: 2
+    outputs:
+      skip: ${{ steps.graphite.outputs.skip || steps.bypass.outputs.skip }}
+    steps:
+      - name: Bypass optimizer on push events
+        id: bypass
+        if: github.event_name != 'pull_request'
+        run: echo "skip=false" >> "$GITHUB_OUTPUT"
+
+      - name: Verify Graphite token is configured
+        if: github.event_name == 'pull_request'
+        env:
+          TOKEN: ${{ secrets.GRAPHITE_CI_OPTIMIZER_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::error::GRAPHITE_CI_OPTIMIZER_TOKEN secret is not set. Add it under Settings → Secrets and variables → Actions, or remove the optimize_ci job."
+            exit 1
+          fi
+
+      - name: Graphite CI optimizer
+        id: graphite
+        if: github.event_name == 'pull_request'
+        uses: withgraphite/graphite-ci-action@9bc969adfd43bb790da3b64b543c78c75cef9689 # v0.0.9
+        with:
+          graphite_token: ${{ secrets.GRAPHITE_CI_OPTIMIZER_TOKEN }}
+
   lint:
     name: Lint
+    needs: optimize_ci
+    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: '.nvmrc'
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version-file: 'package.json'
 
       # ESLint 캐시 복원
       - name: Restore ESLint cache
-        uses: actions/cache@v4
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
         with:
           path: |
             .eslintcache
@@ -52,20 +91,24 @@ jobs:
 
   build:
     name: Build
+    needs: optimize_ci
+    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: '.nvmrc'
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -75,20 +118,24 @@ jobs:
 
   typecheck:
     name: Type Check
+    needs: optimize_ci
+    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version-file: '.nvmrc'
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
+        with:
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -98,22 +145,24 @@ jobs:
 
   test:
     name: Test
+    needs: optimize_ci
+    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+        uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2
         with:
-          bun-version: '1.2.22'
+          bun-version-file: 'package.json'
 
       - name: Install dependencies
         run: bun install --frozen-lockfile

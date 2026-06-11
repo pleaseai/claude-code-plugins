@@ -1,6 +1,6 @@
 {
   "name": "mastra",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "description": "Official agent skills for coding agents working with the Mastra AI framework",
   "author": {
     "name": "Mastra AI",
@@ -13,5 +13,19 @@
     "ai",
     "framework",
     "agent"
+  ],
+  "mcpServers": {
+    "mastra": {
+      "type": "stdio",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@mastra/mcp-docs-server@latest"
+      ]
+    }
+  },
+  "skills": [
+    "./skills/",
+    "./.agents/skills/"
   ]
 }

@@ -1,0 +1,14 @@
+# Changelog
+
+## [0.2.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.1.0...skillopt-sleep-v0.2.0) (2026-06-09)
+
+
+### Features
+
+* **skillopt-sleep:** add SkillOpt-Sleep offline self-evolution plugin ([#206](https://github.com/pleaseai/claude-code-plugins/issues/206)) ([feab952](https://github.com/pleaseai/claude-code-plugins/commit/feab952b7c95a22092d893d0f0f10bceb98fbb29))
+
+## 0.1.0
+
+### Features
+
+* initial release: vendored `skillopt_sleep` engine, `/sleep` command, skill, and SessionEnd hook for offline self-evolution (review past sessions → replay → consolidate validated `CLAUDE.md`/`SKILL.md` behind a held-out gate).

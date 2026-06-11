@@ -1,10 +1,36 @@
 <script setup lang="ts">
 import { useTimeoutFn } from '@vueuse/core'
 
-interface PluginSource {
+interface PluginSourceGitHub {
   source: 'github'
   repo: string
+  ref?: string
+  sha?: string
 }
+
+interface PluginSourceUrl {
+  source: 'url'
+  url: string
+  ref?: string
+  sha?: string
+}
+
+interface PluginSourceGitSubdir {
+  source: 'git-subdir'
+  url: string
+  path: string
+  ref?: string
+  sha?: string
+}
+
+interface PluginSourceNpm {
+  source: 'npm'
+  package: string
+  version?: string
+  registry?: string
+}
+
+type PluginSource = PluginSourceGitHub | PluginSourceUrl | PluginSourceGitSubdir | PluginSourceNpm
 
 interface Plugin {
   name: string
@@ -50,17 +76,44 @@ async function fetchPluginMetadata() {
     return
   }
 
-  // GitHub plugin - fetch from GitHub
+  // Only GitHub and url source plugins support metadata fetch
+  if (props.plugin.source.source !== 'github' && props.plugin.source.source !== 'url') {
+    return
+  }
+
+  // Build raw URL based on source type
   loading.value = true
+  let url: string | undefined
   try {
-    const url = `https://raw.githubusercontent.com/${props.plugin.source.repo}/main/.claude-plugin/plugin.json`
+    let repoPath: string | undefined
+    let ref = 'main'
+
+    if (props.plugin.source.source === 'github') {
+      repoPath = props.plugin.source.repo
+      ref = props.plugin.source.ref || ref
+    }
+    else {
+      // url source - try to construct raw GitHub URL
+      const gitUrl = props.plugin.source.url.replace(/\.git$/, '')
+      const match = gitUrl.match(/github\.com\/([^/]+\/[^/]+)/)
+      if (match) {
+        repoPath = match[1]
+        ref = props.plugin.source.ref || ref
+      }
+    }
+
+    if (!repoPath) {
+      return
+    }
+
+    url = `https://raw.githubusercontent.com/${repoPath}/${ref}/.claude-plugin/plugin.json`
     const response = await fetch(url)
 
     if (!response.ok) {
       // Log specific HTTP error
       console.error(`Failed to fetch plugin metadata: HTTP ${response.status}`, {
         plugin: props.plugin.name,
-        repo: props.plugin.source.repo,
+        url,
         status: response.status,
         statusText: response.statusText,
       })
@@ -92,7 +145,7 @@ async function fetchPluginMetadata() {
     // Network-level errors (connection failed, CORS, etc.)
     console.error('Network error fetching plugin metadata:', {
       plugin: props.plugin.name,
-      repo: props.plugin.source.repo,
+      url,
       error: err instanceof Error ? err.message : String(err),
     })
   }
@@ -168,6 +221,26 @@ const githubSourceUrl = computed(() => {
     const url = `https://github.com/${repoPath}/${treePath}`
 
     return url
+  }
+  // url plugin
+  if (props.plugin.source.source === 'url') {
+    return props.plugin.source.url.replace(/\.git$/, '')
+  }
+  // git-subdir plugin
+  if (props.plugin.source.source === 'git-subdir') {
+    const url = props.plugin.source.url
+    const path = props.plugin.source.path
+    const ref = props.plugin.source.ref || 'main'
+    // Handle both full URLs and owner/repo shorthand
+    if (url.startsWith('http')) {
+      return `${url.replace(/\.git$/, '')}/tree/${ref}/${path}`
+    }
+    return `https://github.com/${url}/tree/${ref}/${path}`
+  }
+  // npm plugin
+  if (props.plugin.source.source === 'npm') {
+    const registry = props.plugin.source.registry || 'https://www.npmjs.com/package'
+    return `${registry}/${props.plugin.source.package}`
   }
   // GitHub plugin
   return `https://github.com/${props.plugin.source.repo}`
@@ -259,6 +332,25 @@ const badges = computed<Badge[]>(() => {
   return badgeList
 })
 
+// Computed source text for display
+const sourceText = computed(() => {
+  const { source } = props.plugin
+  if (typeof source === 'string')
+    return source
+
+  switch (source.source) {
+    case 'github':
+      return source.repo
+    case 'npm':
+      return source.package
+    case 'url':
+    case 'git-subdir':
+      return source.url
+    default:
+      return ''
+  }
+})
+
 // Fetch metadata on mount
 onMounted(() => {
   fetchPluginMetadata()
@@ -306,7 +398,7 @@ watch(() => props.autoOpenModal, (shouldOpen) => {
             </div>
             <div class="flex items-center gap-2 text-xs text-muted">
               <UIcon name="i-heroicons-code-bracket" class="shrink-0" />
-              <span class="truncate">{{ typeof plugin.source === 'string' ? plugin.source : plugin.source.repo }}</span>
+              <span class="truncate">{{ sourceText }}</span>
             </div>
           </div>
           <div class="shrink-0">

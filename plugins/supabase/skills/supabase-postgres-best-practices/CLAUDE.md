@@ -1,1 +1,0 @@
-/home/coder/IdeaProjects/claude-code-plugins/vendor/supabase/skills/supabase-postgres-best-practices/CLAUDE.md

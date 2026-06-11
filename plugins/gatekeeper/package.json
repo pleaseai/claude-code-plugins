@@ -1,7 +1,7 @@
 {
   "name": "gatekeeper",
   "type": "module",
-  "version": "1.2.0",
+  "version": "1.4.0",
   "private": true,
   "scripts": {
     "build": "bun build src/pre-tool-use.ts --outdir dist --target node",
@@ -13,6 +13,6 @@
     "@antfu/eslint-config": "^7.6.1",
     "@anthropic-ai/claude-agent-sdk": "^0.2.37",
     "eslint": "^10.0.2",
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3"
   }
 }

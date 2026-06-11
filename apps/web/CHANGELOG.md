@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.5.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.4.1...web-v1.5.0) (2026-03-28)
+
+
+### Features
+
+* **marketplace:** add code-intelligence marketplace source ([#123](https://github.com/pleaseai/claude-code-plugins/issues/123)) ([5be65da](https://github.com/pleaseai/claude-code-plugins/commit/5be65daa040f0e1aeeaeeeec5fed3889c9bdfb5c))
+
+## [1.4.1](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.4.0...web-v1.4.1) (2026-03-27)
+
+
+### Bug Fixes
+
+* **web:** add url and npm plugin source types to marketplace schema ([#114](https://github.com/pleaseai/claude-code-plugins/issues/114)) ([9e9d0df](https://github.com/pleaseai/claude-code-plugins/commit/9e9d0dfbed20db5750965a333e0a2b5064b9bc92))
+
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.3.0...web-v1.4.0) (2026-03-26)
+
+
+### Features
+
+* **marketplace:** add stripe plugin to marketplace ([#102](https://github.com/pleaseai/claude-code-plugins/issues/102)) ([22ae922](https://github.com/pleaseai/claude-code-plugins/commit/22ae9225e5b6911cf50a6e5b405aaaea48bd1557))
+
 ## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/web-v1.2.0...web-v1.3.0) (2026-03-04)
 
 

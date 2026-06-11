@@ -1,0 +1,32 @@
+{
+  "name": "tsdown",
+  "version": "1.2.0",
+  "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
+  "author": {
+    "name": "Rolldown Contributors",
+    "url": "https://github.com/rolldown"
+  },
+  "interface": {
+    "displayName": "Tsdown",
+    "shortDescription": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
+    "longDescription": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
+    "developerName": "Rolldown Contributors",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Tsdown for my current task."
+    ],
+    "websiteURL": "https://github.com/rolldown/tsdown"
+  },
+  "homepage": "https://github.com/rolldown/tsdown",
+  "repository": "https://github.com/rolldown/tsdown",
+  "license": "MIT",
+  "keywords": [
+    "tsdown",
+    "bundler",
+    "typescript",
+    "rolldown"
+  ]
+}

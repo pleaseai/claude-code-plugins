@@ -1,7 +1,7 @@
 #!/usr/bin/env bun
 /**
  * Manage vendor skill submodules and sync skills into plugins/.
- * Mirrors the structure of vendor/antfu-skills/scripts/cli.ts.
+ * Manages vendor skill submodules, extensions, and skills.sh plugins.
  *
  * Commands:
  *   bun scripts/cli.ts init     # add vendor submodules to this repo
@@ -12,53 +12,20 @@
 import { execFileSync, execSync } from "node:child_process"
 import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { dirname, join, resolve } from "node:path"
+import type { SubmoduleMeta } from "./meta.ts"
 import { extensions, submodules, vendors } from "./meta.ts"
 import { convertMcpServerPaths, parseToml } from "./extension-helpers.ts"
+import { generateForPlugin, toCodexMarketplace, writeIfChanged, type ClaudeMarketplace, type MarketplaceEntry } from "./multi-format.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
-const ANTFU_MANUAL_DIR = join(ROOT, "vendor/antfu-skills/skills") // read-only: Type 3 manual skills
 const PLUGINS_DIR = join(ROOT, "plugins")
 
 // ---------------------------------------------------------------------------
 // skill dir name → plugin dir name
 // ---------------------------------------------------------------------------
 export const SKILL_TO_PLUGIN: Record<string, string> = {
-  // Type 1: generated directly into plugins/{plugin}/skills/{skill}/ via /generate-skill
-  antfu: "antfu",
-  nuxt: "nuxt",
-  pinia: "pinia",
-  pnpm: "pnpm",
-  unocss: "unocss",
-  vite: "vite",
-  vitepress: "vitepress",
-  vitest: "vitest",
-  vue: "vue",
   // Type 2: vendor submodules
-  "vue-best-practices": "vue",
-  "vue-router-best-practices": "vue",
-  "vue-testing-best-practices": "vue",
-  slidev: "slidev",
-  "vueuse-functions": "vueuse",
   "web-design-guidelines": "web-design",
-  mastra: "mastra",
-  "nuxt-ui": "nuxt-ui",
-  "supabase-postgres-best-practices": "supabase",
-  "prisma-cli": "prisma",
-  "prisma-client-api": "prisma",
-  "prisma-database-setup": "prisma",
-  "prisma-driver-adapter-implementation": "prisma",
-  "prisma-postgres": "prisma",
-  "prisma-upgrade-v7": "prisma",
-  "best-practices": "better-auth",
-  "create-auth": "better-auth",
-  emailAndPassword: "better-auth",
-  organization: "better-auth",
-  twoFactor: "better-auth",
-  "agent-browser": "agent-browser",
-  dogfood: "agent-browser",
-  electron: "agent-browser",
-  slack: "agent-browser",
-  "use-ai-sdk": "ai-sdk",
 }
 
 // ---------------------------------------------------------------------------
@@ -114,18 +81,30 @@ export function ensurePlugin(plugin: string) {
 }
 
 // ---------------------------------------------------------------------------
+// helpers: resolve source/depth from string | SubmoduleMeta
+// ---------------------------------------------------------------------------
+function resolveSubmodule(entry: string | SubmoduleMeta): { source: string; depth?: number } {
+  if (typeof entry === "string") return { source: entry }
+  return { source: entry.source, depth: entry.depth }
+}
+
+function depthArgs(depth?: number): string[] {
+  return depth ? ["--depth", String(depth)] : []
+}
+
+// ---------------------------------------------------------------------------
 // init
 // ---------------------------------------------------------------------------
-function initSubmoduleGroup(label: string, prefix: string, entries: Array<[string, string]>) {
+function initSubmoduleGroup(label: string, prefix: string, entries: Array<[string, { source: string; depth?: number }]>) {
   console.log(`\nInitializing ${label}...\n`)
-  for (const [name, source] of entries) {
+  for (const [name, { source, depth }] of entries) {
     const submodulePath = `${prefix}/${name}`
     const fullPath = join(ROOT, submodulePath)
 
     if (isSubmoduleRegistered(submodulePath)) {
       if (!existsSync(join(fullPath, ".git"))) {
         process.stdout.write(`  init: ${submodulePath} ... `)
-        execFileSafe("git", ["submodule", "update", "--init", submodulePath])
+        execFileSafe("git", ["submodule", "update", "--init", ...depthArgs(depth), submodulePath])
         console.log("done")
       } else {
         console.log(`  already initialized: ${submodulePath}`)
@@ -136,7 +115,10 @@ function initSubmoduleGroup(label: string, prefix: string, entries: Array<[strin
     process.stdout.write(`  adding: ${name}  (${source}) ... `)
     try {
       mkdirSync(dirname(fullPath), { recursive: true })
-      execFile("git", ["submodule", "add", source, submodulePath])
+      execFile("git", ["submodule", "add", ...depthArgs(depth), source, submodulePath])
+      if (depth) {
+        execFile("git", ["config", "-f", ".gitmodules", `submodule.${submodulePath}.shallow`, "true"])
+      }
       console.log("done")
     } catch (e) {
       console.error(`failed\n    ${e}`)
@@ -145,9 +127,9 @@ function initSubmoduleGroup(label: string, prefix: string, entries: Array<[strin
 }
 
 export async function initSubmodules() {
-  initSubmoduleGroup("source submodules", "sources", Object.entries(submodules))
-  initSubmoduleGroup("vendor submodules", "vendor", Object.entries(vendors).map(([n, c]) => [n, c.source]))
-  initSubmoduleGroup("extension submodules", "external-plugins", Object.entries(extensions).map(([n, c]) => [n, c.source]))
+  initSubmoduleGroup("source submodules", "sources", Object.entries(submodules).map(([n, v]) => [n, resolveSubmodule(v)]))
+  initSubmoduleGroup("vendor submodules", "vendor", Object.entries(vendors).map(([n, c]) => [n, { source: c.source, depth: c.depth }]))
+  initSubmoduleGroup("extension submodules", "external-plugins", Object.entries(extensions).map(([n, c]) => [n, { source: c.source, depth: c.depth }]))
   console.log("\nDone.")
 }
 
@@ -184,7 +166,7 @@ export async function syncSubmodules() {
 
     // Update submodule to latest
     process.stdout.write(`[${name}] updating submodule... `)
-    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", submodulePath])
+    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", ...depthArgs(config.depth), submodulePath])
     if (updated === null) {
       console.log("FAILED")
       console.warn(`  ! Skipping ${name} to avoid committing stale content.`)
@@ -233,7 +215,7 @@ export async function syncSubmodules() {
       try {
         rmSync(dest, { recursive: true, force: true })
         mkdirSync(dest, { recursive: true })
-        cpSync(src, dest, { recursive: true })
+        cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
       } catch (e) {
         const msg = e instanceof Error ? e.message : String(e)
         console.error(`FAILED\n  ! could not copy ${srcSkill}: ${msg}`)
@@ -274,40 +256,7 @@ export async function syncSubmodules() {
     }
   }
 
-  // 2. Copy Type 3 manual skills from vendor/antfu-skills/skills/ → plugins/{plugin}/skills/
-  console.log("Syncing manual skills to plugins...")
-  const manualPaths: string[] = []
-  for (const skill of ["antfu"]) {
-    const plugin = SKILL_TO_PLUGIN[skill]
-    if (!plugin) continue
-
-    const src = join(ANTFU_MANUAL_DIR, skill)
-    if (!existsSync(src)) {
-      console.warn(`  ! manual skill not found: ${skill}`)
-      continue
-    }
-
-    ensurePlugin(plugin)
-    const dest = join(PLUGINS_DIR, plugin, "skills", skill)
-
-    process.stdout.write(`  ${skill} → plugins/${plugin}/skills/${skill} ... `)
-    rmSync(dest, { recursive: true, force: true })
-    cpSync(src, dest, { recursive: true, verbatimSymlinks: true })
-    manualPaths.push(`plugins/${plugin}/skills/${skill}`)
-    console.log("done")
-  }
-
-  if (manualPaths.length > 0 && hasGitChanges(manualPaths)) {
-    const sha = getGitSha(join(ROOT, "vendor/antfu-skills"))
-    const shortSha = sha?.slice(0, 7) ?? "unknown"
-    commitChanges(manualPaths, `chore(sync): sync antfu manual skills to ${shortSha}`)
-    committed.push("antfu-skills")
-    console.log(`  → committed: chore(sync): sync antfu manual skills to ${shortSha}`)
-  } else {
-    console.log("  → no changes")
-  }
-
-  // 3. Update skills.sh managed plugins
+  // 2. Update skills.sh managed plugins
   console.log("\nUpdating skills.sh plugins...\n")
   if (!existsSync(PLUGINS_DIR)) {
     console.log("  no plugins directory found, skipping skills.sh plugin check")
@@ -364,7 +313,7 @@ export async function syncSubmodules() {
 
     // Update submodule to latest
     process.stdout.write(`[${name}] updating submodule... `)
-    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", submodulePath])
+    const updated = execFileSafe("git", ["submodule", "update", "--remote", "--merge", ...depthArgs(config.depth), submodulePath])
     if (updated === null) {
       console.log("FAILED")
       console.warn(`  ! Skipping ${name} to avoid committing stale content.`)
@@ -689,12 +638,11 @@ export async function cleanup() {
     ...Object.keys(submodules).map(n => `sources/${n}`),
     ...Object.keys(vendors).map(n => `vendor/${n}`),
     ...Object.keys(extensions).map(n => `external-plugins/${n}`),
-    "vendor/antfu-skills",
   ])
   const registered = getRegisteredSubmodulePaths().filter(
     p =>
       p.startsWith("sources/") ||
-      (p.startsWith("vendor/") && p !== "vendor/antfu-skills") ||
+      p.startsWith("vendor/") ||
       p.startsWith("external-plugins/"),
   )
   const extraSubmodules = registered.filter(p => !expectedPaths.has(p))
@@ -742,6 +690,86 @@ export async function cleanup() {
 }
 
 // ---------------------------------------------------------------------------
+// multi-format
+// ---------------------------------------------------------------------------
+/**
+ * Generate Codex and Antigravity manifests for every local plugin so the
+ * same plugin directory loads in all three runtimes. See scripts/multi-format.ts
+ * for the format mapping rules.
+ */
+export async function generateMultiFormat() {
+  const marketplaceJsonPath = join(ROOT, ".claude-plugin", "marketplace.json")
+  if (!existsSync(marketplaceJsonPath)) {
+    console.error(`! marketplace not found: ${marketplaceJsonPath}`)
+    process.exit(1)
+  }
+
+  const marketplaceJson = JSON.parse(readFileSync(marketplaceJsonPath, "utf-8")) as ClaudeMarketplace
+  const entriesByPluginDir = new Map<string, MarketplaceEntry>()
+  for (const entry of marketplaceJson.plugins) {
+    if (typeof entry.source === "string" && entry.source.startsWith("./plugins/")) {
+      const dirName = entry.source.replace(/^\.\/plugins\//, "")
+      entriesByPluginDir.set(dirName, entry)
+    }
+  }
+
+  console.log("Generating Codex + Antigravity manifests for local plugins...\n")
+  let pluginsProcessed = 0
+  let filesWritten = 0
+  const benignSkipped: string[] = []
+  const failed: { name: string; error: string }[] = []
+  const pluginDirs = readdirSync(PLUGINS_DIR, { withFileTypes: true })
+    .filter(d => d.isDirectory())
+    .map(d => d.name)
+    .sort()
+
+  for (const dirName of pluginDirs) {
+    const pluginDir = join(PLUGINS_DIR, dirName)
+    const entry = entriesByPluginDir.get(dirName)
+    try {
+      const result = generateForPlugin(pluginDir, entry)
+      if (result.reason) {
+        console.log(`  ${dirName}: skipped (${result.reason})`)
+        benignSkipped.push(dirName)
+        continue
+      }
+      pluginsProcessed++
+      if (result.written.length === 0) {
+        console.log(`  ${dirName}: up to date`)
+      } else {
+        console.log(`  ${dirName}: wrote ${result.written.length} file(s)`)
+        filesWritten += result.written.length
+      }
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err)
+      console.error(`  ${dirName}: FAILED — ${msg}`)
+      failed.push({ name: dirName, error: msg })
+    }
+  }
+
+  // Generate Codex marketplace.json from the Claude one.
+  const codexMarketplace = toCodexMarketplace(marketplaceJson)
+  const codexMarketplacePath = join(ROOT, ".agents", "plugins", "marketplace.json")
+  const codexWritten = writeIfChanged(codexMarketplacePath, JSON.stringify(codexMarketplace, null, 2) + "\n")
+  console.log()
+  if (codexWritten) {
+    console.log(`Codex marketplace written: ${codexMarketplacePath}`)
+    filesWritten++
+  } else {
+    console.log(`Codex marketplace up to date: ${codexMarketplacePath}`)
+  }
+
+  console.log(`\nProcessed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
+  if (benignSkipped.length > 0) console.log(`Skipped (no manifest): ${benignSkipped.join(", ")}`)
+  if (failed.length > 0) {
+    console.error(`\n${failed.length} plugin(s) failed:`)
+    for (const f of failed) console.error(`  - ${f.name}: ${f.error}`)
+    process.exit(1)
+  }
+  console.log("Done.")
+}
+
+// ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
 if (import.meta.main) {
@@ -760,14 +788,18 @@ if (import.meta.main) {
     case "cleanup":
       await cleanup()
       break
+    case "multi-format":
+      await generateMultiFormat()
+      break
     default:
       console.log("Usage: bun scripts/cli.ts <command>")
       console.log()
       console.log("Commands:")
-      console.log("  init     Add vendor submodules to this repo")
-      console.log("  sync     Update submodules and sync skills directly to plugins/")
-      console.log("  check    Check for available upstream updates")
-      console.log("  cleanup  Remove stale submodules and plugin skills")
+      console.log("  init          Add vendor submodules to this repo")
+      console.log("  sync          Update submodules and sync skills directly to plugins/")
+      console.log("  check         Check for available upstream updates")
+      console.log("  cleanup       Remove stale submodules and plugin skills")
+      console.log("  multi-format  Generate Codex + Antigravity manifests for local plugins")
       process.exit(1)
   }
 }

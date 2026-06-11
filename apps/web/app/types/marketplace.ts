@@ -11,10 +11,36 @@ export interface MarketplaceSource {
   priority: number
 }
 
-export interface PluginSource {
+export interface PluginSourceGitHub {
   source: 'github'
   repo: string
+  ref?: string
+  sha?: string
 }
+
+export interface PluginSourceUrl {
+  source: 'url'
+  url: string
+  ref?: string
+  sha?: string
+}
+
+export interface PluginSourceGitSubdir {
+  source: 'git-subdir'
+  url: string
+  path: string
+  ref?: string
+  sha?: string
+}
+
+export interface PluginSourceNpm {
+  source: 'npm'
+  package: string
+  version?: string
+  registry?: string
+}
+
+export type PluginSource = PluginSourceGitHub | PluginSourceUrl | PluginSourceGitSubdir | PluginSourceNpm
 
 export interface Plugin {
   name: string

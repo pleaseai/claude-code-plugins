@@ -1,18 +1,18 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2025-07-15',
+  compatibilityDate: '2026-03-28',
   devtools: { enabled: true },
 
   nitro: {
     preset: 'vercel',
   },
 
-  // ISR configuration for marketplace data
-  // Page uses server-side data fetching (useAsyncData), so only page ISR is needed
-  // Data is fetched on the server and included in the cached HTML
+  // CDN caching via Cache-Control headers
+  // Uses s-maxage + stale-while-revalidate instead of ISR to avoid nitropack Vercel preset symlink bug
+  // See: https://vercel.com/docs/edge-network/caching
   routeRules: {
-    '/': { isr: 3600 }, // Main page with embedded data: revalidate every 1 hour
-    '/api/marketplaces': { isr: 3600 }, // Keep API endpoint cached for direct API access if needed
+    '/': { headers: { 'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400' } },
+    '/api/marketplaces': { headers: { 'Cache-Control': 's-maxage=3600, stale-while-revalidate=86400' } },
   },
 
   modules: [

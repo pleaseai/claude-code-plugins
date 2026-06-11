@@ -1,0 +1,13 @@
+{
+  "track_id": "awesome-copilot-java-20260528",
+  "type": "feature",
+  "status": "review",
+  "created_at": "2026-05-28T18:27:00Z",
+  "updated_at": "2026-05-28T18:45:00Z",
+  "issue": "#190",
+  "pr": "#191",
+  "code_pr": "#191",
+  "project": "",
+  "project_item_id": "",
+  "code_branch": "worktree-ironwood-hogback"
+}

@@ -1,5 +1,26 @@
 # Changelog
 
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.3.0...nuxt-ui-v1.4.0) (2026-05-21)
+
+
+### Features
+
+* add multi-format plugin manifest generator (Codex + Antigravity) ([#185](https://github.com/pleaseai/claude-code-plugins/issues/185)) ([269eaf3](https://github.com/pleaseai/claude-code-plugins/commit/269eaf3d459a0543b396f92b2aa3691106414e71))
+
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.2.0...nuxt-ui-v1.3.0) (2026-03-28)
+
+
+### Features
+
+* **nuxt-ui:** add PreToolUse hook for component guidance ([#121](https://github.com/pleaseai/claude-code-plugins/issues/121)) ([211691e](https://github.com/pleaseai/claude-code-plugins/commit/211691ed1db0e8b4ee23179d1c9b70a52de5dd3c))
+
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.1.0...nuxt-ui-v1.2.0) (2026-03-19)
+
+
+### Features
+
+* **nanobanana:** add nanobanana image generation plugin to marketplace ([#69](https://github.com/pleaseai/claude-code-plugins/issues/69)) ([11fbefe](https://github.com/pleaseai/claude-code-plugins/commit/11fbefe230e3f7d9b19c57ee8c3526215f572067))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.0.0...nuxt-ui-v1.1.0) (2026-03-05)
 
 

@@ -4,16 +4,15 @@
 
 Configure CSS handling including preprocessors, syntax lowering, minification, and code splitting.
 
-## Architecture: Basic vs Advanced
+## Getting Started
 
-- **Built-in (basic):** CSS extraction and bundling — no extra dependencies.
-- **Advanced (`@tsdown/css`):** Preprocessors, syntax lowering, minification, `@import` inlining — install `@tsdown/css`.
+All CSS support in `tsdown` is provided by the `@tsdown/css` package. Install it to enable CSS handling:
 
 ```bash
 npm install -D @tsdown/css
 ```
 
-When installed, the advanced plugin replaces the built-in one automatically.
+When `@tsdown/css` is installed, CSS processing is automatically enabled. Without it, encountering CSS files will result in an error.
 
 ## CSS Import
 
@@ -27,11 +26,22 @@ export function greet() { return 'Hello' }
 
 Output: `index.mjs` + `index.css`
 
-### `@import` Inlining (requires `@tsdown/css`)
+### `@import` Inlining
 
 CSS `@import` statements are resolved and inlined automatically. No separate output files produced.
 
-## CSS Pre-processors (requires `@tsdown/css`)
+### Inline CSS (`?inline`)
+
+Append `?inline` to return processed CSS as a JS string instead of emitting a `.css` file:
+
+```ts
+import './style.css'                   // → .css file
+import css from './theme.css?inline'   // → JS string
+```
+
+Works with preprocessors too (`./foo.scss?inline`). Goes through full pipeline (preprocessors, @import inlining, lowering, minification). Tree-shakeable (`moduleSideEffects: false`).
+
+## CSS Pre-processors
 
 Built-in support for Sass, Less, and Stylus. Install the preprocessor:
 
@@ -94,7 +104,7 @@ scss: {
 }
 ```
 
-## CSS Minification (requires `@tsdown/css`)
+## CSS Minification
 
 ```ts
 export default defineConfig({
@@ -106,7 +116,7 @@ export default defineConfig({
 
 Powered by Lightning CSS.
 
-## CSS Target (requires `@tsdown/css`)
+## CSS Target
 
 Override the top-level `target` specifically for CSS:
 
@@ -121,7 +131,7 @@ export default defineConfig({
 
 Set `css.target: false` to disable CSS syntax lowering entirely.
 
-## CSS Transformer (requires `@tsdown/css`)
+## CSS Transformer
 
 `css.transformer` controls mutually exclusive CSS processing paths:
 
@@ -152,7 +162,7 @@ export default defineConfig({
 
 Auto-detects PostCSS config from project root when `transformer` is `'postcss'` and `css.postcss` is omitted.
 
-## Lightning CSS (Syntax Lowering, requires `@tsdown/css`)
+## Lightning CSS (Syntax Lowering)
 
 Install `lightningcss` to enable CSS syntax lowering based on your `target`:
 
@@ -187,6 +197,37 @@ export default defineConfig({
 
 `css.lightningcss.targets` takes precedence over both `target` and `css.target` for CSS.
 
+## CSS Modules
+
+Files with `.module.css` (and `.module.scss`, `.module.less`, etc.) are treated as CSS modules — class names are scoped and exported as JS:
+
+```ts
+import styles from './app.module.css'
+console.log(styles.title) // "scoped_title_hash"
+```
+
+### Configuration
+
+```ts
+export default defineConfig({
+  css: {
+    modules: {
+      scopeBehaviour: 'local',             // 'local' (default) | 'global'
+      generateScopedName: '[hash]_[local]', // Lightning CSS pattern string
+      localsConvention: 'camelCase',       // 'camelCase' | 'camelCaseOnly' | 'dashes' | 'dashesOnly'
+    },
+  },
+})
+```
+
+Set `css.modules: false` to disable. Function-form `generateScopedName` requires `transformer: 'postcss'`.
+
+### Optional Dependencies (PostCSS path)
+
+```bash
+npm install -D postcss postcss-modules
+```
+
 ## Code Splitting
 
 ### Merged (Default)
@@ -211,18 +252,48 @@ export default defineConfig({
 })
 ```
 
+## Preserving CSS Imports (`css.inject`)
+
+When enabled, JS output preserves `import` statements pointing to emitted CSS files. Consumers auto-import CSS alongside JS:
+
+```ts
+export default defineConfig({
+  css: {
+    inject: true,
+  },
+})
+```
+
+## PostCSS Optional Peer Dependencies
+
+When using `transformer: 'postcss'`, install these as needed:
+
+| Package | Purpose | Required When |
+|---------|---------|---------------|
+| `postcss` | Core PostCSS engine | Always (with `transformer: 'postcss'`) |
+| `postcss-import` | Resolve/inline `@import` | CSS uses `@import` |
+| `postcss-modules` | CSS modules (scoped classes) | Using `.module.css` files |
+
+```bash
+npm install -D postcss postcss-import postcss-modules
+```
+
+All declared as optional peer dependencies of `@tsdown/css`.
+
 ## Options Reference
 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
-| `css.transformer` | `'postcss' \| 'lightningcss'` | `'lightningcss'` | CSS processing pipeline (requires `@tsdown/css`) |
+| `css.transformer` | `'postcss' \| 'lightningcss'` | `'lightningcss'` | CSS processing pipeline |
 | `css.splitting` | `boolean` | `false` | Per-chunk CSS splitting |
 | `css.fileName` | `string` | `'style.css'` | Merged CSS file name |
-| `css.minify` | `boolean` | `false` | CSS minification (requires `@tsdown/css`) |
-| `css.target` | `string \| string[] \| false` | _from `target`_ | CSS-specific lowering target (requires `@tsdown/css`) |
-| `css.postcss` | `string \| object` | — | PostCSS config path or inline options (requires `@tsdown/css`) |
-| `css.preprocessorOptions` | `object` | — | Preprocessor options (requires `@tsdown/css`) |
-| `css.lightningcss` | `object` | — | Lightning CSS options (requires `@tsdown/css`) |
+| `css.minify` | `boolean` | `false` | CSS minification |
+| `css.modules` | `object \| false` | `{}` | CSS modules config, or `false` to disable |
+| `css.inject` | `boolean` | `false` | Preserve CSS imports in JS output |
+| `css.target` | `string \| string[] \| false` | _from `target`_ | CSS-specific lowering target |
+| `css.postcss` | `string \| object` | — | PostCSS config path or inline options |
+| `css.preprocessorOptions` | `object` | — | Preprocessor options |
+| `css.lightningcss` | `object` | — | Lightning CSS options |
 
 ## Related
 

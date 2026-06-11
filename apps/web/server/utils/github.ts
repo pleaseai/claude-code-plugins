@@ -1,3 +1,5 @@
+import process from 'node:process'
+
 /**
  * GitHub API utilities for fetching repository information
  */
@@ -16,12 +18,12 @@ interface GitHubRepo {
  */
 export function parseGitHubRepo(source: string): { owner: string, repo: string } | null {
   try {
-    // Handle URL format: https://github.com/owner/repo
+    // Handle URL format: https://github.com/owner/repo or https://github.com/owner/repo.git
     if (source.startsWith('http')) {
       const url = new URL(source)
       const parts = url.pathname.split('/').filter(Boolean)
       if (parts.length >= 2) {
-        return { owner: parts[0], repo: parts[1] }
+        return { owner: parts[0], repo: parts[1].replace(/\.git$/, '') }
       }
     }
 
@@ -54,7 +56,7 @@ export async function fetchGitHubStars(owner: string, repo: string): Promise<num
       'User-Agent': 'claude-code-plugins-marketplace',
     }
 
-    const githubToken = import.meta.env.GITHUB_TOKEN
+    const githubToken = process.env.GITHUB_TOKEN
     if (githubToken) {
       headers.Authorization = `token ${githubToken}`
     }
@@ -78,10 +80,18 @@ export async function fetchGitHubStars(owner: string, repo: string): Promise<num
  * @param source - Plugin source (GitHub URL or repo string)
  * @returns Star count, or null if fetch fails
  */
-export async function fetchPluginStars(source: string | { source: string, repo: string }): Promise<number | null> {
-  // Handle object format with repo property
+export async function fetchPluginStars(source: string | { source: string, repo?: string, url?: string }): Promise<number | null> {
+  // Handle object format with repo property (github source)
   if (typeof source === 'object' && source.repo) {
     const parsed = parseGitHubRepo(source.repo)
+    if (!parsed)
+      return null
+    return fetchGitHubStars(parsed.owner, parsed.repo)
+  }
+
+  // Handle object format with url property (git-subdir source)
+  if (typeof source === 'object' && source.url) {
+    const parsed = parseGitHubRepo(source.url)
     if (!parsed)
       return null
     return fetchGitHubStars(parsed.owner, parsed.repo)

@@ -1,0 +1,31 @@
+{
+  "name": "better-auth",
+  "version": "1.5.0",
+  "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+  "author": {
+    "name": "Better Auth",
+    "url": "https://github.com/better-auth"
+  },
+  "interface": {
+    "displayName": "Better Auth",
+    "shortDescription": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+    "longDescription": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
+    "developerName": "Better Auth",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Better Auth for my current task."
+    ]
+  },
+  "repository": "https://github.com/better-auth/skills",
+  "license": "MIT",
+  "keywords": [
+    "better-auth",
+    "authentication",
+    "auth",
+    "typescript"
+  ],
+  "skills": "./skills/"
+}

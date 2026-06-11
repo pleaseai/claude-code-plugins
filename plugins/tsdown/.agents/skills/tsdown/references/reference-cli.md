@@ -276,7 +276,7 @@ See [Executable](option-exe.md) for advanced configuration and cross-platform bu
 
 ### `--exports`
 
-Auto-generate package.json exports field:
+Generate the `exports` field in package.json:
 
 ```bash
 tsdown --exports
@@ -344,6 +344,51 @@ Extend Vite or Vitest config:
 ```bash
 tsdown --from-vite         # Use vite.config.*
 tsdown --from-vite vitest  # Use vitest.config.*
+```
+
+## Workspace / Monorepo
+
+### `--workspace, -W [dir]`
+
+Enable workspace mode for building multiple packages:
+
+```bash
+tsdown -W
+tsdown -W packages/
+```
+
+### `--filter, -F <pattern>`
+
+Filter configs by name or working directory. Supports regex:
+
+```bash
+tsdown -W -F my-package
+tsdown -W -F /^pkg-/
+```
+
+### `--unbundle`
+
+Enable unbundle (bundleless) mode:
+
+```bash
+tsdown --unbundle
+```
+
+### `--root <dir>`
+
+Specify the root directory of input files (similar to TypeScript's `rootDir`). Controls the output directory structure by determining how entry file paths map to output paths. Defaults to the common base directory of all entry files.
+
+```bash
+tsdown --root src
+tsdown --root .
+```
+
+### `--fail-on-warn`
+
+Fail on warnings (enabled by default):
+
+```bash
+tsdown --no-fail-on-warn  # Disable
 ```
 
 ## Common Usage Patterns

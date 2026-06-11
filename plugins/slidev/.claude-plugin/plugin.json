@@ -1,6 +1,6 @@
 {
   "name": "slidev",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "description": "Create and present web-based slides for developers using Markdown, Vue components, code highlighting, and animations",
   "author": {
     "name": "Anthony Fu",
@@ -14,5 +14,6 @@
     "slides",
     "presentation",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

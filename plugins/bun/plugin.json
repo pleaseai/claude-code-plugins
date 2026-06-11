@@ -1,0 +1,21 @@
+{
+  "name": "bun",
+  "version": "1.3.0",
+  "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler. Use when running bun commands, calling Bun.* APIs, or working with bun.lock projects.",
+  "author": {
+    "name": "Bun",
+    "url": "https://github.com/oven-sh/bun"
+  },
+  "homepage": "https://bun.com",
+  "repository": "https://github.com/oven-sh/bun",
+  "license": "MIT",
+  "keywords": [
+    "bun",
+    "runtime",
+    "package-manager",
+    "test-runner",
+    "bundler",
+    "javascript",
+    "typescript"
+  ]
+}

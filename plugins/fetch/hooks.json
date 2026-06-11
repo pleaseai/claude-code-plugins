@@ -1,0 +1,16 @@
+{
+  "hooks": {
+    "PostToolUseFailure": [
+      {
+        "matcher": "WebFetch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/webfetch-fallback.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}

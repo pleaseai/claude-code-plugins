@@ -1,0 +1,704 @@
+{
+  "name": "pleaseai",
+  "interface": {
+    "displayName": "pleaseai"
+  },
+  "plugins": [
+    {
+      "name": "mcp-neo4j",
+      "source": {
+        "source": "local",
+        "path": "./plugins/neo4j"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Database"
+    },
+    {
+      "name": "nuxt-ui",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nuxt-ui"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ui"
+    },
+    {
+      "name": "plugin-dev",
+      "source": {
+        "source": "local",
+        "path": "./plugins/plugin-dev"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "antfu",
+      "source": {
+        "source": "local",
+        "path": "./plugins/antfu"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "nuxt",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nuxt"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "pinia",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pinia"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "pnpm",
+      "source": {
+        "source": "local",
+        "path": "./plugins/pnpm"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "slidev",
+      "source": {
+        "source": "local",
+        "path": "./plugins/slidev"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "tsdown",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tsdown"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "turborepo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/turborepo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "unocss",
+      "source": {
+        "source": "local",
+        "path": "./plugins/unocss"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "vite",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "vitepress",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vitepress"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "vitest",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vitest"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "vue",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vue"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "vueuse",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vueuse"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "web-design",
+      "source": {
+        "source": "local",
+        "path": "./plugins/web-design"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ui"
+    },
+    {
+      "name": "gatekeeper",
+      "source": {
+        "source": "local",
+        "path": "./plugins/gatekeeper"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "mcp-dev",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mcp-dev"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "cubic",
+      "source": {
+        "source": "local",
+        "path": "./plugins/cubic"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "mastra",
+      "source": {
+        "source": "local",
+        "path": "./plugins/mastra"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ai"
+    },
+    {
+      "name": "supabase",
+      "source": {
+        "source": "local",
+        "path": "./plugins/supabase"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Database"
+    },
+    {
+      "name": "prisma",
+      "source": {
+        "source": "local",
+        "path": "./plugins/prisma"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Database"
+    },
+    {
+      "name": "better-auth",
+      "source": {
+        "source": "local",
+        "path": "./plugins/better-auth"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "agent-browser",
+      "source": {
+        "source": "local",
+        "path": "./plugins/agent-browser"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Browser"
+    },
+    {
+      "name": "ai-sdk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ai-sdk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ai"
+    },
+    {
+      "name": "slack-agent",
+      "source": {
+        "source": "local",
+        "path": "./plugins/slack-agent"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "claude-md-management",
+      "source": {
+        "source": "local",
+        "path": "./plugins/claude-md-management"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "google-workspace",
+      "source": {
+        "source": "local",
+        "path": "./plugins/google-workspace"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "nuxt-i18n",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nuxt-i18n"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "nuxt-seo",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nuxt-seo"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "worktree",
+      "source": {
+        "source": "local",
+        "path": "./plugins/worktree"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "rtk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/rtk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "markitdown",
+      "source": {
+        "source": "local",
+        "path": "./plugins/markitdown"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "fetch",
+      "source": {
+        "source": "local",
+        "path": "./plugins/fetch"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "semble",
+      "source": {
+        "source": "local",
+        "path": "./plugins/semble"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "ast-grep",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ast-grep"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "chat-sdk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/chat-sdk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "docus",
+      "source": {
+        "source": "local",
+        "path": "./plugins/docus"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "tosspayments",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tosspayments"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "portone",
+      "source": {
+        "source": "local",
+        "path": "./plugins/portone"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "please-plugins",
+      "source": {
+        "source": "local",
+        "path": "./plugins/please-plugins"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
+      "name": "wordpress",
+      "source": {
+        "source": "local",
+        "path": "./plugins/wordpress"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "vinext",
+      "source": {
+        "source": "local",
+        "path": "./plugins/vinext"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "next",
+      "source": {
+        "source": "local",
+        "path": "./plugins/next"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "react",
+      "source": {
+        "source": "local",
+        "path": "./plugins/react"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "react-native",
+      "source": {
+        "source": "local",
+        "path": "./plugins/react-native"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Mobile"
+    },
+    {
+      "name": "tiptap",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tiptap"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
+      "name": "emulate",
+      "source": {
+        "source": "local",
+        "path": "./plugins/emulate"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "edgeparse",
+      "source": {
+        "source": "local",
+        "path": "./plugins/edgeparse"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Document"
+    },
+    {
+      "name": "git-ai",
+      "source": {
+        "source": "local",
+        "path": "./plugins/git-ai"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "graphite",
+      "source": {
+        "source": "local",
+        "path": "./plugins/graphite"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "workflow",
+      "source": {
+        "source": "local",
+        "path": "./plugins/workflow"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "portless",
+      "source": {
+        "source": "local",
+        "path": "./plugins/portless"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "zod",
+      "source": {
+        "source": "local",
+        "path": "./plugins/zod"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "bun",
+      "source": {
+        "source": "local",
+        "path": "./plugins/bun"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "java-development",
+      "source": {
+        "source": "local",
+        "path": "./plugins/java-development"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Language"
+    },
+    {
+      "name": "skillopt-sleep",
+      "source": {
+        "source": "local",
+        "path": "./plugins/skillopt-sleep"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

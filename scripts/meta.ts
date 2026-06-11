@@ -16,9 +16,18 @@
  *   4. Run: bun scripts/cli.ts sync
  */
 
+export interface SubmoduleMeta {
+  /** Git repository URL */
+  source: string
+  /** Shallow clone depth (e.g. 1). Omit for full clone. */
+  depth?: number
+}
+
 export interface VendorMeta {
   /** Git repository URL */
   source: string
+  /** Shallow clone depth (e.g. 1). Omit for full clone. */
+  depth?: number
   /** Path within the vendor repo where skills live. Defaults to "skills". Use "." for repos where skills are at root. */
   skillsDir?: string
   /** sourceSkillName → outputSkillName mapping */
@@ -30,16 +39,7 @@ export interface VendorMeta {
  * Submodules are added at sources/{name}/ in this repo.
  * Skills are generated manually using /generate-skill <name>.
  */
-export const submodules: Record<string, string> = {
-  vue: "https://github.com/vuejs/docs",
-  nuxt: "https://github.com/nuxt/nuxt",
-  vite: "https://github.com/vitejs/vite",
-  unocss: "https://github.com/unocss/unocss",
-  pnpm: "https://github.com/pnpm/pnpm.io",
-  pinia: "https://github.com/vuejs/pinia",
-  vitest: "https://github.com/vitest-dev/vitest",
-  vitepress: "https://github.com/vuejs/vitepress",
-}
+export const submodules: Record<string, string | SubmoduleMeta> = {}
 
 /**
  * Type 2: Projects that already maintain their own skills/ directory.
@@ -47,99 +47,25 @@ export const submodules: Record<string, string> = {
  * Skills are synced automatically via `bun scripts/cli.ts sync`.
  */
 export const vendors: Record<string, VendorMeta> = {
-  slidev: {
-    source: "https://github.com/slidevjs/slidev",
-    skills: {
-      slidev: "slidev",
-    },
-  },
-  vueuse: {
-    source: "https://github.com/vueuse/skills",
-    skills: {
-      "vueuse-functions": "vueuse-functions",
-    },
-  },
-"vuejs-ai": {
-    source: "https://github.com/vuejs-ai/skills",
-    skills: {
-      "vue-best-practices": "vue-best-practices",
-      "vue-router-best-practices": "vue-router-best-practices",
-      "vue-testing-best-practices": "vue-testing-best-practices",
-    },
-  },
   "web-design-guidelines": {
     source: "https://github.com/vercel-labs/agent-skills",
     skills: {
       "web-design-guidelines": "web-design-guidelines",
     },
   },
-  mastra: {
-    source: "https://github.com/mastra-ai/skills",
-    skills: {
-      mastra: "mastra",
-    },
-  },
-  "nuxt-ui": {
-    source: "https://github.com/nuxt/ui",
-    skills: {
-      "nuxt-ui": "nuxt-ui",
-    },
-  },
-  supabase: {
-    source: "https://github.com/supabase/agent-skills",
-    skills: {
-      "supabase-postgres-best-practices": "supabase-postgres-best-practices",
-    },
-  },
-  prisma: {
-    source: "https://github.com/prisma/skills",
-    skillsDir: ".",
-    skills: {
-      "prisma-cli": "prisma-cli",
-      "prisma-client-api": "prisma-client-api",
-      "prisma-database-setup": "prisma-database-setup",
-      "prisma-driver-adapter-implementation": "prisma-driver-adapter-implementation",
-      "prisma-postgres": "prisma-postgres",
-      "prisma-upgrade-v7": "prisma-upgrade-v7",
-    },
-  },
-  "better-auth": {
-    source: "https://github.com/better-auth/skills",
-    skillsDir: "better-auth",
-    skills: {
-      "best-practices": "best-practices",
-      "create-auth": "create-auth",
-      emailAndPassword: "emailAndPassword",
-      organization: "organization",
-      twoFactor: "twoFactor",
-    },
-  },
-  "agent-browser": {
-    source: "https://github.com/vercel-labs/agent-browser",
-    skills: {
-      "agent-browser": "agent-browser",
-      dogfood: "dogfood",
-      electron: "electron",
-      slack: "slack",
-    },
-  },
-  "ai-sdk": {
-    source: "https://github.com/vercel/ai",
-    skills: {
-      "use-ai-sdk": "use-ai-sdk",
-    },
-  },
 }
 
 /**
  * Type 3: Hand-written skills by Anthony Fu.
- * These live in vendor/antfu-skills/skills/ and are copied directly to plugins/{plugin}/skills/ by the sync script.
+ * Migrated to skills.sh — no longer synced from vendor/antfu-skills.
  */
-export const manual: string[] = ["antfu"]
+export const manual: string[] = []
 
 export interface ExtensionMeta {
   /** Git repository URL */
   source: string
+  /** Shallow clone depth (e.g. 1). Omit for full clone. */
+  depth?: number
   /** Override plugin name (defaults to extension key name) */
   pluginName?: string
   /** Skip TOML command conversion */

@@ -26,19 +26,22 @@
     "skills:init": "bun scripts/cli.ts init",
     "skills:sync": "bun scripts/cli.ts sync",
     "skills:check": "bun scripts/cli.ts check",
-    "skills:cleanup": "bun scripts/cli.ts cleanup"
+    "skills:cleanup": "bun scripts/cli.ts cleanup",
+    "skills:update-locks": "bun scripts/update-skills.ts",
+    "skills:update-locks:check": "bun scripts/update-skills.ts --check",
+    "plugins:multi-format": "bun scripts/cli.ts multi-format"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^7.6.1",
     "eslint": "^10.0.2",
     "@pleaseai/vitest-config": "workspace:*",
-    "@commitlint/cli": "^19.8.1",
+    "@commitlint/cli": "^20.4.3",
     "@commitlint/config-conventional": "^19.8.1",
     "husky": "^9.1.7",
     "prettier": "^3.2.5",
     "turbo": "^2.8.13",
-    "typescript": "5.7.3",
-    "vitest": "^4.0.18"
+    "typescript": "5.9.3",
+    "vitest": "^4.1.1"
   },
   "repository": {
     "type": "git",

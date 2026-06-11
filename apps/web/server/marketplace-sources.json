@@ -7,6 +7,14 @@
       "repo": "pleaseai/claude-code-plugins",
       "enabled": true,
       "priority": 1
+    },
+    {
+      "name": "code-intelligence",
+      "description": "LSP plugins for 30+ languages from PleaseAI Code Intelligence",
+      "url": "https://raw.githubusercontent.com/pleaseai/code-intelligence/main/.claude-plugin/marketplace.json",
+      "repo": "pleaseai/code-intelligence",
+      "enabled": true,
+      "priority": 2
     }
   ]
 }

@@ -1,0 +1,22 @@
+{
+  "name": "mcp-neo4j",
+  "version": "1.0.0",
+  "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Mcp Neo4j",
+    "shortDescription": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
+    "longDescription": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
+    "developerName": "Community",
+    "category": "Database",
+    "capabilities": [
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Mcp Neo4j for my current task."
+    ]
+  },
+  "mcpServers": "./.mcp.json"
+}
