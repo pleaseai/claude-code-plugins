@@ -1,0 +1,33 @@
+plugins/graphify/hooks/hooks.json
+  s_2d7f0d3ca8bd1e::t_2035d54b47343a 1-17
+plugins/graphify/hooks/claude-md.md
+  s_2d7f0d3ca8bd1e::t_17b2baa14b59a4 1-9
+.claude-plugin/marketplace.json
+  s_2d7f0d3ca8bd1e::t_bdda4ab6e5923b 678-685
+plugins/graphify/hooks/context.sh
+  s_2d7f0d3ca8bd1e::t_4bd2d5dcc7a47d 1-25
+.agents/plugins/marketplace.json
+  s_2d7f0d3ca8bd1e::t_be531132a6098d 702-713
+plugins/graphify/hooks.json
+  s_2d7f0d3ca8bd1e::t_20abf0df696406 1-9,11-17
+  s_2d7f0d3ca8bd1e::t_ca90252c8637b2 10
+plugins/graphify/.codex-plugin/plugin.json
+  s_2d7f0d3ca8bd1e::t_7374e57f2b5e31 36
+  s_2d7f0d3ca8bd1e::t_8c5486743a82ad 1-35,37
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "0bd0cb862543b49d198dee419b05b7d8576895b8",
+  "prompts": {},
+  "sessions": {
+    "s_2d7f0d3ca8bd1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e9e88c6-e294-429d-8e31-c6d809a1ada0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
