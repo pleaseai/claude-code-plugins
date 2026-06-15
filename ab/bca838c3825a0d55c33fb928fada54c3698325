@@ -1,0 +1,19 @@
+plugins/graphify/hooks/context.sh
+  s_2d7f0d3ca8bd1e::t_62d69f773f0652 11-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "abbca838c3825a0d55c33fb928fada54c3698325",
+  "prompts": {},
+  "sessions": {
+    "s_2d7f0d3ca8bd1e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7e9e88c6-e294-429d-8e31-c6d809a1ada0",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
