@@ -1,0 +1,40 @@
+plugins/codegraph/skills/codegraph/SKILL.md
+  s_f911fa6ec43ab1::t_40c3e6436d10a4 1-14,19,28-36,40,46-49,52-54
+  s_f911fa6ec43ab1::t_a15a66dac1fd61 15-18,20-27,37-39,41-45,50-51
+plugins/codegraph/mcp_config.json
+  s_f911fa6ec43ab1::t_6e10df86072883 1-14
+plugins/codegraph/hooks.json
+  s_f911fa6ec43ab1::t_adec189007519c 1-17
+plugins/codegraph/.mcp.json
+  s_f911fa6ec43ab1::t_6e10df86072883 1-14
+.claude-plugin/marketplace.json
+  s_f911fa6ec43ab1::t_88d60380bc8da0 102-108
+plugins/codegraph/.claude-plugin/plugin.json
+  s_f911fa6ec43ab1::t_8e1d2580e82e1f 1-20
+plugins/codegraph/hooks/hooks.json
+  s_f911fa6ec43ab1::t_b37b8be56b3db8 1-17
+plugins/codegraph/hooks/context.sh
+  s_f911fa6ec43ab1::t_be2e3eca9e5938 1-22
+plugins/codegraph/.codex-plugin/plugin.json
+  s_f911fa6ec43ab1::t_6e10df86072883 1-34
+plugins/codegraph/plugin.json
+  s_f911fa6ec43ab1::t_6e10df86072883 1-19
+.agents/plugins/marketplace.json
+  s_f911fa6ec43ab1::t_6e10df86072883 20-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "54ca77229d85939c00f7094d1aae34860a4a4323",
+  "prompts": {},
+  "sessions": {
+    "s_f911fa6ec43ab1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cd3de610-0f61-404a-b8c5-95f516d4b889",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
