@@ -39,9 +39,10 @@ you need to understand or locate code:
    `codegraph_callers` / `codegraph_callees`.
 3. Before refactoring or renaming, run `codegraph_impact` to find everything affected.
 4. If the MCP tools are listed but deferred, load them by name via tool search.
-5. **Shell fallback (always works):** `codegraph explore "<symbols or question>"`
-   and `codegraph node <symbol-or-file>` print the same output as the MCP tools —
-   useful for subagents or harnesses without an MCP client.
+5. **Shell fallback (no MCP client needed):** `npx -y @colbymchenry/codegraph explore "<symbols or question>"`
+   and `npx -y @colbymchenry/codegraph node <symbol-or-file>` print the same output as
+   the MCP tools — portable even without a global `codegraph` install (drop the
+   `npx -y @colbymchenry/` prefix if the CLI is on your PATH).
 6. If a tool response shows a `⚠️` staleness banner naming a file, `Read` that file
    directly for live content — it was edited within the sync debounce window.
 
