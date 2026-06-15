@@ -1,0 +1,22 @@
+plugins/codegraph/hooks/context.sh
+  s_f911fa6ec43ab1::t_88e50a185f39e4 11-28
+  s_f911fa6ec43ab1::t_00ad60e9ab7b34 38
+plugins/codegraph/skills/codegraph/SKILL.md
+  s_f911fa6ec43ab1::t_ed8145d5aefa06 42-45
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "bf1b5295a20a7987dbe7a1603ead9a59abccca6f",
+  "prompts": {},
+  "sessions": {
+    "s_f911fa6ec43ab1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "cd3de610-0f61-404a-b8c5-95f516d4b889",
+        "model": "unknown"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
