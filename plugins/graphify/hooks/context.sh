@@ -8,7 +8,11 @@ if [ ! -f "graphify-out/graph.json" ]; then
   exit 0
 fi
 
-CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT}/hooks/claude-md.md"
+# Resolve the plugin root from CLAUDE_PLUGIN_ROOT, falling back to this script's
+# own location when the runtime does not set it (e.g. Antigravity). Without the
+# fallback, `set -u` would abort here with "unbound variable".
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONTEXT_FILE="${CLAUDE_PLUGIN_ROOT:-$SCRIPT_DIR/..}/hooks/claude-md.md"
 [ -f "$CONTEXT_FILE" ] || exit 0
 CONTEXT_CONTENT=$(cat "$CONTEXT_FILE")
 
