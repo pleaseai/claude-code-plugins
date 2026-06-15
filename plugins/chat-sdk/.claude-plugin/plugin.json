@@ -1,6 +1,6 @@
 {
   "name": "chat-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear",
   "license": "MIT",
   "author": {

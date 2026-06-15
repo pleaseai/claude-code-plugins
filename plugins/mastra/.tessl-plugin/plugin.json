@@ -1,7 +1,7 @@
 {
   "name": "pleaseai/mastra",
   "description": "Official agent skills for coding agents working with the Mastra AI framework",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "author": {
     "name": "Mastra AI",
     "url": "https://github.com/mastra-ai"
