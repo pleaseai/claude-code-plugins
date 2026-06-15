@@ -5,7 +5,7 @@
       "source": "prisma/skills",
       "sourceType": "github",
       "skillPath": "prisma-cli/SKILL.md",
-      "computedHash": "b9d9314e3716af725997843c5026ba0e258fb2d27a986190bf2ad53be67b72b9"
+      "computedHash": "1cfdc0011df8699a2ece587f229a1e892df2a9a3eec40b5407492cb4c6570e95"
     },
     "prisma-client-api": {
       "source": "prisma/skills",
