@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/check-vue-components.sh",
+            "command": "bash ./hooks/check-vue-components.sh",
             "timeout": 5
           }
         ]

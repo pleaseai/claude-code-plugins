@@ -675,6 +675,14 @@
       "keywords": ["skillopt", "sleep", "self-improvement", "memory-consolidation", "skills", "continual-learning"],
       "tags": ["productivity", "skills", "hooks"],
       "source": "./plugins/skillopt-sleep"
+    },
+    {
+      "name": "graphify",
+      "description": "Turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph with community detection, query/path/explain tools, and an honest audit trail",
+      "category": "tooling",
+      "keywords": ["graphify", "knowledge-graph", "graphrag", "codebase", "code-understanding", "ast", "community-detection"],
+      "tags": ["skills", "knowledge-graph"],
+      "source": "./plugins/graphify"
     }
   ]
 }

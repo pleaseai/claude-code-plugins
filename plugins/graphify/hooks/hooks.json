@@ -1,5 +1,5 @@
 {
-  "description": "Load ast-grep usage instructions at session start",
+  "description": "Load graphify usage rules at session start when the project has a knowledge graph (graphify-out/graph.json)",
   "hooks": {
     "SessionStart": [
       {
@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "./hooks/context.sh",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
             "timeout": 10
           }
         ]

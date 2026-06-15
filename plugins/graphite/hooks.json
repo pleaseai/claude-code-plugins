@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/graphite-context.sh",
+            "command": "bash ./hooks/graphite-context.sh",
             "timeout": 5
           }
         ]
