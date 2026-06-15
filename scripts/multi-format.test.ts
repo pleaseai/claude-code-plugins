@@ -1,4 +1,4 @@
-import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 import { afterEach, beforeEach, describe, expect, test } from "vitest"
@@ -340,7 +340,41 @@ describe("generateForPlugin", () => {
     mkdirSync(join(tempDir, "hooks"))
     writeFileSync(join(tempDir, "hooks", "hooks.json"), '{"hooks":{}}')
     const result = generateForPlugin(tempDir, undefined)
-    expect(result.written.some(p => p.endsWith("/hooks.json") && !p.includes("/hooks/"))).toBe(true)
+    expect(result.written.some(p => p.endsWith("/hooks.json") && p.includes("/hooks/") === false && p.includes(".codex-plugin") === false)).toBe(true)
+  })
+
+  test("rewrites CLAUDE_PLUGIN_ROOT to relative path in Antigravity hooks", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    mkdirSync(join(tempDir, "hooks"))
+    writeFileSync(
+      join(tempDir, "hooks", "hooks.json"),
+      '{"hooks":{"SessionStart":[{"hooks":[{"type":"command","command":"${CLAUDE_PLUGIN_ROOT}/hooks/context.sh"}]}]}}',
+    )
+    generateForPlugin(tempDir, undefined)
+    const content = readFileSync(join(tempDir, "hooks.json"), "utf-8")
+    expect(content).toContain('"./hooks/context.sh"')
+    expect(content).not.toContain("CLAUDE_PLUGIN_ROOT")
+  })
+
+  test("does not emit a Codex hooks file (Codex auto-loads hooks/hooks.json via back-compat alias)", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    mkdirSync(join(tempDir, "hooks"))
+    writeFileSync(
+      join(tempDir, "hooks", "hooks.json"),
+      '{"hooks":{"SessionStart":[{"hooks":[{"type":"command","command":"${CLAUDE_PLUGIN_ROOT}/hooks/context.sh"}]}]}}',
+    )
+    generateForPlugin(tempDir, undefined)
+    expect(existsSync(join(tempDir, ".codex-plugin", "hooks.json"))).toBe(false)
+    const codexManifest = JSON.parse(readFileSync(join(tempDir, ".codex-plugin", "plugin.json"), "utf-8"))
+    expect(codexManifest.hooks).toBeUndefined()
+  })
+
+  test("removes a stale .codex-plugin/hooks.json left by an earlier generator", () => {
+    writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
+    mkdirSync(join(tempDir, ".codex-plugin"), { recursive: true })
+    writeFileSync(join(tempDir, ".codex-plugin", "hooks.json"), '{"hooks":{}}')
+    generateForPlugin(tempDir, undefined)
+    expect(existsSync(join(tempDir, ".codex-plugin", "hooks.json"))).toBe(false)
   })
 })
 

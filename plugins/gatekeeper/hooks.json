@@ -7,7 +7,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node ${CLAUDE_PLUGIN_ROOT}/dist/pre-tool-use.js",
+            "command": "node ./dist/pre-tool-use.js",
             "timeout": 5
           }
         ]

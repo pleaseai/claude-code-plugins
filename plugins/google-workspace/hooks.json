@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
+            "command": "./hooks/context.sh",
             "timeout": 10
           }
         ]

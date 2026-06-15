@@ -19,7 +19,8 @@ import { dirname, join } from "node:path"
  *
  *   Claude → Codex
  *     - `mcpServers` inline → written to `.mcp.json`, manifest field becomes "./.mcp.json"
- *     - `hooks` field is dropped (Codex validation rejects it; hooks/ dir still works)
+ *     - `hooks` field is dropped; Codex auto-loads the shared `hooks/hooks.json` and
+ *       resolves `${CLAUDE_PLUGIN_ROOT}` via a documented back-compat alias
  *     - `interface` block synthesised from marketplace entry (displayName/category/etc.)
  *
  *   Claude → Antigravity
@@ -380,11 +381,23 @@ export function generateForPlugin(
 
   const result: GenerateResult = { pluginDir, written: [], skipped: [] }
 
-  // 1. Codex manifest
+  const claudeHooksPath = join(pluginDir, "hooks", "hooks.json")
+  const hasHooks = existsSync(claudeHooksPath)
+
+  // 1. Codex manifest.
+  // No hooks handling needed: Codex auto-loads `hooks/hooks.json` by default and
+  // resolves `${CLAUDE_PLUGIN_ROOT}` via a documented back-compat alias, so the
+  // shared Claude hook file works as-is. (A stray `.codex-plugin/hooks.json` from
+  // an earlier generator is cleaned up if present.)
   const codex = toCodexManifest(claude, marketplaceEntry)
   const codexPath = join(pluginDir, ".codex-plugin", "plugin.json")
   if (writeIfChanged(codexPath, stringify(codex))) result.written.push(codexPath)
   else result.skipped.push(codexPath)
+  const staleCodexHooks = join(pluginDir, ".codex-plugin", "hooks.json")
+  if (existsSync(staleCodexHooks)) {
+    rmSync(staleCodexHooks)
+    result.written.push(`${staleCodexHooks} (removed: Codex uses default hooks/hooks.json)`)
+  }
 
   // 2. Antigravity manifest (root-level plugin.json)
   // If the Claude manifest already lives at root, skip — that file IS the manifest
@@ -421,11 +434,14 @@ export function generateForPlugin(
   }
 
   // 4. Antigravity expects hooks.json at root if hooks exist.
-  // Mirror the Claude hooks/hooks.json content (same schema works).
-  const claudeHooksPath = join(pluginDir, "hooks", "hooks.json")
-  if (existsSync(claudeHooksPath)) {
+  // Mirror the Claude hooks/hooks.json content (same schema works), but rewrite
+  // `${CLAUDE_PLUGIN_ROOT}` to a plugin-root-relative path — Antigravity resolves
+  // hook commands relative to the plugin directory and does not expand that var.
+  if (hasHooks) {
     const antigravityHooksPath = join(pluginDir, "hooks.json")
     const hooksContent = readFileSync(claudeHooksPath, "utf-8")
+      .replace(/\$\{CLAUDE_PLUGIN_ROOT\}\//g, "./")
+      .replace(/\$\{CLAUDE_PLUGIN_ROOT\}/g, ".")
     if (writeIfChanged(antigravityHooksPath, hooksContent)) result.written.push(antigravityHooksPath)
     else result.skipped.push(antigravityHooksPath)
   }

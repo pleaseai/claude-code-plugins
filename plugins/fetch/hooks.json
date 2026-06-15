@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/webfetch-fallback.sh",
+            "command": "./hooks/webfetch-fallback.sh",
             "timeout": 5
           }
         ]
