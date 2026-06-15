@@ -17,6 +17,18 @@
       "category": "Database"
     },
     {
+      "name": "codegraph",
+      "source": {
+        "source": "local",
+        "path": "./plugins/codegraph"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "nuxt-ui",
       "source": {
         "source": "local",

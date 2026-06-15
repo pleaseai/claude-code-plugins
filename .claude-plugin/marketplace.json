@@ -99,6 +99,14 @@
       "source": "./plugins/neo4j"
     },
     {
+      "name": "codegraph",
+      "description": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files",
+      "category": "development",
+      "keywords": ["code-intelligence", "knowledge-graph", "code-navigation", "semantic-search"],
+      "tags": ["mcp", "code-intelligence"],
+      "source": "./plugins/codegraph"
+    },
+    {
       "name": "chrome-devtools-mcp",
       "description": "Control and inspect a live Chrome browser through MCP - automate actions, debug, and analyze performance using Chrome DevTools",
       "category": "browser",

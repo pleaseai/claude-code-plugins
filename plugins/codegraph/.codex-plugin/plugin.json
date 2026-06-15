@@ -1,0 +1,34 @@
+{
+  "name": "codegraph",
+  "version": "1.0.1",
+  "description": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files",
+  "author": {
+    "name": "Colby McHenry",
+    "url": "https://github.com/colbymchenry"
+  },
+  "interface": {
+    "displayName": "Codegraph",
+    "shortDescription": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files",
+    "longDescription": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files",
+    "developerName": "Colby McHenry",
+    "category": "Development",
+    "capabilities": [
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Codegraph for my current task."
+    ],
+    "websiteURL": "https://github.com/colbymchenry/codegraph"
+  },
+  "homepage": "https://github.com/colbymchenry/codegraph",
+  "repository": "https://github.com/colbymchenry/codegraph",
+  "license": "MIT",
+  "keywords": [
+    "code-intelligence",
+    "knowledge-graph",
+    "code-navigation",
+    "semantic-search",
+    "local-first"
+  ],
+  "mcpServers": "./.mcp.json"
+}

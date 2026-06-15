@@ -1,0 +1,17 @@
+{
+  "description": "Inject CodeGraph navigation guidance at session start when the repo is indexed (a .codegraph/ directory exists)",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "${CLAUDE_PLUGIN_ROOT}/hooks/context.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  }
+}
