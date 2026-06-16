@@ -1,0 +1,257 @@
+plugins/playwright-cli/.claude-plugin/plugin.json
+  s_57a011678610d0::t_1a17584e4ca210 1-14
+plugins/google-workspace/.agents/skills/gws-gmail/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-61
+plugins/google-workspace/.agents/skills/persona-customer-support/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-39
+plugins/google-workspace/.agents/skills/gws-keep/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-49
+plugins/google-workspace/.agents/skills/gws-classroom/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-76
+plugins/google-workspace/.agents/skills/recipe-create-gmail-filter/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.codex-plugin/plugin.json
+  s_57a011678610d0::t_5a7c5962a9e0f6 2,10,19,27-32
+plugins/google-workspace/.agents/skills/recipe-post-mortem-setup/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-29
+plugins/google-workspace/.agents/skills/recipe-email-drive-link/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/gws-chat-send/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-50
+plugins/google-workspace/.agents/skills/persona-sales-ops/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-40
+plugins/google-workspace/.agents/skills/recipe-block-focus-time/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-26
+plugins/playwright-cli/.agents/skills/playwright-cli/references/request-mocking.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-87
+plugins/google-workspace/.agents/skills/persona-team-lead/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-42
+plugins/web-design/.claude-plugin/plugin.json
+  s_57a011678610d0::t_1f1e8bfde30840 17-18
+plugins/google-workspace/.agents/skills/recipe-create-doc-from-template/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-32
+plugins/google-workspace/.agents/skills/gws-gmail-send/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-67
+plugins/google-workspace/.agents/skills/recipe-share-event-materials/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-share-folder-with-team/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-draft-email-from-doc/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/playwright-cli/.agents/skills/playwright-cli/references/running-code.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-232
+plugins/google-workspace/.agents/skills/persona-exec-assistant/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-40
+plugins/playwright-cli/skills-lock.json
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-11
+plugins/google-workspace/.agents/skills/recipe-watch-drive-changes/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-sheets-append/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-55
+plugins/google-workspace/plugin.json
+  s_57a011678610d0::t_5a7c5962a9e0f6 2,13-18
+plugins/google-workspace/.agents/skills/recipe-generate-report-from-sheet/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-38
+plugins/google-workspace/.agents/skills/recipe-create-presentation/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-send-team-announcement/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-modelarmor-create-template/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-54
+plugins/google-workspace/.agents/skills/gws-forms/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-46
+plugins/google-workspace/.agents/skills/persona-hr-coordinator/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-38
+plugins/google-workspace/.agents/skills/recipe-label-and-archive-emails/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/web-design/skills-lock.json
+  s_57a011678610d0::t_0f73de4556e697 1-11
+plugins/google-workspace/.agents/skills/persona-researcher/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-38
+plugins/google-workspace/.agents/skills/recipe-copy-sheet-for-new-month/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-batch-invite-to-event/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-sheets-read/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-48
+plugins/google-workspace/.agents/skills/recipe-create-expense-tracker/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-29
+plugins/playwright-cli/.agents/skills/playwright-cli/SKILL.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-278
+plugins/google-workspace/.agents/skills/recipe-bulk-download-folder/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-chat/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-75
+plugins/google-workspace/.agents/skills/recipe-forward-labeled-emails/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-29
+plugins/google-workspace/.agents/skills/recipe-schedule-recurring-event/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-26
+plugins/google-workspace/.agents/skills/gws-gmail-watch/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-59
+plugins/google-workspace/.agents/skills/persona-content-creator/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-39
+plugins/google-workspace/.agents/skills/gws-shared/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-82
+plugins/google-workspace/.agents/skills/recipe-log-deal-update/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/playwright-cli/.agents/skills/playwright-cli/references/test-generation.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-88
+plugins/google-workspace/.agents/skills/recipe-review-meet-participants/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+scripts/meta.ts
+  s_57a011678610d0::t_34ff9e8258303a 49
+  s_57a011678610d0::t_46bf56783cc1ef 80
+plugins/google-workspace/.agents/skills/gws-events-renew/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-49
+plugins/google-workspace/.agents/skills/gws-people/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-68
+ARCHITECTURE.md
+  s_57a011678610d0::t_c68f8a53babd9a 86
+  s_57a011678610d0::t_b16b4997fbb7ee 131-132
+plugins/google-workspace/.agents/skills/gws-tasks/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-57
+plugins/playwright-cli/plugin.json
+  s_57a011678610d0::t_5a7c5962a9e0f6 1-21
+plugins/google-workspace/.agents/skills/gws-sheets/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-54
+plugins/google-workspace/.agents/skills/gws-modelarmor/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-43
+plugins/google-workspace/.agents/skills/recipe-create-task-list/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/gws-workflow-meeting-prep/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-48
+plugins/google-workspace/.agents/skills/gws-gmail-reply/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-66
+plugins/google-workspace/.agents/skills/persona-project-manager/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-41
+plugins/google-workspace/.agents/skills/gws-gmail-read/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-52
+plugins/playwright-cli/.agents/skills/playwright-cli/references/video-recording.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-43
+plugins/google-workspace/.agents/skills/gws-script/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-62
+plugins/google-workspace/.agents/skills/gws-drive-upload/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-53
+plugins/playwright-cli/.codex-plugin/plugin.json
+  s_57a011678610d0::t_5a7c5962a9e0f6 1-35
+plugins/playwright-cli/.agents/skills/playwright-cli/references/storage-state.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-275
+release-please-config.json
+  s_57a011678610d0::t_73eaac15f6ea72 841-851
+plugins/google-workspace/.agents/skills/gws-docs-write/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-50
+plugins/google-workspace/.agents/skills/recipe-plan-weekly-schedule/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/gws-modelarmor-sanitize-prompt/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-49
+plugins/google-workspace/.agents/skills/gws-gmail-triage/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-51
+plugins/google-workspace/.agents/skills/persona-event-coordinator/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-41
+plugins/google-workspace/.agents/skills/gws-drive/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-138
+plugins/google-workspace/.agents/skills/gws-calendar/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-109
+.agents/plugins/marketplace.json
+  s_57a011678610d0::t_5a7c5962a9e0f6 260-270
+plugins/google-workspace/.claude-plugin/plugin.json
+  s_57a011678610d0::t_92b419e1255123 2,12-13
+.claude-plugin/marketplace.json
+  s_57a011678610d0::t_cbe6cd0a99b68e 278
+plugins/google-workspace/.agents/skills/gws-gmail-forward/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-69
+plugins/google-workspace/.agents/skills/recipe-backup-sheet-as-csv/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-create-meet-space/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-save-email-attachments/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-29
+plugins/google-workspace/.agents/skills/gws-slides/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-44
+plugins/google-workspace/.agents/skills/gws-calendar-agenda/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-56
+plugins/google-workspace/.agents/skills/gws-calendar-insert/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-58
+plugins/google-workspace/.agents/skills/gws-meet/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-53
+plugins/google-workspace/.agents/skills/gws-modelarmor-sanitize-response/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-49
+plugins/google-workspace/.agents/skills/gws-workflow-weekly-digest/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-47
+plugins/google-workspace/.agents/skills/recipe-share-doc-and-notify/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-29
+plugins/google-workspace/.agents/skills/gws-gmail-reply-all/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-69
+plugins/google-workspace/.agents/skills/recipe-compare-sheet-tabs/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-create-feedback-form/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-organize-drive-folder/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-find-large-files/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-26
+plugins/google-workspace/.agents/skills/gws-workflow/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-45
+plugins/google-workspace/.agents/skills/recipe-find-free-time/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-docs/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-49
+plugins/google-workspace/.agents/skills/recipe-reschedule-meeting/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-sync-contacts-to-sheet/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-28
+plugins/google-workspace/.agents/skills/recipe-review-overdue-tasks/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-workflow-email-to-task/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-48
+plugins/google-workspace/.agents/skills/recipe-create-shared-drive/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-create-events-from-sheet/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-events/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-68
+plugins/google-workspace/.agents/skills/persona-it-admin/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-34
+plugins/google-workspace/.agents/skills/gws-events-subscribe/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-60
+plugins/google-workspace/.agents/skills/recipe-collect-form-responses/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/gws-workflow-standup-report/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-47
+plugins/web-design/.agents/skills/web-design-guidelines/SKILL.md
+  s_57a011678610d0::t_0f73de4556e697 1-39
+plugins/google-workspace/.agents/skills/recipe-create-classroom-course/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/.agents/skills/recipe-create-vacation-responder/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-27
+plugins/google-workspace/skills-lock.json
+  s_57a011678610d0::t_be6f2295db1854 1-575
+plugins/google-workspace/.agents/skills/gws-script-push/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-52
+plugins/google-workspace/.agents/skills/gws-admin-reports/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-58
+plugins/playwright-cli/.agents/skills/playwright-cli/references/session-management.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-169
+plugins/google-workspace/.agents/skills/recipe-save-email-to-doc/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-32
+plugins/google-workspace/.agents/skills/gws-workflow-file-announce/SKILL.md
+  s_57a011678610d0::t_be6f2295db1854 1-51
+plugins/playwright-cli/.agents/skills/playwright-cli/references/tracing.md
+  s_57a011678610d0::t_1f7a82a6ffa84a 1-139
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "0d1472c20926a84653e0e6fbeffaf954a1df573b",
+  "prompts": {},
+  "sessions": {
+    "s_57a011678610d0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2e83567-b106-4c3c-a46d-dc55ebf05d71",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
