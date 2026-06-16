@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.2.0...skillopt-sleep-v0.3.0) (2026-06-15)
+
+
+### Features
+
+* **graphify:** add graphify knowledge-graph plugin ([#211](https://github.com/pleaseai/claude-code-plugins/issues/211)) ([b6470b3](https://github.com/pleaseai/claude-code-plugins/commit/b6470b39edb377d36f76c4e9a31a7053dc96d657))
+
 ## [0.2.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.1.0...skillopt-sleep-v0.2.0) (2026-06-09)
 
 

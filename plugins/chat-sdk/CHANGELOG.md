@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/pleaseai/claude-code-plugins/compare/chat-sdk-v1.1.1...chat-sdk-v1.1.2) (2026-06-15)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#209](https://github.com/pleaseai/claude-code-plugins/issues/209)) ([2007e59](https://github.com/pleaseai/claude-code-plugins/commit/2007e59c04dfd5f701fac19cbeab9d67e88225d6))
+
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/chat-sdk-v1.1.0...chat-sdk-v1.1.1) (2026-06-09)
 
 

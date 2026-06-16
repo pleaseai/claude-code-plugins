@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.1.1...ast-grep-v1.2.0) (2026-06-15)
+
+
+### Features
+
+* **graphify:** add graphify knowledge-graph plugin ([#211](https://github.com/pleaseai/claude-code-plugins/issues/211)) ([b6470b3](https://github.com/pleaseai/claude-code-plugins/commit/b6470b39edb377d36f76c4e9a31a7053dc96d657))
+
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.1.0...ast-grep-v1.1.1) (2026-06-09)
 
 

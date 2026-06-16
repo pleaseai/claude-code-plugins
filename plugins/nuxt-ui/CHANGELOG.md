@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.4.1...nuxt-ui-v1.5.0) (2026-06-15)
+
+
+### Features
+
+* **graphify:** add graphify knowledge-graph plugin ([#211](https://github.com/pleaseai/claude-code-plugins/issues/211)) ([b6470b3](https://github.com/pleaseai/claude-code-plugins/commit/b6470b39edb377d36f76c4e9a31a7053dc96d657))
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#209](https://github.com/pleaseai/claude-code-plugins/issues/209)) ([2007e59](https://github.com/pleaseai/claude-code-plugins/commit/2007e59c04dfd5f701fac19cbeab9d67e88225d6))
+
 ## [1.4.1](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-ui-v1.4.0...nuxt-ui-v1.4.1) (2026-06-09)
 
 
