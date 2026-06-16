@@ -22,21 +22,3 @@
 [submodule "external-plugins/grafana"]
 	path = external-plugins/grafana
 	url = git@github.com:amondnet/mcp-grafana.git
-[submodule "external-plugins/chrome-devtools-mcp"]
-	path = external-plugins/chrome-devtools-mcp
-	url = git@github.com:pleaseai/chrome-devtools-mcp.git
-[submodule "external-plugins/open-aware"]
-	path = external-plugins/open-aware
-	url = git@github.com:amondnet/open-aware.git
-[submodule "external-plugins/playwright-cli"]
-	path = external-plugins/playwright-cli
-	url = git@github.com:pleaseai/playwright-cli.git
-[submodule "vendor/web-design-guidelines"]
-	path = vendor/web-design-guidelines
-	url = https://github.com/vercel-labs/agent-skills
-[submodule "external-plugins/google-workspace"]
-	path = external-plugins/google-workspace
-	url = https://github.com/googleworkspace/cli
-[submodule "external-plugins/revenuecat"]
-	path = external-plugins/revenuecat
-	url = https://github.com/RevenueCat/rc-claude-code-plugin.git

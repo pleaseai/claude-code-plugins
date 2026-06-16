@@ -25,7 +25,6 @@ const PLUGINS_DIR = join(ROOT, "plugins")
 // ---------------------------------------------------------------------------
 export const SKILL_TO_PLUGIN: Record<string, string> = {
   // Type 2: vendor submodules
-  "web-design-guidelines": "web-design",
 }
 
 // ---------------------------------------------------------------------------

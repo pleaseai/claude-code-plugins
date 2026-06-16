@@ -359,21 +359,6 @@
           "type": "json",
           "path": ".claude-plugin/plugin.json",
           "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": ".codex-plugin/plugin.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": "plugin.json",
-          "jsonpath": "$.version"
-        },
-        {
-          "type": "json",
-          "path": ".tessl-plugin/plugin.json",
-          "jsonpath": "$.version"
         }
       ]
     },
@@ -850,6 +835,17 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/playwright-cli": {
+      "release-type": "simple",
+      "component": "playwright-cli",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]

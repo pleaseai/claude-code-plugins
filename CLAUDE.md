@@ -24,7 +24,6 @@ claude-code-plugins/
 │   ├── firebase/              # Firebase integration
 │   ├── postgres/              # PostgreSQL MCP server
 │   ├── grafana/               # Grafana integration
-│   ├── chrome-devtools-mcp/   # Chrome DevTools automation
 │   └── context7/              # Up-to-date library documentation
 ├── plugins/                    # Built-in plugins (manually maintained) AND auto-generated Type 4 output
 │   ├── gatekeeper/            # Auto-approve safe commands (manually maintained)
@@ -162,7 +161,6 @@ All plugins are maintained in separate repositories and included as git submodul
 - `external-plugins/firebase/` → https://github.com/pleaseai/firebase-plugin
 - `external-plugins/postgres/` → https://github.com/pleaseai/postgres-plugin
 - `external-plugins/grafana/` → https://github.com/amondnet/mcp-grafana
-- `external-plugins/chrome-devtools-mcp/` → https://github.com/pleaseai/chrome-devtools-mcp
 - `external-plugins/context7/` → https://github.com/pleaseai/context7
 
 ## Claude Code Plugin Development Guide

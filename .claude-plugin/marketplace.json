@@ -275,10 +275,7 @@
       "category": "development",
       "keywords": ["playwright", "browser", "automation", "testing"],
       "tags": ["tooling", "testing"],
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/playwright-cli"
-      }
+      "source": "./plugins/playwright-cli"
     },
     {
       "name": "mastra",
