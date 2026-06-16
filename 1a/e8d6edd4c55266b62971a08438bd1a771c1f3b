@@ -1,0 +1,22 @@
+ARCHITECTURE.md
+  s_57a011678610d0::t_b4861935afe740 131
+release-please-config.json
+  s_57a011678610d0::t_949eeadd33add0 362-371
+  s_57a011678610d0::t_f551715e82ae92 860-869
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "1ae8d6edd4c55266b62971a08438bd1a771c1f3b",
+  "prompts": {},
+  "sessions": {
+    "s_57a011678610d0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2e83567-b106-4c3c-a46d-dc55ebf05d71",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
