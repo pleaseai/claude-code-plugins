@@ -349,7 +349,14 @@ describe("checkUpdates", () => {
     const logSpy = vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
-    await checkUpdates()
+    // Inject a fixture vendor so checkUpdates has a submodule to report on
+    // (the real registries are intentionally empty). Restored in finally.
+    vendors.__test_behind__ = { source: "https://example.com/x.git", skills: { x: "x" } }
+    try {
+      await checkUpdates()
+    } finally {
+      delete vendors.__test_behind__
+    }
 
     const calls = logSpy.mock.calls.flat().join("\n")
     expect(calls).toContain("behind")
@@ -389,7 +396,14 @@ describe("cleanup", () => {
     vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
-    await cleanup()
+    // Inject a fixture skill→plugin mapping so cleanup scans a plugin's skills
+    // dir (the real SKILL_TO_PLUGIN is intentionally empty). Restored in finally.
+    SKILL_TO_PLUGIN.__test_stale__ = "web-design"
+    try {
+      await cleanup()
+    } finally {
+      delete SKILL_TO_PLUGIN.__test_stale__
+    }
 
     expect(rmSync).toHaveBeenCalledWith(
       expect.stringContaining("stale-unknown-skill"),
@@ -445,7 +459,14 @@ describe("initSubmodules", () => {
     vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
-    await initSubmodules()
+    // Inject a fixture vendor not yet in .gitmodules so initSubmodules adds it
+    // (the real registries are intentionally empty). Restored in finally.
+    vendors.__test_add__ = { source: "https://example.com/x.git", skills: { x: "x" } }
+    try {
+      await initSubmodules()
+    } finally {
+      delete vendors.__test_add__
+    }
 
     expect(execFileSync).toHaveBeenCalledWith(
       "git",
@@ -473,7 +494,14 @@ describe("syncSubmodules", () => {
     vi.spyOn(console, "log").mockImplementation(() => {})
     vi.spyOn(process.stdout, "write").mockImplementation(() => true)
 
-    await syncSubmodules()
+    // Inject a fixture vendor whose submodule dir does not exist so
+    // syncSubmodules warns (real registries are intentionally empty). Restored in finally.
+    vendors.__test_uninit__ = { source: "https://example.com/x.git", skills: { x: "x" } }
+    try {
+      await syncSubmodules()
+    } finally {
+      delete vendors.__test_uninit__
+    }
 
     expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining("not initialized"))
   })
