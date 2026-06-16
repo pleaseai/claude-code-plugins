@@ -128,7 +128,7 @@ Only `.claude-plugin/plugin.json` and the shared asset directories are hand-auth
 - **Type 1 (Generated)**: `vue`, `nuxt`, `vitest`, `vite`, etc. — skills generated from official documentation submodules via `/generate-skill`
 - **Type 2 (Vendor-synced)**: `slidev`, `vueuse`, `prisma`, `better-auth`, etc. — skills synced from upstream vendor skill repositories
 - **Type 3 (Manual copy)**: `antfu` — hand-written skills copied from `vendor/antfu-skills/`
-- **Type 4 (Extension-synced)**: auto-converted from Gemini CLI extensions in `external-plugins/` (none currently registered)
+- **Type 4 (Extension-synced)**: Gemini CLI extensions registered in the `extensions` map of `scripts/meta.ts` and auto-converted into `plugins/<name>/` (the `extensions` registry is currently empty — distinct from the standalone external-plugin submodules listed above, which are not Gemini-extension-synced)
 - **skills.sh-installed**: `playwright-cli`, `google-workspace` — skills installed via `bunx skills add` into `plugins/*/.agents/skills/`, tracked by `skills-lock.json`
 
 Files with a `SYNC.md` marker are auto-generated and will be overwritten on the next `bun run skills:sync`. Do not edit them manually.
