@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v2.1.0...graphite-v2.2.0) (2026-06-15)
+
+
+### Features
+
+* **graphify:** add graphify knowledge-graph plugin ([#211](https://github.com/pleaseai/claude-code-plugins/issues/211)) ([b6470b3](https://github.com/pleaseai/claude-code-plugins/commit/b6470b39edb377d36f76c4e9a31a7053dc96d657))
+
 ## [2.1.0](https://github.com/pleaseai/claude-code-plugins/compare/graphite-v2.0.0...graphite-v2.1.0) (2026-05-30)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "tsdown",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
   "author": {
     "name": "Rolldown Contributors",
