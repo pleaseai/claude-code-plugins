@@ -1,0 +1,22 @@
+scripts/cli.test.ts
+  s_57a011678610d0::t_794d5330753cc5 352-359
+  s_57a011678610d0::t_5d0f28e1a1ad7b 399-406
+  s_57a011678610d0::t_e0f1156dfb8702 497-504
+  s_57a011678610d0::t_0ff90f52579c19 462-469
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "61072eb29208b59dae3239d689382f820268bc7e",
+  "prompts": {},
+  "sessions": {
+    "s_57a011678610d0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2e83567-b106-4c3c-a46d-dc55ebf05d71",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
