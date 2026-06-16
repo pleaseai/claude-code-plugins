@@ -1,0 +1,121 @@
+plugins/fetch/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/portless/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/chat-sdk/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/markitdown/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/gatekeeper/package.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/tsdown/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/better-auth/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/mastra/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/gatekeeper/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/nuxt-ui/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/mastra/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/markitdown/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/mastra/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/please-plugins/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/graphite/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/skillopt-sleep/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/markitdown/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/ast-grep/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/ast-grep/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/fetch/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/portless/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/skillopt-sleep/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/skillopt-sleep/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/please-plugins/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/nuxt-ui/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-14
+plugins/better-auth/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/prisma/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/mastra/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/workflow/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/fetch/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+.release-please-manifest.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3,8,14,23-24,26-27,32,35-37,39,49-50,52,57
+plugins/prisma/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/graphite/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/please-plugins/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/markitdown/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/better-auth/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/markitdown/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/graphite/.codex-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/better-auth/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/chat-sdk/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/gatekeeper/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/graphite/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/skillopt-sleep/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/fetch/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/workflow/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/graphite/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/better-auth/CHANGELOG.md
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3-9
+plugins/please-plugins/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/please-plugins/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/fetch/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+plugins/mastra/.tessl-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 4
+plugins/tsdown/.claude-plugin/plugin.json
+  s_57a011678610d0::t_6b9ce4b96ab2b8 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "26c74f21e9dd0af189d2ea724a843ac7099ae95e",
+  "prompts": {},
+  "sessions": {
+    "s_57a011678610d0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d2e83567-b106-4c3c-a46d-dc55ebf05d71",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
