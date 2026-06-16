@@ -257,6 +257,18 @@
       "category": "Development"
     },
     {
+      "name": "playwright-cli",
+      "source": {
+        "source": "local",
+        "path": "./plugins/playwright-cli"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "mastra",
       "source": {
         "source": "local",

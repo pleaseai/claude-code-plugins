@@ -46,14 +46,7 @@ export const submodules: Record<string, string | SubmoduleMeta> = {}
  * Submodules are added at vendor/{name}/ in this repo.
  * Skills are synced automatically via `bun scripts/cli.ts sync`.
  */
-export const vendors: Record<string, VendorMeta> = {
-  "web-design-guidelines": {
-    source: "https://github.com/vercel-labs/agent-skills",
-    skills: {
-      "web-design-guidelines": "web-design-guidelines",
-    },
-  },
-}
+export const vendors: Record<string, VendorMeta> = {}
 
 /**
  * Type 3: Hand-written skills by Anthony Fu.
@@ -84,8 +77,4 @@ export interface ExtensionMeta {
  *   2. Run: bun scripts/cli.ts init
  *   3. Run: bun scripts/cli.ts sync
  */
-export const extensions: Record<string, ExtensionMeta> = {
-  "google-workspace": {
-    source: "https://github.com/googleworkspace/cli",
-  },
-}
+export const extensions: Record<string, ExtensionMeta> = {}
