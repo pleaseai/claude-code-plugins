@@ -622,12 +622,12 @@
       "source": "./plugins/graphite"
     },
     {
-      "name": "workflow",
+      "name": "workflow-sdk",
       "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
       "category": "development",
       "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
       "tags": ["framework", "workflow"],
-      "source": "./plugins/workflow"
+      "source": "./plugins/workflow-sdk"
     },
     {
       "name": "portless",

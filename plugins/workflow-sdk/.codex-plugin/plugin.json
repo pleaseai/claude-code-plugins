@@ -1,23 +1,27 @@
 {
-  "name": "workflow",
-  "version": "1.0.0",
+  "name": "workflow-sdk",
+  "version": "1.1.2",
   "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
   "author": {
-    "name": "Community"
+    "name": "Vercel Inc.",
+    "url": "https://vercel.com"
   },
   "interface": {
-    "displayName": "Workflow",
+    "displayName": "Workflow Sdk",
     "shortDescription": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
     "longDescription": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
-    "developerName": "Community",
+    "developerName": "Vercel Inc.",
     "category": "Development",
     "capabilities": [
       "Skill"
     ],
     "defaultPrompt": [
-      "Help me use Workflow for my current task."
-    ]
+      "Help me use Workflow Sdk for my current task."
+    ],
+    "websiteURL": "https://github.com/vercel/workflow"
   },
+  "homepage": "https://github.com/vercel/workflow",
+  "repository": "https://github.com/vercel/workflow",
   "license": "Apache-2.0",
   "keywords": [
     "workflow",

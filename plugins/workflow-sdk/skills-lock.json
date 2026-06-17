@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "migrating-to-workflow-sdk": {
+      "source": "vercel/workflow",
+      "sourceType": "github",
+      "skillPath": "skills/migrating-to-workflow-sdk/SKILL.md",
+      "computedHash": "f641182d7988667a46e1549943e3daa29faac412da8716828d99eee5f7b626cb"
+    },
+    "workflow": {
+      "source": "vercel/workflow",
+      "sourceType": "github",
+      "skillPath": "skills/workflow/SKILL.md",
+      "computedHash": "e785c74191f11d5590f400aadf3b6394bedae262d9e8ccb4e02388d0db257f6a"
+    },
+    "workflow-init": {
+      "source": "vercel/workflow",
+      "sourceType": "github",
+      "skillPath": "skills/workflow-init/SKILL.md",
+      "computedHash": "e74ed0468589670865a7dc1dcf4f8cd21c3dce164e5caa66d74c5800d70dfe68"
+    }
+  }
+}
