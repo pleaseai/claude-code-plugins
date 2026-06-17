@@ -697,6 +697,14 @@
       "keywords": ["graphify", "knowledge-graph", "graphrag", "codebase", "code-understanding", "ast", "community-detection"],
       "tags": ["skills", "knowledge-graph"],
       "source": "./plugins/graphify"
+    },
+    {
+      "name": "vercel-sandbox",
+      "description": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.",
+      "category": "tooling",
+      "keywords": ["vercel-sandbox", "sandbox", "microvm", "vercel", "isolated-execution"],
+      "tags": ["skills", "vercel"],
+      "source": "./plugins/vercel-sandbox"
     }
   ]
 }

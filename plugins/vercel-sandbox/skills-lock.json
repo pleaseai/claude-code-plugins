@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "sandbox": {
+      "source": "vercel/sandbox",
+      "sourceType": "github",
+      "skillPath": "skills/sandbox/SKILL.md",
+      "computedHash": "c9b363d95256945d2b7b5a4b9428621b614c89be3952465289938c52495900e3"
+    }
+  }
+}

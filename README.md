@@ -387,6 +387,12 @@ CLI tool for managing Google Workspace resources dynamically using Discovery API
 
 **Install:** `/plugin install google-workspace@pleaseai` | **Source:** [plugins/google-workspace](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/google-workspace)
 
+#### Vercel Sandbox
+
+Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.
+
+**Install:** `/plugin install vercel-sandbox@pleaseai` | **Source:** [plugins/vercel-sandbox](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vercel-sandbox)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
