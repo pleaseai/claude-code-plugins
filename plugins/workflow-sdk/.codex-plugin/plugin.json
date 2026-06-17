@@ -7,7 +7,7 @@
     "url": "https://vercel.com"
   },
   "interface": {
-    "displayName": "Workflow Sdk",
+    "displayName": "Workflow SDK",
     "shortDescription": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
     "longDescription": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
     "developerName": "Vercel Inc.",
@@ -16,7 +16,7 @@
       "Skill"
     ],
     "defaultPrompt": [
-      "Help me use Workflow Sdk for my current task."
+      "Help me use Workflow SDK for my current task."
     ],
     "websiteURL": "https://github.com/vercel/workflow"
   },

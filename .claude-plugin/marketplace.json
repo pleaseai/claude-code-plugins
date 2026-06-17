@@ -623,6 +623,7 @@
     },
     {
       "name": "workflow-sdk",
+      "displayName": "Workflow SDK",
       "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
       "category": "development",
       "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
