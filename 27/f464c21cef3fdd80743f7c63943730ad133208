@@ -1,0 +1,27 @@
+plugins/vercel-sandbox/plugin.json
+  s_16aa745bc0d419::t_ce24c7b0861768 1-19
+release-please-config.json
+  s_16aa745bc0d419::t_a5e3d91212d097 881-890
+.claude/rules/marketplace-sync.md
+  s_16aa745bc0d419::t_28bc6ee5885445 1-52
+.agents/plugins/marketplace.json
+  s_16aa745bc0d419::t_ce24c7b0861768 738-749
+plugins/vercel-sandbox/.codex-plugin/plugin.json
+  s_16aa745bc0d419::t_ce24c7b0861768 1-33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "27f464c21cef3fdd80743f7c63943730ad133208",
+  "prompts": {},
+  "sessions": {
+    "s_16aa745bc0d419": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "678fd0db-7958-47d1-8257-23cb23b0731c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
