@@ -1,0 +1,32 @@
+README.md
+  s_16aa745bc0d419::t_4ecacd5bcc7e5b 390-395
+plugins/vercel-sandbox/.claude-plugin/plugin.json
+  s_16aa745bc0d419::t_0ab6f5a42300df 5-10
+  s_16aa745bc0d419::t_870c19fd4d216c 1-4,11-14
+.release-please-manifest.json
+  s_16aa745bc0d419::t_3937451d6451c3 59-60
+release-please-config.json
+  s_16aa745bc0d419::t_ced0b2523f7827 872-882
+plugins/vercel-sandbox/.agents/skills/sandbox/SKILL.md
+  s_16aa745bc0d419::t_6ec76b308bc681 1-975
+plugins/vercel-sandbox/skills-lock.json
+  s_16aa745bc0d419::t_6ec76b308bc681 1-11
+.claude-plugin/marketplace.json
+  s_16aa745bc0d419::t_a2d6f4c1e10cf1 691-698
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "f681fbd075f1ec94dc09cd4a055a44bff267e5bc",
+  "prompts": {},
+  "sessions": {
+    "s_16aa745bc0d419": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "678fd0db-7958-47d1-8257-23cb23b0731c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
