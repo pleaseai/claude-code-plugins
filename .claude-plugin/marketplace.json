@@ -435,6 +435,15 @@
       "source": "./plugins/tosspayments"
     },
     {
+      "name": "port",
+      "description": "Port.io Internal Developer Portal integration. Manage your entire SDLC — blueprints, entities, scorecards, self-service actions, incidents, and DevOps requests — via the Port MCP server. Supports US and EU regions.",
+      "category": "tooling",
+      "keywords": ["port", "port.io", "idp", "internal-developer-portal", "platform-engineering", "sdlc", "devops", "scorecards"],
+      "tags": ["mcp", "platform"],
+      "source": "./plugins/port",
+      "homepage": "https://www.port.io"
+    },
+    {
       "name": "portone",
       "description": "포트원(PortOne) 결제 연동 코드 생성 및 검토 플러그인. V1/V2 API를 지원하며, MCP 서버를 통해 최신 문서와 예시 코드를 활용합니다.",
       "category": "development",

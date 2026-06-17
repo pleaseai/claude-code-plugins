@@ -509,6 +509,18 @@
       "category": "Development"
     },
     {
+      "name": "port",
+      "source": {
+        "source": "local",
+        "path": "./plugins/port"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
       "name": "portone",
       "source": {
         "source": "local",
