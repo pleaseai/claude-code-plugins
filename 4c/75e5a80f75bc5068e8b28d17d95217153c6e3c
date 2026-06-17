@@ -1,0 +1,21 @@
+plugins/workflow-sdk/.codex-plugin/plugin.json
+  s_6c0db8c2fc6552::t_d16cde8a6eca80 10,19
+.claude-plugin/marketplace.json
+  s_6c0db8c2fc6552::t_8cf527d85a976b 626
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "4c75e5a80f75bc5068e8b28d17d95217153c6e3c",
+  "prompts": {},
+  "sessions": {
+    "s_6c0db8c2fc6552": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8d54e440-979b-44ad-8474-9586c534d08b",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
