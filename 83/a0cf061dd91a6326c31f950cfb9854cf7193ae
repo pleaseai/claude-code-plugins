@@ -1,0 +1,35 @@
+.claude-plugin/marketplace.json
+  s_a29b2883a32abf::t_c526cb2c73b09e 438-445
+plugins/port/.codex-plugin/plugin.json
+  s_a29b2883a32abf::t_da818d78b23aff 1-38
+plugins/port/.claude-plugin/plugin.json
+  s_a29b2883a32abf::t_e6761f638c011a 1-33
+.agents/plugins/marketplace.json
+  s_a29b2883a32abf::t_da818d78b23aff 512-522
+plugins/port/skills/port/SKILL.md
+  s_a29b2883a32abf::t_ccd164497d8a3c 1-42
+plugins/port/.mcp.json
+  s_a29b2883a32abf::t_da818d78b23aff 1-12
+plugins/port/mcp_config.json
+  s_a29b2883a32abf::t_da818d78b23aff 1-12
+plugins/port/plugin.json
+  s_a29b2883a32abf::t_da818d78b23aff 1-23
+plugins/port/README.md
+  s_a29b2883a32abf::t_8dd62069304e74 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "83a0cf061dd91a6326c31f950cfb9854cf7193ae",
+  "prompts": {},
+  "sessions": {
+    "s_a29b2883a32abf": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "643491c4-d34c-4f34-8788-ec33c0cadaea",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
