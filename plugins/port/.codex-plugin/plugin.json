@@ -1,0 +1,38 @@
+{
+  "name": "port",
+  "version": "1.0.0",
+  "description": "Port.io Internal Developer Portal integration. Manage your entire SDLC — blueprints, entities, scorecards, self-service actions, incidents, and DevOps requests — via the Port MCP server. Supports both US and EU regions.",
+  "author": {
+    "name": "Port",
+    "url": "https://www.port.io"
+  },
+  "interface": {
+    "displayName": "Port",
+    "shortDescription": "Port.io Internal Developer Portal integration",
+    "longDescription": "Port.io Internal Developer Portal integration. Manage your entire SDLC — blueprints, entities, scorecards, self-service actions, incidents, and DevOps requests — via the Port MCP server. Supports both US and EU regions.",
+    "developerName": "Port",
+    "category": "Tooling",
+    "capabilities": [
+      "Tool"
+    ],
+    "defaultPrompt": [
+      "Use Port for my current task."
+    ],
+    "websiteURL": "https://www.port.io"
+  },
+  "homepage": "https://www.port.io",
+  "repository": "https://github.com/port-labs/port-mcp-server",
+  "license": "MIT",
+  "keywords": [
+    "port",
+    "port.io",
+    "idp",
+    "internal-developer-portal",
+    "platform-engineering",
+    "sdlc",
+    "devops",
+    "scorecards",
+    "mcp"
+  ],
+  "mcpServers": "./.mcp.json"
+}
