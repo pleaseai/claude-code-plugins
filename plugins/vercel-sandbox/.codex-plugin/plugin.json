@@ -1,0 +1,33 @@
+{
+  "name": "vercel-sandbox",
+  "version": "1.0.0",
+  "description": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.",
+  "author": {
+    "name": "Vercel Inc.",
+    "url": "https://github.com/vercel/sandbox"
+  },
+  "interface": {
+    "displayName": "Vercel Sandbox",
+    "shortDescription": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK",
+    "longDescription": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.",
+    "developerName": "Vercel Inc.",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Vercel Sandbox for my current task."
+    ],
+    "websiteURL": "https://vercel.com/docs/vercel-sandbox"
+  },
+  "homepage": "https://vercel.com/docs/vercel-sandbox",
+  "repository": "https://github.com/vercel/sandbox",
+  "license": "Apache-2.0",
+  "keywords": [
+    "vercel-sandbox",
+    "sandbox",
+    "microvm",
+    "vercel",
+    "isolated-execution"
+  ]
+}
