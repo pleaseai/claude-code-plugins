@@ -56,5 +56,6 @@
   "plugins/cubic": "1.0.0",
   "plugins/fetch": "1.1.0",
   "plugins/java-development": "1.0.0",
-  "plugins/mcp-dev": "1.0.0"
+  "plugins/mcp-dev": "1.0.0",
+  "plugins/vercel-sandbox": "1.0.0"
 }

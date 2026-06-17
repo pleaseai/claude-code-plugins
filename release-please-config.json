@@ -869,6 +869,17 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/vercel-sandbox": {
+      "release-type": "simple",
+      "component": "vercel-sandbox",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
