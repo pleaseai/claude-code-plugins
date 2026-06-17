@@ -314,10 +314,10 @@ A Git extension for tracking the AI-generated code in your repos.
 
 **Install:** `/plugin install git-ai@pleaseai` | **Source:** [plugins/git-ai](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/git-ai)
 
-#### Workflow
+#### Workflow SDK
 Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript.
 
-**Install:** `/plugin install workflow@pleaseai` | **Source:** [plugins/workflow](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/workflow)
+**Install:** `/plugin install workflow-sdk@pleaseai` | **Source:** [plugins/workflow-sdk](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/workflow-sdk)
 
 #### Portless
 Replace port numbers with stable, named local URLs. For humans and agents.
@@ -519,7 +519,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install react-native@pleaseai
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
-/plugin install workflow@pleaseai
+/plugin install workflow-sdk@pleaseai
 /plugin install portless@pleaseai
 /plugin install zod@pleaseai
 /plugin install bun@pleaseai

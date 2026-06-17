@@ -665,10 +665,10 @@
       "category": "Development"
     },
     {
-      "name": "workflow",
+      "name": "workflow-sdk",
       "source": {
         "source": "local",
-        "path": "./plugins/workflow"
+        "path": "./plugins/workflow-sdk"
       },
       "policy": {
         "installation": "AVAILABLE",
