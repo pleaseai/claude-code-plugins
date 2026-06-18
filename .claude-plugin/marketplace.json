@@ -706,6 +706,14 @@
       "keywords": ["vercel-sandbox", "sandbox", "microvm", "vercel", "isolated-execution"],
       "tags": ["skills", "vercel"],
       "source": "./plugins/vercel-sandbox"
+    },
+    {
+      "name": "eve",
+      "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals.",
+      "category": "tooling",
+      "keywords": ["eve", "agents", "ai-agents", "backend", "vercel", "framework"],
+      "tags": ["skills", "vercel"],
+      "source": "./plugins/eve"
     }
   ]
 }
