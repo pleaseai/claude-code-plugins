@@ -759,6 +759,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Tooling"
+    },
+    {
+      "name": "eve",
+      "source": {
+        "source": "local",
+        "path": "./plugins/eve"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
     }
   ]
 }

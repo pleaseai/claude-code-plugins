@@ -1,0 +1,14 @@
+{
+  "name": "eve",
+  "version": "1.0.0",
+  "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals.",
+  "author": {
+    "name": "Vercel Inc.",
+    "url": "https://github.com/vercel/eve"
+  },
+  "homepage": "https://github.com/vercel/eve",
+  "repository": "https://github.com/vercel/eve",
+  "license": "Apache-2.0",
+  "keywords": ["eve", "agents", "ai-agents", "backend", "vercel", "framework"],
+  "skills": "./.agents/skills/"
+}

@@ -393,6 +393,12 @@ Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code
 
 **Install:** `/plugin install vercel-sandbox@pleaseai` | **Source:** [plugins/vercel-sandbox](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/vercel-sandbox)
 
+#### eve
+
+Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals.
+
+**Install:** `/plugin install eve@pleaseai` | **Source:** [plugins/eve](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/eve)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
