@@ -1,0 +1,29 @@
+plugins/tsdown/.agents/skills/tsdown-migrate/README.md
+  s_9562c6fc5b770b::t_7bfd02faad594c 1-69
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-package-json.md
+  s_9562c6fc5b770b::t_7bfd02faad594c 1-92
+plugins/tsdown/.agents/skills/tsdown-migrate/SKILL.md
+  s_9562c6fc5b770b::t_7bfd02faad594c 1-254
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-differences-detailed.md
+  s_9562c6fc5b770b::t_7bfd02faad594c 1-169
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-option-mappings.md
+  s_9562c6fc5b770b::t_7bfd02faad594c 1-231
+plugins/tsdown/skills-lock.json
+  s_9562c6fc5b770b::t_7bfd02faad594c 9-14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "74b8935a88dcd7add2c77c14660cec4b62cb9a4c",
+  "prompts": {},
+  "sessions": {
+    "s_9562c6fc5b770b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "31b18e8e-3f27-4fe8-a30b-81c04391f478",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
