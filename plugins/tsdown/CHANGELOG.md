@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.3.2...tsdown-v1.4.0) (2026-06-18)
+
+
+### Features
+
+* **tsdown:** add tsdown-migrate skill for tsup migration ([#218](https://github.com/pleaseai/claude-code-plugins/issues/218)) ([c45ceec](https://github.com/pleaseai/claude-code-plugins/commit/c45ceecc5c16fa0828bc223152833bbbb82434ee))
+
 ## [1.3.2](https://github.com/pleaseai/claude-code-plugins/compare/tsdown-v1.3.1...tsdown-v1.3.2) (2026-06-15)
 
 
