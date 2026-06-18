@@ -1,0 +1,36 @@
+plugins/eve/.codex-plugin/plugin.json
+  s_a39aee70845462::t_69d6bab4af1965 1-5,8-12,14-19,22,25-26,33-34
+  s_a39aee70845462::t_f888f5f4f05dd8 6-7,13,20-21,23-24,27-32
+.release-please-manifest.json
+  s_a39aee70845462::t_55b9fdab3735d1 60-61
+release-please-config.json
+  s_a39aee70845462::t_5857eb01201964 893-913
+plugins/eve/plugin.json
+  s_a39aee70845462::t_69d6bab4af1965 1-4,11-12,19-20
+  s_a39aee70845462::t_f888f5f4f05dd8 5-10,13-18
+README.md
+  s_a39aee70845462::t_c8b6f69c7a7b6d 396-401
+.claude-plugin/marketplace.json
+  s_a39aee70845462::t_23496ef60b7b73 709-716
+.agents/plugins/marketplace.json
+  s_a39aee70845462::t_69d6bab4af1965 762-773
+plugins/eve/.claude-plugin/plugin.json
+  s_a39aee70845462::t_24057d881bb15c 1-4,11,13-14
+  s_a39aee70845462::t_b1a825ec83c488 5-10,12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "8bd1fd7301933634a32b5ee51e46d4c36edb4a2d",
+  "prompts": {},
+  "sessions": {
+    "s_a39aee70845462": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "96b9990c-c0ed-4332-ac6e-c4dc055d9693",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
