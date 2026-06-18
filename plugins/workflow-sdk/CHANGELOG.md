@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/workflow-sdk-v1.1.2...workflow-sdk-v1.2.0) (2026-06-18)
+
+
+### Features
+
+* **workflow-sdk:** add workflow-init and migration skills, rename plugin to workflow-sdk ([#216](https://github.com/pleaseai/claude-code-plugins/issues/216)) ([69e605b](https://github.com/pleaseai/claude-code-plugins/commit/69e605bf452b59b239cf3b0acdf2ca1372090db3))
+
 ## [1.1.2](https://github.com/pleaseai/claude-code-plugins/compare/workflow-v1.1.1...workflow-v1.1.2) (2026-06-15)
 
 
