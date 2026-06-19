@@ -1,7 +1,7 @@
 {
   "name": "emulate",
   "version": "1.1.1",
-  "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+  "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js",
   "license": "Apache-2.0",
   "keywords": [
     "emulate",

@@ -1,14 +1,14 @@
 {
   "name": "emulate",
-  "version": "1.0.0",
-  "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+  "version": "1.1.1",
+  "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js",
   "author": {
     "name": "Community"
   },
   "interface": {
     "displayName": "Emulate",
-    "shortDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
-    "longDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, and AWS",
+    "shortDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js",
+    "longDescription": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js",
     "developerName": "Community",
     "category": "Development",
     "capabilities": [
