@@ -1,0 +1,49 @@
+plugins/emulate/.agents/skills/github/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-560
+plugins/emulate/.agents/skills/resend/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-339
+plugins/emulate/.agents/skills/vercel/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-481
+plugins/emulate/skills-lock.json
+  s_3070a6793d5cd8::t_84cae946ee67db 4-15,21-74
+plugins/emulate/.agents/skills/microsoft/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-362
+plugins/emulate/.agents/skills/linear/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-125
+plugins/emulate/.claude-plugin/plugin.json
+  s_3070a6793d5cd8::t_d43bad71a6048e 4
+plugins/emulate/.agents/skills/next/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-178
+plugins/emulate/.agents/skills/stripe/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-385
+plugins/emulate/.agents/skills/google/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-600
+plugins/emulate/.agents/skills/aws/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-385
+plugins/emulate/.agents/skills/slack/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-358
+plugins/emulate/.codex-plugin/plugin.json
+  s_3070a6793d5cd8::t_5b375a093c51f9 3-4,10-11
+plugins/emulate/.agents/skills/apple/SKILL.md
+  s_3070a6793d5cd8::t_84cae946ee67db 1-241
+.claude-plugin/marketplace.json
+  s_3070a6793d5cd8::t_d28b16fba3442a 578
+plugins/emulate/plugin.json
+  s_3070a6793d5cd8::t_5b375a093c51f9 3-4
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "071f962559eab46d6ab9809cac2b3c34bef32e19",
+  "prompts": {},
+  "sessions": {
+    "s_3070a6793d5cd8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bf3e5fbb-feb3-4b97-9c6b-d8db11b2b45a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
