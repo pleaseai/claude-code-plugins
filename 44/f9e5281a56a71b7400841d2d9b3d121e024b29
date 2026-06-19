@@ -1,0 +1,63 @@
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase6-next-steps.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-30
+.release-please-manifest.json
+  s_5f16df2ee5008e::t_0ad09fd5e52ecb 61-62
+plugins/skill-optimizer/.agents/skills/optimize-skill-instructions/references/REFERENCE.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-86
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase5-view-results.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-157
+release-please-config.json
+  s_5f16df2ee5008e::t_41cea6765acaa2 914-934
+plugins/skill-optimizer/.claude-plugin/plugin.json
+  s_5f16df2ee5008e::t_490b6a97a38d40 1-19
+.claude-plugin/marketplace.json
+  s_5f16df2ee5008e::t_ccedd397bd8672 717-724
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase3-download-scenarios.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-77
+plugins/skill-optimizer/.agents/skills/optimize-skill-performance-and-instructions/SKILL.md
+  s_5f16df2ee5008e::t_f0094b78fca391 1-157
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase1-gather-context.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-36
+plugins/skill-optimizer/.agents/skills/optimize-skill-instructions/SKILL.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-139
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/SKILL.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-132
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase3-fixtures-and-setup.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-114
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase2-generate-scenarios.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-25
+plugins/skill-optimizer/.agents/skills/setup-skill-performance/references/phase4-run-evals.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-73
+plugins/skill-optimizer/skills-lock.json
+  s_5f16df2ee5008e::t_f0094b78fca391 1-3,22-26,33-35
+  s_5f16df2ee5008e::t_5fe649cfe7744e 4-21,27-32
+plugins/skill-optimizer/plugin.json
+  s_5f16df2ee5008e::t_bf6e6ea1f2248c 1-18
+.agents/plugins/marketplace.json
+  s_5f16df2ee5008e::t_0aa58a4782d853 774-785
+plugins/skill-optimizer/.codex-plugin/plugin.json
+  s_5f16df2ee5008e::t_bf6e6ea1f2248c 1-31
+plugins/skill-optimizer/.agents/skills/compare-skill-model-performance/SKILL.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-219
+plugins/skill-optimizer/.agents/skills/optimize-skill-performance/SKILL.md
+  s_5f16df2ee5008e::t_5fe649cfe7744e 1-376
+README.md
+  s_5f16df2ee5008e::t_7edb36ccf2db39 402-407
+  s_5f16df2ee5008e::t_d728ff64508da6 545
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.8",
+  "base_commit_sha": "44f9e5281a56a71b7400841d2d9b3d121e024b29",
+  "prompts": {},
+  "sessions": {
+    "s_5f16df2ee5008e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fb26bc7d-8857-4f24-9199-64bb109f7a36",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
