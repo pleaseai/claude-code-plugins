@@ -1,0 +1,31 @@
+{
+  "name": "skill-optimizer",
+  "version": "1.0.0",
+  "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation evals (does the skill self-activate?) and content evals (does it help solve the task?), diagnoses gaps, fixes instructions, and re-runs until scores improve.",
+  "author": {
+    "name": "tesslio",
+    "url": "https://github.com/tesslio"
+  },
+  "interface": {
+    "displayName": "Skill Optimizer",
+    "shortDescription": "Measure and improve how well a plugin's skills help agents solve real tasks",
+    "longDescription": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation evals (does the skill self-activate?) and content evals (does it help solve the task?), diagnoses gaps, fixes instructions, and re-runs until scores improve.",
+    "developerName": "tesslio",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Skill Optimizer for my current task."
+    ]
+  },
+  "repository": "https://github.com/tesslio/product-plugins",
+  "license": "NOASSERTION",
+  "keywords": [
+    "skill-optimizer",
+    "skills",
+    "evals",
+    "optimization",
+    "benchmark"
+  ]
+}
