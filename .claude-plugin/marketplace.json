@@ -714,6 +714,14 @@
       "keywords": ["eve", "agents", "ai-agents", "backend", "vercel", "framework"],
       "tags": ["skills", "vercel"],
       "source": "./plugins/eve"
+    },
+    {
+      "name": "skill-optimizer",
+      "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve.",
+      "category": "tooling",
+      "keywords": ["skill-optimizer", "skills", "evals", "optimization", "benchmark"],
+      "tags": ["skills"],
+      "source": "./plugins/skill-optimizer"
     }
   ]
 }

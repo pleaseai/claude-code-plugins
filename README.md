@@ -399,6 +399,12 @@ Build durable backend AI agents with the eve framework. Use when creating, editi
 
 **Install:** `/plugin install eve@pleaseai` | **Source:** [plugins/eve](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/eve)
 
+#### Skill Optimizer
+
+Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve.
+
+**Install:** `/plugin install skill-optimizer@pleaseai` | **Source:** [plugins/skill-optimizer](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/skill-optimizer)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -536,6 +542,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install nuxt-i18n@pleaseai
 /plugin install portone@pleaseai
 /plugin install google-workspace@pleaseai
+/plugin install skill-optimizer@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
