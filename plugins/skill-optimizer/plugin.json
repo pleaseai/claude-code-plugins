@@ -1,6 +1,6 @@
 {
   "name": "skill-optimizer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation evals (does the skill self-activate?) and content evals (does it help solve the task?), diagnoses gaps, fixes instructions, and re-runs until scores improve.",
   "author": {
     "name": "tesslio",
