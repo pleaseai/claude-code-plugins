@@ -783,6 +783,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Tooling"
+    },
+    {
+      "name": "nostics",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nostics"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
     }
   ]
 }

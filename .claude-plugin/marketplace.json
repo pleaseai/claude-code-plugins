@@ -722,6 +722,14 @@
       "keywords": ["skill-optimizer", "skills", "evals", "optimization", "benchmark"],
       "tags": ["skills"],
       "source": "./plugins/skill-optimizer"
+    },
+    {
+      "name": "nostics",
+      "description": "Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.",
+      "category": "tooling",
+      "keywords": ["nostics", "diagnostics", "error-handling", "typescript", "javascript"],
+      "tags": ["skills", "vercel"],
+      "source": "./plugins/nostics"
     }
   ]
 }
