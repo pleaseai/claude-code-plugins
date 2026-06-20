@@ -746,6 +746,18 @@
       "keywords": ["lavish", "html", "artifacts", "review", "visualization"],
       "tags": ["skills"],
       "source": "./plugins/lavish"
+    },
+    {
+      "name": "cloudflare",
+      "description": "Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance",
+      "category": "cloud",
+      "keywords": ["cloudflare", "workers", "durable-objects", "agents-sdk", "wrangler", "mcp"],
+      "tags": ["skills", "cloud"],
+      "source": {
+        "source": "github",
+        "repo": "cloudflare/skills"
+      },
+      "homepage": "https://github.com/cloudflare/skills"
     }
   ]
 }

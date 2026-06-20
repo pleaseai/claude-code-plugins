@@ -81,6 +81,11 @@ Gemini CLI integration for Claude Code — use Google's Gemini models from withi
 
 **Install:** `/plugin install gemini@pleaseai` | **Repository:** [pleaseai/gemini-plugin-cc](https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini)
 
+#### Cloudflare
+Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance.
+
+**Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
+
 ---
 
 ### Built-in Plugins
@@ -508,6 +513,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install playwright-cli@pleaseai
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
+/plugin install cloudflare@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
