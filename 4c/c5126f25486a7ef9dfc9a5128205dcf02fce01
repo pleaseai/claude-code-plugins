@@ -1,0 +1,35 @@
+README.md
+  s_f6f776f2c46fba::t_0b9d3cd3789158 420-425
+.agents/plugins/marketplace.json
+  s_f6f776f2c46fba::t_b526761f33dad9 810-821
+plugins/lavish/.codex-plugin/plugin.json
+  s_f6f776f2c46fba::t_b526761f33dad9 1-33
+.claude-plugin/marketplace.json
+  s_f6f776f2c46fba::t_0e31417be6ee54 741-748
+plugins/lavish/.claude-plugin/plugin.json
+  s_f6f776f2c46fba::t_43a61e23563c39 1-14
+release-please-config.json
+  s_f6f776f2c46fba::t_3c3219b6cc4d40 977-997
+plugins/lavish/skills-lock.json
+  s_f6f776f2c46fba::t_80ba106460789e 1-11
+plugins/lavish/plugin.json
+  s_f6f776f2c46fba::t_b526761f33dad9 1-19
+plugins/lavish/.agents/skills/lavish/SKILL.md
+  s_f6f776f2c46fba::t_80ba106460789e 1-71
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "4cc5126f25486a7ef9dfc9a5128205dcf02fce01",
+  "prompts": {},
+  "sessions": {
+    "s_f6f776f2c46fba": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d8a1871e-dc4c-465d-a894-cffceab2516c",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
