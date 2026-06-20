@@ -81,6 +81,11 @@ Gemini CLI integration for Claude Code — use Google's Gemini models from withi
 
 **Install:** `/plugin install gemini@pleaseai` | **Repository:** [pleaseai/gemini-plugin-cc](https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini)
 
+#### Cloudflare
+Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance.
+
+**Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
+
 ---
 
 ### Built-in Plugins
