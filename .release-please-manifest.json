@@ -59,5 +59,6 @@
   "plugins/mcp-dev": "1.0.0",
   "plugins/vercel-sandbox": "1.1.0",
   "plugins/eve": "1.1.0",
-  "plugins/skill-optimizer": "1.1.0"
+  "plugins/skill-optimizer": "1.1.0",
+  "plugins/dev3000": "1.0.0"
 }
