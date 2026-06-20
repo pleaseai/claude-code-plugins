@@ -1,0 +1,42 @@
+plugins/dev3000/plugin.json
+  s_dab966ccb96a14::t_56020b34e3d797 1-20
+plugins/dev3000/.agents/skills/d3k/agents/openai.yaml
+  s_dab966ccb96a14::t_2ab79688115ba7 1-4
+.claude-plugin/marketplace.json
+  s_dab966ccb96a14::t_0e058167b78ce5 725-732
+plugins/dev3000/skills-lock.json
+  s_dab966ccb96a14::t_2ab79688115ba7 1-11
+.release-please-manifest.json
+  s_dab966ccb96a14::t_40f4c7731afaf0 62-63
+plugins/dev3000/.codex-plugin/plugin.json
+  s_dab966ccb96a14::t_56020b34e3d797 1-34
+plugins/dev3000/.claude-plugin/plugin.json
+  s_dab966ccb96a14::t_1edbc13b2d4b5a 1-21
+release-please-config.json
+  s_dab966ccb96a14::t_2d65ee5e4397db 935-955
+plugins/dev3000/.agents/skills/d3k/SKILL.md
+  s_dab966ccb96a14::t_2ab79688115ba7 1-147
+plugins/dev3000/.agents/skills/d3k/PUBLISH.md
+  s_dab966ccb96a14::t_2ab79688115ba7 1-46
+README.md
+  s_dab966ccb96a14::t_32548bcc0c2e14 408-413
+  s_dab966ccb96a14::t_51599e0bbc2ca5 552
+.agents/plugins/marketplace.json
+  s_dab966ccb96a14::t_56020b34e3d797 786-797
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "11c0fc20fdc98a928a0deb7f605b67fb186aa0e0",
+  "prompts": {},
+  "sessions": {
+    "s_dab966ccb96a14": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2ab20891-151c-46f2-86b2-a9b92f9a2bf8",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
