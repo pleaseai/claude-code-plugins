@@ -1,0 +1,47 @@
+plugins/nostics/skills-lock.json
+  s_5092fc80e0a6a4::t_8a7921b7984712 1-3,10-17
+  s_5092fc80e0a6a4::t_fb18eba456191e 4-9
+release-please-config.json
+  s_5092fc80e0a6a4::t_ecf9a842b2ecf4 935-955
+.agents/plugins/marketplace.json
+  s_5092fc80e0a6a4::t_b5739bb8ece01f 786-797
+plugins/nostics/.agents/skills/nostics/references/migration.md
+  s_5092fc80e0a6a4::t_8a7921b7984712 1-94
+.release-please-manifest.json
+  s_5092fc80e0a6a4::t_92675a465fc324 62-63
+plugins/nostics/.agents/skills/nostics/SKILL.md
+  s_5092fc80e0a6a4::t_8a7921b7984712 1-158
+plugins/nostics/.agents/skills/add-diagnostic/SKILL.md
+  s_5092fc80e0a6a4::t_fb18eba456191e 1-28
+plugins/nostics/.agents/skills/nostics/references/documentation-site.md
+  s_5092fc80e0a6a4::t_8a7921b7984712 1-46
+plugins/nostics/.claude-plugin/plugin.json
+  s_5092fc80e0a6a4::t_3045520206ea7d 5-9
+  s_5092fc80e0a6a4::t_0bb65ff3e9d38e 1-4,10-13
+.claude-plugin/marketplace.json
+  s_5092fc80e0a6a4::t_754eb09f329953 725-732
+plugins/nostics/plugin.json
+  s_5092fc80e0a6a4::t_b5739bb8ece01f 1-4,10-18
+  s_5092fc80e0a6a4::t_bada4c464854b7 5-9
+README.md
+  s_5092fc80e0a6a4::t_b52ab40f0fec4f 408-413
+plugins/nostics/.codex-plugin/plugin.json
+  s_5092fc80e0a6a4::t_b5739bb8ece01f 1-5,8-12,14-21,23-31
+  s_5092fc80e0a6a4::t_bada4c464854b7 6-7,13,22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.9",
+  "base_commit_sha": "80c5d500ef94d2bece66e9d07369848697863468",
+  "prompts": {},
+  "sessions": {
+    "s_5092fc80e0a6a4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "2c3330d8-4016-4e76-a9c8-583ebe6758ec",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
