@@ -1,0 +1,31 @@
+{
+  "name": "nostics",
+  "version": "1.0.0",
+  "description": "Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.",
+  "author": {
+    "name": "vercel-labs",
+    "url": "https://github.com/vercel-labs"
+  },
+  "interface": {
+    "displayName": "Nostics",
+    "shortDescription": "Structured diagnostic code library for JavaScript/TypeScript",
+    "longDescription": "Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.",
+    "developerName": "vercel-labs",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Nostics for my current task."
+    ]
+  },
+  "repository": "https://github.com/vercel-labs/nostics",
+  "license": "MIT",
+  "keywords": [
+    "nostics",
+    "diagnostics",
+    "error-handling",
+    "typescript",
+    "javascript"
+  ]
+}

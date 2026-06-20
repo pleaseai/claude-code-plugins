@@ -405,6 +405,12 @@ Measure and improve how well a plugin's skills help agents solve real tasks. Run
 
 **Install:** `/plugin install skill-optimizer@pleaseai` | **Source:** [plugins/skill-optimizer](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/skill-optimizer)
 
+#### Nostics
+
+Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.
+
+**Install:** `/plugin install nostics@pleaseai` | **Source:** [plugins/nostics](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nostics)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
