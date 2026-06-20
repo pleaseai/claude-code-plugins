@@ -1,0 +1,34 @@
+{
+  "name": "dev3000",
+  "version": "1.0.0",
+  "description": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging. Bootstraps d3k as the dev runtime and drives its monitored browser instead of running npm/bun dev directly.",
+  "author": {
+    "name": "Vercel Labs",
+    "url": "https://github.com/vercel-labs"
+  },
+  "interface": {
+    "displayName": "Dev3000",
+    "shortDescription": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped tim...",
+    "longDescription": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging. Bootstraps d3k as the dev runtime and drives its monitored browser instead of running npm/bun dev directly.",
+    "developerName": "Vercel Labs",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Dev3000 for my current task."
+    ],
+    "websiteURL": "https://github.com/vercel-labs/dev3000"
+  },
+  "homepage": "https://github.com/vercel-labs/dev3000",
+  "repository": "https://github.com/vercel-labs/dev3000",
+  "license": "MIT",
+  "keywords": [
+    "dev3000",
+    "d3k",
+    "debugging",
+    "web",
+    "logs",
+    "screenshots"
+  ]
+}

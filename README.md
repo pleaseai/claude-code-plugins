@@ -411,6 +411,12 @@ Structured diagnostic code library for JavaScript/TypeScript. Turns errors into 
 
 **Install:** `/plugin install nostics@pleaseai` | **Source:** [plugins/nostics](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nostics)
 
+#### dev3000
+
+dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging. Bootstraps d3k as the dev runtime and drives its monitored browser instead of running npm/bun dev directly.
+
+**Install:** `/plugin install dev3000@pleaseai` | **Source:** [plugins/dev3000](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/dev3000)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -549,6 +555,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install portone@pleaseai
 /plugin install google-workspace@pleaseai
 /plugin install skill-optimizer@pleaseai
+/plugin install dev3000@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
