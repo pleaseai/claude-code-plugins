@@ -405,6 +405,12 @@ Measure and improve how well a plugin's skills help agents solve real tasks. Run
 
 **Install:** `/plugin install skill-optimizer@pleaseai` | **Source:** [plugins/skill-optimizer](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/skill-optimizer)
 
+#### Nostics
+
+Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.
+
+**Install:** `/plugin install nostics@pleaseai` | **Source:** [plugins/nostics](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/nostics)
+
 #### dev3000
 
 dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging. Bootstraps d3k as the dev runtime and drives its monitored browser instead of running npm/bun dev directly.

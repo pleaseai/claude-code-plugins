@@ -785,6 +785,18 @@
       "category": "Tooling"
     },
     {
+      "name": "nostics",
+      "source": {
+        "source": "local",
+        "path": "./plugins/nostics"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
       "name": "dev3000",
       "source": {
         "source": "local",
