@@ -568,6 +568,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install google-workspace@pleaseai
 /plugin install skill-optimizer@pleaseai
 /plugin install dev3000@pleaseai
+/plugin install lavish@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
