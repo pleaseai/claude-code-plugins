@@ -807,6 +807,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Tooling"
+    },
+    {
+      "name": "lavish",
+      "source": {
+        "source": "local",
+        "path": "./plugins/lavish"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
     }
   ]
 }

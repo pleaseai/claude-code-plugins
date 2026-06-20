@@ -422,6 +422,12 @@ dev3000 (d3k) debugging assistant — captures server logs, browser events, cons
 
 **Install:** `/plugin install dev3000@pleaseai` | **Source:** [plugins/dev3000](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/dev3000)
 
+#### Lavish
+
+Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose.
+
+**Install:** `/plugin install lavish@pleaseai` | **Source:** [plugins/lavish](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/lavish)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -562,6 +568,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install google-workspace@pleaseai
 /plugin install skill-optimizer@pleaseai
 /plugin install dev3000@pleaseai
+/plugin install lavish@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
