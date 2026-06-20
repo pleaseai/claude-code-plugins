@@ -738,6 +738,14 @@
       "keywords": ["dev3000", "d3k", "debugging", "web", "logs", "screenshots"],
       "tags": ["skills", "vercel"],
       "source": "./plugins/dev3000"
+    },
+    {
+      "name": "lavish",
+      "description": "Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose.",
+      "category": "tooling",
+      "keywords": ["lavish", "html", "artifacts", "review", "visualization"],
+      "tags": ["skills"],
+      "source": "./plugins/lavish"
     }
   ]
 }
