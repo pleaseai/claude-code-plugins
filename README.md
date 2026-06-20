@@ -507,6 +507,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install playwright-cli@pleaseai
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
+/plugin install cloudflare@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
