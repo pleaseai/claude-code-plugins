@@ -428,6 +428,12 @@ Turn complex or visual agent responses into rich, reviewable HTML artifacts the 
 
 **Install:** `/plugin install lavish@pleaseai` | **Source:** [plugins/lavish](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/lavish)
 
+#### AXI
+
+Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI.
+
+**Install:** `/plugin install axi@pleaseai` | **Source:** [plugins/axi](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/axi)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
