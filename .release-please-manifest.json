@@ -62,5 +62,6 @@
   "plugins/skill-optimizer": "1.1.0",
   "plugins/nostics": "1.0.0",
   "plugins/dev3000": "1.0.0",
-  "plugins/lavish": "1.0.0"
+  "plugins/lavish": "1.0.0",
+  "plugins/axi": "1.0.0"
 }

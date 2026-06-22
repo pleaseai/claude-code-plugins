@@ -1,0 +1,25 @@
+{
+  "name": "axi",
+  "version": "1.0.0",
+  "description": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI.",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Axi",
+    "shortDescription": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution",
+    "longDescription": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI.",
+    "developerName": "Community",
+    "category": "Productivity",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Axi for my current task."
+    ]
+  },
+  "license": "MIT",
+  "keywords": [
+    "axi"
+  ]
+}

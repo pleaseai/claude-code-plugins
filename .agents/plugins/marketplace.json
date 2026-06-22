@@ -819,6 +819,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Tooling"
+    },
+    {
+      "name": "axi",
+      "source": {
+        "source": "local",
+        "path": "./plugins/axi"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
     }
   ]
 }

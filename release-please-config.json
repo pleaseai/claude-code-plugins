@@ -995,6 +995,27 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/axi": {
+      "release-type": "simple",
+      "component": "axi",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
