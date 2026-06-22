@@ -1,0 +1,71 @@
+---
+title: "Overview"
+description: "How users reach your agent: the channel contract, the base eve HTTP channel, and authoring custom channels."
+---
+
+A channel is the edge adapter between a platform and your agent. It does three things:
+
+- Normalizes platform input into a user message.
+- Owns the `continuationToken`, the resume handle for a conversation on that surface.
+- Decides delivery, meaning how, where, and whether a response goes back.
+
+eve ships a base HTTP channel plus first-class platform channels, and you can author your own. Browse the full set in the [Integrations](/integrations) gallery.
+
+Each channel has its own provider terms, data flow, auth model, and user-consent expectations. Before sending non-public, sensitive, regulated, or production data through a channel, confirm that the channel provider and your configured scopes, signature checks, route auth, and delivery behavior are appropriate for your use case.
+
+## Where channels live
+
+Channel files live under `agent/channels/` in the root agent. The file stem is the channel id: `agent/channels/intake.ts` is addressed as `intake`. Export the channel as the module's default export. Local subagents do not declare channels.
+
+```text
+agent/
+  agent.ts
+  channels/
+    eve.ts
+    slack.ts
+    intake.ts
+```
+
+Scaffold a channel file with `eve channels add` (interactive), or pass a kind: `eve channels add slack` or `eve channels add web`. You can also author the file by hand.
+
+## The eve HTTP channel (default)
+
+The eve channel is the framework's default HTTP session API, the routes the terminal UI, [`useEveAgent`](../guides/frontend/overview), and `curl` all talk to. It is enabled by default, even with no `agent/channels/eve.ts` file. Add that file only to override the defaults, most often the route auth policy. See [HTTP channel](./eve) for routes, auth, and customization.
+
+## Custom channels
+
+When eve doesn't ship a channel for your surface, build one with `defineChannel` from `eve/channels`. A custom channel declares route handlers (`GET`, `POST`, `PUT`, `PATCH`, `DELETE`, `WS`), an `events` map, and a `send` call inside a handler to start or resume a session. See [Custom channels](./custom) for the full walkthrough, including WebSocket routes, cross-channel hand-off, channel metadata, continuation tokens, and file uploads.
+
+## Relationship to the Chat SDK
+
+eve uses the Chat SDK's **card-builder components** (Cards, Buttons, Actions, etc.) for composing rich Slack messages. When you build a card with the [Slack channel](./slack), the underlying primitives come from the Chat SDK and get converted to Slack Block Kit at post time.
+
+eve does **not** use the Chat SDK's runtime. The `Chat`, `Adapter`, and `Thread` primitives are never imported or reachable through eve's public API. eve implements its own channel layer (webhook handling, signature verification, event parsing, and thread management). Building Slack messages works like Chat SDK cards, but wiring a channel means authoring against eve's `defineChannel(...)` API, not a Chat SDK adapter.
+
+## Which channel?
+
+| You want…                                   | Use                                                        |
+| ------------------------------------------- | ---------------------------------------------------------- |
+| A web app / browser chat UI                 | eve channel + [`useEveAgent`](../guides/frontend/overview) |
+| Local tooling, SDK clients, `curl`          | eve channel (default)                                      |
+| Slack mentions, DMs, buttons                | [Slack](./slack)                                           |
+| Discord slash commands, components          | [Discord](./discord)                                       |
+| Microsoft Teams messages + Adaptive Cards   | [Teams](./teams)                                           |
+| Telegram bot messages                       | [Telegram](./telegram)                                     |
+| SMS or speech-transcribed phone calls       | [Twilio](./twilio)                                         |
+| GitHub @mentions, PR review with checkout   | [GitHub](./github)                                         |
+| Linear issue delegation and Agent Sessions  | [Linear](./linear)                                         |
+| Anything else (internal webhook, WebSocket) | Custom channel (`defineChannel`, above)                    |
+
+## Disclaimer
+
+As the deployer, it is your responsibility to ensure your agent complies with applicable laws.
+
+Where an eve agent communicates with people, you may be required to disclose that they are interacting with an automated AI system where law requires it. eve does not add this disclosure automatically; configure it in your instructions and/or channel responses.
+
+## What to read next
+
+- [Slack](./slack): the most common platform channel, end to end
+- [Custom channels](./custom): build a channel for any surface with `defineChannel`
+- [Frontend](../guides/frontend/overview): browser chat on the eve channel with `useEveAgent`
+- [Integrations](/integrations): browse every built-in channel and connection in one gallery

@@ -1,0 +1,66 @@
+---
+title: "Instructions"
+description: "Author the agent's always-on system prompt with instructions.md or instructions.ts."
+---
+
+Instructions are the always-on system prompt, the agent's permanent identity rather than a procedure it pulls in when the moment calls for it. Use them for anything that should hold on every turn, such as a rule, a persona, or a constraint. eve prepends the instructions to every model call in the session.
+
+## Author instructions
+
+At minimum, instructions are a markdown file at the agent root. Whatever you write is the prompt:
+
+```md title="agent/instructions.md"
+You are a concise assistant. Use tools when they are available.
+```
+
+Keep this file to stable behavior such as identity, tone, and standing rules.
+
+## Markdown vs TypeScript
+
+A static prompt belongs in markdown (`agent/instructions.md`). Switch to a TypeScript module (`agent/instructions.ts`) once you need to build the prompt from typed helpers, `lib/` code, or build-time values.
+
+```ts title="agent/instructions.ts"
+import { defineInstructions } from "eve/instructions";
+import { buildInstructionsPrompt } from "./lib/prompts.js";
+
+export default defineInstructions({
+  markdown: buildInstructionsPrompt(),
+});
+```
+
+`defineInstructions` takes one field, `markdown`, the resolved prompt text. A module-backed prompt runs once at build time. eve captures the resulting markdown into the compiled manifest, so the runtime serves the same prompt every session and never re-runs the module.
+
+## Split instructions across a directory
+
+For more than one file, add an `agent/instructions/` directory. eve reads its entries non-recursively and accepts both `.md` files and `.ts` modules (a `.ts` file can wrap `defineInstructions` or `defineDynamic`). Entries combine in alphabetical order by filename (`localeCompare`).
+
+A flat `agent/instructions.md` (or `.ts`) at the agent root and the directory can coexist. The root file's content comes first, then the sorted directory entries. You cannot author both `instructions.md` and `instructions.ts` at the root; that pairing is a build error.
+
+## Instructions vs skills
+
+Instructions and [skills](./skills) both feed text into the model's context. The difference is timing:
+
+|                           | Loaded                                       | Use for                                              |
+| ------------------------- | -------------------------------------------- | ---------------------------------------------------- |
+| `instructions.md` / `.ts` | Always on, every turn                        | Permanent identity and standing rules                |
+| `agent/skills/*`          | On demand, when the model calls `load_skill` | Optional procedures that should not bloat every turn |
+
+Keep instructions short and stable. Long or situational procedures belong in [skills](./skills), where they only enter context when the request calls for them.
+
+Instructions never run code. When you need typed executable behavior, reach for a [tool](./tools).
+
+## Dynamic instructions
+
+To resolve the prompt at runtime from session context (auth, tenant, or channel), wrap `defineInstructions` in a `defineDynamic` resolver. See [Dynamic capabilities](./guides/dynamic-capabilities).
+
+## Disclaimer
+
+As the deployer, it is your responsibility to ensure your agent complies with applicable laws.
+
+Where an eve agent communicates with people, you may be required to disclose that they are interacting with an automated AI system where law requires it. eve does not add this disclosure automatically; configure it in your instructions and/or channel responses.
+
+## What to read next
+
+- [Tools](./tools): typed actions, the next capability to add
+- [Context control](./concepts/context-control): all the levers for what the model sees
+- [Skills](./skills): on-demand procedures, the counterpart to always-on instructions

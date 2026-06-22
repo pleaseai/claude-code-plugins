@@ -361,7 +361,13 @@ Read each `criteria.json` and flag:
 - Missing criteria for important behaviors the plugin teaches
 - Criteria that test the agent's general ability, not the plugin's value
 
-### 5.3 Suggest improvements
+### 5.3 Check for external service coverage
+
+If the skill involves external service calls — APIs, databases, MCPs, third-party tools — check whether any scenarios exercise those paths. If not, suggest adding at least one scenario that tests the integration.
+
+Remind the user that `tessl eval run --env-file <path>` injects secrets into the sandbox, so external calls can be exercised in evals without hardcoding credentials.
+
+### 5.4 Suggest improvements
 
 Propose specific edits to `task.md` or `criteria.json` files. Show diffs and explain why.
 
