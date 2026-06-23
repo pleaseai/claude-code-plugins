@@ -5,7 +5,7 @@
       "source": "vercel/chat",
       "sourceType": "github",
       "skillPath": "skills/chat/SKILL.md",
-      "computedHash": "eec16293cb0044b8e4376dec986b96dc70bf425854c6fb7aa062890faa020a25"
+      "computedHash": "3e3e195307f762a685cc38d7f7364d5daff49abd43924d72e53bb214daf83f86"
     }
   }
 }
