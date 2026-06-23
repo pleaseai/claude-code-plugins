@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.2.0...ast-grep-v1.2.1) (2026-06-23)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#229](https://github.com/pleaseai/claude-code-plugins/issues/229)) ([b434dcc](https://github.com/pleaseai/claude-code-plugins/commit/b434dcc4800e1fe4adf0dc65cf98000d715bc4b2))
+
 ## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.1.1...ast-grep-v1.2.0) (2026-06-15)
 
 

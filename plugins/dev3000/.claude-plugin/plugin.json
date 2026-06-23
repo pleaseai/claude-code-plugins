@@ -1,6 +1,6 @@
 {
   "name": "dev3000",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging. Bootstraps d3k as the dev runtime and drives its monitored browser instead of running npm/bun dev directly.",
   "author": {
     "name": "Vercel Labs",

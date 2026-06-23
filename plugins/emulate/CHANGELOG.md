@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/pleaseai/claude-code-plugins/compare/emulate-v1.1.1...emulate-v1.2.0) (2026-06-23)
+
+
+### Features
+
+* **emulate:** add Linear, Stripe, Resend, Next.js and remaining emulator skills ([#222](https://github.com/pleaseai/claude-code-plugins/issues/222)) ([3dceb46](https://github.com/pleaseai/claude-code-plugins/commit/3dceb462812d19b9b8258a9e66ba398d7d301c97))
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#229](https://github.com/pleaseai/claude-code-plugins/issues/229)) ([b434dcc](https://github.com/pleaseai/claude-code-plugins/commit/b434dcc4800e1fe4adf0dc65cf98000d715bc4b2))
+
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/emulate-v1.1.0...emulate-v1.1.1) (2026-06-09)
 
 

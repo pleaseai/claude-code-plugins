@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/pleaseai/claude-code-plugins/compare/docus-v1.1.1...docus-v1.1.2) (2026-06-23)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#229](https://github.com/pleaseai/claude-code-plugins/issues/229)) ([b434dcc](https://github.com/pleaseai/claude-code-plugins/commit/b434dcc4800e1fe4adf0dc65cf98000d715bc4b2))
+
 ## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/docus-v1.1.0...docus-v1.1.1) (2026-06-09)
 
 

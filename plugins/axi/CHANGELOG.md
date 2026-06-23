@@ -1,0 +1,13 @@
+# Changelog
+
+## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/axi-v1.0.0...axi-v1.1.0) (2026-06-23)
+
+
+### Features
+
+* **axi:** add AXI skill plugin to marketplace ([#228](https://github.com/pleaseai/claude-code-plugins/issues/228)) ([ccc9e2b](https://github.com/pleaseai/claude-code-plugins/commit/ccc9e2b756456f7c984408bcb482466676eec00c))
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#229](https://github.com/pleaseai/claude-code-plugins/issues/229)) ([b434dcc](https://github.com/pleaseai/claude-code-plugins/commit/b434dcc4800e1fe4adf0dc65cf98000d715bc4b2))
