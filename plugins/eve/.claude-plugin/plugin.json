@@ -1,6 +1,6 @@
 {
   "name": "eve",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals.",
   "author": {
     "name": "Vercel Inc.",
