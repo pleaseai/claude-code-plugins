@@ -518,6 +518,17 @@
       }
     },
     {
+      "name": "asana",
+      "description": "Manage Asana from the terminal with the `asana` CLI — tasks, projects, subtasks, comments, dependencies, tags, custom fields, and CSV/JSON batch import.",
+      "category": "productivity",
+      "keywords": ["asana", "cli", "task-management", "productivity"],
+      "tags": ["cli", "productivity"],
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/asana"
+      }
+    },
+    {
       "name": "please-plugins",
       "description": "Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace",
       "category": "tooling",
