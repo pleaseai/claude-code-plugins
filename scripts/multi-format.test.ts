@@ -10,6 +10,7 @@ import {
   toCodexManifest,
   toCodexMarketplace,
   toCodexMarketplaceEntry,
+  toCodexSource,
   type ClaudeMarketplace,
   type ClaudePluginManifest,
   type MarketplaceEntry,
@@ -237,7 +238,7 @@ describe("readClaudeManifest", () => {
 })
 
 describe("toCodexMarketplace", () => {
-  test("filters out non-local plugin entries (github/object sources)", () => {
+  test("includes both local and external plugin entries (in order)", () => {
     const input: ClaudeMarketplace = {
       name: "test-market",
       plugins: [
@@ -247,7 +248,28 @@ describe("toCodexMarketplace", () => {
       ],
     }
     const result = toCodexMarketplace(input)
-    expect(result.plugins.map(p => p.name)).toEqual(["local-one", "local-two"])
+    expect(result.plugins.map(p => p.name)).toEqual(["local-one", "from-github", "local-two"])
+  })
+
+  test("maps an external github source to a Codex url source", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      plugins: [{ name: "from-github", source: { source: "github", repo: "org/repo" } as unknown as object }],
+    }
+    const result = toCodexMarketplace(input)
+    expect(result.plugins[0]!.source).toEqual({ source: "url", url: "https://github.com/org/repo.git" })
+  })
+
+  test("skips a plugin whose source Codex cannot express", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      plugins: [
+        { name: "ok", source: "./plugins/ok" as unknown as object },
+        { name: "weird", source: { source: "mystery" } as unknown as object },
+      ],
+    }
+    const result = toCodexMarketplace(input)
+    expect(result.plugins.map(p => p.name)).toEqual(["ok"])
   })
 
   test("extracts directory name from local source path", () => {
@@ -256,7 +278,8 @@ describe("toCodexMarketplace", () => {
       plugins: [{ name: "alias", source: "./plugins/real-dir" as unknown as object }],
     }
     const result = toCodexMarketplace(input)
-    expect(result.plugins[0]!.source.path).toBe("./plugins/real-dir")
+    const source = result.plugins[0]!.source
+    expect(source).toEqual({ source: "local", path: "./plugins/real-dir" })
   })
 
   test("inherits marketplace name and seeds interface.displayName", () => {
@@ -281,7 +304,54 @@ describe("toCodexMarketplace", () => {
     }
     const result = toCodexMarketplace(input)
     expect(result.plugins).toHaveLength(1)
-    expect(result.plugins[0]!.source.path).toBe("./plugins/dir-a")
+    expect(result.plugins[0]!.source).toEqual({ source: "local", path: "./plugins/dir-a" })
+  })
+})
+
+describe("toCodexSource", () => {
+  test("maps a local ./plugins/ string to a local source", () => {
+    expect(toCodexSource("./plugins/foo")).toEqual({ source: "local", path: "./plugins/foo" })
+  })
+
+  test("returns null for a non-local string source", () => {
+    expect(toCodexSource("./something-else")).toBeNull()
+  })
+
+  test("maps a github shorthand to a url source with a full git URL", () => {
+    expect(toCodexSource({ source: "github", repo: "owner/repo" })).toEqual({
+      source: "url",
+      url: "https://github.com/owner/repo.git",
+    })
+  })
+
+  test("maps a url source and preserves ref/sha", () => {
+    expect(toCodexSource({ source: "url", url: "https://github.com/org/repo.git", ref: "main" })).toEqual({
+      source: "url",
+      url: "https://github.com/org/repo.git",
+      ref: "main",
+    })
+  })
+
+  test("maps a git-subdir source, expanding the shorthand URL and ./-prefixing the path", () => {
+    expect(toCodexSource({ source: "git-subdir", url: "pleaseai/code-search", path: "plugins/csp", ref: "main" })).toEqual({
+      source: "git-subdir",
+      url: "https://github.com/pleaseai/code-search.git",
+      path: "./plugins/csp",
+      ref: "main",
+    })
+  })
+
+  test("passes through a full git URL untouched", () => {
+    expect(toCodexSource({ source: "git-subdir", url: "https://example.com/x.git", path: "./a" })).toEqual({
+      source: "git-subdir",
+      url: "https://example.com/x.git",
+      path: "./a",
+    })
+  })
+
+  test("returns null for an unknown source kind", () => {
+    expect(toCodexSource({ source: "mystery" })).toBeNull()
+    expect(toCodexSource(undefined)).toBeNull()
   })
 })
 
