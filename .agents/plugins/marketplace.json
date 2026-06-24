@@ -5,6 +5,90 @@
   },
   "plugins": [
     {
+      "name": "nanobanana",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/nanobanana-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ai"
+    },
+    {
+      "name": "flutter",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/flutter-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Mobile"
+    },
+    {
+      "name": "spec-kit",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/spec-kit-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "code-review",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/code-review-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "gemini-cli-security",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/security-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Security"
+    },
+    {
+      "name": "firebase",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/firebase-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Cloud"
+    },
+    {
+      "name": "grafana",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/grafana/mcp-grafana.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Monitoring"
+    },
+    {
       "name": "mcp-neo4j",
       "source": {
         "source": "local",
@@ -27,6 +111,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Development"
+    },
+    {
+      "name": "chrome-devtools-mcp",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/ChromeDevTools/chrome-devtools-mcp.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Browser"
     },
     {
       "name": "nuxt-ui",
@@ -533,6 +629,92 @@
       "category": "Development"
     },
     {
+      "name": "stripe",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/stripe/ai.git",
+        "path": "./providers/claude/plugin",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "vercel",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/vercel/vercel-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Deployment"
+    },
+    {
+      "name": "sentry",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/getsentry/sentry-for-claude.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Monitoring"
+    },
+    {
+      "name": "posthog",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/PostHog/ai-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Monitoring"
+    },
+    {
+      "name": "revenuecat",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/RevenueCat/rc-claude-code-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "notion",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/makenotion/claude-code-notion-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "asana",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/asana.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "please-plugins",
       "source": {
         "source": "local",
@@ -629,6 +811,32 @@
       "category": "Development"
     },
     {
+      "name": "ask",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/ask.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "gemini",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/gemini-plugin-cc.git",
+        "path": "./plugins/gemini",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Ai"
+    },
+    {
       "name": "edgeparse",
       "source": {
         "source": "local",
@@ -705,6 +913,18 @@
       "source": {
         "source": "local",
         "path": "./plugins/bun"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "modern-web-guidance",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/GoogleChrome/modern-web-guidance.git"
       },
       "policy": {
         "installation": "AVAILABLE",
@@ -821,6 +1041,18 @@
       "category": "Tooling"
     },
     {
+      "name": "cloudflare",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/cloudflare/skills.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Cloud"
+    },
+    {
       "name": "axi",
       "source": {
         "source": "local",
@@ -831,6 +1063,20 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "csp",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/code-search.git",
+        "path": "./plugins/csp",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
     }
   ]
 }

@@ -786,6 +786,20 @@
         "repo": "pleaseai/asana"
       },
       "homepage": "https://github.com/pleaseai/asana"
+    },
+    {
+      "name": "csp",
+      "description": "Fast, local, token-efficient hybrid (dense + BM25) code search for agents. Bundles the csp MCP server (search, find_related) and a csp-search sub-agent.",
+      "category": "development",
+      "keywords": ["code-search", "hybrid-search", "semantic-search", "bm25", "mcp", "agent"],
+      "tags": ["mcp", "search"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/code-search",
+        "path": "plugins/csp",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/code-search"
     }
   ]
 }

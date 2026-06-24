@@ -296,12 +296,25 @@ export function extractMcpServersFile(claude: ClaudePluginManifest): { mcpServer
 }
 
 /**
+ * Codex marketplace source kinds. Codex supports the same external sources as
+ * Claude Code, but with its own JSON shape:
+ *   - local:      plugin vendored in this repo (`./plugins/<name>`)
+ *   - url:        plugin IS an external git repo root
+ *   - git-subdir: plugin lives in a subdirectory of an external git repo
+ * See https://developers.openai.com/codex/plugins/build for the schema.
+ */
+export type CodexSource =
+  | { source: "local"; path: string }
+  | { source: "url"; url: string; ref?: string; sha?: string }
+  | { source: "git-subdir"; url: string; path: string; ref?: string; sha?: string }
+
+/**
  * Build a Codex marketplace entry for an existing local plugin.
  * Mirrors the schema documented in plugin-creator (policy + category required).
  */
 export interface CodexMarketplaceEntry {
   name: string
-  source: { source: "local"; path: string }
+  source: CodexSource
   policy: { installation: "AVAILABLE" | "INSTALLED_BY_DEFAULT" | "NOT_AVAILABLE"; authentication: "ON_INSTALL" | "ON_USE" }
   category: string
 }
@@ -313,6 +326,61 @@ export function toCodexMarketplaceEntry(entry: MarketplaceEntry, pluginDirName: 
     policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" },
     category: pickCategory(entry),
   }
+}
+
+/**
+ * Normalise a repo reference to a full git URL. Claude marketplace entries use
+ * `owner/repo` shorthand (github/git-subdir sources); Codex marketplace JSON
+ * entries require a real git URL. Pass-through anything that already looks like
+ * a URL (https://, git@, ssh://).
+ */
+function normalizeGitUrl(urlOrRepo: string): string {
+  if (/^(https?:\/\/|git@|ssh:\/\/)/.test(urlOrRepo)) return urlOrRepo
+  return `https://github.com/${urlOrRepo}.git`
+}
+
+/** Codex `git-subdir` paths are `./`-prefixed relative to the repo root. */
+function normalizeSubdirPath(p: string): string {
+  return p.startsWith("./") ? p : `./${p.replace(/^\//, "")}`
+}
+
+/**
+ * Convert a Claude marketplace entry's `source` into a Codex marketplace
+ * `source`. Returns null for source shapes Codex cannot express (so the caller
+ * skips them rather than emitting an unresolvable entry).
+ */
+export function toCodexSource(source: unknown): CodexSource | null {
+  // Local plugins are referenced by a `./plugins/...` string in the Claude marketplace.
+  if (typeof source === "string") {
+    return source.startsWith("./plugins/") ? { source: "local", path: source } : null
+  }
+  if (!source || typeof source !== "object") return null
+  const s = source as Record<string, unknown>
+
+  // Whole-repo plugin: Claude `github` (owner/repo) or `url` (full git URL) → Codex `url`.
+  if (s.source === "github" && typeof s.repo === "string") {
+    return { source: "url", url: normalizeGitUrl(s.repo) }
+  }
+  if (s.source === "url" && typeof s.url === "string") {
+    const out: CodexSource = { source: "url", url: normalizeGitUrl(s.url) }
+    if (typeof s.ref === "string") out.ref = s.ref
+    if (typeof s.sha === "string") out.sha = s.sha
+    return out
+  }
+
+  // Subdirectory plugin: Claude `git-subdir` → Codex `git-subdir`.
+  if (s.source === "git-subdir" && typeof s.url === "string" && typeof s.path === "string") {
+    const out: CodexSource = {
+      source: "git-subdir",
+      url: normalizeGitUrl(s.url),
+      path: normalizeSubdirPath(s.path),
+    }
+    if (typeof s.ref === "string") out.ref = s.ref
+    if (typeof s.sha === "string") out.sha = s.sha
+    return out
+  }
+
+  return null
 }
 
 // ---------------------------------------------------------------------------
@@ -450,8 +518,11 @@ export function generateForPlugin(
 }
 
 /**
- * Build a Codex marketplace document from a Claude Code marketplace.json,
- * filtering down to local plugins (those with `source: "./plugins/..."`).
+ * Build a Codex marketplace document from a Claude Code marketplace.json.
+ * Local plugins (`source: "./plugins/..."`) map to Codex `local` sources;
+ * external plugins (`github`/`git-subdir`/`url` objects) map to Codex
+ * `url`/`git-subdir` sources via {@link toCodexSource}. Entries whose source
+ * Codex cannot express are skipped.
  */
 export interface ClaudeMarketplace {
   name?: string
@@ -466,11 +537,16 @@ export function toCodexMarketplace(claudeMarketplace: ClaudeMarketplace): {
   const seen = new Set<string>()
   const entries: CodexMarketplaceEntry[] = []
   for (const p of claudeMarketplace.plugins) {
-    if (typeof p.source !== "string" || !p.source.startsWith("./plugins/")) continue
     if (seen.has(p.name)) continue
+    const source = toCodexSource(p.source)
+    if (!source) continue
     seen.add(p.name)
-    const dirName = p.source.replace(/^\.\/plugins\//, "")
-    entries.push(toCodexMarketplaceEntry(p, dirName))
+    entries.push({
+      name: p.name,
+      source,
+      policy: { installation: "AVAILABLE", authentication: "ON_INSTALL" },
+      category: pickCategory(p),
+    })
   }
   return {
     name: claudeMarketplace.name ?? "personal",
