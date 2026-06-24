@@ -427,6 +427,14 @@
       "source": "./plugins/docus"
     },
     {
+      "name": "astro",
+      "description": "Access Astro's official documentation through the Astro Docs MCP server.",
+      "category": "framework",
+      "keywords": ["astro", "docs", "documentation", "ssg", "web-framework"],
+      "tags": ["mcp", "docs"],
+      "source": "./plugins/astro"
+    },
+    {
       "name": "tosspayments",
       "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration",
       "category": "development",

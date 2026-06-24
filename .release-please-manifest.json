@@ -36,6 +36,7 @@
   "plugins/ast-grep": "1.2.1",
   "plugins/chat-sdk": "1.1.3",
   "plugins/docus": "1.1.2",
+  "plugins/astro": "1.0.0",
   "plugins/please-plugins": "1.6.0",
   "plugins/wordpress": "1.1.1",
   "plugins/vinext": "1.1.1",
