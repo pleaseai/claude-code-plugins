@@ -1,0 +1,39 @@
+.release-please-manifest.json
+  s_45501c3bbf000f::t_d277800c5cb710 39
+plugins/astro/.claude-plugin/plugin.json
+  s_45501c3bbf000f::t_b132a202ca149f 1-25
+plugins/astro/.codex-plugin/plugin.json
+  s_45501c3bbf000f::t_e9b93201cacebb 1-13,15-34
+  s_45501c3bbf000f::t_035cdca3adbede 14
+.agents/plugins/marketplace.json
+  s_45501c3bbf000f::t_035cdca3adbede 500-510
+plugins/astro/mcp_config.json
+  s_45501c3bbf000f::t_e9b93201cacebb 1-8
+README.md
+  s_45501c3bbf000f::t_01eebd28616dfc 272-276
+  s_45501c3bbf000f::t_4d498674f30b36 562
+release-please-config.json
+  s_45501c3bbf000f::t_b00e9a392203a4 471-491
+.claude-plugin/marketplace.json
+  s_45501c3bbf000f::t_eaf6bb2a9c7f76 430-436
+plugins/astro/plugin.json
+  s_45501c3bbf000f::t_e9b93201cacebb 1-19
+plugins/astro/.mcp.json
+  s_45501c3bbf000f::t_e9b93201cacebb 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "8dd763f5553936418dcb2a1417c41dcf80e3533c",
+  "prompts": {},
+  "sessions": {
+    "s_45501c3bbf000f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "a924692d-f030-4b0d-98cb-1be555e81fa9",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
