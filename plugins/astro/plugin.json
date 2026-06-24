@@ -1,0 +1,19 @@
+{
+  "name": "astro",
+  "version": "1.0.0",
+  "description": "Access Astro's official documentation through the Astro Docs MCP server.",
+  "author": {
+    "name": "Astro",
+    "url": "https://github.com/withastro"
+  },
+  "homepage": "https://astro.build",
+  "repository": "https://github.com/withastro/docs",
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "docs",
+    "documentation",
+    "ssg",
+    "web-framework"
+  ]
+}

@@ -468,6 +468,27 @@
         }
       ]
     },
+    "plugins/astro": {
+      "release-type": "simple",
+      "component": "astro",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
     "plugins/please-plugins": {
       "release-type": "simple",
       "component": "please-plugins",

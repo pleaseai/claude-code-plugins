@@ -269,6 +269,11 @@ Write beautiful documentations with Nuxt and Markdown.
 
 **Install:** `/plugin install docus@pleaseai` | **Source:** [plugins/docus](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/docus)
 
+#### Astro
+Access Astro's official documentation through the Astro Docs MCP server.
+
+**Install:** `/plugin install astro@pleaseai` | **Source:** [plugins/astro](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/astro)
+
 #### WordPress
 Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices.
 
@@ -554,6 +559,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install markitdown@pleaseai
 /plugin install chat-sdk@pleaseai
 /plugin install docus@pleaseai
+/plugin install astro@pleaseai
 /plugin install wordpress@pleaseai
 /plugin install vinext@pleaseai
 /plugin install next@pleaseai
