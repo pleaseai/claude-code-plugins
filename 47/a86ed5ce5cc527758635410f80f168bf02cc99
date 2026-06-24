@@ -1,0 +1,19 @@
+scripts/multi-format.ts
+  s_21f43c0ed1546d::t_d1429e4268c67a 338-340
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.11",
+  "base_commit_sha": "47a86ed5ce5cc527758635410f80f168bf02cc99",
+  "prompts": {},
+  "sessions": {
+    "s_21f43c0ed1546d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9bb4e8d7-7203-4332-af13-da786dea86a4",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
