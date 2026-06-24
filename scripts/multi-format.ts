@@ -335,7 +335,9 @@ export function toCodexMarketplaceEntry(entry: MarketplaceEntry, pluginDirName: 
  * a URL (https://, git@, ssh://).
  */
 function normalizeGitUrl(urlOrRepo: string): string {
-  if (/^(https?:\/\/|git@|ssh:\/\/)/.test(urlOrRepo)) return urlOrRepo
+  // Pass through anything that already carries an explicit scheme (https://,
+  // git://, ssh://, git+https://, git+ssh://, …) or scp-like `git@host:repo`.
+  if (/^([a-zA-Z+]+:\/\/|git@)/.test(urlOrRepo)) return urlOrRepo
   return `https://github.com/${urlOrRepo}.git`
 }
 
