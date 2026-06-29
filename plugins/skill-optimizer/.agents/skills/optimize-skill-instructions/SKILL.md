@@ -1,26 +1,29 @@
 ---
 name: optimize-skill-instructions
 description: |
-  Review and improve your SKILL.md with actionable recommendations. Reads skill bundle, validates syntax and references, explains rubric, shows before/after scores. Use when reviewing skill quality, improving a SKILL.md file, checking scoring dimensions and quick wins, auditing progressive disclosure and orphaned bundle files, generating improvement recommendations, running a post-edit quality audit, creating approval-gated change proposals, or automating the skill review workflow. For the full optimization cycle (review + evals + improve), use `optimize-skill-performance-and-instructions`.
+  Review and improve your skill with actionable recommendations. Reviews the whole bundle, validates syntax and references, explains rubric, shows before/after scores, and edits the SKILL.md and its reference docs. Use when reviewing skill quality, improving a SKILL.md or its reference files, checking scoring dimensions and quick wins, auditing progressive disclosure and orphaned bundle files, generating improvement recommendations, running a post-edit quality audit, creating approval-gated change proposals, or automating the skill review workflow. For the full optimization cycle (review + evals + improve), use `optimize-skill-performance-and-instructions`.
 ---
 
 # Review Best Practices
 
-Improve your SKILL.md using `tessl skill review` plus validation and context: reads your full skill bundle, validates syntax, explains WHY changes help, and catches mistakes before applying.
+Improve your skill using `tessl review run` plus validation and context: it reviews your full skill bundle, validates syntax, explains WHY changes help, and catches mistakes before applying.
+
+For a hands-off, automated improve loop, use `tessl review fix` instead — see [Fast path: automated fix loop](#fast-path-automated-fix-loop).
 
 ## Guiding Principles
 
-- The rubric optimizes for routing, not domain excellence — some skills legitimately need verbose explanations or specialized structure
 - A judge suggestion that conflicts with the skill's purpose should be discussed as a trade-off, not silently applied
-- Don't invent rubric dimensions, score deltas, or `tessl skill review` flags — derive them from actual review output
+- Don't invent rubric dimensions, score deltas, or `tessl review` flags — derive them from actual review output
 
 ## Workflow
 
 ### Phase 1: Baseline Evaluation
 
 ```bash
-tessl skill review <path-to-SKILL.md>
+tessl review run <path-to-skill> --label "baseline"
 ```
+
+Pass `--threshold <percent>` to exit non-zero below a score gate. Re-open the most recent result with `tessl review view --last`.
 
 Parse output for scores, validation issues, and judge suggestions. Prioritize fixes:
 **Critical** (ERRORs) → **High** (missing "Use when...", low actionability/conciseness) → **Medium** (other dimensions) → **Low** (warnings)
@@ -31,9 +34,23 @@ Read SKILL.md and list files in its directory. Bundle = SKILL.md + sibling files
 
 ### Phase 3: Generate Recommendations
 
-For each issue, provide: what to change, why (dimension + score), before/after, impact, educational note explaining WHY it helps. Apply "Don't invent" principle from Guiding Principles—ask user when unsure.
+For each issue, produce a recommendation block:
 
-If bundle has reference files (REFERENCE.md, etc.), recommend linking instead of inlining for progressive disclosure.
+```
+## [Action verb]: [what to change]
+
+Dimension: [name] [current]/3 → [target]/3 (+Z% overall)
+
+Before:
+> [exact current text]
+
+After:
+> [exact replacement text]
+
+Why: [one sentence: how this improves routing/clarity/actionability]
+```
+
+If bundle has reference files, recommend linking instead of inlining for progressive disclosure.
 
 ### Phase 4: Validate Recommendations
 
@@ -47,7 +64,7 @@ Run each validation step and show the output — do not just describe what you w
 - Frontmatter `description:` field: verify it contains a "Use when..." trigger clause (check the YAML header, not the body)
 - Content: flag any concepts the agent already knows (explain nothing obvious)
 
-See [references/REFERENCE.md](references/REFERENCE.md) for examples. When producing an automation script, include each step as executable code (not comments).
+See [REFERENCE.md](references/REFERENCE.md) for validation code snippets (Python `ast.parse`, JS `node --check`, bash file-reference checks). When producing an automation script, include each step as executable code (not comments).
 
 ### Phase 5: Present Recommendations
 
@@ -61,25 +78,22 @@ High     | Remove HMAC explanation  | +8% overall  | Conciseness 1→2
 Medium   | Add retry example        | +5% overall  | Actionability 2→3
 ```
 
-Then for each recommendation: current dimension score, issue, before/after examples, numeric score impact estimate (e.g. "+8% overall, Actionability 2→3"), and educational WHY.
+Then expand each row using the recommendation block format from Phase 3.
 
-**Discuss trade-offs, not just score gains:**
-- "This would improve Conciseness but removes domain context—worth it?"
-- "The judge suggests X, but it might not fit your skill's purpose—thoughts?"
-- Present options when recommendations have trade-offs
+The dimension names above are illustrative — use the actual dimensions from your review output. They come from the active reviewer's judges (the default reviewer scores a `description` and a `content` judge); a custom reviewer can define different ones.
 
-Frame changes as proposals (e.g., "I recommend X" or "I suggest removing Y") rather than imperative instructions. Get user approval before applying.
+When a recommendation has a trade-off (e.g. conciseness gain vs. domain context loss), present both options and ask. Frame changes as proposals; get user approval before applying.
 
 ### Phase 6: Apply Changes
 
-Use Edit tool to update SKILL.md. Track applied recommendations and expected impacts.
+Use the Edit tool to update the SKILL.md and any reference docs the review flagged (e.g. a `references/*.md` link fix, or moving inlined content out of SKILL.md for progressive disclosure). Keep edits minimal and conservative. For issues in non-prose bundle files (scripts/, assets/), surface them for the user rather than rewriting them here. Track applied recommendations and expected impacts.
 
 ### Phase 7: Verify Improvement
 
 **Run review again:**
 
 ```bash
-tessl skill review <path-to-SKILL.md>
+tessl review run <path-to-skill> --label "verify"
 ```
 
 **Compare scores:**
@@ -102,17 +116,31 @@ Re-run validation from Phase 4 on the updated SKILL.md:
 - ✓ Description has "Use when..." clause
 - ✓ No concepts Claude already knows
 
-Fix any issues, then re-run `tessl skill review` to confirm improvement.
+Fix any issues, then re-run `tessl review run` to confirm improvement.
 
-## Progressive Disclosure: Routing Clarity, Not File Count
+## Fast path: automated fix loop
 
-40 files is excellent IF each link signals WHEN it's relevant. Bad links force agents to open files "just in case."
+When the user wants hands-off iteration rather than the approval-gated workflow above, use `tessl review fix`. It runs the review-and-fix loop automatically — improving the skill and re-reviewing up to `--max-iterations` (default 3, max 10), stopping early once it hits `--threshold`:
 
-**The gate: Can the agent decide WITHOUT opening?**
+```bash
+tessl review fix <path-to-skill> --max-iterations 3 --threshold 85
+```
+
+It downloads the improved bundle, prints the **baseline → final score**, and asks for confirmation before applying (pass `--yes` to auto-apply). Note `tessl review fix` has **no `--label`** flag.
+
+Choose between the two paths:
+- **Manual workflow (Phases 1–8):** when you want syntax/command validation, trade-off discussion, and approval-gated control over each change.
+- **`tessl review fix`:** when you want speed and are comfortable with the reviewer applying changes automatically.
+
+## Customizing the reviewer
+
+Both `tessl review run` and `tessl review fix` use the **default reviewer** unless you pass `--review-plugin <local-dir | workspace/plugin[@version]>`. Most users keep the default. To author a custom reviewer that adds or removes judges and scoring dimensions, use the **`create-review-plugin`** skill (`tessl/review-plugin-creator`).
+
+## Progressive Disclosure
+
+**Every link must signal WHEN it's relevant:**
 - ✅ "See [AUTH.md] for OAuth flow setup, token refresh, and session management"
 - ❌ "See [GUIDE.md] for more details"
-
-If routing is unclear, inlining may be more token-efficient than splitting.
 
 **Check for orphaned files:**
 
@@ -133,7 +161,7 @@ Don't leave unreferenced files in the bundle. They waste space and confuse maint
 
 ## Notes
 
-- Only modifies SKILL.md (reads but doesn't change other bundle files)
-- Uses `tessl skill review` for evaluation
+- Modifies the SKILL.md and its reference docs; surfaces (but doesn't rewrite) issues in scripts/assets
+- Uses `tessl review run` for evaluation, or `tessl review fix` for the automated loop
 - Validates syntax/commands before applying
 - For bulk/PR work on external repos, iterate this workflow per skill or automate with a script

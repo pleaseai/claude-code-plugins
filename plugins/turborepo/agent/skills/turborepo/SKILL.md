@@ -1,6 +1,6 @@
 ---
 description: "Turborepo monorepo build system guidance. Triggers on: turbo.json, task pipelines,\ndependsOn, caching, remote cache, the \"turbo\" CLI, --filter, --affected, CI optimization, environment\nvariables, internal packages, monorepo structure/best practices, and boundaries.\n\nUse when user: configures tasks/workflows/pipelines, creates packages, sets up\nmonorepo, shares code between apps, runs changed/affected packages, debugs cache,\nor has apps/packages directories.\n"
-metadata: {"version":"2.9.17-canary.1"}
+metadata: {"version":"2.10.1-canary.1"}
 ---
 # Turborepo Skill
 
@@ -539,7 +539,7 @@ Don't use relative paths like `../` to reference files outside the package. Use 
 
 Common outputs by framework:
 
-- Next.js: `[".next/**", "!.next/cache/**"]`
+- Next.js: `[".next/**", "!.next/cache/**", "!.next/dev/**"]`
 - Vite/Rollup: `["dist/**"]`
 - tsc: `["dist/**"]` or custom `outDir`
 
@@ -730,11 +730,11 @@ import { Button } from "@repo/ui/button";
 
 ```json
 {
-  "$schema": "https://v2-9-17-canary-1.turborepo.dev/schema.json",
+  "$schema": "https://v2-10-1-canary-1.turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "!.next/dev/**"]
     },
     "dev": {
       "cache": false,

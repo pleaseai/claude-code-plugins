@@ -284,6 +284,7 @@ The chosen service configuration is written into launchd, systemd, or Task Sched
 | `portless get <name>`                  | Print URL for a service (for cross-service wiring)             |
 | `portless get <name> --no-worktree`    | Print URL without worktree prefix                              |
 | `portless list`                        | Show active routes                                             |
+| `portless doctor`                      | Check proxy, routes, DNS, CA trust, and LAN prerequisites      |
 | `portless trust`                       | Add local CA to system trust store (for HTTPS)                 |
 | `portless clean`                       | Remove state, CA trust entry, and /etc/hosts block             |
 | `portless prune`                       | Kill orphaned dev servers from crashed sessions                |
@@ -317,7 +318,7 @@ The chosen service configuration is written into launchd, systemd, or Task Sched
 | `portless run --help`                  | Show help for a subcommand (also: alias, hosts, clean)         |
 | `portless --version` / `-v`            | Show version                                                   |
 
-**Reserved names:** `run`, `get`, `alias`, `hosts`, `list`, `trust`, `clean`, `prune`, `proxy`, and `service` are subcommands and cannot be used as app names directly. Use `portless run <cmd>` to infer the name, or `portless --name <name> <cmd>` to force any name including reserved ones.
+**Reserved names:** `run`, `get`, `alias`, `hosts`, `list`, `doctor`, `trust`, `clean`, `prune`, `proxy`, and `service` are subcommands and cannot be used as app names directly. Use `portless run <cmd>` to infer the name, or `portless --name <name> <cmd>` to force any name including reserved ones.
 
 ## portless.json
 
@@ -351,6 +352,10 @@ An object supports all per-app fields (`name`, `script`, `appPort`, `proxy`):
 Precedence (closest wins): CLI flags > package.json `"portless"` key > portless.json app entry > defaults.
 
 ## Troubleshooting
+
+### Run diagnostics
+
+Use `portless doctor` first when local routing or HTTPS behavior looks wrong. It is read-only and checks Node.js, state directory permissions, proxy liveness, route entries, hostname resolution, local CA trust, and LAN mode prerequisites.
 
 ### Proxy not running
 
