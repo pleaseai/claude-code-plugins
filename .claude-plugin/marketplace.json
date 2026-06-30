@@ -118,6 +118,17 @@
       }
     },
     {
+      "name": "hermes-tweet",
+      "description": "Hermes Agent X/Twitter plugin with read tools, gated action tools, and bundled agent skill guidance",
+      "category": "productivity",
+      "keywords": ["hermes-agent", "twitter", "x", "social-media"],
+      "tags": ["social", "hermes-agent"],
+      "source": {
+        "source": "github",
+        "repo": "Xquik-dev/hermes-tweet"
+      }
+    },
+    {
       "name": "nuxt-ui",
       "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
       "category": "ui",

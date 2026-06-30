@@ -65,6 +65,10 @@ Control and inspect a live Chrome browser through MCP — automate actions, debu
 
 **Install:** `/plugin install chrome-devtools-mcp@pleaseai` | **Repository:** [ChromeDevTools/chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp)
 
+#### Hermes Tweet
+Hermes Agent X/Twitter plugin with read tools, gated action tools, and bundled agent skill guidance.
+
+**Install:** `/plugin install hermes-tweet@pleaseai` | **Repository:** [Xquik-dev/hermes-tweet](https://github.com/Xquik-dev/hermes-tweet)
 
 #### Playwright CLI
 Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
@@ -87,6 +91,7 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 **Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
 
 ---
+
 
 ### Built-in Plugins
 
@@ -688,4 +693,3 @@ This marketplace is licensed under the [MIT License](LICENSE).
 Please refer to individual plugin repositories for their respective licenses.
 
 ---
-
