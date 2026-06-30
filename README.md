@@ -92,7 +92,6 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 
 ---
 
-
 ### Built-in Plugins
 
 #### Please Plugins (Plugin Recommender)
@@ -526,6 +525,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install firebase@pleaseai
 /plugin install grafana@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
+/plugin install hermes-tweet@pleaseai
 /plugin install playwright-cli@pleaseai
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
