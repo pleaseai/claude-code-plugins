@@ -1,0 +1,192 @@
+plugins/gatekeeper/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/nuxt/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-29
+plugins/vinext/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/ai-sdk/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/pnpm/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/portone/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-36
+plugins/claude-md-management/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-14
+plugins/antfu/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/cubic/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/worktree/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-20
+.claude/rules/marketplace-sync.md
+  s_6cb6d3d4dfb72c::t_cde97f4d08939d 21
+  s_6cb6d3d4dfb72c::t_b806ef6001abf8 47
+  s_6cb6d3d4dfb72c::t_074f28f9d40e35 36,40
+  s_6cb6d3d4dfb72c::t_5320b6f0547d16 6
+plugins/nostics/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/java-development/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+scripts/cli.ts
+  s_6cb6d3d4dfb72c::t_2768a01d201ad2 812
+  s_6cb6d3d4dfb72c::t_630d822fcb31b7 18
+  s_6cb6d3d4dfb72c::t_ec2abd365d30af 695-696
+  s_6cb6d3d4dfb72c::t_0e95b77abc9321 761-771
+  s_6cb6d3d4dfb72c::t_b46f6b288ddeff 715
+plugins/slack-agent/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-15
+plugins/google-workspace/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/port/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-38
+plugins/turborepo/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/skillopt-sleep/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-28
+plugins/neo4j/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-40
+plugins/vue/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+.cursor-plugin/marketplace.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-2,11-361,363
+  s_6cb6d3d4dfb72c::t_018cc327604d3f 3-10,362
+plugins/semble/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-36
+plugins/bun/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-26
+plugins/edgeparse/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/tsdown/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/graphite/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-28
+plugins/pinia/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/slidev/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/astro/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-30
+plugins/graphify/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-28
+plugins/next/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/emulate/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-21
+plugins/supabase/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-28
+release-please-config.json
+  s_6cb6d3d4dfb72c::t_e2ef1294e17021 41-45,227-231,258-262,322-326,392-396,423-427,465-469,524-528,555-559,707-711,738-742,769-773,800-804,831-835,862-866,893-897,924-928,955-959,981-985,1007-1011,1033-1037,1059-1063,1085-1089,1111-1115,1137-1141,1163-1167
+plugins/vite/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/nuxt-ui/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-28
+scripts/multi-format.test.ts
+  s_6cb6d3d4dfb72c::t_fabb84855c3b1b 14-16
+  s_6cb6d3d4dfb72c::t_f3c8e87cc1c84a 377,381-385
+  s_6cb6d3d4dfb72c::t_f4d2a9f71e297f 475-600
+plugins/nuxt-seo/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/portless/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-21
+plugins/vitest/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/mcp-dev/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/vitepress/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/prisma/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-33
+plugins/unocss/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/fetch/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-33
+CLAUDE.md
+  s_6cb6d3d4dfb72c::t_21670c587e0688 73,75-76,83,85-87
+  s_6cb6d3d4dfb72c::t_6795c87d3c230f 95-97
+plugins/git-ai/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-21
+plugins/please-plugins/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/vueuse/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/playwright-cli/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-26
+plugins/chat-sdk/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/nuxt-i18n/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/rtk/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/codegraph/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-36
+plugins/web-design/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/react-native/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-21
+plugins/tiptap/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-20
+plugins/better-auth/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/eve/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/vercel-sandbox/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/workflow-sdk/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-24
+plugins/zod/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/tosspayments/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-33
+plugins/dev3000/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/mastra/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-32
+plugins/plugin-dev/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/axi/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-14
+plugins/react/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+plugins/ast-grep/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-25
+plugins/agent-browser/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+scripts/multi-format.ts
+  s_6cb6d3d4dfb72c::t_a8b8ec7c7fe997 689-695
+  s_6cb6d3d4dfb72c::t_daa650db27ec10 8-9,14,33-38
+  s_6cb6d3d4dfb72c::t_588d43f543660b 39,295-354
+  s_6cb6d3d4dfb72c::t_787f0ff5548c92 294,356,643-687,696-697
+  s_6cb6d3d4dfb72c::t_fa256162d64686 544-551
+  s_6cb6d3d4dfb72c::t_3ff8268844330e 688
+  s_6cb6d3d4dfb72c::t_c9301b983e8685 612-613
+  s_6cb6d3d4dfb72c::t_7f7ba94953a1bd 355
+  s_6cb6d3d4dfb72c::t_bee83726136ed6 357
+  s_6cb6d3d4dfb72c::t_c6a91e9da9f7ac 552
+  s_6cb6d3d4dfb72c::t_ffbcac197604da 698
+plugins/lavish/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/wordpress/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-23
+plugins/markitdown/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-34
+plugins/docus/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-30
+plugins/skill-optimizer/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_32cef9edd1d748 1-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "11eceb531c328bf63ad6c409b45c679fd9f23c93",
+  "prompts": {},
+  "sessions": {
+    "s_6cb6d3d4dfb72c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8690c7f1-9129-40e4-ae38-b1bc57bb48f6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
