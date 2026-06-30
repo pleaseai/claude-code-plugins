@@ -6,7 +6,7 @@
   },
   "metadata": {
     "version": "0.2.0",
-    "description": "Bundled plugins for Claude Code"
+    "description": "Bundled plugins for Cursor"
   },
   "plugins": [
     {

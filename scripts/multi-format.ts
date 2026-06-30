@@ -316,7 +316,7 @@ export interface CursorManifest {
   keywords?: string[]
   category: string
   tags?: string[]
-  mcpServers?: Record<string, unknown>
+  mcpServers?: Record<string, unknown> | string
 }
 
 function pickCursorAuthor(claude: ClaudePluginManifest): CursorAuthor {
@@ -350,8 +350,16 @@ export function toCursorManifest(
   if (claude.keywords && claude.keywords.length > 0) manifest.keywords = claude.keywords
   const tags = entry?.tags
   if (tags && tags.length > 0) manifest.tags = tags
-  const mcp = extractMcpServersFile(claude)
-  if (mcp) manifest.mcpServers = mcp.mcpServers
+  // MCP servers: inline objects are kept inline; a string form (external config
+  // path, e.g. "./.mcp.json") is passed through rather than dropped — Cursor's
+  // schema accepts a string path, and silently omitting it would lose MCP
+  // support for plugins that externalise their config.
+  if (typeof claude.mcpServers === "string") {
+    manifest.mcpServers = claude.mcpServers
+  } else {
+    const mcp = extractMcpServersFile(claude)
+    if (mcp) manifest.mcpServers = mcp.mcpServers
+  }
   return manifest
 }
 
@@ -685,13 +693,20 @@ export function toCursorMarketplace(claudeMarketplace: ClaudeMarketplace): Curso
     if (p.description) entry.description = p.description
     plugins.push(entry)
   }
+  // Re-brand the metadata description for the Cursor catalog: the shared Claude
+  // marketplace metadata says "…for Claude Code", which is stale on the Cursor
+  // surface. Rewrite the runtime mention while leaving other metadata intact.
+  let metadata = claudeMarketplace.metadata
+  if (metadata && typeof metadata.description === "string") {
+    metadata = { ...metadata, description: metadata.description.replace(/Claude Code/g, "Cursor") }
+  }
   // Field order matches Cursor's marketplace convention: name, owner, metadata,
   // then plugins. Build via spreads so optional fields land before the plugins
   // array rather than after it (JSON key order follows insertion order).
   return {
     name: claudeMarketplace.name ?? "personal",
     ...(claudeMarketplace.owner ? { owner: claudeMarketplace.owner } : {}),
-    ...(claudeMarketplace.metadata ? { metadata: claudeMarketplace.metadata } : {}),
+    ...(metadata ? { metadata } : {}),
     plugins,
   }
 }

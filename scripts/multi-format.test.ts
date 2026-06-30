@@ -515,6 +515,11 @@ describe("toCursorManifest", () => {
     expect(result.mcpServers).toBeUndefined()
   })
 
+  test("passes through a string mcpServers path instead of silently dropping it", () => {
+    const result = toCursorManifest({ name: "x", mcpServers: "./.mcp.json" }, undefined)
+    expect(result.mcpServers).toBe("./.mcp.json")
+  })
+
   test("coerces a non-semver version to 1.0.0", () => {
     const result = toCursorManifest({ name: "x", version: "2024-01-01" }, undefined)
     expect(result.version).toBe("1.0.0")
@@ -576,6 +581,16 @@ describe("toCursorMarketplace", () => {
     const result = toCursorMarketplace(input)
     expect(result.owner).toEqual({ name: "Org", email: "o@x.com" })
     expect(result.metadata).toEqual({ version: "0.2.0" })
+  })
+
+  test("rebrands a 'Claude Code' metadata description for the Cursor catalog", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      metadata: { version: "0.2.0", description: "Bundled plugins for Claude Code" },
+      plugins: [],
+    }
+    const result = toCursorMarketplace(input)
+    expect(result.metadata).toEqual({ version: "0.2.0", description: "Bundled plugins for Cursor" })
   })
 
   test("defaults name to 'personal' and omits owner/metadata when absent", () => {
