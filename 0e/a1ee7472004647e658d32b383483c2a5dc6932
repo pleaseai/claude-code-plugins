@@ -1,0 +1,44 @@
+plugins/nuxt-ui/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 9
+.claude-plugin/marketplace.json
+  s_6cb6d3d4dfb72c::t_eb3df181a84964 246
+  s_6cb6d3d4dfb72c::t_0208f63eba32a3 95
+  s_6cb6d3d4dfb72c::t_dd5c6d71a6b2c9 397
+  s_6cb6d3d4dfb72c::t_86f3a8519ec735 271
+plugins/markitdown/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 3
+plugins/mastra/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 9
+plugins/mcp-dev/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 3
+plugins/neo4j/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 3
+scripts/multi-format.ts
+  s_6cb6d3d4dfb72c::t_7f13571391b57e 131-135,139-140
+.agents/plugins/marketplace.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 17,149,329,389,449,861
+plugins/vueuse/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 3
+plugins/web-design/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 9
+plugins/ai-sdk/.cursor-plugin/plugin.json
+  s_6cb6d3d4dfb72c::t_9b562962b2702b 9
+scripts/multi-format.test.ts
+  s_6cb6d3d4dfb72c::t_b391628e225271 528-533
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "0ea1ee7472004647e658d32b383483c2a5dc6932",
+  "prompts": {},
+  "sessions": {
+    "s_6cb6d3d4dfb72c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8690c7f1-9129-40e4-ae38-b1bc57bb48f6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
