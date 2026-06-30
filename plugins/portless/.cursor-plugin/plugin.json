@@ -1,0 +1,21 @@
+{
+  "name": "portless",
+  "displayName": "Portless",
+  "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
+  "version": "1.1.2",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Development",
+  "license": "Apache-2.0",
+  "keywords": [
+    "portless",
+    "localhost",
+    "dev-server",
+    "proxy"
+  ],
+  "tags": [
+    "tooling",
+    "dev-server"
+  ]
+}

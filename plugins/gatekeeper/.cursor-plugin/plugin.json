@@ -1,0 +1,22 @@
+{
+  "name": "gatekeeper",
+  "displayName": "Gatekeeper",
+  "description": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
+  "version": "1.5.0",
+  "author": {
+    "name": "Minsu Lee"
+  },
+  "category": "Tooling",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "permissions",
+    "gatekeeper",
+    "hook"
+  ],
+  "tags": [
+    "tooling",
+    "safety"
+  ]
+}

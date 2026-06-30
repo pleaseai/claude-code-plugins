@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-ui",
+  "displayName": "Nuxt Ui",
+  "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
+  "version": "1.5.0",
+  "author": {
+    "name": "Nuxt"
+  },
+  "category": "UI",
+  "repository": "https://github.com/nuxt/ui",
+  "license": "MIT",
+  "keywords": [
+    "nuxt-ui",
+    "vue",
+    "ui",
+    "tailwind",
+    "reka-ui"
+  ],
+  "tags": [
+    "ui"
+  ],
+  "mcpServers": {
+    "nuxt-ui": {
+      "type": "http",
+      "url": "https://ui.nuxt.com/mcp"
+    }
+  }
+}

@@ -14,7 +14,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ai"
+      "category": "AI"
     },
     {
       "name": "flutter",
@@ -146,7 +146,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ui"
+      "category": "UI"
     },
     {
       "name": "plugin-dev",
@@ -326,7 +326,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ui"
+      "category": "UI"
     },
     {
       "name": "gatekeeper",
@@ -386,7 +386,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ai"
+      "category": "AI"
     },
     {
       "name": "supabase",
@@ -446,7 +446,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ai"
+      "category": "AI"
     },
     {
       "name": "slack-agent",
@@ -858,7 +858,7 @@
         "installation": "AVAILABLE",
         "authentication": "ON_INSTALL"
       },
-      "category": "Ai"
+      "category": "AI"
     },
     {
       "name": "edgeparse",

@@ -1,0 +1,28 @@
+{
+  "name": "graphify",
+  "displayName": "Graphify",
+  "description": "Turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph with community detection, query/path/explain tools, and an honest audit trail",
+  "version": "1.0.0",
+  "author": {
+    "name": "Safi Shamsi"
+  },
+  "category": "Tooling",
+  "homepage": "https://github.com/safishamsi/graphify",
+  "repository": "https://github.com/safishamsi/graphify",
+  "license": "MIT",
+  "keywords": [
+    "graphify",
+    "knowledge-graph",
+    "graphrag",
+    "codebase",
+    "code-understanding",
+    "ast",
+    "community-detection",
+    "obsidian",
+    "neo4j"
+  ],
+  "tags": [
+    "skills",
+    "knowledge-graph"
+  ]
+}

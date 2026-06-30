@@ -1,0 +1,363 @@
+{
+  "name": "pleaseai",
+  "owner": {
+    "name": "Passion Factory",
+    "email": "support@passionfactory.ai"
+  },
+  "metadata": {
+    "version": "0.2.0",
+    "description": "Bundled plugins for Cursor"
+  },
+  "plugins": [
+    {
+      "name": "mcp-neo4j",
+      "source": "./plugins/neo4j",
+      "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling"
+    },
+    {
+      "name": "codegraph",
+      "source": "./plugins/codegraph",
+      "description": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files"
+    },
+    {
+      "name": "nuxt-ui",
+      "source": "./plugins/nuxt-ui",
+      "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS."
+    },
+    {
+      "name": "plugin-dev",
+      "source": "./plugins/plugin-dev",
+      "description": "Best practices, guidelines, and validation tools for Claude Code plugin development"
+    },
+    {
+      "name": "antfu",
+      "source": "./plugins/antfu",
+      "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects"
+    },
+    {
+      "name": "nuxt",
+      "source": "./plugins/nuxt",
+      "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing"
+    },
+    {
+      "name": "pinia",
+      "source": "./plugins/pinia",
+      "description": "Pinia official Vue state management library, type-safe and extensible"
+    },
+    {
+      "name": "pnpm",
+      "source": "./plugins/pnpm",
+      "description": "Node.js package manager with strict dependency resolution and workspace support"
+    },
+    {
+      "name": "slidev",
+      "source": "./plugins/slidev",
+      "description": "Create and present web-based slides for developers using Markdown and Vue components"
+    },
+    {
+      "name": "tsdown",
+      "source": "./plugins/tsdown",
+      "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown"
+    },
+    {
+      "name": "turborepo",
+      "source": "./plugins/turborepo",
+      "description": "Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization"
+    },
+    {
+      "name": "unocss",
+      "source": "./plugins/unocss",
+      "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS"
+    },
+    {
+      "name": "vite",
+      "source": "./plugins/vite",
+      "description": "Vite build tool configuration, plugin API, SSR, and Rolldown migration"
+    },
+    {
+      "name": "vitepress",
+      "source": "./plugins/vitepress",
+      "description": "VitePress static site generator powered by Vite and Vue"
+    },
+    {
+      "name": "vitest",
+      "source": "./plugins/vitest",
+      "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API"
+    },
+    {
+      "name": "vue",
+      "source": "./plugins/vue",
+      "description": "Vue 3 core, best practices, router patterns, and testing"
+    },
+    {
+      "name": "vueuse",
+      "source": "./plugins/vueuse",
+      "description": "VueUse composables for building concise, maintainable Vue.js / Nuxt features"
+    },
+    {
+      "name": "web-design",
+      "source": "./plugins/web-design",
+      "description": "Review UI code for Web Interface Guidelines compliance"
+    },
+    {
+      "name": "gatekeeper",
+      "source": "./plugins/gatekeeper",
+      "description": "Auto-approve safe commands, AI-assisted review for the rest"
+    },
+    {
+      "name": "mcp-dev",
+      "source": "./plugins/mcp-dev",
+      "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools"
+    },
+    {
+      "name": "cubic",
+      "source": "./plugins/cubic",
+      "description": "AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues"
+    },
+    {
+      "name": "playwright-cli",
+      "source": "./plugins/playwright-cli",
+      "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps"
+    },
+    {
+      "name": "mastra",
+      "source": "./plugins/mastra",
+      "description": "Official agent skills for coding agents working with the Mastra AI framework"
+    },
+    {
+      "name": "supabase",
+      "source": "./plugins/supabase",
+      "description": "Agent Skills to help developers using AI agents with Supabase"
+    },
+    {
+      "name": "prisma",
+      "source": "./plugins/prisma",
+      "description": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows"
+    },
+    {
+      "name": "better-auth",
+      "source": "./plugins/better-auth",
+      "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects"
+    },
+    {
+      "name": "agent-browser",
+      "source": "./plugins/agent-browser",
+      "description": "Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows"
+    },
+    {
+      "name": "ai-sdk",
+      "source": "./plugins/ai-sdk",
+      "description": "The AI Toolkit for TypeScript - official agent skills for building AI-powered applications and agents with Vercel AI SDK"
+    },
+    {
+      "name": "slack-agent",
+      "source": "./plugins/slack-agent",
+      "description": "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt."
+    },
+    {
+      "name": "claude-md-management",
+      "source": "./plugins/claude-md-management",
+      "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current"
+    },
+    {
+      "name": "google-workspace",
+      "source": "./plugins/google-workspace",
+      "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs."
+    },
+    {
+      "name": "nuxt-i18n",
+      "source": "./plugins/nuxt-i18n",
+      "description": "Nuxt i18n internationalization module for locale routing, lazy-loaded translations, SEO, browser detection, and multi-domain setups"
+    },
+    {
+      "name": "nuxt-seo",
+      "source": "./plugins/nuxt-seo",
+      "description": "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org. Use when configuring SEO, generating sitemaps, creating OG images, or adding structured data."
+    },
+    {
+      "name": "worktree",
+      "source": "./plugins/worktree",
+      "description": "Git worktree isolation: context injection and parent project access prevention"
+    },
+    {
+      "name": "rtk",
+      "source": "./plugins/rtk",
+      "description": "Reduce LLM token consumption by 60-90% using RTK to filter and compress command outputs"
+    },
+    {
+      "name": "markitdown",
+      "source": "./plugins/markitdown",
+      "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server"
+    },
+    {
+      "name": "fetch",
+      "source": "./plugins/fetch",
+      "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts"
+    },
+    {
+      "name": "semble",
+      "source": "./plugins/semble",
+      "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server"
+    },
+    {
+      "name": "ast-grep",
+      "source": "./plugins/ast-grep",
+      "description": "Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search."
+    },
+    {
+      "name": "chat-sdk",
+      "source": "./plugins/chat-sdk",
+      "description": "Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear"
+    },
+    {
+      "name": "docus",
+      "source": "./plugins/docus",
+      "description": "Write beautiful documentations with Nuxt and Markdown."
+    },
+    {
+      "name": "astro",
+      "source": "./plugins/astro",
+      "description": "Access Astro's official documentation through the Astro Docs MCP server."
+    },
+    {
+      "name": "tosspayments",
+      "source": "./plugins/tosspayments",
+      "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration"
+    },
+    {
+      "name": "port",
+      "source": "./plugins/port",
+      "description": "Port.io Internal Developer Portal integration. Manage your entire SDLC — blueprints, entities, scorecards, self-service actions, incidents, and DevOps requests — via the Port MCP server. Supports US and EU regions."
+    },
+    {
+      "name": "portone",
+      "source": "./plugins/portone",
+      "description": "포트원(PortOne) 결제 연동 코드 생성 및 검토 플러그인. V1/V2 API를 지원하며, MCP 서버를 통해 최신 문서와 예시 코드를 활용합니다."
+    },
+    {
+      "name": "please-plugins",
+      "source": "./plugins/please-plugins",
+      "description": "Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace"
+    },
+    {
+      "name": "wordpress",
+      "source": "./plugins/wordpress",
+      "description": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices"
+    },
+    {
+      "name": "vinext",
+      "source": "./plugins/vinext",
+      "description": "Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversion, and deployment setup"
+    },
+    {
+      "name": "next",
+      "source": "./plugins/next",
+      "description": "Next.js best practices, caching patterns, and upgrade guidance"
+    },
+    {
+      "name": "react",
+      "source": "./plugins/react",
+      "description": "React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering"
+    },
+    {
+      "name": "react-native",
+      "source": "./plugins/react-native",
+      "description": "React Native and Expo best practices for building performant mobile apps"
+    },
+    {
+      "name": "tiptap",
+      "source": "./plugins/tiptap",
+      "description": "Helps coding agents integrate and work with the Tiptap rich text editor — extensions, collaboration, comments, AI, and document conversion"
+    },
+    {
+      "name": "emulate",
+      "source": "./plugins/emulate",
+      "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js"
+    },
+    {
+      "name": "edgeparse",
+      "source": "./plugins/edgeparse",
+      "description": "Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements"
+    },
+    {
+      "name": "git-ai",
+      "source": "./plugins/git-ai",
+      "description": "A Git extension for tracking the AI-generated code in your repos"
+    },
+    {
+      "name": "graphite",
+      "source": "./plugins/graphite",
+      "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track branches, and collaborate on shared stacks"
+    },
+    {
+      "name": "workflow-sdk",
+      "source": "./plugins/workflow-sdk",
+      "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript"
+    },
+    {
+      "name": "portless",
+      "source": "./plugins/portless",
+      "description": "Replace port numbers with stable, named local URLs. For humans and agents."
+    },
+    {
+      "name": "zod",
+      "source": "./plugins/zod",
+      "description": "TypeScript-first schema validation with static type inference - version-aware skill for Zod v3 and v4"
+    },
+    {
+      "name": "bun",
+      "source": "./plugins/bun",
+      "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler - version-aware skill backed by the ask CLI"
+    },
+    {
+      "name": "java-development",
+      "source": "./plugins/java-development",
+      "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot"
+    },
+    {
+      "name": "skillopt-sleep",
+      "source": "./plugins/skillopt-sleep",
+      "description": "Nightly offline self-evolution for your local Claude agent: review past sessions, replay recurring tasks on your own budget, and consolidate validated CLAUDE.md memory + SKILL.md skills behind a held-out gate. Self-contained (vendored, zero third-party deps)."
+    },
+    {
+      "name": "graphify",
+      "source": "./plugins/graphify",
+      "description": "Turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph with community detection, query/path/explain tools, and an honest audit trail"
+    },
+    {
+      "name": "vercel-sandbox",
+      "source": "./plugins/vercel-sandbox",
+      "description": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation."
+    },
+    {
+      "name": "eve",
+      "source": "./plugins/eve",
+      "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals."
+    },
+    {
+      "name": "skill-optimizer",
+      "source": "./plugins/skill-optimizer",
+      "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve."
+    },
+    {
+      "name": "nostics",
+      "source": "./plugins/nostics",
+      "description": "Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes."
+    },
+    {
+      "name": "dev3000",
+      "source": "./plugins/dev3000",
+      "description": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging."
+    },
+    {
+      "name": "lavish",
+      "source": "./plugins/lavish",
+      "description": "Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose."
+    },
+    {
+      "name": "axi",
+      "source": "./plugins/axi",
+      "description": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI."
+    }
+  ]
+}

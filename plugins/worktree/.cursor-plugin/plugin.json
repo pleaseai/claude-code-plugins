@@ -1,0 +1,20 @@
+{
+  "name": "worktree",
+  "displayName": "Worktree",
+  "description": "Git worktree isolation: context injection and parent project access prevention",
+  "version": "1.0.0",
+  "author": {
+    "name": "PassionFactory"
+  },
+  "category": "Tooling",
+  "keywords": [
+    "worktree",
+    "git",
+    "isolation",
+    "safety"
+  ],
+  "tags": [
+    "tooling",
+    "safety"
+  ]
+}

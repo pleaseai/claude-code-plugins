@@ -1,0 +1,23 @@
+{
+  "name": "wordpress",
+  "displayName": "Wordpress",
+  "description": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
+  "version": "1.1.1",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Framework",
+  "license": "NOASSERTION",
+  "keywords": [
+    "wordpress",
+    "blocks",
+    "themes",
+    "plugins",
+    "gutenberg",
+    "php"
+  ],
+  "tags": [
+    "framework",
+    "cms"
+  ]
+}

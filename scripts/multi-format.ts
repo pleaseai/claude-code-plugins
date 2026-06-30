@@ -5,12 +5,13 @@ import { dirname, join } from "node:path"
  * Multi-format plugin manifest generator.
  *
  * Reads the Claude Code plugin manifest (`.claude-plugin/plugin.json`) and a
- * marketplace entry, then emits equivalent manifests for two additional
- * runtimes so the same plugin directory loads in all three:
+ * marketplace entry, then emits equivalent manifests for three additional
+ * runtimes so the same plugin directory loads in all of them:
  *
  *   - Claude Code (source of truth):  plugins/<name>/.claude-plugin/plugin.json
  *   - Codex:                          plugins/<name>/.codex-plugin/plugin.json + .mcp.json
  *   - Antigravity:                    plugins/<name>/plugin.json + mcp_config.json + hooks.json
+ *   - Cursor:                         plugins/<name>/.cursor-plugin/plugin.json
  *
  * Shared assets (`skills/`, `commands/`, `hooks/`) live once and are referenced
  * by each manifest. Only manifest-level fields differ across runtimes.
@@ -28,6 +29,13 @@ import { dirname, join } from "node:path"
  *     - `mcpServers` inline → written to `mcp_config.json`
  *     - `hooks/hooks.json` (if present) → mirrored to root `hooks.json`
  *     - skills/ reused as-is (same SKILL.md format)
+ *
+ *   Claude → Cursor
+ *     - `.cursor-plugin/plugin.json`: only `name` is required; rich metadata
+ *       (displayName/category/tags) preserved when available
+ *     - components (`skills`/`commands`/`agents`/`rules`) are omitted — Cursor
+ *       auto-discovers them from default folders at the plugin root
+ *     - `mcpServers` inline → kept inline in the manifest (Cursor accepts an object)
  *
  * Antigravity collision: plugins that already use a root-level `plugin.json`
  * (currently `bun`, `plugin-dev`) are treated as Antigravity-compatible
@@ -120,9 +128,16 @@ function pickDisplayName(claude: ClaudePluginManifest, entry: MarketplaceEntry |
   return fromName || claude.name
 }
 
+// Categories are stored lower-case in the Claude marketplace by convention, but
+// surface capitalised in Codex/Cursor manifests. Acronyms must not be naively
+// title-cased ("ai" → "Ai"); map the known ones to their canonical form.
+const CATEGORY_ACRONYMS: Record<string, string> = { ai: "AI", ui: "UI" }
+
 function pickCategory(entry: MarketplaceEntry | undefined): string {
   const raw = entry?.category
   if (!raw) return DEFAULT_CATEGORY
+  const canonical = CATEGORY_ACRONYMS[raw.toLowerCase()]
+  if (canonical) return canonical
   return raw[0]!.toUpperCase() + raw.slice(1)
 }
 
@@ -280,6 +295,78 @@ export function toAntigravityManifest(claude: ClaudePluginManifest): Antigravity
   if (claude.repository) manifest.repository = claude.repository
   if (claude.license) manifest.license = claude.license
   if (claude.keywords && claude.keywords.length > 0) manifest.keywords = claude.keywords
+  return manifest
+}
+
+/**
+ * Cursor plugin manifest (`.cursor-plugin/plugin.json`). Only `name` is required
+ * by the schema; we additionally emit metadata that helps marketplace discovery.
+ * Component fields (`skills`/`commands`/`agents`/`rules`) are intentionally
+ * omitted — Cursor auto-discovers them from default folders at the plugin root,
+ * which keeps the manifest format-agnostic (same `skills/` dir as Claude Code).
+ * `author` carries only `name`: emails are stripped for the same privacy reason
+ * as {@link sanitiseAuthor}, and the Cursor author schema has no `url` field.
+ */
+export interface CursorAuthor {
+  name: string
+}
+
+export interface CursorManifest {
+  name: string
+  displayName: string
+  description: string
+  version: string
+  author: CursorAuthor
+  homepage?: string
+  repository?: string
+  license?: string
+  keywords?: string[]
+  category: string
+  tags?: string[]
+  mcpServers?: Record<string, unknown> | string
+}
+
+function pickCursorAuthor(claude: ClaudePluginManifest): CursorAuthor {
+  const name = claude.author?.name
+  return { name: name && name.trim() ? name : "Community" }
+}
+
+/**
+ * Convert a Claude Code plugin manifest into a Cursor manifest.
+ *
+ * Caller writes the returned manifest to `.cursor-plugin/plugin.json`. Unlike
+ * Codex/Antigravity, inline `mcpServers` stay in the manifest (Cursor accepts an
+ * object), so no companion file is produced.
+ */
+export function toCursorManifest(
+  claude: ClaudePluginManifest,
+  entry: MarketplaceEntry | undefined,
+): CursorManifest {
+  const description = claude.description ?? entry?.description ?? claude.name
+  const manifest: CursorManifest = {
+    name: claude.name,
+    displayName: pickDisplayName(claude, entry),
+    description,
+    version: normalizeVersion(claude.version),
+    author: pickCursorAuthor(claude),
+    category: pickCategory(entry),
+  }
+  if (claude.homepage) manifest.homepage = claude.homepage
+  if (claude.repository) manifest.repository = claude.repository
+  if (claude.license) manifest.license = claude.license
+  if (claude.keywords && claude.keywords.length > 0) manifest.keywords = claude.keywords
+  const tags = entry?.tags
+  if (tags && tags.length > 0) manifest.tags = tags
+  // MCP servers: inline objects are kept inline; a string form (external config
+  // path, e.g. "./.mcp.json") is passed through rather than dropped — Cursor's
+  // schema accepts a string path, and silently omitting it would lose MCP
+  // support for plugins that externalise their config.
+  if (typeof claude.mcpServers === "string") {
+    manifest.mcpServers = claude.mcpServers
+  } else {
+    const mcp = extractMcpServersFile(claude)
+    if (mcp) manifest.mcpServers = mcp.mcpServers
+  }
   return manifest
 }
 
@@ -469,6 +556,15 @@ export function generateForPlugin(
     result.written.push(`${staleCodexHooks} (removed: Codex uses default hooks/hooks.json)`)
   }
 
+  // 1b. Cursor manifest (.cursor-plugin/plugin.json).
+  // Components (skills/commands/agents/rules) are auto-discovered from default
+  // folders by Cursor, so we omit those fields. Inline mcpServers (if any) stay
+  // in the manifest — Cursor accepts an object, so no companion file is written.
+  const cursor = toCursorManifest(claude, marketplaceEntry)
+  const cursorPath = join(pluginDir, ".cursor-plugin", "plugin.json")
+  if (writeIfChanged(cursorPath, stringify(cursor))) result.written.push(cursorPath)
+  else result.skipped.push(cursorPath)
+
   // 2. Antigravity manifest (root-level plugin.json)
   // If the Claude manifest already lives at root, skip — that file IS the manifest
   // and both runtimes can read it.
@@ -528,6 +624,8 @@ export function generateForPlugin(
  */
 export interface ClaudeMarketplace {
   name?: string
+  owner?: { name: string; email?: string }
+  metadata?: Record<string, unknown>
   plugins: Array<MarketplaceEntry & { source?: unknown }>
 }
 
@@ -554,6 +652,69 @@ export function toCodexMarketplace(claudeMarketplace: ClaudeMarketplace): {
     name: claudeMarketplace.name ?? "personal",
     interface: { displayName: claudeMarketplace.name ?? "Personal" },
     plugins: entries,
+  }
+}
+
+/**
+ * Convert a Claude marketplace `source` into a Cursor marketplace `source`.
+ * Cursor entries use a single string source ("relative path or remote URL"),
+ * so only local plugins (`./plugins/...`) are expressible here — git-subdir
+ * sources have no path field in Cursor's string form, and whole-repo URL
+ * shapes are left out rather than emitting an unverifiable URL. Returns null
+ * for anything that is not a local plugin so the caller skips it.
+ */
+export function toCursorSource(source: unknown): string | null {
+  if (typeof source === "string") {
+    return source.startsWith("./plugins/") ? source : null
+  }
+  return null
+}
+
+export interface CursorMarketplaceEntry {
+  name: string
+  source: string
+  description?: string
+}
+
+export interface CursorMarketplace {
+  name: string
+  owner?: { name: string; email?: string }
+  metadata?: Record<string, unknown>
+  plugins: CursorMarketplaceEntry[]
+}
+
+/**
+ * Build a Cursor marketplace document (`.cursor-plugin/marketplace.json`) from a
+ * Claude Code marketplace.json. Only local plugins are included (see
+ * {@link toCursorSource}); `owner`/`metadata` are passed through when present.
+ */
+export function toCursorMarketplace(claudeMarketplace: ClaudeMarketplace): CursorMarketplace {
+  const seen = new Set<string>()
+  const plugins: CursorMarketplaceEntry[] = []
+  for (const p of claudeMarketplace.plugins) {
+    if (seen.has(p.name)) continue
+    const source = toCursorSource(p.source)
+    if (!source) continue
+    seen.add(p.name)
+    const entry: CursorMarketplaceEntry = { name: p.name, source }
+    if (p.description) entry.description = p.description
+    plugins.push(entry)
+  }
+  // Re-brand the metadata description for the Cursor catalog: the shared Claude
+  // marketplace metadata says "…for Claude Code", which is stale on the Cursor
+  // surface. Rewrite the runtime mention while leaving other metadata intact.
+  let metadata = claudeMarketplace.metadata
+  if (metadata && typeof metadata.description === "string") {
+    metadata = { ...metadata, description: metadata.description.replace(/Claude Code/g, "Cursor") }
+  }
+  // Field order matches Cursor's marketplace convention: name, owner, metadata,
+  // then plugins. Build via spreads so optional fields land before the plugins
+  // array rather than after it (JSON key order follows insertion order).
+  return {
+    name: claudeMarketplace.name ?? "personal",
+    ...(claudeMarketplace.owner ? { owner: claudeMarketplace.owner } : {}),
+    ...(metadata ? { metadata } : {}),
+    plugins,
   }
 }
 

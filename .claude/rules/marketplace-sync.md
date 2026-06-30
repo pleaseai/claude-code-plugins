@@ -3,6 +3,7 @@ description: Keep all marketplace manifests in sync — editing one requires upd
 globs:
   - ".claude-plugin/marketplace.json"
   - ".agents/plugins/marketplace.json"
+  - ".cursor-plugin/marketplace.json"
   - "plugins/*/.claude-plugin/plugin.json"
 alwaysApply: false
 ---
@@ -17,6 +18,7 @@ others are **generated** and must never be hand-edited in isolation.
 |-------------|---------------------------------------|-------------------------|
 | Claude Code | `.claude-plugin/marketplace.json`     | **source of truth** (edit here) |
 | Codex       | `.agents/plugins/marketplace.json`    | generated — do not hand-edit |
+| Cursor      | `.cursor-plugin/marketplace.json`     | generated — do not hand-edit |
 
 ## Principle: edit one → sync all
 
@@ -31,16 +33,18 @@ bun scripts/cli.ts multi-format
 This regenerates, for every local plugin (`source: "./plugins/..."`):
 
 - `.agents/plugins/marketplace.json` (Codex marketplace, filtered to local plugins)
+- `.cursor-plugin/marketplace.json` (Cursor marketplace, filtered to local plugins)
 - `plugins/<name>/.codex-plugin/plugin.json` (Codex manifest)
 - `plugins/<name>/plugin.json` (Antigravity manifest)
 - `plugins/<name>/mcp_config.json` (Antigravity, when MCP present)
+- `plugins/<name>/.cursor-plugin/plugin.json` (Cursor manifest)
 
 ## Companion files that must move together
 
 - **`release-please-config.json`** — add a `plugins/<name>` package entry whose
   `extra-files` cover **every** version-bearing manifest the plugin ships
   (`.claude-plugin/plugin.json`, and `.codex-plugin/plugin.json` + root `plugin.json`
-  when multi-format generates them).
+  + `.cursor-plugin/plugin.json` when multi-format generates them).
 - **`.release-please-manifest.json`** — add the matching `plugins/<name>` version.
 - **`README.md`** — add/remove the plugin entry under **Built-in Plugins**.
 

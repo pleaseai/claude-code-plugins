@@ -1,0 +1,24 @@
+{
+  "name": "edgeparse",
+  "displayName": "Edgeparse",
+  "description": "Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements",
+  "version": "1.1.0",
+  "author": {
+    "name": "Raphael Mansuy"
+  },
+  "category": "Document",
+  "homepage": "https://github.com/raphaelmansuy/edgeparse",
+  "repository": "https://github.com/raphaelmansuy/edgeparse",
+  "license": "Apache-2.0",
+  "keywords": [
+    "pdf",
+    "extraction",
+    "parsing",
+    "markdown",
+    "rag"
+  ],
+  "tags": [
+    "skill",
+    "document"
+  ]
+}

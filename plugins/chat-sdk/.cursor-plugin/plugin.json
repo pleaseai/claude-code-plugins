@@ -1,0 +1,22 @@
+{
+  "name": "chat-sdk",
+  "displayName": "Chat Sdk",
+  "description": "Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear",
+  "version": "1.1.3",
+  "author": {
+    "name": "Vercel"
+  },
+  "category": "Development",
+  "license": "MIT",
+  "keywords": [
+    "chat-sdk",
+    "chatbot",
+    "slack",
+    "teams",
+    "discord"
+  ],
+  "tags": [
+    "framework",
+    "chatbot"
+  ]
+}
