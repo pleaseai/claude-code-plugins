@@ -1,0 +1,25 @@
+.claude/skills/claude-code-plugin-builder/SKILL.md
+  s_6cb6d3d4dfb72c::t_3f008d141ec8f2 3
+.agents/skills/create-plugin-scaffold/SKILL.md
+  s_6cb6d3d4dfb72c::t_a18a3864eaf005 1-70
+skills-lock.json
+  s_6cb6d3d4dfb72c::t_a18a3864eaf005 4-9
+.claude/skills/create-plugin-scaffold
+  s_6cb6d3d4dfb72c::t_edcdf5da6b6bdb 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "53035c3e7871111c3d5f044d88a5cdc5b4524c00",
+  "prompts": {},
+  "sessions": {
+    "s_6cb6d3d4dfb72c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8690c7f1-9129-40e4-ae38-b1bc57bb48f6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
