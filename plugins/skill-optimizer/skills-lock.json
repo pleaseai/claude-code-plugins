@@ -11,7 +11,7 @@
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/optimize-skill-instructions/SKILL.md",
-      "computedHash": "16bc8418d5a15f4a05f74bef15f0cc577d8fa3b3e5234bca48c6cb50a342088b"
+      "computedHash": "6f2dff9e823b459a33fa8ddb4ed81cf81d58d4d5bff8713c12878ed7d1d50404"
     },
     "optimize-skill-performance": {
       "source": "tesslio/product-plugins",
@@ -23,13 +23,13 @@
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/optimize-skill-performance-and-instructions/SKILL.md",
-      "computedHash": "67bd6805931c6b7c5b5021ca075e894107096d8cfe84509aa142e0b872601fea"
+      "computedHash": "609316b9406067bc3c1e4c3cba7f801435c1050ee9d5cc10012a6750056c110b"
     },
     "setup-skill-performance": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/setup-skill-performance/SKILL.md",
-      "computedHash": "0881c0718832083ec4fd044d474ee93fcabbe562ac94a5a3e0a3139ba2720c25"
+      "computedHash": "75da2d5f46b60a1d61d47014aabe9df0fdfe4bdcfa9f78cd555aa9d8f2a9e264"
     }
   }
 }

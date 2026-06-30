@@ -46,7 +46,7 @@ Keep it concise — what the run was about should be obvious without opening it.
 ## Key commands
 
 ```bash
-tessl skill review skills/<name>/SKILL.md     # review a skill (Step 1)
+tessl review run skills/<name> --label "<label>" # review a skill bundle (Step 1)
 tessl scenario generate <plugin-path> --count=5 # generate scenarios (Step 2)
 tessl eval run <plugin-path> --skip-forced-context-activation --skip-scoring --label <run-label> # test skill routing
 tessl eval run <plugin-path> --agent=claude:claude-sonnet-4-6 --label <run-label> # scored eval
@@ -55,7 +55,7 @@ tessl eval view --last --json                 # check results
 
 ## Step 1: Review best practices
 
-Invoke the **optimize-skill-instructions** skill. This runs `tessl skill review` on the plugin's skill(s), surfaces scoring dimensions and quick wins, and applies approved changes.
+Invoke the **optimize-skill-instructions** skill. This runs `tessl review run` on the plugin's skill(s) — reviewing the whole bundle — surfaces scoring dimensions and quick wins, and applies approved changes. (For hands-off iteration, that skill can also use the automated `tessl review fix` loop.)
 
 **Entry criteria:** The plugin has at least one `SKILL.md`.
 
