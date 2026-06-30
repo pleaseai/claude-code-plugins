@@ -38,6 +38,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -219,6 +224,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -244,6 +254,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -303,6 +318,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -369,6 +389,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -394,6 +419,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -431,6 +461,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -486,6 +521,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -511,6 +551,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -659,6 +704,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -684,6 +734,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -711,6 +766,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -736,6 +796,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -763,6 +828,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -788,6 +858,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -815,6 +890,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -840,6 +920,11 @@
         {
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -867,6 +952,11 @@
           "type": "json",
           "path": ".tessl-plugin/plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -887,6 +977,11 @@
         {
           "type": "json",
           "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -909,6 +1004,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -929,6 +1029,11 @@
         {
           "type": "json",
           "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -951,6 +1056,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -971,6 +1081,11 @@
         {
           "type": "json",
           "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]
@@ -993,6 +1108,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -1014,6 +1134,11 @@
           "type": "json",
           "path": "plugin.json",
           "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
         }
       ]
     },
@@ -1034,6 +1159,11 @@
         {
           "type": "json",
           "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
           "jsonpath": "$.version"
         }
       ]

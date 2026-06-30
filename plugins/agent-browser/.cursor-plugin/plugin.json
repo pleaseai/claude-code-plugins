@@ -1,0 +1,22 @@
+{
+  "name": "agent-browser",
+  "displayName": "Agent Browser",
+  "description": "Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows",
+  "version": "1.2.2",
+  "author": {
+    "name": "Vercel Labs"
+  },
+  "category": "Browser",
+  "repository": "https://github.com/vercel-labs/agent-browser",
+  "license": "Apache-2.0",
+  "keywords": [
+    "agent-browser",
+    "browser",
+    "automation",
+    "agents"
+  ],
+  "tags": [
+    "browser",
+    "automation"
+  ]
+}

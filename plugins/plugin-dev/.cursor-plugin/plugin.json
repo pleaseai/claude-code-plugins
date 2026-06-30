@@ -1,0 +1,25 @@
+{
+  "name": "plugin-dev",
+  "displayName": "Plugin Dev",
+  "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
+  "version": "1.0.0",
+  "author": {
+    "name": "Passion Factory"
+  },
+  "category": "Tooling",
+  "homepage": "https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/plugin-dev",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "plugin",
+    "development",
+    "best-practices",
+    "validation",
+    "guidelines",
+    "scaffold"
+  ],
+  "tags": [
+    "tooling",
+    "plugin"
+  ]
+}

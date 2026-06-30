@@ -1,0 +1,40 @@
+{
+  "name": "mcp-neo4j",
+  "displayName": "Mcp Neo4j",
+  "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
+  "version": "1.1.0",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Database",
+  "tags": [
+    "mcp",
+    "database"
+  ],
+  "mcpServers": {
+    "mcp-neo4j-cloud-aura-api": {
+      "command": "uvx",
+      "args": [
+        "mcp-neo4j-aura-manager"
+      ]
+    },
+    "mcp-neo4j-cypher": {
+      "command": "uvx",
+      "args": [
+        "mcp-neo4j-cypher"
+      ]
+    },
+    "mcp-neo4j-data-modeling": {
+      "command": "uvx",
+      "args": [
+        "mcp-neo4j-data-modeling"
+      ]
+    },
+    "mcp-neo4j-memory": {
+      "command": "uvx",
+      "args": [
+        "mcp-neo4j-memory"
+      ]
+    }
+  }
+}

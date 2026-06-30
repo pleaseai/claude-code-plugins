@@ -1,0 +1,33 @@
+{
+  "name": "tosspayments",
+  "displayName": "Tosspayments",
+  "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration",
+  "version": "1.0.0",
+  "author": {
+    "name": "Toss Payments"
+  },
+  "category": "Development",
+  "homepage": "https://docs.tosspayments.com/guides/v2/get-started/llms-guide",
+  "repository": "https://github.com/tosspayments/integration-guide-mcp",
+  "license": "MIT",
+  "keywords": [
+    "tosspayments",
+    "payment",
+    "checkout",
+    "korea",
+    "mcp"
+  ],
+  "tags": [
+    "mcp",
+    "payment"
+  ],
+  "mcpServers": {
+    "tosspayments-integration-guide": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@tosspayments/integration-guide-mcp@latest"
+      ]
+    }
+  }
+}

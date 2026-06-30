@@ -1,0 +1,22 @@
+{
+  "name": "next",
+  "displayName": "Next",
+  "description": "Next.js best practices, caching patterns, and upgrade guidance",
+  "version": "1.1.1",
+  "author": {
+    "name": "Vercel"
+  },
+  "category": "Framework",
+  "license": "NOASSERTION",
+  "keywords": [
+    "next",
+    "nextjs",
+    "react",
+    "ssr",
+    "rsc"
+  ],
+  "tags": [
+    "framework",
+    "react"
+  ]
+}

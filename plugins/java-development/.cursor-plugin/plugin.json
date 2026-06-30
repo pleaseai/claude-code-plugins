@@ -1,0 +1,25 @@
+{
+  "name": "java-development",
+  "displayName": "Java Development",
+  "description": "Comprehensive collection of prompts and instructions for Java development including Spring Boot, Quarkus, testing, documentation, and best practices.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Awesome Copilot Community"
+  },
+  "category": "Language",
+  "homepage": "https://github.com/github/awesome-copilot/tree/main/plugins/java-development",
+  "repository": "https://github.com/github/awesome-copilot",
+  "license": "MIT",
+  "keywords": [
+    "java",
+    "springboot",
+    "quarkus",
+    "jpa",
+    "junit",
+    "javadoc"
+  ],
+  "tags": [
+    "language",
+    "skills"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "name": "react",
+  "displayName": "React",
+  "description": "React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering",
+  "version": "1.1.1",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Framework",
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "nextjs",
+    "vercel",
+    "performance",
+    "view-transitions"
+  ],
+  "tags": [
+    "framework",
+    "frontend"
+  ]
+}

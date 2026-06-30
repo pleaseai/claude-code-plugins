@@ -1,0 +1,25 @@
+{
+  "name": "mcp-dev",
+  "displayName": "Mcp Dev",
+  "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
+  "version": "1.0.0",
+  "author": {
+    "name": "Anthropic"
+  },
+  "category": "Tooling",
+  "homepage": "https://github.com/anthropics/skills/tree/main/skills/mcp-builder",
+  "repository": "https://github.com/anthropics/skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "mcp-server",
+    "typescript",
+    "python",
+    "fastmcp"
+  ],
+  "tags": [
+    "tooling",
+    "mcp"
+  ]
+}

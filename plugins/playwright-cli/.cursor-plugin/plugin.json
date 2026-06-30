@@ -1,0 +1,26 @@
+{
+  "name": "playwright-cli",
+  "displayName": "Playwright Cli",
+  "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps",
+  "version": "0.1.1",
+  "author": {
+    "name": "Microsoft"
+  },
+  "category": "Development",
+  "homepage": "https://github.com/microsoft/playwright-cli",
+  "repository": "https://github.com/pleaseai/playwright-cli",
+  "license": "Apache-2.0",
+  "keywords": [
+    "playwright",
+    "browser",
+    "automation",
+    "testing",
+    "e2e",
+    "screenshot",
+    "web"
+  ],
+  "tags": [
+    "tooling",
+    "testing"
+  ]
+}

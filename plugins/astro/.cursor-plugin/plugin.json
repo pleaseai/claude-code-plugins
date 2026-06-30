@@ -1,0 +1,30 @@
+{
+  "name": "astro",
+  "displayName": "Astro",
+  "description": "Access Astro's official documentation through the Astro Docs MCP server.",
+  "version": "1.1.0",
+  "author": {
+    "name": "Astro"
+  },
+  "category": "Framework",
+  "homepage": "https://astro.build",
+  "repository": "https://github.com/withastro/docs",
+  "license": "MIT",
+  "keywords": [
+    "astro",
+    "docs",
+    "documentation",
+    "ssg",
+    "web-framework"
+  ],
+  "tags": [
+    "mcp",
+    "docs"
+  ],
+  "mcpServers": {
+    "astro-docs": {
+      "type": "http",
+      "url": "https://mcp.docs.astro.build/mcp"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "vitepress",
+  "displayName": "Vitepress",
+  "description": "VitePress static site generator powered by Vite and Vue. Use when building documentation sites, configuring themes, or writing Markdown with Vue components.",
+  "version": "1.1.1",
+  "author": {
+    "name": "Anthony Fu"
+  },
+  "category": "Framework",
+  "homepage": "https://github.com/antfu/skills/tree/main/skills/vitepress",
+  "repository": "https://github.com/antfu/skills",
+  "license": "MIT",
+  "keywords": [
+    "vitepress",
+    "documentation",
+    "static-site",
+    "antfu"
+  ],
+  "tags": [
+    "framework",
+    "docs"
+  ]
+}

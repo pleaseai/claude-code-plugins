@@ -11,6 +11,9 @@ import {
   toCodexMarketplace,
   toCodexMarketplaceEntry,
   toCodexSource,
+  toCursorManifest,
+  toCursorMarketplace,
+  toCursorSource,
   type ClaudeMarketplace,
   type ClaudePluginManifest,
   type MarketplaceEntry,
@@ -371,11 +374,15 @@ describe("generateForPlugin", () => {
     expect(result.written).toEqual([])
   })
 
-  test("writes Codex and Antigravity manifests when only nested manifest exists", () => {
+  test("writes Codex, Antigravity, and Cursor manifests when only nested manifest exists", () => {
     writeNestedClaude({ name: "x", version: "1.0.0", description: "d", author: { name: "A" } })
     const result = generateForPlugin(tempDir, undefined)
     expect(result.written.some(p => p.endsWith(".codex-plugin/plugin.json"))).toBe(true)
-    expect(result.written.some(p => p.endsWith("plugin.json") && !p.includes(".codex-plugin"))).toBe(true)
+    expect(result.written.some(p => p.endsWith(".cursor-plugin/plugin.json"))).toBe(true)
+    expect(result.written.some(p => p.endsWith("plugin.json") && !p.includes(".codex-plugin") && !p.includes(".cursor-plugin"))).toBe(true)
+    const cursor = JSON.parse(readFileSync(join(tempDir, ".cursor-plugin", "plugin.json"), "utf-8"))
+    expect(cursor.name).toBe("x")
+    expect(cursor.author).toEqual({ name: "A" })
   })
 
   test("preserves existing root plugin.json when Claude manifest lives at root (no .claude-plugin/)", () => {
@@ -463,5 +470,131 @@ describe("toCodexMarketplaceEntry", () => {
   test("defaults category to Productivity when missing", () => {
     const result = toCodexMarketplaceEntry({ name: "x" }, "x")
     expect(result.category).toBe("Productivity")
+  })
+})
+
+describe("toCursorManifest", () => {
+  test("maps core metadata and derives displayName/version", () => {
+    const result = toCursorManifest(baseClaude, undefined)
+    expect(result.name).toBe("demo-plugin")
+    expect(result.displayName).toBe("Demo Plugin")
+    expect(result.version).toBe("1.2.3")
+    expect(result.description).toBe("Demo plugin for tests. Multiple sentences here.")
+    expect(result.category).toBe("Productivity")
+  })
+
+  test("author carries only name; email and url are dropped (privacy + schema)", () => {
+    const claude: ClaudePluginManifest = { name: "x", author: { name: "Alice", email: "a@b.com", url: "https://example.com" } }
+    const result = toCursorManifest(claude, undefined)
+    expect(result.author).toEqual({ name: "Alice" })
+  })
+
+  test("falls back to Community author when none provided", () => {
+    const result = toCursorManifest({ name: "x" }, undefined)
+    expect(result.author).toEqual({ name: "Community" })
+  })
+
+  test("omits component fields (skills/commands/agents/rules) — Cursor auto-discovers them", () => {
+    const claude: ClaudePluginManifest = { name: "x", skills: "skills", commands: "commands", agents: "agents" }
+    const result = toCursorManifest(claude, undefined) as unknown as Record<string, unknown>
+    expect(result.skills).toBeUndefined()
+    expect(result.commands).toBeUndefined()
+    expect(result.agents).toBeUndefined()
+    expect(result.rules).toBeUndefined()
+  })
+
+  test("keeps inline mcpServers in the manifest (no companion file)", () => {
+    const claude: ClaudePluginManifest = { name: "x", mcpServers: { foo: { command: "node" } } }
+    const result = toCursorManifest(claude, undefined)
+    expect(result.mcpServers).toEqual({ foo: { command: "node" } })
+  })
+
+  test("omits mcpServers when empty", () => {
+    const claude: ClaudePluginManifest = { name: "x", mcpServers: {} }
+    const result = toCursorManifest(claude, undefined)
+    expect(result.mcpServers).toBeUndefined()
+  })
+
+  test("coerces a non-semver version to 1.0.0", () => {
+    const result = toCursorManifest({ name: "x", version: "2024-01-01" }, undefined)
+    expect(result.version).toBe("1.0.0")
+  })
+
+  test("prefers marketplace displayName/tags when present", () => {
+    const entry: MarketplaceEntry = { name: "demo-plugin", displayName: "Fancy Name", tags: ["a", "b"] }
+    const result = toCursorManifest(baseClaude, entry)
+    expect(result.displayName).toBe("Fancy Name")
+    expect(result.tags).toEqual(["a", "b"])
+  })
+
+  test("falls back to entry description when manifest lacks one", () => {
+    const result = toCursorManifest({ name: "x" }, { name: "x", description: "from entry" })
+    expect(result.description).toBe("from entry")
+  })
+})
+
+describe("toCursorSource", () => {
+  test("maps a local ./plugins/ string to itself", () => {
+    expect(toCursorSource("./plugins/foo")).toBe("./plugins/foo")
+  })
+
+  test("returns null for a non-local string source", () => {
+    expect(toCursorSource("./something-else")).toBeNull()
+  })
+
+  test("returns null for object (remote) sources Cursor's string form cannot express", () => {
+    expect(toCursorSource({ source: "github", repo: "org/repo" })).toBeNull()
+    expect(toCursorSource({ source: "git-subdir", url: "u", path: "p" })).toBeNull()
+    expect(toCursorSource(undefined)).toBeNull()
+  })
+})
+
+describe("toCursorMarketplace", () => {
+  test("includes only local plugins, with name + source + description", () => {
+    const input: ClaudeMarketplace = {
+      name: "test-market",
+      plugins: [
+        { name: "local-one", description: "d1", source: "./plugins/local-one" as unknown as object },
+        { name: "from-github", source: { source: "github", repo: "org/repo" } as unknown as object },
+        { name: "local-two", source: "./plugins/local-two" as unknown as object },
+      ],
+    }
+    const result = toCursorMarketplace(input)
+    expect(result.plugins).toEqual([
+      { name: "local-one", source: "./plugins/local-one", description: "d1" },
+      { name: "local-two", source: "./plugins/local-two" },
+    ])
+  })
+
+  test("passes through owner and metadata when present", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      owner: { name: "Org", email: "o@x.com" },
+      metadata: { version: "0.2.0" },
+      plugins: [],
+    }
+    const result = toCursorMarketplace(input)
+    expect(result.owner).toEqual({ name: "Org", email: "o@x.com" })
+    expect(result.metadata).toEqual({ version: "0.2.0" })
+  })
+
+  test("defaults name to 'personal' and omits owner/metadata when absent", () => {
+    const result = toCursorMarketplace({ plugins: [] })
+    expect(result.name).toBe("personal")
+    expect(result.owner).toBeUndefined()
+    expect(result.metadata).toBeUndefined()
+  })
+
+  test("deduplicates plugin entries by name (keeps first occurrence)", () => {
+    const input: ClaudeMarketplace = {
+      name: "m",
+      plugins: [
+        { name: "dup", source: "./plugins/dir-a" as unknown as object },
+        { name: "dup", source: "./plugins/dir-b" as unknown as object },
+      ],
+    }
+    const result = toCursorMarketplace(input)
+    expect(result.plugins).toHaveLength(1)
+    expect(result.plugins[0]!.source).toBe("./plugins/dir-a")
   })
 })

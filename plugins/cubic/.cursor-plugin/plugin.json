@@ -1,0 +1,25 @@
+{
+  "name": "cubic",
+  "displayName": "Cubic",
+  "description": "AI-powered code review using Cubic CLI. Detects bugs, security vulnerabilities, and style issues before commits.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Minsu Lee"
+  },
+  "category": "Development",
+  "homepage": "https://cubic.dev",
+  "repository": "https://github.com/pleaseai/claude-code-plugins",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "ai-review",
+    "cubic",
+    "linting",
+    "security",
+    "bugs"
+  ],
+  "tags": [
+    "review",
+    "analysis"
+  ]
+}

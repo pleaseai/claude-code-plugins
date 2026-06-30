@@ -1,0 +1,36 @@
+{
+  "name": "semble",
+  "displayName": "Semble",
+  "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server",
+  "version": "0.1.0",
+  "author": {
+    "name": "Minish Lab"
+  },
+  "category": "Development",
+  "homepage": "https://github.com/MinishLab/semble",
+  "repository": "https://github.com/MinishLab/semble",
+  "license": "MIT",
+  "keywords": [
+    "semble",
+    "code-search",
+    "semantic-search",
+    "embeddings",
+    "grep",
+    "codebase"
+  ],
+  "tags": [
+    "mcp",
+    "skill",
+    "search"
+  ],
+  "mcpServers": {
+    "semble": {
+      "command": "uvx",
+      "args": [
+        "--from",
+        "semble[mcp]",
+        "semble"
+      ]
+    }
+  }
+}

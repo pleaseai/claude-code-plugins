@@ -1,0 +1,21 @@
+{
+  "name": "git-ai",
+  "displayName": "Git Ai",
+  "description": "A Git extension for tracking the AI-generated code in your repos",
+  "version": "1.1.1",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Development",
+  "license": "Apache-2.0",
+  "keywords": [
+    "git-ai",
+    "git",
+    "ai",
+    "code-tracking"
+  ],
+  "tags": [
+    "tooling",
+    "git"
+  ]
+}

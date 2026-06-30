@@ -15,7 +15,7 @@ import { dirname, join, resolve } from "node:path"
 import type { SubmoduleMeta } from "./meta.ts"
 import { extensions, submodules, vendors } from "./meta.ts"
 import { convertMcpServerPaths, parseToml } from "./extension-helpers.ts"
-import { generateForPlugin, toCodexMarketplace, writeIfChanged, type ClaudeMarketplace, type MarketplaceEntry } from "./multi-format.ts"
+import { generateForPlugin, toCodexMarketplace, toCursorMarketplace, writeIfChanged, type ClaudeMarketplace, type MarketplaceEntry } from "./multi-format.ts"
 
 const ROOT = resolve(import.meta.dirname!, "..")
 const PLUGINS_DIR = join(ROOT, "plugins")
@@ -692,8 +692,8 @@ export async function cleanup() {
 // multi-format
 // ---------------------------------------------------------------------------
 /**
- * Generate Codex and Antigravity manifests for every local plugin so the
- * same plugin directory loads in all three runtimes. See scripts/multi-format.ts
+ * Generate Codex, Antigravity, and Cursor manifests for every local plugin so
+ * the same plugin directory loads across runtimes. See scripts/multi-format.ts
  * for the format mapping rules.
  */
 export async function generateMultiFormat() {
@@ -712,7 +712,7 @@ export async function generateMultiFormat() {
     }
   }
 
-  console.log("Generating Codex + Antigravity manifests for local plugins...\n")
+  console.log("Generating Codex + Antigravity + Cursor manifests for local plugins...\n")
   let pluginsProcessed = 0
   let filesWritten = 0
   const benignSkipped: string[] = []
@@ -758,6 +758,17 @@ export async function generateMultiFormat() {
     console.log(`Codex marketplace up to date: ${codexMarketplacePath}`)
   }
 
+  // Generate Cursor marketplace.json from the Claude one (local plugins only).
+  const cursorMarketplace = toCursorMarketplace(marketplaceJson)
+  const cursorMarketplacePath = join(ROOT, ".cursor-plugin", "marketplace.json")
+  const cursorWritten = writeIfChanged(cursorMarketplacePath, JSON.stringify(cursorMarketplace, null, 2) + "\n")
+  if (cursorWritten) {
+    console.log(`Cursor marketplace written: ${cursorMarketplacePath}`)
+    filesWritten++
+  } else {
+    console.log(`Cursor marketplace up to date: ${cursorMarketplacePath}`)
+  }
+
   console.log(`\nProcessed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
   if (benignSkipped.length > 0) console.log(`Skipped (no manifest): ${benignSkipped.join(", ")}`)
   if (failed.length > 0) {
@@ -798,7 +809,7 @@ if (import.meta.main) {
       console.log("  sync          Update submodules and sync skills directly to plugins/")
       console.log("  check         Check for available upstream updates")
       console.log("  cleanup       Remove stale submodules and plugin skills")
-      console.log("  multi-format  Generate Codex + Antigravity manifests for local plugins")
+      console.log("  multi-format  Generate Codex + Antigravity + Cursor manifests for local plugins")
       process.exit(1)
   }
 }
