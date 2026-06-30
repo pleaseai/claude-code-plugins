@@ -92,6 +92,7 @@
     },
     {
       "name": "mcp-neo4j",
+      "displayName": "MCP Neo4j",
       "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
       "category": "database",
       "keywords": ["neo4j", "graph-database", "cypher"],
@@ -242,6 +243,7 @@
     },
     {
       "name": "vueuse",
+      "displayName": "VueUse",
       "description": "VueUse composables for building concise, maintainable Vue.js / Nuxt features",
       "category": "framework",
       "keywords": ["vueuse", "vue", "composables", "utilities"],
@@ -266,6 +268,7 @@
     },
     {
       "name": "mcp-dev",
+      "displayName": "MCP Dev",
       "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
       "category": "tooling",
       "keywords": ["mcp", "server", "development", "best-practices"],
@@ -391,6 +394,7 @@
     },
     {
       "name": "markitdown",
+      "displayName": "MarkItDown",
       "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
       "category": "tooling",
       "keywords": ["markitdown", "pdf", "docx", "pptx", "markdown", "conversion", "images"],

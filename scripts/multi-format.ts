@@ -128,9 +128,16 @@ function pickDisplayName(claude: ClaudePluginManifest, entry: MarketplaceEntry |
   return fromName || claude.name
 }
 
+// Categories are stored lower-case in the Claude marketplace by convention, but
+// surface capitalised in Codex/Cursor manifests. Acronyms must not be naively
+// title-cased ("ai" → "Ai"); map the known ones to their canonical form.
+const CATEGORY_ACRONYMS: Record<string, string> = { ai: "AI", ui: "UI" }
+
 function pickCategory(entry: MarketplaceEntry | undefined): string {
   const raw = entry?.category
   if (!raw) return DEFAULT_CATEGORY
+  const canonical = CATEGORY_ACRONYMS[raw.toLowerCase()]
+  if (canonical) return canonical
   return raw[0]!.toUpperCase() + raw.slice(1)
 }
 

@@ -1,6 +1,6 @@
 {
   "name": "vueuse",
-  "displayName": "Vueuse",
+  "displayName": "VueUse",
   "description": "Apply VueUse composables where appropriate to build concise, maintainable Vue.js / Nuxt features",
   "version": "1.2.1",
   "author": {

@@ -525,6 +525,12 @@ describe("toCursorManifest", () => {
     expect(result.version).toBe("1.0.0")
   })
 
+  test("maps acronym categories to canonical casing (ai -> AI, ui -> UI)", () => {
+    expect(toCursorManifest({ name: "x" }, { name: "x", category: "ai" }).category).toBe("AI")
+    expect(toCursorManifest({ name: "x" }, { name: "x", category: "ui" }).category).toBe("UI")
+    expect(toCursorManifest({ name: "x" }, { name: "x", category: "tooling" }).category).toBe("Tooling")
+  })
+
   test("prefers marketplace displayName/tags when present", () => {
     const entry: MarketplaceEntry = { name: "demo-plugin", displayName: "Fancy Name", tags: ["a", "b"] }
     const result = toCursorManifest(baseClaude, entry)

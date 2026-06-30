@@ -1,6 +1,6 @@
 {
   "name": "mcp-neo4j",
-  "displayName": "Mcp Neo4j",
+  "displayName": "MCP Neo4j",
   "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
   "version": "1.1.0",
   "author": {

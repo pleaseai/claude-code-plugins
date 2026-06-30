@@ -1,6 +1,6 @@
 {
   "name": "mcp-dev",
-  "displayName": "Mcp Dev",
+  "displayName": "MCP Dev",
   "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
   "version": "1.0.0",
   "author": {
