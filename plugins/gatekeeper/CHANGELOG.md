@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.5.0...gatekeeper-v1.6.0) (2026-06-30)
+
+
+### Features
+
+* add Cursor runtime support (multi-format manifests + scaffold skill) ([#240](https://github.com/pleaseai/claude-code-plugins/issues/240)) ([78ad6f5](https://github.com/pleaseai/claude-code-plugins/commit/78ad6f5b5440a3e62b7f8961743a9d2ee0461563))
+
 ## [1.5.0](https://github.com/pleaseai/claude-code-plugins/compare/gatekeeper-v1.4.0...gatekeeper-v1.5.0) (2026-06-15)
 
 

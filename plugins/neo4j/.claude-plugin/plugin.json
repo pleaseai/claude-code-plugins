@@ -1,6 +1,6 @@
 {
   "name": "mcp-neo4j",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
   "mcpServers": {
     "mcp-neo4j-cloud-aura-api": {

@@ -1,6 +1,6 @@
 {
   "name": "astro",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Access Astro's official documentation through the Astro Docs MCP server.",
   "author": {
     "name": "Astro",

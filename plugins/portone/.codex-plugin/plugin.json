@@ -1,6 +1,6 @@
 {
   "name": "portone",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "PortOne payment integration workflow, code generation, and validation for Codex.",
   "author": {
     "name": "PortOne",

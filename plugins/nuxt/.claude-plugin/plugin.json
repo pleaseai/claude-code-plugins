@@ -1,6 +1,6 @@
 {
   "name": "nuxt",
-  "version": "1.2.1",
+  "version": "1.3.0",
   "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing. Use when working with Nuxt apps, server routes, useFetch, middleware, or hybrid rendering.",
   "author": {
     "name": "Anthony Fu",

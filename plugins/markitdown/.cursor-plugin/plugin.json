@@ -2,7 +2,7 @@
   "name": "markitdown",
   "displayName": "MarkItDown",
   "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "author": {
     "name": "Microsoft"
   },
