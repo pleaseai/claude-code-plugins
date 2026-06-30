@@ -1,0 +1,28 @@
+.cursor-plugin/marketplace.json
+  s_6cb6d3d4dfb72c::t_5c1490253ae5b5 9
+scripts/multi-format.test.ts
+  s_6cb6d3d4dfb72c::t_c8b81f9750ddd3 586-595
+  s_6cb6d3d4dfb72c::t_a611e3526a16d2 518-522
+scripts/multi-format.ts
+  s_6cb6d3d4dfb72c::t_bb0b54de56f69f 353-362
+  s_6cb6d3d4dfb72c::t_5b340a2df9f7dd 696-702,709
+  s_6cb6d3d4dfb72c::t_b6b419411eae9d 319
+skills-lock.json
+  s_6cb6d3d4dfb72c::t_1de8c6064c240e 6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.5",
+  "base_commit_sha": "e81cf664eeb7a14eca34d3321e1fbed85783fb42",
+  "prompts": {},
+  "sessions": {
+    "s_6cb6d3d4dfb72c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8690c7f1-9129-40e4-ae38-b1bc57bb48f6",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
