@@ -1,6 +1,6 @@
 ---
 name: Claude Code Plugin Builder
-description: Creates Claude Code plugins with proper manifest structure, directory layout, and components (commands, agents, skills, hooks, MCP servers). Use when user requests creating plugins, adding slash commands, integrating MCP servers, setting up hooks, migrating Gemini extensions, or mentions "plugin.json", ".claude-plugin", or "marketplace.json". Handles plugin testing, debugging, and marketplace distribution.
+description: Creates Claude Code plugins with proper manifest structure, directory layout, and components (commands, agents, skills, hooks, MCP servers). This is for Claude Code plugins (`.claude-plugin/plugin.json`) — for Codex plugins (`.codex-plugin/plugin.json`) use the `plugin-creator` skill, and for Cursor plugins (`.cursor-plugin/plugin.json`) use the `create-plugin-scaffold` skill instead. Use when user requests creating plugins, adding slash commands, integrating MCP servers, setting up hooks, migrating Gemini extensions, or mentions "plugin.json", ".claude-plugin", or "marketplace.json". Handles plugin testing, debugging, and marketplace distribution.
 ---
 
 # Claude Code Plugin Builder

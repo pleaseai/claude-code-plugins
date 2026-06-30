@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "create-plugin-scaffold": {
+      "source": "cursor/plugins",
+      "sourceType": "github",
+      "skillPath": "create-plugin/skills/create-plugin-scaffold/SKILL.md",
+      "computedHash": "d1261673ee442e808d5238ea3fcf9c53cc71ffca9ddd8bc8eed4038afa8cf923"
+    },
     "plugin-creator": {
       "source": "openai/codex",
       "ref": "main",
