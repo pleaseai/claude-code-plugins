@@ -16,44 +16,8 @@ env:
   TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
 
 jobs:
-  # Graphite CI optimizer gate. On PRs, asks the Graphite API whether this
-  # PR's position in its stack means CI can be skipped (e.g., it's a mid-stack
-  # PR that will be retested when the top of the stack runs). On pushes to
-  # main, the optimizer is bypassed so post-merge CI always runs.
-  # Docs: https://graphite.com/docs/stacking-and-ci
-  optimize_ci:
-    name: Optimize CI
-    runs-on: ubuntu-latest
-    timeout-minutes: 2
-    outputs:
-      skip: ${{ steps.graphite.outputs.skip || steps.bypass.outputs.skip }}
-    steps:
-      - name: Bypass optimizer on push events
-        id: bypass
-        if: github.event_name != 'pull_request'
-        run: echo "skip=false" >> "$GITHUB_OUTPUT"
-
-      - name: Verify Graphite token is configured
-        if: github.event_name == 'pull_request'
-        env:
-          TOKEN: ${{ secrets.GRAPHITE_CI_OPTIMIZER_TOKEN }}
-        run: |
-          if [ -z "$TOKEN" ]; then
-            echo "::error::GRAPHITE_CI_OPTIMIZER_TOKEN secret is not set. Add it under Settings → Secrets and variables → Actions, or remove the optimize_ci job."
-            exit 1
-          fi
-
-      - name: Graphite CI optimizer
-        id: graphite
-        if: github.event_name == 'pull_request'
-        uses: withgraphite/graphite-ci-action@9bc969adfd43bb790da3b64b543c78c75cef9689 # v0.0.9
-        with:
-          graphite_token: ${{ secrets.GRAPHITE_CI_OPTIMIZER_TOKEN }}
-
   lint:
     name: Lint
-    needs: optimize_ci
-    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -91,8 +55,6 @@ jobs:
 
   build:
     name: Build
-    needs: optimize_ci
-    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 15
 
@@ -118,8 +80,6 @@ jobs:
 
   typecheck:
     name: Type Check
-    needs: optimize_ci
-    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -145,8 +105,6 @@ jobs:
 
   test:
     name: Test
-    needs: optimize_ci
-    if: needs.optimize_ci.outputs.skip == 'false'
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
