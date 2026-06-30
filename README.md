@@ -90,7 +90,6 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 
 **Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
 
----
 
 ### Built-in Plugins
 
