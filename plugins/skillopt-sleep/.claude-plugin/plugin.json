@@ -1,6 +1,6 @@
 {
   "name": "skillopt-sleep",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Give your local Claude agent a nightly 'sleep cycle': it reviews your past sessions offline, replays recurring tasks on your own API budget, and consolidates what it learns into validated memory (CLAUDE.md) and skills (SKILL.md) behind a held-out gate, staged for your review. Self-improvement with no model-weight training.",
   "author": {
     "name": "SkillOpt (Microsoft)",

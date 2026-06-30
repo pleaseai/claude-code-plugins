@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.6.0...please-plugins-v1.7.0) (2026-06-30)
+
+
+### Features
+
+* add Cursor runtime support (multi-format manifests + scaffold skill) ([#240](https://github.com/pleaseai/claude-code-plugins/issues/240)) ([78ad6f5](https://github.com/pleaseai/claude-code-plugins/commit/78ad6f5b5440a3e62b7f8961743a9d2ee0461563))
+
 ## [1.6.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.5.0...please-plugins-v1.6.0) (2026-06-15)
 
 

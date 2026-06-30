@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.3.0...skillopt-sleep-v0.4.0) (2026-06-30)
+
+
+### Features
+
+* add Cursor runtime support (multi-format manifests + scaffold skill) ([#240](https://github.com/pleaseai/claude-code-plugins/issues/240)) ([78ad6f5](https://github.com/pleaseai/claude-code-plugins/commit/78ad6f5b5440a3e62b7f8961743a9d2ee0461563))
+
 ## [0.3.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.2.0...skillopt-sleep-v0.3.0) (2026-06-15)
 
 

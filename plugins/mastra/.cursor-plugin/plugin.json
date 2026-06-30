@@ -2,7 +2,7 @@
   "name": "mastra",
   "displayName": "Mastra",
   "description": "Official agent skills for coding agents working with the Mastra AI framework",
-  "version": "1.6.2",
+  "version": "1.7.0",
   "author": {
     "name": "Mastra AI"
   },

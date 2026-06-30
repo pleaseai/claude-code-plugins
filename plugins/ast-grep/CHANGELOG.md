@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.2.1...ast-grep-v1.3.0) (2026-06-30)
+
+
+### Features
+
+* add Cursor runtime support (multi-format manifests + scaffold skill) ([#240](https://github.com/pleaseai/claude-code-plugins/issues/240)) ([78ad6f5](https://github.com/pleaseai/claude-code-plugins/commit/78ad6f5b5440a3e62b7f8961743a9d2ee0461563))
+
 ## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/ast-grep-v1.2.0...ast-grep-v1.2.1) (2026-06-23)
 
 
