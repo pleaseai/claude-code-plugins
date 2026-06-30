@@ -1,6 +1,6 @@
 {
   "name": "cubic",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "AI-powered code review using Cubic CLI. Detects bugs, security vulnerabilities, and style issues before commits.",
   "author": {
     "name": "Minsu Lee",

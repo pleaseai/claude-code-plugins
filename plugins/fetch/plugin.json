@@ -1,6 +1,6 @@
 {
   "name": "fetch",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts",
   "author": {
     "name": "fetch-mcp project",
