@@ -31,7 +31,7 @@
     "@nuxt/test-utils": "^4.0.0",
     "@pleaseai/eslint-config": "workspace:*",
     "@pleaseai/typescript-config": "workspace:*",
-    "baseline-browser-mapping": "^2.10.11",
+    "baseline-browser-mapping": "^2.10.17",
     "eslint": "^10.1.0",
     "typescript": "^6.0.2"
   }
