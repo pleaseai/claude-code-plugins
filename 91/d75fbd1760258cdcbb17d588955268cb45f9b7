@@ -1,0 +1,33 @@
+SECURITY.md
+  s_f0c447c07ea585::t_e16ac3781ba3a9 1-39
+.github/ISSUE_TEMPLATE/feature_request.md
+  s_f0c447c07ea585::t_03822d133d30a8 1-22
+.github/PULL_REQUEST_TEMPLATE.md
+  s_f0c447c07ea585::t_6ca39bf9a330aa 1-17
+.github/ISSUE_TEMPLATE/config.yml
+  s_f0c447c07ea585::t_45580b75954602 1-8
+CODE_OF_CONDUCT.md
+  s_f0c447c07ea585::t_52f0902a9c722f 1-132
+CONTRIBUTING.md
+  s_f0c447c07ea585::t_78a22edaaf4b94 1-55
+package.json
+  s_f0c447c07ea585::t_ac9fb294bbc5dd 52
+.github/ISSUE_TEMPLATE/bug_report.md
+  s_f0c447c07ea585::t_c9c6fbed0a88c0 1-31
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.8",
+  "base_commit_sha": "91d75fbd1760258cdcbb17d588955268cb45f9b7",
+  "prompts": {},
+  "sessions": {
+    "s_f0c447c07ea585": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9026827b-9f5e-4cb2-ac4f-0218019c1c6d",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
