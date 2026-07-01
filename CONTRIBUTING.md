@@ -34,7 +34,7 @@ When you add, remove, or modify a plugin entry in `.claude-plugin/marketplace.js
 regenerate the Codex/Cursor/Antigravity artifacts in the same change:
 
 ```bash
-bun scripts/cli.ts multi-format
+bun run plugins:multi-format
 ```
 
 See [CLAUDE.md](./CLAUDE.md) for the full plugin development guide.
