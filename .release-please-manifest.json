@@ -65,5 +65,6 @@
   "plugins/dev3000": "1.2.0",
   "plugins/lavish": "1.2.0",
   "plugins/axi": "1.2.0",
-  "plugins/playwright-cli": "1.0.0"
+  "plugins/playwright-cli": "1.0.0",
+  "plugins/greptile": "1.0.0"
 }

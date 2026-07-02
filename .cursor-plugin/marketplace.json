@@ -358,6 +358,11 @@
       "name": "axi",
       "source": "./plugins/axi",
       "description": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI."
+    },
+    {
+      "name": "greptile",
+      "source": "./plugins/greptile",
+      "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5"
     }
   ]
 }

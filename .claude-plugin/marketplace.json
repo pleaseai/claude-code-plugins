@@ -823,6 +823,11 @@
         "ref": "main"
       },
       "homepage": "https://github.com/pleaseai/code-search"
+    },
+    {
+      "name": "greptile",
+      "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
+      "source": "./plugins/greptile"
     }
   ]
 }

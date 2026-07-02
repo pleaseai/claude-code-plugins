@@ -1,0 +1,8 @@
+{
+  "name": "greptile",
+  "version": "1.0.0",
+  "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
+  "license": "MIT",
+  "keywords": ["greptile", "code-review", "pull-request"],
+  "skills": "./.agents/skills/"
+}
