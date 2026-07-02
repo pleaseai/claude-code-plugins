@@ -1,0 +1,53 @@
+plugins/greptile/.agents/skills/greploop/references/graphql-queries.md
+  s_acd03108bea66c::t_0201817c031eaf 1-49
+plugins/greptile/.claude-plugin/plugin.json
+  s_acd03108bea66c::t_b744d7f8a39433 1-8
+release-please-config.json
+  s_acd03108bea66c::t_1fdfa92e30e0d5 1170-1195
+plugins/greptile/.agents/skills/check-pr/references/gitlab-api.md
+  s_acd03108bea66c::t_0201817c031eaf 1-91
+plugins/greptile/.agents/skills/greploop/SKILL.md
+  s_acd03108bea66c::t_0201817c031eaf 1-432
+.release-please-manifest.json
+  s_acd03108bea66c::t_b762a5b39ce562 68-69
+plugins/greptile/.agents/skills/check-pr/references/graphql-queries.md
+  s_acd03108bea66c::t_0201817c031eaf 1-87
+plugins/greptile/.agents/skills/cli-review/SKILL.md
+  s_acd03108bea66c::t_0201817c031eaf 1-94
+plugins/greptile/skills-lock.json
+  s_acd03108bea66c::t_0201817c031eaf 1-23
+plugins/greptile/.agents/skills/greploop/references/gitlab-api.md
+  s_acd03108bea66c::t_0201817c031eaf 1-93
+.claude-plugin/marketplace.json
+  s_acd03108bea66c::t_17d0221d6d01e3 826-830
+README.md
+  s_acd03108bea66c::t_66fc91f426aba9 445-450
+plugins/greptile/.agents/skills/check-pr/SKILL.md
+  s_acd03108bea66c::t_0201817c031eaf 1-284
+.agents/plugins/marketplace.json
+  s_acd03108bea66c::t_d70ef7dcd39172 1104-1115
+.cursor-plugin/marketplace.json
+  s_acd03108bea66c::t_fd6cd617036787 361-365
+plugins/greptile/.codex-plugin/plugin.json
+  s_acd03108bea66c::t_1e784cbff42dd6 1-27
+plugins/greptile/.cursor-plugin/plugin.json
+  s_acd03108bea66c::t_00851258d039cd 1-16
+plugins/greptile/plugin.json
+  s_acd03108bea66c::t_f4f2068be4a8a4 1-11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.9",
+  "base_commit_sha": "e820a0a9fe54abc6b11af47606ca3a847f0843d2",
+  "prompts": {},
+  "sessions": {
+    "s_acd03108bea66c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d0aa3cf9-adfb-4ebd-b56b-c964752a18b6",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
