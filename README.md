@@ -442,6 +442,12 @@ Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools 
 
 **Install:** `/plugin install axi@pleaseai` | **Source:** [plugins/axi](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/axi)
 
+#### Greptile
+
+Greptile agent skills for PR quality: check PR review comments and status checks (`check-pr`), run Greptile CLI reviews on local branches (`cli-review`), and iteratively improve PRs until they score 5/5 (`greploop`).
+
+**Install:** `/plugin install greptile@pleaseai` | **Source:** [plugins/greptile](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/greptile)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

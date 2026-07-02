@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "check-pr": {
+      "source": "greptileai/skills",
+      "sourceType": "github",
+      "skillPath": "check-pr/SKILL.md",
+      "computedHash": "c25ca1259f825b202949a643aa8aa931bb6bb02ac02ccb4b969a4508c2e146dd"
+    },
+    "cli-review": {
+      "source": "greptileai/skills",
+      "sourceType": "github",
+      "skillPath": "cli-review/SKILL.md",
+      "computedHash": "1b1fe57c18746de2a85068770ec01fa7ac26471f5c9cb8047553ca433fea1acd"
+    },
+    "greploop": {
+      "source": "greptileai/skills",
+      "sourceType": "github",
+      "skillPath": "greploop/SKILL.md",
+      "computedHash": "13849c1cfc853dd4ebdef9caa05e73ea322355dcee6114df64879fdf37ad6f19"
+    }
+  }
+}

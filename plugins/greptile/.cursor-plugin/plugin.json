@@ -1,0 +1,16 @@
+{
+  "name": "greptile",
+  "displayName": "Greptile",
+  "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
+  "version": "1.0.0",
+  "author": {
+    "name": "Community"
+  },
+  "category": "Productivity",
+  "license": "MIT",
+  "keywords": [
+    "greptile",
+    "code-review",
+    "pull-request"
+  ]
+}

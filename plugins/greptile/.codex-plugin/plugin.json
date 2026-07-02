@@ -1,0 +1,27 @@
+{
+  "name": "greptile",
+  "version": "1.0.0",
+  "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
+  "author": {
+    "name": "Community"
+  },
+  "interface": {
+    "displayName": "Greptile",
+    "shortDescription": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs unt...",
+    "longDescription": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
+    "developerName": "Community",
+    "category": "Productivity",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Greptile for my current task."
+    ]
+  },
+  "license": "MIT",
+  "keywords": [
+    "greptile",
+    "code-review",
+    "pull-request"
+  ]
+}
