@@ -238,7 +238,7 @@
         "topic": "Nuxt",
         "signals": {
           "cli": ["nuxi", "nuxt"],
-          "filesRead": ["**/nuxt.config.ts", "**/nuxt.config.js", "**/nuxt.config.mjs"],
+          "filesRead": ["**/nuxt.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -312,7 +312,7 @@
       "relevance": {
         "topic": "tsdown",
         "signals": {
-          "filesRead": ["**/tsdown.config.ts", "**/tsdown.config.mts"],
+          "filesRead": ["**/tsdown.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -347,7 +347,7 @@
       "relevance": {
         "topic": "UnoCSS",
         "signals": {
-          "filesRead": ["**/uno.config.ts", "**/unocss.config.ts"],
+          "filesRead": ["**/uno.config.*", "**/unocss.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -368,7 +368,7 @@
         "topic": "Vite",
         "signals": {
           "cli": ["vite"],
-          "filesRead": ["**/vite.config.ts", "**/vite.config.js", "**/vite.config.mts"],
+          "filesRead": ["**/vite.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -409,7 +409,7 @@
         "topic": "Vitest",
         "signals": {
           "cli": ["vitest"],
-          "filesRead": ["**/vitest.config.ts", "**/vitest.workspace.ts"],
+          "filesRead": ["**/vitest.config.*", "**/vitest.workspace.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -520,7 +520,7 @@
         "topic": "Playwright",
         "signals": {
           "cli": ["playwright"],
-          "filesRead": ["**/playwright.config.ts", "**/playwright.config.js", "**/playwright.config.mjs"],
+          "filesRead": ["**/playwright.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -832,7 +832,7 @@
         "topic": "Astro",
         "signals": {
           "cli": ["astro"],
-          "filesRead": ["**/astro.config.mjs", "**/astro.config.ts", "**/*.astro"],
+          "filesRead": ["**/astro.config.*", "**/*.astro"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -1094,7 +1094,7 @@
         "topic": "Next.js",
         "signals": {
           "cli": ["next"],
-          "filesRead": ["**/next.config.ts", "**/next.config.js", "**/next.config.mjs"],
+          "filesRead": ["**/next.config.*"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -1295,7 +1295,7 @@
         "topic": "Bun",
         "signals": {
           "cli": ["bun", "bunx"],
-          "filesRead": ["**/bun.lock", "**/bun.lockb"]
+          "filesRead": ["**/bun.lock", "**/bun.lockb", "**/bunfig.toml"]
         }
       }
     },
