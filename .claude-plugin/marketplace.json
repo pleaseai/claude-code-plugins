@@ -410,6 +410,26 @@
       "source": "./plugins/fetch"
     },
     {
+      "name": "claude-code-docs",
+      "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
+      "category": "tooling",
+      "keywords": ["claude-code", "docs", "markdown", "webfetch", "hooks"],
+      "tags": ["hooks", "docs"],
+      "relevance": {
+        "topic": "Claude Code docs",
+        "signals": {
+          "hosts": ["code.claude.com"],
+          "cli": ["claude"],
+          "filesRead": ["**/.claude-plugin/**", "**/.claude/settings.json", "**/hooks/hooks.json"]
+        }
+      },
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/claude-code-docs"
+      },
+      "homepage": "https://github.com/pleaseai/claude-code-docs"
+    },
+    {
       "name": "semble",
       "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server",
       "category": "development",
