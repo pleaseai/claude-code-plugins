@@ -426,7 +426,8 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/claude-code-docs"
-      }
+      },
+      "homepage": "https://github.com/pleaseai/claude-code-docs"
     },
     {
       "name": "semble",

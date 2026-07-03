@@ -90,6 +90,11 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 
 **Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
 
+#### Claude Code Docs
+Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs.
+
+**Install:** `/plugin install claude-code-docs@pleaseai` | **Repository:** [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs)
+
 
 ### Built-in Plugins
 
@@ -535,6 +540,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
+/plugin install claude-code-docs@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
