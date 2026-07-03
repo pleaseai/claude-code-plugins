@@ -1042,6 +1042,7 @@
         "source": "github",
         "repo": "pleaseai/asana"
       },
+      "homepage": "https://github.com/pleaseai/asana",
       "relevance": {
         "topic": "Asana",
         "signals": {
@@ -1205,13 +1206,7 @@
       "category": "document",
       "keywords": ["pdf", "extraction", "parsing", "markdown", "rag"],
       "tags": ["skill", "document"],
-      "source": "./plugins/edgeparse",
-      "relevance": {
-        "topic": "PDF extraction",
-        "signals": {
-          "filesRead": ["**/*.pdf"]
-        }
-      }
+      "source": "./plugins/edgeparse"
     },
     {
       "name": "git-ai",
@@ -1457,25 +1452,6 @@
       "name": "axi",
       "description": "Agent eXperience Interface (AXI) — ergonomic standards for building CLI tools that agents use via shell execution. Use when building, modifying, or reviewing any agent-facing CLI.",
       "source": "./plugins/axi"
-    },
-    {
-      "name": "asana",
-      "description": "Manage Asana from the terminal with the `asana` CLI — tasks, projects, subtasks, comments, dependencies, tags, custom fields, and CSV/JSON batch import.",
-      "category": "productivity",
-      "keywords": ["asana", "cli", "task-management", "productivity"],
-      "tags": ["skills", "productivity"],
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/asana"
-      },
-      "homepage": "https://github.com/pleaseai/asana",
-      "relevance": {
-        "topic": "Asana",
-        "signals": {
-          "cli": ["asana"],
-          "hosts": ["app.asana.com"]
-        }
-      }
     },
     {
       "name": "csp",
