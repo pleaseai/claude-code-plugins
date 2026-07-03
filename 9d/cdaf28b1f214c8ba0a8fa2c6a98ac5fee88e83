@@ -1,0 +1,67 @@
+plugins/skillopt-sleep/scripts/sync-upstream.sh
+  s_bc9a867ad8fb72::t_0ce4bd8c9402cf 36
+plugins/skillopt-sleep/README.md
+  s_bc9a867ad8fb72::t_4ba5baf007937d 20,25,27-35,38-40,42-44
+plugins/skillopt-sleep/.agents/skills/skillopt-sleep/SKILL.md
+  s_bc9a867ad8fb72::t_a8fd26ae2ea36b 44,57-103,124
+plugins/skillopt-sleep/scripts/install-cron.sh
+  s_bc9a867ad8fb72::t_a8fd26ae2ea36b 20
+plugins/skillopt-sleep/commands/skillopt-sleep.md
+  s_bc9a867ad8fb72::t_a8fd26ae2ea36b 1-66
+plugins/skillopt-sleep/skillopt_sleep/__init__.py
+  s_bc9a867ad8fb72::t_b896e445a29a7c 20
+plugins/skillopt-sleep/skillopt_sleep/__main__.py
+  s_bc9a867ad8fb72::t_64030976c028ef 12-17,33,35-36,38-66,72,76-80,82-91,96,111-117,120-133,140-159,162-166,173-176,233-248,250-259,261-264,267-268,274-298,314-321,334-337
+plugins/skillopt-sleep/skillopt_sleep/backend.py
+  s_bc9a867ad8fb72::t_b089fa36a30819 27,45-46,156-157,197-203,266-302,319-320,335-360,362-365,371-372,376-383,472-478,496-500,504,523-526,560-592,600-601,607-610,631-633,670-674,686,742-749,754-756,758-761,771-772,776,778-809,816-856,896-897,899-903,910-916,930-1141,1161-1162,1185-1371,1378-1379,1385-1392,1405,1407,1418-1424,1427-1432
+plugins/skillopt-sleep/skillopt_sleep/config.py
+  s_bc9a867ad8fb72::t_a551b1af72c404 16-17,21,27-28,39,47-50,54-56,106-109,119-125
+plugins/skillopt-sleep/skillopt_sleep/consolidate.py
+  s_bc9a867ad8fb72::t_333259b0d51fa0 12,39-42,68-86,113,116-125,144-148,154,166-187,216,218-222,224-225,227-250,263-265
+plugins/skillopt-sleep/skillopt_sleep/cycle.py
+  s_bc9a867ad8fb72::t_39ae6c04cc5d6b 13,15,19-20,23-25,54-58,118-137,145,148-167,169,172,180-184,187-191,194-195,199-200,202,219-229,231-234,243-249,256,267,280-306
+plugins/skillopt-sleep/skillopt_sleep/dream.py
+  s_bc9a867ad8fb72::t_c4433c1cfc175e 1-138
+plugins/skillopt-sleep/skillopt_sleep/experiments/run_experiment.py
+  s_bc9a867ad8fb72::t_5386463794e559 137
+plugins/skillopt-sleep/skillopt_sleep/harvest.py
+  s_bc9a867ad8fb72::t_59e059a0ed22d8 20,115-166,292-293,297-299
+plugins/skillopt-sleep/skillopt_sleep/harvest_codex.py
+  s_bc9a867ad8fb72::t_899c4dfccbcf03 1-233
+plugins/skillopt-sleep/skillopt_sleep/harvest_sources.py
+  s_bc9a867ad8fb72::t_659ee083fb8ec5 1-41
+plugins/skillopt-sleep/skillopt_sleep/memory.py
+  s_bc9a867ad8fb72::t_338f4dddbf7d19 81,94,97,103-104,108,111,118,127
+plugins/skillopt-sleep/skillopt_sleep/mine.py
+  s_bc9a867ad8fb72::t_33b863b80cad5c 18,20-21,44-136,290,294-295,298,306,308-310
+plugins/skillopt-sleep/skillopt_sleep/replay.py
+  s_bc9a867ad8fb72::t_70718a4fe76b04 29-33,42,70-73,79-80,82-100
+plugins/skillopt-sleep/skillopt_sleep/rollout.py
+  s_bc9a867ad8fb72::t_694d736fdb2ae5 61,64-70,72-88,122-126,134-137
+plugins/skillopt-sleep/skillopt_sleep/scheduler.py
+  s_bc9a867ad8fb72::t_1bcd2f99ff831e 1-138
+plugins/skillopt-sleep/skillopt_sleep/staging.py
+  s_bc9a867ad8fb72::t_8fb30c735d3f75 12,15,19-73
+plugins/skillopt-sleep/skillopt_sleep/state.py
+  s_bc9a867ad8fb72::t_b9a0a948c2f5ca 31,85-96
+plugins/skillopt-sleep/skillopt_sleep/tasks_file.py
+  s_bc9a867ad8fb72::t_7768dcd627199a 1-81
+plugins/skillopt-sleep/skillopt_sleep/types.py
+  s_bc9a867ad8fb72::t_708bc8fa36939a 11-12,18,20-21,56-61,138
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9dcdaf28b1f214c8ba0a8fa2c6a98ac5fee88e83",
+  "prompts": {},
+  "sessions": {
+    "s_bc9a867ad8fb72": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee08a227-4088-43b9-ace2-4f50155ec57c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
