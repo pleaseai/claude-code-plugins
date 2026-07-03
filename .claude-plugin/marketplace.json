@@ -520,6 +520,7 @@
         "topic": "Playwright",
         "signals": {
           "cli": ["playwright"],
+          "filesRead": ["**/playwright.config.ts", "**/playwright.config.js", "**/playwright.config.mjs"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
@@ -1132,7 +1133,7 @@
       "relevance": {
         "topic": "React Native",
         "signals": {
-          "cli": ["expo"],
+          "cli": ["expo", "react-native"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
