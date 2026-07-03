@@ -415,6 +415,14 @@
       "category": "tooling",
       "keywords": ["claude-code", "docs", "markdown", "webfetch", "hooks"],
       "tags": ["hooks", "docs"],
+      "relevance": {
+        "topic": "Claude Code docs",
+        "signals": {
+          "hosts": ["code.claude.com"],
+          "cli": ["claude"],
+          "filesRead": ["**/.claude-plugin/**", "**/.claude/settings.json", "**/hooks/hooks.json"]
+        }
+      },
       "source": {
         "source": "github",
         "repo": "pleaseai/claude-code-docs"
