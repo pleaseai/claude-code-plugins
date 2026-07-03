@@ -749,7 +749,7 @@
       "relevance": {
         "topic": "document conversion",
         "signals": {
-          "filesRead": ["**/*.pdf", "**/*.docx", "**/*.pptx"]
+          "filesRead": ["**/*.docx", "**/*.pptx"]
         }
       }
     },
