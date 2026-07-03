@@ -20,6 +20,12 @@ others are **generated** and must never be hand-edited in isolation.
 | Codex       | `.agents/plugins/marketplace.json`    | generated — do not hand-edit |
 | Cursor      | `.cursor-plugin/marketplace.json`     | generated — do not hand-edit |
 
+Claude-only fields such as `relevance` (plugin suggestion signals, see
+[plugin-relevance](https://code.claude.com/docs/en/plugin-relevance)) live only in the
+Claude manifest — `multi-format` intentionally does not propagate them to Codex/Cursor.
+Guidance for authoring `relevance` blocks is in `CLAUDE.md` (step 9 of "Adding a New
+Plugin to the Marketplace").
+
 ## Principle: edit one → sync all
 
 When you add, remove, or modify a plugin entry in `.claude-plugin/marketplace.json`,

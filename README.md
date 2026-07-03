@@ -472,6 +472,23 @@ The `please-plugins` plugin automatically detects your project's dependencies (`
 
 **Supported ecosystems:** Nuxt, Vue, Vite, Vitest, Pinia, VueUse, Prisma, Supabase, Firebase, Playwright, Sentry, Stripe, Mastra, AI SDK, Turborepo, pnpm, and more.
 
+### Native Plugin Suggestions (Claude Code v2.1.152+)
+
+In addition to the `please-plugins` recommender, most entries in this marketplace declare [relevance signals](https://code.claude.com/docs/en/plugin-relevance) so Claude Code itself can suggest a plugin when your session matches — e.g. running the `stripe` CLI surfaces the `stripe` plugin, reading `*.prisma` files surfaces `prisma`. Suggestions appear as a spinner tip, a session-start notification, and a pin in the `/plugin` Discover tab; matching happens locally and installation always requires your confirmation.
+
+This is opt-in per marketplace: an administrator must allowlist it in [managed settings](https://code.claude.com/docs/en/settings#settings-files):
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "pleaseai": {
+      "source": { "source": "github", "repo": "pleaseai/claude-code-plugins" }
+    }
+  },
+  "pluginSuggestionMarketplaces": ["pleaseai"]
+}
+```
+
 ## Manual Installation
 
 ### Claude Code
