@@ -26,7 +26,11 @@ def _required_tools(task: TaskRecord) -> List[str]:
     return tools
 
 
-def replay_one(backend: Backend, task: TaskRecord, skill: str, memory: str) -> ReplayResult:
+def replay_one(backend: Backend, task: TaskRecord, skill: str, memory: str,
+               sample_id: int = 0) -> ReplayResult:
+    """``sample_id`` distinguishes repeated dream rollouts of the same
+    (task, skill, memory) in the attempt cache — without it all K rollouts
+    collapse to one cached response and the contrastive signal is always 0."""
     import time
     tools = _required_tools(task)
     tools_called: List[str] = []
@@ -35,7 +39,7 @@ def replay_one(backend: Backend, task: TaskRecord, skill: str, memory: str) -> R
     if tools:
         response, tools_called = backend.attempt_with_tools(task, skill, memory, tools)
     else:
-        response = backend.attempt(task, skill, memory)
+        response = backend.attempt(task, skill, memory, sample_id=sample_id)
     latency_ms = (time.time() - t0) * 1000.0
     tokens = max(0, backend.tokens_used() - tok_before)
     # if the backend doesn't track tokens (e.g. mock), approximate from text length
@@ -63,13 +67,37 @@ def replay_one(backend: Backend, task: TaskRecord, skill: str, memory: str) -> R
     )
 
 
+import os
+from concurrent.futures import ThreadPoolExecutor
+
+
 def replay_batch(
     backend: Backend,
     tasks: List[TaskRecord],
     skill: str,
     memory: str,
+    *,
+    workers: int = 0,
 ) -> List[Tuple[TaskRecord, ReplayResult]]:
-    return [(t, replay_one(backend, t, skill, memory)) for t in tasks]
+    """Replay tasks, optionally in parallel.
+
+    Real backends are network-bound, so a thread pool gives a large speedup on
+    big test sets (like the research harness's --workers). ``workers`` defaults
+    to env SKILLOPT_SLEEP_WORKERS or 1 (sequential). Mock stays sequential
+    (deterministic) unless asked otherwise.
+    """
+    if workers <= 0:
+        workers = int(os.environ.get("SKILLOPT_SLEEP_WORKERS", "1") or "1")
+    if workers <= 1 or len(tasks) <= 1:
+        return [(t, replay_one(backend, t, skill, memory)) for t in tasks]
+    results: List = [None] * len(tasks)
+    with ThreadPoolExecutor(max_workers=min(workers, len(tasks))) as ex:
+        futs = {ex.submit(replay_one, backend, t, skill, memory): i
+                for i, t in enumerate(tasks)}
+        for fut in futs:
+            i = futs[fut]
+            results[i] = (tasks[i], fut.result())
+    return results
 
 
 def aggregate_scores(pairs: List[Tuple[TaskRecord, ReplayResult]]) -> Tuple[float, float]:

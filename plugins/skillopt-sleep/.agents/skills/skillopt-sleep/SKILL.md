@@ -41,7 +41,7 @@ Trigger when the user wants any of:
 
 ## How to drive it
 
-Prefer the `/sleep` command. Under the hood it calls the bundled runner:
+Prefer the `/skillopt-sleep` command. Under the hood it calls the bundled runner:
 
 ```bash
 "${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" status                       # what's happened
@@ -53,6 +53,53 @@ Prefer the `/sleep` command. Under the hood it calls the bundled runner:
 - Default backend is `mock` (deterministic, **no API spend**) — good for trying the plumbing.
 - Add `--backend claude` or `--backend codex` to spend the user's real budget for genuine improvement.
 - Scope defaults to the invoked project; `--scope all` harvests every project.
+
+### Scheduling
+
+```bash
+"${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" schedule --project "$(pwd)" --hour 3 --minute 17
+"${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" unschedule --project "$(pwd)"
+```
+
+Installs a nightly cron entry. `unschedule --all` removes every managed entry.
+
+## All CLI flags
+
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--project PATH` | cwd | Project directory to evolve |
+| `--scope all\|invoked` | invoked | Harvest scope |
+| `--backend mock\|claude\|codex\|copilot` | mock | Replay backend (mock = no API spend) |
+| `--model NAME` | backend default | Override the model used for replay |
+| `--source claude\|codex\|auto` | claude | Transcript source |
+| `--lookback-hours N` | 72 | Harvest window |
+| `--max-sessions N` | unlimited | Cap harvested sessions |
+| `--max-tasks N` | 40 | Cap mined tasks |
+| `--target-skill-path PATH` | auto | Explicit SKILL.md to evolve |
+| `--tasks-file PATH` | — | Reviewed TaskRecord JSON (skip harvest) |
+| `--progress` | off | Print phase progress to stderr |
+| `--auto-adopt` | off | Auto-adopt if gate passes |
+| `--edit-budget N` | 4 | Max bounded edits per night |
+| `--json` | off | Machine-readable JSON output |
+
+## Config keys (`~/.skillopt-sleep/config.json`)
+
+Beyond the CLI flags, advanced behavior is controlled via config:
+
+- **`preferences`** — free-text house rules injected into the optimizer's reflect step (e.g. "Always use async/await", "Answers in `\boxed{}`").
+- **`gate_mode`** — `on` (default, validation-gated) or `off` (greedy, accept all edits).
+- **`gate_metric`** — `hard`, `soft`, or `mixed` (default). Controls how the held-out gate scores.
+- **`dream_rollouts`** — >1 enables multi-rollout contrastive reflection per task.
+- **`recall_k`** — >0 recalls K similar past tasks into the dream (long-term memory).
+- **`evolve_memory`** / **`evolve_skill`** — independently toggle CLAUDE.md vs SKILL.md consolidation.
+
+## Memory consolidation
+
+The sleep cycle can consolidate both:
+- **SKILL.md** — the managed skill file (bounded edits: add/delete/replace)
+- **CLAUDE.md** — the project memory (same bounded edits)
+
+Both are gated by the same held-out validation score. Set `evolve_memory: false` to consolidate only skills, or `evolve_skill: false` for only memory.
 
 ## Hard rules
 
@@ -74,6 +121,6 @@ python -m skillopt_sleep.experiments.run_experiment --persona researcher --asser
 python -m skillopt_sleep.experiments.run_experiment --persona programmer  --assert-improves
 ```
 
-See `docs/sleep/experiment_results.md` for recorded output and
+See the SkillOpt-Sleep guide section for recorded output and
 `docs/superpowers/specs/2026-06-07-skillopt-sleep-claude-code-plugin-design.md`
 for the full design.
