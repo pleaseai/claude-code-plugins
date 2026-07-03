@@ -1,0 +1,19 @@
+.claude-plugin/marketplace.json
+  s_c1ad4dd376bd73::t_184611b88f876c 752
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c6e0db434722355eb64166c15acf877b8ee0d5dc",
+  "prompts": {},
+  "sessions": {
+    "s_c1ad4dd376bd73": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "78d3deed-4887-46f3-871d-19ac915553fd",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
