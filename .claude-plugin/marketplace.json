@@ -32,6 +32,13 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/flutter-plugin"
+      },
+      "relevance": {
+        "topic": "Flutter",
+        "signals": {
+          "cli": ["flutter", "dart"],
+          "filesRead": ["**/*.dart", "**/pubspec.yaml"]
+        }
       }
     },
     {
@@ -44,6 +51,13 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/spec-kit-plugin"
+      },
+      "relevance": {
+        "topic": "Spec-Driven Development",
+        "signals": {
+          "cli": ["specify"],
+          "filesRead": ["**/.specify/**"]
+        }
       }
     },
     {
@@ -77,6 +91,19 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/firebase-plugin"
+      },
+      "relevance": {
+        "topic": "Firebase",
+        "signals": {
+          "cli": ["firebase"],
+          "filesRead": ["**/firebase.json", "**/.firebaserc"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"firebase(-admin|-functions)?\"\\s*:"
+            }
+          ]
+        }
       }
     },
     {
@@ -88,6 +115,13 @@
       "source": {
         "source": "github",
         "repo": "grafana/mcp-grafana"
+      },
+      "relevance": {
+        "topic": "Grafana",
+        "signals": {
+          "hosts": ["grafana.com"],
+          "cli": ["grafana", "grafana-cli"]
+        }
       }
     },
     {
@@ -97,7 +131,19 @@
       "category": "database",
       "keywords": ["neo4j", "graph-database", "cypher"],
       "tags": ["mcp", "database"],
-      "source": "./plugins/neo4j"
+      "source": "./plugins/neo4j",
+      "relevance": {
+        "topic": "Neo4j",
+        "signals": {
+          "cli": ["cypher-shell", "neo4j"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"neo4j-driver\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "codegraph",
@@ -135,7 +181,18 @@
       "category": "ui",
       "keywords": ["nuxt-ui", "vue", "components", "ui-library"],
       "tags": ["ui"],
-      "source": "./plugins/nuxt-ui"
+      "source": "./plugins/nuxt-ui",
+      "relevance": {
+        "topic": "Nuxt UI",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@nuxt/ui(-pro)?\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "plugin-dev",
@@ -143,7 +200,13 @@
       "category": "tooling",
       "keywords": ["plugin", "development", "validation", "best-practices"],
       "tags": ["tooling", "plugin"],
-      "source": "./plugins/plugin-dev"
+      "source": "./plugins/plugin-dev",
+      "relevance": {
+        "topic": "Claude Code plugins",
+        "signals": {
+          "filesRead": ["**/.claude-plugin/plugin.json", "**/.claude-plugin/marketplace.json"]
+        }
+      }
     },
     {
       "name": "antfu",
@@ -151,7 +214,18 @@
       "category": "framework",
       "keywords": ["antfu", "eslint", "typescript", "conventions"],
       "tags": ["tooling", "conventions"],
-      "source": "./plugins/antfu"
+      "source": "./plugins/antfu",
+      "relevance": {
+        "topic": "@antfu/eslint-config",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@antfu/eslint-config\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "nuxt",
@@ -159,7 +233,20 @@
       "category": "framework",
       "keywords": ["nuxt", "vue", "ssr", "full-stack"],
       "tags": ["framework", "vue"],
-      "source": "./plugins/nuxt"
+      "source": "./plugins/nuxt",
+      "relevance": {
+        "topic": "Nuxt",
+        "signals": {
+          "cli": ["nuxi", "nuxt"],
+          "filesRead": ["**/nuxt.config.ts", "**/nuxt.config.js", "**/nuxt.config.mjs"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"nuxt\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "pinia",
@@ -167,7 +254,18 @@
       "category": "framework",
       "keywords": ["pinia", "vue", "state-management", "store"],
       "tags": ["framework", "vue"],
-      "source": "./plugins/pinia"
+      "source": "./plugins/pinia",
+      "relevance": {
+        "topic": "Pinia",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"pinia\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "pnpm",
@@ -175,7 +273,14 @@
       "category": "tooling",
       "keywords": ["pnpm", "package-manager", "node", "workspace"],
       "tags": ["tooling", "node"],
-      "source": "./plugins/pnpm"
+      "source": "./plugins/pnpm",
+      "relevance": {
+        "topic": "pnpm",
+        "signals": {
+          "cli": ["pnpm"],
+          "filesRead": ["**/pnpm-lock.yaml", "**/pnpm-workspace.yaml"]
+        }
+      }
     },
     {
       "name": "slidev",
@@ -183,7 +288,19 @@
       "category": "framework",
       "keywords": ["slidev", "slides", "presentation", "markdown"],
       "tags": ["framework", "presentation"],
-      "source": "./plugins/slidev"
+      "source": "./plugins/slidev",
+      "relevance": {
+        "topic": "Slidev",
+        "signals": {
+          "cli": ["slidev"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@slidev/cli\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "tsdown",
@@ -191,7 +308,19 @@
       "category": "tooling",
       "keywords": ["tsdown", "bundler", "typescript", "rolldown"],
       "tags": ["tooling", "build"],
-      "source": "./plugins/tsdown"
+      "source": "./plugins/tsdown",
+      "relevance": {
+        "topic": "tsdown",
+        "signals": {
+          "filesRead": ["**/tsdown.config.ts", "**/tsdown.config.mts"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"tsdown\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "turborepo",
@@ -199,7 +328,14 @@
       "category": "tooling",
       "keywords": ["turborepo", "monorepo", "build-system", "caching"],
       "tags": ["tooling", "monorepo"],
-      "source": "./plugins/turborepo"
+      "source": "./plugins/turborepo",
+      "relevance": {
+        "topic": "Turborepo",
+        "signals": {
+          "cli": ["turbo"],
+          "filesRead": ["**/turbo.json"]
+        }
+      }
     },
     {
       "name": "unocss",
@@ -207,7 +343,19 @@
       "category": "framework",
       "keywords": ["unocss", "css", "atomic-css", "tailwind"],
       "tags": ["framework", "css"],
-      "source": "./plugins/unocss"
+      "source": "./plugins/unocss",
+      "relevance": {
+        "topic": "UnoCSS",
+        "signals": {
+          "filesRead": ["**/uno.config.ts", "**/unocss.config.ts"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"unocss\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vite",
@@ -215,7 +363,20 @@
       "category": "tooling",
       "keywords": ["vite", "build-tool", "dev-server", "hmr"],
       "tags": ["tooling", "build"],
-      "source": "./plugins/vite"
+      "source": "./plugins/vite",
+      "relevance": {
+        "topic": "Vite",
+        "signals": {
+          "cli": ["vite"],
+          "filesRead": ["**/vite.config.ts", "**/vite.config.js", "**/vite.config.mts"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"vite\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vitepress",
@@ -223,7 +384,19 @@
       "category": "framework",
       "keywords": ["vitepress", "static-site", "documentation", "vue"],
       "tags": ["framework", "docs"],
-      "source": "./plugins/vitepress"
+      "source": "./plugins/vitepress",
+      "relevance": {
+        "topic": "VitePress",
+        "signals": {
+          "filesRead": ["**/.vitepress/**"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"vitepress\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vitest",
@@ -231,7 +404,20 @@
       "category": "development",
       "keywords": ["vitest", "testing", "unit-test", "jest"],
       "tags": ["tooling", "testing"],
-      "source": "./plugins/vitest"
+      "source": "./plugins/vitest",
+      "relevance": {
+        "topic": "Vitest",
+        "signals": {
+          "cli": ["vitest"],
+          "filesRead": ["**/vitest.config.ts", "**/vitest.workspace.ts"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"vitest\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vue",
@@ -239,7 +425,19 @@
       "category": "framework",
       "keywords": ["vue", "vue3", "composition-api", "reactivity"],
       "tags": ["framework", "frontend"],
-      "source": "./plugins/vue"
+      "source": "./plugins/vue",
+      "relevance": {
+        "topic": "Vue",
+        "signals": {
+          "filesRead": ["**/*.vue"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"vue\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vueuse",
@@ -248,7 +446,18 @@
       "category": "framework",
       "keywords": ["vueuse", "vue", "composables", "utilities"],
       "tags": ["framework", "vue"],
-      "source": "./plugins/vueuse"
+      "source": "./plugins/vueuse",
+      "relevance": {
+        "topic": "VueUse",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@vueuse/(core|nuxt|components)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "web-design",
@@ -273,7 +482,18 @@
       "category": "tooling",
       "keywords": ["mcp", "server", "development", "best-practices"],
       "tags": ["tooling", "mcp"],
-      "source": "./plugins/mcp-dev"
+      "source": "./plugins/mcp-dev",
+      "relevance": {
+        "topic": "MCP servers",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@modelcontextprotocol/sdk\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "cubic",
@@ -281,7 +501,13 @@
       "category": "development",
       "keywords": ["cubic", "code-review", "bugs", "security"],
       "tags": ["review", "analysis"],
-      "source": "./plugins/cubic"
+      "source": "./plugins/cubic",
+      "relevance": {
+        "topic": "Cubic",
+        "signals": {
+          "cli": ["cubic"]
+        }
+      }
     },
     {
       "name": "playwright-cli",
@@ -289,7 +515,19 @@
       "category": "development",
       "keywords": ["playwright", "browser", "automation", "testing"],
       "tags": ["tooling", "testing"],
-      "source": "./plugins/playwright-cli"
+      "source": "./plugins/playwright-cli",
+      "relevance": {
+        "topic": "Playwright",
+        "signals": {
+          "cli": ["playwright"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(@playwright/test|playwright)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "mastra",
@@ -297,7 +535,19 @@
       "category": "ai",
       "keywords": ["mastra", "ai-framework", "agents", "workflows"],
       "tags": ["framework", "ai"],
-      "source": "./plugins/mastra"
+      "source": "./plugins/mastra",
+      "relevance": {
+        "topic": "Mastra",
+        "signals": {
+          "cli": ["mastra"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(@mastra/[a-z0-9-]+|mastra)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "supabase",
@@ -305,7 +555,20 @@
       "category": "database",
       "keywords": ["supabase", "postgres", "database", "backend"],
       "tags": ["database", "backend"],
-      "source": "./plugins/supabase"
+      "source": "./plugins/supabase",
+      "relevance": {
+        "topic": "Supabase",
+        "signals": {
+          "cli": ["supabase"],
+          "filesRead": ["**/supabase/config.toml"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@supabase/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "prisma",
@@ -313,7 +576,20 @@
       "category": "database",
       "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
       "tags": ["database", "orm"],
-      "source": "./plugins/prisma"
+      "source": "./plugins/prisma",
+      "relevance": {
+        "topic": "Prisma",
+        "signals": {
+          "cli": ["prisma"],
+          "filesRead": ["**/*.prisma"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(@prisma/client|prisma)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "better-auth",
@@ -321,7 +597,18 @@
       "category": "development",
       "keywords": ["better-auth", "authentication", "auth", "typescript"],
       "tags": ["framework", "auth"],
-      "source": "./plugins/better-auth"
+      "source": "./plugins/better-auth",
+      "relevance": {
+        "topic": "Better Auth",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"better-auth\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "agent-browser",
@@ -337,12 +624,35 @@
       "category": "ai",
       "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"],
       "tags": ["framework", "ai"],
-      "source": "./plugins/ai-sdk"
+      "source": "./plugins/ai-sdk",
+      "relevance": {
+        "topic": "Vercel AI SDK",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(ai|@ai-sdk/[a-z0-9-]+)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "slack-agent",
       "description": "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt.",
-      "source": "./plugins/slack-agent"
+      "source": "./plugins/slack-agent",
+      "relevance": {
+        "topic": "Slack apps",
+        "signals": {
+          "cli": ["slack"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(@slack/bolt|@chat-adapter/slack)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "claude-md-management",
@@ -350,7 +660,13 @@
       "category": "tooling",
       "keywords": ["claude-md", "memory", "audit", "quality"],
       "tags": ["tooling", "maintenance"],
-      "source": "./plugins/claude-md-management"
+      "source": "./plugins/claude-md-management",
+      "relevance": {
+        "topic": "CLAUDE.md maintenance",
+        "signals": {
+          "filesRead": ["**/CLAUDE.md"]
+        }
+      }
     },
     {
       "name": "google-workspace",
@@ -358,7 +674,14 @@
       "category": "productivity",
       "keywords": ["google-workspace", "gmail", "drive", "calendar", "docs", "sheets"],
       "tags": ["google", "workspace"],
-      "source": "./plugins/google-workspace"
+      "source": "./plugins/google-workspace",
+      "relevance": {
+        "topic": "Google Workspace",
+        "signals": {
+          "cli": ["gws"],
+          "hosts": ["www.googleapis.com", "admin.googleapis.com"]
+        }
+      }
     },
     {
       "name": "nuxt-i18n",
@@ -366,7 +689,18 @@
       "category": "framework",
       "keywords": ["nuxt-i18n", "i18n", "internationalization", "vue-i18n", "localization"],
       "tags": ["framework", "vue"],
-      "source": "./plugins/nuxt-i18n"
+      "source": "./plugins/nuxt-i18n",
+      "relevance": {
+        "topic": "Nuxt i18n",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@nuxtjs/i18n\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "nuxt-seo",
@@ -374,7 +708,18 @@
       "category": "framework",
       "keywords": ["nuxt-seo", "nuxt", "seo", "sitemap", "og-image", "schema-org"],
       "tags": ["framework", "vue", "seo"],
-      "source": "./plugins/nuxt-seo"
+      "source": "./plugins/nuxt-seo",
+      "relevance": {
+        "topic": "Nuxt SEO",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(@nuxtjs/(seo|sitemap|robots)|nuxt-og-image|nuxt-schema-org)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "worktree",
@@ -399,7 +744,13 @@
       "category": "tooling",
       "keywords": ["markitdown", "pdf", "docx", "pptx", "markdown", "conversion", "images"],
       "tags": ["mcp", "conversion"],
-      "source": "./plugins/markitdown"
+      "source": "./plugins/markitdown",
+      "relevance": {
+        "topic": "document conversion",
+        "signals": {
+          "filesRead": ["**/*.pdf", "**/*.docx", "**/*.pptx"]
+        }
+      }
     },
     {
       "name": "fetch",
@@ -423,7 +774,13 @@
       "category": "development",
       "keywords": ["ast-grep", "code-search", "ast", "structural-search", "pattern-matching", "refactoring"],
       "tags": ["tooling", "search"],
-      "source": "./plugins/ast-grep"
+      "source": "./plugins/ast-grep",
+      "relevance": {
+        "topic": "ast-grep",
+        "signals": {
+          "cli": ["ast-grep", "sg"]
+        }
+      }
     },
     {
       "name": "chat-sdk",
@@ -431,7 +788,18 @@
       "category": "development",
       "keywords": ["chat-sdk", "chatbot", "slack", "teams", "discord", "linear", "github"],
       "tags": ["framework", "chatbot"],
-      "source": "./plugins/chat-sdk"
+      "source": "./plugins/chat-sdk",
+      "relevance": {
+        "topic": "Chat SDK",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(chat|@chat-adapter/[a-z0-9-]+)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "docus",
@@ -439,7 +807,18 @@
       "category": "framework",
       "keywords": ["docus", "nuxt", "documentation", "markdown", "nuxt-content"],
       "tags": ["framework", "docs"],
-      "source": "./plugins/docus"
+      "source": "./plugins/docus",
+      "relevance": {
+        "topic": "Docus",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"docus\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "astro",
@@ -447,7 +826,20 @@
       "category": "framework",
       "keywords": ["astro", "docs", "documentation", "ssg", "web-framework"],
       "tags": ["mcp", "docs"],
-      "source": "./plugins/astro"
+      "source": "./plugins/astro",
+      "relevance": {
+        "topic": "Astro",
+        "signals": {
+          "cli": ["astro"],
+          "filesRead": ["**/astro.config.mjs", "**/astro.config.ts", "**/*.astro"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"astro\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "tosspayments",
@@ -455,7 +847,19 @@
       "category": "development",
       "keywords": ["tosspayments", "payment", "checkout", "korea"],
       "tags": ["mcp", "payment"],
-      "source": "./plugins/tosspayments"
+      "source": "./plugins/tosspayments",
+      "relevance": {
+        "topic": "TossPayments",
+        "signals": {
+          "hosts": ["api.tosspayments.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@tosspayments/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "port",
@@ -464,7 +868,13 @@
       "keywords": ["port", "port.io", "idp", "internal-developer-portal", "platform-engineering", "sdlc", "devops", "scorecards"],
       "tags": ["mcp", "platform"],
       "source": "./plugins/port",
-      "homepage": "https://www.port.io"
+      "homepage": "https://www.port.io",
+      "relevance": {
+        "topic": "Port.io",
+        "signals": {
+          "hosts": ["api.getport.io", "api.port.io"]
+        }
+      }
     },
     {
       "name": "portone",
@@ -473,7 +883,19 @@
       "keywords": ["portone", "payment", "pg", "billing", "결제", "포트원", "korea"],
       "tags": ["mcp", "payment"],
       "source": "./plugins/portone",
-      "homepage": "https://portone.io"
+      "homepage": "https://portone.io",
+      "relevance": {
+        "topic": "PortOne",
+        "signals": {
+          "hosts": ["api.portone.io", "api.iamport.kr"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@portone/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "stripe",
@@ -487,7 +909,20 @@
         "path": "providers/claude/plugin",
         "ref": "main"
       },
-      "homepage": "https://github.com/stripe/ai/tree/main/providers/claude/plugin"
+      "homepage": "https://github.com/stripe/ai/tree/main/providers/claude/plugin",
+      "relevance": {
+        "topic": "Stripe",
+        "signals": {
+          "cli": ["stripe"],
+          "hosts": ["api.stripe.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"stripe\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "vercel",
@@ -497,7 +932,15 @@
         "source": "url",
         "url": "https://github.com/vercel/vercel-plugin.git"
       },
-      "homepage": "https://github.com/vercel/vercel-plugin"
+      "homepage": "https://github.com/vercel/vercel-plugin",
+      "relevance": {
+        "topic": "Vercel",
+        "signals": {
+          "cli": ["vercel", "vc"],
+          "hosts": ["api.vercel.com"],
+          "filesRead": ["**/vercel.json"]
+        }
+      }
     },
     {
       "name": "sentry",
@@ -507,7 +950,20 @@
         "source": "url",
         "url": "https://github.com/getsentry/sentry-for-claude.git"
       },
-      "homepage": "https://github.com/getsentry/sentry-for-claude/tree/main"
+      "homepage": "https://github.com/getsentry/sentry-for-claude/tree/main",
+      "relevance": {
+        "topic": "Sentry",
+        "signals": {
+          "cli": ["sentry-cli"],
+          "hosts": ["sentry.io"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@sentry/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "posthog",
@@ -517,7 +973,19 @@
         "source": "url",
         "url": "https://github.com/PostHog/ai-plugin.git"
       },
-      "homepage": "https://posthog.com/docs/model-context-protocol"
+      "homepage": "https://posthog.com/docs/model-context-protocol",
+      "relevance": {
+        "topic": "PostHog",
+        "signals": {
+          "hosts": ["app.posthog.com", "us.posthog.com", "eu.posthog.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"posthog-(js|node)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "revenuecat",
@@ -527,7 +995,19 @@
         "source": "url",
         "url": "https://github.com/RevenueCat/rc-claude-code-plugin.git"
       },
-      "homepage": "https://www.revenuecat.com"
+      "homepage": "https://www.revenuecat.com",
+      "relevance": {
+        "topic": "RevenueCat",
+        "signals": {
+          "hosts": ["api.revenuecat.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(react-native-purchases|@revenuecat/[a-z0-9-]+)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "notion",
@@ -538,6 +1018,18 @@
       "source": {
         "source": "github",
         "repo": "makenotion/claude-code-notion-plugin"
+      },
+      "relevance": {
+        "topic": "Notion",
+        "signals": {
+          "hosts": ["api.notion.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@notionhq/client\"\\s*:"
+            }
+          ]
+        }
       }
     },
     {
@@ -549,6 +1041,13 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/asana"
+      },
+      "relevance": {
+        "topic": "Asana",
+        "signals": {
+          "cli": ["asana"],
+          "hosts": ["app.asana.com"]
+        }
       }
     },
     {
@@ -565,7 +1064,14 @@
       "category": "framework",
       "keywords": ["wordpress", "blocks", "themes", "plugins", "gutenberg", "php"],
       "tags": ["framework", "cms"],
-      "source": "./plugins/wordpress"
+      "source": "./plugins/wordpress",
+      "relevance": {
+        "topic": "WordPress",
+        "signals": {
+          "cli": ["wp"],
+          "filesRead": ["**/wp-content/**", "**/wp-config.php"]
+        }
+      }
     },
     {
       "name": "vinext",
@@ -581,7 +1087,20 @@
       "category": "framework",
       "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
       "tags": ["framework", "react"],
-      "source": "./plugins/next"
+      "source": "./plugins/next",
+      "relevance": {
+        "topic": "Next.js",
+        "signals": {
+          "cli": ["next"],
+          "filesRead": ["**/next.config.ts", "**/next.config.js", "**/next.config.mjs"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"next\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "react",
@@ -589,7 +1108,18 @@
       "category": "framework",
       "keywords": ["react", "nextjs", "vercel", "performance", "view-transitions"],
       "tags": ["framework", "frontend"],
-      "source": "./plugins/react"
+      "source": "./plugins/react",
+      "relevance": {
+        "topic": "React",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"react\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "react-native",
@@ -597,7 +1127,19 @@
       "category": "mobile",
       "keywords": ["react-native", "expo", "mobile", "performance"],
       "tags": ["framework", "mobile"],
-      "source": "./plugins/react-native"
+      "source": "./plugins/react-native",
+      "relevance": {
+        "topic": "React Native",
+        "signals": {
+          "cli": ["expo"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(react-native|expo)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "tiptap",
@@ -605,7 +1147,18 @@
       "category": "framework",
       "keywords": ["tiptap", "rich-text-editor", "prosemirror", "wysiwyg"],
       "tags": ["framework", "editor"],
-      "source": "./plugins/tiptap"
+      "source": "./plugins/tiptap",
+      "relevance": {
+        "topic": "Tiptap",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@tiptap/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "emulate",
@@ -638,7 +1191,13 @@
         "path": "plugins/gemini",
         "ref": "main"
       },
-      "homepage": "https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini"
+      "homepage": "https://github.com/pleaseai/gemini-plugin-cc/tree/main/plugins/gemini",
+      "relevance": {
+        "topic": "Gemini CLI",
+        "signals": {
+          "cli": ["gemini"]
+        }
+      }
     },
     {
       "name": "edgeparse",
@@ -646,7 +1205,13 @@
       "category": "document",
       "keywords": ["pdf", "extraction", "parsing", "markdown", "rag"],
       "tags": ["skill", "document"],
-      "source": "./plugins/edgeparse"
+      "source": "./plugins/edgeparse",
+      "relevance": {
+        "topic": "PDF extraction",
+        "signals": {
+          "filesRead": ["**/*.pdf"]
+        }
+      }
     },
     {
       "name": "git-ai",
@@ -662,7 +1227,13 @@
       "category": "development",
       "keywords": ["graphite", "gt", "stacked-prs", "stacking", "git", "github", "pull-request", "code-review"],
       "tags": ["tooling", "git", "github"],
-      "source": "./plugins/graphite"
+      "source": "./plugins/graphite",
+      "relevance": {
+        "topic": "Graphite",
+        "signals": {
+          "cli": ["gt"]
+        }
+      }
     },
     {
       "name": "workflow-sdk",
@@ -671,7 +1242,18 @@
       "category": "development",
       "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
       "tags": ["framework", "workflow"],
-      "source": "./plugins/workflow-sdk"
+      "source": "./plugins/workflow-sdk",
+      "relevance": {
+        "topic": "Workflow SDK",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(workflow|@workflow/[a-z0-9-]+)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "portless",
@@ -679,7 +1261,13 @@
       "category": "development",
       "keywords": ["portless", "localhost", "dev-server", "proxy"],
       "tags": ["tooling", "dev-server"],
-      "source": "./plugins/portless"
+      "source": "./plugins/portless",
+      "relevance": {
+        "topic": "Portless",
+        "signals": {
+          "cli": ["portless"]
+        }
+      }
     },
     {
       "name": "zod",
@@ -687,7 +1275,18 @@
       "category": "development",
       "keywords": ["zod", "validation", "schema", "typescript"],
       "tags": ["validation", "typescript"],
-      "source": "./plugins/zod"
+      "source": "./plugins/zod",
+      "relevance": {
+        "topic": "Zod",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"zod\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "bun",
@@ -695,7 +1294,14 @@
       "category": "development",
       "keywords": ["bun", "runtime", "package-manager", "test-runner", "bundler", "javascript", "typescript"],
       "tags": ["runtime", "tooling"],
-      "source": "./plugins/bun"
+      "source": "./plugins/bun",
+      "relevance": {
+        "topic": "Bun",
+        "signals": {
+          "cli": ["bun", "bunx"],
+          "filesRead": ["**/bun.lock", "**/bun.lockb"]
+        }
+      }
     },
     {
       "name": "modern-web-guidance",
@@ -715,7 +1321,14 @@
       "category": "language",
       "keywords": ["java", "springboot", "quarkus", "jpa", "junit", "javadoc"],
       "tags": ["language", "skills"],
-      "source": "./plugins/java-development"
+      "source": "./plugins/java-development",
+      "relevance": {
+        "topic": "Java",
+        "signals": {
+          "cli": ["mvn", "gradle"],
+          "filesRead": ["**/*.java", "**/pom.xml", "**/build.gradle", "**/build.gradle.kts"]
+        }
+      }
     },
     {
       "name": "skillopt-sleep",
@@ -739,7 +1352,18 @@
       "category": "tooling",
       "keywords": ["vercel-sandbox", "sandbox", "microvm", "vercel", "isolated-execution"],
       "tags": ["skills", "vercel"],
-      "source": "./plugins/vercel-sandbox"
+      "source": "./plugins/vercel-sandbox",
+      "relevance": {
+        "topic": "Vercel Sandbox",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@vercel/sandbox\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "eve",
@@ -755,7 +1379,13 @@
       "category": "tooling",
       "keywords": ["skill-optimizer", "skills", "evals", "optimization", "benchmark"],
       "tags": ["skills"],
-      "source": "./plugins/skill-optimizer"
+      "source": "./plugins/skill-optimizer",
+      "relevance": {
+        "topic": "agent skills",
+        "signals": {
+          "filesRead": ["**/skills/**/SKILL.md"]
+        }
+      }
     },
     {
       "name": "nostics",
@@ -763,7 +1393,18 @@
       "category": "tooling",
       "keywords": ["nostics", "diagnostics", "error-handling", "typescript", "javascript"],
       "tags": ["skills", "vercel"],
-      "source": "./plugins/nostics"
+      "source": "./plugins/nostics",
+      "relevance": {
+        "topic": "nostics",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"nostics\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "dev3000",
@@ -771,7 +1412,13 @@
       "category": "tooling",
       "keywords": ["dev3000", "d3k", "debugging", "web", "logs", "screenshots"],
       "tags": ["skills", "vercel"],
-      "source": "./plugins/dev3000"
+      "source": "./plugins/dev3000",
+      "relevance": {
+        "topic": "dev3000",
+        "signals": {
+          "cli": ["dev3000", "d3k"]
+        }
+      }
     },
     {
       "name": "lavish",
@@ -791,7 +1438,20 @@
         "source": "github",
         "repo": "cloudflare/skills"
       },
-      "homepage": "https://github.com/cloudflare/skills"
+      "homepage": "https://github.com/cloudflare/skills",
+      "relevance": {
+        "topic": "Cloudflare Workers",
+        "signals": {
+          "cli": ["wrangler"],
+          "filesRead": ["**/wrangler.toml", "**/wrangler.json", "**/wrangler.jsonc"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(wrangler|@cloudflare/[a-z0-9-]+)\"\\s*:"
+            }
+          ]
+        }
+      }
     },
     {
       "name": "axi",
@@ -808,7 +1468,14 @@
         "source": "github",
         "repo": "pleaseai/asana"
       },
-      "homepage": "https://github.com/pleaseai/asana"
+      "homepage": "https://github.com/pleaseai/asana",
+      "relevance": {
+        "topic": "Asana",
+        "signals": {
+          "cli": ["asana"],
+          "hosts": ["app.asana.com"]
+        }
+      }
     },
     {
       "name": "csp",
@@ -827,7 +1494,13 @@
     {
       "name": "greptile",
       "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5",
-      "source": "./plugins/greptile"
+      "source": "./plugins/greptile",
+      "relevance": {
+        "topic": "Greptile",
+        "signals": {
+          "cli": ["greptile"]
+        }
+      }
     }
   ]
 }
