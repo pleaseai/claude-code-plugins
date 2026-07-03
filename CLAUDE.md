@@ -370,6 +370,30 @@ When integrating an existing MCP server or tool as a Claude Code plugin:
    git commit -m "feat: add plugin-name to marketplace"
    ```
 
+9. **Add a `relevance` block (recommended):**
+
+   Marketplace entries can declare [relevance signals](https://code.claude.com/docs/en/plugin-relevance) so Claude Code (v2.1.152+) suggests the plugin when a user's session matches. Add it to the plugin's entry in `.claude-plugin/marketplace.json`:
+   ```json
+   "relevance": {
+     "topic": "Stripe",
+     "signals": {
+       "cli": ["stripe"],
+       "hosts": ["api.stripe.com"],
+       "filesRead": ["**/stripe.config.*"],
+       "manifestDeps": [
+         { "file": "[/\\\\]package\\.json$", "pattern": "\"stripe\"\\s*:" }
+       ]
+     }
+   }
+   ```
+   Rules:
+   - Only add signals that are **high-signal** — a plugin with no reliable trigger (e.g. generic tooling) should have no `relevance` block rather than a noisy one. Broad globs like `**/*.ts` or common commands like `git` produce false suggestions.
+   - Signal types: `cwd` (working-directory globs, matches at session start), `cli` (exact command names run), `hosts` (bare hostnames from URLs in Bash commands), `filesRead` (globs over files read), `manifestDeps` (`file` + `pattern` RegExp source strings; escape backslashes twice in JSON).
+   - `topic` fills "Working with *topic*?" in the spinner tip; defaults to the capitalized plugin name.
+   - Suggestions only appear for users whose administrator allowlists this marketplace via `pluginSuggestionMarketplaces` in managed settings; older clients ignore the field.
+   - Run `claude plugin validate .claude-plugin/marketplace.json` — unknown relevance keys surface as warnings.
+   - `relevance` is Claude Code-only: `multi-format` intentionally does not propagate it to the Codex/Cursor marketplaces.
+
 ### Best Practices
 
 **MCP Server Integration:**
