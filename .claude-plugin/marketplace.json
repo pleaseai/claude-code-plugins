@@ -16,16 +16,8 @@
       "name": "nanobanana",
       "description": "Claude Code Plugin for Nano Banana (Gemini 2.5 Flash Image) model - generate and manipulate images with text prompts",
       "category": "ai",
-      "keywords": [
-        "image-generation",
-        "gemini",
-        "ai",
-        "flash"
-      ],
-      "tags": [
-        "mcp",
-        "image"
-      ],
+      "keywords": ["image-generation", "gemini", "ai", "flash"],
+      "tags": ["mcp", "image"],
       "source": {
         "source": "github",
         "repo": "pleaseai/nanobanana-plugin"
@@ -35,16 +27,8 @@
       "name": "flutter",
       "description": "Enables several Flutter and Dart-related commands and context.",
       "category": "mobile",
-      "keywords": [
-        "flutter",
-        "dart",
-        "mobile",
-        "cross-platform"
-      ],
-      "tags": [
-        "framework",
-        "mobile"
-      ],
+      "keywords": ["flutter", "dart", "mobile", "cross-platform"],
+      "tags": ["framework", "mobile"],
       "source": {
         "source": "github",
         "repo": "pleaseai/flutter-plugin"
@@ -55,16 +39,8 @@
       "description": "💫 Claude Code plugin for GitHub's Spec-Kit - Toolkit for Spec-Driven Development",
       "version": "0.0.61",
       "category": "development",
-      "keywords": [
-        "spec",
-        "specification",
-        "tdd",
-        "requirements"
-      ],
-      "tags": [
-        "workflow",
-        "spec-driven"
-      ],
+      "keywords": ["spec", "specification", "tdd", "requirements"],
+      "tags": ["workflow", "spec-driven"],
       "source": {
         "source": "github",
         "repo": "pleaseai/spec-kit-plugin"
@@ -74,15 +50,8 @@
       "name": "code-review",
       "description": "Code review plugin for Claude Code",
       "category": "development",
-      "keywords": [
-        "code-review",
-        "quality",
-        "review"
-      ],
-      "tags": [
-        "workflow",
-        "review"
-      ],
+      "keywords": ["code-review", "quality", "review"],
+      "tags": ["workflow", "review"],
       "source": {
         "source": "github",
         "repo": "pleaseai/code-review-plugin"
@@ -92,16 +61,8 @@
       "name": "gemini-cli-security",
       "description": "Security analysis plugin for Claude Code",
       "category": "security",
-      "keywords": [
-        "security",
-        "analysis",
-        "vulnerability",
-        "sast"
-      ],
-      "tags": [
-        "security",
-        "analysis"
-      ],
+      "keywords": ["security", "analysis", "vulnerability", "sast"],
+      "tags": ["security", "analysis"],
       "source": {
         "source": "github",
         "repo": "pleaseai/security-plugin"
@@ -111,16 +72,8 @@
       "name": "firebase",
       "description": "Prototype, build & run modern apps users love with Firebase's backend, AI, and operational infrastructure.",
       "category": "cloud",
-      "keywords": [
-        "firebase",
-        "google",
-        "backend",
-        "cloud"
-      ],
-      "tags": [
-        "mcp",
-        "cloud"
-      ],
+      "keywords": ["firebase", "google", "backend", "cloud"],
+      "tags": ["mcp", "cloud"],
       "source": {
         "source": "github",
         "repo": "pleaseai/firebase-plugin"
@@ -130,16 +83,8 @@
       "name": "grafana",
       "description": "A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities",
       "category": "monitoring",
-      "keywords": [
-        "grafana",
-        "monitoring",
-        "dashboards",
-        "observability"
-      ],
-      "tags": [
-        "mcp",
-        "monitoring"
-      ],
+      "keywords": ["grafana", "monitoring", "dashboards", "observability"],
+      "tags": ["mcp", "monitoring"],
       "source": {
         "source": "github",
         "repo": "grafana/mcp-grafana"
@@ -150,47 +95,24 @@
       "displayName": "MCP Neo4j",
       "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling",
       "category": "database",
-      "keywords": [
-        "neo4j",
-        "graph-database",
-        "cypher"
-      ],
-      "tags": [
-        "mcp",
-        "database"
-      ],
+      "keywords": ["neo4j", "graph-database", "cypher"],
+      "tags": ["mcp", "database"],
       "source": "./plugins/neo4j"
     },
     {
       "name": "codegraph",
       "description": "Local-first code intelligence for AI agents (MCP) - query a pre-indexed knowledge graph of symbols, call graphs, and code structure instead of scanning files",
       "category": "development",
-      "keywords": [
-        "code-intelligence",
-        "knowledge-graph",
-        "code-navigation",
-        "semantic-search"
-      ],
-      "tags": [
-        "mcp",
-        "code-intelligence"
-      ],
+      "keywords": ["code-intelligence", "knowledge-graph", "code-navigation", "semantic-search"],
+      "tags": ["mcp", "code-intelligence"],
       "source": "./plugins/codegraph"
     },
     {
       "name": "chrome-devtools-mcp",
       "description": "Control and inspect a live Chrome browser through MCP - automate actions, debug, and analyze performance using Chrome DevTools",
       "category": "browser",
-      "keywords": [
-        "chrome",
-        "devtools",
-        "browser",
-        "debugging"
-      ],
-      "tags": [
-        "mcp",
-        "browser"
-      ],
+      "keywords": ["chrome", "devtools", "browser", "debugging"],
+      "tags": ["mcp", "browser"],
       "source": {
         "source": "github",
         "repo": "ChromeDevTools/chrome-devtools-mcp"
@@ -200,16 +122,8 @@
       "name": "hermes-tweet",
       "description": "Hermes Agent X/Twitter plugin with read tools, gated action tools, and bundled agent skill guidance",
       "category": "productivity",
-      "keywords": [
-        "hermes-agent",
-        "twitter",
-        "x",
-        "social-media"
-      ],
-      "tags": [
-        "social",
-        "hermes-agent"
-      ],
+      "keywords": ["hermes-agent", "twitter", "x", "social-media"],
+      "tags": ["social", "hermes-agent"],
       "source": {
         "source": "github",
         "repo": "Xquik-dev/hermes-tweet"
@@ -219,223 +133,112 @@
       "name": "nuxt-ui",
       "description": "The Intuitive Vue UI Library powered by Reka UI & Tailwind CSS.",
       "category": "ui",
-      "keywords": [
-        "nuxt-ui",
-        "vue",
-        "components",
-        "ui-library"
-      ],
-      "tags": [
-        "ui"
-      ],
+      "keywords": ["nuxt-ui", "vue", "components", "ui-library"],
+      "tags": ["ui"],
       "source": "./plugins/nuxt-ui"
     },
     {
       "name": "plugin-dev",
       "description": "Best practices, guidelines, and validation tools for Claude Code plugin development",
       "category": "tooling",
-      "keywords": [
-        "plugin",
-        "development",
-        "validation",
-        "best-practices"
-      ],
-      "tags": [
-        "tooling",
-        "plugin"
-      ],
+      "keywords": ["plugin", "development", "validation", "best-practices"],
+      "tags": ["tooling", "plugin"],
       "source": "./plugins/plugin-dev"
     },
     {
       "name": "antfu",
       "description": "Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript projects",
       "category": "framework",
-      "keywords": [
-        "antfu",
-        "eslint",
-        "typescript",
-        "conventions"
-      ],
-      "tags": [
-        "tooling",
-        "conventions"
-      ],
+      "keywords": ["antfu", "eslint", "typescript", "conventions"],
+      "tags": ["tooling", "conventions"],
       "source": "./plugins/antfu"
     },
     {
       "name": "nuxt",
       "description": "Nuxt full-stack Vue framework with SSR, auto-imports, and file-based routing",
       "category": "framework",
-      "keywords": [
-        "nuxt",
-        "vue",
-        "ssr",
-        "full-stack"
-      ],
-      "tags": [
-        "framework",
-        "vue"
-      ],
+      "keywords": ["nuxt", "vue", "ssr", "full-stack"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/nuxt"
     },
     {
       "name": "pinia",
       "description": "Pinia official Vue state management library, type-safe and extensible",
       "category": "framework",
-      "keywords": [
-        "pinia",
-        "vue",
-        "state-management",
-        "store"
-      ],
-      "tags": [
-        "framework",
-        "vue"
-      ],
+      "keywords": ["pinia", "vue", "state-management", "store"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/pinia"
     },
     {
       "name": "pnpm",
       "description": "Node.js package manager with strict dependency resolution and workspace support",
       "category": "tooling",
-      "keywords": [
-        "pnpm",
-        "package-manager",
-        "node",
-        "workspace"
-      ],
-      "tags": [
-        "tooling",
-        "node"
-      ],
+      "keywords": ["pnpm", "package-manager", "node", "workspace"],
+      "tags": ["tooling", "node"],
       "source": "./plugins/pnpm"
     },
     {
       "name": "slidev",
       "description": "Create and present web-based slides for developers using Markdown and Vue components",
       "category": "framework",
-      "keywords": [
-        "slidev",
-        "slides",
-        "presentation",
-        "markdown"
-      ],
-      "tags": [
-        "framework",
-        "presentation"
-      ],
+      "keywords": ["slidev", "slides", "presentation", "markdown"],
+      "tags": ["framework", "presentation"],
       "source": "./plugins/slidev"
     },
     {
       "name": "tsdown",
       "description": "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown",
       "category": "tooling",
-      "keywords": [
-        "tsdown",
-        "bundler",
-        "typescript",
-        "rolldown"
-      ],
-      "tags": [
-        "tooling",
-        "build"
-      ],
+      "keywords": ["tsdown", "bundler", "typescript", "rolldown"],
+      "tags": ["tooling", "build"],
       "source": "./plugins/tsdown"
     },
     {
       "name": "turborepo",
       "description": "Turborepo monorepo build system guidance for task pipelines, caching, and CI optimization",
       "category": "tooling",
-      "keywords": [
-        "turborepo",
-        "monorepo",
-        "build-system",
-        "caching"
-      ],
-      "tags": [
-        "tooling",
-        "monorepo"
-      ],
+      "keywords": ["turborepo", "monorepo", "build-system", "caching"],
+      "tags": ["tooling", "monorepo"],
       "source": "./plugins/turborepo"
     },
     {
       "name": "unocss",
       "description": "UnoCSS instant atomic CSS engine, superset of Tailwind CSS",
       "category": "framework",
-      "keywords": [
-        "unocss",
-        "css",
-        "atomic-css",
-        "tailwind"
-      ],
-      "tags": [
-        "framework",
-        "css"
-      ],
+      "keywords": ["unocss", "css", "atomic-css", "tailwind"],
+      "tags": ["framework", "css"],
       "source": "./plugins/unocss"
     },
     {
       "name": "vite",
       "description": "Vite build tool configuration, plugin API, SSR, and Rolldown migration",
       "category": "tooling",
-      "keywords": [
-        "vite",
-        "build-tool",
-        "dev-server",
-        "hmr"
-      ],
-      "tags": [
-        "tooling",
-        "build"
-      ],
+      "keywords": ["vite", "build-tool", "dev-server", "hmr"],
+      "tags": ["tooling", "build"],
       "source": "./plugins/vite"
     },
     {
       "name": "vitepress",
       "description": "VitePress static site generator powered by Vite and Vue",
       "category": "framework",
-      "keywords": [
-        "vitepress",
-        "static-site",
-        "documentation",
-        "vue"
-      ],
-      "tags": [
-        "framework",
-        "docs"
-      ],
+      "keywords": ["vitepress", "static-site", "documentation", "vue"],
+      "tags": ["framework", "docs"],
       "source": "./plugins/vitepress"
     },
     {
       "name": "vitest",
       "description": "Vitest fast unit testing framework powered by Vite with Jest-compatible API",
       "category": "development",
-      "keywords": [
-        "vitest",
-        "testing",
-        "unit-test",
-        "jest"
-      ],
-      "tags": [
-        "tooling",
-        "testing"
-      ],
+      "keywords": ["vitest", "testing", "unit-test", "jest"],
+      "tags": ["tooling", "testing"],
       "source": "./plugins/vitest"
     },
     {
       "name": "vue",
       "description": "Vue 3 core, best practices, router patterns, and testing",
       "category": "framework",
-      "keywords": [
-        "vue",
-        "vue3",
-        "composition-api",
-        "reactivity"
-      ],
-      "tags": [
-        "framework",
-        "frontend"
-      ],
+      "keywords": ["vue", "vue3", "composition-api", "reactivity"],
+      "tags": ["framework", "frontend"],
       "source": "./plugins/vue"
     },
     {
@@ -443,48 +246,24 @@
       "displayName": "VueUse",
       "description": "VueUse composables for building concise, maintainable Vue.js / Nuxt features",
       "category": "framework",
-      "keywords": [
-        "vueuse",
-        "vue",
-        "composables",
-        "utilities"
-      ],
-      "tags": [
-        "framework",
-        "vue"
-      ],
+      "keywords": ["vueuse", "vue", "composables", "utilities"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/vueuse"
     },
     {
       "name": "web-design",
       "description": "Review UI code for Web Interface Guidelines compliance",
       "category": "ui",
-      "keywords": [
-        "web-design",
-        "accessibility",
-        "ui-review",
-        "wcag"
-      ],
-      "tags": [
-        "review",
-        "ui"
-      ],
+      "keywords": ["web-design", "accessibility", "ui-review", "wcag"],
+      "tags": ["review", "ui"],
       "source": "./plugins/web-design"
     },
     {
       "name": "gatekeeper",
       "description": "Auto-approve safe commands, AI-assisted review for the rest",
       "category": "tooling",
-      "keywords": [
-        "gatekeeper",
-        "auto-approve",
-        "permissions",
-        "safety"
-      ],
-      "tags": [
-        "tooling",
-        "safety"
-      ],
+      "keywords": ["gatekeeper", "auto-approve", "permissions", "safety"],
+      "tags": ["tooling", "safety"],
       "source": "./plugins/gatekeeper"
     },
     {
@@ -492,150 +271,72 @@
       "displayName": "MCP Dev",
       "description": "Guide for creating high-quality MCP servers with best practices, TypeScript/Python patterns, and evaluation tools",
       "category": "tooling",
-      "keywords": [
-        "mcp",
-        "server",
-        "development",
-        "best-practices"
-      ],
-      "tags": [
-        "tooling",
-        "mcp"
-      ],
+      "keywords": ["mcp", "server", "development", "best-practices"],
+      "tags": ["tooling", "mcp"],
       "source": "./plugins/mcp-dev"
     },
     {
       "name": "cubic",
       "description": "AI-powered code review using Cubic CLI to detect bugs, security vulnerabilities, and style issues",
       "category": "development",
-      "keywords": [
-        "cubic",
-        "code-review",
-        "bugs",
-        "security"
-      ],
-      "tags": [
-        "review",
-        "analysis"
-      ],
+      "keywords": ["cubic", "code-review", "bugs", "security"],
+      "tags": ["review", "analysis"],
       "source": "./plugins/cubic"
     },
     {
       "name": "playwright-cli",
       "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps",
       "category": "development",
-      "keywords": [
-        "playwright",
-        "browser",
-        "automation",
-        "testing"
-      ],
-      "tags": [
-        "tooling",
-        "testing"
-      ],
+      "keywords": ["playwright", "browser", "automation", "testing"],
+      "tags": ["tooling", "testing"],
       "source": "./plugins/playwright-cli"
     },
     {
       "name": "mastra",
       "description": "Official agent skills for coding agents working with the Mastra AI framework",
       "category": "ai",
-      "keywords": [
-        "mastra",
-        "ai-framework",
-        "agents",
-        "workflows"
-      ],
-      "tags": [
-        "framework",
-        "ai"
-      ],
+      "keywords": ["mastra", "ai-framework", "agents", "workflows"],
+      "tags": ["framework", "ai"],
       "source": "./plugins/mastra"
     },
     {
       "name": "supabase",
       "description": "Agent Skills to help developers using AI agents with Supabase",
       "category": "database",
-      "keywords": [
-        "supabase",
-        "postgres",
-        "database",
-        "backend"
-      ],
-      "tags": [
-        "database",
-        "backend"
-      ],
+      "keywords": ["supabase", "postgres", "database", "backend"],
+      "tags": ["database", "backend"],
       "source": "./plugins/supabase"
     },
     {
       "name": "prisma",
       "description": "Official agent skills for Prisma ORM - schema design, migrations, queries, and database workflows",
       "category": "database",
-      "keywords": [
-        "prisma",
-        "orm",
-        "database",
-        "typescript",
-        "migrations"
-      ],
-      "tags": [
-        "database",
-        "orm"
-      ],
+      "keywords": ["prisma", "orm", "database", "typescript", "migrations"],
+      "tags": ["database", "orm"],
       "source": "./plugins/prisma"
     },
     {
       "name": "better-auth",
       "description": "Better Auth authentication framework skills for JavaScript/TypeScript projects",
       "category": "development",
-      "keywords": [
-        "better-auth",
-        "authentication",
-        "auth",
-        "typescript"
-      ],
-      "tags": [
-        "framework",
-        "auth"
-      ],
+      "keywords": ["better-auth", "authentication", "auth", "typescript"],
+      "tags": ["framework", "auth"],
       "source": "./plugins/better-auth"
     },
     {
       "name": "agent-browser",
       "description": "Browser and desktop app automation for AI agents — web browsing, Electron app control, Slack automation, and QA testing workflows",
       "category": "browser",
-      "keywords": [
-        "agent-browser",
-        "browser",
-        "automation",
-        "agents",
-        "electron",
-        "slack",
-        "desktop",
-        "qa"
-      ],
-      "tags": [
-        "browser",
-        "automation"
-      ],
+      "keywords": ["agent-browser", "browser", "automation", "agents", "electron", "slack", "desktop", "qa"],
+      "tags": ["browser", "automation"],
       "source": "./plugins/agent-browser"
     },
     {
       "name": "ai-sdk",
       "description": "The AI Toolkit for TypeScript - official agent skills for building AI-powered applications and agents with Vercel AI SDK",
       "category": "ai",
-      "keywords": [
-        "ai-sdk",
-        "vercel",
-        "ai",
-        "typescript",
-        "llm"
-      ],
-      "tags": [
-        "framework",
-        "ai"
-      ],
+      "keywords": ["ai-sdk", "vercel", "ai", "typescript", "llm"],
+      "tags": ["framework", "ai"],
       "source": "./plugins/ai-sdk"
     },
     {
@@ -647,102 +348,48 @@
       "name": "claude-md-management",
       "description": "Tools to maintain and improve CLAUDE.md files - audit quality, capture session learnings, and keep project memory current",
       "category": "tooling",
-      "keywords": [
-        "claude-md",
-        "memory",
-        "audit",
-        "quality"
-      ],
-      "tags": [
-        "tooling",
-        "maintenance"
-      ],
+      "keywords": ["claude-md", "memory", "audit", "quality"],
+      "tags": ["tooling", "maintenance"],
       "source": "./plugins/claude-md-management"
     },
     {
       "name": "google-workspace",
       "description": "CLI tool for managing Google Workspace resources dynamically using Discovery APIs.",
       "category": "productivity",
-      "keywords": [
-        "google-workspace",
-        "gmail",
-        "drive",
-        "calendar",
-        "docs",
-        "sheets"
-      ],
-      "tags": [
-        "google",
-        "workspace"
-      ],
+      "keywords": ["google-workspace", "gmail", "drive", "calendar", "docs", "sheets"],
+      "tags": ["google", "workspace"],
       "source": "./plugins/google-workspace"
     },
     {
       "name": "nuxt-i18n",
       "description": "Nuxt i18n internationalization module for locale routing, lazy-loaded translations, SEO, browser detection, and multi-domain setups",
       "category": "framework",
-      "keywords": [
-        "nuxt-i18n",
-        "i18n",
-        "internationalization",
-        "vue-i18n",
-        "localization"
-      ],
-      "tags": [
-        "framework",
-        "vue"
-      ],
+      "keywords": ["nuxt-i18n", "i18n", "internationalization", "vue-i18n", "localization"],
+      "tags": ["framework", "vue"],
       "source": "./plugins/nuxt-i18n"
     },
     {
       "name": "nuxt-seo",
       "description": "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org. Use when configuring SEO, generating sitemaps, creating OG images, or adding structured data.",
       "category": "framework",
-      "keywords": [
-        "nuxt-seo",
-        "nuxt",
-        "seo",
-        "sitemap",
-        "og-image",
-        "schema-org"
-      ],
-      "tags": [
-        "framework",
-        "vue",
-        "seo"
-      ],
+      "keywords": ["nuxt-seo", "nuxt", "seo", "sitemap", "og-image", "schema-org"],
+      "tags": ["framework", "vue", "seo"],
       "source": "./plugins/nuxt-seo"
     },
     {
       "name": "worktree",
       "description": "Git worktree isolation: context injection and parent project access prevention",
       "category": "tooling",
-      "keywords": [
-        "worktree",
-        "git",
-        "isolation",
-        "safety"
-      ],
-      "tags": [
-        "tooling",
-        "safety"
-      ],
+      "keywords": ["worktree", "git", "isolation", "safety"],
+      "tags": ["tooling", "safety"],
       "source": "./plugins/worktree"
     },
     {
       "name": "rtk",
       "description": "Reduce LLM token consumption by 60-90% using RTK to filter and compress command outputs",
       "category": "tooling",
-      "keywords": [
-        "rtk",
-        "token-optimization",
-        "performance",
-        "compression"
-      ],
-      "tags": [
-        "tooling",
-        "performance"
-      ],
+      "keywords": ["rtk", "token-optimization", "performance", "compression"],
+      "tags": ["tooling", "performance"],
       "source": "./plugins/rtk"
     },
     {
@@ -750,53 +397,24 @@
       "displayName": "MarkItDown",
       "description": "Convert documents (PDF, DOCX, PPTX, images, etc.) to Markdown using MarkItDown MCP server",
       "category": "tooling",
-      "keywords": [
-        "markitdown",
-        "pdf",
-        "docx",
-        "pptx",
-        "markdown",
-        "conversion",
-        "images"
-      ],
-      "tags": [
-        "mcp",
-        "conversion"
-      ],
+      "keywords": ["markitdown", "pdf", "docx", "pptx", "markdown", "conversion", "images"],
+      "tags": ["mcp", "conversion"],
       "source": "./plugins/markitdown"
     },
     {
       "name": "fetch",
       "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts",
       "category": "tooling",
-      "keywords": [
-        "fetch",
-        "web",
-        "html",
-        "markdown",
-        "youtube"
-      ],
-      "tags": [
-        "mcp",
-        "web"
-      ],
+      "keywords": ["fetch", "web", "html", "markdown", "youtube"],
+      "tags": ["mcp", "web"],
       "source": "./plugins/fetch"
     },
     {
       "name": "claude-code-docs",
       "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
       "category": "tooling",
-      "keywords": [
-        "claude-code",
-        "docs",
-        "markdown",
-        "webfetch",
-        "hooks"
-      ],
-      "tags": [
-        "hooks",
-        "docs"
-      ],
+      "keywords": ["claude-code", "docs", "markdown", "webfetch", "hooks"],
+      "tags": ["hooks", "docs"],
       "source": {
         "source": "github",
         "repo": "pleaseai/claude-code-docs"
@@ -806,126 +424,56 @@
       "name": "semble",
       "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server",
       "category": "development",
-      "keywords": [
-        "semble",
-        "code-search",
-        "semantic-search",
-        "embeddings",
-        "grep",
-        "codebase"
-      ],
-      "tags": [
-        "mcp",
-        "skill",
-        "search"
-      ],
+      "keywords": ["semble", "code-search", "semantic-search", "embeddings", "grep", "codebase"],
+      "tags": ["mcp", "skill", "search"],
       "source": "./plugins/semble"
     },
     {
       "name": "ast-grep",
       "description": "Guide for writing ast-grep rules to perform structural code search and analysis. Use when users need to search codebases using Abstract Syntax Tree (AST) patterns, find specific code structures, or perform complex code queries that go beyond simple text search.",
       "category": "development",
-      "keywords": [
-        "ast-grep",
-        "code-search",
-        "ast",
-        "structural-search",
-        "pattern-matching",
-        "refactoring"
-      ],
-      "tags": [
-        "tooling",
-        "search"
-      ],
+      "keywords": ["ast-grep", "code-search", "ast", "structural-search", "pattern-matching", "refactoring"],
+      "tags": ["tooling", "search"],
       "source": "./plugins/ast-grep"
     },
     {
       "name": "chat-sdk",
       "description": "Build multi-platform chat bots with Chat SDK — unified TypeScript SDK for Slack, Teams, Google Chat, Discord, GitHub, and Linear",
       "category": "development",
-      "keywords": [
-        "chat-sdk",
-        "chatbot",
-        "slack",
-        "teams",
-        "discord",
-        "linear",
-        "github"
-      ],
-      "tags": [
-        "framework",
-        "chatbot"
-      ],
+      "keywords": ["chat-sdk", "chatbot", "slack", "teams", "discord", "linear", "github"],
+      "tags": ["framework", "chatbot"],
       "source": "./plugins/chat-sdk"
     },
     {
       "name": "docus",
       "description": "Write beautiful documentations with Nuxt and Markdown.",
       "category": "framework",
-      "keywords": [
-        "docus",
-        "nuxt",
-        "documentation",
-        "markdown",
-        "nuxt-content"
-      ],
-      "tags": [
-        "framework",
-        "docs"
-      ],
+      "keywords": ["docus", "nuxt", "documentation", "markdown", "nuxt-content"],
+      "tags": ["framework", "docs"],
       "source": "./plugins/docus"
     },
     {
       "name": "astro",
       "description": "Access Astro's official documentation through the Astro Docs MCP server.",
       "category": "framework",
-      "keywords": [
-        "astro",
-        "docs",
-        "documentation",
-        "ssg",
-        "web-framework"
-      ],
-      "tags": [
-        "mcp",
-        "docs"
-      ],
+      "keywords": ["astro", "docs", "documentation", "ssg", "web-framework"],
+      "tags": ["mcp", "docs"],
       "source": "./plugins/astro"
     },
     {
       "name": "tosspayments",
       "description": "TossPayments payment integration guide - access official documentation for payment widget, checkout, and API integration",
       "category": "development",
-      "keywords": [
-        "tosspayments",
-        "payment",
-        "checkout",
-        "korea"
-      ],
-      "tags": [
-        "mcp",
-        "payment"
-      ],
+      "keywords": ["tosspayments", "payment", "checkout", "korea"],
+      "tags": ["mcp", "payment"],
       "source": "./plugins/tosspayments"
     },
     {
       "name": "port",
       "description": "Port.io Internal Developer Portal integration. Manage your entire SDLC — blueprints, entities, scorecards, self-service actions, incidents, and DevOps requests — via the Port MCP server. Supports US and EU regions.",
       "category": "tooling",
-      "keywords": [
-        "port",
-        "port.io",
-        "idp",
-        "internal-developer-portal",
-        "platform-engineering",
-        "sdlc",
-        "devops",
-        "scorecards"
-      ],
-      "tags": [
-        "mcp",
-        "platform"
-      ],
+      "keywords": ["port", "port.io", "idp", "internal-developer-portal", "platform-engineering", "sdlc", "devops", "scorecards"],
+      "tags": ["mcp", "platform"],
       "source": "./plugins/port",
       "homepage": "https://www.port.io"
     },
@@ -933,19 +481,8 @@
       "name": "portone",
       "description": "포트원(PortOne) 결제 연동 코드 생성 및 검토 플러그인. V1/V2 API를 지원하며, MCP 서버를 통해 최신 문서와 예시 코드를 활용합니다.",
       "category": "development",
-      "keywords": [
-        "portone",
-        "payment",
-        "pg",
-        "billing",
-        "결제",
-        "포트원",
-        "korea"
-      ],
-      "tags": [
-        "mcp",
-        "payment"
-      ],
+      "keywords": ["portone", "payment", "pg", "billing", "결제", "포트원", "korea"],
+      "tags": ["mcp", "payment"],
       "source": "./plugins/portone",
       "homepage": "https://portone.io"
     },
@@ -953,17 +490,8 @@
       "name": "stripe",
       "description": "Stripe development plugin for Claude",
       "category": "development",
-      "keywords": [
-        "stripe",
-        "payments",
-        "webhooks",
-        "api",
-        "security"
-      ],
-      "tags": [
-        "mcp",
-        "payments"
-      ],
+      "keywords": ["stripe", "payments", "webhooks", "api", "security"],
+      "tags": ["mcp", "payments"],
       "source": {
         "source": "git-subdir",
         "url": "stripe/ai",
@@ -1016,17 +544,8 @@
       "name": "notion",
       "description": "Notion workspace integration. Search pages, create and update documents, manage databases, and access your team's knowledge base directly from Claude Code for seamless documentation workflows.",
       "category": "productivity",
-      "keywords": [
-        "notion",
-        "productivity",
-        "knowledge-base",
-        "documentation",
-        "database"
-      ],
-      "tags": [
-        "productivity",
-        "mcp"
-      ],
+      "keywords": ["notion", "productivity", "knowledge-base", "documentation", "database"],
+      "tags": ["productivity", "mcp"],
       "source": {
         "source": "github",
         "repo": "makenotion/claude-code-notion-plugin"
@@ -1036,16 +555,8 @@
       "name": "asana",
       "description": "Manage Asana from the terminal with the `asana` CLI — tasks, projects, subtasks, comments, dependencies, tags, custom fields, and CSV/JSON batch import.",
       "category": "productivity",
-      "keywords": [
-        "asana",
-        "cli",
-        "task-management",
-        "productivity"
-      ],
-      "tags": [
-        "cli",
-        "productivity"
-      ],
+      "keywords": ["asana", "cli", "task-management", "productivity"],
+      "tags": ["cli", "productivity"],
       "source": {
         "source": "github",
         "repo": "pleaseai/asana"
@@ -1055,151 +566,72 @@
       "name": "please-plugins",
       "description": "Auto-detect project dependencies and recommend matching Claude Code plugins from the pleaseai marketplace",
       "category": "tooling",
-      "keywords": [
-        "please-plugins",
-        "discovery",
-        "marketplace",
-        "auto-detect",
-        "setup"
-      ],
-      "tags": [
-        "tooling",
-        "discovery"
-      ],
+      "keywords": ["please-plugins", "discovery", "marketplace", "auto-detect", "setup"],
+      "tags": ["tooling", "discovery"],
       "source": "./plugins/please-plugins"
     },
     {
       "name": "wordpress",
       "description": "Expert-level WordPress knowledge for AI coding assistants — blocks, themes, plugins, and best practices",
       "category": "framework",
-      "keywords": [
-        "wordpress",
-        "blocks",
-        "themes",
-        "plugins",
-        "gutenberg",
-        "php"
-      ],
-      "tags": [
-        "framework",
-        "cms"
-      ],
+      "keywords": ["wordpress", "blocks", "themes", "plugins", "gutenberg", "php"],
+      "tags": ["framework", "cms"],
       "source": "./plugins/wordpress"
     },
     {
       "name": "vinext",
       "description": "Migrates Next.js projects to vinext (Vite-based Next.js reimplementation) — compatibility scanning, package replacement, Vite config generation, ESM conversion, and deployment setup",
       "category": "framework",
-      "keywords": [
-        "vinext",
-        "nextjs",
-        "vite",
-        "migration",
-        "cloudflare"
-      ],
-      "tags": [
-        "framework",
-        "migration"
-      ],
+      "keywords": ["vinext", "nextjs", "vite", "migration", "cloudflare"],
+      "tags": ["framework", "migration"],
       "source": "./plugins/vinext"
     },
     {
       "name": "next",
       "description": "Next.js best practices, caching patterns, and upgrade guidance",
       "category": "framework",
-      "keywords": [
-        "next",
-        "nextjs",
-        "react",
-        "ssr",
-        "rsc"
-      ],
-      "tags": [
-        "framework",
-        "react"
-      ],
+      "keywords": ["next", "nextjs", "react", "ssr", "rsc"],
+      "tags": ["framework", "react"],
       "source": "./plugins/next"
     },
     {
       "name": "react",
       "description": "React and Next.js best practices, view transitions, and composition patterns from Vercel Engineering",
       "category": "framework",
-      "keywords": [
-        "react",
-        "nextjs",
-        "vercel",
-        "performance",
-        "view-transitions"
-      ],
-      "tags": [
-        "framework",
-        "frontend"
-      ],
+      "keywords": ["react", "nextjs", "vercel", "performance", "view-transitions"],
+      "tags": ["framework", "frontend"],
       "source": "./plugins/react"
     },
     {
       "name": "react-native",
       "description": "React Native and Expo best practices for building performant mobile apps",
       "category": "mobile",
-      "keywords": [
-        "react-native",
-        "expo",
-        "mobile",
-        "performance"
-      ],
-      "tags": [
-        "framework",
-        "mobile"
-      ],
+      "keywords": ["react-native", "expo", "mobile", "performance"],
+      "tags": ["framework", "mobile"],
       "source": "./plugins/react-native"
     },
     {
       "name": "tiptap",
       "description": "Helps coding agents integrate and work with the Tiptap rich text editor — extensions, collaboration, comments, AI, and document conversion",
       "category": "framework",
-      "keywords": [
-        "tiptap",
-        "rich-text-editor",
-        "prosemirror",
-        "wysiwyg"
-      ],
-      "tags": [
-        "framework",
-        "editor"
-      ],
+      "keywords": ["tiptap", "rich-text-editor", "prosemirror", "wysiwyg"],
+      "tags": ["framework", "editor"],
       "source": "./plugins/tiptap"
     },
     {
       "name": "emulate",
       "description": "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, Stripe, Resend, and Next.js",
       "category": "development",
-      "keywords": [
-        "emulate",
-        "api-emulation",
-        "local-development",
-        "testing"
-      ],
-      "tags": [
-        "tooling",
-        "testing"
-      ],
+      "keywords": ["emulate", "api-emulation", "local-development", "testing"],
+      "tags": ["tooling", "testing"],
       "source": "./plugins/emulate"
     },
     {
       "name": "ask",
       "description": "ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries",
       "category": "development",
-      "keywords": [
-        "documentation",
-        "registry",
-        "library",
-        "agent-skills",
-        "ask"
-      ],
-      "tags": [
-        "tooling",
-        "documentation"
-      ],
+      "keywords": ["documentation", "registry", "library", "agent-skills", "ask"],
+      "tags": ["tooling", "documentation"],
       "source": {
         "source": "github",
         "repo": "pleaseai/ask"
@@ -1209,16 +641,8 @@
       "name": "gemini",
       "description": "Gemini CLI integration for Claude Code — use Google's Gemini models from within Claude Code",
       "category": "ai",
-      "keywords": [
-        "gemini",
-        "google",
-        "ai",
-        "cli"
-      ],
-      "tags": [
-        "ai",
-        "cli"
-      ],
+      "keywords": ["gemini", "google", "ai", "cli"],
+      "tags": ["ai", "cli"],
       "source": {
         "source": "git-subdir",
         "url": "pleaseai/gemini-plugin-cc",
@@ -1231,54 +655,24 @@
       "name": "edgeparse",
       "description": "Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements",
       "category": "document",
-      "keywords": [
-        "pdf",
-        "extraction",
-        "parsing",
-        "markdown",
-        "rag"
-      ],
-      "tags": [
-        "skill",
-        "document"
-      ],
+      "keywords": ["pdf", "extraction", "parsing", "markdown", "rag"],
+      "tags": ["skill", "document"],
       "source": "./plugins/edgeparse"
     },
     {
       "name": "git-ai",
       "description": "A Git extension for tracking the AI-generated code in your repos",
       "category": "development",
-      "keywords": [
-        "git-ai",
-        "git",
-        "ai",
-        "code-tracking"
-      ],
-      "tags": [
-        "tooling",
-        "git"
-      ],
+      "keywords": ["git-ai", "git", "ai", "code-tracking"],
+      "tags": ["tooling", "git"],
       "source": "./plugins/git-ai"
     },
     {
       "name": "graphite",
       "description": "Stacked PR workflow with the Graphite CLI (gt) — create stacks, submit, sync, restack, split/squash/fold, track branches, and collaborate on shared stacks",
       "category": "development",
-      "keywords": [
-        "graphite",
-        "gt",
-        "stacked-prs",
-        "stacking",
-        "git",
-        "github",
-        "pull-request",
-        "code-review"
-      ],
-      "tags": [
-        "tooling",
-        "git",
-        "github"
-      ],
+      "keywords": ["graphite", "gt", "stacked-prs", "stacking", "git", "github", "pull-request", "code-review"],
+      "tags": ["tooling", "git", "github"],
       "source": "./plugins/graphite"
     },
     {
@@ -1286,86 +680,40 @@
       "displayName": "Workflow SDK",
       "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
       "category": "development",
-      "keywords": [
-        "workflow",
-        "durable",
-        "vercel",
-        "typescript",
-        "ai-agents"
-      ],
-      "tags": [
-        "framework",
-        "workflow"
-      ],
+      "keywords": ["workflow", "durable", "vercel", "typescript", "ai-agents"],
+      "tags": ["framework", "workflow"],
       "source": "./plugins/workflow-sdk"
     },
     {
       "name": "portless",
       "description": "Replace port numbers with stable, named local URLs. For humans and agents.",
       "category": "development",
-      "keywords": [
-        "portless",
-        "localhost",
-        "dev-server",
-        "proxy"
-      ],
-      "tags": [
-        "tooling",
-        "dev-server"
-      ],
+      "keywords": ["portless", "localhost", "dev-server", "proxy"],
+      "tags": ["tooling", "dev-server"],
       "source": "./plugins/portless"
     },
     {
       "name": "zod",
       "description": "TypeScript-first schema validation with static type inference - version-aware skill for Zod v3 and v4",
       "category": "development",
-      "keywords": [
-        "zod",
-        "validation",
-        "schema",
-        "typescript"
-      ],
-      "tags": [
-        "validation",
-        "typescript"
-      ],
+      "keywords": ["zod", "validation", "schema", "typescript"],
+      "tags": ["validation", "typescript"],
       "source": "./plugins/zod"
     },
     {
       "name": "bun",
       "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler - version-aware skill backed by the ask CLI",
       "category": "development",
-      "keywords": [
-        "bun",
-        "runtime",
-        "package-manager",
-        "test-runner",
-        "bundler",
-        "javascript",
-        "typescript"
-      ],
-      "tags": [
-        "runtime",
-        "tooling"
-      ],
+      "keywords": ["bun", "runtime", "package-manager", "test-runner", "bundler", "javascript", "typescript"],
+      "tags": ["runtime", "tooling"],
       "source": "./plugins/bun"
     },
     {
       "name": "modern-web-guidance",
       "description": "Keep your coding agent up to date with the latest web best practices from the Google Chrome team",
       "category": "development",
-      "keywords": [
-        "web",
-        "best-practices",
-        "chrome",
-        "baseline",
-        "css",
-        "performance"
-      ],
-      "tags": [
-        "skill",
-        "web"
-      ],
+      "keywords": ["web", "best-practices", "chrome", "baseline", "css", "performance"],
+      "tags": ["skill", "web"],
       "source": {
         "source": "github",
         "repo": "GoogleChrome/modern-web-guidance"
@@ -1376,176 +724,80 @@
       "name": "java-development",
       "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot",
       "category": "language",
-      "keywords": [
-        "java",
-        "springboot",
-        "quarkus",
-        "jpa",
-        "junit",
-        "javadoc"
-      ],
-      "tags": [
-        "language",
-        "skills"
-      ],
+      "keywords": ["java", "springboot", "quarkus", "jpa", "junit", "javadoc"],
+      "tags": ["language", "skills"],
       "source": "./plugins/java-development"
     },
     {
       "name": "skillopt-sleep",
       "description": "Nightly offline self-evolution for your local Claude agent: review past sessions, replay recurring tasks on your own budget, and consolidate validated CLAUDE.md memory + SKILL.md skills behind a held-out gate. Self-contained (vendored, zero third-party deps).",
       "category": "productivity",
-      "keywords": [
-        "skillopt",
-        "sleep",
-        "self-improvement",
-        "memory-consolidation",
-        "skills",
-        "continual-learning"
-      ],
-      "tags": [
-        "productivity",
-        "skills",
-        "hooks"
-      ],
+      "keywords": ["skillopt", "sleep", "self-improvement", "memory-consolidation", "skills", "continual-learning"],
+      "tags": ["productivity", "skills", "hooks"],
       "source": "./plugins/skillopt-sleep"
     },
     {
       "name": "graphify",
       "description": "Turn any folder of code, docs, papers, images, or videos into a queryable knowledge graph with community detection, query/path/explain tools, and an honest audit trail",
       "category": "tooling",
-      "keywords": [
-        "graphify",
-        "knowledge-graph",
-        "graphrag",
-        "codebase",
-        "code-understanding",
-        "ast",
-        "community-detection"
-      ],
-      "tags": [
-        "skills",
-        "knowledge-graph"
-      ],
+      "keywords": ["graphify", "knowledge-graph", "graphrag", "codebase", "code-understanding", "ast", "community-detection"],
+      "tags": ["skills", "knowledge-graph"],
       "source": "./plugins/graphify"
     },
     {
       "name": "vercel-sandbox",
       "description": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.",
       "category": "tooling",
-      "keywords": [
-        "vercel-sandbox",
-        "sandbox",
-        "microvm",
-        "vercel",
-        "isolated-execution"
-      ],
-      "tags": [
-        "skills",
-        "vercel"
-      ],
+      "keywords": ["vercel-sandbox", "sandbox", "microvm", "vercel", "isolated-execution"],
+      "tags": ["skills", "vercel"],
       "source": "./plugins/vercel-sandbox"
     },
     {
       "name": "eve",
       "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals.",
       "category": "tooling",
-      "keywords": [
-        "eve",
-        "agents",
-        "ai-agents",
-        "backend",
-        "vercel",
-        "framework"
-      ],
-      "tags": [
-        "skills",
-        "vercel"
-      ],
+      "keywords": ["eve", "agents", "ai-agents", "backend", "vercel", "framework"],
+      "tags": ["skills", "vercel"],
       "source": "./plugins/eve"
     },
     {
       "name": "skill-optimizer",
       "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve.",
       "category": "tooling",
-      "keywords": [
-        "skill-optimizer",
-        "skills",
-        "evals",
-        "optimization",
-        "benchmark"
-      ],
-      "tags": [
-        "skills"
-      ],
+      "keywords": ["skill-optimizer", "skills", "evals", "optimization", "benchmark"],
+      "tags": ["skills"],
       "source": "./plugins/skill-optimizer"
     },
     {
       "name": "nostics",
       "description": "Structured diagnostic code library for JavaScript/TypeScript. Turns errors into typed, machine-readable Diagnostic instances with stable codes, docs URLs, and actionable fixes. Covers defineDiagnostics, reporters, formatters, Vite plugins, and adding new diagnostic codes.",
       "category": "tooling",
-      "keywords": [
-        "nostics",
-        "diagnostics",
-        "error-handling",
-        "typescript",
-        "javascript"
-      ],
-      "tags": [
-        "skills",
-        "vercel"
-      ],
+      "keywords": ["nostics", "diagnostics", "error-handling", "typescript", "javascript"],
+      "tags": ["skills", "vercel"],
       "source": "./plugins/nostics"
     },
     {
       "name": "dev3000",
       "description": "dev3000 (d3k) debugging assistant — captures server logs, browser events, console messages, network requests, and screenshots into a unified, timestamped timeline for AI debugging.",
       "category": "tooling",
-      "keywords": [
-        "dev3000",
-        "d3k",
-        "debugging",
-        "web",
-        "logs",
-        "screenshots"
-      ],
-      "tags": [
-        "skills",
-        "vercel"
-      ],
+      "keywords": ["dev3000", "d3k", "debugging", "web", "logs", "screenshots"],
+      "tags": ["skills", "vercel"],
       "source": "./plugins/dev3000"
     },
     {
       "name": "lavish",
       "description": "Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose.",
       "category": "tooling",
-      "keywords": [
-        "lavish",
-        "html",
-        "artifacts",
-        "review",
-        "visualization"
-      ],
-      "tags": [
-        "skills"
-      ],
+      "keywords": ["lavish", "html", "artifacts", "review", "visualization"],
+      "tags": ["skills"],
       "source": "./plugins/lavish"
     },
     {
       "name": "cloudflare",
       "description": "Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents SDK, MCP servers, Wrangler CLI, and web performance",
       "category": "cloud",
-      "keywords": [
-        "cloudflare",
-        "workers",
-        "durable-objects",
-        "agents-sdk",
-        "wrangler",
-        "mcp"
-      ],
-      "tags": [
-        "skills",
-        "cloud"
-      ],
+      "keywords": ["cloudflare", "workers", "durable-objects", "agents-sdk", "wrangler", "mcp"],
+      "tags": ["skills", "cloud"],
       "source": {
         "source": "github",
         "repo": "cloudflare/skills"
@@ -1561,16 +813,8 @@
       "name": "asana",
       "description": "Manage Asana from the terminal with the `asana` CLI — tasks, projects, subtasks, comments, dependencies, tags, custom fields, and CSV/JSON batch import.",
       "category": "productivity",
-      "keywords": [
-        "asana",
-        "cli",
-        "task-management",
-        "productivity"
-      ],
-      "tags": [
-        "skills",
-        "productivity"
-      ],
+      "keywords": ["asana", "cli", "task-management", "productivity"],
+      "tags": ["skills", "productivity"],
       "source": {
         "source": "github",
         "repo": "pleaseai/asana"
@@ -1581,18 +825,8 @@
       "name": "csp",
       "description": "Fast, local, token-efficient hybrid (dense + BM25) code search for agents. Bundles the csp MCP server (search, find_related) and a csp-search sub-agent.",
       "category": "development",
-      "keywords": [
-        "code-search",
-        "hybrid-search",
-        "semantic-search",
-        "bm25",
-        "mcp",
-        "agent"
-      ],
-      "tags": [
-        "mcp",
-        "search"
-      ],
+      "keywords": ["code-search", "hybrid-search", "semantic-search", "bm25", "mcp", "agent"],
+      "tags": ["mcp", "search"],
       "source": {
         "source": "git-subdir",
         "url": "pleaseai/code-search",
