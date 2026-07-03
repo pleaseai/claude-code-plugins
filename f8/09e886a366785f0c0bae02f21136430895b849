@@ -1,0 +1,23 @@
+.claude/rules/marketplace-sync.md
+  s_c1ad4dd376bd73::t_f225c2357d6f45 23-28
+CLAUDE.md
+  s_c1ad4dd376bd73::t_bc1f2ef0f62ef0 373-396
+README.md
+  s_c1ad4dd376bd73::t_40c9b59c7dca20 470-486
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f809e886a366785f0c0bae02f21136430895b849",
+  "prompts": {},
+  "sessions": {
+    "s_c1ad4dd376bd73": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "78d3deed-4887-46f3-871d-19ac915553fd",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
