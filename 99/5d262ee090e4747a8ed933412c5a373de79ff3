@@ -1,0 +1,63 @@
+plugins/run-verify/skills/run/SKILL.md
+  s_0e907035bd66e1::t_fa3d645db4f300 1-75
+plugins/run-verify/.claude-plugin/plugin.json
+  s_0e907035bd66e1::t_fd8df6a38815e7 1-21
+.claude-plugin/marketplace.json
+  s_0e907035bd66e1::t_d7806c3cf244f1 1501-1508
+README.md
+  s_0e907035bd66e1::t_386c5e53ab82d1 456-461
+plugins/run-verify/skills/run-skill-generator/SKILL.md
+  s_0e907035bd66e1::t_ffe8a1e897a1b1 1-356
+plugins/run-verify/skills/verify/SKILL.md
+  s_0e907035bd66e1::t_ade87f0809c15f 1-268
+plugins/run-verify/README.md
+  s_0e907035bd66e1::t_b1ee8e84533436 1-57
+.agents/plugins/marketplace.json
+  s_0e907035bd66e1::t_008c6f82749c19 1116-1127
+.cursor-plugin/marketplace.json
+  s_0e907035bd66e1::t_1004e970e6ed33 366-370
+.release-please-manifest.json
+  s_0e907035bd66e1::t_bbc366d4cf4841 69-70
+plugins/run-verify/.codex-plugin/plugin.json
+  s_0e907035bd66e1::t_17038b0c978963 1-34
+plugins/run-verify/.cursor-plugin/plugin.json
+  s_0e907035bd66e1::t_479613ddec6ff2 1-26
+plugins/run-verify/plugin.json
+  s_0e907035bd66e1::t_eccbc5286ac182 1-20
+plugins/run-verify/skills/run-skill-generator/template.md
+  s_0e907035bd66e1::t_07641ea7912421 1-142
+plugins/run-verify/skills/run/examples/cli.md
+  s_0e907035bd66e1::t_a52a1e02e9870f 1-68
+plugins/run-verify/skills/run/examples/electron.md
+  s_0e907035bd66e1::t_26b1765866219a 1-357
+plugins/run-verify/skills/run/examples/library.md
+  s_0e907035bd66e1::t_9ec1e8bd82b94c 1-88
+plugins/run-verify/skills/run/examples/playwright.md
+  s_0e907035bd66e1::t_b283078f8f46e3 1-86
+plugins/run-verify/skills/run/examples/server.md
+  s_0e907035bd66e1::t_abc3d817fe6734 1-106
+plugins/run-verify/skills/run/examples/tui.md
+  s_0e907035bd66e1::t_535df08a073b02 1-96
+plugins/run-verify/skills/verify/examples/cli.md
+  s_0e907035bd66e1::t_e701f87695bc00 1-68
+plugins/run-verify/skills/verify/examples/server.md
+  s_0e907035bd66e1::t_0944995fe2025e 1-63
+release-please-config.json
+  s_0e907035bd66e1::t_78addfbe3f4ab8 1196-1221
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "995d262ee090e4747a8ed933412c5a373de79ff3",
+  "prompts": {},
+  "sessions": {
+    "s_0e907035bd66e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "77ebba07-3d93-4a31-ba46-8b42a5048c48",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
