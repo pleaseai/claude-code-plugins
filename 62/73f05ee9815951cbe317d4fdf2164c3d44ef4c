@@ -1,0 +1,21 @@
+plugins/skillopt-sleep/commands/skillopt-sleep.md
+  s_bc9a867ad8fb72::t_950f71d36cf0c0 41
+plugins/skillopt-sleep/README.md
+  s_bc9a867ad8fb72::t_ecbb11383867df 38
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6273f05ee9815951cbe317d4fdf2164c3d44ef4c",
+  "prompts": {},
+  "sessions": {
+    "s_bc9a867ad8fb72": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee08a227-4088-43b9-ace2-4f50155ec57c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
