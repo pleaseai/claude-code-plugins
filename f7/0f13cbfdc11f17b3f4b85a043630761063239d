@@ -1,0 +1,19 @@
+.codacy.yml
+  s_bc9a867ad8fb72::t_e49f39f0dceef5 1-6
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f70f13cbfdc11f17b3f4b85a043630761063239d",
+  "prompts": {},
+  "sessions": {
+    "s_bc9a867ad8fb72": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee08a227-4088-43b9-ace2-4f50155ec57c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
