@@ -86,7 +86,6 @@ Installs a nightly cron entry. `unschedule --all` removes every managed entry.
 
 Beyond the CLI flags, advanced behavior is controlled via config:
 
-- **`preferences`** — free-text house rules injected into the optimizer's reflect step (e.g. "Always use async/await", "Answers in `\boxed{}`").
 - **`gate_mode`** — `on` (default, validation-gated) or `off` (greedy, accept all edits).
 - **`gate_metric`** — `hard`, `soft`, or `mixed` (default). Controls how the held-out gate scores.
 - **`dream_rollouts`** — >1 enables multi-rollout contrastive reflection per task.

@@ -38,8 +38,7 @@ The engine is the `skillopt_sleep` Python package in this repo. Use the
 | `unschedule` | remove the nightly cron entry (`--all` to remove every managed entry) |
 
 Default backend is `mock` (deterministic, no API spend). To use real budget for
-genuine improvement, add `--backend claude` or `--backend codex`. To steer what
-the optimizer writes, add `--preferences "<your house rules>"`.
+genuine improvement, add `--backend claude` or `--backend codex`.
 
 ## Steps to follow
 

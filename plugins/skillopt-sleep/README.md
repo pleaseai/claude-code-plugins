@@ -35,8 +35,7 @@ Drive it with the `/skillopt-sleep` command (default action: `status`):
 | `unschedule` | remove the nightly cron entry (`--all` to remove every managed entry) |
 
 Default backend is `mock` (deterministic, no API spend). Add `--backend claude`
-(or `--backend codex`) to spend real budget for genuine improvement. To steer
-what the optimizer writes, add `--preferences "<your house rules>"`. Nothing
+(or `--backend codex`) to spend real budget for genuine improvement. Nothing
 live changes until you run `/skillopt-sleep adopt`.
 
 To schedule it nightly, use `/skillopt-sleep schedule` — or run
