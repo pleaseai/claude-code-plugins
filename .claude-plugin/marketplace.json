@@ -1498,6 +1498,17 @@
           "cli": ["greptile"]
         }
       }
+    },
+    {
+      "name": "run-verify",
+      "description": "Run and verify code changes by driving the real app — launch it, interact with it, capture evidence. Ships run, verify, and run-skill-generator skills for Claude Code, Codex, and Antigravity.",
+      "category": "development",
+      "keywords": ["run", "verify", "verification", "e2e", "smoke-test", "runtime-observation"],
+      "tags": ["workflow", "testing"],
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/run-verify-plugin"
+      }
     }
   ]
 }
