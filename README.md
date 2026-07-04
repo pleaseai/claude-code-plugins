@@ -307,6 +307,11 @@ React Native and Expo best practices for building performant mobile apps.
 
 **Install:** `/plugin install react-native@pleaseai` | **Source:** [plugins/react-native](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/react-native)
 
+#### TanStack
+Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) — loads official skills shipped inside the installed npm packages via the [`@tanstack/intent`](https://tanstack.com/intent) CLI.
+
+**Install:** `/plugin install tanstack@pleaseai` | **Source:** [plugins/tanstack](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/tanstack)
+
 #### Tiptap
 Helps coding agents integrate and work with the Tiptap rich text editor — extensions, collaboration, comments, AI, and document conversion.
 
@@ -598,6 +603,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install next@pleaseai
 /plugin install react@pleaseai
 /plugin install react-native@pleaseai
+/plugin install tanstack@pleaseai
 /plugin install emulate@pleaseai
 /plugin install ask@pleaseai
 /plugin install workflow-sdk@pleaseai

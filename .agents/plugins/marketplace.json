@@ -1113,6 +1113,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "tanstack",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tanstack"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
     }
   ]
 }
