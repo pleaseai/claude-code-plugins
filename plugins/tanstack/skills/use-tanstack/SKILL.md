@@ -53,9 +53,19 @@ Notes:
 
 ## Fallback: Packages Without Shipped Skills
 
-Intent is rolling out across the ecosystem (newest packages first — Router, Start, DB, AI, Devtools ship skills; some stable packages like `@tanstack/react-query` may not yet). If `list` shows no skills for the library you need:
+Intent is rolling out across the ecosystem (newest packages first — Router, Start, DB, AI, Devtools ship skills; some stable packages like `@tanstack/react-query` may not yet). If `list` shows no skills for the library you need, check the installed version first (`npm ls @tanstack/react-query` or read the lockfile), then:
 
-1. Use the official docs — every page on tanstack.com has a plain-markdown variant. Append `.md` to the docs URL:
+1. **Preferred — [`ask`](https://github.com/pleaseai/ask) CLI** (check `which ask`). It fetches the library's repo docs/source once and caches them locally for grepping:
+
+   ```bash
+   ASK_DOCS=$(ask docs "github:TanStack/query@main")   # docs tree (markdown by topic)
+   rg -l "useQuery" "$ASK_DOCS"
+   ASK_SRC=$(ask src "github:TanStack/query@main")     # implementation, for API signatures
+   ```
+
+   Repo names match the library (`TanStack/query`, `TanStack/router`, `TanStack/table`, `TanStack/form`, `TanStack/virtual`, ...). Caveat: TanStack monorepos tag releases as `@tanstack/<pkg>@<version>`, which `ask` cannot currently resolve — pin to `@main` and cross-check anything version-sensitive against the installed package's `node_modules` typings or CHANGELOG.
+
+2. **No `ask` — official markdown docs.** Every page on tanstack.com has a plain-markdown variant; append `.md` to the docs URL:
 
    ```bash
    curl -s https://tanstack.com/query/latest/docs/framework/react/overview.md
@@ -63,8 +73,6 @@ Intent is rolling out across the ecosystem (newest packages first — Router, St
    ```
 
    Replace `latest` with the installed major version (e.g. `/query/v5/`) when the project is not on the latest line.
-
-2. Check the installed version first (`npm ls @tanstack/react-query` or read the lockfile) and match docs to that version.
 
 If neither shipped skills nor version-matching docs can back an answer, say so explicitly instead of guessing.
 
