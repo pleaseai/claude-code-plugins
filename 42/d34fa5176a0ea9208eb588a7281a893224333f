@@ -1,0 +1,19 @@
+.sonarcloud.properties
+  s_bc9a867ad8fb72::t_5b040d932455f9 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "42d34fa5176a0ea9208eb588a7281a893224333f",
+  "prompts": {},
+  "sessions": {
+    "s_bc9a867ad8fb72": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ee08a227-4088-43b9-ace2-4f50155ec57c",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
