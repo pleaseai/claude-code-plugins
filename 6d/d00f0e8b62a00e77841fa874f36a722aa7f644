@@ -1,0 +1,21 @@
+.claude-plugin/marketplace.json
+  s_0e907035bd66e1::t_f8ccbb8de76fd2 1501-1511
+README.md
+  s_0e907035bd66e1::t_f9e93ea6696cb2 98-102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "6dd00f0e8b62a00e77841fa874f36a722aa7f644",
+  "prompts": {},
+  "sessions": {
+    "s_0e907035bd66e1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "77ebba07-3d93-4a31-ba46-8b42a5048c48",
+        "model": "claude-fable-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
