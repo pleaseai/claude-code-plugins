@@ -1508,7 +1508,8 @@
       "source": {
         "source": "github",
         "repo": "pleaseai/run-verify-plugin"
-      }
+      },
+      "homepage": "https://github.com/pleaseai/run-verify-plugin"
     }
   ]
 }
