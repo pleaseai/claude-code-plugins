@@ -1,10 +1,10 @@
 ---
-description: Run or manage the SkillOpt-Sleep self-evolution cycle (review past sessions, replay tasks offline, consolidate validated memory + skills)
-argument-hint: "[run | dry-run | status | adopt | harvest] (default: status)"
+description: Run or manage the SkillOpt-Sleep self-evolution cycle (review past sessions, replay tasks offline, consolidate validated memory + skills; can also schedule nightly runs)
+argument-hint: "[run | dry-run | status | adopt | harvest | schedule | unschedule] (default: status)"
 allowed-tools: Bash, Read
 ---
 
-# /sleep — SkillOpt-Sleep nightly self-evolution
+# /skillopt-sleep — SkillOpt-Sleep nightly self-evolution
 
 You are driving **SkillOpt-Sleep**: a tool that lets this user's Claude agent
 improve offline by reviewing past sessions, replaying recurring tasks, and
@@ -27,46 +27,29 @@ The engine is the `skillopt_sleep` Python package in this repo. Use the
 
 `<action>` is one of:
 
-| action    | what it does |
-|-----------|--------------|
-| `status`  | show how many nights have run + the latest staged proposal (READ-ONLY) |
-| `dry-run` | harvest → mine → replay → report, but **stage nothing** (safe preview) |
-| `run`     | full cycle: also **stage** a reviewed proposal (still does NOT touch live files) |
-| `adopt`   | apply the latest staged proposal to live `CLAUDE.md` / `SKILL.md` (backs up first) |
-| `harvest` | debug: print the recurring tasks mined from recent sessions |
+| action       | what it does |
+|--------------|--------------|
+| `status`     | show how many nights have run + the latest staged proposal (READ-ONLY) |
+| `dry-run`    | harvest → mine → replay → report, but **stage nothing** (safe preview) |
+| `run`        | full cycle: also **stage** a reviewed proposal (still does NOT touch live files) |
+| `adopt`      | apply the latest staged proposal to live `CLAUDE.md` / `SKILL.md` (backs up first) |
+| `harvest`    | debug: print the recurring tasks mined from recent sessions |
+| `schedule`   | install a nightly cron entry for this project (`--hour --minute`, off-:00 by default) |
+| `unschedule` | remove the nightly cron entry (`--all` to remove every managed entry) |
 
-Default backend is `mock` (deterministic, no API spend). For genuine improvement,
-use the backend that **matches the runtime you are running in**, driving that
-agent's own CLI:
-
-- **Claude Code** → `--backend claude`
-- **Codex** → `--backend codex`
-
-`anthropic` is **not** a valid backend; the runner only accepts `mock`, `claude`,
-or `codex`.
+Default backend is `mock` (deterministic, no API spend). To use real budget for
+genuine improvement, add `--backend claude` or `--backend codex`.
 
 ## Steps to follow
 
 1. **Run the requested action** via the bundled runner above. Capture stdout.
-   For the cycle actions (`run` / `dry-run`), append the backend matching your
-   runtime (`--backend claude` in Claude Code, `--backend codex` in Codex) so the
-   replay uses that agent's CLI rather than the `mock` default:
-
-   ```bash
-   # Claude Code
-   "${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" <action> --project "$(pwd)" --scope invoked --backend claude
-   # Codex
-   "${CLAUDE_PLUGIN_ROOT}/scripts/sleep.sh" <action> --project "$(pwd)" --scope invoked --backend codex
-   ```
-
-   `status`, `harvest`, and `adopt` do not need a backend.
 2. **For `run` / `dry-run`:** after it completes, `Read` the generated
    `report.md` in the staging dir it prints, and show the user:
    - held-out score: baseline → candidate (the proof it helped)
    - the gate decision (accept/reject) and the exact edits it proposes
    - where the proposal is staged
 3. **For `run` that produced an accepted proposal:** tell the user the diff is
-   staged and that **nothing live changed yet**. Offer to run `/sleep adopt`.
+   staged and that **nothing live changed yet**. Offer to run `/skillopt-sleep adopt`.
 4. **For `adopt`:** confirm which live files were updated and that backups were
    written under the staging dir's `backup/`.
 5. **Never** edit `CLAUDE.md` or `SKILL.md` yourself — only the `adopt` action

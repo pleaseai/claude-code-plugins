@@ -9,7 +9,7 @@ validation gate, vendored self-contained in ``skillopt_sleep.gate``.
 from __future__ import annotations
 
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import List, Optional, Tuple
 
 from skillopt_sleep.backend import Backend
@@ -36,6 +36,10 @@ class ConsolidationResult:
     rejected_edits: List[EditRecord]
     holdout_baseline: float
     holdout_candidate: float
+    # ── observability (so a 0.0->0.0 night is self-diagnosing, not a black box) ──
+    holdout_detail: List[dict] = field(default_factory=list)  # per val task: hard/soft/resp/why
+    reflect_raw: str = ""        # the optimizer's last raw reply (empty => reflect produced nothing)
+    call_error: str = ""         # backend's last call error (timeout/auth/empty)
 
 
 def _split(tasks: List[TaskRecord]) -> Tuple[List[TaskRecord], List[TaskRecord]]:
@@ -59,6 +63,25 @@ def _split(tasks: List[TaskRecord]) -> Tuple[List[TaskRecord], List[TaskRecord]]
     if not train:
         train = val
     return train, val
+
+
+def _holdout_detail(pairs: List[Tuple[TaskRecord, ReplayResult]]) -> List[dict]:
+    """Per-task held-out evidence so a 0.0 night explains itself: was the
+    response empty (backend call failed) or non-empty-but-failing-checks
+    (judge too strict / edit didn't help)? The two need opposite fixes."""
+    out: List[dict] = []
+    for t, r in pairs:
+        resp = r.response or ""
+        out.append({
+            "id": t.id,
+            "reference_kind": t.reference_kind,
+            "hard": r.hard,
+            "soft": r.soft,
+            "response_len": len(resp),
+            "response_head": resp[:200],
+            "why": (r.fail_reason or r.judge_rationale or "")[:200],
+        })
+    return out
 
 
 def consolidate(
@@ -87,10 +110,19 @@ def consolidate(
     """
     train_tasks, val_tasks = _split(tasks)
     gate_off = str(gate_mode).strip().lower() in {"off", "none", "false", "greedy"}
+    holdout_detail: List[dict] = []
 
     # ── baseline on the VAL slice (the gate reference) ────────────────────
-    base_pairs = replay_batch(backend, val_tasks, skill, memory)
-    base_hard, base_soft = aggregate_scores(base_pairs)
+    # When the gate is OFF the user has opted out of holding out a validation set
+    # (the daily-use design): we accept edits greedily and judge quality only on
+    # the real test set, scored by the caller. So we SKIP all val scoring — it is
+    # both wasted cost and contrary to the "no val set required" design.
+    if gate_off:
+        base_hard, base_soft = 0.0, 0.0
+    else:
+        base_pairs = replay_batch(backend, val_tasks, skill, memory)
+        base_hard, base_soft = aggregate_scores(base_pairs)
+        holdout_detail = _holdout_detail(base_pairs)
     base_score = select_gate_score(base_hard, base_soft, gate_metric, gate_mixed_weight)
 
     # ── reflect over TRAIN-split failures/successes ───────────────────────
@@ -109,14 +141,17 @@ def consolidate(
         new_doc, applied = apply_edits(doc, edits)
         if not applied:
             return doc
-        # score the candidate on the VAL slice
+        # gate OFF: accept greedily with NO val scoring (the daily-use path)
+        if gate_off:
+            all_applied.extend(applied)
+            return new_doc
+        # gate ON: score the candidate on the VAL slice, keep only if it improves
         trial_skill = new_doc if which == "skill" else cand_skill
         trial_memory = new_doc if which == "memory" else cand_memory
         pairs = replay_batch(backend, val_tasks, trial_skill, trial_memory)
         h, s = aggregate_scores(pairs)
         cand_score = select_gate_score(h, s, gate_metric, gate_mixed_weight)
-        # gate OFF: accept greedily (no regression check); gate ON: strict improve
-        if gate_off or cand_score > base_score:
+        if cand_score > base_score:
             base_score = max(base_score, cand_score)
             all_applied.extend(applied)
             return new_doc
@@ -128,8 +163,28 @@ def consolidate(
             # multi-rollout contrastive reflection: run each train task K times
             # and distill a rule from the good-vs-bad contrast (the imagination signal).
             from skillopt_sleep.rollout import multi_rollout, contrastive_reflect
-            sets = [multi_rollout(backend, t, cand_skill, cand_memory, k=rollouts_k)
-                    for t in train_tasks]
+            # Parallelize across tasks (each multi_rollout also parallelizes its K
+            # attempts). This dream phase is the dominant cost; serial execution
+            # times out on real backends. Cap total in-flight at the worker env.
+            import os
+            from concurrent.futures import ThreadPoolExecutor
+            try:
+                _w = int(os.environ.get("SKILLOPT_SLEEP_WORKERS", "1"))
+            except ValueError:
+                _w = 1
+            if _w > 1 and len(train_tasks) > 1:
+                # split the worker budget between task-parallelism and per-task K
+                task_workers = max(1, min(len(train_tasks), _w))
+                per_task = max(1, _w // task_workers)
+                with ThreadPoolExecutor(max_workers=task_workers) as ex:
+                    sets = list(ex.map(
+                        lambda t: multi_rollout(backend, t, cand_skill, cand_memory,
+                                                k=rollouts_k, workers=per_task),
+                        train_tasks))
+            else:
+                sets = [multi_rollout(backend, t, cand_skill, cand_memory,
+                                      k=rollouts_k, workers=1)
+                        for t in train_tasks]
             edits = contrastive_reflect(
                 backend, sets, cand_skill, cand_memory,
                 edit_budget=edit_budget, target="skill",
@@ -158,40 +213,41 @@ def consolidate(
         )
         cand_memory = _gate_apply(cand_memory, edits_m, "memory")
 
-    # ── final decision, scored on the VAL slice ───────────────────────────
-    final_pairs = replay_batch(backend, val_tasks, cand_skill, cand_memory)
-    final_hard, final_soft = aggregate_scores(final_pairs)
-    final_score = select_gate_score(final_hard, final_soft, gate_metric, gate_mixed_weight)
-    base_gate_score = select_gate_score(base_hard, base_soft, gate_metric, gate_mixed_weight)
-
+    # ── final decision ────────────────────────────────────────────────────
     if gate_off:
-        # greedy mode: keep whatever edits we applied; report quality movement
+        # greedy mode: no val scoring at all. Keep whatever edits we applied; the
+        # caller measures real quality on the test set. We report holdout_candidate
+        # as 0.0 (val intentionally not computed in this variant).
+        final_hard, final_soft = 0.0, 0.0
+        final_score = 0.0
         accepted = bool(all_applied)
-        if final_score > base_gate_score:
-            action = "greedy_improved"
-        elif final_score < base_gate_score:
-            action = "greedy_regressed"
-        else:
-            action = "greedy_flat" if all_applied else "greedy_noop"
-    elif _HAVE_REPO_GATE:
-        gate = evaluate_gate(
-            candidate_skill=cand_skill,
-            cand_hard=final_hard,
-            current_skill=skill,
-            current_score=base_gate_score,
-            best_skill=skill,
-            best_score=base_gate_score,
-            best_step=night - 1,
-            global_step=night,
-            cand_soft=final_soft,
-            metric=gate_metric,
-            mixed_weight=gate_mixed_weight,
-        )
-        action = gate.action
-        accepted = bool(all_applied) and final_score > base_gate_score
+        action = "greedy_applied" if all_applied else "greedy_noop"
+        base_gate_score = 0.0
     else:
-        action = "accept" if final_score > base_gate_score else "reject"
-        accepted = bool(all_applied) and final_score > base_gate_score
+        # scored on the VAL slice (the gate reference)
+        final_pairs = replay_batch(backend, val_tasks, cand_skill, cand_memory)
+        final_hard, final_soft = aggregate_scores(final_pairs)
+        final_score = select_gate_score(final_hard, final_soft, gate_metric, gate_mixed_weight)
+        base_gate_score = select_gate_score(base_hard, base_soft, gate_metric, gate_mixed_weight)
+        if _HAVE_REPO_GATE:
+            gate = evaluate_gate(
+                candidate_skill=cand_skill,
+                cand_hard=final_hard,
+                current_skill=skill,
+                current_score=base_gate_score,
+                best_skill=skill,
+                best_score=base_gate_score,
+                best_step=night - 1,
+                global_step=night,
+                cand_soft=final_soft,
+                metric=gate_metric,
+                mixed_weight=gate_mixed_weight,
+            )
+            action = gate.action
+            accepted = bool(all_applied) and final_score > base_gate_score
+        else:
+            action = "accept" if final_score > base_gate_score else "reject"
+            accepted = bool(all_applied) and final_score > base_gate_score
 
     return ConsolidationResult(
         accepted=accepted,
@@ -204,4 +260,7 @@ def consolidate(
         rejected_edits=all_rejected,
         holdout_baseline=base_hard,
         holdout_candidate=final_hard,
+        holdout_detail=holdout_detail,
+        reflect_raw=getattr(backend, "last_reflect_raw", "") or "",
+        call_error=getattr(backend, "last_call_error", "") or "",
     )

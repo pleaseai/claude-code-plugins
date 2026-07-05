@@ -1,0 +1,6 @@
+---
+# Vendored upstream code is read-only in this repo (fixes go upstream),
+# so exclude it from Codacy static analysis.
+exclude_paths:
+  - "plugins/skillopt-sleep/skillopt_sleep/**"
+  - "external-plugins/**"

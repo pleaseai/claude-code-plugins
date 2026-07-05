@@ -17,27 +17,30 @@ experience → long-term competence).
 ```text
 /plugin marketplace add pleaseai/claude-code-plugins
 /plugin install skillopt-sleep@pleaseai
-/sleep status
+/skillopt-sleep status
 ```
 
 ## Usage
 
-Drive it with the `/sleep` command (default action: `status`):
+Drive it with the `/skillopt-sleep` command (default action: `status`):
 
-| action    | what it does |
-|-----------|--------------|
-| `status`  | how many nights have run + the latest staged proposal (READ-ONLY) |
-| `dry-run` | harvest → mine → replay → report, but **stage nothing** (safe preview) |
-| `run`     | full cycle: also **stage** a reviewed proposal (does NOT touch live files) |
-| `adopt`   | apply the latest staged proposal to live `CLAUDE.md` / `SKILL.md` (backs up first) |
-| `harvest` | debug: print the recurring tasks mined from recent sessions |
+| action       | what it does |
+|--------------|--------------|
+| `status`     | how many nights have run + the latest staged proposal (READ-ONLY) |
+| `dry-run`    | harvest → mine → replay → report, but **stage nothing** (safe preview) |
+| `run`        | full cycle: also **stage** a reviewed proposal (does NOT touch live files) |
+| `adopt`      | apply the latest staged proposal to live `CLAUDE.md` / `SKILL.md` (backs up first) |
+| `harvest`    | debug: print the recurring tasks mined from recent sessions |
+| `schedule`   | install a nightly cron entry for this project (`--hour --minute`) |
+| `unschedule` | remove the nightly cron entry (`--all` to remove every managed entry) |
 
 Default backend is `mock` (deterministic, no API spend). Add `--backend claude`
 (or `--backend codex`) to spend real budget for genuine improvement. Nothing
-live changes until you run `/sleep adopt`.
+live changes until you run `/skillopt-sleep adopt`.
 
-To schedule it nightly, run `${CLAUDE_PLUGIN_ROOT}/scripts/install-cron.sh`,
-which **prints** a crontab line (installs nothing automatically).
+To schedule it nightly, use `/skillopt-sleep schedule` — or run
+`${CLAUDE_PLUGIN_ROOT}/scripts/install-cron.sh`, which **prints** a crontab
+line (installs nothing automatically).
 
 ## Requirements
 

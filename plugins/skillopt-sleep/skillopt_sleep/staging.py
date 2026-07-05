@@ -9,11 +9,67 @@ from __future__ import annotations
 
 import json
 import os
+import re
 import shutil
 import time
-from typing import List, Optional
+from typing import Any, List, Optional
 
 from skillopt_sleep.types import SleepReport
+
+# Secret patterns scrubbed from any free-text we persist to the staging dir
+# (diagnostics, reports). Kept here so every on-disk artifact shares one
+# redaction pass; harvest_codex reuses these for session text too.
+_SECRET_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (re.compile(r"sk-[A-Za-z0-9_-]{10,}"), "[REDACTED_OPENAI_KEY]"),
+    # Distinctive vendor token prefixes (low false-positive: these prefixes do
+    # not occur in normal diagnostic prose).
+    (re.compile(r"\bAKIA[0-9A-Z]{16}\b"), "[REDACTED_AWS_KEY]"),
+    (re.compile(r"\bgh[pousr]_[A-Za-z0-9]{20,}\b"), "[REDACTED_GITHUB_TOKEN]"),
+    (re.compile(r"\bxox[baprs]-[A-Za-z0-9-]{10,}\b"), "[REDACTED_SLACK_TOKEN]"),
+    (re.compile(r"\bAIza[0-9A-Za-z_-]{20,}\b"), "[REDACTED_GOOGLE_KEY]"),
+    # Bare JWT (three base64url segments) — e.g. a leaked bearer body without
+    # the "Authorization:" prefix.
+    (re.compile(r"\beyJ[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\.[A-Za-z0-9_-]{8,}\b"),
+     "[REDACTED_JWT]"),
+    (re.compile(r"(?i)(Authorization:\s*Bearer\s+)[^\s\"']+"), r"\1[REDACTED]"),
+    (re.compile(r"(?i)(Authorization:\s*Basic\s+)[^\s\"']+"), r"\1[REDACTED]"),
+    (
+        re.compile(r"(?i)\b(api[_-]?key|token|password|secret)\b(\s*[:=]\s*)[^\s\"']+"),
+        r"\1\2[REDACTED]",
+    ),
+    (
+        re.compile(r"(?i)\b(api[_-]?key|token|password|secret)\b(\s+)[^\s\"']+"),
+        r"\1\2[REDACTED]",
+    ),
+    (
+        re.compile(
+            r"-----BEGIN [A-Z ]*PRIVATE KEY-----.*?-----END [A-Z ]*PRIVATE KEY-----",
+            re.DOTALL,
+        ),
+        "[REDACTED_PRIVATE_KEY]",
+    ),
+)
+
+
+def redact_secrets(value: Any) -> Any:
+    """Scrub secret-looking substrings (API keys, bearer tokens, private keys)
+    from a string, or recursively from the string leaves of a list/dict.
+
+    Used before writing backend stderr / optimizer replies / task responses to
+    on-disk diagnostics: those are surfaced for debugging, but the underlying
+    text (e.g. a codex 401 stderr dump) can carry credentials. Non-string
+    scalars pass through unchanged.
+    """
+    if isinstance(value, str):
+        out = value
+        for pattern, replacement in _SECRET_PATTERNS:
+            out = pattern.sub(replacement, out)
+        return out
+    if isinstance(value, list):
+        return [redact_secrets(v) for v in value]
+    if isinstance(value, dict):
+        return {k: redact_secrets(v) for k, v in value.items()}
+    return value
 
 
 def _ts_dir() -> str:
