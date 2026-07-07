@@ -1,6 +1,6 @@
 ---
 name: use-tanstack
-description: 'Answer questions and write code for TanStack libraries using version-accurate, officially shipped Agent Skills instead of training data. Use when working with any @tanstack/* package or TanStack library: Query (react-query, solid-query, vue-query — useQuery, useMutation, QueryClient, queryOptions, invalidation, optimistic updates), Router (react-router — createFileRoute, loaders, search params, path params, type-safe navigation), Start (full-stack framework — server functions, SSR, streaming), Table (headless tables — useReactTable, columns, sorting, filtering, pagination), Form (useForm, field validation), DB (createCollection, live queries, optimistic mutations, sync adapters), Virtual (useVirtualizer, list/grid virtualization), Store, Pacer (debounce/throttle/queue), AI, Devtools, Config, or CLI. Also use when the user mentions tanstack.com docs or the @tanstack/intent CLI.'
+description: 'Answer questions and write code for TanStack libraries using version-accurate, officially shipped Agent Skills instead of training data. Use when working with any @tanstack/* package or TanStack library: Query (react-query, solid-query, vue-query — useQuery, useMutation, QueryClient, queryOptions, invalidation, optimistic updates), Router (@tanstack/react-router — createFileRoute, loaders, search params, path params, type-safe navigation), Start (full-stack framework — server functions, SSR, streaming), Table (headless tables — useReactTable, columns, sorting, filtering, pagination), Form (useForm, field validation), DB (createCollection, live queries, optimistic mutations, sync adapters), Virtual (useVirtualizer, list/grid virtualization), Store, Pacer (debounce/throttle/queue), AI, Devtools, Config, or CLI. Also use when the user mentions tanstack.com docs or the @tanstack/intent CLI.'
 ---
 
 ## Core Principle: Load Official Skills, Do Not Trust Internal Knowledge
@@ -58,9 +58,11 @@ Intent is rolling out across the ecosystem (newest packages first — Router, St
 1. **Preferred — [`ask`](https://github.com/pleaseai/ask) CLI** (check `which ask`). It fetches the library's docs/source at the exact installed version (resolved from the lockfile) and caches them locally for grepping:
 
    ```bash
-   # prints candidate paths (installed package dir, then the repo docs tree at that version)
-   ASK_DOCS=$(ask docs "npm:@tanstack/react-query" | tail -n1)
-   rg -l "useQuery" "$ASK_DOCS"
+   # `ask docs` prints candidate paths one per line (installed package dir, then
+   # the repo docs tree). Pick the last line that is an existing directory rather
+   # than blindly trusting `tail -n1` — output format/notices can shift.
+   ASK_DOCS=$(ask docs "npm:@tanstack/react-query" | while read -r p; do [ -d "$p" ] && echo "$p"; done | tail -n1)
+   [ -d "$ASK_DOCS" ] && rg -l "useQuery" "$ASK_DOCS"
    ASK_SRC=$(ask src "npm:@tanstack/react-query")     # implementation, for API signatures
    ```
 
