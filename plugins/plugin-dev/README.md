@@ -11,6 +11,7 @@ Best practices, guidelines, and validation tools for Claude Code plugin developm
 - 🎯 **Best Practices Guidance** - Expert advice on plugin development
 - ✅ **Plugin Validation** - Automated manifest and structure validation
 - 🏗️ **Plugin Scaffolding** - Quick-start templates for new plugins
+- 🌐 **Multi-Runtime Manifests** - Author once in Claude Code format, generate Codex, Antigravity, and Cursor manifests
 - 🔄 **Gemini Migration** - Tools to migrate Gemini CLI extensions
 - 🔍 **Real-time Validation** - Automatic validation when editing plugin files
 
@@ -83,6 +84,27 @@ Generate a new plugin with proper structure and best practices baked in.
 
 I need a new plugin called "api-tools" that provides commands for API testing
 ```
+
+### `/plugin-dev:multi-format`
+
+Generate the Codex, Antigravity, and Cursor manifests for the marketplace's local plugins from the
+Claude Code source of truth. The Claude manifest is the only file you author by hand — this command
+keeps every runtime in sync.
+
+**Generates (per local plugin):**
+- `.codex-plugin/plugin.json` (+ `.mcp.json` when MCP is present)
+- root `plugin.json` + `mcp_config.json` + `hooks.json` (Antigravity)
+- `.cursor-plugin/plugin.json`
+- `.agents/plugins/marketplace.json` and `.cursor-plugin/marketplace.json`
+
+**Example:**
+```
+/plugin-dev:multi-format
+
+I just edited plugins/api-tools — regenerate its Codex and Cursor manifests
+```
+
+> The generator rewrites all local plugins; scope your commit to the plugin(s) you changed.
 
 ### `/plugin-dev:migrate-gemini`
 
@@ -182,24 +204,29 @@ plugin-name/
    - Create agents in `agents/`
    - Configure hooks in `hooks/`
 
-3. **Validate continuously**
+3. **Generate multi-runtime manifests**
+   ```bash
+   /plugin-dev:multi-format
+   ```
+
+4. **Validate continuously**
    ```bash
    /plugin-dev:validate
    ```
 
-4. **Test locally**
+5. **Test locally**
    ```bash
    claude --debug
    /plugin list
    /your-plugin:command
    ```
 
-5. **Version and document**
+6. **Version and document**
    - Update version in plugin.json
    - Document changes in CHANGELOG.md
    - Update README with new features
 
-6. **Publish**
+7. **Publish**
    - Add to marketplace
    - Tag release in git
    - Share with community

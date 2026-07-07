@@ -1,10 +1,16 @@
 # Scaffold New Plugin
 
-You are a plugin scaffolding expert. Help users create a new Claude Code plugin with proper structure and best practices.
+You are a plugin scaffolding expert. Help users create a new plugin with proper structure and best practices.
+
+Author the plugin **once in Claude Code format** (the source of truth), then generate the
+Codex / Antigravity / Cursor manifests from it in a single step. One directory, four runtimes —
+you never hand-write the other manifests.
 
 ## Your Task
 
-Create a complete plugin structure based on user requirements. Ask clarifying questions if needed, then generate all necessary files.
+Create a complete plugin structure based on user requirements. Ask clarifying questions if needed,
+generate all necessary files in Claude Code format, then run the multi-format generator so the same
+directory loads in Codex, Antigravity, and Cursor too.
 
 ## Scaffolding Process
 
@@ -192,14 +198,46 @@ All notable changes to this project will be documented in this file.
 - Feature 2
 ```
 
+### 10. Generate Multi-Runtime Manifests
+
+The plugin is authored in Claude Code format (`.claude-plugin/plugin.json`, or a root-level
+`plugin.json` for plugins that also serve as the Antigravity manifest). This is the **source of
+truth** — never hand-write the other runtimes' manifests. Instead, generate them:
+
+```bash
+bun scripts/cli.ts multi-format
+```
+
+This reads the Claude manifest + the marketplace entry and emits, for every local plugin
+(`source: "./plugins/..."`):
+
+- `plugins/<name>/.codex-plugin/plugin.json` (+ `.mcp.json` when the plugin defines `mcpServers`)
+- `plugins/<name>/plugin.json` + `mcp_config.json` + root `hooks.json` (Antigravity)
+- `plugins/<name>/.cursor-plugin/plugin.json`
+- `.agents/plugins/marketplace.json` (Codex marketplace) and `.cursor-plugin/marketplace.json` (Cursor marketplace)
+
+Shared assets (`commands/`, `agents/`, `skills/`, `hooks/`) live **once** at the plugin root and
+are referenced by every manifest — only manifest-level fields differ per runtime.
+
+> **This command rewrites all local plugins, not just the new one.** If unrelated plugins show up
+> in the diff (pre-existing drift), `git restore` those files and commit only the new plugin's
+> artifacts so the change stays atomic. See `/plugin-dev:multi-format` for the dedicated wrapper.
+
+For a brand-new plugin, also wire the companion files described in
+`.claude/rules/marketplace-sync.md`: add the marketplace entry to `.claude-plugin/marketplace.json`
+(source of truth) and, if the plugin is release-managed, a `plugins/<name>` entry in
+`release-please-config.json` + `.release-please-manifest.json` covering every version-bearing
+manifest the plugin ships.
+
 ## After Scaffolding
 
-1. **Validate structure** using `/plugin-dev:validate`
-2. **Test locally** with `claude --debug`
-3. **Iterate** on commands/agents based on needs
-4. **Document** usage and examples
-5. **Version control** with git
-6. **Publish** to marketplace when ready
+1. **Generate manifests** with `/plugin-dev:multi-format` (or `bun scripts/cli.ts multi-format`)
+2. **Validate structure** using `/plugin-dev:validate`
+3. **Test locally** with `claude --debug`
+4. **Iterate** on commands/agents based on needs
+5. **Document** usage and examples
+6. **Version control** with git
+7. **Publish** to marketplace when ready
 
 ## Best Practices Reminder
 
