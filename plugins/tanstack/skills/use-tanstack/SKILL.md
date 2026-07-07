@@ -61,9 +61,9 @@ Intent is rolling out across the ecosystem (newest packages first — Router, St
    # `ask docs` prints candidate paths one per line (installed package dir, then
    # the repo docs tree). Pick the last line that is an existing directory rather
    # than blindly trusting `tail -n1` — output format/notices can shift.
-   ASK_DOCS=$(ask docs "npm:@tanstack/react-query" | while read -r p; do [ -d "$p" ] && echo "$p"; done | tail -n1)
+   ASK_DOCS=$(ask docs "npm:@tanstack/react-query" | while read -r p || [ -n "$p" ]; do [ -d "$p" ] && echo "$p"; done | tail -n1)
    [ -d "$ASK_DOCS" ] && rg -l "useQuery" "$ASK_DOCS"
-   ASK_SRC=$(ask src "npm:@tanstack/react-query")     # implementation, for API signatures
+   ASK_SRC=$(ask src "npm:@tanstack/react-query" | while read -r p || [ -n "$p" ]; do [ -d "$p" ] && echo "$p"; done | tail -n1)   # implementation, for API signatures
    ```
 
    Append `@<version>` to pin explicitly (e.g. `npm:@tanstack/react-query@5.101.2`). Requires `ask` >= 0.4.9 — older versions cannot resolve TanStack's scoped monorepo release tags; there, fall back to `github:TanStack/query@main` (repo names match the library: `TanStack/query`, `TanStack/router`, `TanStack/table`, `TanStack/form`, `TanStack/virtual`, ...) and cross-check anything version-sensitive against the installed package's `node_modules` typings or CHANGELOG.
@@ -71,8 +71,8 @@ Intent is rolling out across the ecosystem (newest packages first — Router, St
 2. **No `ask` — official markdown docs.** Every page on tanstack.com has a plain-markdown variant; append `.md` to the docs URL:
 
    ```bash
-   curl -s https://tanstack.com/query/latest/docs/framework/react/overview.md
-   curl -s https://tanstack.com/table/latest/docs/introduction.md
+   curl -fsSL https://tanstack.com/query/latest/docs/framework/react/overview.md
+   curl -fsSL https://tanstack.com/table/latest/docs/introduction.md
    ```
 
    Replace `latest` with the installed major version (e.g. `/query/v5/`) when the project is not on the latest line.
