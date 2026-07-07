@@ -1,0 +1,21 @@
+plugins/openai-docs/skills/openai-docs/scripts/resolve-latest-model-info.js
+  s_f53702217d7ed9::t_5e60d7593b9e83 36-43
+plugins/openai-docs/skills/openai-docs/NOTICE
+  s_f53702217d7ed9::t_faf10ca9ca72bb 23-26,29
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "858b6a1f87da8e37e9a8dff687eae8df6dc8042d",
+  "prompts": {},
+  "sessions": {
+    "s_f53702217d7ed9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6aaddd43-34ce-467b-bfa9-e1544192f3bb",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
