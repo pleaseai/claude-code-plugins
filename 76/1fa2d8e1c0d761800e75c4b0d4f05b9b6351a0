@@ -1,0 +1,24 @@
+plugins/plugin-dev/skills/plugin-authoring/SKILL.md
+  s_12acfe8f085326::t_c4fb7f55969844 2
+plugins/plugin-dev/commands/scaffold.md
+  s_12acfe8f085326::t_aea16546f8c9e8 201,205-218,241-246
+plugins/plugin-dev/commands/multi-format.md
+  s_12acfe8f085326::t_a10596f77dc003 55
+  s_12acfe8f085326::t_7bd8e6e3daf81c 26-30
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "761fa2d8e1c0d761800e75c4b0d4f05b9b6351a0",
+  "prompts": {},
+  "sessions": {
+    "s_12acfe8f085326": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "614a3010-bc47-4cdb-960c-2e5387b02e0e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
