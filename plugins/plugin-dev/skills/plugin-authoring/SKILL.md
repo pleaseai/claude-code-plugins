@@ -1,5 +1,5 @@
 ---
-name: Plugin Authoring (Multi-Runtime)
+name: Authoring Plugins (Multi-Runtime)
 description: Author a plugin once in Claude Code format, then generate Codex, Antigravity, and Cursor manifests from it so one directory loads in all four runtimes. Use when creating, scaffolding, or editing a plugin in this marketplace, wiring a marketplace entry, running the multi-format generator, or when the user mentions "plugin.json", ".claude-plugin", ".codex-plugin", ".cursor-plugin", "multi-format", "marketplace.json", or "Codex/Cursor/Antigravity plugin".
 ---
 

@@ -198,11 +198,24 @@ All notable changes to this project will be documented in this file.
 - Feature 2
 ```
 
-### 10. Generate Multi-Runtime Manifests
+### 10. Wire the Marketplace Entry, Then Generate Multi-Runtime Manifests
 
 The plugin is authored in Claude Code format (`.claude-plugin/plugin.json`, or a root-level
 `plugin.json` for plugins that also serve as the Antigravity manifest). This is the **source of
-truth** — never hand-write the other runtimes' manifests. Instead, generate them:
+truth** — never hand-write the other runtimes' manifests; generate them instead.
+
+**Order matters — wire the marketplace entry _first_.** The generator resolves each plugin's
+metadata (notably `category`) from `.claude-plugin/marketplace.json`. A plugin dir that is not yet
+listed there is generated with no entry, so its Codex manifest falls back to the default category
+and it is omitted from the emitted Codex/Cursor marketplace files. So for a brand-new plugin, wire
+the companion files described in `.claude/rules/marketplace-sync.md` **before** running the
+generator:
+
+1. Add the marketplace entry to `.claude-plugin/marketplace.json` (source of truth).
+2. If the plugin is release-managed, add a `plugins/<name>` entry to `release-please-config.json`
+   + `.release-please-manifest.json` covering every version-bearing manifest the plugin ships.
+
+Then generate the other runtimes' manifests in a single pass:
 
 ```bash
 bun scripts/cli.ts multi-format
@@ -223,21 +236,14 @@ are referenced by every manifest — only manifest-level fields differ per runti
 > in the diff (pre-existing drift), `git restore` those files and commit only the new plugin's
 > artifacts so the change stays atomic. See `/plugin-dev:multi-format` for the dedicated wrapper.
 
-For a brand-new plugin, also wire the companion files described in
-`.claude/rules/marketplace-sync.md`: add the marketplace entry to `.claude-plugin/marketplace.json`
-(source of truth) and, if the plugin is release-managed, a `plugins/<name>` entry in
-`release-please-config.json` + `.release-please-manifest.json` covering every version-bearing
-manifest the plugin ships.
-
 ## After Scaffolding
 
-1. **Generate manifests** with `/plugin-dev:multi-format` (or `bun scripts/cli.ts multi-format`)
-2. **Validate structure** using `/plugin-dev:validate`
-3. **Test locally** with `claude --debug`
-4. **Iterate** on commands/agents based on needs
-5. **Document** usage and examples
-6. **Version control** with git
-7. **Publish** to marketplace when ready
+1. **Validate structure** using `/plugin-dev:validate`
+2. **Test locally** with `claude --debug`
+3. **Iterate** on commands/agents based on needs
+4. **Document** usage and examples
+5. **Version control** with git
+6. **Publish** to marketplace when ready
 
 ## Best Practices Reminder
 

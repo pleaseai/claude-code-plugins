@@ -23,6 +23,11 @@ referenced by every manifest. Only manifest-level fields differ per runtime.
 
 ### 1. Run the generator
 
+> **New plugin? Wire its `.claude-plugin/marketplace.json` entry first.** The generator resolves
+> each plugin's metadata (notably `category`) from the marketplace entry. A plugin dir not yet
+> listed there is generated with no entry — its Codex manifest falls back to the default category
+> and it is omitted from the emitted Codex/Cursor marketplace files. Add the entry, then run:
+
 ```bash
 bun scripts/cli.ts multi-format
 ```
@@ -47,7 +52,7 @@ atomic:
 ```bash
 git status --short
 # Revert churn from plugins you did NOT intend to change:
-git restore plugins/<other-plugin>/... 
+git restore plugins/<other-plugin>/...
 ```
 
 Commit only the files for the plugin(s) you actually changed.
