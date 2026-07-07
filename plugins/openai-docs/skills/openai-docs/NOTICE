@@ -1,0 +1,31 @@
+openai-docs skill
+==================
+
+This skill is derived from OpenAI's "openai-docs" skill sample:
+
+  Source:  https://github.com/openai/codex
+  Path:    codex-rs/skills/src/assets/samples/openai-docs
+  License: Apache License 2.0 (see LICENSE.txt in this directory)
+
+Modifications for the Claude Code plugin marketplace
+----------------------------------------------------
+The original sample targets the Codex agent. For use as a Claude Code plugin
+(pleaseai/claude-code-plugins), the following changes were made:
+
+- SKILL.md: removed the Codex-agent "self-knowledge" sections (Codex manual
+  helper, Source Route, Surface Map, Boundaries And Output) and rewrote the
+  "If the MCP server is unavailable" section for Claude Code (the plugin
+  provides the openaiDeveloperDocs MCP server, so `codex mcp add` steps were
+  removed). Frontmatter description updated accordingly. The OpenAI docs MCP
+  guidance, model-selection, migration, and prompting guidance are retained.
+- Removed scripts/fetch-codex-manual.mjs (Codex manual fetch helper).
+- Removed agents/openai.yaml and assets/ (Codex interface metadata and icons).
+- scripts/resolve-latest-model-info.js: added a path-validation guard so a
+  CLI/env-supplied local source path — both plain paths and `file://` URLs —
+  is confined to the current working directory before it is read, and added
+  missing-value validation for the --source/--url/--base-url options
+  (static-analysis and review hardening; behavior for the default remote URL
+  and normal in-tree reference paths is unchanged).
+
+Retained unchanged: references/latest-model.md, references/upgrade-guide.md,
+and references/prompting-guide.md.

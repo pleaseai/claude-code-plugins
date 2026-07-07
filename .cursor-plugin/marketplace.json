@@ -195,6 +195,11 @@
       "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts"
     },
     {
+      "name": "openai-docs",
+      "source": "./plugins/openai-docs",
+      "description": "Authoritative, current guidance from official OpenAI developer docs, model selection, and model/prompt migration — backed by the OpenAI Developer Docs MCP server."
+    },
+    {
       "name": "semble",
       "source": "./plugins/semble",
       "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server"

@@ -557,6 +557,18 @@
       "category": "Tooling"
     },
     {
+      "name": "openai-docs",
+      "source": {
+        "source": "local",
+        "path": "./plugins/openai-docs"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
       "name": "semble",
       "source": {
         "source": "local",

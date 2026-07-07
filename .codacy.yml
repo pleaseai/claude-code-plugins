@@ -3,4 +3,5 @@
 # so exclude it from Codacy static analysis.
 exclude_paths:
   - "plugins/skillopt-sleep/skillopt_sleep/**"
+  - "plugins/openai-docs/skills/openai-docs/**"
   - "external-plugins/**"

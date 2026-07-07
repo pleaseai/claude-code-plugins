@@ -762,6 +762,26 @@
       "source": "./plugins/fetch"
     },
     {
+      "name": "openai-docs",
+      "description": "Authoritative, current guidance from official OpenAI developer docs, model selection, and model/prompt migration — backed by the OpenAI Developer Docs MCP server.",
+      "category": "tooling",
+      "keywords": ["openai", "docs", "mcp", "model-selection", "api"],
+      "tags": ["mcp", "docs"],
+      "source": "./plugins/openai-docs",
+      "relevance": {
+        "topic": "OpenAI docs",
+        "signals": {
+          "hosts": ["developers.openai.com", "platform.openai.com", "api.openai.com"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"openai\"\\s*:"
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "claude-code-docs",
       "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
       "category": "tooling",

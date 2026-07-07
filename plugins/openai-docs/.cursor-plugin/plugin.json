@@ -1,0 +1,30 @@
+{
+  "name": "openai-docs",
+  "displayName": "Openai Docs",
+  "description": "Authoritative, current guidance from official OpenAI developer docs, model selection, and model/prompt migration — backed by the OpenAI Developer Docs MCP server.",
+  "version": "1.0.0",
+  "author": {
+    "name": "OpenAI"
+  },
+  "category": "Tooling",
+  "homepage": "https://developers.openai.com",
+  "repository": "https://github.com/openai/codex",
+  "license": "Apache-2.0",
+  "keywords": [
+    "openai",
+    "docs",
+    "mcp",
+    "model-selection",
+    "api"
+  ],
+  "tags": [
+    "mcp",
+    "docs"
+  ],
+  "mcpServers": {
+    "openaiDeveloperDocs": {
+      "type": "http",
+      "url": "https://developers.openai.com/mcp"
+    }
+  }
+}
