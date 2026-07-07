@@ -8,3 +8,4 @@
 - [Graphite please-config opt-in review (PR #181)](pr181-graphite-please-config-opt-in.md) — cubic clean pass (0 issues); AWK YAML parser tightened to match `enabled: true` only at direct-child indent level of `graphite:`
 - [PortOne plugin review (PR #184)](pr184-portone-plugin.md) — initial pass: P1 misleading `express.raw()` note, P2 false positive on named import; follow-up uncommitted edit (Express 4 `next(e)` fix) → cubic clean (0 issues)
 - [Graphite awk state-reset fix (PR #189)](pr189-graphite-awk-state-reset.md) — cubic clean pass (0 issues); state-leakage fix in graphite-context.sh awk parser
+- [plugin-dev docs review (PR #252)](pr252-plugin-dev-docs.md) — cubic clean pass (0 issues); reviewed uncommitted changes with plain `-j`, overriding default `-b` per task context
