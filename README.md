@@ -458,6 +458,12 @@ Greptile agent skills for PR quality: check PR review comments and status checks
 
 **Install:** `/plugin install greptile@pleaseai` | **Source:** [plugins/greptile](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/greptile)
 
+#### shadcn/ui
+
+Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI (`shadcn`) — plus migrating a project from Radix UI to Base UI (`migrate-radix-to-base`).
+
+**Install:** `/plugin install shadcn-ui@pleaseai` | **Source:** [plugins/shadcn-ui](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/shadcn-ui)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:

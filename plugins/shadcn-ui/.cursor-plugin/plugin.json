@@ -1,0 +1,21 @@
+{
+  "name": "shadcn-ui",
+  "displayName": "Shadcn Ui",
+  "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI.",
+  "version": "1.0.0",
+  "author": {
+    "name": "shadcn"
+  },
+  "category": "Productivity",
+  "homepage": "https://ui.shadcn.com",
+  "repository": "https://github.com/shadcn/ui",
+  "license": "MIT",
+  "keywords": [
+    "shadcn",
+    "shadcn-ui",
+    "components",
+    "radix",
+    "base-ui",
+    "ui"
+  ]
+}

@@ -363,6 +363,11 @@
       "name": "greptile",
       "source": "./plugins/greptile",
       "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5"
+    },
+    {
+      "name": "shadcn-ui",
+      "source": "./plugins/shadcn-ui",
+      "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI."
     }
   ]
 }

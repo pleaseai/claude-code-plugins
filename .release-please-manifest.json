@@ -66,5 +66,6 @@
   "plugins/lavish": "1.2.0",
   "plugins/axi": "1.2.0",
   "plugins/playwright-cli": "1.0.0",
-  "plugins/greptile": "1.1.0"
+  "plugins/greptile": "1.1.0",
+  "plugins/shadcn-ui": "1.0.0"
 }

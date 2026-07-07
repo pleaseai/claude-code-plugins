@@ -1193,6 +1193,32 @@
           "jsonpath": "$.version"
         }
       ]
+    },
+    "plugins/shadcn-ui": {
+      "release-type": "simple",
+      "component": "shadcn-ui",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
     }
   },
   "release-type": "node",
