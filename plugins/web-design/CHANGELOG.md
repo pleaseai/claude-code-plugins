@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/pleaseai/claude-code-plugins/compare/web-design-v1.4.0...web-design-v1.4.1) (2026-07-07)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#251](https://github.com/pleaseai/claude-code-plugins/issues/251)) ([7ee1cca](https://github.com/pleaseai/claude-code-plugins/commit/7ee1ccad4bbbbc29881fc2a9a4d4d08e04c06153))
+
 ## [1.4.0](https://github.com/pleaseai/claude-code-plugins/compare/web-design-v1.3.0...web-design-v1.4.0) (2026-06-30)
 
 

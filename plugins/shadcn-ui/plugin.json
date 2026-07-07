@@ -1,6 +1,6 @@
 {
   "name": "shadcn-ui",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI.",
   "author": {
     "name": "shadcn",
