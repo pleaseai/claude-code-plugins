@@ -1,0 +1,20 @@
+plugins/tanstack/skills/use-tanstack/SKILL.md
+  s_9cc9d8b274c7fb::t_2ea37c3f08e518 74-75
+  s_9cc9d8b274c7fb::t_6a9900628f365f 64,66
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "265616439f1a7c983ec53b4ba9f536add2ee574e",
+  "prompts": {},
+  "sessions": {
+    "s_9cc9d8b274c7fb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "09611703-e00a-4467-b265-ac675082b142",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
