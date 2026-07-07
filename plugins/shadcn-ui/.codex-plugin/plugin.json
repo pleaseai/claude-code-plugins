@@ -11,7 +11,7 @@
     "shortDescription": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI.",
     "longDescription": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI.",
     "developerName": "shadcn",
-    "category": "Productivity",
+    "category": "UI",
     "capabilities": [
       "Skill"
     ],

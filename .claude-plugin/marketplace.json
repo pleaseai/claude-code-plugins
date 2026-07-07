@@ -1513,12 +1513,18 @@
     {
       "name": "shadcn-ui",
       "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI.",
+      "category": "ui",
+      "keywords": ["shadcn", "shadcn-ui", "components", "radix", "base-ui", "ui"],
+      "tags": ["ui", "skill"],
       "source": "./plugins/shadcn-ui",
       "relevance": {
         "topic": "shadcn/ui",
         "signals": {
           "cli": ["shadcn"],
-          "filesRead": ["**/components.json"]
+          "filesRead": ["**/components.json"],
+          "manifestDeps": [
+            { "file": "[/\\\\]package\\.json$", "pattern": "\"shadcn\"\\s*:" }
+          ]
         }
       }
     }
