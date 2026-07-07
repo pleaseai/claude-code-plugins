@@ -120,6 +120,22 @@ help: tasks create --title "..." [--body "..."]
 
 Every operation must be completable with flags alone. If a required value is missing, fail immediately with a clear error — don't prompt for it. Suppress prompts from wrapped tools.
 
+### Fail loud on unrecognized input
+
+Reject unknown flags and arguments — never silently ignore them. A dropped flag is worse than an error: the agent gets plausible-looking output it believes is scoped or filtered, then proceeds confidently on wrong data. This is the same guarantee a CLI already owes for an unknown _command_; extend it to flags.
+
+```
+$ tasks list --stat closed
+error: unknown flag --stat for `list`
+help: valid flags for `list`: --state, --assignee, --limit (--help always allowed)
+```
+
+- **Validate before any dependency call**, with exit code 2 — the same as a missing required flag. Each command declares its own known flags; an unrecognized one is rejected by name and the command's valid flags are listed.
+- **`--help` always passes** — it's the one universal flag. Beyond it, a CLI may standardize its own always-allowed globals (e.g. an `--account` selector); whatever the set, those flags pass on every command and are never reported as unknown.
+- **Renamed or removed flags get a targeted hint**, not the generic list — point at what replaced them (`--status was renamed; use --state instead`) so the agent self-corrects in one step.
+- **Per-subcommand flag sets.** For grouped nouns where one command dispatches to subcommands (a `list` vs a `create` under the same noun), validate against the _subcommand's_ flags — they differ, and only the subcommand layer knows which is in play.
+- **Make the error self-correcting in one turn.** The agent's deterministic next move after an unknown-flag error is to run `<command> --help` (e.g. `tasks list --help`) — so fold that lookup into the error: list the valid flags inline, or print the command's concise `--help` block directly beneath it. Per §4 the expensive cost is the follow-up call, and per §10 per-command help is already concise, so inlining it collapses the two-turn correction into one.
+
 ### Output channels
 
 - **stdout**: all structured output the agent consumes — data, errors, suggestions

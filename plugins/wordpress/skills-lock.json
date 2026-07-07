@@ -77,7 +77,7 @@
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-wpcli-and-ops/SKILL.md",
-      "computedHash": "b04471067f1577112c37870ee564cd06f0787487dc764edf4229f73e3b5981ca"
+      "computedHash": "3e1d84ea3fefdbd6ee50f4ea90a41a8967b1e1c36dc2f6bdd1a0c3813fd1a5a6"
     },
     "wpds": {
       "source": "wordpress/agent-skills",
