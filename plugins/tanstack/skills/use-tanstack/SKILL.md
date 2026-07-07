@@ -55,15 +55,16 @@ Notes:
 
 Intent is rolling out across the ecosystem (newest packages first — Router, Start, DB, AI, Devtools ship skills; some stable packages like `@tanstack/react-query` may not yet). If `list` shows no skills for the library you need, check the installed version first (`npm ls @tanstack/react-query` or read the lockfile), then:
 
-1. **Preferred — [`ask`](https://github.com/pleaseai/ask) CLI** (check `which ask`). It fetches the library's repo docs/source once and caches them locally for grepping:
+1. **Preferred — [`ask`](https://github.com/pleaseai/ask) CLI** (check `which ask`). It fetches the library's docs/source at the exact installed version (resolved from the lockfile) and caches them locally for grepping:
 
    ```bash
-   ASK_DOCS=$(ask docs "github:TanStack/query@main")   # docs tree (markdown by topic)
+   # prints candidate paths (installed package dir, then the repo docs tree at that version)
+   ASK_DOCS=$(ask docs "npm:@tanstack/react-query" | tail -n1)
    rg -l "useQuery" "$ASK_DOCS"
-   ASK_SRC=$(ask src "github:TanStack/query@main")     # implementation, for API signatures
+   ASK_SRC=$(ask src "npm:@tanstack/react-query")     # implementation, for API signatures
    ```
 
-   Repo names match the library (`TanStack/query`, `TanStack/router`, `TanStack/table`, `TanStack/form`, `TanStack/virtual`, ...). Caveat: TanStack monorepos tag releases as `@tanstack/<pkg>@<version>`, which `ask` cannot currently resolve — pin to `@main` and cross-check anything version-sensitive against the installed package's `node_modules` typings or CHANGELOG.
+   Append `@<version>` to pin explicitly (e.g. `npm:@tanstack/react-query@5.101.2`). Requires `ask` >= 0.4.9 — older versions cannot resolve TanStack's scoped monorepo release tags; there, fall back to `github:TanStack/query@main` (repo names match the library: `TanStack/query`, `TanStack/router`, `TanStack/table`, `TanStack/form`, `TanStack/virtual`, ...) and cross-check anything version-sensitive against the installed package's `node_modules` typings or CHANGELOG.
 
 2. **No `ask` — official markdown docs.** Every page on tanstack.com has a plain-markdown variant; append `.md` to the docs URL:
 
