@@ -24,6 +24,7 @@ import json
 import os
 import re
 import subprocess
+import tempfile
 from typing import Any, Dict, List, Optional, Tuple
 
 from skillopt_sleep.types import EditRecord, ReplayResult, TaskRecord
@@ -41,7 +42,8 @@ class Backend:
     # Optional user preferences (free text) injected into reflect as a prior.
     preferences: str = ""
 
-    def attempt(self, task: TaskRecord, skill: str, memory: str) -> str:
+    def attempt(self, task: TaskRecord, skill: str, memory: str,
+                sample_id: int = 0) -> str:
         raise NotImplementedError
 
     def attempt_with_tools(
@@ -151,7 +153,8 @@ class MockBackend(Backend):
                     out.append(key)
         return out
 
-    def attempt(self, task: TaskRecord, skill: str, memory: str) -> str:
+    def attempt(self, task: TaskRecord, skill: str, memory: str,
+                sample_id: int = 0) -> str:
         ctx = (skill or "") + "\n" + (memory or "")
         rules = self._required_rules(task)
         # The "__harmful__" rule models a bad edit: even when present it makes
@@ -191,6 +194,13 @@ class MockBackend(Backend):
         return resp, called
 
     def judge(self, task: TaskRecord, response: str) -> Tuple[float, float, str]:
+        if task.reference_kind == "answer" and task.judge:
+            try:
+                from skillopt_sleep.experiments.real_eval import score_answer_judge
+            except ImportError:
+                score_answer_judge = None  # research evaluators not bundled
+            if score_answer_judge is not None:
+                return score_answer_judge(task.judge, response)
         if task.reference_kind == "rule" and task.judge:
             from skillopt_sleep.judges import score_rule_judge
             return score_rule_judge(task.judge, response)
@@ -253,6 +263,43 @@ def _extract_json(raw: str, kind: str):
         return None
 
 
+def _task_guardrail(pairs) -> str:
+    """Build an 'output contract' the optimizer must not violate.
+
+    ``pairs`` is a list of (TaskRecord, ReplayResult). We surface the benchmark's
+    own rollout system prompt (TaskRecord.system) plus a short, explicit list of
+    invariants, so the optimizer cannot learn rules that the evaluator can never
+    honor (the SpreadsheetBench failure mode: a learned "return ```vba```" or
+    "ask the user for the range" rule scores 0 because the harness runs only
+    ```python``` openpyxl and cannot answer questions).
+
+    Returns "" when no task carries a system contract (e.g. mined daily cases),
+    so non-benchmark runs are unchanged.
+    """
+    sys_txt = ""
+    for t, _ in pairs:
+        s = getattr(t, "system", "") or ""
+        if s.strip():
+            sys_txt = s.strip()
+            break
+    if not sys_txt:
+        return ""
+    # the system prompt can be long; keep the rules portion concise for the optimizer
+    contract = sys_txt
+    if len(contract) > 900:
+        contract = contract[:900] + " …"
+    invariants = (
+        "- Do NOT change the required output format or programming language.\n"
+        "- Do NOT tell the agent to ask the user a question or request more info; "
+        "it must always produce a best-effort answer from what is given.\n"
+        "- Keep every rule consistent with the contract above."
+    )
+    return (
+        "\n# Task output contract (rules MUST obey this — violating it scores 0)\n"
+        f"{contract}\n{invariants}\n"
+    )
+
+
 class CliBackend(Backend):
     """Common logic for real CLI-driven backends (claude / codex).
 
@@ -269,6 +316,8 @@ class CliBackend(Backend):
         self.timeout = timeout
         self._tokens = 0
         self._cache: Dict[str, str] = {}
+        self.last_call_error = ""
+        self.last_reflect_raw = ""
 
     # subclasses override --------------------------------------------------
     def _call(self, prompt: str, *, max_tokens: int = 1024) -> str:
@@ -283,24 +332,55 @@ class CliBackend(Backend):
         return out
 
     # operations -----------------------------------------------------------
-    def attempt(self, task: TaskRecord, skill: str, memory: str) -> str:
+    def attempt(self, task: TaskRecord, skill: str, memory: str,
+                sample_id: int = 0) -> str:
+        # sample_id distinguishes repeated rollouts of the SAME (task, skill,
+        # memory) in the cache key. Without it the attempt cache collapses all
+        # K dream rollouts into one cached response (spread always 0), which
+        # silently disables contrastive reflection. sample_id=0 keeps the old
+        # key format so gate re-scoring still benefits from the cache.
+        if task.system:
+            # Benchmark carries its own (research-repo) rollout system prompt.
+            # Use it verbatim with a neutral skill/memory section — this both
+            # keeps scoring faithful and avoids the aggressive "OVERRIDE / HARD
+            # CONSTRAINT" phrasing below, which Azure's content filter flags as a
+            # jailbreak (HTTP 400) and silently zeroes the rollout.
+            skill_section = f"## Skill\n{skill.strip()}\n\n" if skill.strip() else ""
+            mem_section = f"## Memory\n{memory.strip()}\n\n" if memory.strip() else ""
+            system = task.system.replace("{skill_section}", skill_section)
+            if "{skill_section}" not in task.system and skill_section:
+                system = skill_section + system
+            body = task.intent + ("\n\n" + task.context_excerpt if task.context_excerpt else "")
+            prompt = f"{system}{mem_section}\n{body}"
+            salt = f"s{sample_id}:" if sample_id else ""
+            key = "attempt:" + salt + skill_hash(prompt)
+            return self._cached_call(key, prompt, max_tokens=512)
+        # generic path (mined daily-case tasks): neutral, content-filter-safe
+        # wording. Apply the skill/memory as guidance, not as adversarial
+        # "OVERRIDE everything" directives.
         prompt = (
-            "You are completing a recurring task for a user. Apply the skill and "
-            "memory rules EXACTLY, including any output-format requirements. If the "
-            "skill contains a 'Learned preferences' block, treat those rules as "
-            "HARD CONSTRAINTS that OVERRIDE anything earlier in the skill they "
-            "conflict with (e.g. an explicit length limit overrides 'be "
-            "exhaustive'). Satisfy every such constraint even at the cost of "
-            "brevity or detail.\n\n"
+            "Complete the following task for the user. Follow the skill and memory "
+            "guidance below, including any output-format and length requirements. "
+            "When a 'Learned preferences' rule sets an explicit limit (e.g. a length "
+            "cap), prefer that rule over more general advice it refines.\n\n"
             f"# Skill\n{skill or '(none)'}\n\n# Memory\n{memory or '(none)'}\n\n"
             f"# Task\n{task.intent}\n\n{task.context_excerpt}\n\n"
             "Return ONLY the final answer text, nothing else."
         )
         # cache on (task, skill, memory) so identical hold-out re-scoring is free
-        key = "attempt:" + skill_hash(prompt)
+        salt = f"s{sample_id}:" if sample_id else ""
+        key = "attempt:" + salt + skill_hash(prompt)
         return self._cached_call(key, prompt, max_tokens=512)
 
     def judge(self, task: TaskRecord, response: str) -> Tuple[float, float, str]:
+        # real-benchmark correctness judge (searchqa/livemath/spreadsheet) — local
+        if task.reference_kind == "answer" and task.judge:
+            try:
+                from skillopt_sleep.experiments.real_eval import score_answer_judge
+            except ImportError:
+                score_answer_judge = None  # research evaluators not bundled
+            if score_answer_judge is not None:
+                return score_answer_judge(task.judge, response)
         # gbrain-style rule judge: scored locally, no API spend
         if task.reference_kind == "rule" and task.judge:
             from skillopt_sleep.judges import score_rule_judge
@@ -389,6 +469,13 @@ class CliBackend(Backend):
                 "\n# User preferences (honor these as priors when writing rules)\n"
                 + str(self.preferences).strip()
             )
+        # Task GUARDRAIL: the optimizer must not invent rules that violate the
+        # task's hard constraints (e.g. SpreadsheetBench answers MUST be a
+        # ```python``` openpyxl block — a learned "return ```vba```" or "ask the
+        # user for the range" rule scores 0 because the harness can't run VBA and
+        # can't ask questions). We surface the benchmark's own rollout system
+        # prompt (carried on TaskRecord.system) so proposed rules stay in-bounds.
+        guard_text = _task_guardrail(failures)
         prompt = (
             "You are SkillOpt's optimizer. The agent keeps failing the recurring "
             f"tasks below. Propose at most {edit_budget} bounded edits to the "
@@ -406,9 +493,15 @@ class CliBackend(Backend):
             "but outputs must be under a character limit), write an explicit, "
             "forceful OVERRIDE rule stating it supersedes the conflicting "
             "instruction, and put the hard requirement first.\n"
+            "HARD CONSTRAINT: every rule you write MUST be consistent with the "
+            "'Task output contract' below (if shown). NEVER propose a rule that "
+            "changes the required output format/language, tells the agent to ask "
+            "the user a question, or otherwise violates that contract — such a "
+            "rule scores ZERO because the evaluator cannot honor it.\n"
             'Return ONLY a JSON array: '
             '[{"op":"add|replace|delete","content":"<rule>","anchor":"<text to replace/delete, optional>","rationale":"<why>"}].\n\n'
             f"# Current {target}\n{cur_doc}\n"
+            f"{guard_text}"
             f"{criteria_text}\n"
             f"{pref_text}\n\n"
             f"# Recurring failures\n{fail_text}"
@@ -427,6 +520,10 @@ class CliBackend(Backend):
             arr = _extract_json(raw, "array")
             if isinstance(arr, list) and arr:
                 break
+        # Expose the last raw optimizer reply so a no-edits night is diagnosable:
+        # a 0.0->0.0 gate with zero edits is otherwise indistinguishable from
+        # "nothing to learn" (the cycle persists this in diagnostics.json).
+        self.last_reflect_raw = raw or ""
         edits: List[EditRecord] = []
         if isinstance(arr, list):
             for e in arr[:edit_budget]:
@@ -460,6 +557,39 @@ class ClaudeCliBackend(CliBackend):
                          timeout=timeout)
         self.claude_path = claude_path
 
+    # Known CLI error prefixes that indicate auth or config failures.
+    # When detected, we log a warning so the user doesn't mistake a
+    # broken auth for "nothing to optimize" (issue #68).
+    # Keep these specific to avoid false positives on normal model output.
+    _CLI_ERROR_MARKERS = (
+        "Not logged in",
+        "Please run /login",
+        "Authentication required",
+        "Invalid API key",
+        "Unauthorized: invalid x-api-key",
+    )
+
+    def _detect_cli_error(self, stdout: str, stderr: str) -> None:
+        """Log a warning if CLI output looks like an auth/config error.
+
+        Only checks stderr and short stdout (< 300 chars) to avoid
+        false-positives on legitimate model responses that mention
+        auth-related terms.
+        """
+        import logging
+        # Long stdout is almost certainly a real model response, not an error.
+        check_stdout = stdout if len(stdout) < 300 else ""
+        combined = check_stdout + "\n" + stderr
+        for marker in self._CLI_ERROR_MARKERS:
+            if marker in combined:
+                from skillopt_sleep.staging import redact_secrets
+                logging.getLogger("skillopt_sleep").warning(
+                    "Claude CLI returned a likely auth error: %s",
+                    redact_secrets(combined[:200].replace("\n", " ")),
+                )
+                self.last_call_error = combined[:500]
+                return
+
     def _call(self, prompt: str, *, max_tokens: int = 1024) -> str:
         # Run ISOLATED so the ambient Claude Code environment does not leak into
         # the optimizer/target call. Critically, the user's GLOBAL skills
@@ -467,14 +597,17 @@ class ClaudeCliBackend(CliBackend):
         # them explicitly — without this, reflect/attempt sometimes reply with a
         # list of the user's installed skills instead of doing the task.
         #   --bare                    skip hooks, LSP, plugins (minimal mode)
+        #                             Only safe with ANTHROPIC_API_KEY auth;
+        #                             breaks subscription-token auth (#68).
         #   --disable-slash-commands  disable all skills
         #   --disallowedTools '*'     no tool use
         #   --exclude-dynamic-...     drop per-machine cwd/env/memory/git sections
         #   cwd=<clean temp>          no project CLAUDE.md
         import tempfile
-        cmd = [
-            self.claude_path, "-p", "--output-format", "text",
-            "--bare",
+        cmd = [self.claude_path, "-p", "--output-format", "text"]
+        if os.environ.get("ANTHROPIC_API_KEY"):
+            cmd.append("--bare")
+        cmd += [
             "--disable-slash-commands",
             "--disallowedTools", "*",
             "--exclude-dynamic-system-prompt-sections",
@@ -495,7 +628,9 @@ class ClaudeCliBackend(CliBackend):
                 shutil.rmtree(clean_cwd, ignore_errors=True)
             except Exception:
                 pass
-        return (proc.stdout or "").strip()
+        out = (proc.stdout or "").strip()
+        self._detect_cli_error(out, proc.stderr or "")
+        return out
 
     def attempt_with_tools(self, task, skill, memory, tools):
         # Expose a REAL, callable `search` tool (a shell shim that logs each
@@ -532,9 +667,11 @@ class ClaudeCliBackend(CliBackend):
                 f"# Task\n{task.intent}\n\n{task.context_excerpt}\n\n"
                 "Return ONLY the final answer text."
             )
-            cmd = [
-                self.claude_path, "-p", "--output-format", "text",
-                "--bare", "--disable-slash-commands",
+            cmd = [self.claude_path, "-p", "--output-format", "text"]
+            if os.environ.get("ANTHROPIC_API_KEY"):
+                cmd.append("--bare")
+            cmd += [
+                "--disable-slash-commands",
                 "--allowedTools", "Bash",
                 "--exclude-dynamic-system-prompt-sections",
             ]
@@ -546,6 +683,7 @@ class ClaudeCliBackend(CliBackend):
                     cmd, capture_output=True, text=True, timeout=self.timeout, cwd=work,
                 )
                 resp = (proc.stdout or "").strip()
+                self._detect_cli_error(resp, proc.stderr or "")
             except Exception:
                 resp = ""
             self._tokens += len(prompt) // 4 + len(resp) // 4
@@ -601,14 +739,26 @@ class CodexCliBackend(CliBackend):
 
     name = "codex"
 
-    def __init__(self, model: str = "", codex_path: str = "", timeout: int = 240,
-                 sandbox: str = "read-only") -> None:
+    def __init__(
+        self,
+        model: str = "",
+        codex_path: str = "",
+        timeout: int = 240,
+        sandbox: str = "read-only",
+        project_dir: str = "",
+    ) -> None:
         super().__init__(model=model or os.environ.get("SKILLOPT_SLEEP_CODEX_MODEL", ""),
                          timeout=timeout)
         self.codex_path = resolve_codex_path(codex_path)
         self.sandbox = sandbox
+        self.project_dir = (
+            os.path.abspath(os.path.expanduser(project_dir)) if project_dir else ""
+        )
 
-    def _call(self, prompt: str, *, max_tokens: int = 1024) -> str:
+    def _call_once(self, prompt: str, *, max_tokens: int = 1024) -> str:
+        """One codex exec attempt: returns the response text, or "" on
+        timeout/exception/empty-output (with last_call_error set). ``_call``
+        wraps this with retries so a transient failure is NOT silently scored 0."""
         import tempfile
         out_path = tempfile.NamedTemporaryFile(
             prefix="codex_last_", suffix=".txt", delete=False
@@ -618,23 +768,91 @@ class CodexCliBackend(CliBackend):
             "--color", "never", "--sandbox", self.sandbox,
             "-o", out_path,
         ]
+        if self.project_dir:
+            cmd[3:3] = ["-C", self.project_dir]
         if self.model:
             cmd += ["-m", self.model]
         cmd += ["--", prompt]
+        proc = None
         try:
-            subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout)
-        except Exception:
-            return ""
-        try:
-            with open(out_path, encoding="utf-8") as f:
-                return f.read().strip()
-        except Exception:
-            return ""
+            try:
+                proc = subprocess.run(
+                    cmd,
+                    capture_output=True,
+                    text=True,
+                    timeout=self.timeout,
+                    cwd=self.project_dir or None,
+                )
+            except subprocess.TimeoutExpired:
+                self.last_call_error = f"codex exec timed out after {self.timeout}s"
+                return ""
+            except Exception as exc:
+                self.last_call_error = f"codex exec failed: {exc}"
+                return ""
+            try:
+                with open(out_path, encoding="utf-8") as f:
+                    out = f.read().strip()
+                if out:
+                    return out
+            except Exception as exc:
+                self.last_call_error = f"could not read codex output file: {exc}"
+            stdout = (proc.stdout or "").strip() if proc is not None else ""
+            stderr = (proc.stderr or "").strip() if proc is not None else ""
+            if proc is not None and proc.returncode != 0 and not self.last_call_error:
+                self.last_call_error = f"codex exec exited {proc.returncode}: {stderr[:500]}"
+            # Do NOT return the CLI's error text as if it were a model response: it
+            # pollutes rollout/judge/reflect and gets silently scored 0, hiding the
+            # real cause (e.g. an expired codex auth token surfacing as a 9k-char 401).
+            # Surface it via last_call_error and return empty instead.
+            if self.last_call_error:
+                return ""
+            return stdout or stderr
         finally:
             try:
                 os.unlink(out_path)
             except Exception:
                 pass
+
+    # Fatal codex failures that will NOT recover on retry — fail fast + loud so a
+    # 0.0 night reads as "codex auth/model/version problem" not "nothing to learn".
+    # Covers: auth (re-login), and 400 config errors like an unsupported model on a
+    # ChatGPT account or a model that needs a newer codex CLI (upgrade).
+    _AUTH_MARKERS = (
+        "401 Unauthorized", "refresh_token_reused", "token_expired",
+        "Please log out and sign in", "Not logged in", "Please run /login",
+        "authentication token is expired", "Unauthorized: invalid",
+        "is not supported when using Codex", "requires a newer version of Codex",
+    )
+
+    def _call(self, prompt: str, *, max_tokens: int = 1024, retries: int = 3) -> str:
+        """Retry transient empties/timeouts instead of silently returning "".
+
+        An empty reply scores 0 on every judge, which deflates the held-out
+        baseline AND blocks the candidate from ever improving — making a flaky
+        backend indistinguishable from "nothing to learn". The Azure backend
+        already guards this way (AzureOpenAIBackend._call); codex now does too.
+        Auth errors are NOT retried (hopeless until the user re-logs-in).
+        """
+        import logging
+        import random as _r
+        import time as _t
+        out = ""
+        for attempt in range(max(1, retries)):
+            self.last_call_error = ""
+            out = self._call_once(prompt, max_tokens=max_tokens)
+            if out:
+                return out
+            err = self.last_call_error or ""
+            if any(m in err for m in self._AUTH_MARKERS):
+                from skillopt_sleep.staging import redact_secrets
+                logging.getLogger("skillopt_sleep").error(
+                    "codex auth error — re-login required (`codex login`): %s",
+                    redact_secrets(err[:200]),
+                )
+                break  # fail fast: retrying a 401 just burns calls
+            if attempt < retries - 1:
+                _t.sleep(min(6.0, (2 ** attempt) * 0.5) + _r.random() * 0.3)
+        return out
 
     def attempt_with_tools(self, task, skill, memory, tools):
         # Codex exec runs in a sandbox with shell access; expose the same real
@@ -675,16 +893,27 @@ class CodexCliBackend(CliBackend):
             if self.model:
                 cmd += ["-m", self.model]
             cmd += ["--", prompt]
+            self.last_call_error = ""
+            proc = None
             try:
-                subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout, cwd=work)
-            except Exception:
-                pass
+                proc = subprocess.run(cmd, capture_output=True, text=True, timeout=self.timeout, cwd=work)
+            except subprocess.TimeoutExpired:
+                self.last_call_error = f"codex exec (tools) timed out after {self.timeout}s"
+            except Exception as exc:  # noqa: BLE001
+                self.last_call_error = f"codex exec (tools) failed: {exc}"
             resp = ""
             try:
                 with open(out_path, encoding="utf-8") as f:
                     resp = f.read().strip()
             except Exception:
                 resp = ""
+            # Surface a failed tool-rollout the SAME way _call does: an auth/model/version
+            # failure on this path must show up in diagnostics (call_error), not vanish as a
+            # silent empty->0 scored as a failed rollout. Response stays "" (never the error text).
+            if not resp and not self.last_call_error and proc is not None and proc.returncode != 0:
+                self.last_call_error = (
+                    f"codex exec (tools) exited {proc.returncode}: {(proc.stderr or '')[:500]}"
+                )
             self._tokens += len(prompt) // 4 + len(resp) // 4
             called: List[str] = []
             if os.path.exists(calllog):
@@ -697,6 +926,218 @@ class CodexCliBackend(CliBackend):
                 shutil.rmtree(work, ignore_errors=True)
             except Exception:
                 pass
+
+def resolve_copilot_path(explicit: str = "") -> str:
+    """Find the GitHub Copilot CLI (`copilot`) binary."""
+    if explicit:
+        return explicit
+    env = os.environ.get("SKILLOPT_SLEEP_COPILOT_PATH")
+    if env:
+        return env
+    import shutil
+    found = shutil.which("copilot")
+    return found or "copilot"
+
+
+class CopilotCliBackend(CliBackend):
+    """Drives the GitHub Copilot CLI in non-interactive mode.
+
+    Uses ``copilot -p <prompt> --output-format json`` and parses the emitted
+    JSONL event stream, returning the concatenated ``assistant.message``
+    content. The plain-text / ``--silent`` modes do not reliably stream the
+    response to stdout on all platforms, so JSONL is used for robust capture.
+
+    The call runs in a clean temp cwd with streaming disabled and tools allowed
+    (so non-interactive mode never blocks on a permission prompt); ``_call``'s
+    prompts ask for final-answer text only, so no tool use is expected there,
+    while ``attempt_with_tools`` exposes real, cross-platform callable shims in
+    the working directory for honest tool-call detection.
+
+    Startup overhead is minimised: each invocation points ``COPILOT_HOME`` at a
+    dedicated, isolated config dir (no user ``mcp-config.json``, so the user's
+    MCP servers — including this project's own — are NOT spawned, avoiding a
+    slow recursive launch), and built-in MCP servers / custom instructions are
+    disabled. Auth is read from the OS credential store / token env vars, which
+    live outside ``COPILOT_HOME``, so isolation does not break authentication.
+    Set ``SKILLOPT_SLEEP_COPILOT_HOME`` to override the isolated home, or set it
+    empty / ``SKILLOPT_SLEEP_COPILOT_FULL_ENV=1`` to use the user's real
+    environment instead.
+    """
+
+    name = "copilot"
+
+    def __init__(self, model: str = "", copilot_path: str = "", timeout: int = 240) -> None:
+        super().__init__(model=model or os.environ.get("SKILLOPT_SLEEP_COPILOT_MODEL", ""),
+                         timeout=timeout)
+        self.copilot_path = resolve_copilot_path(copilot_path)
+        self.full_env = os.environ.get("SKILLOPT_SLEEP_COPILOT_FULL_ENV", "") == "1"
+        # Stable isolated home so first-run setup is cached across calls.
+        if self.full_env:
+            self.copilot_home = ""
+        else:
+            self.copilot_home = os.environ.get("SKILLOPT_SLEEP_COPILOT_HOME") or os.path.join(
+                tempfile.gettempdir(), "skillopt_sleep_copilot_home"
+            )
+            try:
+                os.makedirs(self.copilot_home, exist_ok=True)
+            except Exception:
+                self.copilot_home = ""
+
+    def _call(self, prompt: str, *, max_tokens: int = 1024) -> str:
+        clean_cwd = tempfile.mkdtemp(prefix="skillopt_sleep_copilot_")
+        cmd = [
+            self.copilot_path, "-p", prompt,
+            "--output-format", "json",
+            "--stream", "off",
+            "--no-color",
+            "--log-level", "none",
+            "--allow-all-tools",
+            "-C", clean_cwd,
+        ]
+        if not self.full_env:
+            # Drop unneeded startup work: no built-in (github) MCP server and no
+            # AGENTS.md / custom-instruction loading. With an isolated home that
+            # has no mcp-config.json, no user MCP servers spawn either.
+            cmd += ["--disable-builtin-mcps", "--no-custom-instructions"]
+        if self.model:
+            cmd += ["--model", self.model]
+        env = os.environ.copy()
+        if self.copilot_home:
+            env["COPILOT_HOME"] = self.copilot_home
+        try:
+            proc = subprocess.run(
+                cmd, capture_output=True, text=True, timeout=self.timeout, cwd=clean_cwd,
+                encoding="utf-8", errors="replace", env=env,
+            )
+        except Exception:
+            return ""
+        finally:
+            try:
+                import shutil
+                shutil.rmtree(clean_cwd, ignore_errors=True)
+            except Exception:
+                pass
+        return self._parse_jsonl_response(proc.stdout or "")
+
+    @staticmethod
+    def _parse_jsonl_response(raw: str) -> str:
+        parts: List[str] = []
+        for line in raw.splitlines():
+            line = line.strip()
+            if not line or not line.startswith("{"):
+                continue
+            try:
+                obj = json.loads(line)
+            except Exception:
+                continue
+            if obj.get("type") == "assistant.message":
+                content = (obj.get("data") or {}).get("content")
+                if isinstance(content, str) and content:
+                    parts.append(content)
+        return "\n".join(parts).strip()
+
+    def attempt_with_tools(self, task, skill, memory, tools):
+        # Expose REAL, callable tool shims in the working directory so the
+        # gbrain quick-answerer judge (tool_called=search) is validated
+        # honestly: we detect each call from the shim's log, not from a
+        # self-reported marker. The Copilot CLI is the Windows-validated
+        # backend, so the shims must be cross-platform — a bash `#!/usr/bin/env
+        # bash` + chmod shim does NOT execute via `./tool` under PowerShell/cmd,
+        # so on Windows we emit a `.cmd` batch shim instead.
+        import shutil
+        import stat
+        work = tempfile.mkdtemp(prefix="skillopt_sleep_copilottools_")
+        calllog = os.path.join(work, "_tool_calls.log")
+        tool_names = tools or ["search"]
+        is_windows = os.name == "nt"
+        try:
+            for tname in tool_names:
+                if is_windows:
+                    shim = os.path.join(work, f"{tname}.cmd")
+                    with open(shim, "w") as f:
+                        # `%~n0` is the script's own base name (the tool name);
+                        # writing it keeps the calllog line == tool name so the
+                        # honest-detection match below works unchanged.
+                        f.write(
+                            "@echo off\n"
+                            f'echo %~n0>>"{calllog}"\n'
+                            "echo (search results: 3 relevant notes found; use them to answer)\n"
+                        )
+                else:
+                    shim = os.path.join(work, tname)
+                    with open(shim, "w") as f:
+                        f.write(
+                            "#!/usr/bin/env bash\n"
+                            f'echo "{tname}" >> "{calllog}"\n'
+                            'echo "(search results: 3 relevant notes found; use them to answer)"\n'
+                        )
+                    os.chmod(shim, os.stat(shim).st_mode | stat.S_IEXEC | stat.S_IXGRP | stat.S_IXOTH)
+            if is_windows:
+                tool_hint = (
+                    "You have shell tools available in the current directory: "
+                    + ", ".join(f"{t}.cmd" for t in tool_names)
+                    + " (each callable as `" + tool_names[0] + "` or `.\\"
+                    + tool_names[0] + "`). When the skill says to look something "
+                    "up or search before answering, you MUST actually run the "
+                    "tool (e.g. `" + tool_names[0] + " \"query\"`) before giving "
+                    "your final answer."
+                )
+            else:
+                tool_hint = (
+                    "You have shell tools available in the current directory: "
+                    + ", ".join(f"./{t}" for t in tool_names)
+                    + ". When the skill says to look something up or search before "
+                    "answering, you MUST actually run the tool (e.g. `./search \"query\"`) "
+                    "before giving your final answer."
+                )
+            prompt = (
+                "You are completing a task. Apply the skill and memory rules EXACTLY, "
+                "including any rule about searching/looking up before answering. "
+                "Treat a 'Learned preferences' block as HARD CONSTRAINTS that override "
+                "earlier conflicting skill text.\n\n"
+                f"{tool_hint}\n\n"
+                f"# Skill\n{skill or '(none)'}\n\n# Memory\n{memory or '(none)'}\n\n"
+                f"# Task\n{task.intent}\n\n{task.context_excerpt}\n\n"
+                "Return ONLY the final answer text."
+            )
+            cmd = [
+                self.copilot_path, "-p", prompt,
+                "--output-format", "json",
+                "--stream", "off",
+                "--no-color",
+                "--log-level", "none",
+                "--allow-all-tools",
+                "-C", work,
+            ]
+            if not self.full_env:
+                cmd += ["--disable-builtin-mcps", "--no-custom-instructions"]
+            if self.model:
+                cmd += ["--model", self.model]
+            env = os.environ.copy()
+            if self.copilot_home:
+                env["COPILOT_HOME"] = self.copilot_home
+            resp = ""
+            try:
+                proc = subprocess.run(
+                    cmd, capture_output=True, text=True, encoding="utf-8",
+                    errors="replace", timeout=self.timeout, cwd=work, env=env,
+                )
+                resp = self._parse_jsonl_response(proc.stdout or "")
+            except Exception:
+                resp = ""
+            self._tokens += len(prompt) // 4 + len(resp) // 4
+            called: List[str] = []
+            if os.path.exists(calllog):
+                with open(calllog) as f:
+                    logged = {ln.strip() for ln in f if ln.strip()}
+                called = [t for t in tool_names if t in logged]
+            return resp, called
+        finally:
+            try:
+                shutil.rmtree(work, ignore_errors=True)
+            except Exception:
+                pass
+
 
 class DualBackend(Backend):
     """Route operations to two backends, à la SkillOpt's target vs optimizer.
@@ -717,8 +1158,8 @@ class DualBackend(Backend):
         self.optimizer = optimizer
         self.name = f"target={target.name}/optimizer={optimizer.name}"
 
-    def attempt(self, task, skill, memory):
-        return self.target.attempt(task, skill, memory)
+    def attempt(self, task, skill, memory, sample_id: int = 0):
+        return self.target.attempt(task, skill, memory, sample_id=sample_id)
 
     def attempt_with_tools(self, task, skill, memory, tools):
         return self.target.attempt_with_tools(task, skill, memory, tools)
@@ -741,18 +1182,214 @@ class DualBackend(Backend):
         return self.target.tokens_used() + self.optimizer.tokens_used()
 
 
+# ── Azure OpenAI backend (gpt-5.x via managed identity) ───────────────────────
+
+# Endpoint -> deployments, from the intern's avail_api.md. The backend picks the
+# first endpoint that hosts the requested deployment.
+_AZURE_ENDPOINTS = {
+    "https://oaidr9.openai.azure.com/": {"gpt-5.5", "gpt-5.4", "gpt-5.4-mini", "gpt-5.4-nano", "o3"},
+    "https://t2vgoaigpt4o6.openai.azure.com/": {"gpt-5.5", "gpt-4o-mini", "o3", "o4-mini"},
+    "https://oaidr21.openai.azure.com/": {"gpt-5.5", "o3", "o4-mini"},
+    "https://searchagent5.cognitiveservices.azure.com/": {"gpt-5.4-mini", "gpt-4o-mini"},
+    "https://t2vgoaigpt4o.openai.azure.com/": {"gpt-5.4", "gpt-5.4-nano", "gpt-5.2", "gpt-5.1", "o3", "o4-mini"},
+}
+_AZURE_MI_CLIENT_ID = "8cafa2b1-a2a7-4ad9-814a-ffe4aed7e800"
+
+
+class AzureOpenAIBackend(CliBackend):
+    """Drives Azure OpenAI gpt-5.x deployments via managed identity.
+
+    Mirrors the intern's blog_1 setup (avail_api.md): managed-identity auth, the
+    same endpoints/deployments. Reuses CliBackend's attempt/judge/reflect prompts
+    and JSON parsing; only _call() differs. openai + azure-identity are lazy
+    imported so the mock/CLI paths stay dependency-free.
+    """
+
+    name = "azure"
+
+    def __init__(self, deployment: str = "", endpoint: str = "", timeout: int = 180,
+                 api_version: str = "2024-12-01-preview") -> None:
+        super().__init__(model=deployment or "gpt-5.5", timeout=timeout)
+        self.deployment = deployment or "gpt-5.5"
+        self.endpoint = endpoint or self._endpoint_for(self.deployment)
+        self.api_version = api_version
+        self.name = f"azure:{self.deployment}"
+        self._client = None
+
+    @staticmethod
+    def _endpoint_for(deployment: str) -> str:
+        for ep, deps in _AZURE_ENDPOINTS.items():
+            if deployment in deps:
+                return ep
+        return "https://oaidr9.openai.azure.com/"
+
+    def _get_client(self):
+        if self._client is None:
+            from azure.identity import ManagedIdentityCredential, get_bearer_token_provider
+            from openai import AzureOpenAI
+            cred = ManagedIdentityCredential(client_id=_AZURE_MI_CLIENT_ID)
+            tp = get_bearer_token_provider(cred, "https://cognitiveservices.azure.com/.default")
+            self._client = AzureOpenAI(
+                azure_endpoint=self.endpoint, azure_ad_token_provider=tp,
+                api_version=self.api_version, max_retries=4,
+            )
+        return self._client
+
+    def _call(self, prompt: str, *, max_tokens: int = 1024, retries: int = 5) -> str:
+        """Call the deployment with bounded retries.
+
+        IMPORTANT: transient failures (429 rate-limit, timeouts, 5xx) must NOT be
+        silently turned into an empty string — an empty response scores 0 and
+        deflates every baseline/after measure. We retry with exponential backoff
+        (mirroring the research repo's retries=5) and only return "" after the
+        budget is exhausted. ``time``/``random`` are used for backoff; both are
+        available here (this is library code, not a Workflow script sandbox).
+        """
+        import random as _r
+        import time as _t
+
+        client = self._get_client()
+        last_exc = None
+        for attempt in range(max(1, retries)):
+            try:
+                resp = client.chat.completions.create(
+                    model=self.deployment,
+                    messages=[{"role": "user", "content": prompt}],
+                    max_completion_tokens=16384,
+                )
+                text = (resp.choices[0].message.content or "").strip()
+                try:
+                    u = resp.usage
+                    self._tokens += (getattr(u, "prompt_tokens", 0) or 0) + (getattr(u, "completion_tokens", 0) or 0)
+                except Exception:
+                    pass
+                if text:
+                    return text
+                # empty but no exception: model genuinely returned nothing — one
+                # quick retry can help (reasoning models occasionally yield empty)
+                last_exc = "empty-response"
+            except Exception as e:  # noqa: BLE001
+                last_exc = e
+            # backoff before next try (skip after the final attempt)
+            if attempt < retries - 1:
+                _t.sleep(min(8.0, (2 ** attempt) * 0.5) + _r.random() * 0.4)
+        return ""
+
+
+class AzureResponsesBackend(AzureOpenAIBackend):
+    """gpt-5.x via the **Responses API** on the high-throughput gpt4v endpoints.
+
+    Differs from AzureOpenAIBackend in three ways, all required by the enhanced
+    experiment:
+      * Auth via ``AzureCliCredential`` (the logged-in user), not Managed Identity
+        — the gpt4v-scus/swc accounts grant the data role to the CLI principal.
+      * Calls ``client.responses.create`` (the /responses API) instead of
+        chat.completions — these deployments are Responses-only.
+      * Round-robins across multiple endpoints for parallel throughput; each
+        worker thread binds a client for one endpoint (picked by thread index)
+        so concurrent replay spreads load across all endpoints.
+
+    A single shared ``AzureCliCredential`` token provider is reused across all
+    endpoint clients (the token is cached + auto-refreshed by the provider).
+    """
+
+    name = "azure-responses"
+
+    # the two parallel /responses endpoints (user-provided), both hosting gpt-5.5
+    _RESP_ENDPOINTS = [
+        "https://gpt4v-scus.openai.azure.com/",
+        "https://gpt4v-swc.openai.azure.com/",
+    ]
+
+    def __init__(self, deployment: str = "", endpoints: Optional[List[str]] = None,
+                 timeout: int = 180, api_version: str = "2025-04-01-preview") -> None:
+        super().__init__(deployment=deployment, endpoint=(endpoints or self._RESP_ENDPOINTS)[0],
+                         timeout=timeout, api_version=api_version)
+        self.endpoints = list(endpoints or self._RESP_ENDPOINTS)
+        self.name = f"azure-responses:{self.deployment}"
+        self._token_provider = None
+        self._clients: dict = {}      # endpoint -> AzureOpenAI client
+        import threading as _thr
+        self._lock = _thr.Lock()
+        self._rr = 0                  # round-robin counter
+
+    def _get_provider(self):
+        if self._token_provider is None:
+            from azure.identity import AzureCliCredential, get_bearer_token_provider
+            self._token_provider = get_bearer_token_provider(
+                AzureCliCredential(), "https://cognitiveservices.azure.com/.default")
+        return self._token_provider
+
+    def _client_for(self, endpoint: str):
+        cl = self._clients.get(endpoint)
+        if cl is None:
+            from openai import AzureOpenAI
+            cl = AzureOpenAI(
+                azure_endpoint=endpoint, azure_ad_token_provider=self._get_provider(),
+                api_version=self.api_version, max_retries=2,
+            )
+            self._clients[endpoint] = cl
+        return cl
+
+    def _next_endpoint(self) -> str:
+        # round-robin so concurrent calls spread across all endpoints
+        with self._lock:
+            ep = self.endpoints[self._rr % len(self.endpoints)]
+            self._rr += 1
+        return ep
+
+    def _call(self, prompt: str, *, max_tokens: int = 1024, retries: int = 5) -> str:
+        import random as _r
+        import time as _t
+        last = None
+        base_ep = self._next_endpoint()           # this call's primary endpoint
+        base_idx = self.endpoints.index(base_ep)
+        for attempt in range(max(1, retries)):
+            # on retry, fail over to the other endpoint(s)
+            ep = self.endpoints[(base_idx + attempt) % len(self.endpoints)]
+            try:
+                client = self._client_for(ep)
+                resp = client.responses.create(
+                    model=self.deployment, input=prompt,
+                    max_output_tokens=16384,
+                )
+                text = (getattr(resp, "output_text", "") or "").strip()
+                try:
+                    u = resp.usage
+                    self._tokens += (getattr(u, "input_tokens", 0) or 0) + (getattr(u, "output_tokens", 0) or 0)
+                except Exception:
+                    pass
+                if text:
+                    return text
+                last = "empty-response"
+            except Exception as e:  # noqa: BLE001
+                last = e
+            if attempt < retries - 1:
+                _t.sleep(min(8.0, (2 ** attempt) * 0.5) + _r.random() * 0.4)
+        return ""
+
+
 def get_backend(
     name: str,
     *,
     model: str = "",
     claude_path: str = "claude",
     codex_path: str = "",
+    azure_endpoint: str = "",
+    project_dir: str = "",
 ) -> Backend:
     n = (name or "mock").strip().lower()
     if n in {"claude", "anthropic", "claude_cli", "claude_code"}:
         return ClaudeCliBackend(model=model, claude_path=claude_path)
     if n in {"codex", "codex_cli", "openai_codex"}:
-        return CodexCliBackend(model=model, codex_path=codex_path)
+        return CodexCliBackend(model=model, codex_path=codex_path, project_dir=project_dir)
+    if n in {"azure", "azure_openai", "aoai"}:
+        return AzureOpenAIBackend(deployment=model, endpoint=azure_endpoint)
+    if n in {"azure-responses", "azure_responses", "aoai-responses", "responses"}:
+        eps = [e.strip() for e in azure_endpoint.split(",") if e.strip()] or None
+        return AzureResponsesBackend(deployment=model, endpoints=eps)
+    if n in {"copilot", "github_copilot", "copilot_cli", "gh_copilot"}:
+        return CopilotCliBackend(model=model)
     return MockBackend()
 
 
@@ -765,7 +1402,9 @@ def build_backend(
     target_backend: str = "",
     target_model: str = "",
     codex_path: str = "",
+    azure_endpoint: str = "",
     preferences: str = "",
+    project_dir: str = "",
 ) -> Backend:
     """Build a single or dual backend.
 
@@ -776,11 +1415,21 @@ def build_backend(
     """
     has_split = any([optimizer_backend, optimizer_model, target_backend, target_model])
     if not has_split:
-        be = get_backend(backend, model=model, codex_path=codex_path)
+        be = get_backend(
+            backend,
+            model=model,
+            codex_path=codex_path,
+            azure_endpoint=azure_endpoint,
+            project_dir=project_dir,
+        )
         be.preferences = preferences
         return be
-    tgt = get_backend(target_backend or backend, model=target_model or model, codex_path=codex_path)
-    opt = get_backend(optimizer_backend or backend, model=optimizer_model or model, codex_path=codex_path)
+    tgt = get_backend(target_backend or backend, model=target_model or model,
+                      codex_path=codex_path, azure_endpoint=azure_endpoint,
+                      project_dir=project_dir)
+    opt = get_backend(optimizer_backend or backend, model=optimizer_model or model,
+                      codex_path=codex_path, azure_endpoint=azure_endpoint,
+                      project_dir=project_dir)
     opt.preferences = preferences  # reflect runs on the optimizer
     dual = DualBackend(target=tgt, optimizer=opt)
     dual.preferences = preferences

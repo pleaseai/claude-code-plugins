@@ -17,7 +17,7 @@ cat <<EOF
 # ── SkillOpt-Sleep nightly cycle ────────────────────────────────────────────
 # Review past sessions, replay tasks, stage validated memory/skill updates.
 # Runs at ${HOUR}:$(printf '%02d' $MIN) local every day. Output goes to the project's
-# .skillopt-sleep/ dir; nothing live is changed until you run '/sleep adopt'
+# .skillopt-sleep/ dir; nothing live is changed until you run '/skillopt-sleep adopt'
 # (unless you pass --auto-adopt below).
 #
 # Copy the next line into 'crontab -e':

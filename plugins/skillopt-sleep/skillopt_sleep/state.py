@@ -28,6 +28,7 @@ DEFAULT_STATE: Dict[str, Any] = {
     "last_harvest": {},     # project -> iso timestamp of last harvested record
     "slow_memory": "",      # cross-night consolidated lessons (meta-skill analogue)
     "history": [],          # list of per-night summaries
+    "task_archive": [],     # capped list of past mined tasks (for associative recall)
 }
 
 
@@ -81,3 +82,15 @@ class SleepState:
 
     def record_night(self, summary: Dict[str, Any]) -> None:
         self.data.setdefault("history", []).append(summary)
+
+    # ── task archive (associative-recall memory) ──────────────────────────
+    def task_archive(self) -> list:
+        """Past mined tasks as plain dicts (newest last)."""
+        return list(self.data.get("task_archive", []))
+
+    def add_to_archive(self, task_dicts: list, cap: int = 300) -> None:
+        """Append tonight's tasks; keep only the most recent ``cap``."""
+        arc = self.data.setdefault("task_archive", [])
+        arc.extend(task_dicts)
+        if len(arc) > cap:
+            self.data["task_archive"] = arc[-cap:]

@@ -95,6 +95,11 @@ Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs t
 
 **Install:** `/plugin install claude-code-docs@pleaseai` | **Repository:** [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs)
 
+#### Run Verify
+Run and verify code changes by driving the real app — the `run`, `verify`, and `run-skill-generator` skills, generalized for Claude Code, Codex, and Antigravity.
+
+**Install:** `/plugin install run-verify@pleaseai` | **Repository:** [pleaseai/run-verify-plugin](https://github.com/pleaseai/run-verify-plugin)
+
 
 ### Built-in Plugins
 

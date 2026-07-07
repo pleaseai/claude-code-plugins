@@ -8,18 +8,17 @@ external dependencies.
 """
 from __future__ import annotations
 
-from dataclasses import dataclass, field, asdict
-from typing import Any, Dict, List, Optional
-
+from dataclasses import asdict, dataclass, field
+from typing import Any, Dict, List
 
 # ── Stage 1: harvest ──────────────────────────────────────────────────────────
 
 @dataclass
 class SessionDigest:
-    """A normalized summary of one Claude Code session transcript.
+    """A normalized summary of one local agent session transcript.
 
-    Produced by :mod:`skillopt_sleep.harvest` from a ``<sessionId>.jsonl``
-    transcript plus ``history.jsonl`` entries.
+    Produced by source-specific harvesters from Claude Code transcripts or
+    Codex Desktop archived sessions.
     """
 
     session_id: str
@@ -54,6 +53,12 @@ class TaskRecord:
     project: str
     intent: str                       # what the user wanted (the "question")
     context_excerpt: str = ""         # minimal context needed to attempt it
+    # Optional system framing for the rollout. When set (e.g. real benchmarks
+    # carrying the research repo's exact rollout_system), the backend uses THIS
+    # verbatim instead of its generic instruction wrapper — this keeps scoring
+    # faithful to the source task and avoids re-deriving framing the benchmark
+    # already bakes in.
+    system: str = ""
     attempted_solution: str = ""      # what the agent produced before
     outcome: str = "unknown"          # success | fail | mixed | unknown
     reference_kind: str = "none"      # exact | rubric | rule | none
@@ -130,6 +135,7 @@ class SleepReport:
     candidate_score: float = 0.0
     accepted: bool = False
     gate_action: str = ""
+    no_edits_reason: str = ""
     edits: List[EditRecord] = field(default_factory=list)
     rejected_edits: List[EditRecord] = field(default_factory=list)
     tokens_used: int = 0

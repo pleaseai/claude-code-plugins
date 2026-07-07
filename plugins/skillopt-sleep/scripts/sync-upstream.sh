@@ -33,7 +33,7 @@ rsync -a --delete \
   "$UPSTREAM/skillopt_sleep/" "$PLUGIN_ROOT/skillopt_sleep/"
 
 # 2) Static plugin assets (everything EXCEPT scripts/sleep.sh).
-cp "$CC/commands/sleep.md"                    "$PLUGIN_ROOT/commands/sleep.md"
+cp "$CC/commands/skillopt-sleep.md"           "$PLUGIN_ROOT/commands/skillopt-sleep.md"
 cp "$CC/hooks/hooks.json"                     "$PLUGIN_ROOT/hooks/hooks.json"
 cp "$CC/hooks/on-session-end.sh"              "$PLUGIN_ROOT/hooks/on-session-end.sh"
 cp "$CC/skills/skillopt-sleep/SKILL.md"       "$PLUGIN_ROOT/.agents/skills/skillopt-sleep/SKILL.md"

@@ -1,10 +1,16 @@
 # Scaffold New Plugin
 
-You are a plugin scaffolding expert. Help users create a new Claude Code plugin with proper structure and best practices.
+You are a plugin scaffolding expert. Help users create a new plugin with proper structure and best practices.
+
+Author the plugin **once in Claude Code format** (the source of truth), then generate the
+Codex / Antigravity / Cursor manifests from it in a single step. One directory, four runtimes —
+you never hand-write the other manifests.
 
 ## Your Task
 
-Create a complete plugin structure based on user requirements. Ask clarifying questions if needed, then generate all necessary files.
+Create a complete plugin structure based on user requirements. Ask clarifying questions if needed,
+generate all necessary files in Claude Code format, then run the multi-format generator so the same
+directory loads in Codex, Antigravity, and Cursor too.
 
 ## Scaffolding Process
 
@@ -191,6 +197,44 @@ All notable changes to this project will be documented in this file.
 - Feature 1
 - Feature 2
 ```
+
+### 10. Wire the Marketplace Entry, Then Generate Multi-Runtime Manifests
+
+The plugin is authored in Claude Code format (`.claude-plugin/plugin.json`, or a root-level
+`plugin.json` for plugins that also serve as the Antigravity manifest). This is the **source of
+truth** — never hand-write the other runtimes' manifests; generate them instead.
+
+**Order matters — wire the marketplace entry _first_.** The generator resolves each plugin's
+metadata (notably `category`) from `.claude-plugin/marketplace.json`. A plugin dir that is not yet
+listed there is generated with no entry, so its Codex manifest falls back to the default category
+and it is omitted from the emitted Codex/Cursor marketplace files. So for a brand-new plugin, wire
+the companion files described in `.claude/rules/marketplace-sync.md` **before** running the
+generator:
+
+1. Add the marketplace entry to `.claude-plugin/marketplace.json` (source of truth).
+2. If the plugin is release-managed, add a `plugins/<name>` entry to `release-please-config.json`
+   + `.release-please-manifest.json` covering every version-bearing manifest the plugin ships.
+
+Then generate the other runtimes' manifests in a single pass:
+
+```bash
+bun scripts/cli.ts multi-format
+```
+
+This reads the Claude manifest + the marketplace entry and emits, for every local plugin
+(`source: "./plugins/..."`):
+
+- `plugins/<name>/.codex-plugin/plugin.json` (+ `.mcp.json` when the plugin defines `mcpServers`)
+- `plugins/<name>/plugin.json` + `mcp_config.json` + root `hooks.json` (Antigravity)
+- `plugins/<name>/.cursor-plugin/plugin.json`
+- `.agents/plugins/marketplace.json` (Codex marketplace) and `.cursor-plugin/marketplace.json` (Cursor marketplace)
+
+Shared assets (`commands/`, `agents/`, `skills/`, `hooks/`) live **once** at the plugin root and
+are referenced by every manifest — only manifest-level fields differ per runtime.
+
+> **This command rewrites all local plugins, not just the new one.** If unrelated plugins show up
+> in the diff (pre-existing drift), `git restore` those files and commit only the new plugin's
+> artifacts so the change stays atomic. See `/plugin-dev:multi-format` for the dedicated wrapper.
 
 ## After Scaffolding
 
