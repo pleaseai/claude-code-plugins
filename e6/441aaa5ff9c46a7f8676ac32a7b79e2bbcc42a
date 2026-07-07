@@ -1,0 +1,69 @@
+plugins/openai-docs/skills/openai-docs/scripts/resolve-latest-model-info.js
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-147
+.release-please-manifest.json
+  s_f53702217d7ed9::t_ed5eb459be69fd 59
+release-please-config.json
+  s_f53702217d7ed9::t_2ccbd32ae2f9fa 901-926
+plugins/openai-docs/README.md
+  s_f53702217d7ed9::t_6ceb2dc1a636cc 1-2,4-8,10-13
+  s_f53702217d7ed9::t_362014db830724 3,9,14
+plugins/openai-docs/skills/openai-docs/LICENSE.txt
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-201
+plugins/openai-docs/skills/openai-docs/references/upgrade-guide.md
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-181
+plugins/openai-docs/skills/openai-docs/NOTICE
+  s_f53702217d7ed9::t_dcebb00507ba07 1-25
+.claude-plugin/marketplace.json
+  s_f53702217d7ed9::t_63257a34e7a534 765,767,769-783
+  s_f53702217d7ed9::t_5f1617d44b620e 766,768
+  s_f53702217d7ed9::t_39b2f4da23acbd 764
+plugins/openai-docs/skills/openai-docs/references/latest-model.md
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-37
+.agents/plugins/marketplace.json
+  s_f53702217d7ed9::t_4e3631e9379c1c 560-570
+  s_f53702217d7ed9::t_f54f4866523847 559
+plugins/openai-docs/skills/openai-docs/SKILL.md
+  s_f53702217d7ed9::t_ecdf8e136f0394 3,9,13,19-20,22,38,40,42-44,49,57-61,68,81,85
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-2,4-8,10-12,14-18,21,23-37,39,41,45-48,50-56,62-67,69-80,82-84,86-87
+README.md
+  s_f53702217d7ed9::t_adc1da6abc5e39 385-386,388-390
+  s_f53702217d7ed9::t_72e784b84f79a1 387
+plugins/openai-docs/skills/openai-docs/references/prompting-guide.md
+  s_f53702217d7ed9::t_a77ba55a28fec8 1-244
+plugins/openai-docs/.codex-plugin/plugin.json
+  s_f53702217d7ed9::t_335696623d4a0c 4,11-12,30-31
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 1-3,5-10,13-29,32-34
+.cursor-plugin/marketplace.json
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 198-199,201
+  s_f53702217d7ed9::t_335696623d4a0c 200
+  s_f53702217d7ed9::t_16449dc8d54950 197
+plugins/openai-docs/plugin.json
+  s_f53702217d7ed9::t_335696623d4a0c 4,16-17
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 1-3,5-15,18-19
+plugins/openai-docs/.cursor-plugin/plugin.json
+  s_f53702217d7ed9::t_335696623d4a0c 4,17-18
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 1-3,5-16,19-30
+plugins/openai-docs/.claude-plugin/plugin.json
+  s_f53702217d7ed9::t_8878fe3e7a9315 1-3,5-15,18-25
+  s_f53702217d7ed9::t_cceed3a0ccd0bc 4,16-17
+plugins/openai-docs/.mcp.json
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 1-8
+plugins/openai-docs/mcp_config.json
+  s_f53702217d7ed9::t_09d8d1d1dbbe00 1-8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "e6441aaa5ff9c46a7f8676ac32a7b79e2bbcc42a",
+  "prompts": {},
+  "sessions": {
+    "s_f53702217d7ed9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6aaddd43-34ce-467b-bfa9-e1544192f3bb",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
