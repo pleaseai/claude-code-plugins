@@ -1,0 +1,48 @@
+plugins/tanstack/.codex-plugin/plugin.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1-38
+.agents/plugins/marketplace.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1154-1163
+  s_f7e3734d604dea::t_1ef36c7d25711e 1152-1153
+.cursor-plugin/marketplace.json
+  s_f7e3734d604dea::t_e78129f602bf0c 371-372
+  s_f7e3734d604dea::t_b250586ec5cd81 373-375
+plugins/tanstack/skills/use-tanstack/SKILL.md
+  s_f7e3734d604dea::t_b250586ec5cd81 1-86
+README.md
+  s_f7e3734d604dea::t_b250586ec5cd81 315-319,617
+plugins/tanstack/.claude-plugin/plugin.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1-26
+.release-please-manifest.json
+  s_f7e3734d604dea::t_b250586ec5cd81 71
+  s_f7e3734d604dea::t_8584b5aaef87b2 70
+.claude-plugin/marketplace.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1503-1522
+  s_f7e3734d604dea::t_4b01da70ff86fc 1502
+plugins/tanstack/.cursor-plugin/plugin.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1-28
+plugins/tanstack/plugin.json
+  s_f7e3734d604dea::t_b250586ec5cd81 1-23
+release-please-config.json
+  s_f7e3734d604dea::t_670d3594b463b9 1222
+  s_f7e3734d604dea::t_b250586ec5cd81 1223-1225
+  s_f7e3734d604dea::t_350e5f914c79cc 1226-1228
+  s_f7e3734d604dea::t_92d1a3e14af32b 1229-1247
+plugins/tanstack/README.md
+  s_f7e3734d604dea::t_b250586ec5cd81 1-26
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "091db03337a023223f9308787a3cdb8a48ffde79",
+  "prompts": {},
+  "sessions": {
+    "s_f7e3734d604dea": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f8af5c2e-dfa3-4847-b9c6-b3a6efcefcab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
