@@ -2,6 +2,7 @@
 
 const fs = require("node:fs/promises");
 const path = require("node:path");
+const { fileURLToPath } = require("node:url");
 
 const DEFAULT_URL =
   "https://developers.openai.com/api/docs/guides/latest-model.md";
@@ -16,9 +17,15 @@ function parseArgs(argv) {
   for (let i = 2; i < argv.length; i += 1) {
     const arg = argv[i];
     if (arg === "--source" || arg === "--url") {
+      if (i + 1 >= argv.length) {
+        throw new Error(`missing value for option ${arg}`);
+      }
       args.source = argv[i + 1];
       i += 1;
     } else if (arg === "--base-url") {
+      if (i + 1 >= argv.length) {
+        throw new Error(`missing value for option ${arg}`);
+      }
       args.baseUrl = argv[i + 1];
       i += 1;
     }
@@ -28,15 +35,16 @@ function parseArgs(argv) {
 }
 
 async function readSource(source) {
-  if (source.startsWith("file://")) {
-    return fs.readFile(new URL(source), "utf8");
-  }
-
   if (!/^https?:\/\//.test(source)) {
-    // `source` is CLI/env-controlled; validate the canonicalized path stays
-    // within the current working directory before reading (guards traversal).
+    // Local read. `source` is CLI/env-controlled, so resolve both plain paths
+    // and `file://` URLs to a real filesystem path and confine it to the
+    // current working directory before reading (guards path traversal — a
+    // `file://` URL must not escape the guard the way a plain path cannot).
+    const localPath = source.startsWith("file://")
+      ? fileURLToPath(source)
+      : source;
     const allowedBase = path.resolve(process.cwd());
-    const resolved = path.resolve(allowedBase, source);
+    const resolved = path.resolve(allowedBase, localPath);
     if (resolved !== allowedBase && !resolved.startsWith(allowedBase + path.sep)) {
       throw new Error(`refusing to read outside ${allowedBase}: ${resolved}`);
     }
