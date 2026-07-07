@@ -1500,6 +1500,27 @@
       }
     },
     {
+      "name": "tanstack",
+      "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) via the official @tanstack/intent CLI — loads skills shipped inside the installed npm packages",
+      "category": "framework",
+      "keywords": ["tanstack", "query", "router", "start", "table", "form", "db", "virtual", "intent"],
+      "tags": ["framework", "frontend"],
+      "source": "./plugins/tanstack",
+      "relevance": {
+        "topic": "TanStack",
+        "signals": {
+          "hosts": ["tanstack.com"],
+          "filesRead": ["**/routeTree.gen.ts", "**/tanstack.config.*"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@tanstack/[a-z0-9-]+\"\\s*:"
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "run-verify",
       "description": "Run and verify code changes by driving the real app — launch it, interact with it, capture evidence. Ships run, verify, and run-skill-generator skills for Claude Code, Codex, and Antigravity.",
       "category": "development",

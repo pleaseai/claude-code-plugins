@@ -363,6 +363,11 @@
       "name": "greptile",
       "source": "./plugins/greptile",
       "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5"
+    },
+    {
+      "name": "tanstack",
+      "source": "./plugins/tanstack",
+      "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) via the official @tanstack/intent CLI — loads skills shipped inside the installed npm packages"
     }
   ]
 }
