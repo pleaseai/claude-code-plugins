@@ -1,0 +1,37 @@
+plugins/plugin-dev/plugin.json
+  s_12acfe8f085326::t_edd56b9f32b50c 3
+plugins/plugin-dev/README.md
+  s_12acfe8f085326::t_5d88b4b05ab75a 88-108
+  s_12acfe8f085326::t_3c9c22db33472b 217,224,229
+  s_12acfe8f085326::t_4678d25f744a17 207-212
+  s_12acfe8f085326::t_7f4d738ab6c6ed 14
+plugins/plugin-dev/.codex-plugin/plugin.json
+  s_12acfe8f085326::t_43a4e270f3f233 3
+plugins/plugin-dev/CHANGELOG.md
+  s_12acfe8f085326::t_2b9ba269c60dad 8-16
+plugins/plugin-dev/.cursor-plugin/plugin.json
+  s_12acfe8f085326::t_43a4e270f3f233 5
+plugins/plugin-dev/commands/multi-format.md
+  s_12acfe8f085326::t_57f745a3823849 1-77
+plugins/plugin-dev/commands/scaffold.md
+  s_12acfe8f085326::t_0d8831f82ce47f 201-231,234-240
+  s_12acfe8f085326::t_6a10e46124a5d6 3-7,11-13
+plugins/plugin-dev/skills/plugin-authoring/SKILL.md
+  s_12acfe8f085326::t_ebf3881ccf8e6a 1-80
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "455b260cd16420fdefba9fa543ea48f7efee932f",
+  "prompts": {},
+  "sessions": {
+    "s_12acfe8f085326": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "614a3010-bc47-4cdb-960c-2e5387b02e0e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
