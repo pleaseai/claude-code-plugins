@@ -33,7 +33,14 @@ async function readSource(source) {
   }
 
   if (!/^https?:\/\//.test(source)) {
-    return fs.readFile(path.resolve(source), "utf8");
+    // `source` is CLI/env-controlled; validate the canonicalized path stays
+    // within the current working directory before reading (guards traversal).
+    const allowedBase = path.resolve(process.cwd());
+    const resolved = path.resolve(allowedBase, source);
+    if (resolved !== allowedBase && !resolved.startsWith(allowedBase + path.sep)) {
+      throw new Error(`refusing to read outside ${allowedBase}: ${resolved}`);
+    }
+    return fs.readFile(resolved, "utf8");
   }
 
   const response = await fetch(source, {

@@ -20,6 +20,10 @@ The original sample targets the Codex agent. For use as a Claude Code plugin
   guidance, model-selection, migration, and prompting guidance are retained.
 - Removed scripts/fetch-codex-manual.mjs (Codex manual fetch helper).
 - Removed agents/openai.yaml and assets/ (Codex interface metadata and icons).
+- scripts/resolve-latest-model-info.js: added a path-validation guard so a
+  CLI/env-supplied local source path is confined to the current working
+  directory before it is read (static-analysis hardening; behavior for the
+  default remote URL and normal in-tree reference paths is unchanged).
 
 Retained unchanged: references/latest-model.md, references/upgrade-guide.md,
-references/prompting-guide.md, and scripts/resolve-latest-model-info.js.
+and references/prompting-guide.md.
