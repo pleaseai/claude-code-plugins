@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.4.0...skillopt-sleep-v0.5.0) (2026-07-07)
+
+
+### Features
+
+* **skillopt-sleep:** sync vendored engine to upstream v0.2.0 ([#247](https://github.com/pleaseai/claude-code-plugins/issues/247)) ([54cf109](https://github.com/pleaseai/claude-code-plugins/commit/54cf10932043ad9196f2780b1f6ff96d16bee53e))
+
 ## [0.4.0](https://github.com/pleaseai/claude-code-plugins/compare/skillopt-sleep-v0.3.0...skillopt-sleep-v0.4.0) (2026-06-30)
 
 

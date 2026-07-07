@@ -2,7 +2,7 @@
   "name": "vercel-sandbox",
   "displayName": "Vercel Sandbox",
   "description": "Creates isolated Linux MicroVMs using Vercel Sandbox SDK. Use when building code execution environments, running untrusted code, spinning up dev servers, or testing in isolation.",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "author": {
     "name": "Vercel Inc."
   },

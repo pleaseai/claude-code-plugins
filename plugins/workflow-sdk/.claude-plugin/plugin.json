@@ -1,6 +1,6 @@
 {
   "name": "workflow-sdk",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "Workflow SDK: Build durable, reliable, and observable apps and AI Agents in TypeScript",
   "author": {
     "name": "Vercel Inc.",
