@@ -1,0 +1,21 @@
+.claude/agent-memory/review-review-cubic-reviewer/MEMORY.md
+  s_12acfe8f085326::t_cb39377d8685f3 11
+.claude/agent-memory/review-review-cubic-reviewer/pr252-plugin-dev-docs.md
+  s_12acfe8f085326::t_c392bfc193af41 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f48f841ea9d44c0722eed6a87aeffbd97406dd05",
+  "prompts": {},
+  "sessions": {
+    "s_12acfe8f085326": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "614a3010-bc47-4cdb-960c-2e5387b02e0e",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
