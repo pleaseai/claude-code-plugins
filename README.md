@@ -382,6 +382,12 @@ Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readab
 
 **Install:** `/plugin install fetch@pleaseai` | **Source:** [plugins/fetch](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/fetch)
 
+#### OpenAI Docs
+
+Authoritative, current guidance from official OpenAI developer docs, model selection, and model/prompt migration - backed by the OpenAI Developer Docs MCP server.
+
+**Install:** `/plugin install openai-docs@pleaseai` | **Source:** [plugins/openai-docs](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/openai-docs)
+
 #### Java Development
 [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fjava-development)](https://tessl.io/registry/pleaseai/java-development)
 
