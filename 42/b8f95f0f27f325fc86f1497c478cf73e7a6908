@@ -1,0 +1,25 @@
+.claude-plugin/marketplace.json
+  s_f7e3734d604dea::t_d08084ad03c3a9 1516-1518,1524-1527
+plugins/shadcn-ui/.cursor-plugin/plugin.json
+  s_f7e3734d604dea::t_af7c9144df2bb1 9,20-23
+.agents/plugins/marketplace.json
+  s_f7e3734d604dea::t_6b30d8e19fdb6e 1151
+plugins/shadcn-ui/.codex-plugin/plugin.json
+  s_f7e3734d604dea::t_af7c9144df2bb1 14
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "42b8f95f0f27f325fc86f1497c478cf73e7a6908",
+  "prompts": {},
+  "sessions": {
+    "s_f7e3734d604dea": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f8af5c2e-dfa3-4847-b9c6-b3a6efcefcab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
