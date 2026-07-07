@@ -1,0 +1,28 @@
+{
+  "name": "tanstack",
+  "displayName": "Tanstack",
+  "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, Store, Pacer, AI). Uses the official @tanstack/intent CLI to load skills shipped inside the installed npm packages.",
+  "version": "0.1.0",
+  "author": {
+    "name": "TanStack"
+  },
+  "category": "Framework",
+  "homepage": "https://tanstack.com/intent",
+  "repository": "https://github.com/TanStack/intent",
+  "license": "MIT",
+  "keywords": [
+    "tanstack",
+    "query",
+    "router",
+    "start",
+    "table",
+    "form",
+    "db",
+    "virtual",
+    "intent"
+  ],
+  "tags": [
+    "framework",
+    "frontend"
+  ]
+}

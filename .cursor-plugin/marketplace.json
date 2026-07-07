@@ -368,6 +368,11 @@
       "name": "shadcn-ui",
       "source": "./plugins/shadcn-ui",
       "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI."
+    },
+    {
+      "name": "tanstack",
+      "source": "./plugins/tanstack",
+      "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) via the official @tanstack/intent CLI — loads skills shipped inside the installed npm packages"
     }
   ]
 }

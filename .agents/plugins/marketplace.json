@@ -1149,6 +1149,18 @@
         "authentication": "ON_INSTALL"
       },
       "category": "UI"
+    },
+    {
+      "name": "tanstack",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tanstack"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
     }
   ]
 }
