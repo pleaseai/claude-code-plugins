@@ -557,6 +557,18 @@
       "category": "Tooling"
     },
     {
+      "name": "claude-code-docs",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/claude-code-docs.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
       "name": "semble",
       "source": {
         "source": "local",
@@ -1113,6 +1125,30 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Productivity"
+    },
+    {
+      "name": "run-verify",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/run-verify-plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
+      "name": "shadcn-ui",
+      "source": {
+        "source": "local",
+        "path": "./plugins/shadcn-ui"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "UI"
     },
     {
       "name": "tanstack",
