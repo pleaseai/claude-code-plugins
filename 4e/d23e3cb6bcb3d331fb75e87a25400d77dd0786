@@ -1,0 +1,87 @@
+plugins/shadcn-ui/skills-lock.json
+  s_f7e3734d604dea::t_3b17b5195214a1 4-9
+  s_f7e3734d604dea::t_7767115ca53ae2 1-3,10-17
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/disclosure.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-353
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/SKILL.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-173
+plugins/shadcn-ui/.agents/skills/shadcn/cli.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-290
+.claude-plugin/marketplace.json
+  s_f7e3734d604dea::t_9fb16470fa3ffe 1512-1523
+plugins/shadcn-ui/.agents/skills/shadcn/registry.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-277
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/form-controls.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-390
+plugins/shadcn-ui/.codex-plugin/plugin.json
+  s_f7e3734d604dea::t_08b030bc01aa44 1-34
+.release-please-manifest.json
+  s_f7e3734d604dea::t_2d1ea5c1293bce 69-70
+plugins/shadcn-ui/.cursor-plugin/plugin.json
+  s_f7e3734d604dea::t_08b030bc01aa44 1-21
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/consumer-props.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-58
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/wrapper-shapes.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-110
+.agents/plugins/marketplace.json
+  s_f7e3734d604dea::t_08b030bc01aa44 559-570,1128-1150
+  s_f7e3734d604dea::t_162472144572ed 1151
+plugins/shadcn-ui/.agents/skills/shadcn/rules/icons.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-101
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/class-mapping.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-62
+plugins/shadcn-ui/.agents/skills/shadcn/rules/chat.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-224
+plugins/shadcn-ui/.claude-plugin/plugin.json
+  s_f7e3734d604dea::t_5e1653432b9693 1-14
+plugins/shadcn-ui/plugin.json
+  s_f7e3734d604dea::t_08b030bc01aa44 1-20
+README.md
+  s_f7e3734d604dea::t_bb2b23be9ff970 461-466
+.cursor-plugin/marketplace.json
+  s_f7e3734d604dea::t_08b030bc01aa44 366-370
+plugins/shadcn-ui/.agents/skills/shadcn/agents/openai.yml
+  s_f7e3734d604dea::t_7767115ca53ae2 1-5
+release-please-config.json
+  s_f7e3734d604dea::t_f17e1970e59819 1196-1221
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/universal-patterns.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-286
+plugins/shadcn-ui/.agents/skills/shadcn/rules/forms.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-192
+plugins/shadcn-ui/.agents/skills/shadcn/rules/composition.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-201
+plugins/shadcn-ui/.agents/skills/shadcn/rules/base-vs-radix.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-306
+plugins/shadcn-ui/.agents/skills/shadcn/customization.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-209
+plugins/shadcn-ui/.agents/skills/shadcn/evals/evals.json
+  s_f7e3734d604dea::t_7767115ca53ae2 1-77
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/menus.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-409
+plugins/shadcn-ui/.agents/skills/shadcn/rules/styling.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-185
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/overlays.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-459
+plugins/shadcn-ui/.agents/skills/shadcn/mcp.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-105
+plugins/shadcn-ui/.agents/skills/migrate-radix-to-base/display-misc.md
+  s_f7e3734d604dea::t_3b17b5195214a1 1-410
+plugins/shadcn-ui/.agents/skills/shadcn/SKILL.md
+  s_f7e3734d604dea::t_7767115ca53ae2 1-275
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "4ed23e3cb6bcb3d331fb75e87a25400d77dd0786",
+  "prompts": {},
+  "sessions": {
+    "s_f7e3734d604dea": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "f8af5c2e-dfa3-4847-b9c6-b3a6efcefcab",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
