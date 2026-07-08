@@ -4,7 +4,7 @@ Best practices, guidelines, and validation tools for Claude Code plugin developm
 
 ## Overview
 
-`plugin-dev` is a comprehensive toolkit for Claude Code plugin developers. It provides commands, validation hooks, and expert guidance to help you create high-quality plugins that follow best practices.
+`plugin-dev` is a comprehensive toolkit for Claude Code plugin developers. It provides skills, validation hooks, and expert guidance to help you create high-quality plugins that follow best practices. The skills activate automatically when you describe a plugin-development task — no slash commands to remember.
 
 ## Features
 
@@ -28,101 +28,37 @@ claude
 /plugin install plugin-dev@pleaseai
 ```
 
-## Commands
+## Skills
 
-### `/plugin-dev:best-practices`
+These skills activate automatically when your request matches — just describe what you want to do.
+Three focused skills, with deep material factored into `references/` (loaded on demand).
 
-Get comprehensive guidance on Claude Code plugin development best practices.
+### `plugin-authoring`
 
-**Use cases:**
-- Learning plugin development standards
-- Reviewing plugin architecture decisions
-- Understanding component best practices
-- Getting answers to specific development questions
+The umbrella workflow: author, scaffold, or edit a plugin **once** in Claude Code format, then
+generate the Codex, Antigravity, and Cursor manifests from it (`bun scripts/cli.ts multi-format`,
+bundled in this plugin at `scripts/run.ts` + `scripts/multi-format.ts`). Covers scaffolding,
+multi-format generation, and best practices inline, and points to its references:
 
-**Example:**
-```
-/plugin-dev:best-practices
+- `references/plugin-json-spec.md` — manifest + marketplace field guide with canonical samples.
+- `references/multi-runtime-manifests.md` — per-runtime mapping, the generator, diff scoping.
+- `references/best-practices.md` — quality checklist, pitfalls, testing.
 
-How should I structure my plugin's hooks for optimal performance?
-```
+> "I need a new plugin called *api-tools* for API testing." · "Regenerate *plugins/api-tools*' Codex and Cursor manifests."
 
-### `/plugin-dev:validate`
+### `validating-plugins`
 
-Perform comprehensive validation of your plugin structure and configuration.
+Audit a plugin's manifest, directory structure, commands, skills, hooks, and MCP config, with
+findings grouped by severity.
 
-**Validates:**
-- ✅ Plugin manifest (plugin.json) correctness
-- ✅ Directory structure compliance
-- ✅ Command file formats
-- ✅ Hook configurations
-- ✅ MCP server definitions
-- ✅ Documentation completeness
+> "Validate my plugin at ./plugins/my-plugin."
 
-**Example:**
-```
-/plugin-dev:validate
+### `migrating-gemini-extensions`
 
-Please validate my plugin at ./plugins/my-plugin
-```
+Convert a Gemini CLI extension to a Claude Code plugin, preserving functionality and backwards
+compatibility.
 
-### `/plugin-dev:scaffold`
-
-Generate a new plugin with proper structure and best practices baked in.
-
-**Creates:**
-- Complete directory structure
-- plugin.json manifest
-- Example commands
-- Hook templates
-- README and documentation
-- License and changelog
-
-**Example:**
-```
-/plugin-dev:scaffold
-
-I need a new plugin called "api-tools" that provides commands for API testing
-```
-
-### `/plugin-dev:multi-format`
-
-Generate the Codex, Antigravity, and Cursor manifests for the marketplace's local plugins from the
-Claude Code source of truth. The Claude manifest is the only file you author by hand — this command
-keeps every runtime in sync.
-
-**Generates (per local plugin):**
-- `.codex-plugin/plugin.json` (+ `.mcp.json` when MCP is present)
-- root `plugin.json` + `mcp_config.json` + `hooks.json` (Antigravity)
-- `.cursor-plugin/plugin.json`
-- `.agents/plugins/marketplace.json` and `.cursor-plugin/marketplace.json`
-
-**Example:**
-```
-/plugin-dev:multi-format
-
-I just edited plugins/api-tools — regenerate its Codex and Cursor manifests
-```
-
-> The generator rewrites all local plugins; scope your commit to the plugin(s) you changed.
-
-### `/plugin-dev:migrate-gemini`
-
-Migrate existing Gemini CLI extensions to Claude Code plugins.
-
-**Handles:**
-- Converting gemini-extension.json → plugin.json
-- Migrating context files to SessionStart hooks
-- Updating MCP server configurations
-- Maintaining backwards compatibility
-- Updating documentation
-
-**Example:**
-```
-/plugin-dev:migrate-gemini
-
-Help me migrate my Gemini extension at ./extensions/my-extension
-```
+> "Help me migrate my Gemini extension at ./extensions/my-extension."
 
 ## Automatic Validation
 
@@ -194,24 +130,22 @@ plugin-name/
 
 ## Development Workflow
 
-1. **Create plugin structure**
-   ```bash
-   /plugin-dev:scaffold
-   ```
+1. **Create plugin structure** — describe the plugin; the `plugin-authoring` skill activates.
 
 2. **Develop components**
    - Add commands in `commands/`
    - Create agents in `agents/`
+   - Add skills in `skills/`
    - Configure hooks in `hooks/`
 
-3. **Generate multi-runtime manifests**
+3. **Generate multi-runtime manifests** (the `plugin-authoring` skill)
    ```bash
-   /plugin-dev:multi-format
+   bun scripts/cli.ts multi-format
    ```
 
-4. **Validate continuously**
+4. **Validate continuously** — ask to validate the plugin (the `validating-plugins` skill), and run
    ```bash
-   /plugin-dev:validate
+   claude plugin validate plugins/<name>
    ```
 
 5. **Test locally**
@@ -251,7 +185,7 @@ chmod +x hooks/script.sh
 
 ### Validation errors
 **Problem**: Invalid JSON or missing required fields
-**Solution**: Run `/plugin-dev:validate` to see specific issues
+**Solution**: Ask to validate the plugin (the `validating-plugins` skill) to see specific issues
 
 ## Resources
 
@@ -274,7 +208,7 @@ See these plugins for real-world examples:
 Contributions welcome! Please:
 
 1. Follow the best practices outlined in this plugin
-2. Validate your changes with `/plugin-dev:validate`
+2. Validate your changes (the `validating-plugins` skill)
 3. Update documentation
 4. Add examples for new features
 

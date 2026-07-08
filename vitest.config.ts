@@ -34,7 +34,7 @@ export default defineConfig({
       {
         root: '.',
         test: {
-          include: ['scripts/**/*.test.ts'],
+          include: ['scripts/**/*.test.ts', 'plugins/plugin-dev/scripts/**/*.test.ts'],
           environment: 'node',
         },
       },
