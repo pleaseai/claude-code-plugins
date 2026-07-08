@@ -1,5 +1,5 @@
 ---
-name: Migrating Gemini Extensions
+name: migrating-gemini-extensions
 description: Convert a Gemini CLI extension into a Claude Code plugin, preserving functionality and backwards compatibility. Use when the user wants to migrate/port a Gemini extension to Claude Code, convert gemini-extension.json to plugin.json, adapt GEMINI.md context or Gemini tools/hooks, or mentions "gemini-extension.json", "GEMINI.md", or "migrate Gemini".
 ---
 

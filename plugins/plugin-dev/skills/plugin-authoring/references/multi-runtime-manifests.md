@@ -11,8 +11,9 @@ is the source of truth; the others are generated.
 | Cursor       | `.cursor-plugin/plugin.json` | none — components auto-discovered     | generated |
 
 Shared assets (`commands/`, `agents/`, `skills/`, `hooks/`) live **once** at the plugin root and are
-referenced by every manifest. Only manifest-level fields differ per runtime. Each generated manifest
-carries its own `$schema`:
+referenced by every manifest. Only manifest-level fields differ per runtime. The Claude source
+manifest and the generated Antigravity manifest each carry a `$schema` (the generated Codex and
+Cursor manifests do not):
 
 - Claude source — `https://json.schemastore.org/claude-code-plugin-manifest.json`
 - Antigravity root `plugin.json` — `https://antigravity.google/schemas/v1/plugin.json`
@@ -36,7 +37,7 @@ For every local plugin (`source: "./plugins/..."`) it emits:
 - `plugins/<name>/.codex-plugin/plugin.json` (+ `.mcp.json` when the plugin defines `mcpServers`)
 - `plugins/<name>/plugin.json` + `mcp_config.json` + root `hooks.json` (Antigravity)
 - `plugins/<name>/.cursor-plugin/plugin.json`
-- `.agents/plugins/marketplace.json` (Codex marketplace, local plugins only)
+- `.agents/plugins/marketplace.json` (Codex marketplace; local plugins plus supported external sources)
 - `.cursor-plugin/marketplace.json` (Cursor marketplace, local plugins only)
 
 It writes only files whose content changed, and prints per-plugin status

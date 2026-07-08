@@ -30,5 +30,6 @@
     "validation",
     "guidelines",
     "scaffold"
-  ]
+  ],
+  "skills": "./skills/"
 }

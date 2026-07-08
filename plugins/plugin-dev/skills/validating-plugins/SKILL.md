@@ -1,5 +1,5 @@
 ---
-name: Validating Plugins
+name: validating-plugins
 description: Thoroughly validate a Claude Code plugin's manifest, directory structure, commands, agents, skills, hooks, and MCP config, then report issues by severity. Use when the user asks to validate, check, audit, or lint a plugin, verify a plugin.json or plugin structure, debug why a plugin won't load, or mentions "plugin validate", "invalid manifest", or "plugin not loading".
 ---
 

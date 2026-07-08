@@ -30,88 +30,101 @@ import {
 const ROOT = resolve(import.meta.dirname!, "..", "..", "..")
 const PLUGINS_DIR = join(ROOT, "plugins")
 
-/**
- * Generate Codex, Antigravity, and Cursor manifests for every local plugin so
- * the same plugin directory loads across runtimes.
- */
-export async function generateMultiFormat() {
+interface PluginRunResult {
+  pluginsProcessed: number
+  filesWritten: number
+  benignSkipped: string[]
+  failed: { name: string; error: string }[]
+}
+
+/** Read the Claude marketplace, or exit(1) if it is missing. */
+function loadMarketplace(): ClaudeMarketplace {
   const marketplaceJsonPath = join(ROOT, ".claude-plugin", "marketplace.json")
   if (!existsSync(marketplaceJsonPath)) {
     console.error(`! marketplace not found: ${marketplaceJsonPath}`)
     process.exit(1)
   }
+  return JSON.parse(readFileSync(marketplaceJsonPath, "utf-8")) as ClaudeMarketplace
+}
 
-  const marketplaceJson = JSON.parse(readFileSync(marketplaceJsonPath, "utf-8")) as ClaudeMarketplace
+/** Index local (`./plugins/...`) marketplace entries by their plugin directory name. */
+function localEntriesByDir(marketplaceJson: ClaudeMarketplace): Map<string, MarketplaceEntry> {
   const entriesByPluginDir = new Map<string, MarketplaceEntry>()
   for (const entry of marketplaceJson.plugins) {
     if (typeof entry.source === "string" && entry.source.startsWith("./plugins/")) {
-      const dirName = entry.source.replace(/^\.\/plugins\//, "")
-      entriesByPluginDir.set(dirName, entry)
+      entriesByPluginDir.set(entry.source.replace(/^\.\/plugins\//, ""), entry)
     }
   }
+  return entriesByPluginDir
+}
 
-  console.log("Generating Codex + Antigravity + Cursor manifests for local plugins...\n")
-  let pluginsProcessed = 0
-  let filesWritten = 0
-  const benignSkipped: string[] = []
-  const failed: { name: string; error: string }[] = []
+/** Generate per-runtime manifests for every plugin directory, logging per-plugin status. */
+function processPlugins(entriesByPluginDir: Map<string, MarketplaceEntry>): PluginRunResult {
+  const out: PluginRunResult = { pluginsProcessed: 0, filesWritten: 0, benignSkipped: [], failed: [] }
   const pluginDirs = readdirSync(PLUGINS_DIR, { withFileTypes: true })
     .filter(d => d.isDirectory())
     .map(d => d.name)
     .sort()
 
   for (const dirName of pluginDirs) {
-    const pluginDir = join(PLUGINS_DIR, dirName)
-    const entry = entriesByPluginDir.get(dirName)
     try {
-      const result = generateForPlugin(pluginDir, entry)
+      const result = generateForPlugin(join(PLUGINS_DIR, dirName), entriesByPluginDir.get(dirName))
       if (result.reason) {
         console.log(`  ${dirName}: skipped (${result.reason})`)
-        benignSkipped.push(dirName)
+        out.benignSkipped.push(dirName)
         continue
       }
-      pluginsProcessed++
+      out.pluginsProcessed++
       if (result.written.length === 0) {
         console.log(`  ${dirName}: up to date`)
       } else {
         console.log(`  ${dirName}: wrote ${result.written.length} file(s)`)
-        filesWritten += result.written.length
+        out.filesWritten += result.written.length
       }
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err)
       console.error(`  ${dirName}: FAILED — ${msg}`)
-      failed.push({ name: dirName, error: msg })
+      out.failed.push({ name: dirName, error: msg })
     }
   }
+  return out
+}
 
-  // Generate Codex marketplace.json from the Claude one.
-  const codexMarketplace = toCodexMarketplace(marketplaceJson)
-  const codexMarketplacePath = join(ROOT, ".agents", "plugins", "marketplace.json")
-  const codexWritten = writeIfChanged(codexMarketplacePath, JSON.stringify(codexMarketplace, null, 2) + "\n")
+/** Emit the Codex + Cursor marketplace files from the Claude marketplace; returns files written. */
+function writeMarketplaces(marketplaceJson: ClaudeMarketplace): number {
+  const targets: { label: string; path: string; doc: unknown }[] = [
+    { label: "Codex", path: join(ROOT, ".agents", "plugins", "marketplace.json"), doc: toCodexMarketplace(marketplaceJson) },
+    { label: "Cursor", path: join(ROOT, ".cursor-plugin", "marketplace.json"), doc: toCursorMarketplace(marketplaceJson) },
+  ]
   console.log()
-  if (codexWritten) {
-    console.log(`Codex marketplace written: ${codexMarketplacePath}`)
-    filesWritten++
-  } else {
-    console.log(`Codex marketplace up to date: ${codexMarketplacePath}`)
+  let written = 0
+  for (const { label, path, doc } of targets) {
+    if (writeIfChanged(path, JSON.stringify(doc, null, 2) + "\n")) {
+      console.log(`${label} marketplace written: ${path}`)
+      written++
+    } else {
+      console.log(`${label} marketplace up to date: ${path}`)
+    }
   }
+  return written
+}
 
-  // Generate Cursor marketplace.json from the Claude one (local plugins only).
-  const cursorMarketplace = toCursorMarketplace(marketplaceJson)
-  const cursorMarketplacePath = join(ROOT, ".cursor-plugin", "marketplace.json")
-  const cursorWritten = writeIfChanged(cursorMarketplacePath, JSON.stringify(cursorMarketplace, null, 2) + "\n")
-  if (cursorWritten) {
-    console.log(`Cursor marketplace written: ${cursorMarketplacePath}`)
-    filesWritten++
-  } else {
-    console.log(`Cursor marketplace up to date: ${cursorMarketplacePath}`)
-  }
+/**
+ * Generate Codex, Antigravity, and Cursor manifests for every local plugin so
+ * the same plugin directory loads across runtimes.
+ */
+export async function generateMultiFormat() {
+  const marketplaceJson = loadMarketplace()
 
-  console.log(`\nProcessed ${pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
-  if (benignSkipped.length > 0) console.log(`Skipped (no manifest): ${benignSkipped.join(", ")}`)
-  if (failed.length > 0) {
-    console.error(`\n${failed.length} plugin(s) failed:`)
-    for (const f of failed) console.error(`  - ${f.name}: ${f.error}`)
+  console.log("Generating Codex + Antigravity + Cursor manifests for local plugins...\n")
+  const run = processPlugins(localEntriesByDir(marketplaceJson))
+  const filesWritten = run.filesWritten + writeMarketplaces(marketplaceJson)
+
+  console.log(`\nProcessed ${run.pluginsProcessed} plugins, wrote ${filesWritten} file(s).`)
+  if (run.benignSkipped.length > 0) console.log(`Skipped (no manifest): ${run.benignSkipped.join(", ")}`)
+  if (run.failed.length > 0) {
+    console.error(`\n${run.failed.length} plugin(s) failed:`)
+    for (const f of run.failed) console.error(`  - ${f.name}: ${f.error}`)
     process.exit(1)
   }
   console.log("Done.")
