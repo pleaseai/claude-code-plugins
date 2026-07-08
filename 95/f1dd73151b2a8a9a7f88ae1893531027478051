@@ -1,0 +1,67 @@
+plugins/plugin-dev/skills/plugin-authoring/references/multi-runtime-manifests.md
+  s_501c2c4534608d::t_d9b1bde37a21bb 1-82
+plugins/plugin-dev/skills/plugin-authoring/SKILL.md
+  s_501c2c4534608d::t_262d07f191876f 66
+  s_501c2c4534608d::t_eead023bc50c3c 29,51,53
+  s_501c2c4534608d::t_a058e6aa45a969 3,13,25-26,30-31,33-45,48-49,54-55,57,59-61,63,65,67-68,72-74
+  s_501c2c4534608d::t_d8ebdac4019317 50
+scripts/cli.ts
+  s_501c2c4534608d::t_110cf4d2cceead 18-23
+  s_501c2c4534608d::t_038220bb5c78b8 699-702
+plugins/plugin-dev/skills/migrating-gemini-extensions/SKILL.md
+  s_501c2c4534608d::t_9c437c4f0d146c 54-55
+  s_501c2c4534608d::t_61b65c3d5bd92e 1-53,56-131
+plugins/plugin-dev/scripts/run.ts
+  s_501c2c4534608d::t_f46b1a4829facd 1-122
+vitest.config.ts
+  s_501c2c4534608d::t_b78f109d80bf6a 37
+plugins/plugin-dev/README.md
+  s_501c2c4534608d::t_c68bd5b7e4fd78 211
+  s_501c2c4534608d::t_8aca6efd6c512b 34,38-41,43-45,47,51-52
+  s_501c2c4534608d::t_add56dcf4827bb 31,33,36,49,54,56,58-59,61
+  s_501c2c4534608d::t_6d3c2e68a1877d 133,141
+  s_501c2c4534608d::t_bbd2d715cb8a5a 188
+  s_501c2c4534608d::t_d57ae144922512 7
+  s_501c2c4534608d::t_e7b82c11ff1d7f 138,143,146,148
+plugins/plugin-dev/scripts/multi-format.ts
+  s_501c2c4534608d::t_6eba13e0526901 296
+  s_501c2c4534608d::t_2bcc776425f5b7 107
+  s_501c2c4534608d::t_9392e2c843be34 40-45
+  s_501c2c4534608d::t_e93a7183d090cb 120-123
+plugins/plugin-dev/skills/plugin-authoring/references/best-practices.md
+  s_501c2c4534608d::t_8542e74f988fcf 1-68
+plugins/plugin-dev/plugin.json
+  s_501c2c4534608d::t_23907de9fddfa6 2,21
+plugins/plugin-dev/skills/plugin-authoring/references/plugin-json-spec.md
+  s_501c2c4534608d::t_0787d6c0674426 1-93
+plugins/plugin-dev/skills/validating-plugins/SKILL.md
+  s_501c2c4534608d::t_7cf790b60af17a 1-91
+plugins/plugin-dev/.claude-plugin/plugin.json
+  s_501c2c4534608d::t_44dea71b0108fa 1-22
+plugins/plugin-dev/scripts/multi-format.test.ts
+  s_1a461af72ffe86::t_27cc90e4af4583 171-179
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "95f1dd73151b2a8a9a7f88ae1893531027478051",
+  "prompts": {},
+  "sessions": {
+    "s_1a461af72ffe86": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "932bee27-4041-4b00-bdad-f3b96a032313",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    },
+    "s_501c2c4534608d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d9db78ba-2d2c-4814-9a5e-4da5d6e23f4a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
