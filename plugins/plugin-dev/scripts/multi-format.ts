@@ -37,10 +37,12 @@ import { dirname, join } from "node:path"
  *       auto-discovers them from default folders at the plugin root
  *     - `mcpServers` inline → kept inline in the manifest (Cursor accepts an object)
  *
- * Antigravity collision: plugins that already use a root-level `plugin.json`
- * (currently `bun`, `plugin-dev`) are treated as Antigravity-compatible
- * already — generator only writes the file when content actually changes,
- * and Claude Code itself can read root-level `plugin.json`.
+ * Antigravity collision safeguard: if a plugin's Claude manifest lives at the
+ * root `plugin.json` (no `.claude-plugin/plugin.json`), that file IS the source
+ * of truth and is left untouched rather than overwritten with a generated
+ * Antigravity manifest. No local plugin currently ships that way — every plugin
+ * uses `.claude-plugin/plugin.json` as source and a generated root `plugin.json`
+ * for Antigravity — but the guard remains for safety.
  */
 
 export interface ClaudePluginManifest {
@@ -102,6 +104,7 @@ export interface CodexManifest {
 }
 
 export interface AntigravityManifest {
+  "$schema"?: string
   name: string
   version?: string
   description?: string
@@ -113,6 +116,10 @@ export interface AntigravityManifest {
 }
 
 const DEFAULT_CATEGORY = "Productivity"
+
+// JSON Schema URL for the Antigravity plugin manifest, used by editors for
+// autocomplete and validation. See https://antigravity.google/docs/cli/plugins
+const ANTIGRAVITY_SCHEMA = "https://antigravity.google/schemas/v1/plugin.json"
 
 function isHttpsUrl(value: string | undefined): value is string {
   return !!value && /^https:\/\/[^\s]+$/.test(value)
@@ -286,7 +293,7 @@ export function toCodexManifest(
  * Claude Code manifest convention used by a few existing plugins.
  */
 export function toAntigravityManifest(claude: ClaudePluginManifest): AntigravityManifest {
-  const manifest: AntigravityManifest = { name: claude.name }
+  const manifest: AntigravityManifest = { "$schema": ANTIGRAVITY_SCHEMA, name: claude.name }
   if (claude.version) manifest.version = claude.version
   if (claude.description) manifest.description = claude.description
   const author = sanitiseAuthor(claude.author)

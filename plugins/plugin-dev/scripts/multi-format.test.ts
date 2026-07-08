@@ -168,7 +168,15 @@ describe("toAntigravityManifest", () => {
   test("produces flat manifest with only present fields", () => {
     const claude: ClaudePluginManifest = { name: "x" }
     const result = toAntigravityManifest(claude) as unknown as Record<string, unknown>
-    expect(result).toEqual({ name: "x" })
+    expect(result).toEqual({
+      "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+      name: "x",
+    })
+  })
+
+  test("emits the Antigravity $schema URL for editor validation", () => {
+    const result = toAntigravityManifest({ name: "x" }) as unknown as Record<string, unknown>
+    expect(result["$schema"]).toBe("https://antigravity.google/schemas/v1/plugin.json")
   })
 
   test("preserves common metadata fields", () => {
