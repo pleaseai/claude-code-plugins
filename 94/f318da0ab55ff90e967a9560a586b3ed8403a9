@@ -1,0 +1,32 @@
+plugins/plugin-dev/.claude-plugin/plugin.json
+  s_501c2c4534608d::t_a6fcb324a6816c 21-23
+plugins/plugin-dev/skills/validating-plugins/SKILL.md
+  s_501c2c4534608d::t_8a368be8077776 2
+plugins/plugin-dev/skills/migrating-gemini-extensions/SKILL.md
+  s_501c2c4534608d::t_6aa64e07986bcc 2
+plugins/plugin-dev/skills/plugin-authoring/SKILL.md
+  s_501c2c4534608d::t_33ca4db8266196 2
+plugins/plugin-dev/scripts/run.ts
+  s_501c2c4534608d::t_3dc4481b31daad 33-41,47-48,50-51,55,58-59,61-63,71,74,77,82,87,90-91,93-98,100-107,109-110,112-121,123-127
+plugins/plugin-dev/skills/plugin-authoring/references/multi-runtime-manifests.md
+  s_501c2c4534608d::t_391b1cc9655ede 14-16
+  s_501c2c4534608d::t_a1b907a0cc5b89 40
+plugins/plugin-dev/.codex-plugin/plugin.json
+  s_501c2c4534608d::t_f70d6d7e195338 33-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "94f318da0ab55ff90e967a9560a586b3ed8403a9",
+  "prompts": {},
+  "sessions": {
+    "s_501c2c4534608d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "d9db78ba-2d2c-4814-9a5e-4da5d6e23f4a",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
