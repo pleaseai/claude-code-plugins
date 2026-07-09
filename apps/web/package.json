@@ -21,7 +21,7 @@
     "better-sqlite3": "^12.8.0",
     "nuxt": "^4.4.2",
     "vue": "^3.5.31",
-    "vue-router": "^5.0.4"
+    "vue-router": "^5.1.0"
   },
   "devDependencies": {
     "@iconify-json/heroicons": "^1.2.3",
