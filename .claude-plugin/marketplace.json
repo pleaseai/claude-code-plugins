@@ -1548,6 +1548,111 @@
           ]
         }
       }
+    },
+    {
+      "name": "shunt-codex",
+      "displayName": "shunt · Codex models",
+      "description": "Subagents on ChatGPT/Codex GPT-5.6 models (Luna, Sol, Terra), routed through shunt at the inference layer.",
+      "category": "ai",
+      "keywords": ["shunt", "codex", "chatgpt", "gpt-5.6", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-codex",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-codex"
+    },
+    {
+      "name": "shunt-xai",
+      "displayName": "shunt · xAI Grok models",
+      "description": "Subagents on xAI Grok models (grok-build-0.1, grok-4.5, grok-4.3), routed through shunt at the inference layer. EXPERIMENTAL — the xAI provider is not yet verified against the live API.",
+      "category": "ai",
+      "keywords": ["shunt", "xai", "grok", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-xai",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-xai"
+    },
+    {
+      "name": "shunt-kimi",
+      "displayName": "shunt · Kimi models",
+      "description": "Subagent on Moonshot AI's kimi-k2.7-code, routed through shunt at the inference layer via Moonshot's Anthropic-compatible endpoint.",
+      "category": "ai",
+      "keywords": ["shunt", "kimi", "moonshot", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-kimi",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-kimi"
+    },
+    {
+      "name": "shunt-deepseek",
+      "displayName": "shunt · DeepSeek models",
+      "description": "Subagents on DeepSeek models (deepseek-v4-pro, deepseek-v4-flash), routed through shunt at the inference layer via DeepSeek's Anthropic-compatible endpoint.",
+      "category": "ai",
+      "keywords": ["shunt", "deepseek", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-deepseek",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-deepseek"
+    },
+    {
+      "name": "shunt-zai",
+      "displayName": "shunt · Z.ai GLM models",
+      "description": "Subagents on Z.ai GLM models (glm-5.2, glm-4.7), routed through shunt at the inference layer via Z.ai's Anthropic-compatible endpoint.",
+      "category": "ai",
+      "keywords": ["shunt", "zai", "glm", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-zai",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-zai"
+    },
+    {
+      "name": "shunt-minimax",
+      "displayName": "shunt · MiniMax models",
+      "description": "Subagent on MiniMax-M3 (1M context), routed through shunt at the inference layer via MiniMax's Anthropic-compatible endpoint.",
+      "category": "ai",
+      "keywords": ["shunt", "minimax", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-minimax",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-minimax"
+    },
+    {
+      "name": "shunt-mimo",
+      "displayName": "shunt · Mimo models",
+      "description": "Subagent on Xiaomi's mimo-v2.5-pro, routed through shunt at the inference layer via Mimo's Anthropic-compatible endpoint.",
+      "category": "ai",
+      "keywords": ["shunt", "mimo", "xiaomi", "subagent", "llm-gateway"],
+      "tags": ["ai", "subagent"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/shunt",
+        "path": "plugins/shunt-mimo",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-mimo"
     }
   ]
 }
