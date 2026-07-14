@@ -45,7 +45,8 @@
     "vueuse@pleaseai": true,
     "fetch@pleaseai": true,
     "ask@pleaseai": true,
-    "modern-web-guidance@pleaseai": true
+    "modern-web-guidance@pleaseai": true,
+    "csp@pleaseai": true
   },
   "extraKnownMarketplaces": {
     "code-intelligence": {
