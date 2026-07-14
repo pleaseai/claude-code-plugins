@@ -1,0 +1,19 @@
+.claude/settings.json
+  s_bc2fc647eb3091::t_27c8f65b8833e9 48-49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "38c7c484ce25ac42dcb54ef630e949a3cf09ec4b",
+  "prompts": {},
+  "sessions": {
+    "s_bc2fc647eb3091": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1b398429-e112-427e-b79d-8f4f614355bd",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
