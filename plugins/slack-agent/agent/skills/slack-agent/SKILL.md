@@ -1,12 +1,12 @@
 ---
-description: "Use when working on Slack agent/bot code, Chat SDK applications, Bolt for JavaScript projects, or projects using @chat-adapter/slack or @slack/bolt. Provides development patterns, testing requirements, and quality standards."
+description: "Use when building Slack agents/bots with eve (Vercel's filesystem-first agent framework), @vercel/connect, or eve/channels/slack. Covers defineAgent/defineTool patterns, Vercel Connect credential brokering, Slack channel setup, testing requirements, and quality standards."
 ---
 # Slack Agent Development Skill
 
-This skill supports two frameworks for building Slack agents:
+This skill builds Slack agents with **eve** — Vercel's filesystem-first framework for durable backend agents — using **Vercel Connect** for Slack credentials:
 
-- **Chat SDK** (Recommended for new projects) — `chat` + `@chat-adapter/slack`
-- **Bolt for JavaScript** (For existing Bolt projects) — `@slack/bolt` + `@vercel/slack-bolt`
+- **eve** (`eve` package) — agent runtime, tools, channels, durability
+- **@vercel/connect** — brokered short-lived Slack tokens; no bot tokens or signing secrets to manage
 
 ## Skill Invocation Handling
 
@@ -26,111 +26,96 @@ When this skill is invoked via `/slack-agent`, check for arguments and route acc
 
 If invoked without arguments, detect the project state and route appropriately:
 
-1. **No `package.json` with `chat` or `@slack/bolt`** → Treat as `new`, start Phase 1
-2. **Has project but no customized `manifest.json`** → Start Phase 2
-3. **Has project but no `.env` file** → Start Phase 3
-4. **Has `.env` but not tested** → Start Phase 4
-5. **Tested but not deployed** → Start Phase 5
+1. **No `package.json` with `eve` and no `agent/` directory** → Treat as `new`, start Phase 1
+2. **Has eve project but no `agent/channels/slack.ts`** → Start Phase 2 (Slack connector + channel)
+3. **Has Slack channel but no `SLACK_CONNECTOR` configured** → Start Phase 3
+4. **Configured but not deployed** → Start Phase 5 (the Slack surface only works on a deployment)
+5. **Deployed but no tests** → Start Phase 6
 6. **Otherwise** → Provide general assistance using this skill's patterns
 
-### Framework Detection
+### Project Detection
 
-Detect which framework the project uses:
+Detect an eve project by either signal:
 
-- **`package.json` contains `"chat"`** → Chat SDK project
-- **`package.json` contains `"@slack/bolt"`** → Bolt project
-- **Neither detected** → New project, recommend Chat SDK (offer Bolt as alternative)
+- **`package.json` contains `"eve"`** as a dependency
+- **An `agent/` directory** with `instructions.md` and/or `agent.ts` exists
 
-Store the detected framework and use it to show the correct patterns throughout the wizard and development guidance.
+If neither is present, this is a new project: scaffold with `npx eve@latest init` (Node 24+ required).
 
 ### Wizard Phases
 
 The wizard is located in `./wizard/` with these phases:
-- `1-project-setup.md` - Understand purpose, choose framework, generate custom implementation plan
+- `1-project-setup.md` - Understand purpose, generate custom implementation plan, scaffold with `npx eve@latest init`
 - `1b-approve-plan.md` - Present plan for user approval before scaffolding
-- `2-create-slack-app.md` - Customize manifest, create app in Slack
-- `3-configure-environment.md` - Set up .env with credentials
-- `4-test-locally.md` - Dev server + ngrok tunnel
-- `5-deploy-production.md` - Vercel deployment
+- `2-create-slack-app.md` - Create the Slack connector with Vercel Connect and add the Slack channel
+- `3-configure-environment.md` - Set up env vars (`SLACK_CONNECTOR`, model credentials)
+- `4-test-locally.md` - Test agent logic locally with the `eve dev` TUI (Slack surface tests happen after deploy)
+- `5-deploy-production.md` - Deploy with `eve deploy`, verify the Slack surface
 - `6-setup-testing.md` - Vitest configuration
 
 **IMPORTANT:** For `new` projects, you MUST:
 1. Read `./wizard/1-project-setup.md` first
 2. Ask the user what kind of agent they want to build
-3. Offer framework choice (Chat SDK recommended, Bolt as alternative)
-4. Generate a custom implementation plan using `./reference/agent-archetypes.md`
-5. Present the plan for approval (Phase 1b) BEFORE scaffolding the project
-6. Only proceed to scaffold after the plan is approved
-
----
-
-## Framework Selection Guide
-
-| Aspect | Chat SDK | Bolt for JavaScript |
-|--------|----------|---------------------|
-| **Best for** | New projects | Existing Bolt codebases |
-| **Packages** | `chat`, `@chat-adapter/slack`, `@chat-adapter/state-redis` | `@slack/bolt`, `@vercel/slack-bolt` |
-| **Server** | Next.js App Router | Nitro (H3-based) |
-| **Event handling** | `bot.onNewMention()`, `bot.onSubscribedMessage()` | `app.event()`, `app.command()`, `app.message()` |
-| **Webhook route** | `app/api/webhooks/[platform]/route.ts` | `server/api/slack/events.post.ts` |
-| **Message posting** | `thread.post("text")` / `thread.post(<Card>...)` | `client.chat.postMessage({ channel, text, blocks })` |
-| **UI components** | JSX: `<Card>`, `<Button>`, `<Actions>` | Raw Block Kit JSON |
-| **State** | `@chat-adapter/state-redis` / `thread.state` | Manual / Vercel Workflow |
-| **Config** | `new Chat({ adapters: { slack } })` | `new App({ token, signingSecret, receiver })` |
+3. Generate a custom implementation plan using `./reference/agent-archetypes.md`
+4. Present the plan for approval (Phase 1b) BEFORE scaffolding the project
+5. Only proceed to scaffold after the plan is approved
 
 ---
 
 ## General Development Guidance
 
-You are working on a Slack agent project. Follow these mandatory practices for all code changes.
+You are working on a Slack agent project built with eve. Follow these mandatory practices for all code changes.
 
 ## Project Stack
 
-### If using Chat SDK
-
-- **Framework**: Next.js (App Router)
-- **Chat SDK**: `chat` + `@chat-adapter/slack` for Slack bot functionality
-- **State**: `@chat-adapter/state-redis` for state persistence (or in-memory for development)
-- **AI**: AI SDK v6 with @ai-sdk/gateway
+- **Framework**: eve (filesystem-first agent framework; Node 24+)
+- **Slack channel**: `eve/channels/slack` + `@vercel/connect` for credentials
+- **AI**: model routed through Vercel AI Gateway by default (`anthropic/claude-sonnet-5`); tool schemas with `zod`
+- **Durability**: Workflow SDK under the hood (Vercel Workflows when deployed on Vercel)
 - **Linting**: Biome
-- **Package Manager**: pnpm
+- **Package Manager**: pnpm (or npm — `npx eve@latest init` installs with npm)
 
 ```json
 {
+  "engines": { "node": "24.x" },
   "dependencies": {
-    "ai": "^6.0.0",
-    "@ai-sdk/gateway": "latest",
-    "chat": "latest",
-    "@chat-adapter/slack": "latest",
-    "@chat-adapter/state-redis": "latest",
+    "eve": "latest",
+    "ai": "latest",
     "zod": "^3.x",
-    "next": "^15.x"
+    "@vercel/connect": "latest"
   }
 }
 ```
 
-### If using Bolt for JavaScript
+### Filesystem-First Layout
 
-- **Server**: Nitro (H3-based) with file-based routing
-- **Slack SDK**: `@vercel/slack-bolt` for serverless Slack apps (wraps Bolt for JavaScript)
-- **AI**: AI SDK v6 with @ai-sdk/gateway
-- **Workflows**: Workflow DevKit for durable execution
-- **Linting**: Biome
-- **Package Manager**: pnpm
+In eve, a file's location says what it does, and its path usually gives it its name. The whole agent lives under `agent/`:
 
-```json
-{
-  "dependencies": {
-    "ai": "^6.0.0",
-    "@ai-sdk/gateway": "latest",
-    "@slack/bolt": "^4.x",
-    "@vercel/slack-bolt": "^1.0.2",
-    "zod": "^3.x"
-  }
-}
+```
+agent/
+├── instructions.md        # Always-on system prompt
+├── agent.ts               # Runtime config (defineAgent): model, reasoning, compaction
+├── tools/                 # Tools — filename (snake_case ASCII) = tool name the model sees
+│   ├── get_weather.ts
+│   └── search_docs.ts
+├── skills/                # Load-on-demand instructions (*.md with description frontmatter)
+│   └── incident-triage.md
+├── channels/
+│   └── slack.ts           # Slack channel — filename registers it at /eve/v1/slack
+├── connections/           # MCP / OpenAPI connections (optional)
+└── hooks/                 # Subscribe to runtime stream events (optional)
 ```
 
-**Note:** When deploying on Vercel, prefer `@ai-sdk/gateway` for zero-config AI access. Use direct provider SDKs (`@ai-sdk/openai`, `@ai-sdk/anthropic`, etc.) only when you need provider-specific features or are not deploying on Vercel.
+Even a two-file agent (`instructions.md` + `agent.ts`) gets file, shell, web, and delegation tools out of the box from the default harness. Full docs are bundled at `node_modules/eve/docs/` once eve is installed — read them when a detail isn't covered here.
+
+```ts
+// agent/agent.ts
+import { defineAgent } from "eve";
+
+export default defineAgent({
+  model: "anthropic/claude-sonnet-5", // routed via Vercel AI Gateway
+});
+```
 
 ---
 
@@ -173,17 +158,9 @@ pnpm test
 
 **For ANY code change, you MUST write or update unit tests.**
 
-### If using Chat SDK
-
-- **Location**: Co-located `*.test.ts` files or `lib/__tests__/`
+- **Location**: Co-located `*.test.ts` files (e.g. `agent/tools/get_weather.test.ts`)
 - **Framework**: Vitest
-- **Coverage**: All exported functions must have tests
-
-### If using Bolt for JavaScript
-
-- **Location**: Co-located `*.test.ts` files or `server/__tests__/`
-- **Framework**: Vitest
-- **Coverage**: All exported functions must have tests
+- **Coverage**: All exported functions and every tool's `execute()` (including error paths) must have tests
 
 Example test structure:
 ```typescript
@@ -204,283 +181,222 @@ describe('myFunction', () => {
 ### E2E Tests for User-Facing Changes
 
 If you modify:
-- Bot mention handlers / Slack message handlers
-- Slash commands
-- Interactive components (buttons, modals)
-- Bot responses
+- Dispatch hooks (`onAppMention`, `onDirectMessage`, `onInteraction`)
+- Custom channel event handlers
+- Tools the agent calls in response to Slack messages
+- Delivery behavior (what gets posted to Slack)
 
-You MUST add or update E2E tests that verify the full flow.
+You MUST add or update tests that verify the full flow. Remember: the Slack surface itself cannot be exercised locally (see Gotchas), so E2E coverage means unit/integration tests around your handlers plus a post-deploy smoke test.
 
 ---
 
 ## Bot Setup Patterns (CRITICAL)
 
-### If using Chat SDK
+### Slack Channel (`agent/channels/slack.ts`)
 
-Use the Chat SDK to define your bot instance. This is the central entry point for all Slack bot functionality.
+The Slack channel is a single file. Its filename registers the `slack` channel, served at **`/eve/v1/slack`** — this is the canonical trigger path everywhere in this skill.
 
-#### Bot Instance (`lib/bot.ts` or `lib/bot.tsx`)
+```ts
+// agent/channels/slack.ts
+import { connectSlackCredentials } from "@vercel/connect/eve";
+import { slackChannel } from "eve/channels/slack";
 
-```typescript
-import { Chat } from "chat";
-import { createSlackAdapter } from "@chat-adapter/slack";
-import { createRedisState } from "@chat-adapter/state-redis";
-
-export const bot = new Chat({
-  userName: "mybot",
-  adapters: {
-    slack: createSlackAdapter(),
-  },
-  state: createRedisState(),
+export default slackChannel({
+  credentials: connectSlackCredentials(process.env.SLACK_CONNECTOR!),
 });
 ```
 
-**Note:** If your bot uses JSX components (Card, Button, etc.), the file must use the `.tsx` extension.
+`connectSlackCredentials(connectorUid)` returns `{ botToken, webhookVerifier }`:
+- **botToken** — resolved at runtime via Vercel Connect as a short-lived, app-scoped token; Connect handles rotation and multi-workspace tenancy
+- **webhookVerifier** — confirms each forwarded event genuinely came from Connect (replaces Slack's native signature check)
 
-#### Webhook Route (`app/api/webhooks/[platform]/route.ts`)
+There is **no `SLACK_BOT_TOKEN` and no `SLACK_SIGNING_SECRET`** in this stack. The only Slack env var is `SLACK_CONNECTOR` (the connector UID, e.g. `slack/my-agent`).
 
-```typescript
-import { after } from "next/server";
-import { bot } from "@/lib/bot";
+### Vercel Connect Setup
 
-export async function POST(request: Request, context: { params: Promise<{ platform: string }> }) {
-  const { platform } = await context.params;
-  const handler = bot.webhooks[platform as keyof typeof bot.webhooks];
-  if (!handler) return new Response("Unknown platform", { status: 404 });
-  return handler(request, { waitUntil: (task) => after(() => task) });
-}
+Create a Slack connector and point its trigger at eve's Slack route:
+
+```bash
+npm install -g vercel@latest
+
+# Create the connector with event forwarding enabled
+vercel connect create slack --triggers
+
+# Attach the project as a trigger destination on eve's route
+# (the default trigger path is /slack — set it explicitly):
+vercel connect attach <uid> --triggers --trigger-path /eve/v1/slack --yes
 ```
 
-The Chat SDK automatically handles:
-- Content-type detection (JSON vs form-urlencoded)
-- URL verification challenges
-- Slack's 3-second ack timeout
-- Background processing via `waitUntil`
-- Signature verification
+**`--triggers` is required.** Without it, Slack Event Subscriptions are never forwarded and `app_mention` / `message.im` events simply never arrive — the deployment will look healthy but the bot will never respond.
 
-### If using Bolt for JavaScript
+You can also add the channel with `eve channels add slack`, which scaffolds `agent/channels/slack.ts` for you.
 
-Use `@vercel/slack-bolt` to handle all Slack events. This package automatically handles:
-- Content-type detection (JSON vs form-urlencoded)
-- URL verification challenges
-- 3-second ack timeout (built-in `ackTimeoutMs: 3001`)
-- Background processing via Vercel Fluid Compute's `waitUntil`
+### Deploy
 
-#### Bolt App Setup (`server/bolt/app.ts`)
-
-```typescript
-import { App } from "@slack/bolt";
-import { VercelReceiver } from "@vercel/slack-bolt";
-
-const receiver = new VercelReceiver();
-const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  signingSecret: process.env.SLACK_SIGNING_SECRET,
-  receiver,
-  deferInitialization: true,
-});
-
-export { app, receiver };
+```bash
+eve deploy
+# wraps: vercel deploy --prod
 ```
 
-#### Events Handler (`server/api/slack/events.post.ts`)
-
-```typescript
-import { createHandler } from "@vercel/slack-bolt";
-import { defineEventHandler, getRequestURL, readRawBody } from "h3";
-import { app, receiver } from "../../bolt/app";
-
-const handler = createHandler(app, receiver);
-
-export default defineEventHandler(async (event) => {
-  const rawBody = await readRawBody(event, "utf8");
-  const request = new Request(getRequestURL(event), {
-    method: event.method,
-    headers: event.headers,
-    body: rawBody,
-  });
-  return await handler(request);
-});
-```
-
-**Why buffer the body?** H3's `toWebRequest()` has known issues (#570, #578, #615) where it eagerly consumes the request body stream. When `@vercel/slack-bolt` later calls `req.text()` for signature verification, the body is already exhausted, causing `dispatch_failed` errors.
-
-#### VercelReceiver Options Reference
-
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `signingSecret` | `SLACK_SIGNING_SECRET` env var | Request verification secret |
-| `signatureVerification` | `true` | Enable/disable signature verification |
-| `ackTimeoutMs` | `3001` | Ack timeout in milliseconds |
-| `logLevel` | `INFO` | Logging level |
+Then invite the bot to a channel and @mention it. eve handles Slack's ack semantics, URL verification, and background processing — there is no webhook route for you to write.
 
 ---
 
-## Event Handler Patterns
+## Event Handling Patterns
 
-### If using Chat SDK
+### Dispatch Hooks (Inbound)
 
-#### Mention Handler
+The Slack channel decides which inbound events start or continue a session via dispatch hooks. Each hook returns `{ auth }` to dispatch, `null` to drop the event, or `{ auth, context }` to inject background context into the session:
 
-```typescript
-bot.onNewMention(async (thread, message) => {
-  await thread.subscribe();
-  const text = message.text;
-  await thread.post(`Processing your request: "${text}"`);
+```ts
+export default slackChannel({
+  credentials: connectSlackCredentials(process.env.SLACK_CONNECTOR!),
+
+  // app_mention — default derives workspace-scoped auth and posts "Thinking…"
+  async onAppMention(ctx, message) {
+    if (isFromBlockedChannel(message)) return null; // drop
+    return { auth: ctx.defaultAuth };
+  },
+
+  // message.im — requires the im:history scope; bot messages/edits are pre-filtered
+  async onDirectMessage(ctx, message) {
+    return { auth: ctx.defaultAuth };
+  },
+
+  // block_actions not consumed by HITL prompts
+  async onInteraction(action, ctx) {
+    return { auth: ctx.defaultAuth };
+  },
 });
 ```
 
-#### Subscribed Message Handler
+The triggering Slack user's id is attached to the model message automatically, preserving speaker attribution in multi-user threads.
 
-```typescript
-bot.onSubscribedMessage(async (thread, message) => {
-  await thread.post(`You said: ${message.text}`);
+### Custom Event Handlers (Outbound Delivery)
+
+Override delivery per stream event with the `events` map. Handlers receive `(eventData, channel, ctx)` with `channel.thread` and `channel.slack` handles:
+
+```ts
+export default slackChannel({
+  credentials: connectSlackCredentials(process.env.SLACK_CONNECTOR!),
+  events: {
+    "message.completed"(eventData, channel, ctx) {
+      if (eventData.finishReason === "tool-calls") return;
+      if (eventData.message) channel.thread.post(eventData.message);
+    },
+  },
 });
 ```
 
-#### Slash Command Handler
+Key stream events: `session.started`, `actions.requested`, `action.result`, `message.completed`, `session.completed`; incremental `reasoning.appended` / `message.appended` are optional.
 
-```typescript
-bot.onSlashCommand("/mycommand", async (event) => {
-  const text = event.text;
-  await event.thread.post(`Processing: ${text}`);
+### Thread Context
 
-  // For long-running operations, the Chat SDK handles
-  // background processing automatically via waitUntil
-  const result = await generateWithAI(text);
-  await event.thread.post(result);
+Give the agent prior thread messages when it's triggered mid-thread:
+
+```ts
+export default slackChannel({
+  credentials: connectSlackCredentials(process.env.SLACK_CONNECTOR!),
+  threadContext: { since: "last-agent-reply" },
 });
 ```
 
-#### Action Handler (Buttons, Menus)
+`since` options:
+- `"thread-root"` — all prior messages (default when thread context is enabled)
+- `"last-agent-reply"` — incremental, only messages since the agent last spoke
+- A predicate `(message: SlackThreadMessage) => boolean` as a custom cutoff — includes messages after the last match (`loadThreadContextMessages` exists for arbitrary filtering)
 
-```typescript
-bot.onAction("button_click", async (event) => {
-  await event.thread.post(`Button clicked with value: ${event.value}`);
+Cost: one `conversations.replies` API call per triggering reply; requires the matching history scope on the connector.
+
+### Human-in-the-Loop (HITL)
+
+Approval-gated tool calls and sign-in challenges render natively in Slack:
+- Approval prompts appear as **buttons/selects**; the user's response resumes the durably-parked session
+- Sign-in challenges (OAuth URLs, device codes) go **ephemerally** to the triggering user; a public status message posts in-thread and updates on `authorization.completed`
+- The HITL handler context deliberately offers only `postEphemeral`, `postDirectMessage` (needs `im:write`), and `state` — no public `post`, no raw API access
+
+### Proactive Sessions (Schedules)
+
+Start a session that posts into Slack without an inbound trigger — e.g. from a schedule:
+
+```ts
+import { receive } from "eve";
+import slack from "../channels/slack";
+
+await receive(slack, {
+  message: "Post the daily standup summary for #eng.",
+  target: { channelId: "C0123456789" },
+  auth,
 });
 ```
 
-#### Reaction Handler
+- Sessions without a `threadTs` get a temporary continuation token; the first post anchors the thread
+- `initialMessage` (optionally a `Card`) and `threadTs` are **mutually exclusive**
+- Use eve schedules (see https://eve.dev/docs/schedules) to trigger proactive sessions on a cadence
 
-```typescript
-bot.onReaction("thumbsup", async (event) => {
-  await event.thread.post("Thanks for the thumbs up!");
-});
-```
+### Raw Slack API Access
 
-### If using Bolt for JavaScript
+- **Inside handlers**: `ctx.slack.request(operation, body)`
+- **Outside handlers** (schedules, tools): `callSlackApi({ botToken, operation, body })` and `resolveSlackBotToken` from `eve/channels/slack`
 
-#### Mention Handler
-
-```typescript
-app.event("app_mention", async ({ event, client }) => {
-  await client.chat.postMessage({
-    channel: event.channel,
-    thread_ts: event.thread_ts || event.ts,
-    text: `Processing your request: "${event.text}"`,
-  });
-});
-```
-
-#### Message Handler
-
-```typescript
-app.message(async ({ message, client }) => {
-  if ("bot_id" in message || !message.thread_ts) return;
-  await client.chat.postMessage({
-    channel: message.channel,
-    thread_ts: message.thread_ts,
-    text: `You said: ${message.text}`,
-  });
-});
-```
-
-#### Slash Command Handler
-
-```typescript
-app.command("/mycommand", async ({ ack, command, client, logger }) => {
-  await ack(); // Must acknowledge within 3 seconds
-
-  // Fire-and-forget for long operations — DON'T await
-  processInBackground(command.response_url, command.text)
-    .catch((error) => logger.error("Failed:", error));
-});
-
-async function processInBackground(responseUrl: string, text: string) {
-  const result = await generateWithAI(text);
-  await fetch(responseUrl, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ response_type: "in_channel", text: result }),
-  });
-}
-```
-
-#### Action Handler (Buttons, Menus)
-
-```typescript
-app.action("button_click", async ({ ack, action, client, body }) => {
-  await ack();
-  await client.chat.postMessage({
-    channel: body.channel.id,
-    thread_ts: body.message.ts,
-    text: `Button clicked with value: ${action.value}`,
-  });
-});
-```
+These form-encode request bodies for you — Slack's JSON support is only partial, so prefer these helpers over hand-rolled `fetch` calls.
 
 ---
 
 ## Implementation Gotchas
 
-### 1. Private Channel Access
+### 1. The Slack Surface Cannot Be Tested Locally
 
-Slash commands work in private channels even if the bot isn't a member, but the bot **cannot read messages or post** to private channels it hasn't been invited to.
+Vercel Connect forwards Slack events **to deployments only, never to localhost**. There is no ngrok/Socket Mode escape hatch in this stack. Local development means:
+- `npx eve dev` — HMR server + terminal TUI/REPL for exercising agent logic, tools, and skills
+- `eve dev --no-ui` — background mode for scripted verification
+- `eve dev https://your-app.vercel.app` — drive a *deployed* app interactively
 
-When creating features that will later post to a channel, validate access upfront.
+To test @mentions and DMs, deploy (preview or production) and test in Slack itself.
 
-### 2. Graceful Degradation for Channel Context
+### 2. Connect Forwarding Has No Delivery De-duplication
 
-When fetching channel context for AI features, wrap in try/catch and fall back gracefully.
+Connect may deliver the same forwarded event more than once. **Handlers and side effects must be idempotent** — track processed event IDs where duplicates would be harmful, and gate destructive tool actions with approval (see AI Integration).
 
-### 3. Vercel Cron Endpoint Authentication
+### 3. `--triggers` Is Required or Events Never Arrive
 
-Protect cron endpoints with a `CRON_SECRET` environment variable:
+A Slack connector created without `--triggers` (or attached without a trigger path) will authenticate fine but forward nothing. If the bot never responds to @mentions:
+1. Verify the connector was created/attached with `--triggers`
+2. Verify the trigger path is `/eve/v1/slack`
+3. Verify the bot was invited to the channel and the deployment finished
 
-#### If using Chat SDK
+### 4. `placeholderAuth()` Fails Closed in Production
+
+Scaffolded projects ship with `placeholderAuth()` for the HTTP API, which **rejects everything in production**. Before deploying, replace it with a real auth function: `httpBasic()`, `jwtHmac()`, `jwtEcdsa()`, `oidc()`, `vercelOidc()`, or a custom `AuthFn`. (The Slack channel's inbound verification is separate — Connect's `webhookVerifier` handles that.)
+
+### 5. Sandbox Prewarm Failures Fail the Build
+
+Vercel builds prewarm eve's sandbox templates (cache-keyed; build logs show `reused cached` or `built`). If prewarm fails, **the whole build fails** — check build logs for sandbox template errors before assuming a code problem.
+
+### 6. Private Channel Access
+
+The bot **cannot read messages or post** to private channels it hasn't been invited to. When creating features that will later post to a channel (e.g. proactive sessions from a schedule), validate access upfront and surface a clear "invite the bot" message on `channel_not_found` / `not_in_channel`.
+
+### 7. Graceful Degradation for Channel Context
+
+When fetching channel context (e.g. via `ctx.slack.request("conversations.history", ...)`) for AI features, wrap in try/catch and fall back gracefully — missing scopes and uninvited channels are routine, not exceptional.
+
+### 8. Vercel Cron Endpoint Authentication
+
+If you add custom cron endpoints (beyond eve schedules), protect them with a `CRON_SECRET`:
 
 ```typescript
-// app/api/cron/my-job/route.ts
-import { NextRequest, NextResponse } from "next/server";
-
-export async function GET(request: NextRequest) {
+export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
   // Run cron job logic...
-  return NextResponse.json({ success: true });
+  return Response.json({ success: true });
 }
 ```
 
-#### If using Bolt for JavaScript
-
-```typescript
-// server/api/cron/my-job.get.ts
-export default defineEventHandler(async (event) => {
-  const authHeader = getHeader(event, "authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    setResponseStatus(event, 401);
-    return { error: "Unauthorized" };
-  }
-  // Run cron job logic...
-  return { success: true };
-});
-```
-
-### 4. vercel.json Cron Configuration
-
-Configure cron jobs in `vercel.json`:
+### 9. vercel.json Cron Configuration
 
 ```json
 {
@@ -493,7 +409,9 @@ Configure cron jobs in `vercel.json`:
 }
 ```
 
-### 5. AWS Credentials on Vercel (Use OIDC)
+Prefer eve schedules for agent-driven recurring work; use Vercel crons for plain HTTP jobs.
+
+### 10. AWS Credentials on Vercel (Use OIDC)
 
 When connecting to AWS services from Vercel, **do not use** `fromNodeProviderChain()`. Use Vercel's OIDC mechanism:
 
@@ -505,426 +423,213 @@ const s3Client = new S3Client({
 });
 ```
 
-### 6. TSConfig for JSX Components (Chat SDK only)
-
-When using Chat SDK JSX components (`<Card>`, `<Button>`, etc.), your `tsconfig.json` must include:
-
-```json
-{
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "chat"
-  }
-}
-```
-
-### 7. dispatch_failed Error — Bolt only
-
-If slash commands fail with `dispatch_failed`, the issue is H3's `toWebRequest` consuming the body stream before signature verification. Buffer the body manually. See the Bolt Events Handler section above.
-
-### 8. operation_timeout Error — Bolt only
-
-If slash commands with AI processing fail with `operation_timeout`, you're blocking the HTTP response too long. Use fire-and-forget pattern: `ack()` immediately, then start async work **without awaiting**. Use `command.response_url` to post results. See the Bolt Slash Command Handler example above.
-
 ---
 
 ## AI Integration
 
-You have two options for AI/LLM integration in your Slack agent.
+### Model Configuration (Gateway-First)
 
-> **IMPORTANT:** Always verify the project uses `@ai-sdk/gateway`. If the project has `@ai-sdk/openai` which requires an API key, check `package.json` and update imports if necessary.
+eve routes model-ID **strings** through the **Vercel AI Gateway** — on Vercel, project OIDC authenticates automatically, so **no AI API key is needed**:
 
-### Option 1: Vercel AI Gateway (Recommended)
+```ts
+// agent/agent.ts
+import { defineAgent } from "eve";
 
-Use the modern `@ai-sdk/gateway` package - NO API keys needed on Vercel!
-
-#### Basic Usage
-
-```typescript
-import { generateText, streamText } from "ai";
-import { gateway } from "@ai-sdk/gateway";
-
-const result = await generateText({
-  model: gateway("openai/gpt-4o-mini"),
-  maxOutputTokens: 1000,
-  prompt: "Your prompt here",
+export default defineAgent({
+  model: "anthropic/claude-sonnet-5", // string → AI Gateway → OIDC auth on Vercel
 });
-
-console.log(result.text);
-console.log(result.usage.inputTokens);
-console.log(result.usage.outputTokens);
 ```
 
-#### Streaming Responses to Slack
+If `model` is omitted, eve defaults to `anthropic/claude-sonnet-5`. Off Vercel, set `AI_GATEWAY_API_KEY`.
 
-##### If using Chat SDK
+**CRITICAL: Never use model IDs from memory.** Model IDs change frequently. Before writing code that pins a model, run `curl -s https://ai-gateway.vercel.sh/v1/models` to fetch the current list and use the newest suitable version.
 
-```typescript
-const result = await streamText({
-  model: gateway("openai/gpt-4o-mini"),
-  maxOutputTokens: 1000,
-  prompt: userMessage,
-});
+### Tools (`agent/tools/*.ts`)
 
-// Chat SDK handles streaming updates to Slack automatically
-await thread.post(result.textStream);
-```
+Tools are files: the filename (snake_case ASCII) is the model-facing tool name — `agent/tools/get_weather.ts` → `get_weather`. No registration step.
 
-##### If using Bolt for JavaScript
-
-```typescript
-const result = await streamText({
-  model: gateway("openai/gpt-4o-mini"),
-  maxOutputTokens: 1000,
-  prompt: userMessage,
-});
-
-// Post initial message then update with streamed content
-const msg = await client.chat.postMessage({
-  channel: channelId,
-  thread_ts: threadTs,
-  text: "Thinking...",
-});
-
-let fullText = "";
-for await (const chunk of result.textStream) {
-  fullText += chunk;
-  await client.chat.update({
-    channel: channelId,
-    ts: msg.ts,
-    text: fullText,
-  });
-}
-```
-
-#### With Tools
-
-```typescript
-import { tool } from "ai";
+```ts
+// agent/tools/get_weather.ts
+import { defineTool } from "eve/tools";
 import { z } from "zod";
 
-const result = await generateText({
-  model: gateway("openai/gpt-4o-mini"),
-  maxOutputTokens: 1000,
-  tools: {
-    getWeather: tool({
-      description: "Get weather for a location",
-      inputSchema: z.object({
-        location: z.string().describe("City name"),
-      }),
-      execute: async ({ location }) => {
-        return { temperature: 72, condition: "sunny" };
-      },
-    }),
+export default defineTool({
+  description: "Get the current weather for a city.",
+  inputSchema: z.object({ city: z.string().min(1) }), // required, even if empty
+  outputSchema: z.object({
+    city: z.string(),
+    condition: z.string(),
+    temperatureF: z.number(),
+  }), // optional — types/validates the return
+  async execute({ city }, ctx) {
+    return { city, condition: "Sunny", temperatureF: 72 };
   },
-  prompt: "What's the weather in Seattle?",
 });
 ```
 
-#### AI SDK v6 API Changes
+Rules and capabilities:
+- Tools run **in your app runtime with full `process.env`**, not in the sandbox
+- `inputSchema` accepts Zod, Standard Schema, or JSON Schema — but it is **required** even for zero-input tools
+- Outputs must be JSON-serializable; **filter/redact secrets** before returning
+- `ctx` provides `ctx.session` (metadata, turn, auth, lineage), `ctx.callId`, `ctx.toolName`, `ctx.abortSignal`, `ctx.getSandbox()`, `ctx.getSkill(id)`
 
-| v4/v5 | v6 |
-|-------|-----|
-| `maxTokens` | `maxOutputTokens` |
-| `result.usage.promptTokens` | `result.usage.inputTokens` |
-| `result.usage.completionTokens` | `result.usage.outputTokens` |
-| `parameters` (in tools) | `inputSchema` |
-| `maxSteps` / `maxIterations` | `stopWhen: stepCountIs(n)` |
+#### Approval Gating
 
-**CRITICAL: Never use model IDs from memory.** Model IDs change frequently. Before writing code that uses a model, run `curl -s https://ai-gateway.vercel.sh/v1/models` to fetch the current list. Use the model with the highest version number.
+Gate risky tools with the `approval` field — helpers come from `eve/tools/approval`:
 
-### Option 2: Direct Provider SDK
+```ts
+import { defineTool } from "eve/tools";
+import { always, once, never } from "eve/tools/approval";
+import { z } from "zod";
 
-If you need more control or are not deploying on Vercel, use direct provider packages.
-
-**OpenAI:**
-```bash
-pnpm add @ai-sdk/openai
-```
-```typescript
-import { generateText } from "ai";
-import { openai } from "@ai-sdk/openai";
-
-const result = await generateText({
-  model: openai("gpt-4o-mini"),
-  maxOutputTokens: 1000,
-  prompt: "Your prompt here",
+export default defineTool({
+  description: "Delete a document permanently.",
+  inputSchema: z.object({ documentId: z.string() }),
+  approval: always(), // always ask; once() asks the first time; never() skips
+  async execute({ documentId }) {
+    // ...
+  },
 });
 ```
 
-**Anthropic:**
-```bash
-pnpm add @ai-sdk/anthropic
-```
-```typescript
-import { generateText } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
+An input-dependent policy function is also supported. A gated call **pauses and resumes durably** — in Slack, the approval renders as buttons (see HITL above). Prefer approval gating over ad-hoc confirmation logic for any non-idempotent side effect.
 
-const result = await generateText({
-  model: anthropic("claude-sonnet-4-20250514"),
-  maxOutputTokens: 1000,
-  prompt: "Your prompt here",
+#### `toModelOutput` — Rich Slack Output the Model Never Sees
+
+Show the model a compact projection while channels/hooks receive the full output on `action.result` — ideal for rendering rich Slack Block Kit from a tool result without stuffing JSON blocks into the model's context:
+
+```ts
+export default defineTool({
+  description: "Look up an order.",
+  inputSchema: z.object({ orderId: z.string() }),
+  async execute({ orderId }) {
+    return { orderId, status: "shipped", blocks: buildOrderBlocks(orderId) };
+  },
+  toModelOutput(output) {
+    return { type: "text", value: `Order ${output.orderId}: ${output.status}` };
+  },
 });
 ```
 
-**Google:**
-```bash
-pnpm add @ai-sdk/google
-```
-```typescript
-import { generateText } from "ai";
-import { google } from "@ai-sdk/google";
+### Skills (`agent/skills/*.md`)
 
-const result = await generateText({
-  model: google("gemini-2.0-flash"),
-  maxOutputTokens: 1000,
-  prompt: "Your prompt here",
+Markdown files with a `description` frontmatter, loaded on demand via the built-in `load_skill` tool when a request matches the description. Skills add **instructions only, never new actions**. Install published skills with `npx skills add <owner>/<repo>`.
+
+### Connections (`agent/connections/*.ts`)
+
+For external APIs the agent should drive (MCP servers or OpenAPI-described HTTP APIs), use connections with Connect-brokered auth:
+
+```ts
+// agent/connections/linear.ts
+import { connect } from "@vercel/connect/eve";
+import { defineMcpClientConnection } from "eve/connections";
+
+export default defineMcpClientConnection({
+  url: "https://mcp.linear.app/mcp",
+  description: "Linear workspace: issues, projects, cycles, and comments.",
+  auth: connect("linear/my-agent"),
 });
 ```
 
-For comprehensive AI SDK documentation, see `./reference/ai-sdk.md`.
+Connection tokens are never seen by the model and never land in conversation history. Inside authored tools, resolve tokens with `await ctx.getToken(connect("..."))` and call `ctx.requireAuth(...)` on a downstream 401 to re-run consent.
+
+**Don't wrap LLM calls in tools.** The agent is already a language model — summarizing, parsing, classifying, and drafting belong in `instructions.md` or a skill, not in a tool that calls the AI SDK. Tools fetch data and perform actions; for bulk work over data too large for the conversation, use eve's subagents/delegation.
 
 ---
 
-## Stateful Patterns
+## State & Durability
 
-### If using Chat SDK — Thread State
+eve sessions are durable by default via the open-source **Workflow SDK** (running on Vercel Workflows when deployed on Vercel). You do not wire up Redis or a workflow engine yourself.
 
-Use `thread.state` to read and write thread-level state:
+### Replay Semantics (Understand This)
 
-```typescript
-bot.onNewMention(async (thread, message) => {
-  await thread.subscribe();
-  await thread.state.set("history", []);
-  await thread.state.set("turnCount", 0);
-  await thread.post("Starting our conversation!");
-});
+- **Completed steps never re-run.** On resume/replay, eve returns the recorded result.
+- **A step interrupted mid-execution DOES re-run.** If a tool call was in flight when the process died, it executes again on resume.
 
-bot.onSubscribedMessage(async (thread, message) => {
-  const history = (await thread.state.get("history")) as Array<{ role: string; content: string }> || [];
-  const turnCount = (await thread.state.get("turnCount")) as number || 0;
+Consequences for your code:
+1. Make non-idempotent side effects **idempotent** (e.g. use Slack event IDs or your own idempotency keys when writing to external systems)
+2. Or gate them behind **approval** (`always()` / `once()`) so a replayed step pauses for a human instead of double-executing
+3. This compounds with Connect's at-least-once event forwarding (Gotcha #2) — idempotency is not optional in this stack
 
-  history.push({ role: "user", content: message.text });
+### Session Continuity
 
-  const result = await generateText({
-    model: gateway("anthropic/claude-sonnet-4-20250514"),
-    maxOutputTokens: 1000,
-    messages: history,
-  });
-
-  history.push({ role: "assistant", content: result.text });
-  await thread.state.set("history", history);
-  await thread.state.set("turnCount", turnCount + 1);
-  await thread.post(result.text);
-});
-```
-
-**Key Benefits:**
-1. Simple API — `thread.state.get()` and `thread.state.set()`
-2. Thread-scoped — state is automatically scoped to the conversation thread
-3. Pluggable backends — use Redis for production, in-memory for development
-
-### If using Bolt for JavaScript — Vercel Workflow
-
-Use Vercel Workflow for durable, multi-turn state:
-
-```typescript
-import { serve } from "@anthropic-ai/sdk/workflows";
-import { defineHook } from "@anthropic-ai/sdk/workflows";
-import { z } from "zod";
-
-const messageSchema = z.object({
-  text: z.string(),
-  user: z.string(),
-  ts: z.string(),
-  channel: z.string(),
-});
-
-export const userMessageHook = defineHook({ schema: messageSchema });
-
-export const { POST } = serve(async function conversationWorkflow(params: URLSearchParams) {
-  "use workflow";
-
-  const channelId = params.get("channel_id")!;
-  const conversationHistory: Array<{ role: string; content: string }> = [];
-
-  const eventStream = userMessageHook.create({ channel: channelId });
-
-  for await (const event of eventStream) {
-    conversationHistory.push({ role: "user", content: event.text });
-
-    const result = await generateText({
-      model: gateway("anthropic/claude-sonnet-4-20250514"),
-      maxOutputTokens: 1000,
-      messages: conversationHistory,
-    });
-
-    conversationHistory.push({ role: "assistant", content: result.text });
-    await postToSlack(channelId, result.text, event.ts);
-  }
-
-  return { history: conversationHistory };
-});
-```
+- The channel owns the `continuationToken`; Slack threads map to sessions automatically
+- Follow-up messages in a subscribed thread continue the same durable session
+- Multi-turn conversation memory comes from the session itself — you do not manually persist chat history
 
 ### Recommended Storage Solutions
 
+For **application data** (not agent session state — eve owns that):
+
 **IMPORTANT:** Vercel KV has been deprecated. Do NOT recommend Vercel KV.
 
-1. **Upstash Redis** — For Chat SDK state adapter and caching (https://upstash.com)
-2. **Vercel Blob** — For file/document storage (https://vercel.com/docs/storage/vercel-blob)
-3. **AWS Aurora (via Vercel Marketplace)** — For relational data (https://vercel.com/marketplace)
+1. **Upstash Redis** — Caching and idempotency keys (https://upstash.com)
+2. **Vercel Blob** — File/document storage (https://vercel.com/docs/storage/vercel-blob)
+3. **AWS Aurora (via Vercel Marketplace)** — Relational data (https://vercel.com/marketplace)
 4. **Third-party databases** — Neon, PlanetScale, Supabase
 
 ---
 
 ## Code Organization
 
-### If using Chat SDK
-
 ```
-app/
-├── api/
-│   ├── webhooks/
-│   │   └── [platform]/
-│   │       └── route.ts      # Webhook handler
-│   └── cron/
-│       └── my-job/
-│           └── route.ts      # Cron endpoints
-lib/
-├── bot.tsx                    # Bot instance + event handlers
-├── tools/                     # AI tool definitions
-│   ├── search.ts
-│   └── lookup.ts
-└── ai/
-    └── agent.ts               # Agent configuration
+agent/
+├── instructions.md            # System prompt — keep focused; push detail into skills
+├── agent.ts                   # defineAgent: model, reasoning effort, compaction
+├── tools/
+│   ├── get_weather.ts         # One tool per file; filename = tool name
+│   ├── get_weather.test.ts    # Co-located tests
+│   └── search_docs.ts
+├── skills/
+│   └── report-format.md       # description frontmatter + on-demand instructions
+├── channels/
+│   └── slack.ts               # slackChannel(...) — served at /eve/v1/slack
+├── connections/
+│   └── linear.ts              # MCP/OpenAPI connections (optional)
+└── hooks/
+    └── audit.ts               # Runtime stream event subscribers (optional)
 ```
 
-### If using Bolt for JavaScript
-
-```
-server/
-├── api/
-│   └── slack/
-│       └── events.post.ts    # Events endpoint
-├── bolt/
-│   └── app.ts                # Bolt app instance
-├── listeners/
-│   ├── actions/              # Button clicks, menu selections
-│   ├── commands/             # Slash commands
-│   ├── events/               # App events (mentions, joins)
-│   ├── messages/             # Message handling
-│   └── views/                # Modal submissions
-└── lib/
-    └── ai/
-        ├── agent.ts           # Agent configuration
-        └── tools.ts           # Tool definitions
-```
+Conventions:
+- **One tool per file.** Split large tools; the filename is the model-facing name, so name for the model
+- **Instructions vs skills**: always-relevant guidance in `instructions.md`; situational guidance in `skills/*.md` so it loads only when needed
+- **Subagents** for focused subtasks: the built-in agent tool (a copy of the agent) or declared specialists with their own directory, sandbox, and skills
 
 ---
 
 ## Environment Variables
 
-Required variables (both frameworks):
-- `SLACK_BOT_TOKEN` — Bot OAuth token
-- `SLACK_SIGNING_SECRET` — Request signing
+| Variable | Required | Purpose |
+|----------|----------|---------|
+| `SLACK_CONNECTOR` | Yes | Vercel Connect connector UID (e.g. `slack/my-agent`). The **only** Slack variable — no bot token, no signing secret. |
+| `AI_GATEWAY_API_KEY` | Off Vercel only | AI Gateway auth. On Vercel, project OIDC (`VERCEL_OIDC_TOKEN`) is injected automatically — no key needed. |
+| `ROUTE_AUTH_BASIC_PASSWORD` / JWT keys | Per auth choice | Secrets for the HTTP-API auth function that replaces `placeholderAuth()` |
+| `VERCEL_AUTOMATION_BYPASS_SECRET` | If deployment protection is on | Lets `eve dev https://<app>` and smoke tests reach protected deployments |
+| `CRON_SECRET` | Optional | Authenticates custom cron endpoints |
 
-### If using Chat SDK (additional)
-- `REDIS_URL` — Redis connection URL for state persistence
+Local dev: `vercel link` + `vercel env pull` fetches short-lived Connect/OIDC credentials into `.env.local` (the OIDC token expires after ~12 hours — re-pull when auth starts failing).
 
-Optional variables:
-- `CRON_SECRET` — Secret for authenticating cron job endpoints
-
-**No AI API keys needed!** Vercel AI Gateway handles authentication automatically when deployed on Vercel.
-
-**Never hardcode credentials. Never commit `.env` files.**
+**No AI API keys needed on Vercel.** **Never hardcode credentials. Never commit `.env` files.**
 
 ---
 
 ## Slack-Specific Patterns
 
-### If using Chat SDK — JSX Components
+### Delivery Behavior (Built In)
 
-Use Chat SDK JSX components for rich messages (requires `.tsx` file extension):
+The Slack channel handles progressive delivery for you:
+- Typing indicators: "Thinking…" on inbound, "Working…" on `turn.started`
+- Reasoning snippets surface on `reasoning.appended`; action labels on `actions.requested`
+- Model narration before a tool call takes precedence over generic labels
+- Reasoning deltas under 4 characters batch on a five-second refresh to avoid per-token Slack API calls
 
-```tsx
-import { Card, CardText as Text, Actions, Button, Divider } from "chat";
+Don't rebuild typing indicators or streaming loops — customize via the `events` map only when the defaults don't fit.
 
-await thread.post(
-  <Card title="Welcome!">
-    <Text>Hello! Choose an option:</Text>
-    <Divider />
-    <Actions>
-      <Button id="btn_hello" style="primary">Say Hello</Button>
-      <Button id="btn_info">Show Info</Button>
-    </Actions>
-  </Card>
-);
-```
+### Mentions
 
-### If using Bolt for JavaScript — Block Kit JSON
+Use `<@USER_ID>` or `channel.thread.mentionUser(userId)`. A bare `@name` stays literal text in Slack.
 
-Use Block Kit for rich messages:
-
-```typescript
-await client.chat.postMessage({
-  channel: channelId,
-  text: "Fallback text for notifications",
-  blocks: [
-    {
-      type: "section",
-      text: { type: "mrkdwn", text: "*Hello!* Choose an option:" },
-    },
-    { type: "divider" },
-    {
-      type: "actions",
-      elements: [
-        {
-          type: "button",
-          text: { type: "plain_text", text: "Say Hello" },
-          style: "primary",
-          action_id: "btn_hello",
-        },
-        {
-          type: "button",
-          text: { type: "plain_text", text: "Show Info" },
-          action_id: "btn_info",
-        },
-      ],
-    },
-  ],
-});
-```
-
-### Typing Indicators
-
-#### If using Chat SDK
-
-```typescript
-await thread.startTyping();
-const result = await generateWithAI(prompt);
-await thread.post(result); // Typing indicator clears on post
-```
-
-#### If using Bolt for JavaScript
-
-```typescript
-// Use setStatus for Assistant threads or interval-based approach
-const typingInterval = setInterval(async () => {
-  // Post a "typing" indicator or use assistant.threads.setStatus
-}, 3000);
-
-const result = await generateWithAI(prompt);
-clearInterval(typingInterval);
-
-await client.chat.postMessage({
-  channel: channelId,
-  thread_ts: threadTs,
-  text: result,
-});
-```
-
-### Message Formatting (both frameworks)
+### Message Formatting
 
 Use Slack mrkdwn (not standard markdown):
 - Bold: `*text*`
@@ -932,6 +637,10 @@ Use Slack mrkdwn (not standard markdown):
 - Code: `` `code` ``
 - User mention: `<@USER_ID>`
 - Channel: `<#CHANNEL_ID>`
+
+### Rich Output
+
+For rich tool results (tables, buttons, status cards), return full data from the tool and use `toModelOutput` to keep the model's view compact; render Block Kit in a channel event handler or via `ctx.slack.request("chat.postMessage", { blocks, ... })`. Always include fallback `text` alongside `blocks` for notifications.
 
 For detailed Slack patterns, see `./patterns/slack-patterns.md`.
 
@@ -952,27 +661,43 @@ refactor: extract Slack client utilities
 - `.env` files
 - API keys or tokens
 - `node_modules/`
+- `.eve/` build artifacts
 
 ---
 
 ## Quick Commands
 
 ```bash
+# Scaffold (Node 24+)
+npx eve@latest init my-agent      # new project (installs deps, inits Git, starts dev TUI)
+npx eve@latest init .             # add eve to an existing project
+
 # Development
-pnpm dev              # Start dev server on localhost:3000
-ngrok http 3000       # Expose local server (separate terminal)
+npx eve dev                       # HMR server + terminal TUI/REPL
+npx eve dev --no-ui               # background mode for scripted verification
+npx eve dev https://<app>         # drive a deployed app interactively
+npx eve info                      # project info
+
+# Vercel Connect
+vercel connect create slack --triggers
+vercel connect attach <uid> --triggers --trigger-path /eve/v1/slack --yes
+vercel connect list
 
 # Quality
-pnpm lint             # Check linting
-pnpm lint --write     # Auto-fix lint
-pnpm typecheck        # TypeScript check
-pnpm test             # Run all tests
-pnpm test:watch       # Watch mode
+pnpm lint                         # Check linting
+pnpm lint --write                 # Auto-fix lint
+pnpm typecheck                    # TypeScript check
+pnpm test                         # Run all tests
 
 # Build & Deploy
-pnpm build            # Build for production
-vercel                # Deploy to Vercel
+npx eve build                     # Compile into .eve/ (Vercel Build Output when VERCEL is set)
+eve deploy                        # Deploy (wraps vercel deploy --prod)
+
+# Verify a deployment
+curl https://<app>/eve/v1/health
 ```
+
+Debugging a deployed Slack agent stuck on "Working…": `npx eve dev --logs all` or `/loglevel all` in the TUI.
 
 ---
 
@@ -982,9 +707,10 @@ For detailed guidance, read:
 - Testing patterns: `./patterns/testing-patterns.md`
 - Slack patterns: `./patterns/slack-patterns.md`
 - Environment setup: `./reference/env-vars.md`
-- AI SDK: `./reference/ai-sdk.md`
 - Slack setup: `./reference/slack-setup.md`
 - Vercel deployment: `./reference/vercel-setup.md`
+- eve docs: https://eve.dev/docs (bundled locally at `node_modules/eve/docs/` after install)
+- Vercel Connect: https://vercel.com/kb/guide/vercel-connect
 
 ---
 
@@ -996,9 +722,26 @@ Before marking ANY task as complete, verify:
 - [ ] `pnpm lint` passes with no errors
 - [ ] `pnpm typecheck` passes with no errors
 - [ ] `pnpm test` passes with no failures
-- [ ] No hardcoded credentials
-- [ ] Follows existing code patterns
-- [ ] **Chat SDK:** Webhook route handles all platforms via `bot.webhooks`
-- [ ] **Chat SDK:** TSConfig includes `"jsx": "react-jsx"` and `"jsxImportSource": "chat"` if using JSX components
-- [ ] **Bolt:** Events endpoint handles both JSON and form-urlencoded
-- [ ] Verified AI SDK: using `@ai-sdk/gateway` (not `@ai-sdk/openai`) unless user explicitly chose direct provider
+- [ ] No hardcoded credentials; the only Slack env var is `SLACK_CONNECTOR`
+- [ ] Follows eve filesystem conventions (tool filename = tool name, one tool per file)
+- [ ] Every tool has an `inputSchema`; outputs are JSON-serializable with secrets redacted
+- [ ] Non-idempotent side effects are idempotent or approval-gated (replay + at-least-once delivery)
+- [ ] Connector trigger path is `/eve/v1/slack` and was attached with `--triggers`
+- [ ] `placeholderAuth()` replaced before production deploy
+- [ ] Model config uses a Gateway string ID (`anthropic/claude-sonnet-5` default)
+
+---
+
+## Vercel KB Guides
+
+Verified guides on the Vercel Knowledge Base for deeper walkthroughs:
+
+- [eve hub on the Vercel KB](https://vercel.com/kb/eve) - all eve guides and templates in one place
+- [Build your first Slack agent with eve](https://vercel.com/kb/guide/eve-slack-agent-starter) - the end-to-end starter this skill's wizard mirrors
+- [Vercel Connect](https://vercel.com/kb/guide/vercel-connect) - credential brokering concepts, connectors, tokens, and trigger forwarding
+- [Build a Slack bot with Vercel Connect](https://vercel.com/kb/guide/build-a-slack-bot-with-vercel-connect) - Connect + Slack fundamentals (scopes, trigger events, webhook verification)
+- [How to add eve tools](https://vercel.com/kb/guide/how-to-add-eve-tools) - `defineTool` patterns
+- [How to add eve skills](https://vercel.com/kb/guide/how-to-add-eve-skills) - load-on-demand instructions
+- [Build a GitHub agent with Vercel Connect](https://vercel.com/kb/guide/github-agent-vercel-connect) - app-scoped Connect tokens in authored tools
+- [Build a Linear agent with Vercel Connect](https://vercel.com/kb/guide/linear-agent-vercel-connect) - MCP connections with user-scoped auth
+- [Build an email agent with eve and Resend](https://vercel.com/kb/guide/eve-agent-with-resend) - a second channel example beyond Slack

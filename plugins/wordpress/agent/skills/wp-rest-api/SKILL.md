@@ -19,7 +19,7 @@ Use this skill when you need to:
 - Repo root + target plugin/theme/mu-plugin (path to entrypoint).
 - Desired namespace + version (e.g. `my-plugin/v1`) and routes.
 - Authentication mode (cookie + nonce vs application passwords vs auth plugin).
-- Target WordPress version constraints (if below 6.9, call out).
+- Target WordPress version constraints (if below 7.0, call out).
 
 ## Procedure
 

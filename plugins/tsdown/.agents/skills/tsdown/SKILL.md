@@ -88,7 +88,7 @@ export default defineConfig({
 | Source maps | `sourcemap: true`, `'inline'`, `'hidden'` | [option-sourcemap](references/option-sourcemap.md) |
 | Watch mode | `watch: true`, watch options | [option-watch-mode](references/option-watch-mode.md) |
 | Cleaning | `clean: true`, clean patterns | [option-cleaning](references/option-cleaning.md) |
-| Log level | `logLevel: 'silent'`, `failOnWarn: false` | [option-log-level](references/option-log-level.md) |
+| Log level | `logLevel: 'silent'`, `failOnWarn: false`, `suppressWarnings: [...]` | [option-log-level](references/option-log-level.md) |
 
 ## Dependency Handling
 
@@ -97,6 +97,7 @@ export default defineConfig({
 | Never bundle | `deps: { neverBundle: ['react', /^@myorg\//] }` | [option-dependencies](references/option-dependencies.md) |
 | Always bundle | `deps: { alwaysBundle: ['dep-to-bundle'] }` | [option-dependencies](references/option-dependencies.md) |
 | Only bundle | `deps: { onlyBundle: ['cac', 'bumpp'] }` - Whitelist | [option-dependencies](references/option-dependencies.md) |
+| Only import | `deps: { onlyImport: ['cac'] }` - Whitelist runtime imports in output | [option-dependencies](references/option-dependencies.md) |
 | Skip node_modules | `deps: { skipNodeModulesBundle: true }` | [option-dependencies](references/option-dependencies.md) |
 | Auto external | Automatic dependency/peer/optional externalization | [option-dependencies](references/option-dependencies.md) |
 

@@ -4,8 +4,8 @@
     "eve": {
       "source": "vercel/eve",
       "sourceType": "github",
-      "skillPath": "SKILL.md",
-      "computedHash": "79a1e606ecf33eed33c1f3adc1cc266de391e19aa9237ca37e4f3aa3fba6b228"
+      "skillPath": "skills/eve/SKILL.md",
+      "computedHash": "4833349453c45c606f79202e495b7bbc42ea380f329f3beee36b9927763f19ef"
     }
   }
 }
