@@ -5,7 +5,7 @@
       "source": "rolldown/tsdown",
       "sourceType": "github",
       "skillPath": "skills/tsdown/SKILL.md",
-      "computedHash": "47f632fbbbdefb7d5b18263502c218cec477255c0fa14baf168c47b83edabeee"
+      "computedHash": "e1e1d6e8c24d46d292e2138f2652869d1f0b04fa59f27c45059b26979263bb57"
     },
     "tsdown-migrate": {
       "source": "rolldown/tsdown",

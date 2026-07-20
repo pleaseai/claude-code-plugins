@@ -1,6 +1,6 @@
 ---
 description: "Turborepo monorepo build system guidance. Triggers on: turbo.json, task pipelines,\ndependsOn, caching, remote cache, the \"turbo\" CLI, --filter, --affected, CI optimization, environment\nvariables, internal packages, monorepo structure/best practices, and boundaries.\n\nUse when user: configures tasks/workflows/pipelines, creates packages, sets up\nmonorepo, shares code between apps, runs changed/affected packages, debugs cache,\nor has apps/packages directories.\n"
-metadata: {"version":"2.10.4-canary.1"}
+metadata: {"version":"2.10.6-canary.3"}
 ---
 # Turborepo Skill
 
@@ -730,7 +730,7 @@ import { Button } from "@repo/ui/button";
 
 ```json
 {
-  "$schema": "https://v2-10-4-canary-1.turborepo.dev/schema.json",
+  "$schema": "https://v2-10-6-canary-3.turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

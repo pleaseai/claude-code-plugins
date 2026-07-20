@@ -68,7 +68,7 @@ npx @wp-playground/cli@latest build-snapshot --blueprint=<file> --outfile=./site
 
 ### 6) Version switching
 
-- Use `--wp=` to pin WP (e.g., 6.9.0) and `--php=` to test compatibility.
+- Use `--wp=` to pin WP (e.g., 7.0.0) and `--php=` to test compatibility.
 - If feature depends on Gutenberg trunk, prefer the latest WP release plus plugin if available; Playground images track stable WP plus bundled Gutenberg.
 
 ### 7) Browser-only workflows (no CLI)
