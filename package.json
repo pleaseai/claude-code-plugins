@@ -32,7 +32,7 @@
     "plugins:multi-format": "bun scripts/cli.ts multi-format"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^7.6.1",
+    "@antfu/eslint-config": "^9.1.0",
     "eslint": "^10.0.2",
     "@pleaseai/vitest-config": "workspace:*",
     "@commitlint/cli": "^20.4.3",
