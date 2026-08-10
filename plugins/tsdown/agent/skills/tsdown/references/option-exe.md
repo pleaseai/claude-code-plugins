@@ -4,7 +4,7 @@
 
 ## Requirements
 
-- Node.js >= 25.5.0 (ESM support requires >= 25.7.0)
+- Node.js >= 25.7.0
 - Not supported in Bun or Deno
 
 ## Basic Usage
@@ -18,7 +18,6 @@ export default defineConfig({
 
 ## Behavior When Enabled
 
-- Default output format changes from `esm` to `cjs` (unless Node.js >= 25.7.0)
 - Declaration file generation (`dts`) is disabled by default
 - Code splitting is disabled
 - Only single entry points are supported
@@ -97,7 +96,25 @@ dist/
 |-------|------|-------------|
 | `platform` | `'win' \| 'darwin' \| 'linux'` | Target OS (nodejs.org naming) |
 | `arch` | `'x64' \| 'arm64'` | Target CPU architecture |
-| `nodeVersion` | `string` | Node.js version (must be `>=25.7.0`) |
+| `nodeVersion` | `string` | Node.js version (must be `>=25.7.0`), or `'latest'` / `'latest-lts'` to resolve automatically |
+
+### Custom Node.js Index and Download URL
+
+When downloading Node.js binaries (e.g. behind a corporate proxy or using a mirror), you can customize the sources:
+
+```ts
+export default defineConfig({
+  entry: ['src/cli.ts'],
+  exe: {
+    targets: [{ platform: 'linux', arch: 'x64', nodeVersion: 'latest-lts' }],
+    // Index used to resolve 'latest' / 'latest-lts' versions
+    nodeDistIndexUrl: 'https://mirrors.example.com/node/index.json', // default: https://nodejs.org/dist/index.json
+    // Fully custom download URL per target
+    getDownloadUrl: (target) =>
+      `https://mirrors.example.com/node/v${target.nodeVersion}/node-v${target.nodeVersion}-${target.platform}-${target.arch}.tar.gz`,
+  },
+})
+```
 
 ### Caching
 
