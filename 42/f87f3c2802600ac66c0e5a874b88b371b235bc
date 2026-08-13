@@ -1,0 +1,20 @@
+.github/workflows/tessl-skill-review.yml
+  s_cc4590c501e8cb::t_fbfdc251c42251 43-44,59,61
+  s_cc4590c501e8cb::t_16b96409570674 4-5,11-22
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "42f87f3c2802600ac66c0e5a874b88b371b235bc",
+  "prompts": {},
+  "sessions": {
+    "s_cc4590c501e8cb": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "be2c8fa3-540f-413f-a7ad-5346ed5c3579",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
