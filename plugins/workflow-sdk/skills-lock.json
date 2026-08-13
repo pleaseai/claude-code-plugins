@@ -11,13 +11,13 @@
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/workflow/SKILL.md",
-      "computedHash": "69abde8decfadc960cae3f8df4a6738ca4ff04bf57887665127be51db3b10834"
+      "computedHash": "eae859f624c59eeb67ddb91e8f1bc85793f463bc3ff4c854cb53dd3a72fd01a5"
     },
     "workflow-init": {
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/workflow-init/SKILL.md",
-      "computedHash": "16958b6fce870b067a557d78e17fd7bb3fb206f29def2db35fb4c2f6f01e497b"
+      "computedHash": "e74ed0468589670865a7dc1dcf4f8cd21c3dce164e5caa66d74c5800d70dfe68"
     }
   }
 }
