@@ -1,17 +1,25 @@
 name: Tessl Skill Review
 
 # Reviews changed SKILL.md files on PRs using the official tesslio/skill-review
-# action, which runs `tessl skill review` and posts the quality scores as a PR
-# comment. The action scans the PR diff for changed SKILL.md files (as
+# action, which runs `tessl review run quality` and posts the quality scores as a
+# PR comment. The action scans the PR diff for changed SKILL.md files (as
 # repo-relative paths) under the `path` root, so `path` is the repo root (`.`)
 # and every plugin's skills are covered — not just one. (Passing a sub-directory
 # as `path` double-prefixes the repo-relative changed paths and fails with
 # "SKILL.md not found at plugins/<dir>/plugins/<dir>/...".)
 #
-# Auth: the skill-review composite runs tesslio/setup-tessl WITHOUT a token, and
-# the tessl CLI authenticates from the TESSL_TOKEN env var — so it is provided at
-# job level here. When the secret is absent the job no-ops with a warning instead
-# of failing the PR.
+# Auth: reviews are authenticated — the unauthenticated path upstream is closed.
+# The token goes in via the action's `tessl-token` input (the composite forwards
+# it to tesslio/setup-tessl and to the CLI env); a job-level TESSL_TOKEN env var
+# is no longer picked up, because the composite sets its own step-level
+# TESSL_TOKEN from the input. TESSL_TOKEN is an org secret shared with the Tessl
+# publish workflow. When it is absent the job no-ops with a warning instead of
+# failing the PR.
+#
+# Workspace: reviews run against one Tessl workspace, which the CLI resolves from
+# the token when the token can see exactly one. If the token can see several the
+# check fails asking for a workspace — add `workspace: <name>` (see
+# `tessl workspace list`) when that happens.
 #
 # Pinning: skill-review has no tagged release yet, so it is pinned to a main
 # commit SHA. Bump the SHA to adopt upstream changes.
@@ -29,11 +37,11 @@ jobs:
   review:
     name: Review changed skills
     runs-on: ubuntu-latest
-    env:
-      TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
     steps:
       - name: Check TESSL_TOKEN is configured
         id: guard
+        env:
+          TESSL_TOKEN: ${{ secrets.TESSL_TOKEN }}
         run: |
           if [ -z "$TESSL_TOKEN" ]; then
             echo "::warning::TESSL_TOKEN not configured — skipping Tessl skill review"
@@ -48,8 +56,9 @@ jobs:
 
       - name: Review changed skills
         if: steps.guard.outputs.skip != 'true'
-        uses: tesslio/skill-review@22e928dd837202b2b1d1397e0114c92e0fae5ead # main (no tagged release)
+        uses: tesslio/skill-review@7e7ea574722a6d72752aa5a316bcc813d06b7cd2 # main (no tagged release)
         with:
+          tessl-token: ${{ secrets.TESSL_TOKEN }}
           path: '.'
           comment: 'true'
           fail-threshold: '0'
