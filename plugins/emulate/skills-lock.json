@@ -17,13 +17,13 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/emulate/SKILL.md",
-      "computedHash": "a37ed153c79c6fe337535a1055d08644070186160c5f14c4ad990c1a16537512"
+      "computedHash": "9f490bb96968516335972dc0df78fcd7b75025aab169a6bea24c2f9f4e63987e"
     },
     "github": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/github/SKILL.md",
-      "computedHash": "9f35addc8b40f7e75804f07ec140044ab32cf00f9b4ef536d2d9c2e1a5b24a3c"
+      "computedHash": "ae3920ffad035acdd71b0764015bc9401223197788092efb0be6a5edb7210fa6"
     },
     "google": {
       "source": "vercel-labs/emulate",
@@ -65,7 +65,7 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/stripe/SKILL.md",
-      "computedHash": "406885aaa09f57d0a326d6af005e8cd432ea69d9fbbf07de5bda251cb92d8cd1"
+      "computedHash": "d2e822c16e3e7698b719e9dd06e21ed1019cc37a62e29c1b51718da838ee106d"
     },
     "vercel": {
       "source": "vercel-labs/emulate",

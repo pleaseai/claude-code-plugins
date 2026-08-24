@@ -29,7 +29,7 @@
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-block-themes/SKILL.md",
-      "computedHash": "95bff49c5755aa856f9f8a7351a2dce82ec4ea7f0a95ffc5928c28d90b5d5d40"
+      "computedHash": "c3eac9e3af48647e13409944a38270dc13b516f4df7f070954568ae3521afe95"
     },
     "wp-interactivity-api": {
       "source": "wordpress/agent-skills",
