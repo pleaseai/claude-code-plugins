@@ -2,7 +2,7 @@
 
 ## Setup
 
-`<ViewTransition>` works out of the box for `startTransition`/`Suspense` updates. To also animate `<Link>` navigations:
+`<ViewTransition>` works out of the box — the bundled React canary ships it, and every `<Link>` navigation runs inside `React.startTransition`, so react-dom starts a view transition whenever affected `<ViewTransition>` components exist. Set the documented flag:
 
 ```js
 // next.config.js
@@ -12,21 +12,23 @@ const nextConfig = {
 module.exports = nextConfig;
 ```
 
-This wraps every `<Link>` navigation in `document.startViewTransition`. Any VT with `default="auto"` fires on **every** link click — use `default="none"` to prevent competing animations.
+(Historically the flag switched React to the experimental channel — required before `ViewTransition` reached canary. It no longer does; the experimental channel is only needed for `useSwipeTransition` gestures and `parentEnter`/`parentExit`, selected by other flags like `gestureTransition`.)
 
-Do **not** install `react@canary` — see SKILL.md "Availability" for details.
+Because every link click is a transition, any VT with `default="auto"` fires on **every** navigation — use `default="none"` to prevent competing animations.
+
+Do **not** install `react@canary` — see [Availability](../SKILL.md#availability) for details.
 
 ---
 
 ## Next.js Implementation Additions
 
-When following `implementation.md`, apply these additions:
+When following [implementation.md](implementation.md), apply these additions:
 
 **After Step 2:** Enable the experimental flag above.
 
-**Step 4:** Use `transitionTypes` on `<Link>` — see "The `transitionTypes` Prop" section below for usage and availability.
+**Step 4:** Use `transitionTypes` on `<Link>` — see [The `transitionTypes` Prop](#the-transitiontypes-prop-on-nextlink). If the animation depends on dynamic destination content, also see [When Content Must Be Ready](#when-content-must-be-ready).
 
-**After Step 6:** For same-route dynamic segments (e.g., `/collection/[slug]`), use the `key` + `name` + `share` pattern — see Same-Route Dynamic Segment Transitions below.
+**After Step 6:** For same-route dynamic segments (e.g., `/collection/[slug]`), use the `key` + `name` + `share` pattern — see [Same-Route Dynamic Segment Transitions](#same-route-dynamic-segment-transitions).
 
 ---
 
@@ -36,7 +38,7 @@ When following `implementation.md`, apply these additions:
 
 A bare `<ViewTransition>` in layout works only if pages have **no** VTs of their own.
 
-**Layouts persist across navigations** — `enter`/`exit` only fire on initial mount, not on route changes. Don't use type-keyed maps in layouts.
+**Layouts persist across navigations** — `enter`/`exit` only fire on initial mount, not on route changes. Don't use type-keyed maps in layouts. Because layouts persist, chrome hosted in one (nav, sidebar, player) keeps its state across navigations for free — no `Activity` needed. Reserve `Activity` for in-page show/hide (see [Composing with Activity](patterns.md#composing-with-activity)).
 
 ---
 
@@ -45,12 +47,34 @@ A bare `<ViewTransition>` in layout works only if pages have **no** VTs of their
 No wrapper component needed, works in Server Components:
 
 ```tsx
-<Link href="/products/1" transitionTypes={['transition-to-detail']}>View Product</Link>
+<Link href="/products/1" transitionTypes={['transition-to-detail']}>
+  View Product
+</Link>
 ```
 
 Replaces the manual pattern of `onNavigate` + `startTransition` + `addTransitionType` + `router.push()`. Reserve manual `startTransition` for non-link interactions (buttons, forms).
 
-**Availability:** `transitionTypes` requires `experimental.viewTransition: true` and is available in Next.js 15+ canary builds and Next.js 16+. If unavailable, use `startTransition` + `addTransitionType` + `router.push()` (see Programmatic Navigation below). To check: `grep -r "transitionTypes" node_modules/next/dist/` — if no results, fall back to programmatic navigation.
+**Availability:** `transitionTypes` shipped in **Next.js 16.2.0** (it is not gated on the `experimental.viewTransition` flag). If unavailable, use `startTransition` + `addTransitionType` + `router.push()` (see [Programmatic Navigation](#programmatic-navigation)). To check: `grep -r "transitionTypes" node_modules/next/dist/` — if no results, fall back to programmatic navigation.
+
+---
+
+## When Content Must Be Ready
+
+A page transition can animate whatever Next.js renders during navigation, including a loading fallback. A shared content-to-content morph only works when the incoming content is ready as the navigation commits; content that has not rendered yet cannot form the incoming half of the pair.
+
+When an animation depends on dynamic destination content, use Next.js prefetching and caching to make that content available ahead of time. `<Link>` automatically prefetches in production, but the default behavior for dynamic routes may only prefetch a shell or loading boundary. Set `prefetch={true}` to prefetch the full route, and cache the data needed to render the shared content.
+
+```tsx
+<Link href={nextHref} prefetch={true} transitionTypes={['nav-forward']}>
+  Next
+</Link>
+```
+
+With Cache Components, put reusable route data in a cached scope such as `use cache` so prefetching can include it. If the destination remains behind an unresolved Suspense boundary, the route transition animates the fallback instead. The content resolves in a separate Suspense transition without the original `nav-forward` or `nav-back` type, so give that content its own reveal animation when needed.
+
+Verify directional transitions in a production build with a cold client cache. Development mode does not run automatic `<Link>` prefetching.
+
+See the Next.js [View Transitions guide](https://nextjs.org/docs/app/guides/view-transitions) and [Prefetching guide](https://nextjs.org/docs/app/guides/prefetching).
 
 ---
 
@@ -60,16 +84,19 @@ Replaces the manual pattern of `onNavigate` + `startTransition` + `addTransition
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { startTransition, addTransitionType } from 'react';
 
-function handleNavigate(href: string) {
+function DetailButton({ href }: { href: string }) {
   const router = useRouter();
-  startTransition(() => {
-    addTransitionType('nav-forward');
-    router.push(href);
-  });
+
+  return (
+    <button onClick={() => router.push(href, { transitionTypes: ['nav-forward'] })}>
+      Open
+    </button>
+  );
 }
 ```
+
+The `transitionTypes` option adds the types inside the router's navigation Transition. Use `startTransition` + `addTransitionType` for non-navigation state updates, or as a fallback on Next.js versions without the router option.
 
 ---
 
@@ -91,7 +118,40 @@ function handleSort(sort: string) {
 }
 ```
 
-List items wrapped in `<ViewTransition key={item.id}>` will animate reorder. This is the server-component alternative to the client-side `useDeferredValue` pattern in `patterns.md`.
+List items wrapped in `<ViewTransition key={item.id}>` will animate reorder. This is the server-component alternative to the client-side [Searchable Grid](patterns.md#searchable-grid-with-usedeferredvalue) pattern.
+
+---
+
+## Routing-Driven Tabs
+
+The generalized sliding indicator ([Sliding Indicator](patterns.md#sliding-indicator-tabs)) driven by navigation instead of local state: tabs are `<Link>`s, `active` comes from the URL (a server prop), and `useOptimistic` slides the indicator instantly while the route commits. Key the mounted indicator to committed `active` so the bar lands where navigation actually settles.
+
+```tsx
+'use client';
+import Link from 'next/link';
+import { useOptimistic, useTransition, ViewTransition } from 'react';
+
+export function Tabs({ tabs, active, indicatorName = 'tab-indicator' }) {
+  const [optimisticActive, setOptimisticActive] = useOptimistic(active);
+  const [, startTransition] = useTransition();
+  return (
+    <nav>
+      {tabs.map(t => (
+        <Link key={t.value} href={t.href} scroll={false}
+          aria-current={optimisticActive === t.value ? 'page' : undefined}
+          onNavigate={() => startTransition(() => setOptimisticActive(t.value))}>
+          <span>{t.label}</span>
+          {active === t.value && (
+            <ViewTransition name={indicatorName} share="tab-underline">
+              <span className="active-underline" aria-hidden />
+            </ViewTransition>
+          )}
+        </Link>
+      ))}
+    </nav>
+  );
+}
+```
 
 ---
 
@@ -149,28 +209,34 @@ Same rules as explicit `<Suspense>`: use simple string props (not type maps) sin
 </ViewTransition>
 ```
 
+If the pair's `share` is type-keyed (or classed via CSS that expects a type), every `<Link>` between the two views must carry the type via `transitionTypes` — a plain link click resolves the share map's `default`, and if that's `none` the morph silently never fires.
+
 ---
 
 ## Same-Route Dynamic Segment Transitions
 
-When navigating between dynamic segments of the same route (e.g., `/collection/[slug]`), the page stays mounted — enter/exit never fire. Use `key` + `name` + `share`:
+When navigating between dynamic segments of the same route (e.g., `/collection/[slug]`), the router swaps subtrees keyed by the segment value rather than doing a plain unmount/mount — enter/exit don't fire reliably. Use `key` + `name` + `share`:
 
 ```tsx
 <Suspense fallback={<Skeleton />}>
-  <ViewTransition key={slug} name={`collection-${slug}`} share="auto" default="none">
+  <ViewTransition key={slug} name="collection-content" share="auto" default="none">
     <Content slug={slug} />
   </ViewTransition>
 </Suspense>
 ```
 
 - `key={slug}` forces unmount/remount on change
-- `name` + `share="auto"` creates a shared element crossfade
+- The stable `name` pairs the outgoing and incoming containers; `share="auto"` creates the crossfade
 - VT inside `<Suspense>` (without keying Suspense) keeps old content visible during loading
 
 ---
+
+## Nested enter/exit — `parentEnter` / `parentExit` (experimental)
+
+Lifts the "nested VTs don't fire enter/exit inside a parent" rule: a nested VT can animate when its **parent** enters/exits (`parentEnter`/`parentExit`, `onParentEnter`/`onParentExit`; `parentEnter="none"` stops propagation). Experimental-channel only today; SSR support landed in React PR #36917 ([commit](https://github.com/facebook/react/commit/83840902c890f0eb85decda239ef6b1b14945779)). Verify it's in the React your app runs: `grep -c "parentEnter" node_modules/next/dist/compiled/react-dom/cjs/react-dom-client.production.js` — 0 means unavailable (Next uses the experimental channel only when `gestureTransition`/`blockingSSR`/`taint`/`transitionIndicator` is set).
 
 ## Server Components
 
 - `<ViewTransition>` works in both Server and Client Components
 - `<Link transitionTypes>` works in Server Components — no `'use client'` needed
-- `addTransitionType` and `startTransition` for programmatic nav require Client Components
+- `router.push(..., { transitionTypes })`, `addTransitionType`, and `startTransition` require Client Components

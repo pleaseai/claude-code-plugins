@@ -27,6 +27,41 @@ const github = await createEmulator({ service: 'github', port: 4001 })
 // github.url === 'http://localhost:4001'
 ```
 
+For a programmatic GitHub App, omit `private_key` and read the generated RSA key from the instance:
+
+```typescript
+const github = await createEmulator({
+  service: 'github',
+  port: 4001,
+  seed: {
+    github: {
+      users: [{ login: 'octocat' }],
+      apps: [{
+        app_id: 12345,
+        slug: 'my-github-app',
+        name: 'My GitHub App',
+        installations: [{ installation_id: 100, account: 'octocat' }],
+      }],
+    },
+  },
+})
+
+const privateKey = github.generatedSecrets.find(
+  secret => secret.kind === 'github.app_private_key' && secret.id === '12345',
+)?.value
+```
+
+The key remains stable across `github.reset()`. Explicit keys are not included in `generatedSecrets`.
+
+For the CLI, omit `private_key` only when requesting a private delivery file:
+
+```bash
+npx emulate start --service github --seed emulate.config.yaml \
+  --generated-secrets-file .emulate-secrets.json
+```
+
+The destination must not exist. emulate removes inherited ACLs, verifies effective owner-only access, and publishes complete JSON before any listener or portless alias starts. Handled startup failures remove the invocation-owned artifact. A hard termination can leave a complete artifact that must be removed manually after confirming no invocation is using it. Read `generatedSecrets` from the artifact, then keep the file out of source control. Linux requires `setfacl` and `getfacl` from the `acl` package. The flag fails closed when access controls cannot be verified and is not supported on Windows. Without `--generated-secrets-file`, CLI seed files still require `private_key`.
+
 ## Auth
 
 Pass tokens as `Authorization: Bearer <token>` or `Authorization: token <token>`.
@@ -210,6 +245,9 @@ curl http://localhost:4001/user/emails -H "Authorization: Bearer $TOKEN"
 # Get repo
 curl http://localhost:4001/repos/octocat/hello-world
 
+# Get repo by numeric ID
+curl http://localhost:4001/repositories/1
+
 # Create user repo
 curl -X POST http://localhost:4001/user/repos \
   -H "Authorization: Bearer $TOKEN" \
@@ -233,6 +271,27 @@ curl -X DELETE http://localhost:4001/repos/octocat/hello-world \
   -H "Authorization: Bearer $TOKEN"
 
 # Topics, languages, contributors, forks, collaborators, tags, transfer
+```
+
+### Contents & Commit History
+
+```bash
+# Read a file or list a directory at a branch, tag, or commit
+curl "http://localhost:4001/repos/octocat/hello-world/contents/README.md?ref=main"
+
+# Download raw file content from the URL advertised by contents and commit responses
+curl http://localhost:4001/octocat/hello-world/raw/main/README.md
+
+# Create or update a file and commit the change
+curl -X PUT http://localhost:4001/repos/octocat/hello-world/contents/notes.txt \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{"message": "Update notes", "content": "aGVsbG8K"}'
+
+# List commits, get a commit with file stats, or compare refs
+curl http://localhost:4001/repos/octocat/hello-world/commits
+curl http://localhost:4001/repos/octocat/hello-world/commits/main
+curl http://localhost:4001/repos/octocat/hello-world/compare/v1.0.0...main
 ```
 
 ### Issues
