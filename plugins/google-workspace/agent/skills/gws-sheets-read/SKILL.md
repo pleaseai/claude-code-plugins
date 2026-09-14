@@ -1,6 +1,14 @@
 ---
+name: gws-sheets-read
 description: "Google Sheets: Read values from a spreadsheet."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws sheets +read --help
 ---
 # sheets +read
 

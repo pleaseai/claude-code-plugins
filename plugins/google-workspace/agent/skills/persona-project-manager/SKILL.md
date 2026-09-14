@@ -1,6 +1,19 @@
 ---
-description: "Coordinate projects — track tasks, schedule meetings, and share docs."
-metadata: {"version":"0.22.5"}
+name: persona-project-manager
+description: Coordinate projects — track tasks, schedule meetings, and share docs.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: persona
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-drive
+        - gws-sheets
+        - gws-calendar
+        - gws-gmail
+        - gws-chat
 ---
 # Project Manager
 

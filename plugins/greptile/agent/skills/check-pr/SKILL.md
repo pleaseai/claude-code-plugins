@@ -1,7 +1,18 @@
 ---
-description: "Checks a GitHub, GitLab, or Perforce (p4) pull request (or merge request, or shelved changelist) for unresolved review comments, failing status checks, and incomplete PR descriptions. Waits for pending checks to complete, categorizes issues as actionable or informational, and optionally fixes and resolves them. Use when the user wants to check a PR/MR/CL, address review feedback, or prepare a change for submission.\n"
-license: "MIT"
-metadata: {"author":"greptileai","version":"1.3"}
+name: check-pr
+description: >
+  Checks a GitHub, GitLab, or Perforce (p4) pull request (or merge request, or
+  shelved changelist) for unresolved review comments, failing status checks, and
+  incomplete PR descriptions. Waits for pending checks to complete, categorizes
+  issues as actionable or informational, and optionally fixes and resolves them.
+  Use when the user wants to check a PR/MR/CL, address review feedback, or
+  prepare a change for submission.
+license: MIT
+compatibility: Requires git and gh (GitHub CLI), glab (GitLab CLI), or p4
+  (Perforce CLI) installed and authenticated.
+metadata:
+  author: greptileai
+  version: "1.3"
 ---
 # Check PR
 

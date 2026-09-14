@@ -1,6 +1,17 @@
 ---
-description: "Find Gmail messages with attachments and save them to a Google Drive folder."
-metadata: {"version":"0.22.5"}
+name: recipe-save-email-attachments
+description: Find Gmail messages with attachments and save them to a Google Drive folder.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-gmail
+        - gws-drive
 ---
 # Save Gmail Attachments to Google Drive
 

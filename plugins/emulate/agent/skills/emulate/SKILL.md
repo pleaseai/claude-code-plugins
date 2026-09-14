@@ -1,5 +1,12 @@
 ---
-description: "Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, AWS, Linear, and other developer APIs. Use when the user needs to start emulated services, configure seed data, write tests against local APIs, set up CI without network access, or work with the emulate CLI or programmatic API. Triggers include \"start the emulator\", \"emulate services\", \"mock API locally\", \"create emulator config\", \"test against local API\", \"npx emulate\", or any task requiring local service emulation."
+name: emulate
+description: Local drop-in API emulator for Vercel, GitHub, Google, Slack,
+  Apple, Microsoft, AWS, Linear, and other developer APIs. Use when the user
+  needs to start emulated services, configure seed data, write tests against
+  local APIs, set up CI without network access, or work with the emulate CLI or
+  programmatic API. Triggers include "start the emulator", "emulate services",
+  "mock API locally", "create emulator config", "test against local API", "npx
+  emulate", or any task requiring local service emulation.
 ---
 # Service Emulation with emulate
 

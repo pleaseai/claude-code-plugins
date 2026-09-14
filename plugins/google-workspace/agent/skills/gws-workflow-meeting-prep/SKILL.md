@@ -1,6 +1,15 @@
 ---
-description: "Google Workflow: Prepare for your next meeting: agenda, attendees, and linked docs."
-metadata: {"version":"0.22.5"}
+name: gws-workflow-meeting-prep
+description: "Google Workflow: Prepare for your next meeting: agenda, attendees,
+  and linked docs."
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws workflow +meeting-prep --help
 ---
 # workflow +meeting-prep
 

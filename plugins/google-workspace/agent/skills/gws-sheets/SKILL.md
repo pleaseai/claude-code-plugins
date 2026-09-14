@@ -1,6 +1,14 @@
 ---
+name: gws-sheets
 description: "Google Sheets: Read and write spreadsheets."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws sheets --help
 ---
 # sheets (v4)
 

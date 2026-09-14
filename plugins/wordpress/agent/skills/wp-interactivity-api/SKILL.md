@@ -1,5 +1,11 @@
 ---
-description: "Use when building or debugging WordPress Interactivity API features (data-wp-* directives, @wordpress/interactivity store/state/actions, block viewScriptModule integration, wp_interactivity_*()) including performance, hydration, and directive behavior."
+name: wp-interactivity-api
+description: Use when building or debugging WordPress Interactivity API features
+  (data-wp-* directives, @wordpress/interactivity store/state/actions, block
+  viewScriptModule integration, wp_interactivity_*()) including performance,
+  hydration, and directive behavior.
+compatibility: Targets WordPress 7.0+ (PHP 7.4.0+). Filesystem-based agent with
+  bash + node. Some workflows require WP-CLI.
 ---
 # WP Interactivity API
 

@@ -1,6 +1,17 @@
 ---
-description: "Move a Google Calendar event to a new time and automatically notify all attendees."
-metadata: {"version":"0.22.5"}
+name: recipe-reschedule-meeting
+description: Move a Google Calendar event to a new time and automatically notify
+  all attendees.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: scheduling
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-calendar
 ---
 # Reschedule a Google Calendar Meeting
 

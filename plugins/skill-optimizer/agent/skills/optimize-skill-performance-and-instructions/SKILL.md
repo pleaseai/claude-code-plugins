@@ -1,5 +1,11 @@
 ---
-description: "Run the full optimization cycle for a plugin — review best practices, generate eval scenarios, run BOTH activation evals (does the skill self-activate?) and content evals (does the plugin help solve tasks?), diagnose gaps, fix, and re-run until scores improve. Use when someone says \"optimize my skill\", \"improve my plugin\", \"run evals\", \"benchmark my plugin\", or wants to measure and improve how well a plugin helps agents solve tasks."
+name: optimize-skill-performance-and-instructions
+description: Run the full optimization cycle for a plugin — review best
+  practices, generate eval scenarios, run BOTH activation evals (does the skill
+  self-activate?) and content evals (does the plugin help solve tasks?),
+  diagnose gaps, fix, and re-run until scores improve. Use when someone says
+  "optimize my skill", "improve my plugin", "run evals", "benchmark my plugin",
+  or wants to measure and improve how well a plugin helps agents solve tasks.
 ---
 # Optimize
 

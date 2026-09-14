@@ -1,6 +1,14 @@
 ---
+name: gws-workflow
 description: "Google Workflow: Cross-service productivity workflows."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws workflow --help
 ---
 # workflow (v1)
 

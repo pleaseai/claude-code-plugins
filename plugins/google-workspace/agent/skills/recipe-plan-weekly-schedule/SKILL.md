@@ -1,6 +1,16 @@
 ---
-description: "Review your Google Calendar week, identify gaps, and add events to fill them."
-metadata: {"version":"0.22.5"}
+name: recipe-plan-weekly-schedule
+description: Review your Google Calendar week, identify gaps, and add events to fill them.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: scheduling
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-calendar
 ---
 # Plan Your Weekly Google Calendar Schedule
 

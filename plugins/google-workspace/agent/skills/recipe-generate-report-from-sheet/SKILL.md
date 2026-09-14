@@ -1,6 +1,18 @@
 ---
-description: "Read data from a Google Sheet and create a formatted Google Docs report."
-metadata: {"version":"0.22.5"}
+name: recipe-generate-report-from-sheet
+description: Read data from a Google Sheet and create a formatted Google Docs report.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-sheets
+        - gws-docs
+        - gws-drive
 ---
 # Generate a Google Docs Report from Sheet Data
 

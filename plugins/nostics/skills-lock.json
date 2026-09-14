@@ -5,13 +5,13 @@
       "source": "vercel-labs/nostics",
       "sourceType": "github",
       "skillPath": "skills/add-diagnostic/SKILL.md",
-      "computedHash": "bffe858a73515c6dcd391644a6c5ac494f0ef56454fa713156f093f7241544f6"
+      "computedHash": "c7b8e4657722027d0ec9099406e05941d33103cc76b4915859e3cd60f94617a0"
     },
     "nostics": {
       "source": "vercel-labs/nostics",
       "sourceType": "github",
       "skillPath": "skills/nostics/SKILL.md",
-      "computedHash": "07db3216d541cb51221ad4ad2af8e0581a73abe14ea0c0c685f5c3d4a586d3ad"
+      "computedHash": "7a39ad8833dd28e1209b7c269564b6a864a859cf86fb3b64a87790bf3b47c5cc"
     }
   }
 }

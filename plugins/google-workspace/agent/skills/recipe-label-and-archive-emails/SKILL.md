@@ -1,6 +1,17 @@
 ---
-description: "Apply Gmail labels to matching messages and archive them to keep your inbox clean."
-metadata: {"version":"0.22.5"}
+name: recipe-label-and-archive-emails
+description: Apply Gmail labels to matching messages and archive them to keep
+  your inbox clean.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-gmail
 ---
 # Label and Archive Gmail Threads
 

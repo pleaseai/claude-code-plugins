@@ -1,7 +1,15 @@
 ---
-description: "Turn complex or visual agent responses into rich, reviewable HTML artifacts the user can annotate and send feedback on, using the lavish-axi CLI. Use when about to give a plan, comparison, diagram, table, code diff, report, or anything easier to grasp visually than as prose."
-license: "MIT"
-metadata: {"author":"Kun Chen (kunchenguid)","argument-hint":"<what the artifact should show>","hermes-tags":"html, review, artifacts, visualization","hermes-category":"productivity"}
+name: lavish
+description: Turn complex or visual agent responses into rich, reviewable HTML
+  artifacts the user can annotate and send feedback on, using the lavish-axi
+  CLI. Use when about to give a plan, comparison, diagram, table, code diff,
+  report, or anything easier to grasp visually than as prose.
+license: MIT
+metadata:
+  author: Kun Chen (kunchenguid)
+  argument-hint: <what the artifact should show>
+  hermes-tags: html, review, artifacts, visualization
+  hermes-category: productivity
 ---
 # Lavish Editor
 

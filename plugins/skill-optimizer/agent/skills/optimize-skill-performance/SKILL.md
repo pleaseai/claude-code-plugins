@@ -1,5 +1,11 @@
 ---
-description: "Run task evals, analyze results, diagnose failures, apply targeted fixes, and re-run to verify improvements. Use when debugging evaluation scores, fixing failing or regressed criteria, analyzing why eval criteria pass or fail, reviewing eval rubric quality and redundant criteria, tracking before/after score improvements, editing plugin content to fix specific failing behaviors, or improving agent performance based on eval evidence."
+name: optimize-skill-performance
+description: Run task evals, analyze results, diagnose failures, apply targeted
+  fixes, and re-run to verify improvements. Use when debugging evaluation
+  scores, fixing failing or regressed criteria, analyzing why eval criteria pass
+  or fail, reviewing eval rubric quality and redundant criteria, tracking
+  before/after score improvements, editing plugin content to fix specific
+  failing behaviors, or improving agent performance based on eval evidence.
 ---
 # Review Task Performance
 

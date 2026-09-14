@@ -1,6 +1,17 @@
 ---
-description: "Create a Google Meet meeting space and share the join link."
-metadata: {"version":"0.22.5"}
+name: recipe-create-meet-space
+description: Create a Google Meet meeting space and share the join link.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: scheduling
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-meet
+        - gws-gmail
 ---
 # Create a Google Meet Conference
 

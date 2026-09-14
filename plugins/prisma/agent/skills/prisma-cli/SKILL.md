@@ -1,7 +1,14 @@
 ---
-description: "Prisma ORM CLI commands reference covering init, generate, migrate, db, dev, complete, studio, validate, format, debug, and mcp. Use for ORM/database CLI workflows, not the Prisma Platform CLI. Triggers on \"prisma init\", \"prisma generate\", \"prisma migrate\", \"prisma db\", \"prisma complete\", \"prisma studio\", \"prisma mcp\"."
-license: "MIT"
-metadata: {"author":"prisma","version":"7.9.1"}
+name: prisma-cli
+description: Prisma ORM CLI commands reference covering init, generate, migrate,
+  db, dev, complete, studio, validate, format, debug, and mcp. Use for
+  ORM/database CLI workflows, not the Prisma Platform CLI. Triggers on "prisma
+  init", "prisma generate", "prisma migrate", "prisma db", "prisma complete",
+  "prisma studio", "prisma mcp".
+license: MIT
+metadata:
+  author: prisma
+  version: 7.9.1
 ---
 # Prisma CLI Reference
 

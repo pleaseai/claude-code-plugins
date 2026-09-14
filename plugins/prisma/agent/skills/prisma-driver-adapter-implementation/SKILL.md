@@ -1,7 +1,14 @@
 ---
-description: "Required reference for Prisma ORM 7 SQL driver adapter work. Use when implementing or modifying adapters, adding database drivers, or touching SqlDriverAdapter, Transaction, savepoint, result mapping, or DriverAdapterError behavior. Covers current transaction lifecycle, optional savepoint hooks, original database-error preservation, and verification."
-license: "MIT"
-metadata: {"author":"prisma","version":"7.9.1"}
+name: prisma-driver-adapter-implementation
+description: Required reference for Prisma ORM 7 SQL driver adapter work. Use
+  when implementing or modifying adapters, adding database drivers, or touching
+  SqlDriverAdapter, Transaction, savepoint, result mapping, or
+  DriverAdapterError behavior. Covers current transaction lifecycle, optional
+  savepoint hooks, original database-error preservation, and verification.
+license: MIT
+metadata:
+  author: prisma
+  version: 7.9.1
 ---
 # Prisma SQL Driver Adapter Implementation
 

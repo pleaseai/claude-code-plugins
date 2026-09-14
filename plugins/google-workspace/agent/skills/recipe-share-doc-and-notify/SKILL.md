@@ -1,6 +1,18 @@
 ---
-description: "Share a Google Docs document with edit access and email collaborators the link."
-metadata: {"version":"0.22.5"}
+name: recipe-share-doc-and-notify
+description: Share a Google Docs document with edit access and email collaborators the link.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-drive
+        - gws-docs
+        - gws-gmail
 ---
 # Share a Google Doc and Notify Collaborators
 

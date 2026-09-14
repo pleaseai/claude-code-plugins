@@ -1,5 +1,10 @@
 ---
-description: "Use when the deliverable is WordPress Playground Blueprint JSON or a Blueprint bundle, including creating, editing, reviewing, validating schema keys, choosing steps/resources, and debugging Blueprint files. For only running or sharing a Playground environment, use wp-playground."
+name: blueprint
+description: Use when the deliverable is WordPress Playground Blueprint JSON or
+  a Blueprint bundle, including creating, editing, reviewing, validating schema
+  keys, choosing steps/resources, and debugging Blueprint files. For only
+  running or sharing a Playground environment, use wp-playground.
+compatibility: WordPress 7.0+, PHP 7.4.0+. Optionally Playground CLI or a browser
 ---
 # WordPress Playground Blueprints
 

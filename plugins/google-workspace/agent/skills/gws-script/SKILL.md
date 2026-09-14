@@ -1,6 +1,14 @@
 ---
-description: "Manage Google Apps Script projects."
-metadata: {"version":"0.22.5"}
+name: gws-script
+description: Manage Google Apps Script projects.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws script --help
 ---
 # script (v1)
 

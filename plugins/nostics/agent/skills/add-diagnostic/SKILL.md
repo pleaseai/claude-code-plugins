@@ -1,6 +1,8 @@
 ---
-description: "Add a new diagnostic code following the defineDiagnostics() conventions from nostics"
-license: "MIT"
+name: add-diagnostic
+description: Add a new diagnostic code following the defineDiagnostics()
+  conventions from nostics
+license: MIT
 ---
 # Add a New Diagnostic Code
 

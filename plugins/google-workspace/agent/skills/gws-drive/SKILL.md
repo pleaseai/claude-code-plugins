@@ -1,6 +1,14 @@
 ---
+name: gws-drive
 description: "Google Drive: Manage files, folders, and shared drives."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws drive --help
 ---
 # drive (v3)
 

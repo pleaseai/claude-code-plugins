@@ -1,6 +1,17 @@
 ---
-description: "Create a Google Form for feedback and share it via Gmail."
-metadata: {"version":"0.22.5"}
+name: recipe-create-feedback-form
+description: Create a Google Form for feedback and share it via Gmail.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-forms
+        - gws-gmail
 ---
 # Create and Share a Google Form
 

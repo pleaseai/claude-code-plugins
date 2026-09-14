@@ -1,6 +1,16 @@
 ---
-description: "Create a Google Classroom course and invite students."
-metadata: {"version":"0.22.5"}
+name: recipe-create-classroom-course
+description: Create a Google Classroom course and invite students.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: education
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-classroom
 ---
 # Create a Google Classroom Course
 
