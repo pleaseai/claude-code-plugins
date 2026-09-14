@@ -96,6 +96,8 @@ await github.close()
 await vercel.close()
 ```
 
+For GitHub App tests, inspect secret-free minted installation-token metadata at `GET /_emulate/installation-tokens`.
+
 ### Options
 
 | Option | Default | Description |
@@ -383,7 +385,7 @@ const kvAdapter: PersistenceAdapter = {
 }
 ```
 
-State is loaded on cold start and saved after every mutating request (POST, PUT, PATCH, DELETE). Saves are serialized to prevent race conditions.
+State is loaded on cold start and saved after every mutating request (POST, PUT, PATCH, DELETE). Saves are serialized to prevent race conditions. Generated GitHub App identities require `initialize` to atomically create the initial value or return the value another instance created first.
 
 ## Architecture
 

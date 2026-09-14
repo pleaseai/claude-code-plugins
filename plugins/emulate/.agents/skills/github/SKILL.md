@@ -53,6 +53,8 @@ const privateKey = github.generatedSecrets.find(
 
 The key remains stable across `github.reset()`. Explicit keys are not included in `generatedSecrets`.
 
+The Next.js and Nuxt adapters also generate omitted keys. Retain the returned handler and call its server-only `generatedSecrets()` method. With persistence configured, the identity survives cold starts. Keep snapshots private because they contain the signing key, and require custom persistence backends to implement atomic `initialize()` semantics.
+
 For the CLI, omit `private_key` only when requesting a private delivery file:
 
 ```bash
@@ -608,7 +610,12 @@ curl -X POST $BASE/app/installations/100/access_tokens \
 # 3. Use the installation token to call API endpoints
 curl $BASE/repos/my-org/org-repo \
   -H "Authorization: Bearer ghs_..."
+
+# Inspect minted installation-token metadata without token values
+curl $BASE/_emulate/installation-tokens
 ```
+
+The inspection route is emulator-specific. It lists App, installation, account, permissions, repository access, issuance, expiry, and lifecycle status without accepting or returning token values or token-derived identifiers. Expiry is informational and does not change authorization behavior.
 
 ### OAuth Flow
 

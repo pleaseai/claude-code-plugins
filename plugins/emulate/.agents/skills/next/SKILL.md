@@ -50,6 +50,8 @@ This creates the following routes:
 - `/emulate/github/**` serves the GitHub emulator
 - `/emulate/google/**` serves the Google emulator
 
+GitHub installation-token metadata is available server-side at `/emulate/github/_emulate/installation-tokens`.
+
 ## Auth.js / NextAuth Configuration
 
 Point your provider at the emulator paths on the same origin:
@@ -123,6 +125,8 @@ import { filePersistence } from '@emulators/core'
 persistence: filePersistence('.emulate/state.json'),
 ```
 
+GitHub App seeds may omit `private_key`. Retain the handler and call server-only `generatedSecrets()`; explicit keys are excluded. Keep persisted snapshots private and implement `initialize` atomically.
+
 ### How Persistence Works
 
 - **Cold start**: The adapter loads state from the persistence adapter. If found, it restores the full Store and token map (skipping seed). If not found, it seeds from config and saves the initial state.
@@ -140,7 +144,7 @@ persistence: filePersistence('.emulate/state.json'),
 ## Limitations
 
 - Requires the Node.js runtime (not Edge) since emulators use `crypto.randomBytes`
-- Concurrent serverless instances writing to the same persistence adapter use last-write-wins semantics (acceptable for dev/preview traffic)
+- Concurrent mutations use last-write-wins semantics. Generated identities require `initialize` to select the initial snapshot atomically across cold starts.
 
 ## Config Reference
 
@@ -172,7 +176,8 @@ Wraps a Next.js config to include emulator font files in the serverless output t
 interface PersistenceAdapter {
   load(): Promise<string | null>
   save(data: string): Promise<void>
+  initialize?(data: string): Promise<string>
 }
 ```
 
-The built-in `filePersistence(path)` from `@emulators/core` provides a file-based adapter for local development.
+`initialize` must atomically create the initial value or return the value another instance created first. Implement it with compare-and-set semantics such as Redis `SET NX`. The built-in `filePersistence(path)` from `@emulators/core` provides this behavior for local development.
