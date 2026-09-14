@@ -1,0 +1,29 @@
+.agents/plugins/marketplace.json
+  s_04170a69e09558::t_d74eb8ee01bc64 1274-1297
+.claude-plugin/marketplace.json
+  s_4ab73a6947510d::t_3c086174de56c2 1683-1704
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "f74b29950a526139ddd1c1dc47175af79f423783",
+  "prompts": {},
+  "sessions": {
+    "s_04170a69e09558": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "16addd4e-5aca-4e97-a602-05d3ea9c9f94",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    },
+    "s_4ab73a6947510d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "347b5ae2-ff2e-4b5f-99e2-677f94cd9a0d",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
