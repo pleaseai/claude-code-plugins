@@ -1680,6 +1680,28 @@
           ]
         }
       }
+    },
+    {
+      "name": "yoonmoon",
+      "description": "Polish Korean prose and detect AI-written Korean — full-course polishing, humanizing, AI detection, translationese correction, spelling and grammar proofreading, and register conversion.",
+      "category": "productivity",
+      "keywords": ["korean", "humanize", "ai-detector", "translationese", "proofreading"],
+      "tags": ["writing", "korean"],
+      "source": {
+        "source": "github",
+        "repo": "amondnet/yoonmoon"
+      }
+    },
+    {
+      "name": "kipris",
+      "description": "Search Korean patents, utility models, designs, trademarks, trials and foreign patents via the KIPRIS Plus Open API. Python stdlib only — no install step.",
+      "category": "research",
+      "keywords": ["patent", "trademark", "intellectual-property", "korea", "kipris"],
+      "tags": ["search", "open-api"],
+      "source": {
+        "source": "github",
+        "repo": "amondnet/KIPRIS"
+      }
     }
   ]
 }
