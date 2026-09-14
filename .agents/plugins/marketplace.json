@@ -1271,6 +1271,30 @@
         "authentication": "ON_INSTALL"
       },
       "category": "Framework"
+    },
+    {
+      "name": "yoonmoon",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/amondnet/yoonmoon.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "kipris",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/amondnet/KIPRIS.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
     }
   ]
 }
