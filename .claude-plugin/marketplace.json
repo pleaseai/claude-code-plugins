@@ -1653,6 +1653,32 @@
         "ref": "main"
       },
       "homepage": "https://github.com/pleaseai/shunt/tree/main/plugins/shunt-mimo"
+    },
+    {
+      "name": "spring",
+      "description": "Answers Spring questions from the reference documentation of the version your project declares, not the newest release.",
+      "category": "framework",
+      "keywords": ["spring", "spring-boot", "java", "kotlin", "documentation"],
+      "tags": ["framework", "docs", "skills"],
+      "source": {
+        "source": "github",
+        "repo": "pleaseai/spring-plugin"
+      },
+      "homepage": "https://github.com/pleaseai/spring-plugin",
+      "relevance": {
+        "topic": "Spring",
+        "signals": {
+          "cli": ["gradle", "./gradlew", "mvn", "./mvnw"],
+          "filesRead": [
+            "**/build.gradle",
+            "**/build.gradle.kts",
+            "**/pom.xml",
+            "**/gradle/libs.versions.toml",
+            "**/src/main/resources/application*.yml",
+            "**/src/main/resources/application*.properties"
+          ]
+        }
+      }
     }
   ]
 }
