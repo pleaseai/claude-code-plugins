@@ -1668,14 +1668,15 @@
       "relevance": {
         "topic": "Spring",
         "signals": {
-          "cli": ["gradle", "./gradlew", "mvn", "./mvnw"],
           "filesRead": [
-            "**/build.gradle",
-            "**/build.gradle.kts",
-            "**/pom.xml",
-            "**/gradle/libs.versions.toml",
             "**/src/main/resources/application*.yml",
+            "**/src/main/resources/application*.yaml",
             "**/src/main/resources/application*.properties"
+          ],
+          "manifestDeps": [
+            { "file": "[/\\\\]pom\\.xml$", "pattern": "spring-boot" },
+            { "file": "[/\\\\]build\\.gradle(\\.kts)?$", "pattern": "org\\.springframework\\.boot" },
+            { "file": "[/\\\\]libs\\.versions\\.toml$", "pattern": "org\\.springframework\\.boot" }
           ]
         }
       }
