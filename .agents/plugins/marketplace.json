@@ -1127,6 +1127,18 @@
       "category": "Productivity"
     },
     {
+      "name": "tanstack",
+      "source": {
+        "source": "local",
+        "path": "./plugins/tanstack"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Framework"
+    },
+    {
       "name": "run-verify",
       "source": {
         "source": "url",
@@ -1151,10 +1163,108 @@
       "category": "UI"
     },
     {
-      "name": "tanstack",
+      "name": "shunt-codex",
       "source": {
-        "source": "local",
-        "path": "./plugins/tanstack"
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-codex",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-xai",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-xai",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-kimi",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-kimi",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-deepseek",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-deepseek",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-zai",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-zai",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-minimax",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-minimax",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "shunt-mimo",
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/pleaseai/shunt.git",
+        "path": "./plugins/shunt-mimo",
+        "ref": "main"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "AI"
+    },
+    {
+      "name": "spring",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/pleaseai/spring-plugin.git"
       },
       "policy": {
         "installation": "AVAILABLE",
