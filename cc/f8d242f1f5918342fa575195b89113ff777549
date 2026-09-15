@@ -1,0 +1,27 @@
+plugins/deno/plugin.json
+  s_04bd837047f7b0::t_db7d56fa5fb833 20
+.claude-plugin/marketplace.json
+  s_04bd837047f7b0::t_db7d56fa5fb833 1323
+plugins/deno/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_db7d56fa5fb833 20
+plugins/deno/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_db7d56fa5fb833 19
+plugins/deno/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_db7d56fa5fb833 33
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "ccf8d242f1f5918342fa575195b89113ff777549",
+  "prompts": {},
+  "sessions": {
+    "s_04bd837047f7b0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "686c5127-f436-4700-95fd-a76f56c74e22",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
