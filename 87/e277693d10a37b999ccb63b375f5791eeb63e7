@@ -1,0 +1,2050 @@
+plugins/google-workspace/agent/skills/recipe-batch-invite-to-event/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/firebase/.agents/skills/firebase-crashlytics/references/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-115
+plugins/vueuse/.agents/skills/vueuse-functions/references/onStartTyping.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 29-57,68-69,73-83,93
+.cursor-plugin/marketplace.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 12-16,377-381,388-390
+plugins/vueuse/agent/skills/vueuse-functions/references/useElementVisibility.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 57-88
+plugins/google-workspace/agent/skills/gws-drive/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/gws-docs-write/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/recipe-schedule-recurring-event/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/orpc/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-29
+plugins/tsdown/.agents/skills/tsdown/references/advanced-rolldown-options.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 9
+plugins/tsdown/.agents/skills/tsdown/references/guide-migrate-from-tsup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 31-43,62-64,66-105,131-140,255
+plugins/turborepo/agent/skills/turborepo/references/ci/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68-73
+plugins/vueuse/agent/skills/vueuse-functions/references/useAsyncState.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 25-32
+plugins/firebase/.agents/skills/firebase-data-connect/reference/operations.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-385
+plugins/firebase/.agents/skills/firebase-remote-config-basics/references/android_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-91
+plugins/mastra/.tessl-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/nostics/agent/skills/add-diagnostic/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-5
+plugins/turborepo/.agents/skills/turborepo/references/caching/remote-cache.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 106-107,110
+plugins/vueuse/agent/skills/vueuse-functions/references/useMath.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 29-31
+.release-please-manifest.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 9-31,33,35,37-39,41-43,45-48,50-52,62-71
+  s_04bd837047f7b0::t_5d8eee548567ba 73
+plugins/react-native/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/wordpress/agent/skills/wp-rest-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,29
+plugins/wordpress/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-174
+plugins/google-workspace/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/google-workspace/agent/skills/recipe-collect-form-responses/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/skill-optimizer/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/provisioning.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-110
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/trigger-dev.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28,48
+agent/skills/create-plugin-scaffold/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-5
+plugins/tsdown/agent/skills/tsdown/references/option-copy.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-111
+plugins/tsdown/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/google-workspace/agent/skills/recipe-review-meet-participants/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/please-plugins/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/tsdown/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Sources/main.swift
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-232
+plugins/orpc/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-8
+plugins/turborepo/agent/skills/turborepo/references/environment/gotchas.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 115,149
+plugins/vueuse/agent/skills/vueuse-functions/references/useTimeAgo.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,46
+plugins/wordpress/.agents/skills/wp-wpcli-and-ops/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/wordpress/agent/skills/wp-project-triage/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/vueuse/agent/skills/vueuse-functions/references/useVibrate.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 66
+plugins/google-workspace/agent/skills/gws-gmail/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/gws-gmail-watch/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/vercel-sandbox/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vueuse/.agents/skills/vueuse-functions/references/useIntersectionObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 110
+plugins/google-workspace/agent/skills/gws-gmail-forward/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/nuxt/agent/skills/nuxt/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/turborepo/.agents/skills/turborepo/references/configuration/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 76,100
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Package.swift
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-17
+plugins/google-workspace/agent/skills/recipe-create-meet-space/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/nostics/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/signature-mapping.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-84
+plugins/tsdown/agent/skills/tsdown/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-5,71,75-76,92,101-103,116,349,360
+plugins/git-ai/agent/skills/prompt-analysis/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-3
+plugins/web-design/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/react/agent/skills/vercel-react-view-transitions/AGENTS.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7-9,27,48-54,76-79,85,89-91,93-98,105-106,122-123,128,138,161-177,181,187-190,202,208-211,235-238,241,256,266,284-285,290-292,294,296,307,313,319,321-329,335-337,343-348,362,366-368,372-373,378,380,384-385,393,397-406,413-415,431-437,441-442,444-453,457-463,467-468,470,475,481,483,485-488,492,494,497,500,502,508-509,512-513,536-544,548-549,589-609,612,615-617,620-621,624-633,636-637,640-668,671,673,675-691,698-702,704-707,710-712,716-718,722-723,726-744,750,766-768,776-778,783-785,787,789,791,793,795-817,821-823,825,827-829,835-839,855-856,870-871,883-888,904-912,915,918,924-925,930-931,937-942,945,948,954-955,960-961,967-972,975-976,983,987,993-994,1015-1018,1028,1039-1075,1085-1086,1089-1090,1092-1128,1131-1132,1152-1158,1160,1164-1184,1187-1189,1192,1194,1196,1198-1202,1205-1207,1210,1212-1221,1223-1238,1242-1300,1320-1337,1342-1348,1356-1359,1362,1366,1372-1375,1378-1380
+plugins/mastra/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/nostics/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,14
+plugins/google-workspace/agent/skills/recipe-email-drive-link/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/prisma/.agents/skills/prisma-postgres/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,70-85,130
+  s_04bd837047f7b0::t_5f95b5ad6cf133 131
+plugins/emulate/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 20,26,38,50,68,74
+plugins/turborepo/agent/skills/turborepo/references/ci/vercel.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 59-69
+plugins/prisma/.agents/skills/prisma-postgres/references/management-api-sdk.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,30-40
+  s_04bd837047f7b0::t_223e8553e9322c 41
+plugins/vue/agent/skills/vue-testing-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/emulate/.agents/skills/stripe/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 294
+plugins/google-workspace/agent/skills/gws-modelarmor-sanitize-response/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/data_model.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-66
+plugins/firebase/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-8
+plugins/vueuse/agent/skills/vueuse-functions/references/computedWithControl.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 84
+plugins/prisma/agent/skills/prisma-cli/references/init.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 37-39
+plugins/eve/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/emulate/agent/skills/github/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,34-70,254-256,282-302,617-619,622
+  s_04bd837047f7b0::t_73258fddfc5723 623
+plugins/shadcn-ui/agent/skills/shadcn/rules/composition.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-213
+plugins/slack-agent/agent/skills/slack-agent/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,11,13-14,34-38,41,43,45-46,48,53,55-58,64-66,72,76-79,81,85,87-88,90,95,97,100-114,116-123,166,168,189-192,194,200,202,204-207,209-210,214-216,218,220,222,224-225,227-228,230-233,235,237,239,241-243,246,248,250,252-254,256-258,260-264,266-269,271-274,278,280,282,284-292,296,298,300,302-305,309-312,314,316,318-321,323,325,327-329,331-334,338-340,342-347,353,355-358,360,362,364,366,368-371,373,375,377-383,385-391,394-395,397,400-401,404,417-419,435,437,439-441,443-444,448,450,452,454,456-458,461-470,475-479,481,483,485-488,490-496,500,502,504,506-515,519,521,523,525,527-530,532-535,539,541,543,545,547,549,551-552,554-557,559,561-563,567-568,571-573,581-601,607-613,615,617,623,625-629,631,633,635,637,646-649,669,676-679,681-689,692-695,698-702,705-706,717-718,730-752
+plugins/firebase/.agents/skills/firebase-auth-basics/references/client_sdk_web.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-301
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/android_sdk_usage.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-193
+plugins/vueuse/agent/skills/vueuse-functions/references/useTitle.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 97
+plugins/slack-agent/.agents/skills/slack-agent/reference/vercel-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-207
+plugins/vueuse/.agents/skills/vueuse-functions/references/useFavicon.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 52
+plugins/ai-sdk/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/emulate/.agents/skills/next/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 53-54,128-129,147,179,183
+plugins/mastra/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/tiptap/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/nuxt-seo/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/react/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 20
+plugins/slack-agent/.agents/skills/slack-agent/templates/eve/vitest.config.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-55
+plugins/google-workspace/agent/skills/gws-events-renew/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/nuxt-ui/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/slidev/agent/skills/slidev/references/core-cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 96-103
+plugins/greptile/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/turborepo/.agents/skills/turborepo/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 12,131,136,430,743
+plugins/slack-agent/agent/skills/slack-agent/.gitignore
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-21
+plugins/axi/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/nuxt-ui/.agents/skills/nuxt-ui/references/guidelines/design-system.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 210-212
+plugins/axi/agent/skills/axi/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 179,244-269
+plugins/emulate/.agents/skills/github/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 30-66,250-252,278-298,613-615,618
+  s_04bd837047f7b0::t_ce67af84c2d436 619
+plugins/react/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/gws-gmail-send/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/display-misc.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-410
+plugins/slack-agent/agent/skills/slack-agent/wizard/3-configure-environment.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-66
+plugins/chat-sdk/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/ast-grep/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/greptile/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slack-agent/agent/skills/slack-agent/wizard/1b-approve-plan.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-148
+plugins/supabase/.agents/skills/supabase-postgres-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-data-connect/reference/realtime.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-210
+plugins/git-ai/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/turborepo/agent/skills/turborepo/references/caching/remote-cache.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 106-107,110
+plugins/vue/agent/skills/vue/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/vueuse/.agents/skills/vueuse-functions/references/useWebWorkerFn.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 65
+plugins/google-workspace/agent/skills/gws-events/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+ARCHITECTURE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 86
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/flutter_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-98
+plugins/turborepo/agent/skills/turborepo/references/boundaries/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,11,21-33
+  s_04bd837047f7b0::t_0adf8cd7941fee 34
+plugins/web-design/.tessl-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/prisma/.agents/skills/prisma-cli/references/mcp.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 33-34
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/wrapper-shapes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-110
+plugins/tiptap/agent/skills/tiptap/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,17-20,23,25,27-29,31-33,35-37,39,41-43,49-62,66-70,74-76,80-82,116-118,122-124,128-130,132,134-135,137-138,140-144,146,148,152,156,160-162,166-167
+plugins/axi/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/web-design/agent/skills/web-design-guidelines/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/wordpress/.agents/skills/wp-rest-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4,25
+plugins/google-workspace/agent/skills/persona-researcher/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/tsdown/.agents/skills/tsdown/references/option-target.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 83,85-87,89,91,93-97
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/destructuring-shim.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-122
+plugins/firebase/.agents/skills/firebase-auth-basics/references/security_rules.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-49
+plugins/firebase/.agents/skills/firebase-data-connect/templates.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-318
+plugins/vueuse/agent/skills/vueuse-functions/references/useInfiniteScroll.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 108
+plugins/google-workspace/agent/skills/gws-workflow-file-announce/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/ai-sdk/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/better-auth/.agents/skills/organization-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 10
+plugins/skill-optimizer/agent/skills/compare-skill-model-performance/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/vueuse/.agents/skills/vueuse-functions/references/useVirtualList.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 115,146,151-155,158
+plugins/react/.agents/skills/vercel-react-view-transitions/references/css-recipes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,23-24,53-54,211-243,253-254,268-297
+  s_04bd837047f7b0::t_388510d2adbe90 298
+plugins/nuxt-ui/.agents/skills/nuxt-ui/references/recipes/data-tables.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 219
+plugins/docus/agent/skills/review-docs/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-17
+plugins/google-workspace/agent/skills/persona-team-lead/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/class-mapping.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-62
+plugins/emulate/.agents/skills/vercel/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 262-265
+plugins/playwright-cli/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/better-auth/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slidev/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/turborepo/.agents/skills/turborepo/references/filtering/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 12,25,28,31-32,111,144-150
+plugins/tsdown/.agents/skills/tsdown/references/reference-cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 55,58,254,361-369
+  s_04bd837047f7b0::t_68928889c0363a 370
+plugins/tsdown/agent/skills/tsdown/references/advanced-rolldown-options.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 9
+plugins/vue/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/supabase/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vue/agent/skills/vue-router-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/resume-routing.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/temporal.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,44
+plugins/google-workspace/agent/skills/gws-slides/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/lavish/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/skill-optimizer/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/emulate/agent/skills/apple/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/firebase/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-22
+plugins/google-workspace/agent/skills/gws-calendar/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/tsdown/.agents/skills/tsdown/references/option-css.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 225-244
+plugins/mastra/.agents/skills/mastra/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,7,46,91-93
+  s_04bd837047f7b0::t_07315213eca000 94
+plugins/prisma/.agents/skills/prisma-cli/references/db-push.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28-29
+plugins/wordpress/.agents/skills/wp-block-themes/references/debugging.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 10
+plugins/google-workspace/agent/skills/gws-events-subscribe/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-12
+plugins/shadcn-ui/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/emulate/agent/skills/microsoft/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/emulation.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-59
+plugins/firebase/.agents/skills/firebase-basics/references/flutter_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-143
+plugins/vueuse/.agents/skills/vueuse-functions/references/unrefElement.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 39-45
+plugins/agent-browser/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/react-native/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/tsdown/agent/skills/tsdown/references/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5,12,30-31,61
+plugins/firebase/.agents/skills/firebase-basics/references/web_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-77
+plugins/google-workspace/agent/skills/gws-shared/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/vinext/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/vueuse/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/web_sdk_usage.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-192
+plugins/better-auth/.agents/skills/two-factor-authentication-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 10
+plugins/emulate/agent/skills/next/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,58-59,133-134,152,184,188
+plugins/google-workspace/agent/skills/persona-hr-coordinator/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/better-auth/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vite/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+.claude-plugin/marketplace.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 27-28,31,34,87,89-91,1668-1711
+plugins/wordpress/agent/skills/wordpress-router/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/better-auth/agent/skills/two-factor-authentication-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,12
+plugins/slack-agent/.agents/skills/slack-agent/wizard/5-deploy-production.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-144
+plugins/skill-optimizer/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/tsdown/agent/skills/tsdown/references/option-cjs-default.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,83-96
+  s_04bd837047f7b0::t_e2f3f0d2acd125 97
+plugins/vercel-sandbox/agent/skills/sandbox/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,73-75,93-94,167-169,209,211-214,244-250,253,256-257,324-330,392-484,639-640,644-645,649,651-653,760-764,768,942-943,945,949-950,956-961,967-969,983,988-990,992,995,1021,1023,1041-1042,1063,1066-1071,1081-1083,1090-1094,1097-1101,1104-1108
+plugins/wordpress/.agents/skills/wp-interactivity-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/prisma/.agents/skills/prisma-client-api/references/raw-queries.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 195-198
+plugins/shadcn-ui/agent/skills/shadcn/evals/evals.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-77
+plugins/axi/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/firebase/.agents/skills/firebase-basics/references/setup/gemini_cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-53
+plugins/firebase/.agents/skills/firebase-crashlytics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-44
+plugins/firebase/.agents/skills/firebase-auth-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-120
+plugins/lavish/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/nostics/agent/skills/nostics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-17,157
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-175
+plugins/workflow-sdk/.agents/skills/workflow/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 6,9,29,34-35,41,46,75-76,79,95,111,133,135,137,140-141,154-156,158,162,168-169,177-178,180-181,184,186,188,193,203,210,212,216,218,220,241,274,284-286,297,345,394,437,492,525,531,535,550-551,555,559,561,563,618,633-637,642-643,656-657,659,661,672,693,698,705,708,712,718,720,723,738,749,760,773,776
+plugins/vercel-sandbox/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-data-connect/reference/schema.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-290
+plugins/emulate/agent/skills/aws/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/git-ai/agent/skills/git-ai-search/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-3
+plugins/google-workspace/agent/skills/recipe-compare-sheet-tabs/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/firebase/.agents/skills/firebase-basics/references/setup/github_copilot.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-104
+plugins/google-workspace/agent/skills/recipe-save-email-attachments/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/nuxt-ui/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/playwright-cli/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/nuxt-ui/agent/skills/nuxt-ui/references/guidelines/component-selection.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,79,118
+plugins/prisma/.agents/skills/prisma-cli/references/migrate-dev.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 34
+plugins/prisma/agent/skills/prisma-cli/references/migrate-dev.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 34
+plugins/slack-agent/.agents/skills/slack-agent/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-4,10,12-13,33-37,40,42,44-45,47,52,54-57,63-65,71,75-78,80,84,86-87,89,94,96,99-113,115-122,165,167,188-191,193,199,201,203-206,208-209,213-215,217,219,221,223-224,226-227,229-232,234,236,238,240-242,245,247,249,251-253,255-257,259-263,265-268,270-273,277,279,281,283-291,295,297,299,301-304,308-311,313,315,317-320,322,324,326-328,330-333,337-339,341-346,352,354-357,359,361,363,365,367-370,372,374,376-382,384-390,393-394,396,399-400,403,416-418,434,436,438-440,442-443,447,449,451,453,455-457,460-469,474-478,480,482,484-487,489-495,499,501,503,505-514,518,520,522,524,526-529,531-534,538,540,542,544,546,548,550-551,553-556,558,560-562,566-567,570-572,580-600,606-612,614,616,622,624-628,630,632,634,636,645-648,668,675-678,680-688,691-694,697-701,704-705,716-717,729-751
+plugins/firebase/.agents/skills/firebase-basics/references/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-113
+plugins/firebase/.agents/skills/firebase-basics/references/local-env-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-80
+plugins/google-workspace/agent/skills/gws-drive-upload/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/recipe-create-classroom-course/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/slack-agent/.agents/skills/slack-agent/wizard/1b-approve-plan.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-148
+plugins/google-workspace/agent/skills/recipe-label-and-archive-emails/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/chat-sdk/agent/skills/chat-sdk/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+.claude/agent-memory/github-pr-manager/marketplace-external-plugin-conventions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-16
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-189
+plugins/slack-agent/.agents/skills/slack-agent/wizard/6-setup-testing.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-154
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-package-json.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 42-54,57,65-71
+plugins/prisma/.agents/skills/prisma-cli/references/init.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 37-39
+plugins/vueuse/agent/skills/vueuse-functions/references/onStartTyping.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 29-57,68-69,73-83,93
+plugins/vueuse/.agents/skills/vueuse-functions/references/useElementVisibility.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 57-88
+plugins/vueuse/agent/skills/vueuse-functions/references/useMutationObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 53
+plugins/vueuse/agent/skills/vueuse-functions/references/useTextareaAutosize.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 9-11
+plugins/vueuse/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/wordpress/.agents/skills/wp-abilities-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/wordpress/.agents/skills/wp-project-triage/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/aws-step-functions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 23
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_android.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-126
+plugins/prisma/agent/skills/prisma-client-api/references/raw-queries.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 195-198
+plugins/turborepo/agent/skills/turborepo/references/best-practices/structure.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,25-35,109,131,276,283,286-290,297-298,300-303
+plugins/turborepo/agent/skills/turborepo/references/ci/github-actions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 75,77-78,80,82,84,86-97,99-102,104,106,146-148,164-166
+  s_04bd837047f7b0::t_fc28dc63fe6d86 167
+plugins/firebase/.agents/skills/firebase-remote-config-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-128
+plugins/turborepo/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/react/.agents/skills/vercel-react-view-transitions/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 12,24-25,35,42-43
+plugins/nuxt-ui/agent/skills/nuxt-ui/references/recipes/data-tables.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 219
+plugins/google-workspace/agent/skills/gws-gmail-triage/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/eve/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-basics/references/firebase-service-init.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-20
+plugins/playwright-cli/agent/skills/playwright-cli/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/vueuse/.agents/skills/vueuse-functions/references/useTimeAgo.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,46
+plugins/wordpress/.agents/skills/wp-block-themes/references/theme-json.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 30-32,62-75
+plugins/portless/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/google-workspace/agent/skills/gws-chat-send/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/vueuse/.agents/skills/vueuse-functions/references/createDisposableDirective.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 33
+plugins/google-workspace/agent/skills/gws-workflow-weekly-digest/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/firebase/.agents/skills/firebase-basics/references/setup/other_agents.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-99
+plugins/prisma/agent/skills/prisma-driver-adapter-implementation/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11,13,15,17,19-22,24,27-28,31-32,35-41,44-53,56,58,60-68,70-72,75-77,79,83-89,91-97,103-109,115,117,119-124,126,128,130,132,134,136-147,149-152,154-155,157,159,161-164,166-167,170-171,173-176,179-181,183-185,187-188,191-192,197,199,201,203,205,208-218,222-233,237-240,243-273
+plugins/react/agent/skills/vercel-react-view-transitions/references/patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-4,119-124,126-128,131-132,135,137,139,141-163,166,168,170,173-179,182-186,205-207,217-218,245
+plugins/firebase/mcp_config.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-18
+plugins/nuxt-ui/agent/skills/nuxt-ui/references/guidelines/conventions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 368
+plugins/axi/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/firebase/.agents/skills/firebase-data-connect/reference/data_seeding.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-185
+plugins/google-workspace/agent/skills/recipe-log-deal-update/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/shadcn-ui/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 14
+plugins/vueuse/.agents/skills/vueuse-functions/references/useSpeechRecognition.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 21,27-28,75,77-83
+plugins/greptile/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/gws-docs/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/shadcn-ui/agent/skills/shadcn/rules/chat.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-250
+plugins/vue/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/wordpress/.agents/skills/wp-plugin-development/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/aws-step-functions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 23
+plugins/prisma/agent/skills/prisma-cli/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11,17,19,30,41,47,53,73,186-188,191-201,259-260
+plugins/shadcn-ui/agent/skills/shadcn/rules/forms.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-192
+plugins/portless/agent/skills/portless/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,161-164,171-172,175-177,179,183,187-201,205,213,223,311,393,421,439
+plugins/google-workspace/agent/skills/gws-tasks/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/docus/agent/skills/create-docs/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/shadcn-ui/agent/skills/shadcn/customization.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-209
+plugins/greptile/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/shadcn-ui/agent/skills/shadcn/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-279
+plugins/supabase/agent/skills/supabase-postgres-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-27
+plugins/shadcn-ui/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/dev3000/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/lavish/.agents/skills/lavish/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4,6-9,14-23,32
+plugins/google-workspace/agent/skills/persona-it-admin/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/orpc/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-26
+plugins/nostics/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/turborepo/agent/skills/turborepo/references/configuration/global-options.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43,47,98-108,149-176,229-235
+  s_04bd837047f7b0::t_b6dc6bfe43e6c3 236
+plugins/vueuse/agent/skills/vueuse-functions/references/useTimeAgoIntl.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slack-agent/.agents/skills/slack-agent/templates/eve/sample-tests/tools.test.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-316
+plugins/better-auth/agent/skills/organization-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,13
+plugins/react/agent/skills/vercel-react-view-transitions/references/troubleshooting.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-47
+plugins/turborepo/.agents/skills/turborepo/references/environment/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 110
+plugins/wordpress/.agents/skills/wp-playground/references/debugging.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,9-10
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/antigravity.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-64
+plugins/better-auth/.agents/skills/better-auth-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 8-18,28-31,48-50,75,79-80,181-182,192
+plugins/docus/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/wordpress/agent/skills/wp-playground/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,13,17-19,21-24,26,28-32,34,36-39,43-45,47,49-52,56
+plugins/turborepo/.agents/skills/turborepo/references/environment/gotchas.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 115,149
+plugins/firebase/.agents/skills/firebase-data-connect/reference/native_sql.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-170
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/usage_patterns_android.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-157
+plugins/slack-agent/.agents/skills/slack-agent/wizard/1-project-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-225
+plugins/wordpress/agent/skills/blueprint/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,36,40,50-51,395,398,401,419,421
+plugins/playwright-cli/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/recipe-review-overdue-tasks/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/vueuse/.agents/skills/vueuse-functions/references/useInfiniteScroll.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 108
+plugins/react/.agents/skills/vercel-react-view-transitions/references/implementation.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,34,36,46,81,125,130-131,149,151,156,168,170
+plugins/slack-agent/.agents/skills/slack-agent/LICENSE
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-201
+plugins/dev3000/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/react/.agents/skills/vercel-react-view-transitions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 26,47,53,77,121,180,186-189,209,234-237,283,291-293,295,306,312,318,324-328
+plugins/skill-optimizer/agent/skills/optimize-skill-performance/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/google-workspace/agent/skills/recipe-backup-sheet-as-csv/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/slack-agent/agent/skills/slack-agent/LICENSE
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-201
+plugins/orpc/.agents/skills/orpc/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-237
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/web_sdk_usage.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-127
+plugins/vitest/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/vueuse/.agents/skills/vueuse-functions/references/useMath.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 29-31
+plugins/mastra/agent/skills/mastra/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-12,49,94-96
+  s_04bd837047f7b0::t_e6912f42de5a9a 97
+plugins/vueuse/.agents/skills/vueuse-functions/references/useTitle.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 97
+plugins/antfu/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slidev/.agents/skills/slidev/references/core-components.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 139,142-143,190
+plugins/turborepo/.agents/skills/turborepo/references/boundaries/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,11,21-33
+  s_04bd837047f7b0::t_270ef4c69ef692 34
+plugins/eve/agent/skills/eve/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-5
+plugins/google-workspace/agent/skills/gws-sheets-read/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/slack-agent/agent/skills/slack-agent/reference/slack-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-213
+plugins/google-workspace/agent/skills/gws-workflow-standup-report/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/turborepo/.agents/skills/turborepo/references/caching/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 19-20
+plugins/google-workspace/agent/skills/recipe-create-doc-from-template/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/react/agent/skills/vercel-react-view-transitions/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 12,24-25,35,42-43
+plugins/prisma/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/playwright-cli/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/vueuse/agent/skills/vueuse-functions/references/usePermission.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68,73
+plugins/vueuse/agent/skills/vueuse-functions/references/useAxios.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 248
+plugins/google-workspace/agent/skills/recipe-create-events-from-sheet/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/please-plugins/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-13
+plugins/shadcn-ui/agent/skills/shadcn/rules/styling.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-185
+plugins/dev3000/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/ast-grep/agent/skills/ast-grep/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8,100,195-219,285-290
+  s_04bd837047f7b0::t_62a37d071beb2a 291
+plugins/turborepo/.agents/skills/turborepo/references/caching/gotchas.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 148
+plugins/turborepo/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/gemini-cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-13
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/other-agents.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-67
+plugins/emulate/agent/skills/linear/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,110
+  s_04bd837047f7b0::t_1e49b8fb88b141 111
+plugins/firebase/.agents/skills/firebase-data-connect/examples.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-638
+plugins/google-workspace/agent/skills/gws-script/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/firebase/.agents/skills/firebase-data-connect/reference/security.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-295
+plugins/google-workspace/agent/skills/recipe-create-task-list/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/slack-agent/agent/skills/slack-agent/patterns/slack-patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-355
+plugins/tsdown/.agents/skills/tsdown/references/option-log-level.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 87-120
+plugins/prisma/agent/skills/prisma-database-setup/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,175
+plugins/tsdown/agent/skills/tsdown-migrate/references/guide-package-json.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 42-54,57,65-71
+plugins/google-workspace/agent/skills/recipe-copy-sheet-for-new-month/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/nostics/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/vueuse/.agents/skills/vueuse-functions/references/useElementOverflow.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-110
+plugins/vueuse/agent/skills/vueuse-functions/references/useFocusTrap.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68
+plugins/turborepo/.agents/skills/turborepo/references/watch/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 19-21,26
+  s_04bd837047f7b0::t_4fe85b21d56176 27
+plugins/google-workspace/agent/skills/gws-gmail-read/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/nuxt-ui/agent/skills/nuxt-ui/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,29-34,44
+plugins/react/agent/skills/vercel-react-view-transitions/references/css-recipes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,23-24,53-54,211-243,253-254,268-297
+  s_04bd837047f7b0::t_acb8691798524a 298
+plugins/vueuse/agent/skills/vueuse-functions/references/unrefElement.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 39-45
+plugins/tsdown/agent/skills/tsdown/references/option-log-level.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 87-120
+plugins/firebase/.agents/skills/firebase-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-148
+plugins/please-plugins/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/prisma/.agents/skills/prisma-cli/references/agent-safety.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-27
+plugins/wordpress/agent/skills/wp-playground/references/website.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-164
+plugins/dev3000/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/slack-agent/agent/skills/slack-agent/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-108
+plugins/nuxt-ui/.agents/skills/nuxt-ui/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 27-32,42
+plugins/shadcn-ui/agent/skills/shadcn/rules/icons.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-101
+plugins/google-workspace/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/tsdown/agent/skills/tsdown/references/advanced-programmatic.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 39-71,88
+plugins/slack-agent/.agents/skills/slack-agent/reference/env-vars.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-348
+plugins/wordpress/.agents/skills/wp-playground/references/cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-119
+plugins/firebase/.agents/skills/firebase-auth-basics/references/flutter_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-149
+plugins/shadcn-ui/agent/skills/shadcn/rules/base-vs-radix.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-306
+plugins/shadcn-ui/.agents/skills/shadcn/rules/styling.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 154
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/inngest.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 23
+plugins/chat-sdk/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/react/.agents/skills/vercel-react-view-transitions/references/patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-4,119-124,126-128,131-132,135,137,139,141-163,166,168,170,173-179,182-186,205-207,217-218,245
+plugins/lavish/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/turborepo/agent/skills/turborepo/references/environment/modes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 54-69
+plugins/better-auth/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,20,26,32
+plugins/nuxt-ui/agent/skills/nuxt-ui/references/guidelines/design-system.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 210-212
+plugins/orpc/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-21
+plugins/firebase/.agents/skills/firebase-basics/references/setup/claude_code.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-45
+plugins/google-workspace/agent/skills/gws-modelarmor-create-template/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/slack-agent/agent/skills/slack-agent/templates/eve/test-setup.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-139
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-156
+plugins/firebase/.agents/skills/firebase-hosting-basics/references/configuration.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-115
+plugins/slack-agent/agent/skills/slack-agent/wizard/5-deploy-production.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-144
+plugins/skill-optimizer/agent/skills/setup-skill-performance/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7
+plugins/tiptap/.agents/skills/tiptap/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 15-18,21,23,25-27,29-31,33-35,37,39-41,47-60,64-68,72-74,78-80,114-116,120-122,126-128,130,132-133,135-136,138-142,144,146,150,154,158-160,164-165
+plugins/slack-agent/agent/skills/slack-agent/templates/eve/sample-tests/agent.test.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-115
+plugins/turborepo/agent/skills/turborepo/references/watch/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 19-21,26
+  s_04bd837047f7b0::t_c71cd19d2a31ef 27
+plugins/better-auth/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-77
+plugins/slack-agent/agent/skills/slack-agent/reference/agent-archetypes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-546
+plugins/slack-agent/agent/skills/slack-agent/wizard/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-84
+plugins/antfu/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/google-workspace/agent/skills/gws-calendar-agenda/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/greptile/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/unocss/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/turborepo/agent/skills/turborepo/references/configuration/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 76,100
+plugins/emulate/agent/skills/google/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/prisma/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,14,20,26,32,38
+plugins/slack-agent/.agents/skills/slack-agent/wizard/3-configure-environment.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-66
+plugins/vueuse/agent/skills/vueuse-functions/references/useLastChanged.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 48
+plugins/nuxt-ui/agent/skills/nuxt-ui/references/components.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,15,35
+plugins/vueuse/agent/skills/vueuse-functions/references/useWebWorkerFn.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 65
+plugins/google-workspace/agent/skills/persona-event-coordinator/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16
+plugins/vueuse/.agents/skills/vueuse-functions/references/useAsyncState.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 25-32
+plugins/agent-browser/.agents/skills/agent-browser/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 33,35
+plugins/google-workspace/agent/skills/gws-sheets-append/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/prisma/agent/skills/prisma-postgres/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11,73-88,133
+  s_04bd837047f7b0::t_09039e4f8bb5e9 134
+plugins/vueuse/.agents/skills/vueuse-functions/references/useTextareaAutosize.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 9-11
+plugins/react/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/google-workspace/agent/skills/gws-admin-reports/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/react/.agents/skills/vercel-react-view-transitions/AGENTS.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7-9,27,48-54,76-79,85,89-91,93-98,105-106,122-123,128,138,161-177,181,187-190,202,208-211,235-238,241,256,266,284-285,290-292,294,296,307,313,319,321-329,335-337,343-348,362,366-368,372-373,378,380,384-385,393,397-406,413-415,431-437,441-442,444-453,457-463,467-468,470,475,481,483,485-488,492,494,497,500,502,508-509,512-513,536-544,548-549,589-609,612,615-617,620-621,624-633,636-637,640-668,671,673,675-691,698-702,704-707,710-712,716-718,722-723,726-744,750,766-768,776-778,783-785,787,789,791,793,795-817,821-823,825,827-829,835-839,855-856,870-871,883-888,904-912,915,918,924-925,930-931,937-942,945,948,954-955,960-961,967-972,975-976,983,987,993-994,1015-1018,1028,1039-1075,1085-1086,1089-1090,1092-1128,1131-1132,1152-1158,1160,1164-1184,1187-1189,1192,1194,1196,1198-1202,1205-1207,1210,1212-1221,1223-1238,1242-1300,1320-1337,1342-1348,1356-1359,1362,1366,1372-1375,1378-1380
+plugins/firebase/.agents/skills/firestore-rules-creation/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-584
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/trigger-dev.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28,48
+plugins/tsdown/agent/skills/tsdown/references/option-css.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 225-244
+plugins/tsdown/agent/skills/tsdown/references/option-exe.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,99-117
+plugins/wordpress/agent/skills/wp-block-themes/references/debugging.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 10
+plugins/google-workspace/agent/skills/recipe-create-expense-tracker/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/nostics/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-hosting-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-67
+plugins/mastra/.agents/skills/mastra/references/trace-intelligence.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-220
+plugins/shadcn-ui/agent/skills/shadcn/agents/openai.yml
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-5
+plugins/emulate/agent/skills/stripe/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,298
+plugins/mastra/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/vercel-sandbox/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/vercel-sandbox/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/dev3000/agent/skills/d3k/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,9,11,13,15,17-19,21,23,25,28,31,34,37,39,42,45,47,50,53-55,58,61,63,65-67,69,71,73-75,77,79,81,83-86,93-95,97,102-103,106,108-110,112,114,116,118-124,126,128,130-132,134,136,140-145
+plugins/tsdown/.agents/skills/tsdown/references/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5,12,30-31,61
+plugins/google-workspace/agent/skills/persona-sales-ops/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/prisma/agent/skills/prisma-cli/references/migrate-reset.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 20-21
+plugins/slack-agent/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/nuxt-ui/.agents/skills/nuxt-ui/references/guidelines/component-selection.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,79,118
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/inngest.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 23
+plugins/vueuse/agent/skills/vueuse-functions/references/useVirtualList.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 115,146,151-155,158
+plugins/pinia/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/tsdown/agent/skills/tsdown/references/reference-cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 55,58,254,361-369
+  s_04bd837047f7b0::t_d6a03a63d30cc1 370
+plugins/slidev/agent/skills/slidev/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,163
+plugins/firebase/.mcp.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-18
+plugins/google-workspace/agent/skills/recipe-forward-labeled-emails/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/slack-agent/agent/skills/slack-agent/templates/eve/vitest.config.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-55
+plugins/slidev/.agents/skills/slidev/references/tool-mcp.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-48
+plugins/please-plugins/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/gws-modelarmor/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/vite/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/agent-browser/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/android_sdk_usage.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-230
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/usage_patterns_web.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-186
+plugins/google-workspace/agent/skills/gws-workflow/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/vueuse/.agents/skills/vueuse-functions/references/useAxios.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 248
+plugins/slidev/agent/skills/slidev/references/tool-mcp.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-48
+plugins/wordpress/.agents/skills/wpds/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/google-workspace/agent/skills/recipe-create-presentation/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/prisma/.agents/skills/prisma-upgrade-v7/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 44-49,52
+plugins/prisma/.agents/skills/prisma-postgres/references/management-api.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 45,47-68,72-73
+plugins/vueuse/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/google-workspace/agent/skills/recipe-organize-drive-folder/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/vercel-sandbox/.agents/skills/sandbox/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 71-73,91-92,165-167,207,209-212,242-248,251,254-255,322-328,390-482,637-638,642-643,647,649-651,758-762,766,940-941,943,947-948,954-959,965-967,981,986-988,990,993,1019,1021,1039-1040,1061,1064-1069,1079-1081,1088-1092,1095-1099,1102-1106
+plugins/firebase/.agents/skills/firebase-data-connect/reference/cloud_functions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-184
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/overlays.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-459
+plugins/wordpress/.agents/skills/wp-block-themes/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/wordpress/.agents/skills/wp-playground/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-4,9,13-15,17-20,22,24-28,30,32-35,39-41,43,45-48,52
+plugins/vueuse/.agents/skills/vueuse-functions/references/useLastChanged.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 48
+plugins/pinia/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/vueuse/agent/skills/vueuse-functions/references/useDebounceFn.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43,45,51,61,63,72,75-132,140-141,150
+plugins/wordpress/agent/skills/wp-phpstan/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/resume-routing.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6
+plugins/tsdown/.agents/skills/tsdown/references/option-exe.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,99-117
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_ios.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-157
+plugins/nuxt/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/form-controls.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-390
+plugins/antfu/agent/skills/antfu/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/google-workspace/agent/skills/recipe-draft-email-from-doc/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/firebase/.agents/skills/firebase-hosting-basics/references/deploying.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-48
+plugins/google-workspace/agent/skills/gws-gmail-reply-all/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/recipe-block-focus-time/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/prisma/.agents/skills/prisma-driver-adapter-implementation/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,6-7,10,12,14,16-19,21,24-25,28-29,32-38,41-50,53,55,57-65,67-69,72-74,76,80-86,88-94,100-106,112,114,116-121,123,125,127,129,131,133-144,146-149,151-152,154,156,158-161,163-164,167-168,170-173,176-178,180-182,184-185,188-189,194,196,198,200,202,205-215,219-230,234-237,240-270
+plugins/dev3000/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/emulate/agent/skills/emulate/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,55-57,77,81-82,106-107,395
+plugins/unocss/agent/skills/unocss/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/slidev/.agents/skills/slidev/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 161
+plugins/turborepo/agent/skills/turborepo/references/filtering/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 12,25,28,31-32,111,144-150
+plugins/vueuse/agent/skills/vueuse-functions/references/createDisposableDirective.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 33
+plugins/workflow-sdk/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/recipe-create-feedback-form/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/google-workspace/agent/skills/recipe-bulk-download-folder/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/tsdown/agent/skills/tsdown-migrate/references/guide-differences-detailed.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 25-30,52,56-60,62,64-66
+plugins/wordpress/agent/skills/wp-playground/references/cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-119
+plugins/dev3000/.agents/skills/d3k/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,6,8,10,12,14-16,18,20,22,25,28,31,34,36,39,42,44,47,50-52,55,58,60,62-64,66,68,70-72,74,76,78,80-83,90-92,94,99-100,103,105-107,109,111,113,115-121,123,125,127-129,131,133,137-142
+plugins/axi/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slidev/agent/skills/slidev/references/core-components.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 139,142-143,190
+plugins/vitest/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/prisma/agent/skills/prisma-client-api/references/constructor.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 130-142
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 6,81-84,147
+plugins/prisma/.agents/skills/prisma-postgres/references/console-and-connections.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 58-59
+plugins/firebase/.agents/skills/firebase-basics/references/setup/antigravity.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-98
+plugins/prisma/agent/skills/prisma-upgrade-v7/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,46-51,54
+plugins/turborepo/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/ast-grep/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/vitest/agent/skills/vitest/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/turborepo/agent/skills/turborepo/references/cli/commands.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 76,79-82,93,95,124,126,128,131-132,148,181,191-193,196-210,247,292-295,323-364
+plugins/better-auth/agent/skills/better-auth-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,10-20,30-33,50-52,77,81-82,183-184,194
+plugins/slack-agent/.agents/skills/slack-agent/patterns/testing-patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-423
+plugins/wordpress/.agents/skills/wordpress-router/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/indexes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-113
+plugins/slack-agent/.agents/skills/slack-agent/wizard/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-84
+plugins/turborepo/.agents/skills/turborepo/references/cli/commands.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 76,79-82,93,95,124,126,128,131-132,148,181,191-193,196-210,247,292-295,323-364
+plugins/turborepo/.agents/skills/turborepo/references/configuration/global-options.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43,47,98-108,149-176,229-235
+  s_04bd837047f7b0::t_701647beae2bd6 236
+plugins/slidev/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/google-workspace/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vinext/agent/skills/migrate-to-vinext/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7,30-38,135,188,219
+plugins/wordpress/.agents/skills/wp-performance/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/tsdown/agent/skills/tsdown/references/option-target.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 83,85-87,89,91,93-97
+plugins/wordpress/agent/skills/wp-block-themes/references/theme-json.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 30-32,62-75
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/temporal.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,44
+plugins/vueuse/.agents/skills/vueuse-functions/references/computedWithControl.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 84
+plugins/google-workspace/agent/skills/gws-workflow-meeting-prep/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-12
+plugins/turborepo/.agents/skills/turborepo/references/filtering/patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 108-110,113,147
+plugins/vueuse/.agents/skills/vueuse-functions/references/useTimeAgoIntl.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vercel-sandbox/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_web.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-146
+plugins/slack-agent/.agents/skills/slack-agent/wizard/4-test-locally.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-116
+plugins/vueuse/agent/skills/vueuse-functions/references/useSpeechRecognition.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 21,27-28,75,77-83
+plugins/tsdown/.agents/skills/tsdown/references/option-dependencies.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 36-37,60-72,113,115,121-124,129-135,137-147,389-391
+plugins/greptile/.agents/skills/greploop/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 119-121,124-129,135,152,156-157,179-181,184-189,197,206,218,222
+  s_04bd837047f7b0::t_05ee0f03ab8c46 223
+plugins/shadcn-ui/agent/skills/shadcn/mcp.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-105
+plugins/firebase/.agents/skills/firebase-crashlytics/references/android_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-152
+plugins/pnpm/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/slack-agent/.agents/skills/slack-agent/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-108
+plugins/wordpress/.agents/skills/wp-phpstan/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/vinext/.agents/skills/migrate-to-vinext/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 27-35,132,185,216
+plugins/firebase/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-37
+plugins/firebase/.agents/skills/firebase-basics/references/setup/cursor.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-93
+plugins/google-workspace/agent/skills/gws-workflow-email-to-task/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/recipe-find-large-files/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/disclosure.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-353
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/flutter_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-176
+plugins/google-workspace/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/recipe-post-mortem-setup/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16
+plugins/lavish/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/react/agent/skills/vercel-react-view-transitions/references/implementation.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,34,36,46,81,125,130-131,149,151,156,168,170
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-differences-detailed.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 25-30,52,56-60,62,64-66
+plugins/wordpress/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/wordpress/agent/skills/wp-wpcli-and-ops/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7
+plugins/ast-grep/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-83
+plugins/firebase/.agents/skills/firebase-basics/references/firebase-cli-guide.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-18
+plugins/greptile/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 20
+plugins/mastra/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/mastra/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/prisma/agent/skills/prisma-cli/references/agent-safety.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-27
+plugins/slack-agent/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/tsdown/.agents/skills/tsdown/references/option-cjs-default.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,83-96
+  s_04bd837047f7b0::t_96d9385981ce13 97
+plugins/wordpress/agent/skills/wp-playground/references/debugging.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,9-10
+plugins/react/agent/skills/vercel-composition-patterns/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/universal-patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-286
+plugins/vueuse/agent/skills/vueuse-functions/references/useInterval.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 95
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/menus.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-409
+plugins/google-workspace/agent/skills/persona-exec-assistant/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/react-native/agent/skills/vercel-react-native-skills/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/firebase/.agents/skills/firebase-auth-basics/references/client_sdk_android.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-160
+plugins/orpc/.agents/skills/orpc-migrate/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-123
+plugins/orpc/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-34
+plugins/slack-agent/agent/skills/slack-agent/reference/env-vars.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-348
+plugins/shadcn-ui/agent/skills/migrate-radix-to-base/consumer-props.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-58
+plugins/turborepo/agent/skills/turborepo/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-21,139,144,438,751
+plugins/google-workspace/agent/skills/recipe-create-gmail-filter/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/prisma/.agents/skills/prisma-client-api/references/constructor.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 130-142
+plugins/wordpress/.agents/skills/blueprint/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-4,34,38,48-49,393,396,399,417,419
+plugins/workflow-sdk/.agents/skills/workflow-init/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 6,13
+plugins/eve/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/prisma/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/lavish/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/shadcn-ui/.agents/skills/shadcn/rules/chat.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 211-236
+plugins/tsdown/agent/skills/tsdown-migrate/references/guide-option-mappings.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43-53,55,57-59,145-163
+  s_04bd837047f7b0::t_932ccffcb16a61 164
+plugins/google-workspace/agent/skills/recipe-share-event-materials/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/tsdown/agent/skills/tsdown/references/option-output-format.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 18-19
+plugins/wordpress/.agents/skills/wordpress-router/references/decision-tree.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28-35
+plugins/prisma/.agents/skills/prisma-cli/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,7,14,16,27,38,44,50,70,183-185,188-198,256-257
+plugins/prisma/agent/skills/prisma-postgres/references/console-and-connections.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 58-59
+plugins/tsdown/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,14
+plugins/web-design/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-basics/references/android_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-41
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,84-87,150
+plugins/portless/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/prisma/agent/skills/prisma-cli/references/mcp.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 33-34
+.agents/plugins/marketplace.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 20,23,70-71,1141-1152,1178,1180-1279,1286-1297
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/configuration-migration.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-161
+plugins/google-workspace/agent/skills/gws-gmail-reply/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/please-plugins/skills/find-plugin/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 106
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/configuration.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-59
+plugins/nuxt-ui/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/supabase/.agents/skills/supabase-postgres-best-practices/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-46
+plugins/tsdown/.agents/skills/tsdown/references/option-output-format.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 18-19
+plugins/turborepo/.agents/skills/turborepo/references/best-practices/structure.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,25-35,109,131,276,283,286-290,297-298,300-303
+plugins/slack-agent/.agents/skills/slack-agent/reference/slack-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-213
+plugins/firebase/.agents/skills/firebase-auth-basics/references/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-87
+plugins/docus/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/turborepo/agent/skills/turborepo/references/caching/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 19-20
+plugins/greptile/agent/skills/cli-review/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/vinext/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vercel-sandbox/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/vitepress/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/vueuse/.agents/skills/vueuse-functions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 62
+plugins/emulate/.agents/skills/emulate/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 51-53,73,77-78,102-103,391
+plugins/vitepress/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vueuse/agent/skills/vueuse-functions/references/useIntersectionObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 110
+plugins/google-workspace/agent/skills/recipe-send-team-announcement/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/shadcn-ui/agent/skills/shadcn/registry.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-277
+plugins/emulate/agent/skills/slack/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/nuxt-ui/.agents/skills/nuxt-ui/references/components.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3,15,35
+plugins/please-plugins/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+.github/workflows/tessl-skill-review.yml
+  s_04bd837047f7b0::t_3a4acaa07057c3 4-5,11-22,43-44,59,61
+plugins/google-workspace/agent/skills/gws-keep/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/nuxt-ui/.agents/skills/nuxt-ui/references/guidelines/conventions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 368
+plugins/slack-agent/agent/skills/slack-agent/wizard/4-test-locally.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-116
+plugins/eve/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/tsdown/.agents/skills/tsdown/references/option-copy.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-111
+plugins/slack-agent/.agents/skills/slack-agent/templates/eve/sample-tests/agent.test.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-115
+plugins/tsdown/agent/skills/tsdown/references/option-dependencies.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 36-37,60-72,113,115,121-124,129-135,137-147,389-391
+plugins/vueuse/.agents/skills/vueuse-functions/references/useInterval.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 95
+plugins/slidev/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/please-plugins/.tessl-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/eve/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 7-8
+plugins/prisma/agent/skills/prisma-client-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/shadcn-ui/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/better-auth/.agents/skills/email-and-password-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 11
+plugins/tsdown/.agents/skills/tsdown-migrate/references/guide-option-mappings.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43-53,55,57-59,145-163
+  s_04bd837047f7b0::t_1984b049e43e04 164
+plugins/vueuse/.agents/skills/vueuse-functions/references/useDebounceFn.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 43,45,51,61,63,72,75-132,140-141,150
+plugins/turborepo/.agents/skills/turborepo/references/ci/vercel.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 59-69
+plugins/vueuse/.agents/skills/vueuse-functions/references/useFocusTrap.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68
+plugins/shadcn-ui/agent/skills/shadcn/cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-290
+plugins/emulate/agent/skills/resend/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/tsdown/agent/skills/tsdown/references/recipe-react.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 102,107,113-114,124
+plugins/unocss/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vitepress/agent/skills/vitepress/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/vueuse/agent/skills/vueuse-functions/references/useResizeObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 101
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-207
+plugins/prisma/.agents/skills/prisma-cli/references/complete.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-22
+plugins/shadcn-ui/.agents/skills/shadcn/rules/composition.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,91-103
+plugins/tiptap/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/google-workspace/agent/skills/persona-content-creator/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16
+plugins/turborepo/agent/skills/turborepo/references/filtering/patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 108-110,113,147
+plugins/vueuse/agent/skills/vueuse-functions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9,62
+plugins/firebase/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-43
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/cli_commands.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-85
+plugins/wordpress/agent/skills/wp-interactivity-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/greptile/agent/skills/check-pr/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/prisma/.agents/skills/prisma-database-setup/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 173
+plugins/firebase/.agents/skills/firebase-data-connect/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-193
+plugins/google-workspace/agent/skills/recipe-reschedule-meeting/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/google-workspace/agent/skills/recipe-sync-contacts-to-sheet/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/agent-browser/agent/skills/agent-browser/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15,42,44
+plugins/slack-agent/.agents/skills/slack-agent/wizard/2-create-slack-app.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-90
+plugins/supabase/agent/skills/supabase-postgres-best-practices/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-46
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/flutter_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-180
+plugins/google-workspace/agent/skills/gws-meet/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/tsdown/agent/skills/tsdown-migrate/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,12-18,21,43,45-46,80,90-99,129-133,260-261,266,268-269
+plugins/web-design/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/google-workspace/agent/skills/recipe-share-doc-and-notify/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/wordpress/.agents/skills/wp-block-development/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/skill-optimizer/agent/skills/optimize-skill-performance-and-instructions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/.gitignore
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-9
+plugins/tiptap/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/web-design/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/agent-browser/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/react/agent/skills/vercel-react-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/slack-agent/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/better-auth/.tessl-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/vueuse/.agents/skills/vueuse-functions/references/useDropZone.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 59
+plugins/tsdown/.agents/skills/tsdown/references/advanced-programmatic.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 39-71,88
+plugins/vueuse/agent/skills/vueuse-functions/references/useFavicon.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 52
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/python_sdk_usage.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-138
+plugins/firebase/.agents/skills/extension-to-functions-codebase/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-129
+plugins/slack-agent/agent/skills/slack-agent/wizard/2-create-slack-app.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-90
+plugins/react/.agents/skills/vercel-react-view-transitions/references/nextjs.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-7,9,11,17,19,21,27,31,40-42,47-67,78,80-85,89-90,103,105-112,116-151,209-210,215,219,226,233
+plugins/turborepo/.agents/skills/turborepo/references/environment/modes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 54-69
+plugins/firebase/.agents/skills/firebase-security-rules-auditor/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-73
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/indexes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-135
+plugins/pnpm/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/google-workspace/agent/skills/gws-chat/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/google-workspace/agent/skills/recipe-create-vacation-responder/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/prisma/agent/skills/prisma-cli/references/db-push.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28-29
+plugins/shadcn-ui/.agents/skills/shadcn/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 67-69,140
+plugins/turborepo/.agents/skills/turborepo/references/ci/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68-73
+plugins/vinext/agent/skills/migrate-to-vinext/references/config-examples.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 53-54,71-74,178,187
+plugins/firebase/.agents/skills/firebase-firestore/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-84
+plugins/vueuse/agent/skills/vueuse-functions/references/useElementOverflow.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-110
+plugins/google-workspace/agent/skills/recipe-share-folder-with-team/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/emulate/agent/skills/vercel/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10,267-268
+  s_04bd837047f7b0::t_cb3384572d59db 269-270
+plugins/git-ai/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/please-plugins/hooks/tooling-mappings.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 4
+plugins/slack-agent/agent/skills/slack-agent/reference/vercel-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-207
+plugins/turborepo/agent/skills/turborepo/references/environment/RULE.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 110
+plugins/supabase/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8
+plugins/firebase/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-38
+plugins/git-ai/agent/skills/ask/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/slidev/.agents/skills/slidev/references/core-cli.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 96-103
+plugins/wordpress/agent/skills/wp-abilities-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/dev3000/agent/skills/d3k/PUBLISH.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,20,24
+plugins/orpc/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-21
+plugins/vinext/.agents/skills/migrate-to-vinext/references/config-examples.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 53-54,71-74,178,187
+plugins/vueuse/.agents/skills/vueuse-functions/references/useResizeObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 101
+plugins/firebase/.agents/skills/firebase-remote-config-basics/references/ios_setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-89
+plugins/wordpress/skills-lock.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 8,14,20,26,32,38,44,50,56,62,68,74,80,86
+plugins/dev3000/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/vinext/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/workflow-sdk/.agents/skills/migrating-to-workflow-sdk/references/retries.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,23,26,48,92-94
+plugins/nostics/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/README.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-57
+plugins/google-workspace/agent/skills/gws-classroom/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/workflow-sdk/agent/skills/migrating-to-workflow-sdk/references/retries.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7,23,26,48,92-94
+plugins/lavish/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/nostics/.agents/skills/nostics/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 145
+plugins/nuxt-seo/agent/skills/nuxt-seo/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/skill-optimizer/agent/skills/optimize-skill-instructions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-12
+plugins/slack-agent/.agents/skills/slack-agent/patterns/slack-patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-355
+plugins/skill-optimizer/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/react/agent/skills/vercel-react-view-transitions/references/nextjs.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-7,9,11,17,19,21,27,31,40-42,47-67,78,80-85,89-90,103,105-112,116-151,209-210,215,219,226,233
+plugins/pinia/agent/skills/pinia/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/google-workspace/agent/skills/gws-forms/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/google-workspace/agent/skills/recipe-watch-drive-changes/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/tsdown/.agents/skills/tsdown/references/recipe-react.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 102,107,113-114,124
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Package.resolved
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-41
+plugins/google-workspace/agent/skills/recipe-generate-report-from-sheet/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/wordpress/agent/skills/wp-block-development/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/vueuse/.agents/skills/vueuse-functions/references/useMutationObserver.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 53
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_flutter.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-134
+plugins/google-workspace/agent/skills/recipe-save-email-to-doc/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/better-auth/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/turborepo/.agents/skills/turborepo/references/ci/github-actions.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 75,77-78,80,82,84,86-97,99-102,104,106,146-148,164-166
+  s_04bd837047f7b0::t_6a7a5127e03702 167
+plugins/turborepo/agent/skills/turborepo/references/caching/gotchas.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 148
+plugins/vueuse/agent/skills/vueuse-functions/references/useDropZone.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 59
+plugins/firebase/.agents/skills/firebase-data-connect/reference/search.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-264
+plugins/slack-agent/.agents/skills/slack-agent/templates/eve/test-setup.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-139
+plugins/axi/.agents/skills/axi/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 183,248-273
+plugins/google-workspace/agent/skills/recipe-create-shared-drive/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/google-workspace/agent/skills/recipe-plan-weekly-schedule/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-13
+plugins/nuxt/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slack-agent/agent/skills/slack-agent/wizard/6-setup-testing.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-154
+plugins/google-workspace/agent/skills/gws-calendar-insert/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/emulate/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slack-agent/agent/skills/slack-agent/patterns/testing-patterns.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-423
+plugins/firebase/.agents/skills/firebase-data-connect/reference/config.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-271
+plugins/google-workspace/agent/skills/persona-project-manager/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16
+plugins/firebase/.agents/skills/firebase-basics/references/setup/android_studio.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-23
+plugins/slack-agent/agent/skills/slack-agent/templates/eve/sample-tests/tools.test.ts
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-316
+plugins/shadcn-ui/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/slack-agent/agent/skills/slack-agent/wizard/1-project-setup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-225
+plugins/wordpress/agent/skills/wpds/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6
+plugins/emulate/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-11
+plugins/skill-optimizer/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+.claude/agent-memory/github-pr-manager/MEMORY.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1
+plugins/mastra/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/slack-agent/.agents/skills/slack-agent/reference/agent-archetypes.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-546
+plugins/tsdown/.agents/skills/tsdown/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 70,74-75,91,100-102,115,348,359
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/android_studio.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-41
+plugins/react/.agents/skills/vercel-react-view-transitions/references/troubleshooting.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-47
+plugins/google-workspace/agent/skills/gws-script-push/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/orpc/.agents/skills/orpc-openapi/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-151
+plugins/prisma/agent/skills/prisma-postgres/references/management-api-sdk.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 5-6,30-40
+  s_04bd837047f7b0::t_6886e10ea4d4d6 41
+plugins/shadcn-ui/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 5
+plugins/tsdown/.agents/skills/tsdown-migrate/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 10-16,19,41,43-44,78,88-97,127-131,258-259,264,266-267
+plugins/google-workspace/agent/skills/persona-customer-support/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15
+plugins/pnpm/agent/skills/pnpm/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/portless/.agents/skills/portless/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 158-161,168-169,172-174,176,180,184-198,202,210,220,308,390,418,436
+plugins/prisma/.agents/skills/prisma-cli/references/migrate-reset.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 20-21
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/provisioning.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-118
+plugins/google-workspace/agent/skills/recipe-find-free-time/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-14
+plugins/prisma/agent/skills/prisma-postgres/references/management-api.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 45,47-68,72-73
+plugins/vueuse/.agents/skills/vueuse-functions/references/usePermission.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 68,73
+plugins/web-design/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-10
+plugins/react/agent/skills/vercel-react-view-transitions/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-16,34,55,61,85,129,188,194-197,217,242-245,291,299-301,303,314,320,326,332-336
+plugins/google-workspace/agent/skills/gws-sheets/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/ast-grep/.agents/skills/ast-grep/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 96,191-215,281-286
+  s_04bd837047f7b0::t_0cdf871f441d43 287
+plugins/google-workspace/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/prisma/.agents/skills/prisma-client-api/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 7
+plugins/better-auth/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/claude.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-12
+plugins/vue/agent/skills/vue-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-11
+plugins/better-auth/agent/skills/email-and-password-best-practices/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-6,13
+plugins/mastra/agent/skills/mastra/references/trace-intelligence.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-220
+plugins/vueuse/.agents/skills/vueuse-functions/references/useVibrate.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 66
+plugins/dev3000/.agents/skills/d3k/PUBLISH.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 16,20,24
+plugins/axi/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/nuxt-seo/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/orpc/.agents/skills/orpc-contract/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-159
+plugins/portless/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/supabase/CHANGELOG.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 3-9
+plugins/emulate/.agents/skills/linear/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 106-107
+plugins/google-workspace/agent/skills/gws-people/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/tsdown/agent/skills/tsdown/references/guide-migrate-from-tsup.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 31-43,62-64,66-105,131-140,255
+plugins/google-workspace/agent/skills/gws-modelarmor-sanitize-prompt/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2,4-11
+plugins/firebase/.agents/skills/xcode-project-setup/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-142
+plugins/wordpress/.agents/skills/wp-playground/references/website.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-164
+plugins/wordpress/agent/skills/wp-block-themes/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-7
+plugins/wordpress/agent/skills/wp-performance/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-9
+plugins/wordpress/agent/skills/wp-plugin-development/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-8
+plugins/wordpress/agent/skills/wordpress-router/references/decision-tree.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 28-35
+plugins/eve/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_admin_node.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-141
+plugins/greptile/agent/skills/greploop/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-15,120-122,125-130,136,153,157-158,180-182,185-190,198,207,219,223
+  s_04bd837047f7b0::t_1b922a270c3074 224
+plugins/slack-agent/.agents/skills/slack-agent/.gitignore
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-21
+plugins/vite/agent/skills/vite/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-10
+plugins/prisma/agent/skills/prisma-cli/references/complete.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 1-22
+plugins/lavish/agent/skills/lavish/SKILL.md
+  s_04bd837047f7b0::t_3a4acaa07057c3 2-12,16-25,34
+plugins/playwright-cli/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_3a4acaa07057c3 3
+README.md
+  s_04bd837047f7b0::t_684dffedcdb96b 38-39,41,216-220,478-483,577,611
+plugins/agent-browser/.claude/skills/agent-browser
+  s_04bd837047f7b0::t_9efe65075ab12c 1
+plugins/ai-sdk/.claude/skills/ai-sdk
+  s_04bd837047f7b0::t_ca8744ef5d3c49 1
+plugins/antfu/.claude/skills/antfu
+  s_04bd837047f7b0::t_e5b7242df6e5de 1
+plugins/ast-grep/.claude/skills/ast-grep
+  s_04bd837047f7b0::t_839702f0c89900 1
+plugins/axi/.claude/skills/axi
+  s_04bd837047f7b0::t_d7fe38d870f6c2 1
+plugins/better-auth/.claude/skills/better-auth-best-practices
+  s_04bd837047f7b0::t_4a29ce74ef3ef4 1
+plugins/better-auth/.claude/skills/email-and-password-best-practices
+  s_04bd837047f7b0::t_5fbd1b4f2af581 1
+plugins/better-auth/.claude/skills/organization-best-practices
+  s_04bd837047f7b0::t_df0fb85352285d 1
+plugins/better-auth/.claude/skills/two-factor-authentication-best-practices
+  s_04bd837047f7b0::t_fa0b9b38aba006 1
+plugins/chat-sdk/.claude/skills/chat-sdk
+  s_04bd837047f7b0::t_3dfa7bab7c011f 1
+plugins/dev3000/.claude/skills/d3k
+  s_04bd837047f7b0::t_523cff9446653c 1
+plugins/docus/.claude/skills/create-docs
+  s_04bd837047f7b0::t_b3361471816655 1
+plugins/docus/.claude/skills/review-docs
+  s_04bd837047f7b0::t_cb921502446f8d 1
+plugins/emulate/.claude/skills/apple
+  s_04bd837047f7b0::t_0d51c9341b1cdd 1
+plugins/emulate/.claude/skills/aws
+  s_04bd837047f7b0::t_9e33cd0a8c1ed8 1
+plugins/emulate/.claude/skills/emulate
+  s_04bd837047f7b0::t_4bc29950a22bb0 1
+plugins/emulate/.claude/skills/github
+  s_04bd837047f7b0::t_b47b0fad99ed67 1
+plugins/emulate/.claude/skills/google
+  s_04bd837047f7b0::t_8a1a333f98e460 1
+plugins/emulate/.claude/skills/linear
+  s_04bd837047f7b0::t_e52ccbd73b08ac 1
+plugins/emulate/.claude/skills/microsoft
+  s_04bd837047f7b0::t_f5612b06a40964 1
+plugins/emulate/.claude/skills/next
+  s_04bd837047f7b0::t_de92d8ebac0814 1
+plugins/emulate/.claude/skills/resend
+  s_04bd837047f7b0::t_90c235080ab5e1 1
+plugins/emulate/.claude/skills/slack
+  s_04bd837047f7b0::t_74f4be055716e9 1
+plugins/emulate/.claude/skills/stripe
+  s_04bd837047f7b0::t_a76bce108cc103 1
+plugins/emulate/.claude/skills/vercel
+  s_04bd837047f7b0::t_883586af82f2b0 1
+plugins/eve/.claude/skills/eve
+  s_04bd837047f7b0::t_85f465bd7a0c13 1
+plugins/git-ai/.claude/skills/ask
+  s_04bd837047f7b0::t_496fae4493322c 1
+plugins/git-ai/.claude/skills/git-ai-search
+  s_04bd837047f7b0::t_e0e55a56d939aa 1
+plugins/git-ai/.claude/skills/prompt-analysis
+  s_04bd837047f7b0::t_f939ad3bd970d1 1
+plugins/google-workspace/.claude/skills/gws-admin-reports
+  s_04bd837047f7b0::t_a453e084c944ee 1
+plugins/google-workspace/.claude/skills/gws-calendar
+  s_04bd837047f7b0::t_9529d56ccabe45 1
+plugins/google-workspace/.claude/skills/gws-calendar-agenda
+  s_04bd837047f7b0::t_d22e265c7e3af3 1
+plugins/google-workspace/.claude/skills/gws-calendar-insert
+  s_04bd837047f7b0::t_18eeaec8b72e98 1
+plugins/google-workspace/.claude/skills/gws-chat
+  s_04bd837047f7b0::t_cdf271b0352ee7 1
+plugins/google-workspace/.claude/skills/gws-chat-send
+  s_04bd837047f7b0::t_ee59a93d1fda30 1
+plugins/google-workspace/.claude/skills/gws-classroom
+  s_04bd837047f7b0::t_afef362b08e86f 1
+plugins/google-workspace/.claude/skills/gws-docs
+  s_04bd837047f7b0::t_4aa7dfe9f7e063 1
+plugins/google-workspace/.claude/skills/gws-docs-write
+  s_04bd837047f7b0::t_4138dc72a28a32 1
+plugins/google-workspace/.claude/skills/gws-drive
+  s_04bd837047f7b0::t_bbf68c1eb819a3 1
+plugins/google-workspace/.claude/skills/gws-drive-upload
+  s_04bd837047f7b0::t_f055d6b5b6b3c8 1
+plugins/google-workspace/.claude/skills/gws-events
+  s_04bd837047f7b0::t_38712e2604461c 1
+plugins/google-workspace/.claude/skills/gws-events-renew
+  s_04bd837047f7b0::t_b25e9741d0e5f1 1
+plugins/google-workspace/.claude/skills/gws-events-subscribe
+  s_04bd837047f7b0::t_1e08caa6c47099 1
+plugins/google-workspace/.claude/skills/gws-forms
+  s_04bd837047f7b0::t_06f4a2a40cd070 1
+plugins/google-workspace/.claude/skills/gws-gmail
+  s_04bd837047f7b0::t_fa3440b316a0d7 1
+plugins/google-workspace/.claude/skills/gws-gmail-forward
+  s_04bd837047f7b0::t_c292061ec8dcee 1
+plugins/google-workspace/.claude/skills/gws-gmail-read
+  s_04bd837047f7b0::t_b47295bb88858d 1
+plugins/google-workspace/.claude/skills/gws-gmail-reply
+  s_04bd837047f7b0::t_b850ec2eaabae6 1
+plugins/google-workspace/.claude/skills/gws-gmail-reply-all
+  s_04bd837047f7b0::t_d468b3bd52c461 1
+plugins/google-workspace/.claude/skills/gws-gmail-send
+  s_04bd837047f7b0::t_23271326cde3e4 1
+plugins/google-workspace/.claude/skills/gws-gmail-triage
+  s_04bd837047f7b0::t_5ee3388fa85634 1
+plugins/google-workspace/.claude/skills/gws-gmail-watch
+  s_04bd837047f7b0::t_de6bc6b4da6752 1
+plugins/google-workspace/.claude/skills/gws-keep
+  s_04bd837047f7b0::t_9d26852479f201 1
+plugins/google-workspace/.claude/skills/gws-meet
+  s_04bd837047f7b0::t_c0061e38cfd0b6 1
+plugins/google-workspace/.claude/skills/gws-modelarmor
+  s_04bd837047f7b0::t_a1bdc29d7dac65 1
+plugins/google-workspace/.claude/skills/gws-modelarmor-create-template
+  s_04bd837047f7b0::t_9f30070623857a 1
+plugins/google-workspace/.claude/skills/gws-modelarmor-sanitize-prompt
+  s_04bd837047f7b0::t_3c8587764738d8 1
+plugins/google-workspace/.claude/skills/gws-modelarmor-sanitize-response
+  s_04bd837047f7b0::t_57a79d816363f3 1
+plugins/google-workspace/.claude/skills/gws-people
+  s_04bd837047f7b0::t_549e5ce847568e 1
+plugins/google-workspace/.claude/skills/gws-script
+  s_04bd837047f7b0::t_5ea85bf0371ce0 1
+plugins/google-workspace/.claude/skills/gws-script-push
+  s_04bd837047f7b0::t_1914eeec447f9b 1
+plugins/google-workspace/.claude/skills/gws-shared
+  s_04bd837047f7b0::t_1c3e05a0b7f243 1
+plugins/google-workspace/.claude/skills/gws-sheets
+  s_04bd837047f7b0::t_a3550b4c2fe02c 1
+plugins/google-workspace/.claude/skills/gws-sheets-append
+  s_04bd837047f7b0::t_d3600be8154cf3 1
+plugins/google-workspace/.claude/skills/gws-sheets-read
+  s_04bd837047f7b0::t_69ac82c0f07ce5 1
+plugins/google-workspace/.claude/skills/gws-slides
+  s_04bd837047f7b0::t_487df6b05a60fb 1
+plugins/google-workspace/.claude/skills/gws-tasks
+  s_04bd837047f7b0::t_4e5c517c8957a0 1
+plugins/google-workspace/.claude/skills/gws-workflow
+  s_04bd837047f7b0::t_5e31e0e44adc0b 1
+plugins/google-workspace/.claude/skills/gws-workflow-email-to-task
+  s_04bd837047f7b0::t_064fd9158cfffa 1
+plugins/google-workspace/.claude/skills/gws-workflow-file-announce
+  s_04bd837047f7b0::t_45c44b173702ab 1
+plugins/google-workspace/.claude/skills/gws-workflow-meeting-prep
+  s_04bd837047f7b0::t_2c61c00c95f36f 1
+plugins/google-workspace/.claude/skills/gws-workflow-standup-report
+  s_04bd837047f7b0::t_49902467d193aa 1
+plugins/google-workspace/.claude/skills/gws-workflow-weekly-digest
+  s_04bd837047f7b0::t_5ccfeb28768d97 1
+plugins/google-workspace/.claude/skills/persona-content-creator
+  s_04bd837047f7b0::t_a8d61f6863cbe2 1
+plugins/google-workspace/.claude/skills/persona-customer-support
+  s_04bd837047f7b0::t_654779ea2160bf 1
+plugins/google-workspace/.claude/skills/persona-event-coordinator
+  s_04bd837047f7b0::t_6668a7e60ae69a 1
+plugins/google-workspace/.claude/skills/persona-exec-assistant
+  s_04bd837047f7b0::t_316c913b0ae9da 1
+plugins/google-workspace/.claude/skills/persona-hr-coordinator
+  s_04bd837047f7b0::t_739b48aa050403 1
+plugins/google-workspace/.claude/skills/persona-it-admin
+  s_04bd837047f7b0::t_041def08169958 1
+plugins/google-workspace/.claude/skills/persona-project-manager
+  s_04bd837047f7b0::t_e9fd72fb0a4914 1
+plugins/google-workspace/.claude/skills/persona-researcher
+  s_04bd837047f7b0::t_15f01f35662d5c 1
+plugins/google-workspace/.claude/skills/persona-sales-ops
+  s_04bd837047f7b0::t_46c2fa0bd7e9ea 1
+plugins/google-workspace/.claude/skills/persona-team-lead
+  s_04bd837047f7b0::t_f88d60bdd2db88 1
+plugins/google-workspace/.claude/skills/recipe-backup-sheet-as-csv
+  s_04bd837047f7b0::t_7681aa25b519ea 1
+plugins/google-workspace/.claude/skills/recipe-batch-invite-to-event
+  s_04bd837047f7b0::t_a4c02828988998 1
+plugins/google-workspace/.claude/skills/recipe-block-focus-time
+  s_04bd837047f7b0::t_e59dcf025dd0d1 1
+plugins/google-workspace/.claude/skills/recipe-bulk-download-folder
+  s_04bd837047f7b0::t_15daea1a668f2d 1
+plugins/google-workspace/.claude/skills/recipe-collect-form-responses
+  s_04bd837047f7b0::t_11acde5a5deeb8 1
+plugins/google-workspace/.claude/skills/recipe-compare-sheet-tabs
+  s_04bd837047f7b0::t_eaf48b52b31065 1
+plugins/google-workspace/.claude/skills/recipe-copy-sheet-for-new-month
+  s_04bd837047f7b0::t_7d24d22de6392e 1
+plugins/google-workspace/.claude/skills/recipe-create-classroom-course
+  s_04bd837047f7b0::t_c78df71e271e30 1
+plugins/google-workspace/.claude/skills/recipe-create-doc-from-template
+  s_04bd837047f7b0::t_de2912fd821c03 1
+plugins/google-workspace/.claude/skills/recipe-create-events-from-sheet
+  s_04bd837047f7b0::t_216831810071b7 1
+plugins/google-workspace/.claude/skills/recipe-create-expense-tracker
+  s_04bd837047f7b0::t_a89b7c2fac0cb5 1
+plugins/google-workspace/.claude/skills/recipe-create-feedback-form
+  s_04bd837047f7b0::t_8564ca9712fcad 1
+plugins/google-workspace/.claude/skills/recipe-create-gmail-filter
+  s_04bd837047f7b0::t_cea1f711b1be9c 1
+plugins/google-workspace/.claude/skills/recipe-create-meet-space
+  s_04bd837047f7b0::t_10a7806e6dcc91 1
+plugins/google-workspace/.claude/skills/recipe-create-presentation
+  s_04bd837047f7b0::t_accea0aeffdb2d 1
+plugins/google-workspace/.claude/skills/recipe-create-shared-drive
+  s_04bd837047f7b0::t_d09581e91ccd19 1
+plugins/google-workspace/.claude/skills/recipe-create-task-list
+  s_04bd837047f7b0::t_8837617ae7afa6 1
+plugins/google-workspace/.claude/skills/recipe-create-vacation-responder
+  s_04bd837047f7b0::t_c4163e48b01be4 1
+plugins/google-workspace/.claude/skills/recipe-draft-email-from-doc
+  s_04bd837047f7b0::t_cddab9706b6d39 1
+plugins/google-workspace/.claude/skills/recipe-email-drive-link
+  s_04bd837047f7b0::t_ee7a2981501b20 1
+plugins/google-workspace/.claude/skills/recipe-find-free-time
+  s_04bd837047f7b0::t_1bb8b1add7dec7 1
+plugins/google-workspace/.claude/skills/recipe-find-large-files
+  s_04bd837047f7b0::t_51a6d56dff8f1d 1
+plugins/google-workspace/.claude/skills/recipe-forward-labeled-emails
+  s_04bd837047f7b0::t_02e00839dbeafa 1
+plugins/google-workspace/.claude/skills/recipe-generate-report-from-sheet
+  s_04bd837047f7b0::t_af4bffb660be7c 1
+plugins/google-workspace/.claude/skills/recipe-label-and-archive-emails
+  s_04bd837047f7b0::t_e505966b0fe18e 1
+plugins/google-workspace/.claude/skills/recipe-log-deal-update
+  s_04bd837047f7b0::t_697d43f1a6d1d3 1
+plugins/google-workspace/.claude/skills/recipe-organize-drive-folder
+  s_04bd837047f7b0::t_b2caca5efb1a2c 1
+plugins/google-workspace/.claude/skills/recipe-plan-weekly-schedule
+  s_04bd837047f7b0::t_f435bc3954c3d0 1
+plugins/google-workspace/.claude/skills/recipe-post-mortem-setup
+  s_04bd837047f7b0::t_cbe08da7cd86b2 1
+plugins/google-workspace/.claude/skills/recipe-reschedule-meeting
+  s_04bd837047f7b0::t_baff4c3867f1e1 1
+plugins/google-workspace/.claude/skills/recipe-review-meet-participants
+  s_04bd837047f7b0::t_d70ea77fbf908a 1
+plugins/google-workspace/.claude/skills/recipe-review-overdue-tasks
+  s_04bd837047f7b0::t_b01471d928def6 1
+plugins/google-workspace/.claude/skills/recipe-save-email-attachments
+  s_04bd837047f7b0::t_6ba4f92c2d496e 1
+plugins/google-workspace/.claude/skills/recipe-save-email-to-doc
+  s_04bd837047f7b0::t_2d15af81d4e14b 1
+plugins/google-workspace/.claude/skills/recipe-schedule-recurring-event
+  s_04bd837047f7b0::t_cca3c1ed96e6fe 1
+plugins/google-workspace/.claude/skills/recipe-send-team-announcement
+  s_04bd837047f7b0::t_13e354a0a64aa7 1
+plugins/google-workspace/.claude/skills/recipe-share-doc-and-notify
+  s_04bd837047f7b0::t_51387777018701 1
+plugins/google-workspace/.claude/skills/recipe-share-event-materials
+  s_04bd837047f7b0::t_18d449876b70ea 1
+plugins/google-workspace/.claude/skills/recipe-share-folder-with-team
+  s_04bd837047f7b0::t_70abc2cd215305 1
+plugins/google-workspace/.claude/skills/recipe-sync-contacts-to-sheet
+  s_04bd837047f7b0::t_dc8f8cf0e64b96 1
+plugins/google-workspace/.claude/skills/recipe-watch-drive-changes
+  s_04bd837047f7b0::t_3c0ad232fb65a0 1
+plugins/greptile/.claude/skills/check-pr
+  s_04bd837047f7b0::t_423a2c4c2d2e9c 1
+plugins/greptile/.claude/skills/cli-review
+  s_04bd837047f7b0::t_1aa09a07c70117 1
+plugins/greptile/.claude/skills/greploop
+  s_04bd837047f7b0::t_a8caf1ad231515 1
+plugins/lavish/.claude/skills/lavish
+  s_04bd837047f7b0::t_8380683038deda 1
+plugins/mastra/.claude/skills/mastra
+  s_04bd837047f7b0::t_1d736f3e564e9b 1
+plugins/nostics/.claude/skills/add-diagnostic
+  s_04bd837047f7b0::t_4781c3c8fdb781 1
+plugins/nostics/.claude/skills/nostics
+  s_04bd837047f7b0::t_5bcdc133609b11 1
+plugins/nuxt-seo/.claude/skills/nuxt-seo
+  s_04bd837047f7b0::t_3d63bb1b258e27 1
+plugins/nuxt-ui/.claude/skills/nuxt-ui
+  s_04bd837047f7b0::t_dec5adabb28499 1
+plugins/nuxt/.claude/skills/nuxt
+  s_04bd837047f7b0::t_523c0d7b3d35c2 1
+plugins/pinia/.claude/skills/pinia
+  s_04bd837047f7b0::t_d1477e98de5ebc 1
+plugins/playwright-cli/.claude/skills/playwright-cli
+  s_04bd837047f7b0::t_9a2802a9f459e6 1
+plugins/pnpm/.claude/skills/pnpm
+  s_04bd837047f7b0::t_228021f14d1e90 1
+plugins/portless/.claude/skills/portless
+  s_04bd837047f7b0::t_101ddfb6216dda 1
+plugins/prisma/.claude/skills/prisma-cli
+  s_04bd837047f7b0::t_10f8f8d6a9094e 1
+plugins/prisma/.claude/skills/prisma-client-api
+  s_04bd837047f7b0::t_1c860bb10cf7fd 1
+plugins/prisma/.claude/skills/prisma-database-setup
+  s_04bd837047f7b0::t_7b6f310d73a2fb 1
+plugins/prisma/.claude/skills/prisma-driver-adapter-implementation
+  s_04bd837047f7b0::t_a5d89609e0e1c1 1
+plugins/prisma/.claude/skills/prisma-postgres
+  s_04bd837047f7b0::t_9288a21e6234ce 1
+plugins/prisma/.claude/skills/prisma-upgrade-v7
+  s_04bd837047f7b0::t_fc01ae83d358ff 1
+plugins/react-native/.claude/skills/vercel-react-native-skills
+  s_04bd837047f7b0::t_c8e81ba99c7846 1
+plugins/react/.claude/skills/vercel-composition-patterns
+  s_04bd837047f7b0::t_5c33becc9d0e60 1
+plugins/react/.claude/skills/vercel-react-best-practices
+  s_04bd837047f7b0::t_003b9516ff0acc 1
+plugins/react/.claude/skills/vercel-react-view-transitions
+  s_04bd837047f7b0::t_f9c354367413fa 1
+plugins/shadcn-ui/.claude/skills/migrate-radix-to-base
+  s_04bd837047f7b0::t_45021abf64f691 1
+plugins/shadcn-ui/.claude/skills/shadcn
+  s_04bd837047f7b0::t_109cb258945a65 1
+plugins/skill-optimizer/.claude/skills/compare-skill-model-performance
+  s_04bd837047f7b0::t_eb74812059d917 1
+plugins/skill-optimizer/.claude/skills/optimize-skill-instructions
+  s_04bd837047f7b0::t_ae70efc7a9bdc3 1
+plugins/skill-optimizer/.claude/skills/optimize-skill-performance
+  s_04bd837047f7b0::t_fd42b1315fa61a 1
+plugins/skill-optimizer/.claude/skills/optimize-skill-performance-and-instructions
+  s_04bd837047f7b0::t_5a7c65f4cac8bd 1
+plugins/skill-optimizer/.claude/skills/setup-skill-performance
+  s_04bd837047f7b0::t_a28cd1eacf9832 1
+plugins/slack-agent/.claude/skills/slack-agent
+  s_04bd837047f7b0::t_3874f5ddb39c6e 1
+plugins/slidev/.claude/skills/slidev
+  s_04bd837047f7b0::t_d8c80e07f543df 1
+plugins/supabase/.claude/skills/supabase-postgres-best-practices
+  s_04bd837047f7b0::t_57c706c96efcb8 1
+plugins/tiptap/.claude/skills/tiptap
+  s_04bd837047f7b0::t_5e671f2f5f5bbb 1
+plugins/tsdown/.claude/skills/tsdown
+  s_04bd837047f7b0::t_427257839c6f5b 1
+plugins/tsdown/.claude/skills/tsdown-migrate
+  s_04bd837047f7b0::t_b7d4eb7a7931cf 1
+plugins/turborepo/.claude/skills/turborepo
+  s_04bd837047f7b0::t_1b0cf71bc68e55 1
+plugins/unocss/.claude/skills/unocss
+  s_04bd837047f7b0::t_da864869bbdb95 1
+plugins/vercel-sandbox/.claude/skills/sandbox
+  s_04bd837047f7b0::t_a88643462dbb8a 1
+plugins/vinext/.claude/skills/migrate-to-vinext
+  s_04bd837047f7b0::t_dc72d902a4ea3f 1
+plugins/vite/.claude/skills/vite
+  s_04bd837047f7b0::t_595dd9fe5e72a3 1
+plugins/vitepress/.claude/skills/vitepress
+  s_04bd837047f7b0::t_34a6daa1ca900c 1
+plugins/vitest/.claude/skills/vitest
+  s_04bd837047f7b0::t_6318be7be05cd5 1
+plugins/vue/.claude/skills/vue
+  s_04bd837047f7b0::t_cfb1de5a046ee2 1
+plugins/vue/.claude/skills/vue-best-practices
+  s_04bd837047f7b0::t_6a8f50c6c0c844 1
+plugins/vue/.claude/skills/vue-router-best-practices
+  s_04bd837047f7b0::t_3283572982b2bb 1
+plugins/vue/.claude/skills/vue-testing-best-practices
+  s_04bd837047f7b0::t_51cad510d6ef0b 1
+plugins/vueuse/.claude/skills/vueuse-functions
+  s_04bd837047f7b0::t_8f30cc1cf4d61f 1
+plugins/web-design/.claude/skills/web-design-guidelines
+  s_04bd837047f7b0::t_ec5cedae723a30 1
+plugins/wordpress/.claude/skills/blueprint
+  s_04bd837047f7b0::t_4d58c4bc0f410e 1
+plugins/wordpress/.claude/skills/wordpress-router
+  s_04bd837047f7b0::t_590a992653b437 1
+plugins/wordpress/.claude/skills/wp-abilities-api
+  s_04bd837047f7b0::t_c93f2d65e41d23 1
+plugins/wordpress/.claude/skills/wp-block-development
+  s_04bd837047f7b0::t_e6fdac31ac8437 1
+plugins/wordpress/.claude/skills/wp-block-themes
+  s_04bd837047f7b0::t_c07a983aeb16ba 1
+plugins/wordpress/.claude/skills/wp-interactivity-api
+  s_04bd837047f7b0::t_88702cc1a62c60 1
+plugins/wordpress/.claude/skills/wp-performance
+  s_04bd837047f7b0::t_90b1f0e2adead7 1
+plugins/wordpress/.claude/skills/wp-phpstan
+  s_04bd837047f7b0::t_f80d018586a9c4 1
+plugins/wordpress/.claude/skills/wp-playground
+  s_04bd837047f7b0::t_fd4284a480caae 1
+plugins/wordpress/.claude/skills/wp-plugin-development
+  s_04bd837047f7b0::t_3350e35ac22957 1
+plugins/wordpress/.claude/skills/wp-project-triage
+  s_04bd837047f7b0::t_f8fbefb580764e 1
+plugins/wordpress/.claude/skills/wp-rest-api
+  s_04bd837047f7b0::t_68bed2cf87e970 1
+plugins/wordpress/.claude/skills/wp-wpcli-and-ops
+  s_04bd837047f7b0::t_8896ddcb8ae9f4 1
+plugins/wordpress/.claude/skills/wpds
+  s_04bd837047f7b0::t_960bea90867c25 1
+plugins/workflow-sdk/.claude/skills/migrating-to-workflow-sdk
+  s_04bd837047f7b0::t_0357625550969e 1
+plugins/workflow-sdk/.claude/skills/workflow
+  s_04bd837047f7b0::t_ecccfc70e94253 1
+plugins/workflow-sdk/.claude/skills/workflow-init
+  s_04bd837047f7b0::t_71837de52bfa0e 1
+plugins/workflow-sdk/CHANGELOG.md
+  s_04bd837047f7b0::t_9aa3aa910ac235 3-10
+plugins/workflow-sdk/agent/skills/workflow-init/SKILL.md
+  s_04bd837047f7b0::t_2b92c62308619b 2-10,16
+plugins/workflow-sdk/agent/skills/workflow/SKILL.md
+  s_04bd837047f7b0::t_17d3ba4bba023c 2-11,13,33,38-39,45,50,79-80,83,99,115,137,139,141,144-145,158-160,162,166,172-173,181-182,184-185,188,190,192,197,207,214,216,220,222,224,245,278,288-290,301,349,398,441,496,529,535,539,554-555,559,563,565,567,622,637-641,646-647,660-661,663,665,676,697,702,709,712,716,722,724,727,742,753,764,777,780
+plugins/workflow-sdk/skills-lock.json
+  s_04bd837047f7b0::t_ddb4bbf4cfc592 8,14,20
+release-please-config.json
+  s_04bd837047f7b0::t_dd86821e448988 277-302,1300-1325
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "87e277693d10a37b999ccb63b375f5791eeb63e7",
+  "prompts": {},
+  "sessions": {
+    "s_04bd837047f7b0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "686c5127-f436-4700-95fd-a76f56c74e22",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
