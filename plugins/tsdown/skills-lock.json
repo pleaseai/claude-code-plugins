@@ -5,13 +5,13 @@
       "source": "rolldown/tsdown",
       "sourceType": "github",
       "skillPath": "skills/tsdown/SKILL.md",
-      "computedHash": "47f632fbbbdefb7d5b18263502c218cec477255c0fa14baf168c47b83edabeee"
+      "computedHash": "5764d08af27a89c5fdaf3d49926116636ea33580b864e3aae201a90703a7ef53"
     },
     "tsdown-migrate": {
       "source": "rolldown/tsdown",
       "sourceType": "github",
       "skillPath": "skills/tsdown-migrate/SKILL.md",
-      "computedHash": "2ef3e45913861eaf12af22188656733c3b3f7244258f46a60ff892eae9831537"
+      "computedHash": "ef840c62747ce5aed1e8b35197d767b022a690648f4a55d31e5e81ed8c21e0bd"
     }
   }
 }

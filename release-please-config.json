@@ -274,6 +274,32 @@
         }
       ]
     },
+    "plugins/firebase": {
+      "release-type": "simple",
+      "component": "firebase",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
     "plugins/supabase": {
       "release-type": "simple",
       "component": "supabase",
@@ -1249,6 +1275,32 @@
     "plugins/tanstack": {
       "release-type": "simple",
       "component": "tanstack",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
+    "plugins/orpc": {
+      "release-type": "simple",
+      "component": "orpc",
       "extra-files": [
         {
           "type": "json",

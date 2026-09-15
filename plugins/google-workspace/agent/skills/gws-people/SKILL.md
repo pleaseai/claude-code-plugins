@@ -1,6 +1,14 @@
 ---
+name: gws-people
 description: "Google People: Manage contacts and profiles."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws people --help
 ---
 # people (v1)
 

@@ -1,6 +1,6 @@
 {
   "name": "playwright-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Token-efficient browser automation CLI for coding agents - navigate, interact, screenshot, and test web apps",
   "author": {
     "name": "Microsoft",

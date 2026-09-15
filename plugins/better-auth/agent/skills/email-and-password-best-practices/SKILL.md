@@ -1,12 +1,16 @@
 ---
-description: "Configure email verification, implement password reset flows, set password policies, and customise hashing algorithms for Better Auth email/password authentication. Use when users need to set up login, sign-in, sign-up, credential authentication, or password security with Better Auth."
+name: email-and-password-best-practices
+description: Configure email verification, implement password reset flows, set
+  password policies, and customise hashing algorithms for Better Auth
+  email/password authentication. Use when users need to set up login, sign-in,
+  sign-up, credential authentication, or password security with Better Auth.
 ---
 ## Quick Start
 
 1. Enable email/password: `emailAndPassword: { enabled: true }`
 2. Configure `emailVerification.sendVerificationEmail`
 3. Add `sendResetPassword` for password reset flows
-4. Run `npx @better-auth/cli@latest migrate`
+4. Run `npx auth@latest migrate`
 5. Verify: attempt sign-up and confirm verification email triggers
 
 ---

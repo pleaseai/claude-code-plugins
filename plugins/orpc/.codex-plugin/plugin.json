@@ -1,0 +1,34 @@
+{
+  "name": "orpc",
+  "version": "1.1.0",
+  "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
+  "author": {
+    "name": "middleapi",
+    "url": "https://github.com/middleapi"
+  },
+  "interface": {
+    "displayName": "Orpc",
+    "shortDescription": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
+    "longDescription": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
+    "developerName": "middleapi",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Orpc for my current task."
+    ],
+    "websiteURL": "https://orpc.dev"
+  },
+  "homepage": "https://orpc.dev",
+  "repository": "https://github.com/middleapi/orpc",
+  "license": "MIT",
+  "keywords": [
+    "orpc",
+    "typesafe",
+    "api",
+    "rpc",
+    "openapi",
+    "typescript"
+  ]
+}

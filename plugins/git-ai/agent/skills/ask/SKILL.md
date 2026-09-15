@@ -1,5 +1,9 @@
 ---
-description: "Use this when you are exploring the codebase. It lets you ask the AI who wrote code questions about how things work and why they chose to build things the way they did. Think of it as asking the engineer who wrote the code for help understanding it."
+name: ask
+description: Use this when you are exploring the codebase. It lets you ask the
+  AI who wrote code questions about how things work and why they chose to build
+  things the way they did. Think of it as asking the engineer who wrote the code
+  for help understanding it.
 ---
 # Ask Skill
 

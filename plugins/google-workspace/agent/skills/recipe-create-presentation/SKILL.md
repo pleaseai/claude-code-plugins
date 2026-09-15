@@ -1,6 +1,16 @@
 ---
-description: "Create a new Google Slides presentation and add initial slides."
-metadata: {"version":"0.22.5"}
+name: recipe-create-presentation
+description: Create a new Google Slides presentation and add initial slides.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-slides
 ---
 # Create a Google Slides Presentation
 

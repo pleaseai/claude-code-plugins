@@ -1,5 +1,12 @@
 ---
-description: "Emulated Stripe API for local development and testing. Use when the user needs to process payments locally, test checkout flows, create customers, manage products and prices, handle payment intents, work with webhooks, or use the Stripe SDK without hitting real Stripe servers. Triggers include \"Stripe API\", \"emulate Stripe\", \"test payments locally\", \"checkout flow\", \"payment intent\", \"Stripe webhook\", \"Stripe SDK\", \"STRIPE_API_KEY\", or any task requiring a local Stripe API."
+name: stripe
+description: Emulated Stripe API for local development and testing. Use when the
+  user needs to process payments locally, test checkout flows, create customers,
+  manage products and prices, handle payment intents, work with webhooks, or use
+  the Stripe SDK without hitting real Stripe servers. Triggers include "Stripe
+  API", "emulate Stripe", "test payments locally", "checkout flow", "payment
+  intent", "Stripe webhook", "Stripe SDK", "STRIPE_API_KEY", or any task
+  requiring a local Stripe API.
 ---
 # Stripe API Emulator
 
@@ -288,6 +295,7 @@ curl http://localhost:4000/v1/payment_methods
 ## Webhooks
 
 The emulator dispatches webhook events when state changes. Register webhooks via seed config or programmatically.
+Webhooks configured with a `secret` include `Stripe-Signature: t=<timestamp>,v1=<signature>`. The signature is an HMAC SHA-256 over `<timestamp>.<raw body>`.
 
 ### Events dispatched
 

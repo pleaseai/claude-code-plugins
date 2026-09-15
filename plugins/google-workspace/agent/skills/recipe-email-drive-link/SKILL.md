@@ -1,6 +1,17 @@
 ---
-description: "Share a Google Drive file and email the link with a message to recipients."
-metadata: {"version":"0.22.5"}
+name: recipe-email-drive-link
+description: Share a Google Drive file and email the link with a message to recipients.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-drive
+        - gws-gmail
 ---
 # Email a Google Drive File Link
 

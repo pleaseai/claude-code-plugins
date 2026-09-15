@@ -1,7 +1,13 @@
 ---
-description: "Complete migration guide from Prisma ORM v6 to v7 covering all breaking changes. Use when upgrading Prisma versions, encountering v7 errors, or migrating existing projects. Triggers on \"upgrade to prisma 7\", \"prisma 7 migration\", \"prisma-client generator\", \"driver adapter required\"."
-license: "MIT"
-metadata: {"author":"prisma","version":"7.6.0"}
+name: prisma-upgrade-v7
+description: Complete migration guide from Prisma ORM v6 to v7 covering all
+  breaking changes. Use when upgrading Prisma versions, encountering v7 errors,
+  or migrating existing projects. Triggers on "upgrade to prisma 7", "prisma 7
+  migration", "prisma-client generator", "driver adapter required".
+license: MIT
+metadata:
+  author: prisma
+  version: 7.6.0
 ---
 # Upgrade to Prisma ORM 7
 
@@ -37,9 +43,15 @@ Reference this skill when:
 - `removed-features` - removed middleware, metrics, and legacy CLI behavior
 - `accelerate-users` - migration notes for Accelerate users
 
+## Using MongoDB? This guide does not apply
+
+Prisma 7 has no MongoDB connector. Do not apply any step in this guide to a project with
+`provider = "mongodb"` — see the `prisma-mongodb-upgrade` skill for the actual decision
+(stay on v6 deliberately vs migrate to Prisma Next).
+
 ## Important Notes
 
-- **MongoDB projects should stay on Prisma 6.x** - do not migrate MongoDB apps to Prisma 7's SQL client path
+- **MongoDB projects should stay on Prisma 6.x or migrate to Prisma Next** - do not migrate MongoDB apps to Prisma 7's SQL client path (see `prisma-mongodb-upgrade`)
 - **Node.js 20.19.0+** required
 - **TypeScript 5.4.0+** required
 - **Latest stable Prisma ORM version**: `7.6.0`

@@ -1,5 +1,12 @@
 ---
-description: "Emulated Linear GraphQL API for local development and testing. Use when the user needs to test Linear integrations locally, emulate Linear issues, comments, teams, workflow states, OAuth apps, webhooks, agent sessions, or work with the Linear API without hitting the real Linear service. Triggers include \"Linear API\", \"emulate Linear\", \"mock Linear\", \"test Linear OAuth\", \"Linear webhook\", \"Linear agent\", \"local Linear\", or any task requiring a local Linear API."
+name: linear
+description: Emulated Linear GraphQL API for local development and testing. Use
+  when the user needs to test Linear integrations locally, emulate Linear
+  issues, comments, teams, workflow states, OAuth apps, webhooks, agent
+  sessions, or work with the Linear API without hitting the real Linear service.
+  Triggers include "Linear API", "emulate Linear", "mock Linear", "test Linear
+  OAuth", "Linear webhook", "Linear agent", "local Linear", or any task
+  requiring a local Linear API.
 ---
 # Linear API Emulator
 
@@ -99,6 +106,8 @@ Supported mutations:
 - `agentActivityCreate`
 
 Connections use Relay-style cursors with `nodes`, `edges`, and `pageInfo`.
+
+Issue selections expose both numeric `priority` and Linear's derived `priorityLabel` values: `No priority`, `Urgent`, `High`, `Medium`, and `Low`.
 
 ## OAuth
 

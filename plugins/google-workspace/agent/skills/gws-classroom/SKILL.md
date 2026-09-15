@@ -1,6 +1,14 @@
 ---
+name: gws-classroom
 description: "Google Classroom: Manage classes, rosters, and coursework."
-metadata: {"version":"0.22.5"}
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws classroom --help
 ---
 # classroom (v1)
 

@@ -1,5 +1,9 @@
 ---
-description: "Create and present web-based slidedecks for developers using Slidev with Markdown, Vue components, code highlighting, animations, and interactive features. Use when building technical presentations, conference talks, code walkthroughs, teaching materials, or developer decks."
+name: slidev
+description: Create and present web-based slidedecks for developers using Slidev
+  with Markdown, Vue components, code highlighting, animations, and interactive
+  features. Use when building technical presentations, conference talks, code
+  walkthroughs, teaching materials, or developer decks.
 ---
 # Slidev - Presentation Slides for Developers
 
@@ -156,6 +160,7 @@ Presenter notes go here
 | VS Code extension | Install `antfu.slidev` | [editor-vscode](references/editor-vscode.md) |
 | Prettier | `prettier-plugin-slidev` | [editor-prettier](references/editor-prettier.md) |
 | Eject theme | `slidev theme eject` | [tool-eject-theme](references/tool-eject-theme.md) |
+| MCP server (AI agents) | `http://localhost:<port>/__mcp` or `slidev mcp` | [tool-mcp](references/tool-mcp.md) |
 
 ### Lifecycle & API
 

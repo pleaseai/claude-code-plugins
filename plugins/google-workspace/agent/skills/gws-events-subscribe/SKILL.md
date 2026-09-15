@@ -1,6 +1,15 @@
 ---
-description: "Google Workspace Events: Subscribe to Workspace events and stream them as NDJSON."
-metadata: {"version":"0.22.5"}
+name: gws-events-subscribe
+description: "Google Workspace Events: Subscribe to Workspace events and stream
+  them as NDJSON."
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws events +subscribe --help
 ---
 # events +subscribe
 

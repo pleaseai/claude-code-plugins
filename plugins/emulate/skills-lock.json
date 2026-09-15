@@ -17,13 +17,13 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/emulate/SKILL.md",
-      "computedHash": "a37ed153c79c6fe337535a1055d08644070186160c5f14c4ad990c1a16537512"
+      "computedHash": "613dbaaa41f1f5f3be1c7916d353a23137427a49640ca15b782c7bd642cdca44"
     },
     "github": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/github/SKILL.md",
-      "computedHash": "9f35addc8b40f7e75804f07ec140044ab32cf00f9b4ef536d2d9c2e1a5b24a3c"
+      "computedHash": "cdfd3d73237fffc766e92011f5e930b75a407dd5b274b82601a70141d5302dc9"
     },
     "google": {
       "source": "vercel-labs/emulate",
@@ -35,7 +35,7 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/linear/SKILL.md",
-      "computedHash": "74f2ae3e6d6d7749bfb25f538c7d678cd0bb13a22407df80bf4a2c288c45565e"
+      "computedHash": "0959a13f8b49f4a32bcf3910a57a0c271b4ee1a68de9d35e44e5850ddbb64cb6"
     },
     "microsoft": {
       "source": "vercel-labs/emulate",
@@ -47,7 +47,7 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/next/SKILL.md",
-      "computedHash": "105094c96ab29d6e081554c77bf30fe4393a81d91ddca385f215e09899af8a48"
+      "computedHash": "6d9b668e22b6559d7f324d2c479b383716640013b095aca144c891669a00f519"
     },
     "resend": {
       "source": "vercel-labs/emulate",
@@ -65,13 +65,13 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/stripe/SKILL.md",
-      "computedHash": "406885aaa09f57d0a326d6af005e8cd432ea69d9fbbf07de5bda251cb92d8cd1"
+      "computedHash": "d2e822c16e3e7698b719e9dd06e21ed1019cc37a62e29c1b51718da838ee106d"
     },
     "vercel": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/vercel/SKILL.md",
-      "computedHash": "3cd45b301312b61ce4663a1d8ec1f55daed567470cd62cee77f65a43a9d56905"
+      "computedHash": "b13e51e66c5053d88b88881f4feba657a216e5e45d32944a8dda3766b9022e51"
     }
   }
 }

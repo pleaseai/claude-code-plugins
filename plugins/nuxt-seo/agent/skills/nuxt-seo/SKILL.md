@@ -1,6 +1,9 @@
 ---
-description: "Nuxt SEO meta-module with robots, sitemap, og-image, schema-org. Use when configuring SEO, generating sitemaps, creating OG images, or adding structured data."
-license: "MIT"
+name: nuxt-seo
+description: Nuxt SEO meta-module with robots, sitemap, og-image, schema-org.
+  Use when configuring SEO, generating sitemaps, creating OG images, or adding
+  structured data.
+license: MIT
 ---
 # Nuxt SEO
 

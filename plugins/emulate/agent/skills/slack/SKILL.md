@@ -1,5 +1,12 @@
 ---
-description: "Emulated Slack API for local development and testing. Use when the user needs to interact with Slack API endpoints locally, test Slack integrations, emulate channels/messages/users/views, set up Slack OAuth flows, test incoming webhooks, or work with the Slack Web API without hitting the real Slack API. Triggers include \"Slack API\", \"emulate Slack\", \"mock Slack\", \"test Slack OAuth\", \"Slack bot\", \"Slack views\", \"incoming webhook\", \"local Slack\", or any task requiring a local Slack API."
+name: slack
+description: Emulated Slack API for local development and testing. Use when the
+  user needs to interact with Slack API endpoints locally, test Slack
+  integrations, emulate channels/messages/users/views, set up Slack OAuth flows,
+  test incoming webhooks, or work with the Slack Web API without hitting the
+  real Slack API. Triggers include "Slack API", "emulate Slack", "mock Slack",
+  "test Slack OAuth", "Slack bot", "Slack views", "incoming webhook", "local
+  Slack", or any task requiring a local Slack API.
 ---
 # Slack API Emulator
 

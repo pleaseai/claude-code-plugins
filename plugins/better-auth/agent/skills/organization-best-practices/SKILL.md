@@ -1,11 +1,16 @@
 ---
-description: "Configure multi-tenant organizations, manage members and invitations, define custom roles and permissions, set up teams, and implement RBAC using Better Auth's organization plugin. Use when users need org setup, team management, member roles, access control, or the Better Auth organization plugin."
+name: organization-best-practices
+description: Configure multi-tenant organizations, manage members and
+  invitations, define custom roles and permissions, set up teams, and implement
+  RBAC using Better Auth's organization plugin. Use when users need org setup,
+  team management, member roles, access control, or the Better Auth organization
+  plugin.
 ---
 ## Setup
 
 1. Add `organization()` plugin to server config
 2. Add `organizationClient()` plugin to client config
-3. Run `npx @better-auth/cli migrate`
+3. Run `npx auth@latest migrate` (built-in adapter) or generate + push for Drizzle/Prisma
 4. Verify: check that organization, member, invitation tables exist in your database
 
 ```ts

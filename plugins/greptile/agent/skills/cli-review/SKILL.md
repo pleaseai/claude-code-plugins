@@ -1,7 +1,14 @@
 ---
-description: "Runs a Greptile CLI review for the current local branch, installing or authenticating the CLI when needed, then summarizes JSON findings for the user. Use when the user wants Greptile feedback before opening a PR, outside a hosted PR review flow, or directly from a local checkout.\n"
-license: "MIT"
-metadata: {"author":"greptileai","version":"1.0"}
+name: cli-review
+description: >
+  Runs a Greptile CLI review for the current local branch, installing or
+  authenticating the CLI when needed, then summarizes JSON findings for the
+  user. Use when the user wants Greptile feedback before opening a PR, outside a
+  hosted PR review flow, or directly from a local checkout.
+license: MIT
+metadata:
+  author: greptileai
+  version: "1.0"
 ---
 # CLI Review
 

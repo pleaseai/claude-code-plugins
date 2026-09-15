@@ -259,6 +259,10 @@ curl http://localhost:4000/v13/deployments/dpl_abc123 \
 curl "http://localhost:4000/v6/deployments?projectId=my-app&target=production&limit=10" \
   -H "Authorization: Bearer $TOKEN"
 
+# List deployments (filter by commit SHA)
+curl "http://localhost:4000/v7/deployments?sha=abc123" \
+  -H "Authorization: Bearer $TOKEN"
+
 # Delete deployment
 curl -X DELETE http://localhost:4000/v13/deployments/dpl_abc123 \
   -H "Authorization: Bearer $TOKEN"

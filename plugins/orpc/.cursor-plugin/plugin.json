@@ -1,0 +1,26 @@
+{
+  "name": "orpc",
+  "displayName": "Orpc",
+  "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
+  "version": "1.1.0",
+  "author": {
+    "name": "middleapi"
+  },
+  "category": "Development",
+  "homepage": "https://orpc.dev",
+  "repository": "https://github.com/middleapi/orpc",
+  "license": "MIT",
+  "keywords": [
+    "orpc",
+    "typesafe",
+    "api",
+    "rpc",
+    "openapi",
+    "typescript"
+  ],
+  "tags": [
+    "api",
+    "typescript",
+    "skills"
+  ]
+}

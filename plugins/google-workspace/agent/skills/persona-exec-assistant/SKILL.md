@@ -1,6 +1,18 @@
 ---
-description: "Manage an executive's schedule, inbox, and communications."
-metadata: {"version":"0.22.5"}
+name: persona-exec-assistant
+description: Manage an executive's schedule, inbox, and communications.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: persona
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-gmail
+        - gws-calendar
+        - gws-drive
+        - gws-chat
 ---
 # Executive Assistant
 

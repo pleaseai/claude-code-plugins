@@ -10,6 +10,11 @@
   },
   "plugins": [
     {
+      "name": "firebase",
+      "source": "./plugins/firebase",
+      "description": "Firebase MCP server and Firebase Agent Skills to manage Firebase projects, add backend services, add AI features, deploy & host apps, and more"
+    },
+    {
       "name": "mcp-neo4j",
       "source": "./plugins/neo4j",
       "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling"
@@ -370,14 +375,19 @@
       "description": "Greptile agent skills for PR quality: check PR review comments and status checks, run Greptile CLI reviews on local branches, and iteratively improve PRs until they score 5/5"
     },
     {
+      "name": "tanstack",
+      "source": "./plugins/tanstack",
+      "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) via the official @tanstack/intent CLI — loads skills shipped inside the installed npm packages"
+    },
+    {
       "name": "shadcn-ui",
       "source": "./plugins/shadcn-ui",
       "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI."
     },
     {
-      "name": "tanstack",
-      "source": "./plugins/tanstack",
-      "description": "Version-aware skills for the TanStack ecosystem (Query, Router, Start, Table, Form, DB, Virtual, ...) via the official @tanstack/intent CLI — loads skills shipped inside the installed npm packages"
+      "name": "orpc",
+      "source": "./plugins/orpc",
+      "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration"
     }
   ]
 }

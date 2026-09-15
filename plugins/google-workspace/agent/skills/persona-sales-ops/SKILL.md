@@ -1,6 +1,18 @@
 ---
-description: "Manage sales workflows — track deals, schedule calls, client comms."
-metadata: {"version":"0.22.5"}
+name: persona-sales-ops
+description: Manage sales workflows — track deals, schedule calls, client comms.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: persona
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-gmail
+        - gws-calendar
+        - gws-sheets
+        - gws-drive
 ---
 # Sales Operations
 

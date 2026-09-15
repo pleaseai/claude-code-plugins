@@ -5,7 +5,7 @@
       "source": "vercel/turborepo",
       "sourceType": "github",
       "skillPath": "skills/turborepo/SKILL.md",
-      "computedHash": "04d56ee39b0715b3151bfe3fe8e72fa814f395cd4bac96e8771898b136571364"
+      "computedHash": "dd8b7e6db379c5455c7321ea64581b357e0af30a8302afab37dc7be8e519966d"
     }
   }
 }

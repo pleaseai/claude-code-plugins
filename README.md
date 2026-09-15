@@ -35,10 +35,10 @@ AI-powered security analysis for code changes and pull requests, identifying vul
 
 **Install:** `/plugin install gemini-cli-security@pleaseai` | **Repository:** [pleaseai/security-plugin](https://github.com/pleaseai/security-plugin)
 
-#### Flutter Development
-Flutter and Dart-related commands and context for enhanced mobile development workflow.
+#### Dart and Flutter
+Official Dart and Flutter plugin from the Flutter team - Flutter/Dart skills and the Dart MCP server for building natively compiled apps across mobile, web, desktop, and embedded.
 
-**Install:** `/plugin install flutter@pleaseai` | **Repository:** [pleaseai/flutter-plugin](https://github.com/pleaseai/flutter-plugin)
+**Install:** `/plugin install dart-flutter@pleaseai` | **Repository:** [flutter/agent-plugins](https://github.com/flutter/agent-plugins)
 
 #### Code Review
 Comprehensive code review plugin for Claude Code with specialized review agents.
@@ -49,11 +49,6 @@ Comprehensive code review plugin for Claude Code with specialized review agents.
 Toolkit to help you get started with Spec-Driven Development.
 
 **Install:** `/plugin install spec-kit@pleaseai` | **Repository:** [pleaseai/spec-kit-plugin](https://github.com/pleaseai/spec-kit-plugin)
-
-#### Firebase
-Prototype, build & run modern apps users love with Firebase's backend, AI, and operational infrastructure.
-
-**Install:** `/plugin install firebase@pleaseai` | **Repository:** [pleaseai/firebase-plugin](https://github.com/pleaseai/firebase-plugin)
 
 #### Grafana
 A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities.
@@ -217,6 +212,11 @@ Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript proje
 Official agent skills for coding agents working with the Mastra AI framework.
 
 **Install:** `/plugin install mastra@pleaseai` | **Source:** [plugins/mastra](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mastra)
+
+#### Firebase
+Firebase MCP server plus the official Firebase Agent Skills — manage Firebase projects, add backend services, add AI features, deploy & host apps, and more.
+
+**Install:** `/plugin install firebase@pleaseai` | **Source:** [plugins/firebase](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/firebase)
 
 #### Supabase
 Agent Skills to help developers using AI agents with Supabase.
@@ -475,6 +475,12 @@ Manages shadcn/ui components and projects — adding, searching, fixing, styling
 
 **Install:** `/plugin install shadcn-ui@pleaseai` | **Source:** [plugins/shadcn-ui](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/shadcn-ui)
 
+#### oRPC
+
+End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middleware and clients (`orpc`), contract-first design with `@orpc/contract` (`orpc-contract`), REST/OpenAPI exposure and spec generation (`orpc-openapi`), and tRPC → oRPC / v1 → v2 migrations (`orpc-migrate`).
+
+**Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -568,10 +574,9 @@ Once the marketplace is added (or files copied), the following plugins are avail
 # External plugins
 /plugin install nanobanana@pleaseai
 /plugin install gemini-cli-security@pleaseai
-/plugin install flutter@pleaseai
+/plugin install dart-flutter@pleaseai
 /plugin install code-review@pleaseai
 /plugin install spec-kit@pleaseai
-/plugin install firebase@pleaseai
 /plugin install grafana@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install hermes-tweet@pleaseai
@@ -603,6 +608,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install pnpm@pleaseai
 /plugin install antfu@pleaseai
 /plugin install mastra@pleaseai
+/plugin install firebase@pleaseai
 /plugin install supabase@pleaseai
 /plugin install prisma@pleaseai
 /plugin install better-auth@pleaseai

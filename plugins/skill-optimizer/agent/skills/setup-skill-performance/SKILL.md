@@ -1,5 +1,10 @@
 ---
-description: "Generate eval scenarios from a Tessl plugin (a packaged skill bundle), run baseline + with-context evals, and present results. Use when setting up an evaluation pipeline, running benchmarks, generating test scenarios, measuring skill performance or accuracy, scoring how well a skill helps agents solve tasks, or evaluating skill effectiveness before publishing."
+name: setup-skill-performance
+description: Generate eval scenarios from a Tessl plugin (a packaged skill
+  bundle), run baseline + with-context evals, and present results. Use when
+  setting up an evaluation pipeline, running benchmarks, generating test
+  scenarios, measuring skill performance or accuracy, scoring how well a skill
+  helps agents solve tasks, or evaluating skill effectiveness before publishing.
 ---
 # Eval Setup
 

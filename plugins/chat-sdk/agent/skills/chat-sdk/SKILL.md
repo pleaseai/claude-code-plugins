@@ -1,6 +1,13 @@
 ---
-description: "Build multi-platform chat bots with Chat SDK (`chat` npm package). Use when developers want to scaffold a bot with create-chat-sdk, build a Slack, Teams, Google Chat, Discord, Telegram, GitHub, Linear, or WhatsApp bot, handle mentions, direct messages, subscribed threads, reactions, slash commands, cards, modals, files, or AI streaming, set up webhook routes or multi-adapter bots, send rich cards or streamed AI responses to chat platforms, or build a custom adapter or state adapter."
-license: "MIT"
+name: chat-sdk
+description: Build multi-platform chat bots with Chat SDK (`chat` npm package).
+  Use when developers want to scaffold a bot with create-chat-sdk, build a
+  Slack, Teams, Google Chat, Discord, Telegram, GitHub, Linear, or WhatsApp bot,
+  handle mentions, direct messages, subscribed threads, reactions, slash
+  commands, cards, modals, files, or AI streaming, set up webhook routes or
+  multi-adapter bots, send rich cards or streamed AI responses to chat
+  platforms, or build a custom adapter or state adapter.
+license: MIT
 ---
 # Chat SDK
 

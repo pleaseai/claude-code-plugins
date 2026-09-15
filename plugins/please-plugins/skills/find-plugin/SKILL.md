@@ -103,7 +103,7 @@ Quick reference for the types of plugins available:
 | Category | Examples |
 |----------|----------|
 | **Framework** | nuxt, vue, react, next, vitepress, slidev, tiptap |
-| **Mobile** | flutter, react-native |
+| **Mobile** | dart-flutter, react-native |
 | **Database** | prisma, supabase, mcp-neo4j |
 | **Tooling** | vite, pnpm, turborepo, tsdown, gatekeeper, ast-grep |
 | **AI** | nanobanana, ai-sdk, mastra, gemini |
