@@ -17,6 +17,7 @@
     "javascript",
     "jsr",
     "permissions",
+    "test-runner",
     "fresh",
     "deno-deploy"
   ]

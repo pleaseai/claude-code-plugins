@@ -1320,7 +1320,7 @@
       "name": "deno",
       "description": "Official Deno skills - dependency management with npm and JSR, permissions, the built-in toolchain, migrating from Node/npm/yarn/pnpm/bun, Fresh, and Deno Deploy",
       "category": "development",
-      "keywords": ["deno", "runtime", "typescript", "javascript", "jsr", "permissions", "test-runner"],
+      "keywords": ["deno", "runtime", "typescript", "javascript", "jsr", "permissions", "test-runner", "fresh", "deno-deploy"],
       "tags": ["runtime", "tooling"],
       "source": "./plugins/deno",
       "relevance": {
