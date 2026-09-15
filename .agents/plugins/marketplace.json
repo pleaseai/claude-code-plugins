@@ -17,10 +17,10 @@
       "category": "AI"
     },
     {
-      "name": "flutter",
+      "name": "dart-flutter",
       "source": {
         "source": "url",
-        "url": "https://github.com/pleaseai/flutter-plugin.git"
+        "url": "https://github.com/flutter/agent-plugins.git"
       },
       "policy": {
         "installation": "AVAILABLE",

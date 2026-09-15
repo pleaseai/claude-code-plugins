@@ -1,9 +1,6 @@
 [submodule "external-plugins/nanobanana"]
 	path = external-plugins/nanobanana
 	url = git@github.com:pleaseai/nanobanana-plugin.git
-[submodule "external-plugins/flutter"]
-	path = external-plugins/flutter
-	url = git@github.com:pleaseai/flutter-plugin.git
 [submodule "external-plugins/code-review"]
 	path = external-plugins/code-review
 	url = git@github.com:pleaseai/code-review-plugin.git

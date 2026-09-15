@@ -35,10 +35,10 @@ AI-powered security analysis for code changes and pull requests, identifying vul
 
 **Install:** `/plugin install gemini-cli-security@pleaseai` | **Repository:** [pleaseai/security-plugin](https://github.com/pleaseai/security-plugin)
 
-#### Flutter Development
-Flutter and Dart-related commands and context for enhanced mobile development workflow.
+#### Dart and Flutter
+Official Dart and Flutter plugin from the Flutter team - Flutter/Dart skills and the Dart MCP server for building natively compiled apps across mobile, web, desktop, and embedded.
 
-**Install:** `/plugin install flutter@pleaseai` | **Repository:** [pleaseai/flutter-plugin](https://github.com/pleaseai/flutter-plugin)
+**Install:** `/plugin install dart-flutter@pleaseai` | **Repository:** [flutter/agent-plugins](https://github.com/flutter/agent-plugins)
 
 #### Code Review
 Comprehensive code review plugin for Claude Code with specialized review agents.
@@ -568,7 +568,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 # External plugins
 /plugin install nanobanana@pleaseai
 /plugin install gemini-cli-security@pleaseai
-/plugin install flutter@pleaseai
+/plugin install dart-flutter@pleaseai
 /plugin install code-review@pleaseai
 /plugin install spec-kit@pleaseai
 /plugin install grafana@pleaseai
