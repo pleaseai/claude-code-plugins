@@ -67,8 +67,8 @@
     {
       "name": "firebase",
       "source": {
-        "source": "url",
-        "url": "https://github.com/pleaseai/firebase-plugin.git"
+        "source": "local",
+        "path": "./plugins/firebase"
       },
       "policy": {
         "installation": "AVAILABLE",

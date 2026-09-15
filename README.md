@@ -50,11 +50,6 @@ Toolkit to help you get started with Spec-Driven Development.
 
 **Install:** `/plugin install spec-kit@pleaseai` | **Repository:** [pleaseai/spec-kit-plugin](https://github.com/pleaseai/spec-kit-plugin)
 
-#### Firebase
-Prototype, build & run modern apps users love with Firebase's backend, AI, and operational infrastructure.
-
-**Install:** `/plugin install firebase@pleaseai` | **Repository:** [pleaseai/firebase-plugin](https://github.com/pleaseai/firebase-plugin)
-
 #### Grafana
 A Model Context Protocol (MCP) server for Grafana providing access to dashboards, datasources, and querying capabilities.
 
@@ -217,6 +212,11 @@ Anthony Fu's opinionated tooling and conventions for JavaScript/TypeScript proje
 Official agent skills for coding agents working with the Mastra AI framework.
 
 **Install:** `/plugin install mastra@pleaseai` | **Source:** [plugins/mastra](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/mastra)
+
+#### Firebase
+Firebase MCP server plus the official Firebase Agent Skills — manage Firebase projects, add backend services, add AI features, deploy & host apps, and more.
+
+**Install:** `/plugin install firebase@pleaseai` | **Source:** [plugins/firebase](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/firebase)
 
 #### Supabase
 Agent Skills to help developers using AI agents with Supabase.
@@ -565,7 +565,6 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install flutter@pleaseai
 /plugin install code-review@pleaseai
 /plugin install spec-kit@pleaseai
-/plugin install firebase@pleaseai
 /plugin install grafana@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install hermes-tweet@pleaseai
@@ -597,6 +596,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install pnpm@pleaseai
 /plugin install antfu@pleaseai
 /plugin install mastra@pleaseai
+/plugin install firebase@pleaseai
 /plugin install supabase@pleaseai
 /plugin install prisma@pleaseai
 /plugin install better-auth@pleaseai
