@@ -66,7 +66,7 @@ plugins/deno/
 ```
 
 > The Codex, Cursor, and Antigravity manifests are generated from the Claude manifest by
-> `bun scripts/cli.ts multi-format` — edit `.claude-plugin/plugin.json` and re-run, do not hand-edit them.
+> `bun run plugins:multi-format` — edit `.claude-plugin/plugin.json` and re-run, do not hand-edit them.
 
 ## Updating the skills
 
@@ -76,7 +76,7 @@ To pull the latest upstream revision:
 
 ```bash
 bun run skills:update-locks              # refresh every lock dir in the repo
-bun scripts/update-skills.ts plugins/deno  # or just this plugin
+bun run skills:update-locks plugins/deno # or just this plugin
 bun run skills:update-locks:check        # report what would change, leave the tree clean
 ```
 
