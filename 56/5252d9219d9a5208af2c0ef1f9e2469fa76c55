@@ -1,0 +1,91 @@
+.cursor-plugin/marketplace.json
+  s_04bd837047f7b0::t_1dd6601faef45e 313-316
+  s_04bd837047f7b0::t_80be0feb4ba23a 312
+plugins/deno/.agents/skills/deno/SKILL.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-281
+.release-please-manifest.json
+  s_04bd837047f7b0::t_c077e0c6bb8030 71-72
+plugins/deno/.codex-plugin/plugin.json
+  s_04bd837047f7b0::t_2b4ba14c980784 1-36
+plugins/deno/.agents/skills/deno-deploy/references/FRAMEWORKS.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-215
+plugins/deno/.agents/skills/deno-deploy/references/ORGANIZATIONS.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-86
+plugins/deno/.agents/skills/deno-frontend/references/FRESH.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-286
+plugins/deno/plugin.json
+  s_04bd837047f7b0::t_2b4ba14c980784 1-23
+.claude-plugin/marketplace.json
+  s_04bd837047f7b0::t_ff15ea45b30fa2 1323,1325-1334
+  s_04bd837047f7b0::t_587a145b6a59e2 1324
+  s_04bd837047f7b0::t_17a9e83631d834 1320-1322
+plugins/deno/.agents/skills/deno-deploy/references/DATABASES.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-159
+plugins/deno/.agents/skills/deno-deploy/references/AUTHENTICATION.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-185
+plugins/deno/.agents/skills/deno-deploy/references/TROUBLESHOOTING.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-191
+.agents/plugins/marketplace.json
+  s_04bd837047f7b0::t_1dd6601faef45e 960-970
+  s_04bd837047f7b0::t_064d12aafd1bca 959
+plugins/deno/.agents/skills/deno/references/CLI.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-197
+plugins/deno/.agents/skills/migrate-to-deno/references/FROM_YARN.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-69
+plugins/deno/.agents/skills/deno-frontend/references/FRESH_MIGRATION.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-70
+plugins/deno/.claude-plugin/plugin.json
+  s_04bd837047f7b0::t_0886a820e5c63f 4,6,10,19-20,22
+  s_04bd837047f7b0::t_7199ce701916e5 1-3,5,7-9,11-18,21,23
+plugins/deno/.cursor-plugin/plugin.json
+  s_04bd837047f7b0::t_2b4ba14c980784 1-27
+plugins/deno/.agents/skills/deno-sandbox/SKILL.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-412
+plugins/deno/.agents/skills/migrate-to-deno/SKILL.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-168
+release-please-config.json
+  s_04bd837047f7b0::t_c077e0c6bb8030 1214-1217,1219,1223-1238
+  s_04bd837047f7b0::t_1a2a3e53b867d3 1213,1218,1220-1222
+plugins/deno/.agents/skills/deno-deploy/references/RUNTIME.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-103
+plugins/deno/.agents/skills/deno-frontend/SKILL.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-86
+plugins/deno/.agents/skills/deno-deploy/references/DOMAINS.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-93
+plugins/deno/.agents/skills/deno-deploy/SKILL.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-636
+plugins/deno/.agents/skills/deno-deploy/references/DENO_KV.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-153
+plugins/deno/.agents/skills/migrate-to-deno/references/NODE_APIS.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-110
+plugins/deno/skills-lock.json
+  s_04bd837047f7b0::t_04b35f25153c65 1-35
+plugins/deno/README.md
+  s_04bd837047f7b0::t_f9a6aaf0cbcad1 1-2,4,6,8,16-31,33-43,45-47,49-53,66-70,72,74,82
+  s_04bd837047f7b0::t_1343a39292b22b 3,5,7,9-15,32,44,48,54-65,71,73,75-81,83
+README.md
+  s_04bd837047f7b0::t_587a145b6a59e2 371
+  s_04bd837047f7b0::t_1c8f13fec3bc8b 369-370,372-374,630
+plugins/deno/.agents/skills/migrate-to-deno/references/FROM_BUN.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-136
+plugins/deno/.agents/skills/migrate-to-deno/references/FROM_NPM.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-68
+plugins/deno/.agents/skills/migrate-to-deno/references/FROM_PNPM.md
+  s_04bd837047f7b0::t_04b35f25153c65 1-70
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "565252d9219d9a5208af2c0ef1f9e2469fa76c55",
+  "prompts": {},
+  "sessions": {
+    "s_04bd837047f7b0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "686c5127-f436-4700-95fd-a76f56c74e22",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
