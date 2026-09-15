@@ -1,0 +1,43 @@
+{
+  "name": "firebase",
+  "displayName": "Firebase",
+  "description": "Claude plugin for Firebase that installs the Firebase MCP server and Firebase Agent Skills to manage Firebase projects, add backend services, add AI features, deploy & host apps, and more",
+  "version": "1.0.0",
+  "author": {
+    "name": "Firebase"
+  },
+  "category": "Cloud",
+  "homepage": "https://github.com/firebase/agent-skills",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "firebase",
+    "google",
+    "backend",
+    "cloud",
+    "firestore",
+    "hosting",
+    "functions"
+  ],
+  "tags": [
+    "mcp",
+    "cloud",
+    "backend"
+  ],
+  "mcpServers": {
+    "firebase": {
+      "description": "Firebase MCP server for understanding and managing your Firebase project, resources, and data",
+      "command": "npx",
+      "args": [
+        "-y",
+        "firebase-tools",
+        "mcp",
+        "--dir",
+        "."
+      ],
+      "env": {
+        "IS_FIREBASE_MCP": "true"
+      }
+    }
+  }
+}

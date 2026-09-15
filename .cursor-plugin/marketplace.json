@@ -10,6 +10,11 @@
   },
   "plugins": [
     {
+      "name": "firebase",
+      "source": "./plugins/firebase",
+      "description": "Firebase MCP server and Firebase Agent Skills to manage Firebase projects, add backend services, add AI features, deploy & host apps, and more"
+    },
+    {
       "name": "mcp-neo4j",
       "source": "./plugins/neo4j",
       "description": "Neo4j MCP servers for graph database operations, memory management, Aura cloud management, and data modeling"

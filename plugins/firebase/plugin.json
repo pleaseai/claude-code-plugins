@@ -1,0 +1,22 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "firebase",
+  "version": "1.0.0",
+  "description": "Claude plugin for Firebase that installs the Firebase MCP server and Firebase Agent Skills to manage Firebase projects, add backend services, add AI features, deploy & host apps, and more",
+  "author": {
+    "name": "Firebase",
+    "url": "https://firebase.google.com/"
+  },
+  "homepage": "https://github.com/firebase/agent-skills",
+  "repository": "https://github.com/firebase/agent-skills",
+  "license": "Apache-2.0",
+  "keywords": [
+    "firebase",
+    "google",
+    "backend",
+    "cloud",
+    "firestore",
+    "hosting",
+    "functions"
+  ]
+}
