@@ -1,0 +1,1 @@
+- [External marketplace plugin conventions](marketplace-external-plugin-conventions.md) — github-source entries: name must match upstream manifest, no submodule, no release-please entry
