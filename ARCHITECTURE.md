@@ -83,7 +83,7 @@ Development standards and reference documentation for **human contributors**. No
 
 Read-only git submodules containing **Type 4** plugins: external projects that are either Gemini CLI extensions or standalone Claude Code plugins. These are the canonical upstream sources. The sync pipeline reads from here and generates artifacts into `plugins/`.
 
-Current external plugins: code-review, firebase, flutter, grafana, nanobanana, postgres, security, spec-kit.
+Current external plugins: code-review, firebase, grafana, nanobanana, postgres, security, spec-kit.
 
 ### `hooks/`
 

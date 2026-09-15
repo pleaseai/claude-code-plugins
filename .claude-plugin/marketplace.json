@@ -24,14 +24,14 @@
       }
     },
     {
-      "name": "flutter",
-      "description": "Enables several Flutter and Dart-related commands and context.",
+      "name": "dart-flutter",
+      "description": "Official Dart and Flutter plugin - installs Flutter/Dart skills and the Dart MCP server for building natively compiled apps for mobile, web, desktop, and embedded from a single codebase",
       "category": "mobile",
       "keywords": ["flutter", "dart", "mobile", "cross-platform"],
-      "tags": ["framework", "mobile"],
+      "tags": ["framework", "mobile", "skills", "mcp"],
       "source": {
         "source": "github",
-        "repo": "pleaseai/flutter-plugin"
+        "repo": "flutter/agent-plugins"
       },
       "relevance": {
         "topic": "Flutter",
