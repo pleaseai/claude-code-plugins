@@ -1,0 +1,21 @@
+.claude/agent-memory/github-pr-manager/marketplace-external-plugin-conventions.md
+  s_e3cf5e884ab84b::t_714de955a2c40d 1-16
+.claude/agent-memory/github-pr-manager/MEMORY.md
+  s_e3cf5e884ab84b::t_714de955a2c40d 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "b1fb2111185c098039abd56d9ddc6082997db2e9",
+  "prompts": {},
+  "sessions": {
+    "s_e3cf5e884ab84b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "490a9827-1b92-4cf8-98d5-c3ed1a4ac8f8",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
