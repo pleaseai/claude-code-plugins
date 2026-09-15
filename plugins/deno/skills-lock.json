@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "skills": {
+    "deno": {
+      "source": "denoland/skills",
+      "sourceType": "github",
+      "skillPath": "skills/deno/SKILL.md",
+      "computedHash": "ac6e73271ee74ee92ee995bcd99661da6d8ad5280d90aee637b53267f6d3fbb7"
+    },
+    "deno-deploy": {
+      "source": "denoland/skills",
+      "sourceType": "github",
+      "skillPath": "skills/deno-deploy/SKILL.md",
+      "computedHash": "99a0e43734dd70eef348c7e0ef043e127ac280046f06d5bf65a8b0a8ee9a3f1d"
+    },
+    "deno-frontend": {
+      "source": "denoland/skills",
+      "sourceType": "github",
+      "skillPath": "skills/deno-frontend/SKILL.md",
+      "computedHash": "8cbd751af41a0cd988e9220eb93a36a4e1f254c193932ce3534da0fa608abd17"
+    },
+    "deno-sandbox": {
+      "source": "denoland/skills",
+      "sourceType": "github",
+      "skillPath": "skills/deno-sandbox/SKILL.md",
+      "computedHash": "a7468f1e8876425aeec641b286ffd6550b975d4aabeb41de86ee0f3f1e23e10f"
+    },
+    "migrate-to-deno": {
+      "source": "denoland/skills",
+      "sourceType": "github",
+      "skillPath": "skills/migrate-to-deno/SKILL.md",
+      "computedHash": "6e1d843c21ad52886d21b0d978e50f23f5c36745f4c6cb78486a97b48b919ef3"
+    }
+  }
+}

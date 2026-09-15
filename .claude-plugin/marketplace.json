@@ -1320,6 +1320,21 @@
       }
     },
     {
+      "name": "deno",
+      "description": "Official Deno skills - dependency management with npm and JSR, permissions, the built-in toolchain, migrating from Node/npm/yarn/pnpm/bun, Fresh, and Deno Deploy",
+      "category": "development",
+      "keywords": ["deno", "runtime", "typescript", "javascript", "jsr", "permissions", "test-runner"],
+      "tags": ["runtime", "tooling"],
+      "source": "./plugins/deno",
+      "relevance": {
+        "topic": "Deno",
+        "signals": {
+          "cli": ["deno"],
+          "filesRead": ["**/deno.json", "**/deno.jsonc", "**/deno.lock"]
+        }
+      }
+    },
+    {
       "name": "modern-web-guidance",
       "description": "Keep your coding agent up to date with the latest web best practices from the Google Chrome team",
       "category": "development",

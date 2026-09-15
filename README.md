@@ -366,6 +366,12 @@ Version-aware skill for the Bun JavaScript/TypeScript toolkit — runtime, packa
 
 **Install:** `/plugin install bun@pleaseai` | **Source:** [plugins/bun](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/bun)
 
+#### Deno
+
+Official [Deno skills](https://github.com/denoland/skills) — dependency management with npm and JSR, permissions, `deno.json`, the built-in toolchain, migrating from Node/npm/yarn/pnpm/bun, Fresh, and Deno Deploy.
+
+**Install:** `/plugin install deno@pleaseai` | **Source:** [plugins/deno](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/deno)
+
 #### Graphite
 [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fgraphite)](https://tessl.io/registry/pleaseai/graphite)
 
@@ -621,6 +627,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install portless@pleaseai
 /plugin install zod@pleaseai
 /plugin install bun@pleaseai
+/plugin install deno@pleaseai
 /plugin install graphite@pleaseai
 /plugin install claude-md-management@pleaseai
 /plugin install fetch@pleaseai

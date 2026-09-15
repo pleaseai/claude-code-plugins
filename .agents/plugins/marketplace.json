@@ -957,6 +957,18 @@
       "category": "Development"
     },
     {
+      "name": "deno",
+      "source": {
+        "source": "local",
+        "path": "./plugins/deno"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "modern-web-guidance",
       "source": {
         "source": "url",

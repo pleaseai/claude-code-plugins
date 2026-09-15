@@ -1,0 +1,36 @@
+{
+  "name": "deno",
+  "version": "1.0.0",
+  "description": "Official Deno skills: dependency management with npm and JSR packages, permissions, deno.json configuration, the built-in toolchain (fmt, lint, test, check, bench, compile), migrating from Node/npm/yarn/pnpm/bun, Fresh, Deno Deploy, and the @deno/sandbox SDK.",
+  "author": {
+    "name": "Deno Land",
+    "url": "https://github.com/denoland"
+  },
+  "interface": {
+    "displayName": "Deno",
+    "shortDescription": "Official Deno skills: dependency management with npm and JSR packages, permissions, deno.json configuration, the built-in toolchain (fmt, lint, test, check,...",
+    "longDescription": "Official Deno skills: dependency management with npm and JSR packages, permissions, deno.json configuration, the built-in toolchain (fmt, lint, test, check, bench, compile), migrating from Node/npm/yarn/pnpm/bun, Fresh, Deno Deploy, and the @deno/sandbox SDK.",
+    "developerName": "Deno Land",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Deno for my current task."
+    ],
+    "websiteURL": "https://deno.com"
+  },
+  "homepage": "https://deno.com",
+  "repository": "https://github.com/denoland/skills",
+  "license": "MIT",
+  "keywords": [
+    "deno",
+    "runtime",
+    "typescript",
+    "javascript",
+    "jsr",
+    "permissions",
+    "fresh",
+    "deno-deploy"
+  ]
+}
