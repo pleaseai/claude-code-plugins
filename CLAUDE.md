@@ -17,11 +17,9 @@ This is a Claude Code plugin marketplace repository providing bundled plugins th
 claude-code-plugins/
 ├── external-plugins/           # All plugins (git submodules)
 │   ├── nanobanana/            # Image generation plugin
-│   ├── flutter/               # Flutter development tools
 │   ├── security/              # Security analysis
 │   ├── spec-kit/              # Spec-driven development
 │   ├── code-review/           # Code review automation
-│   ├── firebase/              # Firebase integration
 │   ├── postgres/              # PostgreSQL MCP server
 │   ├── grafana/               # Grafana integration
 │   └── context7/              # Up-to-date library documentation
@@ -156,10 +154,8 @@ All plugins are maintained in separate repositories and included as git submodul
 
 - `external-plugins/nanobanana/` → https://github.com/pleaseai/nanobanana-plugin
 - `external-plugins/security/` → https://github.com/pleaseai/security-plugin
-- `external-plugins/flutter/` → https://github.com/pleaseai/flutter-plugin
 - `external-plugins/code-review/` → https://github.com/pleaseai/code-review-plugin
 - `external-plugins/spec-kit/` → https://github.com/pleaseai/spec-kit-plugin
-- `external-plugins/firebase/` → https://github.com/pleaseai/firebase-plugin
 - `external-plugins/postgres/` → https://github.com/pleaseai/postgres-plugin
 - `external-plugins/grafana/` → https://github.com/amondnet/mcp-grafana
 - `external-plugins/context7/` → https://github.com/pleaseai/context7
