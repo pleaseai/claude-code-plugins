@@ -378,6 +378,11 @@
       "name": "shadcn-ui",
       "source": "./plugins/shadcn-ui",
       "description": "Manages shadcn/ui components and projects — adding, searching, fixing, styling, and composing UI — plus migrating from Radix UI to Base UI."
+    },
+    {
+      "name": "orpc",
+      "source": "./plugins/orpc",
+      "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration"
     }
   ]
 }

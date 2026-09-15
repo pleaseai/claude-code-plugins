@@ -1677,6 +1677,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "orpc",
+      "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
+      "category": "development",
+      "keywords": ["orpc", "typesafe", "api", "rpc", "openapi", "typescript"],
+      "tags": ["api", "typescript", "skills"],
+      "source": "./plugins/orpc",
+      "homepage": "https://orpc.dev",
+      "relevance": {
+        "topic": "oRPC",
+        "signals": {
+          "manifestDeps": [
+            { "file": "[/\\\\]package\\.json$", "pattern": "\"@orpc/[a-z-]+\"\\s*:" }
+          ]
+        }
+      }
     }
   ]
 }
