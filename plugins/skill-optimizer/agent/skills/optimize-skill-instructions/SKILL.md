@@ -1,5 +1,15 @@
 ---
-description: "Review and improve your skill with actionable recommendations. Reviews the whole bundle, validates syntax and references, explains rubric, shows before/after scores, and edits the SKILL.md and its reference docs. Use when reviewing skill quality, improving a SKILL.md or its reference files, checking scoring dimensions and quick wins, auditing progressive disclosure and orphaned bundle files, generating improvement recommendations, running a post-edit quality audit, creating approval-gated change proposals, or automating the skill review workflow. For the full optimization cycle (review + evals + improve), use `optimize-skill-performance-and-instructions`.\n"
+name: optimize-skill-instructions
+description: >
+  Review and improve your skill with actionable recommendations. Reviews the
+  whole bundle, validates syntax and references, explains rubric, shows
+  before/after scores, and edits the SKILL.md and its reference docs. Use when
+  reviewing skill quality, improving a SKILL.md or its reference files, checking
+  scoring dimensions and quick wins, auditing progressive disclosure and
+  orphaned bundle files, generating improvement recommendations, running a
+  post-edit quality audit, creating approval-gated change proposals, or
+  automating the skill review workflow. For the full optimization cycle (review
+  + evals + improve), use `optimize-skill-performance-and-instructions`.
 ---
 # Review Best Practices
 

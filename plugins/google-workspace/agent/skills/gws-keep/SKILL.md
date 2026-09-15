@@ -1,6 +1,14 @@
 ---
-description: "Manage Google Keep notes."
-metadata: {"version":"0.22.5"}
+name: gws-keep
+description: Manage Google Keep notes.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws keep --help
 ---
 # keep (v1)
 

@@ -1,5 +1,12 @@
 ---
-description: "Emulated Sign in with Apple / Apple OIDC for local development and testing. Use when the user needs to test Apple sign-in locally, emulate Apple OIDC discovery, handle Apple token exchange, configure Apple OAuth clients, or work with Apple userinfo without hitting real Apple APIs. Triggers include \"Apple OAuth\", \"emulate Apple\", \"mock Apple login\", \"test Apple sign-in\", \"Sign in with Apple\", \"Apple OIDC\", \"local Apple auth\", or any task requiring a local Apple OAuth/OIDC provider."
+name: apple
+description: Emulated Sign in with Apple / Apple OIDC for local development and
+  testing. Use when the user needs to test Apple sign-in locally, emulate Apple
+  OIDC discovery, handle Apple token exchange, configure Apple OAuth clients, or
+  work with Apple userinfo without hitting real Apple APIs. Triggers include
+  "Apple OAuth", "emulate Apple", "mock Apple login", "test Apple sign-in",
+  "Sign in with Apple", "Apple OIDC", "local Apple auth", or any task requiring
+  a local Apple OAuth/OIDC provider.
 ---
 # Apple Sign In Emulator
 

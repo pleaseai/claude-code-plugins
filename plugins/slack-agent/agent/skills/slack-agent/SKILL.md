@@ -1,5 +1,10 @@
 ---
-description: "Use when building Slack agents/bots with eve (Vercel's filesystem-first agent framework), @vercel/connect, or eve/channels/slack. Covers defineAgent/defineTool patterns, Vercel Connect credential brokering, Slack channel setup, testing requirements, and quality standards."
+name: slack-agent
+description: Use when building Slack agents/bots with eve (Vercel's
+  filesystem-first agent framework), @vercel/connect, or eve/channels/slack.
+  Covers defineAgent/defineTool patterns, Vercel Connect credential brokering,
+  Slack channel setup, testing requirements, and quality standards.
+version: 5.0.0
 ---
 # Slack Agent Development Skill
 

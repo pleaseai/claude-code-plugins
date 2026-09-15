@@ -1,7 +1,12 @@
 ---
-description: "Apply VueUse composables where appropriate to build concise, maintainable Vue.js / Nuxt features."
-license: "MIT"
-metadata: {"author":"SerKo <https://github.com/serkodev>","version":"1.0"}
+name: vueuse-functions
+description: Apply VueUse composables where appropriate to build concise,
+  maintainable Vue.js / Nuxt features.
+license: MIT
+compatibility: Requires Vue 3 (or above) or Nuxt 3 (or above) project
+metadata:
+  author: SerKo <https://github.com/serkodev>
+  version: "1.0"
 ---
 # VueUse Functions
 

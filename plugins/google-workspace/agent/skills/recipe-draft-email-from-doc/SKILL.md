@@ -1,6 +1,17 @@
 ---
-description: "Read content from a Google Doc and use it as the body of a Gmail message."
-metadata: {"version":"0.22.5"}
+name: recipe-draft-email-from-doc
+description: Read content from a Google Doc and use it as the body of a Gmail message.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-docs
+        - gws-gmail
 ---
 # Draft a Gmail Message from a Google Doc
 

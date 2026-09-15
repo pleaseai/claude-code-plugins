@@ -1,5 +1,8 @@
 ---
-description: "Bundle TypeScript and JavaScript libraries with blazing-fast speed powered by Rolldown. Use when building libraries, generating type declarations, bundling for multiple formats, or migrating from tsup."
+name: tsdown
+description: Bundle TypeScript and JavaScript libraries with blazing-fast speed
+  powered by Rolldown. Use when building libraries, generating type
+  declarations, bundling for multiple formats, or migrating from tsup.
 ---
 # tsdown - The Elegant Library Bundler
 

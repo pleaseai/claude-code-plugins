@@ -1,5 +1,9 @@
 ---
-description: "Migrate TypeScript library projects from tsup to tsdown. Provides complete option mappings, config transformation rules, default value differences, and unsupported option alternatives so AI agents can intelligently perform migrations."
+name: tsdown-migrate
+description: Migrate TypeScript library projects from tsup to tsdown. Provides
+  complete option mappings, config transformation rules, default value
+  differences, and unsupported option alternatives so AI agents can
+  intelligently perform migrations.
 ---
 # Migrating from tsup to tsdown
 

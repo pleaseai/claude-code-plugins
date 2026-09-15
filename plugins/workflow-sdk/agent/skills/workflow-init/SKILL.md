@@ -1,6 +1,13 @@
 ---
-description: "Install and configure Vercel Workflow SDK before it exists in node_modules. Use when the user asks to \"install workflow\", \"set up workflow\", \"add durable workflows\", \"configure workflow sdk\", or \"init workflow\" for Next.js, Express, Hono, Fastify, NestJS, Nitro, Nuxt, Astro, SvelteKit, or Vite."
-metadata: {"author":"Vercel Inc.","version":"1.4"}
+name: workflow-init
+description: Install and configure Vercel Workflow SDK before it exists in
+  node_modules. Use when the user asks to "install workflow", "set up workflow",
+  "add durable workflows", "configure workflow sdk", or "init workflow" for
+  Next.js, Express, Hono, Fastify, NestJS, Nitro, Nuxt, Astro, SvelteKit, or
+  Vite.
+metadata:
+  author: Vercel Inc.
+  version: "1.4"
 ---
 # workflow-init
 

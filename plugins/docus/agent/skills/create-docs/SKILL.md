@@ -1,5 +1,11 @@
 ---
-description: "Create complete documentation sites for projects. Use when asked to:\n\"create docs\", \"add documentation\", \"setup docs site\", \"generate docs\",\n\"document my project\", \"write docs\", \"initialize documentation\",\n\"add a docs folder\", \"create a docs website\". Generates Docus-based sites\nwith search, dark mode, MCP server, and llms.txt integration.\n"
+name: create-docs
+description: |
+  Create complete documentation sites for projects. Use when asked to:
+  "create docs", "add documentation", "setup docs site", "generate docs",
+  "document my project", "write docs", "initialize documentation",
+  "add a docs folder", "create a docs website". Generates Docus-based sites
+  with search, dark mode, MCP server, and llms.txt integration.
 ---
 # Create Docs
 

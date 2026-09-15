@@ -1,6 +1,14 @@
 ---
-description: "Read and write Google Docs."
-metadata: {"version":"0.22.5"}
+name: gws-docs
+description: Read and write Google Docs.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: productivity
+    requires:
+      bins:
+        - gws
+    cliHelp: gws docs --help
 ---
 # docs (v1)
 

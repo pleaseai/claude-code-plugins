@@ -1,6 +1,9 @@
 ---
-description: "Use for Vue.js testing. Covers Vitest, Vue Test Utils, component testing, mocking, testing patterns, and Playwright for E2E testing."
-license: "MIT"
+name: vue-testing-best-practices
+description: Use for Vue.js testing. Covers Vitest, Vue Test Utils, component
+  testing, mocking, testing patterns, and Playwright for E2E testing.
+license: MIT
+version: 1.0.0
 ---
 Vue.js testing best practices, patterns, and common gotchas.
 

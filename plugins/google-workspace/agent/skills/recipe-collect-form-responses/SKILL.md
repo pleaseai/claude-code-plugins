@@ -1,6 +1,16 @@
 ---
-description: "Retrieve and review responses from a Google Form."
-metadata: {"version":"0.22.5"}
+name: recipe-collect-form-responses
+description: Retrieve and review responses from a Google Form.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-forms
 ---
 # Check Form Responses
 

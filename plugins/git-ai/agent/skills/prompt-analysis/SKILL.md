@@ -1,5 +1,6 @@
 ---
-description: "Analyze AI prompting patterns and acceptance rates"
+name: prompt-analysis
+description: Analyze AI prompting patterns and acceptance rates
 ---
 # Prompt Analysis Skill
 

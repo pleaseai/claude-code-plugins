@@ -1,6 +1,16 @@
 ---
-description: "Find Google Tasks that are past due and need attention."
-metadata: {"version":"0.22.5"}
+name: recipe-review-overdue-tasks
+description: Find Google Tasks that are past due and need attention.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-tasks
 ---
 # Review Overdue Tasks
 

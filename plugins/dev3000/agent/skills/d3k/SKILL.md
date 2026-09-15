@@ -1,5 +1,10 @@
 ---
-description: "Use when the user asks to use d3k, run/dev/test/debug a web project with d3k, or reproduce a browser issue. Own the runtime: reuse or background-start d3k non-interactively, wait for readiness, use its project-stable managed Chrome profile, and inspect unified browser/server evidence."
+name: d3k
+description: "Use when the user asks to use d3k, run/dev/test/debug a web
+  project with d3k, or reproduce a browser issue. Own the runtime: reuse or
+  background-start d3k non-interactively, wait for readiness, use its
+  project-stable managed Chrome profile, and inspect unified browser/server
+  evidence."
 ---
 # d3k Agent Runtime
 

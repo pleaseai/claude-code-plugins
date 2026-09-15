@@ -1,7 +1,18 @@
 ---
-description: "Iteratively improves a PR (GitHub), MR (GitLab), or shelved changelist (Perforce) until Greptile gives it a 5/5 confidence score with zero unresolved comments. Triggers Greptile review, fixes all actionable comments, pushes/re-shelves, re-triggers review, and repeats. Use when the user wants to fully optimize a PR/MR/CL against Greptile's code review standards.\n"
-license: "MIT"
-metadata: {"author":"greptileai","version":"1.3"}
+name: greploop
+description: >
+  Iteratively improves a PR (GitHub), MR (GitLab), or shelved changelist
+  (Perforce) until Greptile gives it a 5/5 confidence score with zero unresolved
+  comments. Triggers Greptile review, fixes all actionable comments,
+  pushes/re-shelves, re-triggers review, and repeats. Use when the user wants to
+  fully optimize a PR/MR/CL against Greptile's code review standards.
+license: MIT
+compatibility: Requires git, gh (GitHub CLI) or glab (GitLab CLI) authenticated,
+  and Greptile installed on the repo. For Perforce, requires p4 CLI
+  authenticated.
+metadata:
+  author: greptileai
+  version: "1.3"
 ---
 # Greploop
 

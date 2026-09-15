@@ -1,5 +1,12 @@
 ---
-description: "Emulated Linear GraphQL API for local development and testing. Use when the user needs to test Linear integrations locally, emulate Linear issues, comments, teams, workflow states, OAuth apps, webhooks, agent sessions, or work with the Linear API without hitting the real Linear service. Triggers include \"Linear API\", \"emulate Linear\", \"mock Linear\", \"test Linear OAuth\", \"Linear webhook\", \"Linear agent\", \"local Linear\", or any task requiring a local Linear API."
+name: linear
+description: Emulated Linear GraphQL API for local development and testing. Use
+  when the user needs to test Linear integrations locally, emulate Linear
+  issues, comments, teams, workflow states, OAuth apps, webhooks, agent
+  sessions, or work with the Linear API without hitting the real Linear service.
+  Triggers include "Linear API", "emulate Linear", "mock Linear", "test Linear
+  OAuth", "Linear webhook", "Linear agent", "local Linear", or any task
+  requiring a local Linear API.
 ---
 # Linear API Emulator
 

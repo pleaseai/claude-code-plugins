@@ -1,5 +1,11 @@
 ---
-description: "Run task evals across multiple Claude models, compare results side-by-side, and optimise. Use when you want to benchmark a skill across models, compare haiku vs sonnet vs opus performance, run multi-model comparison or benchmark reports, identify model-specific gaps versus universal plugin gaps, evaluate whether a skill works for all model tiers, or validate a skill before publishing it to the registry."
+name: compare-skill-model-performance
+description: Run task evals across multiple Claude models, compare results
+  side-by-side, and optimise. Use when you want to benchmark a skill across
+  models, compare haiku vs sonnet vs opus performance, run multi-model
+  comparison or benchmark reports, identify model-specific gaps versus universal
+  plugin gaps, evaluate whether a skill works for all model tiers, or validate a
+  skill before publishing it to the registry.
 ---
 # Review Model Performance
 

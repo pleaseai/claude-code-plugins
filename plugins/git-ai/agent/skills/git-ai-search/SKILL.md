@@ -1,5 +1,6 @@
 ---
-description: "Search and restore AI conversation context from git history"
+name: git-ai-search
+description: Search and restore AI conversation context from git history
 ---
 # Git AI Search Skill
 

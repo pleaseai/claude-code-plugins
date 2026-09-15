@@ -1,6 +1,20 @@
 ---
-description: "Structured diagnostic code library for JavaScript/TypeScript. Turns errors and other conditions into typed, machine-readable `Diagnostic` instances with stable codes, docs URLs, and actionable fields. Use this skill whenever the project imports `nostics`, or works with `defineDiagnostics`/`defineProdDiagnostics`, the `Diagnostic` class, diagnostic code registries, or structured error handling. Also covers reporters (`createConsoleReporter`, `createFetchReporter` from nostics/reporters/fetch, `createFileReporter` from nostics/reporters/node, `createDevReporter` from nostics/reporters/dev), formatters (`formatDiagnostic`, `ansiFormatter`, `jsonFormatter`), and Vite plugins (`nosticsStrip` from @nostics/unplugin/strip-transform, `nosticsCollector` from @nostics/unplugin/dev-server-collector). Also use when migrating a library's existing `console.warn`/`console.error`/`warn()` helpers or thrown `Error`s to diagnostics: follow `references/migration.md`."
-license: "MIT"
+name: nostics
+description: "Structured diagnostic code library for JavaScript/TypeScript.
+  Turns errors and other conditions into typed, machine-readable `Diagnostic`
+  instances with stable codes, docs URLs, and actionable fields. Use this skill
+  whenever the project imports `nostics`, or works with
+  `defineDiagnostics`/`defineProdDiagnostics`, the `Diagnostic` class,
+  diagnostic code registries, or structured error handling. Also covers
+  reporters (`createConsoleReporter`, `createFetchReporter` from
+  nostics/reporters/fetch, `createFileReporter` from nostics/reporters/node,
+  `createDevReporter` from nostics/reporters/dev), formatters
+  (`formatDiagnostic`, `ansiFormatter`, `jsonFormatter`), and Vite plugins
+  (`nosticsStrip` from @nostics/unplugin/strip-transform, `nosticsCollector`
+  from @nostics/unplugin/dev-server-collector). Also use when migrating a
+  library's existing `console.warn`/`console.error`/`warn()` helpers or thrown
+  `Error`s to diagnostics: follow `references/migration.md`."
+license: MIT
 ---
 # nostics
 

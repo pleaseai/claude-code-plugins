@@ -1,6 +1,16 @@
 ---
-description: "Read data from two tabs in a Google Sheet to compare and identify differences."
-metadata: {"version":"0.22.5"}
+name: recipe-compare-sheet-tabs
+description: Read data from two tabs in a Google Sheet to compare and identify differences.
+metadata:
+  version: 0.22.5
+  openclaw:
+    category: recipe
+    domain: productivity
+    requires:
+      bins:
+        - gws
+      skills:
+        - gws-sheets
 ---
 # Compare Two Google Sheets Tabs
 

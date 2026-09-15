@@ -1,5 +1,20 @@
 ---
-description: "Review documentation for quality, clarity, SEO, and technical correctness.\nOptimized for Docus/Nuxt Content but works with any Markdown documentation.\nUse when asked to: \"review docs\", \"check documentation\", \"audit docs\",\n\"validate documentation\", \"improve docs quality\", \"analyze documentation\",\n\"check my docs\", \"review my documentation pages\", \"validate MDC syntax\",\n\"check for SEO issues\", \"analyze doc structure\".\nProvides actionable recommendations categorized by priority (Critical, Important, Nice-to-have).\n"
+name: review-docs
+description: >
+  Review documentation for quality, clarity, SEO, and technical correctness.
+
+  Optimized for Docus/Nuxt Content but works with any Markdown documentation.
+
+  Use when asked to: "review docs", "check documentation", "audit docs",
+
+  "validate documentation", "improve docs quality", "analyze documentation",
+
+  "check my docs", "review my documentation pages", "validate MDC syntax",
+
+  "check for SEO issues", "analyze doc structure".
+
+  Provides actionable recommendations categorized by priority (Critical,
+  Important, Nice-to-have).
 ---
 # Review Docs
 
