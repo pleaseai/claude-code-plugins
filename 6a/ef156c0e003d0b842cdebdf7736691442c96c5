@@ -1,0 +1,224 @@
+plugins/firebase/.agents/skills/firebase-data-connect/reference/cloud_functions.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-184
+plugins/firebase/plugin.json
+  s_a3431345bce32a::t_93e39bbc9949d2 1-22
+plugins/firebase/.agents/skills/firebase-auth-basics/references/client_sdk_android.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-160
+plugins/firebase/.agents/skills/firebase-crashlytics/references/android_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-152
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/indexes.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-135
+plugins/firebase/.agents/skills/firebase-basics/references/web_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-77
+plugins/firebase/.agents/skills/firebase-basics/references/android_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-41
+README.md
+  s_a3431345bce32a::t_bf31733273e61e 216-220,599
+plugins/firebase/.agents/skills/firebase-auth-basics/references/security_rules.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-49
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-174
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/signature-mapping.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-84
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/flutter_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-176
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/provisioning.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-118
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-77
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/configuration.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-59
+plugins/firebase/.agents/skills/firebase-data-connect/reference/search.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-264
+plugins/firebase/.agents/skills/firebase-remote-config-basics/references/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-89
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-207
+plugins/firebase/.agents/skills/firebase-data-connect/reference/config.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-271
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/flutter_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-98
+plugins/firebase/.agents/skills/firebase-basics/references/setup/github_copilot.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-104
+ARCHITECTURE.md
+  s_a3431345bce32a::t_168a1cfc6a9eaf 86
+plugins/firebase/.agents/skills/firebase-basics/references/local-env-setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-80
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/gemini-cli.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-13
+plugins/firebase/.agents/skills/firebase-data-connect/reference/schema.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-290
+plugins/firebase/.codex-plugin/plugin.json
+  s_a3431345bce32a::t_93e39bbc9949d2 1-37
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Package.resolved
+  s_a3431345bce32a::t_57cb2229896f4f 1-41
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_android.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-126
+plugins/firebase/.agents/skills/firebase-data-connect/reference/data_seeding.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-185
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-189
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/python_sdk_usage.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-138
+plugins/firebase/.agents/skills/firebase-basics/references/setup/android_studio.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-23
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/usage_patterns_web.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-186
+plugins/firebase/.agents/skills/firebase-basics/references/setup/antigravity.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-98
+plugins/firebase/.agents/skills/firebase-data-connect/templates.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-318
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/other-agents.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-67
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Sources/main.swift
+  s_a3431345bce32a::t_57cb2229896f4f 1-232
+.cursor-plugin/marketplace.json
+  s_a3431345bce32a::t_93e39bbc9949d2 13-16
+  s_a3431345bce32a::t_4f830938288b5a 12
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/flutter_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-180
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/usage_patterns_android.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-157
+.release-please-manifest.json
+  s_a3431345bce32a::t_02a61dd48b0564 25
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/emulation.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-59
+plugins/firebase/.agents/skills/firebase-ai-logic-basics/references/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-156
+plugins/firebase/.agents/skills/firebase-hosting-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-67
+plugins/firebase/.agents/skills/firebase-auth-basics/references/flutter_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-149
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_flutter.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-134
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/configuration-migration.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-161
+plugins/firebase/.agents/skills/firebase-basics/references/flutter_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-143
+plugins/firebase/.agents/skills/firebase-data-connect/reference/realtime.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-210
+plugins/firebase/.agents/skills/firebase-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-148
+plugins/firebase/.agents/skills/firebase-data-connect/reference/security.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-295
+plugins/firebase/.agents/skills/firebase-data-connect/examples.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-638
+plugins/firebase/.agents/skills/firebase-basics/references/setup/other_agents.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-99
+plugins/firebase/.agents/skills/firebase-hosting-basics/references/deploying.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-48
+plugins/firebase/.agents/skills/firebase-basics/references/setup/cursor.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-93
+plugins/firebase/.cursor-plugin/plugin.json
+  s_a3431345bce32a::t_93e39bbc9949d2 1-43
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_ios.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-157
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_admin_node.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-141
+plugins/firebase/.agents/skills/firebase-auth-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-120
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/web_sdk_usage.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-192
+plugins/firebase/.agents/skills/firebase-auth-basics/references/client_sdk_web.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-301
+plugins/firebase/.agents/skills/firebase-data-connect/reference/operations.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-385
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/android_studio.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-41
+plugins/firebase/.agents/skills/firebase-security-rules-auditor/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-73
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/Package.swift
+  s_a3431345bce32a::t_57cb2229896f4f 1-17
+plugins/firebase/.agents/skills/firebase-basics/references/firebase-cli-guide.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-18
+plugins/firebase/.agents/skills/firebase-remote-config-basics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-128
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/provisioning.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-110
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/android_sdk_usage.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-230
+plugins/firebase/.agents/skills/extension-to-functions-codebase/references/destructuring-shim.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-122
+plugins/firebase/.agents/skills/firebase-basics/references/firebase-service-init.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-20
+plugins/firebase/skills-lock.json
+  s_a3431345bce32a::t_57cb2229896f4f 1-83
+plugins/firebase/.agents/skills/firebase-app-hosting-basics/references/cli_commands.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-85
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/web_sdk_usage.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-127
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/antigravity.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-64
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/android_sdk_usage.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-193
+plugins/firebase/.agents/skills/firebase-firestore/references/enterprise/data_model.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-66
+plugins/firebase/README.md
+  s_a3431345bce32a::t_5a30bca4db4933 1-22,24-29,31-57
+  s_a3431345bce32a::t_cc568ed101d44a 23,30
+plugins/firebase/.agents/skills/firebase-data-connect/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-193
+plugins/firebase/.agents/skills/firebase-data-connect/reference/sdk_web.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-146
+plugins/firebase/.agents/skills/firebase-basics/references/setup/gemini_cli.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-53
+release-please-config.json
+  s_a3431345bce32a::t_02a61dd48b0564 277-299
+  s_a3431345bce32a::t_87ef7372e69219 274-276
+plugins/firebase/.mcp.json
+  s_a3431345bce32a::t_93e39bbc9949d2 1-18
+.agents/plugins/marketplace.json
+  s_a3431345bce32a::t_93e39bbc9949d2 70-71
+plugins/firebase/.agents/skills/firebase-firestore/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-84
+plugins/firebase/.agents/skills/firebase-basics/references/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-113
+.claude-plugin/marketplace.json
+  s_a3431345bce32a::t_bc0fe6de7d94a0 87,89-91
+plugins/firebase/.agents/skills/firebase-data-connect/reference/native_sql.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-170
+plugins/firebase/.agents/skills/firebase-basics/references/setup/claude_code.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-45
+plugins/firebase/.agents/skills/firebase-crashlytics/references/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-115
+plugins/firebase/.agents/skills/firestore-rules-creation/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-584
+plugins/firebase/.agents/skills/firebase-auth-basics/references/ios_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-87
+plugins/firebase/.agents/skills/firebase-hosting-basics/references/configuration.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-115
+plugins/firebase/mcp_config.json
+  s_a3431345bce32a::t_93e39bbc9949d2 1-18
+plugins/firebase/.agents/skills/firebase-firestore/references/standard/indexes.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-113
+plugins/firebase/.agents/skills/xcode-project-setup/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-142
+plugins/firebase/.agents/skills/extension-to-functions-codebase/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-129
+plugins/firebase/.agents/skills/firebase-remote-config-basics/references/android_setup.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-91
+plugins/firebase/.claude-plugin/plugin.json
+  s_a3431345bce32a::t_3a572646f85bc8 1-32
+plugins/firebase/.agents/skills/firebase-basics/references/refresh/claude.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-12
+plugins/firebase/.agents/skills/xcode-project-setup/scripts/xcode_spm_setup/.gitignore
+  s_a3431345bce32a::t_57cb2229896f4f 1-9
+plugins/firebase/.agents/skills/firebase-crashlytics/SKILL.md
+  s_a3431345bce32a::t_57cb2229896f4f 1-44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "6aef156c0e003d0b842cdebdf7736691442c96c5",
+  "prompts": {},
+  "sessions": {
+    "s_a3431345bce32a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "c47a1a60-1851-430b-a231-3499334f341f",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
