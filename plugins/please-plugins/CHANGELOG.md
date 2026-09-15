@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.7.0...please-plugins-v2.0.0) (2026-09-15)
+
+
+### ⚠ BREAKING CHANGES
+
+* **marketplace:** the install name changes from `flutter@pleaseai` to `dart-flutter@pleaseai`. Upstream's plugin.json declares `"name": "dart-flutter"`, and every github-source entry in this marketplace must match its upstream manifest name. Existing users must reinstall under the new name.
+
+### Features
+
+* **marketplace:** replace flutter plugin with official flutter/agent-plugins ([#274](https://github.com/pleaseai/claude-code-plugins/issues/274)) ([18d133b](https://github.com/pleaseai/claude-code-plugins/commit/18d133bb6da733ffdc9ae076a867624f7baab73d))
+
 ## [1.7.0](https://github.com/pleaseai/claude-code-plugins/compare/please-plugins-v1.6.0...please-plugins-v1.7.0) (2026-06-30)
 
 
