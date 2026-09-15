@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.2.2](https://github.com/pleaseai/claude-code-plugins/compare/portless-v1.2.1...portless-v1.2.2) (2026-09-15)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#262](https://github.com/pleaseai/claude-code-plugins/issues/262)) ([7423571](https://github.com/pleaseai/claude-code-plugins/commit/7423571511cc99d54c23bf2bcdc47fdbc7876056))
+* update vendored skills to latest versions ([#268](https://github.com/pleaseai/claude-code-plugins/issues/268)) ([e59144b](https://github.com/pleaseai/claude-code-plugins/commit/e59144b14b7b949d9aa534cf249ee3771a2f0d3f))
+* update vendored skills to latest versions ([#269](https://github.com/pleaseai/claude-code-plugins/issues/269)) ([ec2d302](https://github.com/pleaseai/claude-code-plugins/commit/ec2d30257f66d8800854617ddb3a72bae93597b2))
+
 ## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/portless-v1.2.0...portless-v1.2.1) (2026-07-07)
 
 
