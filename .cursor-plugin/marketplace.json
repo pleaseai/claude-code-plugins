@@ -315,6 +315,11 @@
       "description": "All-in-one JavaScript/TypeScript toolkit: fast runtime, package manager, test runner, and bundler - version-aware skill backed by the ask CLI"
     },
     {
+      "name": "deno",
+      "source": "./plugins/deno",
+      "description": "Official Deno skills - dependency management with npm and JSR, permissions, the built-in toolchain, migrating from Node/npm/yarn/pnpm/bun, Fresh, and Deno Deploy"
+    },
+    {
       "name": "java-development",
       "source": "./plugins/java-development",
       "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot"
