@@ -469,6 +469,12 @@ Manages shadcn/ui components and projects — adding, searching, fixing, styling
 
 **Install:** `/plugin install shadcn-ui@pleaseai` | **Source:** [plugins/shadcn-ui](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/shadcn-ui)
 
+#### oRPC
+
+End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middleware and clients (`orpc`), contract-first design with `@orpc/contract` (`orpc-contract`), REST/OpenAPI exposure and spec generation (`orpc-openapi`), and tRPC → oRPC / v1 → v2 migrations (`orpc-migrate`).
+
+**Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
