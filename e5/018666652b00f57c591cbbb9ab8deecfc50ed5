@@ -1,0 +1,47 @@
+plugins/orpc/plugin.json
+  s_3f60b43745d811::t_381e6a003a4851 1-21
+.release-please-manifest.json
+  s_3f60b43745d811::t_3cd04669ea18f6 71-72
+.claude-plugin/marketplace.json
+  s_3f60b43745d811::t_b550393548c7fb 1683-1699
+plugins/orpc/.cursor-plugin/plugin.json
+  s_3f60b43745d811::t_381e6a003a4851 1-26
+plugins/orpc/.agents/skills/orpc/SKILL.md
+  s_3f60b43745d811::t_00120068161bf1 1-237
+plugins/orpc/.codex-plugin/plugin.json
+  s_3f60b43745d811::t_381e6a003a4851 1-34
+release-please-config.json
+  s_3f60b43745d811::t_3cd04669ea18f6 1248-1273
+.cursor-plugin/marketplace.json
+  s_3f60b43745d811::t_381e6a003a4851 376-380
+plugins/orpc/.claude-plugin/plugin.json
+  s_3f60b43745d811::t_7fd3a4a8cbfeea 1-21
+.agents/plugins/marketplace.json
+  s_3f60b43745d811::t_381e6a003a4851 1274-1285
+plugins/orpc/skills-lock.json
+  s_3f60b43745d811::t_00120068161bf1 1-29
+plugins/orpc/.agents/skills/orpc-migrate/SKILL.md
+  s_3f60b43745d811::t_00120068161bf1 1-123
+README.md
+  s_3f60b43745d811::t_c4936bb923f9a6 472-477
+plugins/orpc/.agents/skills/orpc-contract/SKILL.md
+  s_3f60b43745d811::t_00120068161bf1 1-159
+plugins/orpc/.agents/skills/orpc-openapi/SKILL.md
+  s_3f60b43745d811::t_00120068161bf1 1-151
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "e5018666652b00f57c591cbbb9ab8deecfc50ed5",
+  "prompts": {},
+  "sessions": {
+    "s_3f60b43745d811": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "42a20c42-5bfe-4966-8242-5d0b748d77b6",
+        "model": "claude-opus-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
