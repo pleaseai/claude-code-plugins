@@ -206,6 +206,18 @@ curl -X POST http://localhost:4000/emails/<id>/cancel \
 
 Supported fields: `from`, `to`, `subject`, `html`, `text`, `cc`, `bcc`, `reply_to`, `headers`, `tags`, `scheduled_at`.
 
+### Idempotent Sends
+
+`POST /emails` and `POST /emails/batch` accept the case-insensitive `Idempotency-Key` header. Keys must be 1 to 256 characters and remain active for 24 hours. A retry with the same key and validated payload returns the original response, email IDs, and status without creating emails or dispatching duplicate `email.sent` and `email.delivered` webhooks. Reusing a key with a different payload or endpoint returns `409 invalid_idempotent_request`; invalid key lengths return `400 invalid_idempotency_key`. Omitting the header preserves normal behavior.
+
+```bash
+curl -X POST http://localhost:4000/emails \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -H "Idempotency-Key: signup-email-123" \
+  -d '{"from": "hello@example.com", "to": "user@example.com", "subject": "Hello"}'
+```
+
 ### Domains
 
 ```bash

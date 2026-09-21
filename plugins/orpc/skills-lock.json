@@ -17,7 +17,7 @@
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc-migrate/SKILL.md",
-      "computedHash": "b8045826a9a78eb51d79b4a0037feca9480b1824aee3095752454fad8bc5d65d"
+      "computedHash": "8bb9839c8b14c657d1e2b4e96bb8e1a3253c80c2de09b59a369e2c04ddb1032b"
     },
     "orpc-openapi": {
       "source": "middleapi/orpc",

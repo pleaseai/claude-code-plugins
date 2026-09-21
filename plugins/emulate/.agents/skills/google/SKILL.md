@@ -1,7 +1,7 @@
 ---
 name: google
 description: Emulated Google OAuth 2.0, OpenID Connect, Gmail, Calendar, and Drive for local development and testing. Use when the user needs to test Google sign-in locally, emulate OIDC discovery, handle Google token exchange, configure Google OAuth clients, work with Gmail messages/drafts/threads/labels, manage Calendar events, upload or list Drive files, or work with Google userinfo without hitting real Google APIs. Triggers include "Google OAuth", "emulate Google", "mock Google login", "test Google sign-in", "OIDC emulator", "Google OIDC", "Gmail API", "Google Calendar", "Google Drive", "local Google auth", or any task requiring a local Google API.
-allowed-tools: Bash(npx emulate:*), Bash(emulate:*), Bash(curl:*)
+allowed-tools: Bash(npx emulate:*), Bash(curl:*)
 ---
 
 # Google OAuth 2.0 / OIDC + Gmail, Calendar & Drive Emulator
@@ -199,7 +199,7 @@ curl http://localhost:4002/.well-known/openid-configuration
 curl http://localhost:4002/oauth2/v3/certs
 ```
 
-Returns `{ "keys": [] }`. ID tokens are signed with HS256 using an internal secret.
+Returns the RSA public key used to verify the ID tokens issued by the emulator. Google ID tokens use RS256, and the discovery document advertises the same algorithm.
 
 ### Authorization
 
@@ -468,6 +468,14 @@ curl http://localhost:4002/gmail/v1/users/me/settings/sendAs \
 ```
 
 ## Google Calendar API
+
+### Discovery
+
+The Calendar discovery document is public and describes the Calendar v3 methods supported by the emulator:
+
+```bash
+curl http://localhost:4002/discovery/v1/apis/calendar/v3/rest
+```
 
 ### Calendar List
 

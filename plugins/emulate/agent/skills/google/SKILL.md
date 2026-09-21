@@ -205,7 +205,7 @@ curl http://localhost:4002/.well-known/openid-configuration
 curl http://localhost:4002/oauth2/v3/certs
 ```
 
-Returns `{ "keys": [] }`. ID tokens are signed with HS256 using an internal secret.
+Returns the RSA public key used to verify the ID tokens issued by the emulator. Google ID tokens use RS256, and the discovery document advertises the same algorithm.
 
 ### Authorization
 
@@ -474,6 +474,14 @@ curl http://localhost:4002/gmail/v1/users/me/settings/sendAs \
 ```
 
 ## Google Calendar API
+
+### Discovery
+
+The Calendar discovery document is public and describes the Calendar v3 methods supported by the emulator:
+
+```bash
+curl http://localhost:4002/discovery/v1/apis/calendar/v3/rest
+```
 
 ### Calendar List
 
