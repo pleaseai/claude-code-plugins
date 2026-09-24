@@ -372,6 +372,12 @@ Official [Deno skills](https://github.com/denoland/skills) — dependency manage
 
 **Install:** `/plugin install deno@pleaseai` | **Source:** [plugins/deno](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/deno)
 
+#### Genkit
+
+Official [Genkit skills](https://github.com/genkit-ai/skills) — build AI-powered applications with Genkit in JavaScript/TypeScript, Go, Dart/Flutter, and Python: flows, generation, prompts, tool calling, agents, and model providers.
+
+**Install:** `/plugin install genkit@pleaseai` | **Source:** [plugins/genkit](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/genkit)
+
 #### Graphite
 [![tessl](https://img.shields.io/endpoint?url=https%3A%2F%2Fapi.tessl.io%2Fv1%2Fbadges%2Fpleaseai%2Fgraphite)](https://tessl.io/registry/pleaseai/graphite)
 
@@ -634,6 +640,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install zod@pleaseai
 /plugin install bun@pleaseai
 /plugin install deno@pleaseai
+/plugin install genkit@pleaseai
 /plugin install graphite@pleaseai
 /plugin install claude-md-management@pleaseai
 /plugin install fetch@pleaseai

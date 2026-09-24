@@ -969,6 +969,18 @@
       "category": "Development"
     },
     {
+      "name": "genkit",
+      "source": {
+        "source": "local",
+        "path": "./plugins/genkit"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Development"
+    },
+    {
       "name": "modern-web-guidance",
       "source": {
         "source": "url",

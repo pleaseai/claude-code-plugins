@@ -1272,6 +1272,32 @@
         }
       ]
     },
+    "plugins/genkit": {
+      "release-type": "simple",
+      "component": "genkit",
+      "extra-files": [
+        {
+          "type": "json",
+          "path": ".claude-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".codex-plugin/plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": "plugin.json",
+          "jsonpath": "$.version"
+        },
+        {
+          "type": "json",
+          "path": ".cursor-plugin/plugin.json",
+          "jsonpath": "$.version"
+        }
+      ]
+    },
     "plugins/tanstack": {
       "release-type": "simple",
       "component": "tanstack",

@@ -1332,6 +1332,38 @@
       }
     },
     {
+      "name": "genkit",
+      "description": "Official Genkit skills - build AI-powered applications with Genkit in JavaScript/TypeScript, Go, Dart/Flutter, and Python: flows, generation, prompts, tool calling, agents, and model providers",
+      "category": "development",
+      "keywords": ["genkit", "ai", "llm", "agents", "flows", "dotprompt", "firebase", "typescript", "go", "dart", "flutter", "python"],
+      "tags": ["ai", "framework"],
+      "source": "./plugins/genkit",
+      "relevance": {
+        "topic": "Genkit",
+        "signals": {
+          "cli": ["genkit"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"(genkit|@genkit-ai/[^\"]+)\"\\s*:"
+            },
+            {
+              "file": "[/\\\\]go\\.mod$",
+              "pattern": "github\\.com/firebase/genkit/go"
+            },
+            {
+              "file": "[/\\\\]pubspec\\.yaml$",
+              "pattern": "(^|\\n)\\s*genkit(_[a-z_]+)?\\s*:"
+            },
+            {
+              "file": "[/\\\\](pyproject\\.toml|requirements[^/\\\\]*\\.txt)$",
+              "pattern": "(^|[\\s\"'])genkit([-_][a-z0-9-]+)?\\b"
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "modern-web-guidance",
       "description": "Keep your coding agent up to date with the latest web best practices from the Google Chrome team",
       "category": "development",

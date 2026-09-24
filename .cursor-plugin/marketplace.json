@@ -320,6 +320,11 @@
       "description": "Official Deno skills - dependency management with npm and JSR, permissions, the built-in toolchain, migrating from Node/npm/yarn/pnpm/bun, Fresh, and Deno Deploy"
     },
     {
+      "name": "genkit",
+      "source": "./plugins/genkit",
+      "description": "Official Genkit skills - build AI-powered applications with Genkit in JavaScript/TypeScript, Go, Dart/Flutter, and Python: flows, generation, prompts, tool calling, agents, and model providers"
+    },
+    {
       "name": "java-development",
       "source": "./plugins/java-development",
       "description": "Comprehensive collection of skills for Java development including Spring Boot, Quarkus, testing, documentation, and best practices - imported from github/awesome-copilot"
