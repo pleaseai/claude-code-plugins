@@ -1353,7 +1353,7 @@
             },
             {
               "file": "[/\\\\]pubspec\\.yaml$",
-              "pattern": "\\n\\s*genkit(_[a-z_]+)?\\s*:"
+              "pattern": "(^|\\n)\\s*genkit(_[a-z_]+)?\\s*:"
             },
             {
               "file": "[/\\\\](pyproject\\.toml|requirements[^/\\\\]*\\.txt)$",
