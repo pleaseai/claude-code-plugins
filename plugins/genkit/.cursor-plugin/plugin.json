@@ -2,7 +2,7 @@
   "name": "genkit",
   "displayName": "Genkit",
   "description": "Official Genkit skills: build AI-powered applications with the Genkit framework in JavaScript/TypeScript, Go, Dart/Flutter, and Python — flows, generation, prompts (Dotprompt), tool calling, agents, middleware, model providers, and common errors.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Genkit"
   },

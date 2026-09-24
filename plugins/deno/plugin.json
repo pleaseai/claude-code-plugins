@@ -1,7 +1,7 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "deno",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Official Deno skills: dependency management with npm and JSR packages, permissions, deno.json configuration, the built-in toolchain (fmt, lint, test, check, bench, compile), migrating from Node/npm/yarn/pnpm/bun, Fresh, Deno Deploy, and the @deno/sandbox SDK.",
   "author": {
     "name": "Deno Land",

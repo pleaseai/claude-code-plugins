@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-seo-v1.2.1...nuxt-seo-v1.2.2) (2026-09-24)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#278](https://github.com/pleaseai/claude-code-plugins/issues/278)) ([360c196](https://github.com/pleaseai/claude-code-plugins/commit/360c1964e19190e6f47da2b3081934043585ba0c))
+
 ## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/nuxt-seo-v1.2.0...nuxt-seo-v1.2.1) (2026-09-15)
 
 
