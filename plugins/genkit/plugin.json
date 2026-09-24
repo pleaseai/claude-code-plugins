@@ -1,0 +1,27 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "genkit",
+  "version": "1.0.0",
+  "description": "Official Genkit skills: build AI-powered applications with the Genkit framework in JavaScript/TypeScript, Go, Dart/Flutter, and Python — flows, generation, prompts (Dotprompt), tool calling, agents, middleware, model providers, and common errors.",
+  "author": {
+    "name": "Genkit",
+    "url": "https://github.com/genkit-ai"
+  },
+  "homepage": "https://genkit.dev",
+  "repository": "https://github.com/genkit-ai/skills",
+  "license": "NOASSERTION",
+  "keywords": [
+    "genkit",
+    "ai",
+    "llm",
+    "agents",
+    "flows",
+    "dotprompt",
+    "firebase",
+    "typescript",
+    "go",
+    "dart",
+    "flutter",
+    "python"
+  ]
+}
