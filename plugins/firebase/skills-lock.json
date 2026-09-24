@@ -11,7 +11,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-ai-logic-basics/SKILL.md",
-      "computedHash": "2af723026c6cb09aeedd6d0578421b5f25cd410c72a4e5135b4b174451a5eee9"
+      "computedHash": "9fb678d0c441ab8b2b5820816b726b5a40a26c6f81f7f46e5570ca31e6c84052"
     },
     "firebase-app-hosting-basics": {
       "source": "firebase/agent-skills",
@@ -23,7 +23,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-auth-basics/SKILL.md",
-      "computedHash": "25070123c29d59098ac817dee0eee36a73b4a822e6bb925a0ebccab0c78cf1e9"
+      "computedHash": "50ea643133c98c22dc784912625e002b181e227579dd90ae56ec9447ff80f439"
     },
     "firebase-basics": {
       "source": "firebase/agent-skills",
@@ -35,7 +35,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-crashlytics/SKILL.md",
-      "computedHash": "1316a59236b4e2317e1d265df80e2c6c112e855bc15404ade19f2a2fe9cf2502"
+      "computedHash": "f179208d1201dafdac7ccef79815047d96b3706d38f9c8fa84217f58fe081bd9"
     },
     "firebase-data-connect": {
       "source": "firebase/agent-skills",
@@ -47,7 +47,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-firestore/SKILL.md",
-      "computedHash": "f00c7c9eceafeec9c9ade9de7afefeed08fa63925a5b1ac0091057cab0249a4d"
+      "computedHash": "eba8875916bdd7bd687b3329b065abaa71b4a9ace8e4e0dd861e8149852651af"
     },
     "firebase-hosting-basics": {
       "source": "firebase/agent-skills",
@@ -65,13 +65,13 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-security-rules-auditor/SKILL.md",
-      "computedHash": "69927a1fca3467543feb4eafaa1ff376a9b642db1095b29bfc2160c9a555ca61"
+      "computedHash": "f7c7565c93d0faf7c1d8e692a805d06c2794f39a0d9945634f3cd46860593517"
     },
     "firestore-rules-creation": {
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firestore-rules-creation/SKILL.md",
-      "computedHash": "62a47cf62c4cb922d1294eb55f9a3c9db7fb13ec664605c05d1942e37c43a9f2"
+      "computedHash": "ec66da257f0ed19259b48f9252684c950eb29294b2265f51b25d517a56063000"
     },
     "xcode-project-setup": {
       "source": "firebase/agent-skills",

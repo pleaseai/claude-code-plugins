@@ -18,7 +18,7 @@ description: >
 
   or has apps/packages directories.
 metadata:
-  version: 2.10.13-canary.6
+  version: 2.11.2
 ---
 # Turborepo Skill
 
@@ -748,7 +748,7 @@ import { Button } from "@repo/ui/button";
 
 ```json
 {
-  "$schema": "https://v2-10-13-canary-6.turborepo.dev/schema.json",
+  "$schema": "https://v2-11-2.turborepo.dev/schema.json",
   "tasks": {
     "build": {
       "dependsOn": ["^build"],

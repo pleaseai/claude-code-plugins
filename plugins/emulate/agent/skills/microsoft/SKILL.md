@@ -246,10 +246,11 @@ curl -X POST http://localhost:4005/oauth2/v2.0/token \
   -H "Content-Type: application/x-www-form-urlencoded" \
   -d "refresh_token=r_microsoft_...&\
 client_id=example-client-id&\
+client_secret=example-client-secret&\
 grant_type=refresh_token"
 ```
 
-Returns a new `access_token`, rotated `refresh_token`, and new `id_token`.
+Returns a new `access_token`, rotated `refresh_token`, and new `id_token`. The presenting `client_id` and `client_secret` must belong to the client that received the refresh token. Legacy refresh records without a stored client binding remain supported.
 
 ### User Info
 

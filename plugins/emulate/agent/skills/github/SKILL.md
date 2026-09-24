@@ -79,9 +79,11 @@ curl http://localhost:4001/user \
 
 Public repo endpoints work without auth. Private repos and write operations require a valid token. When no token is provided, requests fall back to the first seeded user.
 
+Installation access tokens act as the configured GitHub App bot for repository writes. Repository ownership, selected repository access, and requested App permissions remain enforced. Pull request merges require `contents: write` on the base repository. Pull request branch updates require `pull_requests: write` on the pull request repository and `contents: write` on the head repository.
+
 ### GitHub App JWT
 
-Configure apps in the seed config with a private key. Sign a JWT with `{ iss: "<app_id>" }` using RS256. The emulator verifies the signature and resolves the app.
+Configure apps in the seed config with an explicit, valid private key when using the CLI without generated secrets. Sign a JWT with `{ iss: "<app_id>" }` using RS256. The emulator verifies the signature and resolves the app.
 
 ```yaml
 github:
@@ -89,10 +91,6 @@ github:
     - app_id: 12345
       slug: my-github-app
       name: My GitHub App
-      private_key: |
-        -----BEGIN RSA PRIVATE KEY-----
-        ...
-        -----END RSA PRIVATE KEY-----
       permissions:
         contents: read
         issues: write
@@ -109,6 +107,8 @@ github:
           events: [push]
           repositories: [my-org/org-repo]
 ```
+
+This example intentionally omits `private_key` for programmatic and adapter usage, where the emulator generates an RSA key and exposes it through `generatedSecrets`. For CLI usage, request a private delivery file with `--generated-secrets-file <path>` or provide your own valid key. Without that flag, CLI seed files require `private_key`; do not use a placeholder PEM.
 
 ## Pointing Your App at the Emulator
 
@@ -181,6 +181,9 @@ github:
       name: My Organization
       description: A test organization
       email: org@example.com
+      members:
+        - login: octocat
+          role: admin
   repos:
     - owner: octocat
       name: hello-world
@@ -200,6 +203,8 @@ github:
       redirect_uris:
         - http://localhost:3000/api/auth/callback/github
 ```
+
+Organization `members` are optional. Each entry references a seeded user by `login`; `role` defaults to `member`, and `admin` maps to the organization administrator role. Unknown users are ignored. Seeded memberships use the synthetic `members` team and grant private organization repository access.
 
 Repos are auto-initialized with a commit, branch, and README unless `auto_init: false` is set.
 
@@ -284,6 +289,10 @@ curl -X DELETE http://localhost:4001/repos/octocat/hello-world \
 ```bash
 # Read a file or list a directory at a branch, tag, or commit
 curl "http://localhost:4001/repos/octocat/hello-world/contents/README.md?ref=main"
+
+# Request raw bytes from a file Contents or README response with GitHub's raw media type
+curl "http://localhost:4001/repos/octocat/hello-world/contents/README.md?ref=main" \
+  -H "Accept: application/vnd.github.raw+json"
 
 # Download raw file content from the URL advertised by contents and commit responses
 curl http://localhost:4001/octocat/hello-world/raw/main/README.md
@@ -533,8 +542,8 @@ curl -X POST http://localhost:4001/repos/octocat/hello-world/check-runs \
   -H "Content-Type: application/json" \
   -d '{"name": "CI", "head_sha": "abc123", "status": "completed", "conclusion": "success"}'
 
-# Check suites: create, get, rerequest, preferences, list by ref
-# Check runs: list for suite, annotations
+# Check suites: create, get, rerequest, preferences, list by ref. Ref based lookups accept branch and tag refs containing slashes.
+# Check runs: list for suite, annotations. Ref based lookups accept branch and tag refs containing slashes.
 # Automatic suite status rollup from check run results
 ```
 
