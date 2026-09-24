@@ -2,7 +2,7 @@
   "name": "firebase",
   "displayName": "Firebase",
   "description": "Claude plugin for Firebase that installs the Firebase MCP server and Firebase Agent Skills to manage Firebase projects, add backend services, add AI features, deploy & host apps, and more",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Firebase"
   },

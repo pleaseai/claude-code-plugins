@@ -2,7 +2,7 @@
   "name": "orpc",
   "displayName": "Orpc",
   "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "middleapi"
   },

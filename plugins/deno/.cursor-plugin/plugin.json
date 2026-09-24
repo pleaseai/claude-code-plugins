@@ -2,7 +2,7 @@
   "name": "deno",
   "displayName": "Deno",
   "description": "Official Deno skills: dependency management with npm and JSR packages, permissions, deno.json configuration, the built-in toolchain (fmt, lint, test, check, bench, compile), migrating from Node/npm/yarn/pnpm/bun, Fresh, Deno Deploy, and the @deno/sandbox SDK.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": {
     "name": "Deno Land"
   },
