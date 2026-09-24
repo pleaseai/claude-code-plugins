@@ -1,0 +1,19 @@
+.claude-plugin/marketplace.json
+  s_eb773be9f09d9b::t_bab285283ecf0d 1356
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.23",
+  "base_commit_sha": "32835b0887dc57b5c2872687bcc421ed6add8539",
+  "prompts": {},
+  "sessions": {
+    "s_eb773be9f09d9b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b5f08e4-2163-485e-b3a1-c8e6f247a139",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "Minsu Lee <minsu.lee@pleaseai.dev>"
+    }
+  }
+}
