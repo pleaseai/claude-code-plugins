@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/pleaseai/claude-code-plugins/compare/vitest-v1.2.1...vitest-v1.2.2) (2026-09-30)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#281](https://github.com/pleaseai/claude-code-plugins/issues/281)) ([f33171b](https://github.com/pleaseai/claude-code-plugins/commit/f33171b6013470530d6fb98300e75298d51d4fc3))
+
 ## [1.2.1](https://github.com/pleaseai/claude-code-plugins/compare/vitest-v1.2.0...vitest-v1.2.1) (2026-09-15)
 
 
