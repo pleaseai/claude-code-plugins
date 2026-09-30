@@ -53,19 +53,19 @@
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-playground/SKILL.md",
-      "computedHash": "415531bf1c03a5b95fb65a14e8de0f1998d670f94db42fe62282180275a686ad"
+      "computedHash": "9c27c08d64103878df3968f06ac33533b1fc49177ca38b729631b1435c9473ae"
     },
     "wp-plugin-development": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-plugin-development/SKILL.md",
-      "computedHash": "2660f4c284157490fabc02493b5c2cbd13fb37d4f1eac149b4064e7d1900f3c5"
+      "computedHash": "317de0b7e3fdb7b2af5f72ae65445bcbeeadef3db9a2f0d23cdbb43ed8f65e8b"
     },
     "wp-project-triage": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-project-triage/SKILL.md",
-      "computedHash": "a83efe886adc9ee4032b039b6b3642b711a74652908ca94a5b6256f759c82a63"
+      "computedHash": "08f050cb3f2e651cca849e689552cbfeef3b0e3b0a8365ab8af00e8b30080a2e"
     },
     "wp-rest-api": {
       "source": "wordpress/agent-skills",

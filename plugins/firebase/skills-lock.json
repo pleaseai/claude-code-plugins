@@ -23,7 +23,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-auth-basics/SKILL.md",
-      "computedHash": "50ea643133c98c22dc784912625e002b181e227579dd90ae56ec9447ff80f439"
+      "computedHash": "51891d4c011f503134931439bd0d85bcfd80725df5d05970bd8db8604b9d1fee"
     },
     "firebase-basics": {
       "source": "firebase/agent-skills",
@@ -41,13 +41,13 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-data-connect-basics/SKILL.md",
-      "computedHash": "e4108a3f77cda0a3cd1f883f8f8f1836f7c88af8baaf62875ef5460456aec3a1"
+      "computedHash": "6563fafc742361ad23e4fd355f8fc075490f3d96c89fa713bb139c2256f552fd"
     },
     "firebase-firestore": {
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-firestore/SKILL.md",
-      "computedHash": "eba8875916bdd7bd687b3329b065abaa71b4a9ace8e4e0dd861e8149852651af"
+      "computedHash": "c107565e8e3447de243dc15b27776476f212df8c7437867c67c59286907a5813"
     },
     "firebase-hosting-basics": {
       "source": "firebase/agent-skills",
@@ -59,7 +59,7 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firebase-remote-config-basics/SKILL.md",
-      "computedHash": "4477c4ed83c5ee33df3d41f7831e7f9254aa436763f20d0c1a62c5c41f1a4564"
+      "computedHash": "963796cf398d5af5c907b1f2ba0525c9ee919067913159a580e1429841c91d21"
     },
     "firebase-security-rules-auditor": {
       "source": "firebase/agent-skills",
@@ -71,13 +71,13 @@
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/firestore-rules-creation/SKILL.md",
-      "computedHash": "ec66da257f0ed19259b48f9252684c950eb29294b2265f51b25d517a56063000"
+      "computedHash": "93f2a2f1a507eccd6dd4f060b3278fdeb902992d16eb8a6c3beaf68bf5fffae0"
     },
     "xcode-project-setup": {
       "source": "firebase/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/xcode-project-setup/SKILL.md",
-      "computedHash": "0adf19113be8a1966466e629098f4ead7b5de3a7767958f02baf1cddc9e2642e"
+      "computedHash": "013d7ac834eac9b6dc761ed92b9b21f3513feb897acf021c8fea71da1cccd9f0"
     }
   }
 }

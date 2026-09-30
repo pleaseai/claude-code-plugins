@@ -5,7 +5,7 @@
       "source": "cloudflare/vinext",
       "sourceType": "github",
       "skillPath": ".agents/skills/migrate-to-vinext/SKILL.md",
-      "computedHash": "4a39cac303d49e47fb84757a2f328d4c78781f65278b433b5da224a2957f6080"
+      "computedHash": "08fa54a37ebc938592c91ed29a50a3f79319c86d00edcbfbd08fb1745f1bcd1e"
     }
   }
 }
