@@ -31,7 +31,7 @@ import { createEmulateHandler } from '@emulators/adapter-next'
 import * as github from '@emulators/github'
 import * as google from '@emulators/google'
 
-export const { GET, POST, PUT, PATCH, DELETE } = createEmulateHandler({
+export const { GET, POST, PUT, PATCH, DELETE, OPTIONS } = createEmulateHandler({
   services: {
     github: {
       emulator: github,
@@ -113,7 +113,7 @@ const kvAdapter = {
   async save(data: string) { await kv.set('emulate-state', data) },
 }
 
-export const { GET, POST, PUT, PATCH, DELETE } = createEmulateHandler({
+export const { GET, POST, PUT, PATCH, DELETE, OPTIONS } = createEmulateHandler({
   services: { github: { emulator: github } },
   persistence: kvAdapter,
 })
@@ -186,3 +186,7 @@ interface PersistenceAdapter {
 ```
 
 `initialize` must atomically create the initial value or return the value another instance created first. Implement it with compare-and-set semantics such as Redis `SET NX`. The built-in `filePersistence(path)` from `@emulators/core` provides this behavior for local development.
+
+## Custom emulators
+
+The adapter accepts definitions created with `defineEmulator` from `emulate` in `services[name].emulator`. Reuse the definition from CLI/tests; custom inspector is opt-in. Root-relative redirect locations stay under the service mount, while custom HTML bodies pass through unchanged. Await the returned handler's `close()` in test teardown. Install `emulate` as a runtime dependency for deployed definitions. See https://emulate.dev/docs/custom-emulators for seeds, snapshots, persistence, and lifecycle rules.

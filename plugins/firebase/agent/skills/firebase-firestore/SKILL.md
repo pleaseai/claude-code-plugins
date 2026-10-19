@@ -13,14 +13,21 @@ compatibility: This skill is best used with the Firebase CLI, but does not
   require it. Firebase CLI can be accessed through `npx -y
   firebase-tools@latest`.
 metadata:
+  author: Google LLC
   category: Databases
 ---
 # Cloud Firestore Database and Operations
 
-> [!IMPORTANT] **Security Rules Authoring (`firestore.rules`)**
-> Whenever your task requires creating, authoring, or modifying `firestore.rules`:
-> - **If subagent delegation AND the `firestore-rules-author` subagent are available**: delegate authoring `firestore.rules` to the `firestore-rules-author` subagent rather than writing `firestore.rules` directly in the main agent.
-> - **If subagent delegation is unavailable** (e.g., subagents not enabled in the IDE) **OR `firestore-rules-author` is not installed**: read and follow the `firestore-rules-creation` skill to write `firestore.rules` directly.
+> [!IMPORTANT] **Security Rules Authoring (`firestore.rules`)** Whenever your
+> task requires creating, authoring, or modifying `firestore.rules`:
+>
+> - **If subagent delegation AND the `firestore-rules-author` subagent are
+>   available**: delegate authoring `firestore.rules` to the
+>   `firestore-rules-author` subagent rather than writing `firestore.rules`
+>   directly in the main agent.
+> - **If subagent delegation is unavailable** (e.g., subagents not enabled in
+>   the IDE) **OR `firestore-rules-author` is not installed**: read and follow
+>   the `firestore-rules-creation` skill to write `firestore.rules` directly.
 
 Before setting up dependencies, writing data models, or configuring security
 rules, you MUST always identify the Firestore instance edition.
@@ -37,12 +44,15 @@ npx -y firebase-tools@latest firestore:databases:list
 
 1. For each database found, inspect its edition and details:
 
-    ```bash
-    npx -y firebase-tools@latest firestore:databases:get <database-id>
-    ```
+   ```bash
+   npx -y firebase-tools@latest firestore:databases:get <database-id>
+   ```
+
 1. Ask the user which database instance they wish to target or if they would
    prefer to create a new instance.
+
 1. Once the target instance is established:
+
    - If the **`edition`** is `STANDARD`, follow the guides under
      `references/standard/`.
    - If the **`edition`** is `ENTERPRISE` or native mode, follow the guides

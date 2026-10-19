@@ -14,6 +14,8 @@ Sign in with Apple emulation with authorization code flow, PKCE support, RS256 I
 
 ## Start
 
+Local listeners bind to `127.0.0.1` by default. For access from containers or other machines, pass `--host 0.0.0.0` to the CLI or `hostname: '0.0.0.0'` to `createEmulator`. Configure `--base-url` or `baseUrl` for advertised URLs reachable by those clients.
+
 ```bash
 # Apple only
 npx emulate --service apple
@@ -243,3 +245,7 @@ curl -X POST $APPLE_URL/auth/token \
 ### Private Relay Email
 
 When a user has `is_private_email: true` in the seed config, the `id_token` will contain a generated `@privaterelay.appleid.com` email instead of the user's real email. This matches Apple's Hide My Email behavior.
+
+## Custom emulators alongside built-ins
+
+Use `npx emulate init --custom inventory` to scaffold a third-party API emulator and test. Register it in `emulate.config.ts` with `defineConfig` from `emulate`, alongside built-in entries such as `{ emulator: "apple" }`. Run `npx emulate start --watch` to reload imports and inspect custom state at the printed `/_emulate` URL. Successful reloads reset the run to seed. Existing flat seed configs still work; `--config` selects an explicit file. For authoring and testing third-party API emulators, see https://emulate.dev/docs/custom-emulators.

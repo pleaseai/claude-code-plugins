@@ -7,6 +7,7 @@ description: Deploys and manages full-stack web applications (Next.js, Angular)
   Blaze billing requirements. Don't use for classic static web hosting, Auth,
   Firestore, Crashlytics, or Xcode.
 metadata:
+  author: Google LLC
   category: Serverless
 ---
 # App Hosting Basics
@@ -42,7 +43,7 @@ to upgrade their plan.
 This is the recommended flow for most users.
 
 1. Configure `firebase.json` with an `apphosting` block.
-   
+
    ```json
    {
      "apphosting": {
@@ -58,12 +59,15 @@ This is the recommended flow for most users.
      }
    }
    ```
+
 1. Create or edit `apphosting.yaml`- see
    [Configuration](references/configuration.md) for more information on how to
    do so.
+
 1. If the app needs safe access to sensitive keys, use
    `npx -y firebase-tools@latest apphosting:secrets` commands to set and grant
    access to secrets.
+
 1. Run `npx -y firebase-tools@latest deploy` when you are ready to deploy.
 
 ### Automated deployment via GitHub (CI/CD)

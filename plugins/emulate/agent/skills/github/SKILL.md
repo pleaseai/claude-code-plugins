@@ -14,6 +14,8 @@ Fully stateful GitHub REST API emulation. Creates, updates, and deletes persist 
 
 ## Start
 
+Local listeners bind to `127.0.0.1` by default. For access from containers or other machines, pass `--host 0.0.0.0` to the CLI or `hostname: '0.0.0.0'` to `createEmulator`. Configure `--base-url` or `baseUrl` for advertised URLs reachable by those clients.
+
 ```bash
 # GitHub only
 npx emulate --service github
@@ -547,6 +549,10 @@ curl -X POST http://localhost:4001/repos/octocat/hello-world/check-runs \
 # Automatic suite status rollup from check run results
 ```
 
+Check-run lists by ref and suite support `page` and `per_page` (default 30, maximum 100) with pagination `Link` headers. Ref lists apply `check_name`, `status`, and `filter` before pagination; `total_count` reports the full filtered count.
+
+Checks created with installation tokens include their GitHub App in API responses and webhooks. Suites are separated by App and commit, and `filter=latest` keeps the newest run for each App and check name. User-token checks return `app: null`; request-body `app_id` cannot set or change attribution.
+
 ### OAuth
 
 ```bash
@@ -637,3 +643,7 @@ The inspection route is emulator-specific. It lists App, installation, account, 
 3. Emulator redirects back with `?code=...&state=...`
 4. Exchange code for token via `POST /login/oauth/access_token`
 5. Use token to call API endpoints
+
+## Custom emulators alongside built-ins
+
+Use `npx emulate init --custom inventory` to scaffold a third-party API emulator and test. Register it in `emulate.config.ts` with `defineConfig` from `emulate`, alongside built-in entries such as `{ emulator: "github" }`. Run `npx emulate start --watch` to reload imports and inspect custom state at the printed `/_emulate` URL. Successful reloads reset the run to seed. Existing flat seed configs still work; `--config` selects an explicit file. For authoring and testing third-party API emulators, see https://emulate.dev/docs/custom-emulators.

@@ -7,6 +7,7 @@ description: Deploys and configures classic Firebase Hosting for static
   preview channels. Don't use for Firebase App Hosting (Next.js/SSR), Auth,
   Firestore queries/rules, Data Connect, or Crashlytics.
 metadata:
+  author: Google LLC
   category: Serverless
 ---
 # hosting-basics

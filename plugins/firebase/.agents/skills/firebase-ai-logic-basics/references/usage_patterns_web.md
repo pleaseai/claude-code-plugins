@@ -1,4 +1,12 @@
-# Firebase AI Logic Basics
+# Firebase AI Logic on Web (JavaScript)
+
+## Installation
+
+The library is part of the standard Firebase Web SDK:
+
+```bash
+npm install firebase@latest
+```
 
 ## Initialization Pattern
 
@@ -19,8 +27,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 // Initialize the AI Logic service (defaults to Gemini Developer API)
-// To set the AI provider, set the backend as the second parameter
-const ai = getAI(app, { backend: new GoogleAIBackend() });
+// Pass useLimitedUseAppCheckTokens: true to enable replay protection:
+const ai = getAI(app, {
+  backend: new GoogleAIBackend(),
+  useLimitedUseAppCheckTokens: true,
+});
 
 const generationConfig = {
   candidateCount: 1,
@@ -35,6 +46,30 @@ const generationConfig = {
 // [AGENT] Replace "<latest_supported_model>" with the latest model from https://firebase.google.com/docs/ai-logic/models.md.txt
 const model = getGenerativeModel(ai, { model: "<latest_supported_model>",  generationConfig });
 ```
+
+### App Check Replay Protection
+
+Generative and preview models enforce replay protection with 5-minute
+limited-use App Check tokens. If you call a protected model without enabling
+limited-use tokens, the request fails with:
+
+```text
+HTTP 403: "To access this model, you must enforce Firebase App Check"
+```
+
+To resolve this error on Web, initialize `getAI` with
+`useLimitedUseAppCheckTokens: true`:
+
+```javascript
+const ai = getAI(app, {
+  backend: new GoogleAIBackend(),
+  useLimitedUseAppCheckTokens: true,
+});
+```
+
+This instructs the SDK to fetch fresh, short-lived limited-use tokens (such as
+via reCAPTCHA Enterprise or the debug provider) for requests rather than reusing
+standard cached App Check tokens.
 
 ## Core Capabilities
 
@@ -179,8 +214,61 @@ async function getJsonData(prompt) {
 On-Device AI (Hybrid) Automatically switch between local Gemini Nano and cloud
 models based on device capability.
 
+The Firebase JavaScript SDK checks for Gemini Nano's availability (after
+installation) and switches between on-device or cloud-hosted prompt execution.
+This requires specific steps to enable model usage in the Chrome browser, more
+info in the
+[hybrid inference documentation for Web](https://firebase.google.com/docs/ai-logic/hybrid/web/get-started.md.txt).
+
 ```JavaScript
 import {getGenerativeModel, InferenceMode } from "firebase/ai";
 
 const hybridModel = getGenerativeModel(ai, { mode: InferenceMode.PREFER_ON_DEVICE });
+```
+
+## App Check
+
+See
+[App Check with reCAPTCHA Enterprise](https://firebase.google.com/docs/app-check/web/recaptcha-enterprise-provider.md.txt)
+for setup instructions.
+
+App Check debug tokens for local development and CI/CD:
+
+- **Local development**: Set `self.FIREBASE_APPCHECK_DEBUG_TOKEN = true;` before
+  initializing App Check (generates a token in the browser console; do not
+  hardcode secret strings in client code).
+- **CI/CD**: Pass the pre-provisioned token from the environment instead (e.g.
+  `self.FIREBASE_APPCHECK_DEBUG_TOKEN = process.env.APP_CHECK_DEBUG_TOKEN`).
+
+### Debug Token Persistence
+
+When testing AI Logic on Web with App Check, clearing site data, using
+incognito/private windows, or switching browsers generates a new debug token
+when `self.FIREBASE_APPCHECK_DEBUG_TOKEN = true` is used. To avoid this debug
+token churn without leaking secrets into client bundles, load a stable token
+from a gitignored local environment file:
+
+> [!WARNING] **CRITICAL: Never Hardcode or Commit Debug Tokens** Never hardcode
+> debug token strings in web source code. Always load them from a local,
+> gitignored environment file.
+
+```javascript
+import { initializeAppCheck, ReCaptchaEnterpriseProvider } from "firebase/app-check";
+
+if (typeof self !== "undefined") {
+  if (typeof process !== "undefined" && process.env.NODE_ENV === "development") {
+    // ✅ SAFE: Load dynamically from Next.js environment variable; fallback to true to auto-generate
+    self.FIREBASE_APPCHECK_DEBUG_TOKEN =
+      process.env.NEXT_PUBLIC_APP_CHECK_DEBUG_TOKEN || true;
+  } else if (typeof import.meta !== "undefined" && import.meta.env?.DEV) {
+    // ✅ SAFE: Load dynamically from Vite environment variable; fallback to true to auto-generate
+    self.FIREBASE_APPCHECK_DEBUG_TOKEN =
+      import.meta.env.VITE_APPCHECK_DEBUG_TOKEN || true;
+  }
+}
+
+const appCheck = initializeAppCheck(app, {
+  provider: new ReCaptchaEnterpriseProvider("/* reCAPTCHA site key */"),
+  isTokenAutoRefreshEnabled: true,
+});
 ```

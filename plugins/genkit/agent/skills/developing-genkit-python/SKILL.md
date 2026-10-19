@@ -4,6 +4,7 @@ description: Develop AI-powered applications using Genkit in Python. Use when
   the user asks about Genkit, AI agents, flows, or tools in Python, or when
   encountering Genkit errors, import issues, or API problems.
 metadata:
+  version: 1.0.0
   category: AiAndMachineLearning
 ---
 # Genkit Python

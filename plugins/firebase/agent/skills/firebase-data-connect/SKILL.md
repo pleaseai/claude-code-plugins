@@ -6,6 +6,7 @@ description: Builds and deploys Firebase SQL Connect (aka Firebase Data Connect)
   data updates, or generating type-safe SDKs. Use when you need a relational
   database with Firebase, or when the user mentions SQL Connect or Data Connect.
 metadata:
+  author: Google LLC
   category: Databases
 ---
 # Firebase SQL Connect
