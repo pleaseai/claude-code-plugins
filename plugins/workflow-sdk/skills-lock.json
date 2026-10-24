@@ -11,7 +11,7 @@
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/workflow/SKILL.md",
-      "computedHash": "f7864a802fa7d234c13e753a5abf6c55960ff06be5d099125399864a0d3d384c"
+      "computedHash": "f74fc7d0b9584f03fdfc138a977d5eb632ca4f1310a8e590ef80cf5e67ccee20"
     },
     "workflow-init": {
       "source": "vercel/workflow",

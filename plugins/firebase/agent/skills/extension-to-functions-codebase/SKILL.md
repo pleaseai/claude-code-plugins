@@ -5,6 +5,7 @@ description: Skill for converting an installed Firebase Extension (or extension
   npm package, including V1 to V2 trigger upgrades, lifecycle hooks, and
   declarative security
 metadata:
+  author: Google LLC
   category: Serverless
 ---
 # Extension to Functions Codebase & npm Package Migration

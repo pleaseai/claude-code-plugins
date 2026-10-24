@@ -3,7 +3,9 @@
   "skills": {
     "edgeparse": {
       "source": "raphaelmansuy/edgeparse",
-      "sourceType": "github"
+      "sourceType": "github",
+      "skillPath": "skills/edgeparse/SKILL.md",
+      "computedHash": "e710ee51a1362bd4f707f4041291cc3ddc87b4c31fa3a977af28a3c52f4be24c"
     }
   }
 }

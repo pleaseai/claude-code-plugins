@@ -41,7 +41,7 @@
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-performance/SKILL.md",
-      "computedHash": "f1301a1224bcb3247af9757749b2fd593fe4850e3b1ef2483cac472eb1fcc993"
+      "computedHash": "a38ef25bae1223aa3fb13e120add1ed63984f9032e9d990f4483b4e235f2baa3"
     },
     "wp-phpstan": {
       "source": "wordpress/agent-skills",

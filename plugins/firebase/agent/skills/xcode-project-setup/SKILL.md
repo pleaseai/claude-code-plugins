@@ -5,6 +5,7 @@ description: Safely modifies Xcode projects (.pbxproj) to add Swift Packages and
   installed (e.g. Firebase, Alamofire).
 compatibility: Requires Swift to be installed locally and macOS environment.
 metadata:
+  author: Google LLC
   category: ApplicationDevelopment
 ---
 # Xcode Project Setup

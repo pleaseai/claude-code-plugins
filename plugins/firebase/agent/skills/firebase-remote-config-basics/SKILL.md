@@ -10,6 +10,7 @@ compatibility: This skill is best used with the Firebase CLI, but does not
   require it. Firebase CLI can be accessed through `npx -y
   firebase-tools@latest`.
 metadata:
+  author: Google LLC
   category: ApplicationDevelopment
 ---
 # Remote Config
@@ -105,7 +106,7 @@ history through the terminal:
   ```
 
   - Deploy: Execute the partial deployment command
-    
+
     ```bash
     npx -y firebase-tools@latest deploy --only remoteconfig
     ```
