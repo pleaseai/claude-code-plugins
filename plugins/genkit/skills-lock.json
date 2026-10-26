@@ -11,13 +11,13 @@
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-go/SKILL.md",
-      "computedHash": "e4fe2b7d2853a75ec9ee664a0e367868f783df156006c9b605619c3b517256ee"
+      "computedHash": "bada73fe5e169f18af415c3b23c597b8d56c4425520d00402da0d1250170a595"
     },
     "developing-genkit-js": {
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-js/SKILL.md",
-      "computedHash": "b8798a67cc766509f029ac0b9d4a2f432cce58e1203565acf1aec94cd0a2fb4a"
+      "computedHash": "36a18619777e1355afd74a21f3eacbff19539f6605889f0d6ec8ae0c70faf3b3"
     },
     "developing-genkit-python": {
       "source": "genkit-ai/skills",
