@@ -1741,6 +1741,18 @@
           ]
         }
       }
+    },
+    {
+      "name": "firecrawl",
+      "description": "Official Firecrawl plugin, the context API for AI agents: web search, page scraping to Markdown, developer docs and code search, US government publication search, scientific paper research, and structured Alexandria data providers through the hosted Firecrawl MCP server",
+      "category": "tooling",
+      "keywords": ["firecrawl", "web-search", "web-scraping", "seo-audit", "markdown", "research", "mcp", "ai-agents"],
+      "tags": ["mcp", "web", "search"],
+      "source": {
+        "source": "github",
+        "repo": "firecrawl/firecrawl-claude-plugin"
+      },
+      "homepage": "https://www.firecrawl.dev/?utm_source=claude-code-plugins&utm_medium=integration"
     }
   ]
 }

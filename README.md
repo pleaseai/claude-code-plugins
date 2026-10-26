@@ -95,6 +95,11 @@ Run and verify code changes by driving the real app — the `run`, `verify`, and
 
 **Install:** `/plugin install run-verify@pleaseai` | **Repository:** [pleaseai/run-verify-plugin](https://github.com/pleaseai/run-verify-plugin)
 
+#### Firecrawl
+Official Firecrawl plugin, the context API for AI agents: web search, page scraping to Markdown, developer docs and code search, US government publication search, scientific paper research, and structured Alexandria data providers through the hosted Firecrawl MCP server.
+
+**Install:** `/plugin install firecrawl@pleaseai` | **Repository:** [firecrawl/firecrawl-claude-plugin](https://github.com/firecrawl/firecrawl-claude-plugin)
+
 
 ### Built-in Plugins
 
@@ -591,6 +596,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
 /plugin install claude-code-docs@pleaseai
+/plugin install firecrawl@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
