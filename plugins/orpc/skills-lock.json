@@ -5,7 +5,7 @@
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc/SKILL.md",
-      "computedHash": "24aeb625eeb54572e2dc862648085a4f2270c9a0a6167162b7fc53290bb3acb2"
+      "computedHash": "09f2e7141ec1f8d8a4996a15d99a49f8135cc767aaddeddfb77efba85708a677"
     },
     "orpc-contract": {
       "source": "middleapi/orpc",

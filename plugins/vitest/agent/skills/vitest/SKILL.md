@@ -5,7 +5,7 @@ description: Vitest fast unit testing framework powered by Vite with
   working with test filtering and fixtures.
 metadata:
   author: Anthony Fu
-  version: 2026.9.25
+  version: 2026.10.23
   source: Generated from https://github.com/vitest-dev/vitest, scripts located at
     https://github.com/antfu/skills
 ---
@@ -20,7 +20,7 @@ Vitest is a next-generation testing framework powered by Vite. It provides a Jes
 - Built-in coverage via V8 or Istanbul
 - Snapshot testing, mocking, and spy utilities
 
-> The skill is based on Vitest 5.0.1, generated at 2026-09-25.
+> The skill is based on Vitest 5.1.0-beta.1, generated at 2026-10-23.
 
 ## Core
 

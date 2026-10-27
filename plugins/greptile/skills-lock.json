@@ -4,19 +4,19 @@
     "check-pr": {
       "source": "greptileai/skills",
       "sourceType": "github",
-      "skillPath": "check-pr/SKILL.md",
+      "skillPath": "skills/check-pr/SKILL.md",
       "computedHash": "c25ca1259f825b202949a643aa8aa931bb6bb02ac02ccb4b969a4508c2e146dd"
     },
     "cli-review": {
       "source": "greptileai/skills",
       "sourceType": "github",
-      "skillPath": "cli-review/SKILL.md",
+      "skillPath": "skills/cli-review/SKILL.md",
       "computedHash": "1b1fe57c18746de2a85068770ec01fa7ac26471f5c9cb8047553ca433fea1acd"
     },
     "greploop": {
       "source": "greptileai/skills",
       "sourceType": "github",
-      "skillPath": "greploop/SKILL.md",
+      "skillPath": "skills/greploop/SKILL.md",
       "computedHash": "d37000d0e461ccf46116abdf371ad9b0beaaf7d2ed7365fb91f10903bc51cd85"
     }
   }
