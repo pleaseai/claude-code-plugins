@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.4](https://github.com/pleaseai/claude-code-plugins/compare/vercel-sandbox-v1.2.3...vercel-sandbox-v1.2.4) (2026-10-27)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#283](https://github.com/pleaseai/claude-code-plugins/issues/283)) ([19a7da9](https://github.com/pleaseai/claude-code-plugins/commit/19a7da9a955d1d963d31facaf5f3e19c14f75a38))
+* update vendored skills to latest versions ([#285](https://github.com/pleaseai/claude-code-plugins/issues/285)) ([d5a98e1](https://github.com/pleaseai/claude-code-plugins/commit/d5a98e19c0a3e18e6a8ba1a8eb76b5397b338a0e))
+
 ## [1.2.3](https://github.com/pleaseai/claude-code-plugins/compare/vercel-sandbox-v1.2.2...vercel-sandbox-v1.2.3) (2026-09-24)
 
 

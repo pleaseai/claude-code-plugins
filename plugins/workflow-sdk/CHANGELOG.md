@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/pleaseai/claude-code-plugins/compare/workflow-sdk-v1.3.3...workflow-sdk-v1.3.4) (2026-10-27)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#283](https://github.com/pleaseai/claude-code-plugins/issues/283)) ([19a7da9](https://github.com/pleaseai/claude-code-plugins/commit/19a7da9a955d1d963d31facaf5f3e19c14f75a38))
+
 ## [1.3.3](https://github.com/pleaseai/claude-code-plugins/compare/workflow-sdk-v1.3.2...workflow-sdk-v1.3.3) (2026-09-30)
 
 
