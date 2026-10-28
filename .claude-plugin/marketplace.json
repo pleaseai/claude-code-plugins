@@ -1520,14 +1520,28 @@
     },
     {
       "name": "csp",
-      "description": "Fast, local, token-efficient hybrid (dense + BM25) code search for agents. Bundles the csp MCP server (search, find_related) and a csp-search sub-agent.",
+      "description": "Fast, local, token-efficient hybrid (dense + BM25) code search for agents. Adds a csp-search sub-agent and skill that call the csp CLI. Install csp-mcp for the MCP server.",
       "category": "development",
-      "keywords": ["code-search", "hybrid-search", "semantic-search", "bm25", "mcp", "agent"],
-      "tags": ["mcp", "search"],
+      "keywords": ["code-search", "hybrid-search", "semantic-search", "bm25", "agent"],
+      "tags": ["search"],
       "source": {
         "source": "git-subdir",
         "url": "pleaseai/code-search",
         "path": "plugins/csp",
+        "ref": "main"
+      },
+      "homepage": "https://github.com/pleaseai/code-search"
+    },
+    {
+      "name": "csp-mcp",
+      "description": "Fast, local, token-efficient hybrid (dense + BM25) code search for agents. Registers the csp MCP server (search, find_related). Pair it with csp for the csp-search sub-agent and skill.",
+      "category": "development",
+      "keywords": ["code-search", "hybrid-search", "semantic-search", "bm25", "mcp"],
+      "tags": ["mcp", "search"],
+      "source": {
+        "source": "git-subdir",
+        "url": "pleaseai/code-search",
+        "path": "plugins/csp-mcp",
         "ref": "main"
       },
       "homepage": "https://github.com/pleaseai/code-search"
