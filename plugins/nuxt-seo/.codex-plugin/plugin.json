@@ -26,5 +26,6 @@
     "sitemap",
     "og-image",
     "schema-org"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

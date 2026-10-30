@@ -29,5 +29,6 @@
     "vercel",
     "typescript",
     "ai-agents"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

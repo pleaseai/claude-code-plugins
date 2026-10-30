@@ -32,5 +32,6 @@
     "skills",
     "continual-learning",
     "offline-optimization"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

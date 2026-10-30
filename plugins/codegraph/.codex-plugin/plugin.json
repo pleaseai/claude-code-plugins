@@ -13,6 +13,7 @@
     "developerName": "Colby McHenry",
     "category": "Development",
     "capabilities": [
+      "Skill",
       "Tool"
     ],
     "defaultPrompt": [
@@ -30,5 +31,6 @@
     "semantic-search",
     "local-first"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

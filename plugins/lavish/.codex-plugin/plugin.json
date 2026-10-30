@@ -29,5 +29,6 @@
     "artifacts",
     "review",
     "visualization"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

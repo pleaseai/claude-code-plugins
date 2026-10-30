@@ -30,5 +30,6 @@
     "radix",
     "base-ui",
     "ui"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

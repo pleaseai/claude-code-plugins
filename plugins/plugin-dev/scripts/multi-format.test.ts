@@ -41,7 +41,7 @@ describe("toCodexManifest", () => {
     expect(result.interface.websiteURL).toBe("https://example.com/demo")
     expect(result.interface.shortDescription).toBeTypeOf("string")
     expect(result.interface.longDescription).toBe(baseClaude.description)
-    expect(result.interface.capabilities).toContain("Skill")
+    expect(result.interface.capabilities).toEqual([])
     expect(Array.isArray(result.interface.defaultPrompt)).toBe(true)
     expect(result.interface.defaultPrompt.length).toBeGreaterThan(0)
   })
@@ -140,10 +140,36 @@ describe("toCodexManifest", () => {
     expect(result.skills).toBe("./skills/")
   })
 
-  test("omits skills when path is incompatible with Codex (e.g. .agents/skills/)", () => {
+  test("keeps ./.agents/skills/ (runtime accepts any in-root ./ path)", () => {
     const claude: ClaudePluginManifest = { ...baseClaude, skills: "./.agents/skills/" }
     const result = toCodexManifest(claude, undefined)
+    expect(result.skills).toBe("./.agents/skills/")
+  })
+
+  test("prefers the first non-root path from a skills array (root skills/ auto-loads)", () => {
+    const claude: ClaudePluginManifest = { ...baseClaude, skills: ["./skills/", "./.agents/skills/"] }
+    const result = toCodexManifest(claude, undefined)
+    expect(result.skills).toBe("./.agents/skills/")
+  })
+
+  test.each(["../x", "/abs/skills", "./", "./a/../b"])("omits invalid skills path %s", (bad) => {
+    const claude: ClaudePluginManifest = { ...baseClaude, skills: bad }
+    const result = toCodexManifest(claude, undefined)
     expect(result.skills).toBeUndefined()
+    expect(result.interface.capabilities).not.toContain("Skill")
+  })
+
+  test("declares ./skills/ when root skills dir exists but Claude manifest has no skills", () => {
+    const result = toCodexManifest(baseClaude, undefined, { hasRootSkillsDir: true })
+    expect(result.skills).toBe("./skills/")
+    expect(result.interface.capabilities).toContain("Skill")
+  })
+
+  test("advertises Skill only when skills are declared", () => {
+    const withSkills = toCodexManifest({ ...baseClaude, skills: "./.agents/skills/" }, undefined)
+    expect(withSkills.interface.capabilities).toEqual(["Skill"])
+    const hooksOnly = toCodexManifest({ ...baseClaude, hooks: "./hooks/hooks.json" }, undefined)
+    expect(hooksOnly.interface.capabilities).toEqual(["Interactive"])
   })
 })
 

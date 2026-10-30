@@ -26,5 +26,6 @@
     "react",
     "ssr",
     "rsc"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

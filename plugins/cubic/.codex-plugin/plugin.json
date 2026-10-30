@@ -30,5 +30,6 @@
     "linting",
     "security",
     "bugs"
-  ]
+  ],
+  "skills": "./skills/"
 }

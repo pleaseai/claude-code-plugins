@@ -31,5 +31,6 @@
     "korea",
     "mcp"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

@@ -21,5 +21,6 @@
   "license": "MIT",
   "keywords": [
     "axi"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

@@ -29,5 +29,6 @@
     "marketplace",
     "auto-detect",
     "setup"
-  ]
+  ],
+  "skills": "./skills/"
 }

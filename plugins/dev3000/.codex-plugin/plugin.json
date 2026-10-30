@@ -30,5 +30,6 @@
     "web",
     "logs",
     "screenshots"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

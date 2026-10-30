@@ -27,5 +27,6 @@
     "error-handling",
     "typescript",
     "javascript"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

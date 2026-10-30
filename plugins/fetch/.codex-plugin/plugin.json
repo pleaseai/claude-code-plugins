@@ -13,6 +13,7 @@
     "developerName": "fetch-mcp project",
     "category": "Tooling",
     "capabilities": [
+      "Skill",
       "Tool"
     ],
     "defaultPrompt": [
@@ -30,5 +31,6 @@
     "youtube",
     "mcp"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

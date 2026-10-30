@@ -29,5 +29,6 @@
     "microvm",
     "vercel",
     "isolated-execution"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

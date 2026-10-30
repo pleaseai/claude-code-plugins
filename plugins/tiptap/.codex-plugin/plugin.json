@@ -23,5 +23,6 @@
     "tiptap",
     "rich-text-editor",
     "prosemirror"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

@@ -28,5 +28,6 @@
     "database",
     "backend"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

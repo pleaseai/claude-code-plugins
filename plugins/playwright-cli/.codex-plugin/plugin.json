@@ -31,5 +31,6 @@
     "e2e",
     "screenshot",
     "web"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }
