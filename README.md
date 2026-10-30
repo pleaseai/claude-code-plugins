@@ -65,11 +65,6 @@ Hermes Agent X/Twitter plugin with read tools, gated action tools, and bundled a
 
 **Install:** `/plugin install hermes-tweet@pleaseai` | **Repository:** [Xquik-dev/hermes-tweet](https://github.com/Xquik-dev/hermes-tweet)
 
-#### Playwright CLI
-Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
-
-**Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
-
 #### Vercel
 Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.
 
@@ -99,6 +94,11 @@ Run and verify code changes by driving the real app — the `run`, `verify`, and
 Official Firecrawl plugin, the context API for AI agents: web search, page scraping to Markdown, developer docs and code search, US government publication search, scientific paper research, and structured Alexandria data providers through the hosted Firecrawl MCP server.
 
 **Install:** `/plugin install firecrawl@pleaseai` | **Repository:** [firecrawl/firecrawl-claude-plugin](https://github.com/firecrawl/firecrawl-claude-plugin)
+
+#### ASK
+ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
+
+**Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
 
 
 ### Built-in Plugins
@@ -332,11 +332,6 @@ Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, 
 
 **Install:** `/plugin install emulate@pleaseai` | **Source:** [plugins/emulate](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/emulate)
 
-#### ASK
-ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
-
-**Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
-
 #### EdgeParse
 Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements.
 
@@ -491,6 +486,11 @@ Manages shadcn/ui components and projects — adding, searching, fixing, styling
 End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middleware and clients (`orpc`), contract-first design with `@orpc/contract` (`orpc-contract`), REST/OpenAPI exposure and spec generation (`orpc-openapi`), and tRPC → oRPC / v1 → v2 migrations (`orpc-migrate`).
 
 **Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
+
+#### Playwright CLI
+Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
+
+**Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
 
 ## Quick Start
 
