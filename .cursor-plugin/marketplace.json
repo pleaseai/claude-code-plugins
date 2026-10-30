@@ -393,6 +393,11 @@
       "name": "orpc",
       "source": "./plugins/orpc",
       "description": "End-to-end typesafe APIs with oRPC v2 - core builder, contract-first design, OpenAPI/REST exposure, and tRPC/v1 migration"
+    },
+    {
+      "name": "evlog",
+      "source": "./plugins/evlog",
+      "description": "evlog wide-event logging for TypeScript: review logging patterns and guide evlog adoption, build tamper-aware audit trails, and analyze .evlog/logs/ output. Bundles the evlog docs MCP server for current docs and log-cost estimates."
     }
   ]
 }

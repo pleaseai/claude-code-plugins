@@ -492,6 +492,12 @@ End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middle
 
 **Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
 
+#### evlog
+
+Wide-event logging for TypeScript with [evlog](https://www.evlog.dev): review logging patterns and guide evlog adoption (`review-logging-patterns`), design tamper-aware audit trails (`build-audit-logs`), and debug from `.evlog/logs/` output (`analyze-logs`). Bundles the read-only evlog docs MCP server (`https://www.evlog.dev/mcp`) for current docs pages and log-cost estimates.
+
+**Install:** `/plugin install evlog@pleaseai` | **Source:** [plugins/evlog](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/evlog)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -657,6 +663,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install skill-optimizer@pleaseai
 /plugin install dev3000@pleaseai
 /plugin install lavish@pleaseai
+/plugin install evlog@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

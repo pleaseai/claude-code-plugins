@@ -1309,6 +1309,18 @@
       "category": "Development"
     },
     {
+      "name": "evlog",
+      "source": {
+        "source": "local",
+        "path": "./plugins/evlog"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Monitoring"
+    },
+    {
       "name": "firecrawl",
       "source": {
         "source": "url",
