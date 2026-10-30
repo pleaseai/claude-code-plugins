@@ -54,6 +54,7 @@
   "plugins/graphite": "2.3.0",
   "plugins/bun": "1.4.0",
   "plugins/portone": "1.3.0",
+  "plugins/claude-code-docs": "1.0.0",
   "plugins/claude-md-management": "1.1.0",
   "plugins/cubic": "1.1.0",
   "plugins/fetch": "1.2.0",

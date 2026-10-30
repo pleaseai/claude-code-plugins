@@ -85,11 +85,6 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 
 **Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
 
-#### Claude Code Docs
-Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs.
-
-**Install:** `/plugin install claude-code-docs@pleaseai` | **Repository:** [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs)
-
 #### Run Verify
 Run and verify code changes by driving the real app — the `run`, `verify`, and `run-skill-generator` skills, generalized for Claude Code, Codex, and Antigravity.
 
@@ -491,6 +486,12 @@ Manages shadcn/ui components and projects — adding, searching, fixing, styling
 End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middleware and clients (`orpc`), contract-first design with `@orpc/contract` (`orpc-contract`), REST/OpenAPI exposure and spec generation (`orpc-openapi`), and tRPC → oRPC / v1 → v2 migrations (`orpc-migrate`).
 
 **Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
+
+#### Claude Code Docs
+
+Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs. The docs mirror itself stays at [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs).
+
+**Install:** `/plugin install claude-code-docs@pleaseai` | **Source:** [plugins/claude-code-docs](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/claude-code-docs)
 
 ## Quick Start
 

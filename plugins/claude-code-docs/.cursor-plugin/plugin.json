@@ -1,0 +1,23 @@
+{
+  "name": "claude-code-docs",
+  "displayName": "Claude Code Docs",
+  "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
+  "version": "1.0.0",
+  "author": {
+    "name": "PleaseAI"
+  },
+  "category": "Tooling",
+  "homepage": "https://github.com/pleaseai/claude-code-docs",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "docs",
+    "markdown",
+    "webfetch",
+    "hooks"
+  ],
+  "tags": [
+    "hooks",
+    "docs"
+  ]
+}

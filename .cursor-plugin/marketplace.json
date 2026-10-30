@@ -200,6 +200,11 @@
       "description": "Fetch web content in multiple formats - HTML, JSON, plain text, Markdown, readable articles, and YouTube transcripts"
     },
     {
+      "name": "claude-code-docs",
+      "source": "./plugins/claude-code-docs",
+      "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs"
+    },
+    {
       "name": "semble",
       "source": "./plugins/semble",
       "description": "Semantic code search - find code by description or symbol name instead of grep, powered by the Semble MCP server"
