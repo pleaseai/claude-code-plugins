@@ -1,0 +1,32 @@
+{
+  "name": "claude-code-docs",
+  "version": "1.0.0",
+  "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
+  "author": {
+    "name": "PleaseAI",
+    "url": "https://github.com/pleaseai"
+  },
+  "interface": {
+    "displayName": "Claude Code Docs",
+    "shortDescription": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
+    "longDescription": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
+    "developerName": "PleaseAI",
+    "category": "Tooling",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Claude Code Docs for my current task."
+    ],
+    "websiteURL": "https://github.com/pleaseai/claude-code-docs"
+  },
+  "homepage": "https://github.com/pleaseai/claude-code-docs",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "docs",
+    "markdown",
+    "webfetch",
+    "hooks"
+  ]
+}
