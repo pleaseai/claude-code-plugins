@@ -1,0 +1,34 @@
+{
+  "name": "evlog",
+  "displayName": "Evlog",
+  "description": "evlog wide-event logging for TypeScript: review logging patterns and guide evlog adoption, build tamper-aware audit trails, and analyze .evlog/logs/ output. Bundles the evlog docs MCP server for current docs and log-cost estimates.",
+  "version": "1.0.0",
+  "author": {
+    "name": "evloghq"
+  },
+  "category": "Monitoring",
+  "homepage": "https://www.evlog.dev",
+  "repository": "https://github.com/evloghq/evlog",
+  "license": "MIT",
+  "keywords": [
+    "evlog",
+    "logging",
+    "wide-events",
+    "observability",
+    "audit-logs",
+    "structured-errors",
+    "typescript"
+  ],
+  "tags": [
+    "skills",
+    "mcp",
+    "logging",
+    "observability"
+  ],
+  "mcpServers": {
+    "evlog": {
+      "type": "http",
+      "url": "https://www.evlog.dev/mcp"
+    }
+  }
+}

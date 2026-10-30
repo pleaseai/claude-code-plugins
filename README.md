@@ -65,11 +65,6 @@ Hermes Agent X/Twitter plugin with read tools, gated action tools, and bundled a
 
 **Install:** `/plugin install hermes-tweet@pleaseai` | **Repository:** [Xquik-dev/hermes-tweet](https://github.com/Xquik-dev/hermes-tweet)
 
-#### Playwright CLI
-Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
-
-**Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
-
 #### Vercel
 Vercel deployment platform integration. Manage deployments, check build status, access logs, configure domains, and control your frontend infrastructure directly from Claude Code.
 
@@ -94,6 +89,11 @@ Run and verify code changes by driving the real app — the `run`, `verify`, and
 Official Firecrawl plugin, the context API for AI agents: web search, page scraping to Markdown, developer docs and code search, US government publication search, scientific paper research, and structured Alexandria data providers through the hosted Firecrawl MCP server.
 
 **Install:** `/plugin install firecrawl@pleaseai` | **Repository:** [firecrawl/firecrawl-claude-plugin](https://github.com/firecrawl/firecrawl-claude-plugin)
+
+#### ASK
+ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
+
+**Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
 
 
 ### Built-in Plugins
@@ -327,11 +327,6 @@ Local drop-in API emulator for Vercel, GitHub, Google, Slack, Apple, Microsoft, 
 
 **Install:** `/plugin install emulate@pleaseai` | **Source:** [plugins/emulate](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/emulate)
 
-#### ASK
-ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
-
-**Install:** `/plugin install ask@pleaseai` | **Source:** [pleaseai/ask](https://github.com/pleaseai/ask)
-
 #### EdgeParse
 Extract structured content from any PDF — headings, tables, paragraphs, lists, bounding boxes — deterministically, without ML dependencies or GPU requirements.
 
@@ -487,6 +482,17 @@ End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middle
 
 **Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
 
+#### evlog
+
+Wide-event logging for TypeScript with [evlog](https://www.evlog.dev): review logging patterns and guide evlog adoption (`review-logging-patterns`), design tamper-aware audit trails (`build-audit-logs`), and debug from `.evlog/logs/` output (`analyze-logs`). Bundles the read-only evlog docs MCP server (`https://www.evlog.dev/mcp`) for current docs pages and log-cost estimates.
+
+**Install:** `/plugin install evlog@pleaseai` | **Source:** [plugins/evlog](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/evlog)
+
+#### Playwright CLI
+Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
+
+**Install:** `/plugin install playwright-cli@pleaseai` | **Source:** [plugins/playwright-cli](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/playwright-cli)
+
 #### Claude Code Docs
 
 Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs. The docs mirror itself stays at [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs).
@@ -592,12 +598,12 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install grafana@pleaseai
 /plugin install chrome-devtools-mcp@pleaseai
 /plugin install hermes-tweet@pleaseai
-/plugin install playwright-cli@pleaseai
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
 /plugin install claude-code-docs@pleaseai
 /plugin install firecrawl@pleaseai
+/plugin install ask@pleaseai
 
 # Built-in plugins
 /plugin install please-plugins@pleaseai
@@ -641,7 +647,6 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install react-native@pleaseai
 /plugin install tanstack@pleaseai
 /plugin install emulate@pleaseai
-/plugin install ask@pleaseai
 /plugin install workflow-sdk@pleaseai
 /plugin install portless@pleaseai
 /plugin install zod@pleaseai
@@ -658,6 +663,27 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install skill-optimizer@pleaseai
 /plugin install dev3000@pleaseai
 /plugin install lavish@pleaseai
+/plugin install evlog@pleaseai
+/plugin install ast-grep@pleaseai
+/plugin install axi@pleaseai
+/plugin install codegraph@pleaseai
+/plugin install edgeparse@pleaseai
+/plugin install eve@pleaseai
+/plugin install git-ai@pleaseai
+/plugin install graphify@pleaseai
+/plugin install greptile@pleaseai
+/plugin install nostics@pleaseai
+/plugin install nuxt-seo@pleaseai
+/plugin install orpc@pleaseai
+/plugin install port@pleaseai
+/plugin install rtk@pleaseai
+/plugin install semble@pleaseai
+/plugin install shadcn-ui@pleaseai
+/plugin install skillopt-sleep@pleaseai
+/plugin install tiptap@pleaseai
+/plugin install tosspayments@pleaseai
+/plugin install vercel-sandbox@pleaseai
+/plugin install playwright-cli@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

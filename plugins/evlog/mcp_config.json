@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "evlog": {
+      "type": "http",
+      "url": "https://www.evlog.dev/mcp"
+    }
+  }
+}
