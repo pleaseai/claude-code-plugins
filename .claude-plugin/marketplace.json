@@ -1369,10 +1369,7 @@
       "category": "development",
       "keywords": ["web", "best-practices", "chrome", "baseline", "css", "performance"],
       "tags": ["skill", "web"],
-      "source": {
-        "source": "github",
-        "repo": "GoogleChrome/modern-web-guidance"
-      },
+      "source": "./plugins/modern-web-guidance",
       "homepage": "https://github.com/GoogleChrome/modern-web-guidance"
     },
     {
