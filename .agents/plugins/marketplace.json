@@ -983,8 +983,8 @@
     {
       "name": "modern-web-guidance",
       "source": {
-        "source": "url",
-        "url": "https://github.com/GoogleChrome/modern-web-guidance.git"
+        "source": "local",
+        "path": "./plugins/modern-web-guidance"
       },
       "policy": {
         "installation": "AVAILABLE",

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "modern-web-guidance",
+  "version": "0.0.196",
+  "description": "Keep your coding agent up to date with the latest web best practices",
+  "author": {
+    "name": "Google Chrome"
+  },
+  "homepage": "https://github.com/GoogleChrome/modern-web-guidance",
+  "repository": "https://github.com/GoogleChrome/modern-web-guidance",
+  "license": "Apache-2.0",
+  "keywords": [
+    "web",
+    "best-practices",
+    "chrome",
+    "baseline",
+    "css",
+    "performance"
+  ]
+}

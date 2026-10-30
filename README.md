@@ -492,6 +492,12 @@ End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middle
 
 **Install:** `/plugin install orpc@pleaseai` | **Source:** [plugins/orpc](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/orpc)
 
+#### Modern Web Guidance
+
+Keep your coding agent up to date with the latest web best practices from the Google Chrome team — modern HTML/CSS/JS patterns (`modern-web-guidance`) and Manifest V3 Chrome extensions (`chrome-extensions`). Vendored from [GoogleChrome/modern-web-guidance](https://github.com/GoogleChrome/modern-web-guidance) (Apache-2.0) and refreshed weekly by `update-skills.yml`.
+
+**Install:** `/plugin install modern-web-guidance@pleaseai` | **Source:** [plugins/modern-web-guidance](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/modern-web-guidance)
+
 #### evlog
 
 Wide-event logging for TypeScript with [evlog](https://www.evlog.dev): review logging patterns and guide evlog adoption (`review-logging-patterns`), design tamper-aware audit trails (`build-audit-logs`), and debug from `.evlog/logs/` output (`analyze-logs`). Bundles the read-only evlog docs MCP server (`https://www.evlog.dev/mcp`) for current docs pages and log-cost estimates.
