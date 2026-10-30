@@ -28,5 +28,6 @@
     "documentation",
     "static-site",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

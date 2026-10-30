@@ -26,5 +26,6 @@
     "vite",
     "migration",
     "cloudflare"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

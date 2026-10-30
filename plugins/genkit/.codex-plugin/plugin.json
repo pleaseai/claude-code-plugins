@@ -36,5 +36,6 @@
     "dart",
     "flutter",
     "python"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

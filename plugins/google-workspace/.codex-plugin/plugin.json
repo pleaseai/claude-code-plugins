@@ -30,5 +30,6 @@
     "calendar",
     "docs",
     "sheets"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

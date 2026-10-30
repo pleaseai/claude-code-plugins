@@ -33,5 +33,6 @@
     "test-runner",
     "fresh",
     "deno-deploy"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

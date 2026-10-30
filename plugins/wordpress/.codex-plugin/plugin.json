@@ -26,5 +26,6 @@
     "plugins",
     "gutenberg",
     "php"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

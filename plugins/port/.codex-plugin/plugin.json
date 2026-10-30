@@ -13,6 +13,7 @@
     "developerName": "Port",
     "category": "Tooling",
     "capabilities": [
+      "Skill",
       "Tool"
     ],
     "defaultPrompt": [
@@ -34,5 +35,6 @@
     "scorecards",
     "mcp"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

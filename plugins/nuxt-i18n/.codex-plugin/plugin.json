@@ -29,5 +29,6 @@
     "internationalization",
     "vue-i18n",
     "localization"
-  ]
+  ],
+  "skills": "./skills/"
 }

@@ -24,5 +24,6 @@
     "localhost",
     "dev-server",
     "proxy"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

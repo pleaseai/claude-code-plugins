@@ -28,5 +28,6 @@
     "vue",
     "composables",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

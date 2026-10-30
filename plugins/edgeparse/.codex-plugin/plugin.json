@@ -29,5 +29,6 @@
     "parsing",
     "markdown",
     "rag"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

@@ -28,5 +28,6 @@
     "monorepo",
     "build-system",
     "vercel"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

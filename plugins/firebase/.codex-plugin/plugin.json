@@ -33,5 +33,6 @@
     "hosting",
     "functions"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

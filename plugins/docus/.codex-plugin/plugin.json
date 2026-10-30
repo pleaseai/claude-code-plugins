@@ -31,5 +31,6 @@
     "markdown",
     "nuxt-content"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }
