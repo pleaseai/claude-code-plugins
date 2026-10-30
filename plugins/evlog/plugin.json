@@ -1,0 +1,22 @@
+{
+  "$schema": "https://antigravity.google/schemas/v1/plugin.json",
+  "name": "evlog",
+  "version": "1.0.0",
+  "description": "evlog wide-event logging for TypeScript: review logging patterns and guide evlog adoption, build tamper-aware audit trails, and analyze .evlog/logs/ output. Bundles the evlog docs MCP server for current docs and log-cost estimates.",
+  "author": {
+    "name": "evloghq",
+    "url": "https://github.com/evloghq"
+  },
+  "homepage": "https://www.evlog.dev",
+  "repository": "https://github.com/evloghq/evlog",
+  "license": "MIT",
+  "keywords": [
+    "evlog",
+    "logging",
+    "wide-events",
+    "observability",
+    "audit-logs",
+    "structured-errors",
+    "typescript"
+  ]
+}
