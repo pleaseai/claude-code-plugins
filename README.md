@@ -490,7 +490,7 @@ End-to-end typesafe APIs with oRPC v2 — the core `os` builder, routers, middle
 #### Playwright CLI
 Token-efficient browser automation CLI for coding agents — navigate, interact, screenshot, and test web apps.
 
-**Install:** `/plugin install playwright-cli@pleaseai` | **Repository:** [pleaseai/playwright-cli](https://github.com/pleaseai/playwright-cli)
+**Install:** `/plugin install playwright-cli@pleaseai` | **Source:** [plugins/playwright-cli](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/playwright-cli)
 
 ## Quick Start
 
