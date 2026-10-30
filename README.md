@@ -657,6 +657,25 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install skill-optimizer@pleaseai
 /plugin install dev3000@pleaseai
 /plugin install lavish@pleaseai
+/plugin install ast-grep@pleaseai
+/plugin install axi@pleaseai
+/plugin install codegraph@pleaseai
+/plugin install edgeparse@pleaseai
+/plugin install eve@pleaseai
+/plugin install git-ai@pleaseai
+/plugin install graphify@pleaseai
+/plugin install greptile@pleaseai
+/plugin install nostics@pleaseai
+/plugin install nuxt-seo@pleaseai
+/plugin install orpc@pleaseai
+/plugin install port@pleaseai
+/plugin install rtk@pleaseai
+/plugin install semble@pleaseai
+/plugin install shadcn-ui@pleaseai
+/plugin install skillopt-sleep@pleaseai
+/plugin install tiptap@pleaseai
+/plugin install tosspayments@pleaseai
+/plugin install vercel-sandbox@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
