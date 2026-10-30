@@ -1,0 +1,23 @@
+{
+  "version": 1,
+  "skills": {
+    "analyze-logs": {
+      "source": "evloghq/evlog",
+      "sourceType": "github",
+      "skillPath": "skills/analyze-logs/SKILL.md",
+      "computedHash": "f53f007fcba9a33d9c4a5391763ed01b79357cefb3edbaff561943088f6bd4e4"
+    },
+    "build-audit-logs": {
+      "source": "evloghq/evlog",
+      "sourceType": "github",
+      "skillPath": "skills/build-audit-logs/SKILL.md",
+      "computedHash": "00ad2639d2da50af9922c0f61c2315564bbe6b29cb02d421f042db105fd11a03"
+    },
+    "review-logging-patterns": {
+      "source": "evloghq/evlog",
+      "sourceType": "github",
+      "skillPath": "skills/review-logging-patterns/SKILL.md",
+      "computedHash": "96858a9f88502382975c0b5e84f04561ddfaed29bc26ae27d03e6ff38440e246"
+    }
+  }
+}

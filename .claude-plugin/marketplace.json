@@ -1743,6 +1743,23 @@
       }
     },
     {
+      "name": "evlog",
+      "description": "evlog wide-event logging for TypeScript: review logging patterns and guide evlog adoption, build tamper-aware audit trails, and analyze .evlog/logs/ output. Bundles the evlog docs MCP server for current docs and log-cost estimates.",
+      "category": "monitoring",
+      "keywords": ["evlog", "logging", "wide-events", "observability", "audit-logs", "structured-errors", "typescript"],
+      "tags": ["skills", "mcp", "logging", "observability"],
+      "source": "./plugins/evlog",
+      "homepage": "https://www.evlog.dev",
+      "relevance": {
+        "topic": "evlog",
+        "signals": {
+          "manifestDeps": [
+            { "file": "[/\\\\]package\\.json$", "pattern": "\"(evlog|@evlog/[a-z0-9-]+)\"\\s*:" }
+          ]
+        }
+      }
+    },
+    {
       "name": "firecrawl",
       "description": "Official Firecrawl plugin, the context API for AI agents: web search, page scraping to Markdown, developer docs and code search, US government publication search, scientific paper research, and structured Alexandria data providers through the hosted Firecrawl MCP server",
       "category": "tooling",
