@@ -153,9 +153,10 @@ const ROOT_SKILLS = "./skills/"
 /**
  * Normalise one Claude skills path into Codex manifest form (`./<path>/`), or
  * null when Codex would reject it. The runtime accepts any `./`-relative path
- * that stays inside the plugin root (no absolute, no `..`, not `./` alone).
+ * that stays inside the plugin root (no absolute, no `..`, no backslash separators, not `./` alone).
  */
 function toCodexSkillsPath(raw: string): string | null {
+  if (raw.includes("\\")) return null
   const trimmed = raw.trim().replace(/^\.\//, "").replace(/\/+$/, "")
   if (!trimmed || trimmed.startsWith("/")) return null
   const segments = trimmed.split("/")

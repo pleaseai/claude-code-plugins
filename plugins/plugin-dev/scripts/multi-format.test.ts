@@ -152,7 +152,7 @@ describe("toCodexManifest", () => {
     expect(result.skills).toBe("./.agents/skills/")
   })
 
-  test.each(["../x", "/abs/skills", "./", "./a/../b"])("omits invalid skills path %s", (bad) => {
+  test.each(["../x", "/abs/skills", "./", "./a/../b", "./foo\\..\\bar"])("omits invalid skills path %s", (bad) => {
     const claude: ClaudePluginManifest = { ...baseClaude, skills: bad }
     const result = toCodexManifest(claude, undefined)
     expect(result.skills).toBeUndefined()
