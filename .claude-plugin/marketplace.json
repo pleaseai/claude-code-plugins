@@ -1778,6 +1778,35 @@
         "repo": "firecrawl/firecrawl-claude-plugin"
       },
       "homepage": "https://www.firecrawl.dev/?utm_source=claude-code-plugins&utm_medium=integration"
+    },
+    {
+      "name": "slack",
+      "description": "Official Slack plugin - interact with your workspace through the hosted Slack MCP server (search, read, and send messages, canvases, lists) and build Slack apps with developer skills for Block Kit, the Web API, the Slack CLI, and app testing and deployment",
+      "category": "productivity",
+      "keywords": ["slack", "mcp", "block-kit", "bolt", "slack-cli", "slack-api", "messaging"],
+      "tags": ["mcp", "skills", "productivity"],
+      "source": {
+        "source": "github",
+        "repo": "slackapi/slack-skills-plugin"
+      },
+      "homepage": "https://docs.slack.dev/ai/slack-skills-plugin",
+      "relevance": {
+        "topic": "Slack",
+        "signals": {
+          "cli": ["slack"],
+          "hosts": ["slack.com", "api.slack.com", "docs.slack.dev"],
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@slack/(bolt|web-api)\"\\s*:"
+            },
+            {
+              "file": "[/\\\\](requirements[^/\\\\]*\\.txt|pyproject\\.toml)$",
+              "pattern": "slack[-_](bolt|sdk)"
+            }
+          ]
+        }
+      }
     }
   ]
 }
