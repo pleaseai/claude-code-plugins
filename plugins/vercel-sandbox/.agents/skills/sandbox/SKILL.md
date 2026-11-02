@@ -1035,6 +1035,7 @@ sandbox create opencode
 sandbox create pi
 sandbox create claude
 sandbox create codex
+sandbox create fx
 
 # Fork an existing sandbox (inherits config, incl. env; --env replaces it)
 sandbox fork <source>
@@ -1054,13 +1055,45 @@ sandbox run --rm -- npm build                # DELETES the sandbox after running
 
 # Execute command in an existing sandbox
 sandbox exec <name> -- npm install
-sandbox exec <name> --stop -- npm build
+sandbox exec <name> -- npm build
+sandbox stop <name>
 
 # Start an interactive shell
 sandbox connect <name>
 
 # Copy files
 sandbox cp local-file.txt <name>:/vercel/sandbox/
+
+# Start a command and retrieve its ID for later inspection
+sandbox exec --detach <name> -- npm run dev
+sandbox commands get <name> <command-id>
+sandbox commands logs <name> <command-id>
+sandbox commands wait <name> <command-id>
+sandbox commands kill <name> <command-id> --signal SIGTERM  # Also SIGKILL, SIGINT, SIGHUP, SIGQUIT
+
+# Pipe local input into a command and stream its output in one invocation
+printf 'hello\n' | sandbox exec --stdin <name> -- cat
+
+# --stdin cannot be combined with --interactive
+
+# Keep stdin open when later processes need to write to a detached command
+# Wait for each write to finish before another process writes to the same command
+command_id=$(sandbox exec --detach --stdin <name> -- cat)
+printf 'hello\n' | sandbox commands write <name> "$command_id"
+sandbox commands close-stdin <name> "$command_id"
+# output waits for exit; use commands logs to stream while running
+# CLI output is text and does not preserve arbitrary binary bytes
+sandbox commands output <name> "$command_id" --stream stdout  # Also accepts stderr or both
+
+# Get the public URL for a published port in the running session
+sandbox domain <name> 3000
+
+# Create a Linux user and shared group, then run a command as that user
+sandbox users create <name> alice
+sandbox groups create <name> devs
+sandbox groups add-user <name> devs alice
+sandbox users exec <name> alice -- id
+sandbox groups remove-user <name> devs alice
 
 # Add time to the current running session without changing future defaults
 sandbox extend <name> <duration>
@@ -1101,6 +1134,12 @@ sandbox config keep-last-snapshots-for <name> <duration|none>
 sandbox config delete-evicted-snapshots <name> <true|false>
 sandbox config current-snapshot <name> <snapshot-id>
 sandbox config network-policy <name> --network-policy deny-all
+sandbox config network-policy <name> --allowed-domain '*' --request-header api.example.com:x-source=ci  # domain:header=value
+API_AUTH="Bearer $API_TOKEN" sandbox config network-policy <name> --allowed-domain '*' --request-header-from-env api.example.com:authorization=API_AUTH  # Secret value read from $API_AUTH
+sandbox config network-policy <name> --network-policy-file policy.json  # Whole policy as SDK NetworkPolicy JSON; use - for stdin
+sandbox config network-policy <name> --network-policy-file - <<EOF  # A heredoc keeps $NPM_TOKEN out of the command line
+{"allow": {"*": [], "registry.npmjs.org": [{"match": {"method": ["GET", "HEAD"]}, "transform": [{"headers": {"authorization": "Bearer $NPM_TOKEN"}}]}]}}
+EOF
 sandbox config tags <name> --tag env=prod
 ```
 
@@ -1112,6 +1151,13 @@ drive. The output includes a reminder that size is fixed at creation.
 Agent shortcuts use the universal image and require an interactive terminal.
 Do not combine them with `--image`, `--runtime`, or `--snapshot`. Configure
 authentication for the agent separately from `sandbox login`.
+
+For fx, choose a sign-in option on first launch or pass an exported AI Gateway
+API key with `sandbox create fx --env AI_GATEWAY_API_KEY`. The shortcut preserves
+fx's default permissions. fx can update itself inside the sandbox, so its version
+may change between sessions. Its reconnect command uses `fx -c` to continue the
+conversation. If you supplied `--env`, export the same values locally before
+reconnecting; the hint includes names only.
 
 Exiting the agent leaves the sandbox running. Unless you pass `--silent`, the CLI
 prints reconnect and stop commands. Follow any environment-variable reminder
