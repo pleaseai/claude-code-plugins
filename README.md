@@ -80,11 +80,6 @@ Skills for the Cloudflare developer platform: Workers, Durable Objects, Agents S
 
 **Install:** `/plugin install cloudflare@pleaseai` | **Repository:** [cloudflare/skills](https://github.com/cloudflare/skills)
 
-#### Claude Code Docs
-Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs.
-
-**Install:** `/plugin install claude-code-docs@pleaseai` | **Repository:** [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs)
-
 #### Run Verify
 Run and verify code changes by driving the real app — the `run`, `verify`, and `run-skill-generator` skills, generalized for Claude Code, Codex, and Antigravity.
 
@@ -498,6 +493,12 @@ Token-efficient browser automation CLI for coding agents — navigate, interact,
 
 **Install:** `/plugin install playwright-cli@pleaseai` | **Source:** [plugins/playwright-cli](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/playwright-cli)
 
+#### Claude Code Docs
+
+Fetch Claude Code docs as markdown — rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs. The docs mirror itself stays at [pleaseai/claude-code-docs](https://github.com/pleaseai/claude-code-docs).
+
+**Install:** `/plugin install claude-code-docs@pleaseai` | **Source:** [plugins/claude-code-docs](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/claude-code-docs)
+
 ## Quick Start
 
 The fastest way to get started — install the marketplace and let the plugin recommender auto-detect what you need:
@@ -600,7 +601,6 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
-/plugin install claude-code-docs@pleaseai
 /plugin install firecrawl@pleaseai
 /plugin install ask@pleaseai
 
@@ -683,6 +683,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install tosspayments@pleaseai
 /plugin install vercel-sandbox@pleaseai
 /plugin install playwright-cli@pleaseai
+/plugin install claude-code-docs@pleaseai
 ```
 
 ## What Are Claude Code Plugins?

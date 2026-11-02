@@ -772,10 +772,7 @@
           "filesRead": ["**/.claude-plugin/**", "**/.claude/settings.json", "**/hooks/hooks.json"]
         }
       },
-      "source": {
-        "source": "github",
-        "repo": "pleaseai/claude-code-docs"
-      },
+      "source": "./plugins/claude-code-docs",
       "homepage": "https://github.com/pleaseai/claude-code-docs"
     },
     {
