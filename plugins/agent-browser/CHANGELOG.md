@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.3.2](https://github.com/pleaseai/claude-code-plugins/compare/agent-browser-v1.3.1...agent-browser-v1.3.2) (2026-11-02)
+
+
+### Bug Fixes
+
+* **plugin-dev:** declare skills.sh skills in generated Codex manifests ([#300](https://github.com/pleaseai/claude-code-plugins/issues/300)) ([dd00b8f](https://github.com/pleaseai/claude-code-plugins/commit/dd00b8f6f363d3a5b2678c39270e8ba9da4c90bf))
+* update vendored skills to latest versions ([#302](https://github.com/pleaseai/claude-code-plugins/issues/302)) ([d0f1772](https://github.com/pleaseai/claude-code-plugins/commit/d0f177266646fbc2eac7b24c3bc999362027e842))
+
 ## [1.3.1](https://github.com/pleaseai/claude-code-plugins/compare/agent-browser-v1.3.0...agent-browser-v1.3.1) (2026-09-15)
 
 
