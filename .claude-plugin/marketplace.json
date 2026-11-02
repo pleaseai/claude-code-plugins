@@ -1795,6 +1795,7 @@
         "signals": {
           "cli": ["slack"],
           "hosts": ["slack.com", "api.slack.com", "docs.slack.dev"],
+          "filesRead": ["**/.slack/**"],
           "manifestDeps": [
             {
               "file": "[/\\\\]package\\.json$",
