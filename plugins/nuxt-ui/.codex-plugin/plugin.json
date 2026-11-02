@@ -29,5 +29,6 @@
     "tailwind",
     "reka-ui"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

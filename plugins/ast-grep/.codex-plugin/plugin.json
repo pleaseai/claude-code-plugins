@@ -29,5 +29,6 @@
     "structural-search",
     "pattern-matching",
     "refactoring"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

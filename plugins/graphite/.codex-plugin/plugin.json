@@ -32,5 +32,6 @@
     "github",
     "pull-request",
     "code-review"
-  ]
+  ],
+  "skills": "./skills/"
 }

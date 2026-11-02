@@ -24,5 +24,6 @@
     "api-emulation",
     "local-development",
     "testing"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

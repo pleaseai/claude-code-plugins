@@ -28,5 +28,6 @@
     "ui",
     "accessibility",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

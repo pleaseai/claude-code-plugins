@@ -28,6 +28,6 @@
     "framework",
     "agent"
   ],
-  "skills": "./skills/",
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

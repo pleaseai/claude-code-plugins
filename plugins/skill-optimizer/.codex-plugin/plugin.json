@@ -27,5 +27,6 @@
     "evals",
     "optimization",
     "benchmark"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

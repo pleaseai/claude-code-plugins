@@ -28,5 +28,6 @@
     "testing",
     "unit-test",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

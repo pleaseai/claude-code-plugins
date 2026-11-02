@@ -1,4 +1,4 @@
-import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs"
+import { existsSync, mkdirSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs"
 import { dirname, join } from "node:path"
 
 /**
@@ -148,18 +148,38 @@ function pickCategory(entry: MarketplaceEntry | undefined): string {
   return raw[0]!.toUpperCase() + raw.slice(1)
 }
 
+const ROOT_SKILLS = "./skills/"
+
 /**
- * Codex expects `skills` as a single string path that normalises to "skills"
- * (the validator literally requires `./skills/` at plugin root). Plugins that
- * source skills from `./.agents/skills/` (Antfu convention) cannot satisfy
- * Codex via the manifest field — return null so the caller omits it. In that
- * case the skills won't auto-load under Codex, but the plugin still installs.
+ * Normalise one Claude skills path into Codex manifest form (`./<path>/`), or
+ * null when Codex would reject it. The runtime accepts any `./`-relative path
+ * that stays inside the plugin root (no absolute, no `..`, no backslash separators, not `./` alone).
  */
-function normalizeSkillsPath(value: string | string[]): string | null {
-  const first = typeof value === "string" ? value : (value[0] ?? null)
-  if (!first) return null
-  const trimmed = first.replace(/^\.\//, "").replace(/\/$/, "")
-  return trimmed === "skills" ? "./skills/" : null
+function toCodexSkillsPath(raw: string): string | null {
+  if (raw.includes("\\")) return null
+  const trimmed = raw.trim().replace(/^\.\//, "").replace(/\/+$/, "")
+  if (!trimmed || trimmed.startsWith("/")) return null
+  const segments = trimmed.split("/")
+  if (segments.some(seg => seg === "" || seg === "." || seg === "..")) return null
+  return `./${segments.join("/")}/`
+}
+
+/**
+ * Pick the Codex `skills` value. Codex takes a single string and always
+ * auto-loads root `skills/` in addition to it, so from an array prefer the
+ * first valid non-root path (e.g. `./.agents/skills/`) and fall back to the
+ * root dir only when nothing else is listed. A plugin with no declared
+ * skills but a root `skills/` dir declares it explicitly so capabilities
+ * stay truthful.
+ */
+function normalizeSkillsPath(value: string | string[] | undefined, hasRootSkillsDir: boolean): string | null {
+  if (value === undefined || value === "" || (Array.isArray(value) && value.length === 0)) {
+    return hasRootSkillsDir ? ROOT_SKILLS : null
+  }
+  const valid = (Array.isArray(value) ? value : [value])
+    .map(toCodexSkillsPath)
+    .filter((p): p is string => p !== null)
+  return valid.find(p => p !== ROOT_SKILLS) ?? valid[0] ?? null
 }
 
 function shortDescription(text: string): string {
@@ -202,17 +222,17 @@ function pickAuthor(claude: ClaudePluginManifest): CodexAuthor {
 
 /**
  * Derive Codex `capabilities` from what the plugin actually provides:
- * - `Skill` when the manifest references a skills directory
+ * - `Skill` when the generated Codex manifest declares `skills`
  * - `Tool`  when the manifest references MCP servers
  * - `Interactive` when the plugin has hooks (sessions/commands respond to events)
- * Always returns a non-empty array so the validator is satisfied.
+ * May be empty: the runtime field is a plain string list, so a plugin with
+ * none of these advertises nothing rather than a capability it lacks.
  */
-function deriveCapabilities(claude: ClaudePluginManifest): string[] {
+function deriveCapabilities(claude: ClaudePluginManifest, hasSkills: boolean): string[] {
   const caps: string[] = []
-  if (claude.skills) caps.push("Skill")
+  if (hasSkills) caps.push("Skill")
   if (extractMcpServersFile(claude) !== null || typeof claude.mcpServers === "string") caps.push("Tool")
   if (claude.hooks || claude.commands) caps.push("Interactive")
-  if (caps.length === 0) caps.push("Skill")
   return caps
 }
 
@@ -239,6 +259,7 @@ function deriveDefaultPrompts(claude: ClaudePluginManifest, displayName: string)
 export function toCodexManifest(
   claude: ClaudePluginManifest,
   entry: MarketplaceEntry | undefined,
+  options: { hasRootSkillsDir?: boolean } = {},
 ): CodexManifest {
   // Empty mcpServers ({}) is treated as "none" so we don't emit a manifest
   // field that points at a non-existent .mcp.json file (Codex validator
@@ -253,6 +274,7 @@ export function toCodexManifest(
   const description = claude.description ?? entry?.description ?? claude.name
   const displayName = pickDisplayName(claude, entry)
   const author = pickAuthor(claude)
+  const skillsPath = normalizeSkillsPath(claude.skills, options.hasRootSkillsDir ?? false)
 
   const manifest: CodexManifest = {
     name: claude.name,
@@ -265,7 +287,7 @@ export function toCodexManifest(
       longDescription: description,
       developerName: author.name,
       category: pickCategory(entry),
-      capabilities: deriveCapabilities(claude),
+      capabilities: deriveCapabilities(claude, skillsPath !== null),
       defaultPrompt: deriveDefaultPrompts(claude, displayName),
     },
   }
@@ -274,10 +296,7 @@ export function toCodexManifest(
   if (claude.repository) manifest.repository = claude.repository
   if (claude.license) manifest.license = claude.license
   if (claude.keywords && claude.keywords.length > 0) manifest.keywords = claude.keywords
-  if (claude.skills) {
-    const skillsPath = normalizeSkillsPath(claude.skills)
-    if (skillsPath) manifest.skills = skillsPath
-  }
+  if (skillsPath) manifest.skills = skillsPath
   if (hasInlineMcp || hasMcpString) manifest.mcpServers = hasInlineMcp ? "./.mcp.json" : (claude.mcpServers as string)
 
   if (isHttpsUrl(claude.homepage)) manifest.interface.websiteURL = claude.homepage
@@ -553,7 +572,9 @@ export function generateForPlugin(
   // resolves `${CLAUDE_PLUGIN_ROOT}` via a documented back-compat alias, so the
   // shared Claude hook file works as-is. (A stray `.codex-plugin/hooks.json` from
   // an earlier generator is cleaned up if present.)
-  const codex = toCodexManifest(claude, marketplaceEntry)
+  const codex = toCodexManifest(claude, marketplaceEntry, {
+    hasRootSkillsDir: existsSync(join(pluginDir, "skills")) && statSync(join(pluginDir, "skills")).isDirectory(),
+  })
   const codexPath = join(pluginDir, ".codex-plugin", "plugin.json")
   if (writeIfChanged(codexPath, stringify(codex))) result.written.push(codexPath)
   else result.skipped.push(codexPath)

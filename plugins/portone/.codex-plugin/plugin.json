@@ -24,6 +24,7 @@
     "developerName": "PortOne",
     "category": "Productivity",
     "capabilities": [
+      "Skill",
       "Interactive",
       "Write"
     ],

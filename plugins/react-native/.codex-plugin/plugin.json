@@ -24,5 +24,6 @@
     "expo",
     "mobile",
     "performance"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

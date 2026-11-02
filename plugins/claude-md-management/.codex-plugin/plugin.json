@@ -17,5 +17,6 @@
     "defaultPrompt": [
       "Help me use Claude Md Management for my current task."
     ]
-  }
+  },
+  "skills": "./skills/"
 }

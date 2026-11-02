@@ -25,5 +25,6 @@
     "vercel",
     "performance",
     "view-transitions"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

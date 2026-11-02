@@ -30,5 +30,6 @@
     "rpc",
     "openapi",
     "typescript"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

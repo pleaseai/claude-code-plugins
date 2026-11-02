@@ -13,6 +13,7 @@
     "developerName": "Microsoft",
     "category": "Tooling",
     "capabilities": [
+      "Skill",
       "Tool"
     ],
     "defaultPrompt": [
@@ -32,5 +33,6 @@
     "markdown",
     "conversion"
   ],
+  "skills": "./skills/",
   "mcpServers": "./.mcp.json"
 }

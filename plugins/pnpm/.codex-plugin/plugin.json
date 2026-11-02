@@ -28,5 +28,6 @@
     "package-manager",
     "monorepo",
     "antfu"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

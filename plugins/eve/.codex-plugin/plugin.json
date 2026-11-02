@@ -30,5 +30,6 @@
     "backend",
     "vercel",
     "framework"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

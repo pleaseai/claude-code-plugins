@@ -30,5 +30,6 @@
     "typescript",
     "python",
     "fastmcp"
-  ]
+  ],
+  "skills": "./skills/"
 }

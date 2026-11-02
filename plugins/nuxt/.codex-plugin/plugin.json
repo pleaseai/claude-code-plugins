@@ -30,5 +30,6 @@
     "ssr",
     "antfu"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

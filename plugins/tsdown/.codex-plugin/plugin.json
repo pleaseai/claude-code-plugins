@@ -28,5 +28,6 @@
     "bundler",
     "typescript",
     "rolldown"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

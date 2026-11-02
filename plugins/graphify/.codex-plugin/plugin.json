@@ -33,5 +33,6 @@
     "community-detection",
     "obsidian",
     "neo4j"
-  ]
+  ],
+  "skills": "./skills/"
 }

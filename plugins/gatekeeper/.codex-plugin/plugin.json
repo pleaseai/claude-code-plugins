@@ -12,9 +12,7 @@
     "longDescription": "Two-layer security for Claude Code: auto-approve safe commands, AI-assisted review for the rest",
     "developerName": "Minsu Lee",
     "category": "Tooling",
-    "capabilities": [
-      "Skill"
-    ],
+    "capabilities": [],
     "defaultPrompt": [
       "Help me use Gatekeeper for my current task."
     ]

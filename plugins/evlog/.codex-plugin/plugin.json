@@ -33,5 +33,6 @@
     "structured-errors",
     "typescript"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }

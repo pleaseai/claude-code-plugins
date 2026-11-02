@@ -23,5 +23,6 @@
     "greptile",
     "code-review",
     "pull-request"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

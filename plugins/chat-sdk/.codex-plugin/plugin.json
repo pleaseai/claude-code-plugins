@@ -26,5 +26,6 @@
     "slack",
     "teams",
     "discord"
-  ]
+  ],
+  "skills": "./.agents/skills/"
 }

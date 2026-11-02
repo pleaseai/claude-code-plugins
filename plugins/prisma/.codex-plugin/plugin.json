@@ -29,5 +29,6 @@
     "typescript",
     "migrations"
   ],
+  "skills": "./.agents/skills/",
   "mcpServers": "./.mcp.json"
 }
