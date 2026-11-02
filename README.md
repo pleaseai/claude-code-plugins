@@ -601,7 +601,6 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install vercel@pleaseai
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
-/plugin install claude-code-docs@pleaseai
 /plugin install firecrawl@pleaseai
 /plugin install ask@pleaseai
 
@@ -684,6 +683,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install tosspayments@pleaseai
 /plugin install vercel-sandbox@pleaseai
 /plugin install playwright-cli@pleaseai
+/plugin install claude-code-docs@pleaseai
 ```
 
 ## What Are Claude Code Plugins?
