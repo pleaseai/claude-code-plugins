@@ -1,6 +1,6 @@
 {
   "name": "claude-code-docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Fetch Claude Code docs as markdown - rewrites code.claude.com/docs page URLs to their .md source before WebFetch runs",
   "author": {
     "name": "PleaseAI",

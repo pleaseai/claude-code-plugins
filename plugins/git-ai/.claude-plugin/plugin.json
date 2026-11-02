@@ -1,6 +1,6 @@
 {
   "name": "git-ai",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "description": "A Git extension for tracking the AI-generated code in your repos",
   "license": "Apache-2.0",
   "keywords": [
