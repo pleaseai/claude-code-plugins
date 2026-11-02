@@ -90,6 +90,11 @@ Official Firecrawl plugin, the context API for AI agents: web search, page scrap
 
 **Install:** `/plugin install firecrawl@pleaseai` | **Repository:** [firecrawl/firecrawl-claude-plugin](https://github.com/firecrawl/firecrawl-claude-plugin)
 
+#### Slack
+Official Slack plugin — work with your Slack workspace through the hosted Slack MCP server (search, read, and send messages; canvases and lists), plus developer skills for Block Kit, the Web API, the Slack CLI, and creating, testing, and deploying Slack apps.
+
+**Install:** `/plugin install slack@pleaseai` | **Repository:** [slackapi/slack-skills-plugin](https://github.com/slackapi/slack-skills-plugin)
+
 #### ASK
 ASK (Agent Skills Kit) — AI agent skills for managing library documentation registry entries.
 
@@ -608,6 +613,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
 /plugin install firecrawl@pleaseai
+/plugin install slack@pleaseai
 /plugin install ask@pleaseai
 
 # Built-in plugins
