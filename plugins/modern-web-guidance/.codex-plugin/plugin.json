@@ -1,0 +1,33 @@
+{
+  "name": "modern-web-guidance",
+  "version": "0.0.196",
+  "description": "Keep your coding agent up to date with the latest web best practices",
+  "author": {
+    "name": "Google Chrome"
+  },
+  "interface": {
+    "displayName": "Modern Web Guidance",
+    "shortDescription": "Keep your coding agent up to date with the latest web best practices",
+    "longDescription": "Keep your coding agent up to date with the latest web best practices",
+    "developerName": "Google Chrome",
+    "category": "Development",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Modern Web Guidance for my current task."
+    ],
+    "websiteURL": "https://github.com/GoogleChrome/modern-web-guidance"
+  },
+  "homepage": "https://github.com/GoogleChrome/modern-web-guidance",
+  "repository": "https://github.com/GoogleChrome/modern-web-guidance",
+  "license": "Apache-2.0",
+  "keywords": [
+    "web",
+    "best-practices",
+    "chrome",
+    "baseline",
+    "css",
+    "performance"
+  ]
+}
