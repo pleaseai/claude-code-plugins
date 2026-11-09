@@ -5,25 +5,25 @@
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc/SKILL.md",
-      "computedHash": "09f2e7141ec1f8d8a4996a15d99a49f8135cc767aaddeddfb77efba85708a677"
+      "computedHash": "6c243a2eed7fa6e7887f583495eb9a7b495660c816b6f9d5d893c26ebf092fcf"
     },
     "orpc-contract": {
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc-contract/SKILL.md",
-      "computedHash": "14a425e58cdd2857acd197620025dc5f778c158036fcbf9fef48d42191d62f94"
+      "computedHash": "d27e74854dc9b610cf11947e148a49ee9597cda578d40557439cc773f9fd209b"
     },
     "orpc-migrate": {
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc-migrate/SKILL.md",
-      "computedHash": "8bb9839c8b14c657d1e2b4e96bb8e1a3253c80c2de09b59a369e2c04ddb1032b"
+      "computedHash": "a2f96cd59457fcfe09b4a5171ad25ec40fde60d692186593a3e507a13f479c58"
     },
     "orpc-openapi": {
       "source": "middleapi/orpc",
       "sourceType": "github",
       "skillPath": "skills/orpc-openapi/SKILL.md",
-      "computedHash": "b9c9dbdb324ef1f829c61688392ff42dc3b37837b7c2f0a7e10a259cc392e85e"
+      "computedHash": "eb7f41ef10edcb50822b85e3675f36c8cefc6a05e72b7ecfbb67da6767ded4f5"
     }
   }
 }

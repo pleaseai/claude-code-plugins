@@ -72,9 +72,7 @@ import { OpenAPIHandler } from '@orpc/openapi/fetch'
 import { ZodToJsonSchemaConverter } from '@orpc/zod'
 
 const handler = new OpenAPIHandler(router, {
-  plugins: [
-    new SmartCoercionHandlerPlugin({ converters: [new ZodToJsonSchemaConverter()] }),
-  ],
+  plugins: [new SmartCoercionHandlerPlugin({ converters: [new ZodToJsonSchemaConverter()] })],
 })
 
 export async function fetch(request: Request): Promise<Response> {
@@ -94,9 +92,9 @@ Other handler options: `interceptors`/`routingInterceptors`/`clientInterceptors`
 `OpenAPILink` calls an OpenAPI-shaped oRPC API (or any spec-compliant server) through a typesafe client. It needs the contract or router type to know each procedure's route:
 
 ```ts
+import { createORPCClient } from '@orpc/client'
 import type { RouterContractClient } from '@orpc/contract'
 import type { JsonifiedClient } from '@orpc/openapi'
-import { createORPCClient } from '@orpc/client'
 import { OpenAPILink } from '@orpc/openapi/fetch'
 
 const link = new OpenAPILink(contract, {
@@ -128,12 +126,13 @@ const generator = new OpenAPIGenerator({ converters: [new ZodToJsonSchemaConvert
 const handler = new OpenAPIHandler(router, {
   plugins: [
     new OpenAPIReferenceHandlerPlugin({
-      spec: () => generator.generate(router, {
-        base: {
-          info: { title: 'Planet API', version: '1.0.0' },
-          servers: [{ url: '/api' }], // absolute URL in production
-        },
-      }),
+      spec: () =>
+        generator.generate(router, {
+          base: {
+            info: { title: 'Planet API', version: '1.0.0' },
+            servers: [{ url: '/api' }], // absolute URL in production
+          },
+        }),
     }),
   ],
 })

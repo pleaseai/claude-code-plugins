@@ -1,5 +1,15 @@
 # Generation
 
+- [GenerateText](#generatetext): Lines 13-22
+- [Generate](#generate): Lines 24-37
+- [GenerateData (Structured Output)](#generatedata-structured-output): Lines 39-54
+- [Streaming](#streaming): Lines 56-114
+- [Common Options](#common-options): Lines 116-132
+- [Output Formats](#output-formats): Lines 134-186
+- [Embeddings](#embeddings): Lines 188-223
+
+---
+
 ## GenerateText
 
 Simplest form. Returns a string.
@@ -172,5 +182,42 @@ genkit.DefinePrompt(g, "characters",
 	ai.WithPrompt("Generate 5 story characters"),
 	ai.WithOutputType([]StoryCharacter{}),
 	ai.WithOutputFormat(ai.OutputFormatJSONL),
+)
+```
+
+## Embeddings
+
+```go
+res, err := genkit.Embed(ctx, g,
+	ai.WithEmbedderName("googleai/gemini-embedding-001"),
+	ai.WithTextDocs("The sky is blue.", "Grass is green."), // one embedding per doc
+)
+if err != nil {
+	return err
+}
+vector := res.Embeddings[0].Embedding // []float32
+
+// Optional tuning (default is 3072 dimensions)
+res, err = genkit.Embed(ctx, g,
+	ai.WithEmbedderName("googleai/gemini-embedding-001"),
+	ai.WithTextDocs("The sky is blue."),
+	ai.WithConfig(&genai.EmbedContentConfig{
+		OutputDimensionality: genai.Ptr[int32](768),
+		TaskType:             "RETRIEVAL_DOCUMENT",
+	}),
+)
+```
+
+Common embedders: `googleai/gemini-embedding-001` (text),
+`googleai/gemini-embedding-2` (multimodal: text, image, video).
+
+Multimodal input goes in a document's media parts:
+
+```go
+res, err := genkit.Embed(ctx, g,
+	ai.WithEmbedderName("googleai/gemini-embedding-2"),
+	ai.WithDocs(&ai.Document{Content: []*ai.Part{
+		ai.NewMediaPart("image/png", "data:image/png;base64,..."),
+	}}),
 )
 ```

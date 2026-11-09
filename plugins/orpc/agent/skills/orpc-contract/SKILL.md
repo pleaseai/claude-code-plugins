@@ -28,8 +28,7 @@ import * as z from 'zod'
 
 export const contract = {
   planet: {
-    list: oc
-      .output(z.array(z.object({ id: z.number(), name: z.string() }))),
+    list: oc.output(z.array(z.object({ id: z.number(), name: z.string() }))),
     find: oc
       .errors({ NOT_FOUND: {} })
       .input(z.object({ id: z.number() }))
@@ -61,8 +60,7 @@ const listPlanets = implementer.planet.list.handler(async ({ context }) => conte
 
 const findPlanet = implementer.planet.find.handler(async ({ input, context, errors }) => {
   const planet = await context.db.find(input.id)
-  if (!planet)
-    throw errors.NOT_FOUND()
+  if (!planet) throw errors.NOT_FOUND()
   return planet
 })
 
@@ -81,10 +79,10 @@ export const router = implementer.router({
 `RPCLink` needs only the contract type; `OpenAPILink` takes the contract as a runtime value to read each procedure's route. Get the client types exactly right:
 
 ```ts
-import type { RouterContractClient } from '@orpc/contract'
-import type { JsonifiedClient } from '@orpc/openapi'
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
+import type { RouterContractClient } from '@orpc/contract'
+import type { JsonifiedClient } from '@orpc/openapi'
 import { OpenAPILink } from '@orpc/openapi/fetch'
 
 // RPC protocol (server side is RPCHandler)
@@ -93,7 +91,8 @@ const client: RouterContractClient<typeof contract> = createORPCClient(rpcLink)
 
 // OpenAPI protocol (OpenAPIHandler or any spec-compliant server)
 const openapiLink = new OpenAPILink(contract, { origin: 'https://api.example.com', url: '/api' })
-const apiClient: JsonifiedClient<RouterContractClient<typeof contract>> = createORPCClient(openapiLink)
+const apiClient: JsonifiedClient<RouterContractClient<typeof contract>> =
+  createORPCClient(openapiLink)
 ```
 
 - Router-first equivalents use `RouterClient<typeof router>` from `@orpc/server` in the same positions.
@@ -108,6 +107,7 @@ When the contract is derived from a router, importing it on the client is heavy 
 
 ```ts
 import fs from 'node:fs'
+
 import { minifyRouterContract } from '@orpc/contract'
 import { unlazyRouter } from '@orpc/server'
 
@@ -120,9 +120,9 @@ fs.writeFileSync('./contract.json', JSON.stringify(minified))
 To publish a typed SDK to npm, export a factory that pairs the contract with a link:
 
 ```ts
-import type { RouterContractClient } from '@orpc/contract'
 import { createORPCClient } from '@orpc/client'
 import { RPCLink } from '@orpc/client/fetch'
+import type { RouterContractClient } from '@orpc/contract'
 
 export function createMyApi(apiKey: string): RouterContractClient<typeof contract> {
   const link = new RPCLink({

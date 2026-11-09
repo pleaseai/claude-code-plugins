@@ -5,22 +5,25 @@
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "computedHash": "79add54dd6de82a262a88c94744d7decde000159c1d7f67c78eb9d4e523d54bb"
+      "computedHash": "60a9cbe5af176150582c019e16e5d3703a41bb02d88438e881349876120d7944"
     },
     "dogfood": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
-      "computedHash": "055e73cddeec68e7eb75eab0c3f8490415384f72e98ac05405821427ed0e74b1"
+      "skillPath": "skill-data/dogfood/SKILL.md",
+      "computedHash": "b7770c9814c6cdfd439ca312bfa238494817d722866b636a2e2cb47cedfd4746"
     },
     "electron": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
+      "skillPath": "skill-data/electron/SKILL.md",
       "computedHash": "9c6ee7f028f409be8ba695dd9a6493c7de9a3802ee538ee905baaceea419aba9"
     },
     "slack": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
-      "computedHash": "187f9b0c41e418377a16ccb535e5aa04d55c482dae9a82da41755c6f5ee268f6"
+      "skillPath": "skill-data/slack/SKILL.md",
+      "computedHash": "d977e04a42876d2c95bbe88b15346e9b45f4bdf8e95179c489e54f86870f8a71"
     }
   }
 }

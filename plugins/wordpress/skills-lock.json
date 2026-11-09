@@ -11,7 +11,7 @@
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wordpress-router/SKILL.md",
-      "computedHash": "99441ebad1b000ab3226a4ca1b044fba062326fe7452551d88116cd8fcf8a833"
+      "computedHash": "7422b3196e5ced6794e4f86eba5b43e5bcfae0dbd09d0f7963a4e5f777a059a5"
     },
     "wp-abilities-api": {
       "source": "wordpress/agent-skills",

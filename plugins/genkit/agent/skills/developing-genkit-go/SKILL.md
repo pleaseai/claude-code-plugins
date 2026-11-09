@@ -1,9 +1,10 @@
 ---
 name: developing-genkit-go
-description: Develop AI-powered applications using Genkit in Go. Use when the
-  user asks to build AI features, agents, flows, or tools in Go using Genkit, or
-  when working with Genkit Go code involving generation, prompts, streaming,
-  tool calling, or model providers.
+description: Provides guidance on developing AI-powered applications using
+  Genkit in Go. Use when the user asks to build AI features, agents, flows, or
+  tools in Go using Genkit, or when working with Genkit Go code involving
+  generation, prompts, streaming, tool calling, or model providers. Don't use
+  for Genkit in JavaScript/TypeScript, Python, or Dart.
 metadata:
   version: 1.0.0
   category: AiAndMachineLearning
@@ -55,7 +56,7 @@ Load the appropriate reference based on what you need:
 | Feature | Reference | When to load |
 | --- | --- | --- |
 | Initialization | [references/getting-started.md](references/getting-started.md) | Setting up `genkit.Init`, plugins, the `*Genkit` instance pattern |
-| Generation | [references/generation.md](references/generation.md) | `Generate`, `GenerateText`, `GenerateData`, streaming, output formats |
+| Generation | [references/generation.md](references/generation.md) | `Generate`, `GenerateText`, `GenerateData`, streaming, output formats, `Embed` |
 | Prompts | [references/prompts.md](references/prompts.md) | `DefinePrompt`, `DefineDataPrompt`, `.prompt` files, schemas |
 | Tools | [references/tools.md](references/tools.md) | `DefineTool`, `DefineResumableTool` interrupts (`Interrupted` claim, `Restart`/`Respond`, `WithResume`), `ai/tool` helpers (`tool.Interrupt`, `tool.Fail`, `tool.AttachParts`) |
 | Middleware | [references/middleware.md](references/middleware.md) | `ai.Middleware`, `ai.WithUse`, `Hooks` (Generate/Model/Tool), built-ins (`Retry`, `Fallback`, `ToolApproval`, `Filesystem`, `Skills`, `SoftToolErrors`, `ContextCompression`, `Budget`) |

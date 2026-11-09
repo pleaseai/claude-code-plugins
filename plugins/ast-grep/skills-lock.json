@@ -5,7 +5,7 @@
       "source": "ast-grep/agent-skill",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/ast-grep/SKILL.md",
-      "computedHash": "472c7cd092f9fad72e0ad0c58b5f6af627844730ecc420c009e25a835a5d6e81"
+      "computedHash": "55ab409e6afd238ebab8f29d9a5230d513b6d0102e0eb9f71c554a95d1344bd6"
     }
   }
 }

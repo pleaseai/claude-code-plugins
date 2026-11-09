@@ -11,7 +11,7 @@
       "source": "better-auth/skills",
       "sourceType": "github",
       "skillPath": "better-auth/create-auth/SKILL.md",
-      "computedHash": "31c027d02dbf1faa37f58191f574b9443143042fb2b684fe32df53ab0270487c"
+      "computedHash": "9a9b498bc144367b8e237233f89def63fb2bd69e8cafe173eaa58fe3a863cdc4"
     },
     "email-and-password-best-practices": {
       "source": "better-auth/skills",
