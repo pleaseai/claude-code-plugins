@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.4](https://github.com/pleaseai/claude-code-plugins/compare/genkit-v1.1.3...genkit-v1.1.4) (2026-11-13)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#306](https://github.com/pleaseai/claude-code-plugins/issues/306)) ([e78cc31](https://github.com/pleaseai/claude-code-plugins/commit/e78cc3116cb3ec855dd11c002d7c9f57eb914420))
+
 ## [1.1.3](https://github.com/pleaseai/claude-code-plugins/compare/genkit-v1.1.2...genkit-v1.1.3) (2026-11-02)
 
 

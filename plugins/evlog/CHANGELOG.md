@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/pleaseai/claude-code-plugins/compare/evlog-v1.1.0...evlog-v1.1.1) (2026-11-13)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#306](https://github.com/pleaseai/claude-code-plugins/issues/306)) ([e78cc31](https://github.com/pleaseai/claude-code-plugins/commit/e78cc3116cb3ec855dd11c002d7c9f57eb914420))
+
 ## [1.1.0](https://github.com/pleaseai/claude-code-plugins/compare/evlog-v1.0.0...evlog-v1.1.0) (2026-11-02)
 
 
