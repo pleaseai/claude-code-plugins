@@ -1428,6 +1428,25 @@
       "source": "./plugins/eve"
     },
     {
+      "name": "ui-sdk",
+      "description": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/core behaviors, make interfaces agent-ready with createAgent and WebMCP, and test keyboard, focus, ARIA, SSR and RTL.",
+      "category": "ui",
+      "keywords": ["ui-sdk", "ui", "components", "accessibility", "react", "vue", "svelte", "solid", "web-components", "webmcp"],
+      "tags": ["skills", "vercel", "frontend"],
+      "source": "./plugins/ui-sdk",
+      "relevance": {
+        "topic": "ui-sdk",
+        "signals": {
+          "manifestDeps": [
+            {
+              "file": "[/\\\\]package\\.json$",
+              "pattern": "\"@ui-sdk/[a-z-]+\"\\s*:"
+            }
+          ]
+        }
+      }
+    },
+    {
       "name": "skill-optimizer",
       "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve.",
       "category": "tooling",

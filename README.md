@@ -439,6 +439,12 @@ Build durable backend AI agents with the eve framework. Use when creating, editi
 
 **Install:** `/plugin install eve@pleaseai` | **Source:** [plugins/eve](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/eve)
 
+#### ui-sdk
+
+Build interfaces with [ui-sdk](https://github.com/vercel-labs/ui) in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from `@ui-sdk/core` behaviors, make interfaces agent-ready with `createAgent` and WebMCP, and test keyboard, focus, ARIA, server rendering and right-to-left layout.
+
+**Install:** `/plugin install ui-sdk@pleaseai` | **Source:** [plugins/ui-sdk](https://github.com/pleaseai/claude-code-plugins/tree/main/plugins/ui-sdk)
+
 #### Skill Optimizer
 
 Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve.
