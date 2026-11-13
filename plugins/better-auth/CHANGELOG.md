@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.3](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.6.2...better-auth-v1.6.3) (2026-11-13)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#306](https://github.com/pleaseai/claude-code-plugins/issues/306)) ([e78cc31](https://github.com/pleaseai/claude-code-plugins/commit/e78cc3116cb3ec855dd11c002d7c9f57eb914420))
+
 ## [1.6.2](https://github.com/pleaseai/claude-code-plugins/compare/better-auth-v1.6.1...better-auth-v1.6.2) (2026-11-02)
 
 

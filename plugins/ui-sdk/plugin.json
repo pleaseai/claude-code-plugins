@@ -1,7 +1,7 @@
 {
   "$schema": "https://antigravity.google/schemas/v1/plugin.json",
   "name": "ui-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/core behaviors, make interfaces agent-ready with createAgent and WebMCP, and test keyboard, focus, ARIA, SSR and RTL.",
   "author": {
     "name": "Vercel Labs",
