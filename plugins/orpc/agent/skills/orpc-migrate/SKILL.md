@@ -60,8 +60,7 @@ Steps, in order, verifying after each:
 
    export const publicProcedure = o.use(timingMiddleware)
    export const protectedProcedure = publicProcedure.use(({ context, next }) => {
-     if (!context.session?.user)
-       throw new ORPCError('UNAUTHORIZED')
+     if (!context.session?.user) throw new ORPCError('UNAUTHORIZED')
      return next({ context: { session: context.session } })
    })
    ```
@@ -84,9 +83,9 @@ Steps, in order, verifying after each:
 6. **Client.** `RPCLink` plus `createORPCClient`, typed by `RouterClient`. Call sites drop the `.query()`/`.mutate()` suffixes:
 
    ```ts
-   import type { RouterClient } from '@orpc/server'
    import { createORPCClient } from '@orpc/client'
    import { RPCLink } from '@orpc/client/fetch'
+   import type { RouterClient } from '@orpc/server'
 
    const link = new RPCLink({ origin: 'http://localhost:3000', url: '/api/orpc' })
    export const client: RouterClient<typeof appRouter> = createORPCClient(link)
