@@ -1,0 +1,40 @@
+{
+  "name": "ui-sdk",
+  "version": "1.0.0",
+  "description": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/core behaviors, make interfaces agent-ready with createAgent and WebMCP, and test keyboard, focus, ARIA, SSR and RTL.",
+  "author": {
+    "name": "Vercel Labs",
+    "url": "https://github.com/vercel-labs/ui"
+  },
+  "interface": {
+    "displayName": "Ui Sdk",
+    "shortDescription": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/co...",
+    "longDescription": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/core behaviors, make interfaces agent-ready with createAgent and WebMCP, and test keyboard, focus, ARIA, SSR and RTL.",
+    "developerName": "Vercel Labs",
+    "category": "UI",
+    "capabilities": [
+      "Skill"
+    ],
+    "defaultPrompt": [
+      "Help me use Ui Sdk for my current task."
+    ],
+    "websiteURL": "https://github.com/vercel-labs/ui"
+  },
+  "homepage": "https://github.com/vercel-labs/ui",
+  "repository": "https://github.com/vercel-labs/ui",
+  "license": "Apache-2.0",
+  "keywords": [
+    "ui-sdk",
+    "ui",
+    "components",
+    "accessibility",
+    "react",
+    "vue",
+    "svelte",
+    "solid",
+    "web-components",
+    "webmcp",
+    "vercel"
+  ],
+  "skills": "./.agents/skills/"
+}

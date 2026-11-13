@@ -360,6 +360,11 @@
       "description": "Build durable backend AI agents with the eve framework. Use when creating, editing, or debugging an eve project — agent instructions, skills, tools, connections, channels, sandboxes, subagents, schedules, or evals."
     },
     {
+      "name": "ui-sdk",
+      "source": "./plugins/ui-sdk",
+      "description": "Build interfaces with ui-sdk in React, Vue, Svelte, Solid or web components — compose its unstyled, accessible components, build missing ones from @ui-sdk/core behaviors, make interfaces agent-ready with createAgent and WebMCP, and test keyboard, focus, ARIA, SSR and RTL."
+    },
+    {
       "name": "skill-optimizer",
       "source": "./plugins/skill-optimizer",
       "description": "Measure and improve how well a plugin's skills help agents solve real tasks. Runs activation and content evals, diagnoses gaps, fixes instructions, and re-runs until scores improve."

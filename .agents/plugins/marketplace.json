@@ -1053,6 +1053,18 @@
       "category": "Tooling"
     },
     {
+      "name": "ui-sdk",
+      "source": {
+        "source": "local",
+        "path": "./plugins/ui-sdk"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "UI"
+    },
+    {
       "name": "skill-optimizer",
       "source": {
         "source": "local",
