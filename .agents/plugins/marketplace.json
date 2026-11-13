@@ -1345,6 +1345,18 @@
       "category": "Tooling"
     },
     {
+      "name": "bowmark",
+      "source": {
+        "source": "url",
+        "url": "https://github.com/bowmark-ai/plugin.git"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Tooling"
+    },
+    {
       "name": "slack",
       "source": {
         "source": "url",

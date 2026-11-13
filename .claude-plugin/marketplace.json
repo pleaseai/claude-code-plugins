@@ -1799,6 +1799,22 @@
       "homepage": "https://www.firecrawl.dev/?utm_source=claude-code-plugins&utm_medium=integration"
     },
     {
+      "name": "bowmark",
+      "description": "Official Bowmark plugin: typed functions for live websites (LinkedIn, Amazon, YouTube, Reddit and more) through the hosted Bowmark MCP server, plus the Bowmark skill. Call it from your agent, or run the same check every day from your own cron or CI. Free $10 to start",
+      "category": "tooling",
+      "keywords": ["bowmark", "web-data", "web-scraping", "data-extraction", "automation", "monitoring", "mcp", "ai-agents"],
+      "tags": ["mcp", "web", "skills"],
+      "source": {
+        "source": "github",
+        "repo": "bowmark-ai/plugin"
+      },
+      "author": {
+        "name": "Bowmark AI",
+        "url": "https://bowmark.ai"
+      },
+      "homepage": "https://bowmark.ai/?utm_source=claude-code-plugins&utm_medium=integration"
+    },
+    {
       "name": "slack",
       "description": "Official Slack plugin - interact with your workspace through the hosted Slack MCP server (search, read, and send messages, canvases, lists) and build Slack apps with developer skills for Block Kit, the Web API, the Slack CLI, and app testing and deployment",
       "category": "productivity",

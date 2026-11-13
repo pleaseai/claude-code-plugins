@@ -90,6 +90,11 @@ Official Firecrawl plugin, the context API for AI agents: web search, page scrap
 
 **Install:** `/plugin install firecrawl@pleaseai` | **Repository:** [firecrawl/firecrawl-claude-plugin](https://github.com/firecrawl/firecrawl-claude-plugin)
 
+#### Bowmark
+Official Bowmark plugin: typed functions for live websites (LinkedIn, Amazon, YouTube, Reddit and more) through the hosted Bowmark MCP server, plus the Bowmark skill. Call it from your agent, or run the same check every day from your own cron or CI. Free $10 to start.
+
+**Install:** `/plugin install bowmark@pleaseai` | **Repository:** [bowmark-ai/plugin](https://github.com/bowmark-ai/plugin)
+
 #### Slack
 Official Slack plugin — work with your Slack workspace through the hosted Slack MCP server (search, read, and send messages; canvases and lists), plus developer skills for Block Kit, the Web API, the Slack CLI, and creating, testing, and deploying Slack apps.
 
@@ -619,6 +624,7 @@ Once the marketplace is added (or files copied), the following plugins are avail
 /plugin install gemini@pleaseai
 /plugin install cloudflare@pleaseai
 /plugin install firecrawl@pleaseai
+/plugin install bowmark@pleaseai
 /plugin install slack@pleaseai
 /plugin install ask@pleaseai
 
