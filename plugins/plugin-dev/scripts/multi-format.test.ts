@@ -245,6 +245,26 @@ describe("extractMcpServersFile", () => {
     const claude: ClaudePluginManifest = { name: "x", mcpServers: [] as unknown as Record<string, unknown> }
     expect(extractMcpServersFile(claude)).toBeNull()
   })
+
+  test("substitutes ${user_config.KEY} with the userConfig default", () => {
+    const claude: ClaudePluginManifest = {
+      name: "x",
+      userConfig: { mcp_host: { type: "string", default: "mcp.port.io" } },
+      mcpServers: { port: { type: "http", url: "https://${user_config.mcp_host}/v1", args: ["--host=${user_config.mcp_host}"] } },
+    }
+    expect(extractMcpServersFile(claude)).toEqual({
+      mcpServers: { port: { type: "http", url: "https://mcp.port.io/v1", args: ["--host=mcp.port.io"] } },
+    })
+  })
+
+  test("leaves ${user_config.KEY} untouched when the option has no default", () => {
+    const claude: ClaudePluginManifest = {
+      name: "x",
+      userConfig: { token: { type: "string", sensitive: true }, host: { type: "string", default: "mcp.port.io" } },
+      mcpServers: { foo: { env: { TOKEN: "${user_config.token}" } } },
+    }
+    expect(extractMcpServersFile(claude)).toEqual({ mcpServers: { foo: { env: { TOKEN: "${user_config.token}" } } } })
+  })
 })
 
 describe("readClaudeManifest", () => {

@@ -9,3 +9,4 @@
 - [PortOne plugin review (PR #184)](pr184-portone-plugin.md) — initial pass: P1 misleading `express.raw()` note, P2 false positive on named import; follow-up uncommitted edit (Express 4 `next(e)` fix) → cubic clean (0 issues)
 - [Graphite awk state-reset fix (PR #189)](pr189-graphite-awk-state-reset.md) — cubic clean pass (0 issues); state-leakage fix in graphite-context.sh awk parser
 - [plugin-dev docs review (PR #252)](pr252-plugin-dev-docs.md) — cubic clean pass (0 issues); reviewed uncommitted changes with plain `-j`, overriding default `-b` per task context
+- [cubic exit code on issues](cubic-exit-code-on-issues.md) — `cubic review -j` exits 1 when issues are found; valid JSON means a successful run; line numbers can drift

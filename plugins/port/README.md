@@ -4,12 +4,19 @@
 
 ## Regions
 
-Port operates in two regions. This plugin configures both as separate MCP servers; use the one that matches your Port account:
+Port operates in two regions. The plugin configures a single `port` MCP server;
+choose your region with the `mcp_host` option when you enable the plugin:
 
-| Region | MCP server | Endpoint |
+| Region | `mcp_host` | Endpoint |
 |--------|------------|----------|
-| US     | `port-us`  | `https://mcp.us.port.io/v1` |
-| EU     | `port-eu`  | `https://mcp.port.io/v1` |
+| EU (default) | `mcp.port.io` | `https://mcp.port.io/v1` |
+| US     | `mcp.us.port.io` | `https://mcp.us.port.io/v1` |
+
+To switch regions later, change `mcp_host` in the plugin's options from the
+`/plugin` menu, then run `/mcp` and authenticate the `port` server again, since
+each region has its own OAuth server. Codex, Cursor, and Antigravity do not support plugin options,
+so their generated configs use the EU default; edit their MCP config to point
+at the US host if needed.
 
 ## Installation
 
@@ -22,11 +29,8 @@ claude
 ## Authentication
 
 The Port MCP server uses OAuth. After installing, run `/mcp` and complete the
-authentication flow for your region (`port-us` or `port-eu`). No API key
-environment variable is required.
-
-If you only use one region, you can disable the unused MCP server from the
-`/plugin` menu.
+authentication flow for the `port` server. No API key environment variable is
+required.
 
 ## Capabilities
 
