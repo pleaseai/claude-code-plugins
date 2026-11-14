@@ -17,7 +17,7 @@ Port operates in two regions. The plugin exposes a single `port` MCP server whos
 | EU (default) | `mcp.port.io` | `https://mcp.port.io/v1` |
 | US     | `mcp.us.port.io` | `https://mcp.us.port.io/v1` |
 
-If the server is not authenticated, tell the user to complete the Port OAuth flow via `/mcp`; if `describe_user_details` reports an org in the other region, tell the user to change `mcp_host` in the plugin's options and re-authenticate.
+If the server is not authenticated, tell the user to complete the Port OAuth flow through their client's MCP authentication (`/mcp` in Claude Code); if `describe_user_details` reports an org in the other region, tell the user to change `mcp_host` in the plugin's options and re-authenticate.
 
 ## When to Use
 
@@ -37,6 +37,6 @@ If the server is not authenticated, tell the user to complete the Port OAuth flo
 
 ## Important Notes
 
-- Authentication is handled by the Port MCP server's OAuth flow (`/mcp` to connect). No API key env var is required.
+- Authentication is handled by the Port MCP server's OAuth flow, completed through the client's MCP authentication (`/mcp` in Claude Code). No API key env var is required.
 - `run_action` may trigger real infrastructure changes — treat it as a write operation and confirm intent first.
 - Some MCP servers expose additional capabilities via `load_skill`; call it to discover Port-specific guided workflows when available.
