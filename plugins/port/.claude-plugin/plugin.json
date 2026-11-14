@@ -25,7 +25,8 @@
       "type": "string",
       "title": "Port MCP host",
       "description": "Port MCP server host for your region: mcp.port.io (EU) or mcp.us.port.io (US).",
-      "default": "mcp.port.io"
+      "default": "mcp.port.io",
+      "options": ["mcp.port.io", "mcp.us.port.io"]
     }
   },
   "mcpServers": {

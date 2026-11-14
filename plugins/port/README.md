@@ -13,7 +13,8 @@ choose your region with the `mcp_host` option when you enable the plugin:
 | US     | `mcp.us.port.io` | `https://mcp.us.port.io/v1` |
 
 To switch regions later, change `mcp_host` in the plugin's options from the
-`/plugin` menu. Codex, Cursor, and Antigravity do not support plugin options,
+`/plugin` menu, then run `/mcp` and authenticate the `port` server again, since
+each region has its own OAuth server. Codex, Cursor, and Antigravity do not support plugin options,
 so their generated configs use the EU default; edit their MCP config to point
 at the US host if needed.
 

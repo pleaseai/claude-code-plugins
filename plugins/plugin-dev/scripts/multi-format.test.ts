@@ -260,7 +260,7 @@ describe("extractMcpServersFile", () => {
   test("leaves ${user_config.KEY} untouched when the option has no default", () => {
     const claude: ClaudePluginManifest = {
       name: "x",
-      userConfig: { token: { type: "string", sensitive: true } },
+      userConfig: { token: { type: "string", sensitive: true }, host: { type: "string", default: "mcp.port.io" } },
       mcpServers: { foo: { env: { TOKEN: "${user_config.token}" } } },
     }
     expect(extractMcpServersFile(claude)).toEqual({ mcpServers: { foo: { env: { TOKEN: "${user_config.token}" } } } })
