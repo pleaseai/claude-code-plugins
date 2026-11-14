@@ -1,10 +1,6 @@
 {
   "mcpServers": {
-    "port-us": {
-      "type": "http",
-      "url": "https://mcp.us.port.io/v1"
-    },
-    "port-eu": {
+    "port": {
       "type": "http",
       "url": "https://mcp.port.io/v1"
     }

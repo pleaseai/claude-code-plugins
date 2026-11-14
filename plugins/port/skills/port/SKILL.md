@@ -1,23 +1,23 @@
 ---
 name: Port Internal Developer Portal
 description: Query and operate Port.io — the Internal Developer Portal that governs your SDLC. Use when working with software catalogs, blueprints, entities, scorecards, self-service actions, incidents, or DevOps/platform requests. Triggers on mentions of Port, port.io, IDP, developer portal, scorecards, blueprints, service catalog, or self-service actions.
-allowed-tools: mcp__port-us__list_blueprints, mcp__port-us__list_entities, mcp__port-us__list_actions, mcp__port-us__list_scorecards, mcp__port-us__run_action, mcp__port-us__track_action_run, mcp__port-us__describe_user_details, mcp__port-us__search_port_knowledge_sources, mcp__port-us__get_sidebar, mcp__port-us__load_skill, mcp__port-eu__list_blueprints, mcp__port-eu__list_entities, mcp__port-eu__list_actions, mcp__port-eu__list_scorecards, mcp__port-eu__run_action, mcp__port-eu__track_action_run, mcp__port-eu__describe_user_details, mcp__port-eu__search_port_knowledge_sources, mcp__port-eu__get_sidebar, mcp__port-eu__load_skill
+allowed-tools: mcp__plugin_port_port__list_blueprints, mcp__plugin_port_port__list_entities, mcp__plugin_port_port__list_actions, mcp__plugin_port_port__list_scorecards, mcp__plugin_port_port__run_action, mcp__plugin_port_port__track_action_run, mcp__plugin_port_port__describe_user_details, mcp__plugin_port_port__search_port_knowledge_sources, mcp__plugin_port_port__get_sidebar, mcp__plugin_port_port__load_skill
 ---
 
 # Port Internal Developer Portal
 
 Use the Port MCP tools automatically when the user works with their Internal Developer Portal — the software catalog, scorecards, self-service actions, or any SDLC governance task on Port.io.
 
-## Regions
+## Region
 
-Port operates in two regions, exposed as two MCP servers in this plugin:
+Port operates in two regions. The plugin exposes a single `port` MCP server whose host comes from the plugin's `mcp_host` option:
 
-| Region | MCP server | Endpoint |
+| Region | `mcp_host` | Endpoint |
 |--------|------------|----------|
-| US     | `port-us`  | `https://mcp.us.port.io/v1` |
-| EU     | `port-eu`  | `https://mcp.port.io/v1` |
+| EU (default) | `mcp.port.io` | `https://mcp.port.io/v1` |
+| US     | `mcp.us.port.io` | `https://mcp.us.port.io/v1` |
 
-Use **one** region — whichever matches the user's Port account. If unsure which region they are on, call `describe_user_details` on each and use the one that authenticates, or ask. Do not duplicate calls across both regions.
+If authentication fails or `describe_user_details` reports an org in the other region, tell the user to change `mcp_host` in the plugin's options rather than retrying.
 
 ## When to Use
 

@@ -20,14 +20,18 @@
     "scorecards",
     "mcp"
   ],
+  "userConfig": {
+    "mcp_host": {
+      "type": "string",
+      "title": "Port MCP host",
+      "description": "Port MCP server host for your region: mcp.port.io (EU) or mcp.us.port.io (US).",
+      "default": "mcp.port.io"
+    }
+  },
   "mcpServers": {
-    "port-us": {
+    "port": {
       "type": "http",
-      "url": "https://mcp.us.port.io/v1"
-    },
-    "port-eu": {
-      "type": "http",
-      "url": "https://mcp.port.io/v1"
+      "url": "https://${user_config.mcp_host}/v1"
     }
   }
 }
