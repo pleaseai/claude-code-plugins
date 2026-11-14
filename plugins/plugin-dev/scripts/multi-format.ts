@@ -37,6 +37,10 @@ import { dirname, join } from "node:path"
  *       auto-discovers them from default folders at the plugin root
  *     - `mcpServers` inline → kept inline in the manifest (Cursor accepts an object)
  *
+ *   All three runtimes
+ *     - `${user_config.KEY}` in inline `mcpServers` is Claude Code-only, so it is
+ *       replaced with `userConfig.KEY.default`; references without a default stay as-is
+ *
  * Antigravity collision safeguard: if a plugin's Claude manifest lives at the
  * root `plugin.json` (no `.claude-plugin/plugin.json`), that file IS the source
  * of truth and is left untouched rather than overwritten with a generated
@@ -396,16 +400,43 @@ export function toCursorManifest(
   return manifest
 }
 
+function userConfigDefaults(claude: ClaudePluginManifest): Map<string, string> {
+  const defaults = new Map<string, string>()
+  const config = claude.userConfig
+  if (!config || typeof config !== "object" || Array.isArray(config)) return defaults
+  for (const [key, option] of Object.entries(config as Record<string, unknown>)) {
+    const value = (option as { default?: unknown } | null)?.default
+    if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+      defaults.set(key, String(value))
+    }
+  }
+  return defaults
+}
+
+function substituteUserConfig(value: unknown, defaults: Map<string, string>): unknown {
+  if (typeof value === "string") {
+    return value.replace(/\$\{user_config\.([\w-]+)\}/g, (match, key: string) => defaults.get(key) ?? match)
+  }
+  if (Array.isArray(value)) return value.map(item => substituteUserConfig(item, defaults))
+  if (value && typeof value === "object") {
+    return Object.fromEntries(Object.entries(value).map(([k, v]) => [k, substituteUserConfig(v, defaults)]))
+  }
+  return value
+}
+
 /**
  * Pull inline `mcpServers` out of a Claude manifest so it can be written to
  * an external file (`.mcp.json` for Codex, `mcp_config.json` for Antigravity).
+ * `${user_config.KEY}` references are replaced with the option's default.
  * Returns null when the manifest has no inline servers.
  */
 export function extractMcpServersFile(claude: ClaudePluginManifest): { mcpServers: Record<string, unknown> } | null {
   if (!claude.mcpServers || typeof claude.mcpServers !== "object" || Array.isArray(claude.mcpServers)) return null
   const servers = claude.mcpServers as Record<string, unknown>
   if (Object.keys(servers).length === 0) return null
-  return { mcpServers: servers }
+  const defaults = userConfigDefaults(claude)
+  if (defaults.size === 0) return { mcpServers: servers }
+  return { mcpServers: substituteUserConfig(servers, defaults) as Record<string, unknown> }
 }
 
 /**
