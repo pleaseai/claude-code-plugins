@@ -4,7 +4,7 @@ Components render no styles of their own. `@ui-sdk/core/web.css` is an optional 
 
 ## web.css
 
-- Everything in it sits in `@layer ui-sdk`, so any rule outside a layer wins. Keep `@layer ui-sdk;` at the top of the global stylesheet so that's true with Tailwind too.
+- Everything in it sits in `@layer ui-sdk`, so any rule outside a layer wins. With Tailwind, don't import it from a script: Tailwind's base styles reset it. Import it in the global stylesheet after Tailwind, with `@import "@ui-sdk/core/web.css" layer(components);`. That nests it as `components.ui-sdk`, above the base styles and below the utilities, while ui-sdk's behavior CSS stays in the top-level `ui-sdk` layer.
 - Work one of two ways: theme it by setting its `--ui-*` tokens on `:root`, or restyle a part with your own CSS on top. Don't fight it with `!important`.
 - It sets `color-scheme: light dark` and writes colors with `light-dark()`, so it follows the system theme. A light-only design sets `color-scheme: light` on `:root`.
 - Read `node_modules/@ui-sdk/core/dist/web.css`, or https://ui-sdk.dev/web.css on a page with no build step, when a part looks wrong. It's the only place its sizes and icons are written down.
