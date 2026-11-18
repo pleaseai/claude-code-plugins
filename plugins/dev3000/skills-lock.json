@@ -1,11 +1,11 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "d3k": {
       "source": "vercel-labs/dev3000",
       "sourceType": "github",
       "skillPath": "skills/d3k/SKILL.md",
-      "computedHash": "0d6bee960f4b4e8fd906ffc0320f78e3cda6fc8401058ab1581ab894a233457a"
+      "computedHash": "4ef230092356f27b394a9d81980c457b88561d01523a44166ffcc061cd2f6720"
     }
   }
 }

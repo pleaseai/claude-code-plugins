@@ -14,8 +14,8 @@ metadata:
 # Crashlytics
 
 This skill provides a complete guide for getting started with Crashlytics on
-Android or iOS. Crash data collected from client applications can be read using
-the MCP server in the Firebase CLI.
+Android, iOS, or Web. Crash data collected from client applications can be read
+using the MCP server in the Firebase CLI.
 
 ## Prerequisites
 
@@ -30,6 +30,7 @@ platform:
 
 - **Android**: [android_setup.md](references/android_setup.md)
 - **iOS**: [ios_setup.md](references/ios_setup.md)
+- **Web**: [web_setup.md](references/web_setup.md)
 
 ## SDK Usage
 
@@ -47,3 +48,5 @@ consult the documentation for your platform.
   [Customize Crash Reports for Android](https://firebase.google.com/docs/crashlytics/android/customize-crash-reports.md)
 - **iOS**:
   [Customize Crash Reports for Apple Platforms](https://firebase.google.com/docs/crashlytics/ios/customize-crash-reports.md)
+- **Web**:
+  [Customize Crash Reports for Web](https://firebase.google.com/docs/crashlytics/web/customize-crash-reports.md)
