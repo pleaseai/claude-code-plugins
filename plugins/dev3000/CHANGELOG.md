@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/pleaseai/claude-code-plugins/compare/dev3000-v1.2.4...dev3000-v1.2.5) (2026-11-18)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#311](https://github.com/pleaseai/claude-code-plugins/issues/311)) ([7b896a8](https://github.com/pleaseai/claude-code-plugins/commit/7b896a8670fbcadceb6541ccaa17e38c2b301960))
+
 ## [1.2.4](https://github.com/pleaseai/claude-code-plugins/compare/dev3000-v1.2.3...dev3000-v1.2.4) (2026-11-13)
 
 

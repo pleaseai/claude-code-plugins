@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.8](https://github.com/pleaseai/claude-code-plugins/compare/emulate-v1.3.7...emulate-v1.3.8) (2026-11-18)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#311](https://github.com/pleaseai/claude-code-plugins/issues/311)) ([7b896a8](https://github.com/pleaseai/claude-code-plugins/commit/7b896a8670fbcadceb6541ccaa17e38c2b301960))
+
 ## [1.3.7](https://github.com/pleaseai/claude-code-plugins/compare/emulate-v1.3.6...emulate-v1.3.7) (2026-11-13)
 
 
