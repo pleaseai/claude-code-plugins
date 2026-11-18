@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.199](https://github.com/pleaseai/claude-code-plugins/compare/modern-web-guidance-v0.0.198...modern-web-guidance-v0.0.199) (2026-11-18)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#311](https://github.com/pleaseai/claude-code-plugins/issues/311)) ([7b896a8](https://github.com/pleaseai/claude-code-plugins/commit/7b896a8670fbcadceb6541ccaa17e38c2b301960))
+
 ## [0.0.198](https://github.com/pleaseai/claude-code-plugins/compare/modern-web-guidance-v0.0.197...modern-web-guidance-v0.0.198) (2026-11-13)
 
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.6](https://github.com/pleaseai/claude-code-plugins/compare/firebase-v1.1.5...firebase-v1.1.6) (2026-11-18)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#311](https://github.com/pleaseai/claude-code-plugins/issues/311)) ([7b896a8](https://github.com/pleaseai/claude-code-plugins/commit/7b896a8670fbcadceb6541ccaa17e38c2b301960))
+
 ## [1.1.5](https://github.com/pleaseai/claude-code-plugins/compare/firebase-v1.1.4...firebase-v1.1.5) (2026-11-13)
 
 

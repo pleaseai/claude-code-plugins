@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.4](https://github.com/pleaseai/claude-code-plugins/compare/eve-v1.2.3...eve-v1.2.4) (2026-11-18)
+
+
+### Bug Fixes
+
+* update vendored skills to latest versions ([#311](https://github.com/pleaseai/claude-code-plugins/issues/311)) ([7b896a8](https://github.com/pleaseai/claude-code-plugins/commit/7b896a8670fbcadceb6541ccaa17e38c2b301960))
+
 ## [1.2.3](https://github.com/pleaseai/claude-code-plugins/compare/eve-v1.2.2...eve-v1.2.3) (2026-11-13)
 
 
