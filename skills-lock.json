@@ -1,19 +1,20 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "create-plugin-scaffold": {
       "source": "cursor/plugins",
       "ref": "main",
       "sourceType": "github",
       "skillPath": "create-plugin/skills/create-plugin-scaffold/SKILL.md",
-      "computedHash": "d1261673ee442e808d5238ea3fcf9c53cc71ffca9ddd8bc8eed4038afa8cf923"
+      "computedHash": "6faa2b36c1c324740a5553b475e93b9e51f6ea0580003fd4d84d454c0b5e96cd",
+      "commit": "7a583913eb1b8d1a0ee76753d1a2cf072e7b54f9"
     },
     "plugin-creator": {
       "source": "openai/codex",
       "ref": "main",
       "sourceType": "github",
       "skillPath": "codex-rs/skills/src/assets/samples/plugin-creator/SKILL.md",
-      "computedHash": "8418cad5f734eb75ef49a2a9e2e42c043fa29c1e12ccfc2bf3ae54557c92f17a"
+      "computedHash": "cc79ab07938c760e12a905a86a4bdaa5d9891a9866ac21f713088c3329ddb291"
     }
   }
 }

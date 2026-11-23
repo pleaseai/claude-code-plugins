@@ -1,23 +1,26 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "analyze-logs": {
       "source": "evloghq/evlog",
       "sourceType": "github",
       "skillPath": "skills/analyze-logs/SKILL.md",
-      "computedHash": "f53f007fcba9a33d9c4a5391763ed01b79357cefb3edbaff561943088f6bd4e4"
+      "computedHash": "7eb0c4aa4c517767bec18b858523c9021485d054b7ecae0d4f9fb6e428b0c8ff",
+      "commit": "915b23bd43c37b9a3b67c28737d7c8cc5fc00872"
     },
     "build-audit-logs": {
       "source": "evloghq/evlog",
       "sourceType": "github",
       "skillPath": "skills/build-audit-logs/SKILL.md",
-      "computedHash": "00ad2639d2da50af9922c0f61c2315564bbe6b29cb02d421f042db105fd11a03"
+      "computedHash": "8bbbb575aa15977228e7246bb702537bc3d0304cf8b88bfd52909738fce636fa",
+      "commit": "915b23bd43c37b9a3b67c28737d7c8cc5fc00872"
     },
     "review-logging-patterns": {
       "source": "evloghq/evlog",
       "sourceType": "github",
       "skillPath": "skills/review-logging-patterns/SKILL.md",
-      "computedHash": "af44df7af91eed44d0929c3b530e23049bf40aee2794d838be87027eedf66b55"
+      "computedHash": "86b4874393b7d083654fb761583a3beab54fb0e27deb6308831800e07b77c27e",
+      "commit": "915b23bd43c37b9a3b67c28737d7c8cc5fc00872"
     }
   }
 }

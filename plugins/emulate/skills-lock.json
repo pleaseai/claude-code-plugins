@@ -5,73 +5,85 @@
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/apple/SKILL.md",
-      "computedHash": "ba72da49b24018cbc597069e71762c6cc5b924d589ae17f90b51b2c981dd90b3"
+      "computedHash": "ba72da49b24018cbc597069e71762c6cc5b924d589ae17f90b51b2c981dd90b3",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "aws": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/aws/SKILL.md",
-      "computedHash": "1f9f3945f8b74825ad0ff1a018c46fb55b203669d97d8185f97959543b2cb29d"
+      "computedHash": "5cecae0fc72bfd8f00d135fbc8119c150e5d02daffdb00547a65312d50061209",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "emulate": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/emulate/SKILL.md",
-      "computedHash": "e4c1b5cf1ea46761b8dfb9ff8f86a9b182110c1c4b4d8e6bbd4885d03feec43a"
+      "computedHash": "19879f745b890fd2d5694fc3338d3ff4cbae29129bf67a307de26429f01b8f42",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "github": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/github/SKILL.md",
-      "computedHash": "ed37b50904513cce05b7136c1b83caf5dc83aa1e7fcd438a8ff260f237a602cb"
+      "computedHash": "ed37b50904513cce05b7136c1b83caf5dc83aa1e7fcd438a8ff260f237a602cb",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "google": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/google/SKILL.md",
-      "computedHash": "84cad32a42848ff6870059707c724e61e847b1368955dbf36d7e53f37c1abed2"
+      "computedHash": "84cad32a42848ff6870059707c724e61e847b1368955dbf36d7e53f37c1abed2",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "linear": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/linear/SKILL.md",
-      "computedHash": "56629b9a06e221484809cbc379acb670ae404c56d474993c7bbc5e0af181e83a"
+      "computedHash": "56629b9a06e221484809cbc379acb670ae404c56d474993c7bbc5e0af181e83a",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "microsoft": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/microsoft/SKILL.md",
-      "computedHash": "09f58a518a56c1520a95bf6cd85d9ae0a637c7a71e13809a20962d1cea394561"
+      "computedHash": "09f58a518a56c1520a95bf6cd85d9ae0a637c7a71e13809a20962d1cea394561",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "next": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/next/SKILL.md",
-      "computedHash": "c3765961cbde730325e3331307d22233f7bff5c564af220b1adbcb01fe3e110c"
+      "computedHash": "c3765961cbde730325e3331307d22233f7bff5c564af220b1adbcb01fe3e110c",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "resend": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/resend/SKILL.md",
-      "computedHash": "577425b04d61d59fbf19368cd13f41c437e3593c63ad0681c560dbdca42e0a7a"
+      "computedHash": "577425b04d61d59fbf19368cd13f41c437e3593c63ad0681c560dbdca42e0a7a",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "slack": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/slack/SKILL.md",
-      "computedHash": "9489ddd99d31b6a1c6d3f6f8aaa7eedd4cf04165420ed04742f1ff7812c4f696"
+      "computedHash": "9489ddd99d31b6a1c6d3f6f8aaa7eedd4cf04165420ed04742f1ff7812c4f696",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "stripe": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/stripe/SKILL.md",
-      "computedHash": "271e3927dd2df891356e37959398f4f401958a5152eb48baec243547dca3c252"
+      "computedHash": "271e3927dd2df891356e37959398f4f401958a5152eb48baec243547dca3c252",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     },
     "vercel": {
       "source": "vercel-labs/emulate",
       "sourceType": "github",
       "skillPath": "skills/vercel/SKILL.md",
-      "computedHash": "8f39b21635d178601e1f08469f5d3ec4347bc9c1efc9ea53e332fd48dca5dfeb"
+      "computedHash": "8f39b21635d178601e1f08469f5d3ec4347bc9c1efc9ea53e332fd48dca5dfeb",
+      "commit": "0d2cbec121bdc83c78815f0ba731117837578acd"
     }
   }
 }

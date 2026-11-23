@@ -5,25 +5,29 @@
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-dart/SKILL.md",
-      "computedHash": "ab85d7e5e5a78e78ea25d72bcf5653925ef5a2211e2737988774cd46582ee5a6"
+      "computedHash": "f3e611da6654452f225f8c3e4abd2ff27726eed42049e7639f35f63853ff2478",
+      "commit": "d12c988b141a0a50ab2d895733204a37b5192793"
     },
     "developing-genkit-go": {
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-go/SKILL.md",
-      "computedHash": "4a2d172f74f58c3ef69a5235cf20139a2e896905645d55961a71e0bfd5161e6e"
+      "computedHash": "514c0e4d5685202688681cf59f53417502f721709f86849613b45a7494366dd6",
+      "commit": "d12c988b141a0a50ab2d895733204a37b5192793"
     },
     "developing-genkit-js": {
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-js/SKILL.md",
-      "computedHash": "c5f719f36ad09b0d4e6b66315be222a41e964fd7f849f91b99c95c32a1a74936"
+      "computedHash": "c5f719f36ad09b0d4e6b66315be222a41e964fd7f849f91b99c95c32a1a74936",
+      "commit": "d12c988b141a0a50ab2d895733204a37b5192793"
     },
     "developing-genkit-python": {
       "source": "genkit-ai/skills",
       "sourceType": "github",
       "skillPath": "skills/developing-genkit-python/SKILL.md",
-      "computedHash": "6a2b0737dfd63fb82b9523547fb6c17aaa703b9fecb4a96523a2cb64ef330ee8"
+      "computedHash": "6a2b0737dfd63fb82b9523547fb6c17aaa703b9fecb4a96523a2cb64ef330ee8",
+      "commit": "d12c988b141a0a50ab2d895733204a37b5192793"
     }
   }
 }

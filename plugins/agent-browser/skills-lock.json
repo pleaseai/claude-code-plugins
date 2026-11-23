@@ -5,25 +5,29 @@
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "skillPath": "skills/agent-browser/SKILL.md",
-      "computedHash": "a0dfac7503f69bcf529b2660fc79964064c4f179eb65695904ddc45fc0d99d20"
+      "computedHash": "a0dfac7503f69bcf529b2660fc79964064c4f179eb65695904ddc45fc0d99d20",
+      "commit": "d2dfc782ccdd79d25a9b4f0acced9321789cecb8"
     },
     "dogfood": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "skillPath": "skill-data/dogfood/SKILL.md",
-      "computedHash": "098f814c7985901a6aaa8ee3863d9dc8dca5b28d4f83612e8d24f644cb2227b0"
+      "computedHash": "098f814c7985901a6aaa8ee3863d9dc8dca5b28d4f83612e8d24f644cb2227b0",
+      "commit": "d2dfc782ccdd79d25a9b4f0acced9321789cecb8"
     },
     "electron": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "skillPath": "skill-data/electron/SKILL.md",
-      "computedHash": "3e2e11f65e09b8e0e558f23113ceb14f944d1b236a6d79a4cf4189e198569a82"
+      "computedHash": "3e2e11f65e09b8e0e558f23113ceb14f944d1b236a6d79a4cf4189e198569a82",
+      "commit": "d2dfc782ccdd79d25a9b4f0acced9321789cecb8"
     },
     "slack": {
       "source": "vercel-labs/agent-browser",
       "sourceType": "github",
       "skillPath": "skill-data/slack/SKILL.md",
-      "computedHash": "b40e18cbc7c6402581767f9547f661e1d4013ecd7af5bfb819cd5d037257b0ef"
+      "computedHash": "b40e18cbc7c6402581767f9547f661e1d4013ecd7af5bfb819cd5d037257b0ef",
+      "commit": "d2dfc782ccdd79d25a9b4f0acced9321789cecb8"
     }
   }
 }

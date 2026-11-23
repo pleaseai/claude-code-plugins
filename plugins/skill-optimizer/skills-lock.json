@@ -1,35 +1,40 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "compare-skill-model-performance": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/compare-skill-model-performance/SKILL.md",
-      "computedHash": "ee54227b85f730d6be0c33af66e43828e4ea7dbb08bed2235a9a52f4670ccb95"
+      "computedHash": "0c91b8199bab7760dfc8f4485e15e308dd005634075dc828f25e2a57c70de0e0",
+      "commit": "84360a83b806ebd513c042cd0c4e5f1ea2c3888b"
     },
     "optimize-skill-instructions": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/optimize-skill-instructions/SKILL.md",
-      "computedHash": "6f2dff9e823b459a33fa8ddb4ed81cf81d58d4d5bff8713c12878ed7d1d50404"
+      "computedHash": "139a006c8165df6fd9aeccc3ffabea52ffe303e7f398f86be656cfbc9cebb421",
+      "commit": "84360a83b806ebd513c042cd0c4e5f1ea2c3888b"
     },
     "optimize-skill-performance": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/optimize-skill-performance/SKILL.md",
-      "computedHash": "76109aa1b3868bae6fd942f54aa964de839c98f442c293454dd85ec562d27cb3"
+      "computedHash": "5869e72236cdc4229b37bee9674dde18fecf5f59e95614f4db22a1acd2fb8167",
+      "commit": "84360a83b806ebd513c042cd0c4e5f1ea2c3888b"
     },
     "optimize-skill-performance-and-instructions": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/optimize-skill-performance-and-instructions/SKILL.md",
-      "computedHash": "609316b9406067bc3c1e4c3cba7f801435c1050ee9d5cc10012a6750056c110b"
+      "computedHash": "d89632fc8094bacc401c333c6ba2744b8edad043bc8dddc33bb6eed10fa8bbb3",
+      "commit": "84360a83b806ebd513c042cd0c4e5f1ea2c3888b"
     },
     "setup-skill-performance": {
       "source": "tesslio/product-plugins",
       "sourceType": "github",
       "skillPath": "skill-optimizer/skills/setup-skill-performance/SKILL.md",
-      "computedHash": "75da2d5f46b60a1d61d47014aabe9df0fdfe4bdcfa9f78cd555aa9d8f2a9e264"
+      "computedHash": "5a0b8c21b4b53706eca285deaff1f9bc5ce3e9c8e1f5bac54511b91029229b1a",
+      "commit": "84360a83b806ebd513c042cd0c4e5f1ea2c3888b"
     }
   }
 }

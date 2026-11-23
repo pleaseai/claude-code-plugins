@@ -1,17 +1,19 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "tsdown": {
       "source": "rolldown/tsdown",
       "sourceType": "github",
       "skillPath": "skills/tsdown/SKILL.md",
-      "computedHash": "61dbe95853b178b5feebdce008cec3cb7258ea13164de3f13418e7e5d19ee334"
+      "computedHash": "3b45a186097cf2bb9fa4ea6b4ae7dbc62951f210fdc0f977f295e54e428de7c9",
+      "commit": "90c6bffea017807e2999b0748f6a2e4eb095b4fa"
     },
     "tsdown-migrate": {
       "source": "rolldown/tsdown",
       "sourceType": "github",
       "skillPath": "skills/tsdown-migrate/SKILL.md",
-      "computedHash": "ef840c62747ce5aed1e8b35197d767b022a690648f4a55d31e5e81ed8c21e0bd"
+      "computedHash": "e89b157e6c2418f9746689f942af78848648218fb146d1da67d6403b52d4e44b",
+      "commit": "90c6bffea017807e2999b0748f6a2e4eb095b4fa"
     }
   }
 }

@@ -1,89 +1,103 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "blueprint": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/blueprint/SKILL.md",
-      "computedHash": "377e75b2481be93113ba4a51b1f9c477d037a5edb001d3956e3f920860570c1f"
+      "computedHash": "295c9483014ec56e2c59553569eee5c2496d681a7a2a6d90bd64e44c3c705ce1",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wordpress-router": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wordpress-router/SKILL.md",
-      "computedHash": "7422b3196e5ced6794e4f86eba5b43e5bcfae0dbd09d0f7963a4e5f777a059a5"
+      "computedHash": "fea6c43a551925f2b489ac035f4b6ebfb5a0863c1c26a38ba5fd8e51f9e012d2",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-abilities-api": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-abilities-api/SKILL.md",
-      "computedHash": "2d665cca2211a87ddde2d37eadd95395f06b9bc48d02b1ea18c0a616d5c84d19"
+      "computedHash": "c7b0245d9707c34fa008b8d6acc8601e9f36b8074a8bb515be8296c8f0cc43e9",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-block-development": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-block-development/SKILL.md",
-      "computedHash": "4592e2b8922bb2330d620550b6434fb1992908ab04cb24de2f704166d5012aa9"
+      "computedHash": "4cb32f4b4627616678039607e05431153788c196f5283b7d2139dc411caa1edb",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-block-themes": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-block-themes/SKILL.md",
-      "computedHash": "c3eac9e3af48647e13409944a38270dc13b516f4df7f070954568ae3521afe95"
+      "computedHash": "12c5c07c469da8cd3d980ae077ca62b75cc5f41418a81d150d944ce4366c06c8",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-interactivity-api": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-interactivity-api/SKILL.md",
-      "computedHash": "29b15bb054d5d1aecd2c9a3fc7a1b49c36512cc425df2459647036c8fc8ba5a4"
+      "computedHash": "7cdfd7b88cbba003b955a0e721c260875ff89699c1ecefac5c688a38cf73547c",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-performance": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-performance/SKILL.md",
-      "computedHash": "a38ef25bae1223aa3fb13e120add1ed63984f9032e9d990f4483b4e235f2baa3"
+      "computedHash": "86a5cd8d634b60870eaacccf3cada1537caf00c3fa5ff015f06b47423baea755",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-phpstan": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-phpstan/SKILL.md",
-      "computedHash": "19c1808bafda2f5b929b0fa899a5d3ff138d8fdf79e332056cca28fc358a4d82"
+      "computedHash": "67cc775b1b54f0bd882443909810b59fbc51a44ab757acf3b143aed7b3ca43f1",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-playground": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-playground/SKILL.md",
-      "computedHash": "9c27c08d64103878df3968f06ac33533b1fc49177ca38b729631b1435c9473ae"
+      "computedHash": "a0f5d58a72805328378fa6ae74ea40b7253d52681748cd8ee9ce92b2c916f9a9",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-plugin-development": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-plugin-development/SKILL.md",
-      "computedHash": "317de0b7e3fdb7b2af5f72ae65445bcbeeadef3db9a2f0d23cdbb43ed8f65e8b"
+      "computedHash": "dbfe220976e2eec5dc90aef6163a873e2cea000bbe007de44d1f7949a4cf4ee6",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-project-triage": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-project-triage/SKILL.md",
-      "computedHash": "08f050cb3f2e651cca849e689552cbfeef3b0e3b0a8365ab8af00e8b30080a2e"
+      "computedHash": "e8dc1979ef22c9b8b94856a0f49d2c47bba7e3d519b34290de366cc02f67ccba",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-rest-api": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-rest-api/SKILL.md",
-      "computedHash": "c52f53b0ba5e171fe8f0967a21ffa51a2466a1ebe0dccb65c3adc91545b45ae9"
+      "computedHash": "a043a646817a302c5d5602b78acd1ceb0f583d93bdd3bf74b97f4eee9ccf5432",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wp-wpcli-and-ops": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wp-wpcli-and-ops/SKILL.md",
-      "computedHash": "5fb6302cce7d094a84a044d2e5f7d814e1606d648dd5d9cf9302f5cd6008537b"
+      "computedHash": "86e51372f1454a5c90d33bb51a49b27eccd98c26ce7f09be8fe4df6e049292f3",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     },
     "wpds": {
       "source": "wordpress/agent-skills",
       "sourceType": "github",
       "skillPath": "skills/wpds/SKILL.md",
-      "computedHash": "4759a50656e902bf725154827df39d9527fd46e5eb6544882f11433bf405d7bb"
+      "computedHash": "a05ae1d12d083ac3ed85ab50dfabdcab6d437cc87ecda2378bef6eb1aedb25db",
+      "commit": "7374e6f1c913b3b02b25465d266d9c0e0a04fc96"
     }
   }
 }

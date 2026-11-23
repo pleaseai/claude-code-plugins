@@ -1,35 +1,40 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "deno": {
       "source": "denoland/skills",
       "sourceType": "github",
       "skillPath": "skills/deno/SKILL.md",
-      "computedHash": "ac6e73271ee74ee92ee995bcd99661da6d8ad5280d90aee637b53267f6d3fbb7"
+      "computedHash": "11d6ffb965afbc8ecb4249f215af5c15746f503e7a4b82050914daa4b4d9689f",
+      "commit": "d5f6ace6b113aee71ba5286612fa1bde34c7d102"
     },
     "deno-deploy": {
       "source": "denoland/skills",
       "sourceType": "github",
       "skillPath": "skills/deno-deploy/SKILL.md",
-      "computedHash": "99a0e43734dd70eef348c7e0ef043e127ac280046f06d5bf65a8b0a8ee9a3f1d"
+      "computedHash": "1457d34aebd0e7d5de8c73ced322245621846e621adbcd4e4224c6fd534f4379",
+      "commit": "d5f6ace6b113aee71ba5286612fa1bde34c7d102"
     },
     "deno-frontend": {
       "source": "denoland/skills",
       "sourceType": "github",
       "skillPath": "skills/deno-frontend/SKILL.md",
-      "computedHash": "8cbd751af41a0cd988e9220eb93a36a4e1f254c193932ce3534da0fa608abd17"
+      "computedHash": "8b14239b4d8e97c0f06ca506517c6fbc8a2e045eec5fcf6ceeee5a66ba234314",
+      "commit": "d5f6ace6b113aee71ba5286612fa1bde34c7d102"
     },
     "deno-sandbox": {
       "source": "denoland/skills",
       "sourceType": "github",
       "skillPath": "skills/deno-sandbox/SKILL.md",
-      "computedHash": "a7468f1e8876425aeec641b286ffd6550b975d4aabeb41de86ee0f3f1e23e10f"
+      "computedHash": "9b4dbb0659e3414c2f00e77991a480792f4ebcdfe83f8823b1753170980f738d",
+      "commit": "d5f6ace6b113aee71ba5286612fa1bde34c7d102"
     },
     "migrate-to-deno": {
       "source": "denoland/skills",
       "sourceType": "github",
       "skillPath": "skills/migrate-to-deno/SKILL.md",
-      "computedHash": "6e1d843c21ad52886d21b0d978e50f23f5c36745f4c6cb78486a97b48b919ef3"
+      "computedHash": "b9759f668aefbf30b15cbe3dd75a4b664c3a75bac3db01e7388ba28743c34521",
+      "commit": "d5f6ace6b113aee71ba5286612fa1bde34c7d102"
     }
   }
 }

@@ -1,23 +1,26 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "ask": {
       "source": "git-ai-project/git-ai",
       "sourceType": "github",
       "skillPath": "skills/ask/SKILL.md",
-      "computedHash": "4078ed1606c491e95cfd892a701ab01d4f842fda2a2a14322f3989a776b75a85"
+      "computedHash": "ed827c1fd2efbbfcec7b9f97b0e27b19eb6a0053c7b51ecf77806fe9ecfbcde5",
+      "commit": "5420ab9081d2cd57ffdafced09a8028d6dabf4bd"
     },
     "git-ai-search": {
       "source": "git-ai-project/git-ai",
       "sourceType": "github",
       "skillPath": "skills/git-ai-search/SKILL.md",
-      "computedHash": "7d940c8210fb8823036486e68db9541f011f166fb897dd55a623c765827b980b"
+      "computedHash": "e17c7715aa9973f86092c162d6f3fa5c2bbdb829f6e2627b50038e4a9ef2d5f4",
+      "commit": "5420ab9081d2cd57ffdafced09a8028d6dabf4bd"
     },
     "prompt-analysis": {
       "source": "git-ai-project/git-ai",
       "sourceType": "github",
       "skillPath": "skills/prompt-analysis/SKILL.md",
-      "computedHash": "2836b2e21be407f19a239b9a316f15974d95b67716aa9271332cb40280c3e99a"
+      "computedHash": "2018e3cda9a9731a44d9f32b12cac0278ea2f2fcca68a07a6db6abc5f87bdf39",
+      "commit": "5420ab9081d2cd57ffdafced09a8028d6dabf4bd"
     }
   }
 }

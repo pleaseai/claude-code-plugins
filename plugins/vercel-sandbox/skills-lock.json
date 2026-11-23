@@ -5,7 +5,8 @@
       "source": "vercel/sandbox",
       "sourceType": "github",
       "skillPath": "skills/sandbox/SKILL.md",
-      "computedHash": "3c765421a51a442e96d032297a7f17f6552162d02edc4366e7278929d5b71a71"
+      "computedHash": "06a464ad02817027cccd3f702cbfa5736364ab1746b186f79b756d6a9ad8eb50",
+      "commit": "934ec278b17f8d2b122b62c09bfa1cd6e49829ef"
     }
   }
 }

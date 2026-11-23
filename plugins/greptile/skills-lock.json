@@ -1,23 +1,26 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "check-pr": {
       "source": "greptileai/skills",
       "sourceType": "github",
       "skillPath": "skills/check-pr/SKILL.md",
-      "computedHash": "c25ca1259f825b202949a643aa8aa931bb6bb02ac02ccb4b969a4508c2e146dd"
+      "computedHash": "0f0fba57f8d54d147dc86da4f5776af1edf4b6a4ec53b400f084263b6280ef37",
+      "commit": "59e79eca306a09321ff40d6a3045c98967568b78"
     },
     "cli-review": {
       "source": "greptileai/skills",
       "sourceType": "github",
       "skillPath": "skills/cli-review/SKILL.md",
-      "computedHash": "1b1fe57c18746de2a85068770ec01fa7ac26471f5c9cb8047553ca433fea1acd"
+      "computedHash": "8ce4e722f5b0f87b8e2fba335bfd2ca24dab75e14e037e16bfb100a4a2f66a1b",
+      "commit": "59e79eca306a09321ff40d6a3045c98967568b78"
     },
     "greploop": {
       "source": "greptileai/skills",
       "sourceType": "github",
       "skillPath": "skills/greploop/SKILL.md",
-      "computedHash": "d37000d0e461ccf46116abdf371ad9b0beaaf7d2ed7365fb91f10903bc51cd85"
+      "computedHash": "d93512153a43b6b1c5a5bfba591701bd2a00d0746e3ec774186129f976cb7636",
+      "commit": "59e79eca306a09321ff40d6a3045c98967568b78"
     }
   }
 }

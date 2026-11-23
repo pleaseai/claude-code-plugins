@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "ast-grep": {
       "source": "ast-grep/agent-skill",
       "sourceType": "github",
       "skillPath": "ast-grep/skills/ast-grep/SKILL.md",
-      "computedHash": "55ab409e6afd238ebab8f29d9a5230d513b6d0102e0eb9f71c554a95d1344bd6"
+      "computedHash": "66228b33a8e8327e2f3eeef8b7c9135bfd0e9ed11990529b0f1cef4d8fc7bf55",
+      "commit": "0613dc7f82bbfb3b557380b54726b92f73358460"
     }
   }
 }
