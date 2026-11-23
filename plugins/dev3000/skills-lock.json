@@ -5,7 +5,8 @@
       "source": "vercel-labs/dev3000",
       "sourceType": "github",
       "skillPath": "skills/d3k/SKILL.md",
-      "computedHash": "4ef230092356f27b394a9d81980c457b88561d01523a44166ffcc061cd2f6720"
+      "computedHash": "caaa94b99025556448a094aa48d2836a2cbe526d54206ddcdf5f2e0c3b68967a",
+      "commit": "63d763e9e40c4c1a062c6695991e5895db2aa158"
     }
   }
 }

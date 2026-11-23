@@ -1,17 +1,19 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "migrate-radix-to-base": {
       "source": "shadcn/ui",
       "sourceType": "github",
       "skillPath": "skills/migrate-radix-to-base/SKILL.md",
-      "computedHash": "e1f2030ee5059be3dff0812ca0e4b995ee9fa3132176f049ebe6c90346a6755e"
+      "computedHash": "7644de21e9aa533904def58c30f809ae6574c3cabc6396ab8b03dee751e8ffbe",
+      "commit": "bfa64ff4d1cb7317d2403ecb176df6826d4caffc"
     },
     "shadcn": {
       "source": "shadcn/ui",
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
-      "computedHash": "b864a958765563321f485a96f4d59c0bb6539f4286ab6d8b8b66895b7ebd302d"
+      "computedHash": "388962d16c7a4f13aaeee0d8f128e50a87df8553d42ef7988c39c0e1c74a40e8",
+      "commit": "bfa64ff4d1cb7317d2403ecb176df6826d4caffc"
     }
   }
 }

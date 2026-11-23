@@ -5,7 +5,8 @@
       "source": "antfu/skills",
       "sourceType": "github",
       "skillPath": "skills/nuxt/SKILL.md",
-      "computedHash": "4c10d4e793c1d7f4308a3b66930d55d6531224ea887ae29d9bcc946cea2c8081"
+      "computedHash": "4c10d4e793c1d7f4308a3b66930d55d6531224ea887ae29d9bcc946cea2c8081",
+      "commit": "4a6bb39e7b45e26402eb215393c51ccf5df1ca4c"
     }
   }
 }

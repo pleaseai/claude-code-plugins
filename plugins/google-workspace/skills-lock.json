@@ -1,575 +1,670 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "gws-admin-reports": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-admin-reports/SKILL.md",
-      "computedHash": "119e59c6e5f007563eca290300424e928a23aaf272bc790f1733538221c07a9d"
+      "computedHash": "46345fa2fdd01e5d12a0c4027c28e5791e32b1055af9b44da09b224e1fbb7a57",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-calendar": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-calendar/SKILL.md",
-      "computedHash": "0c5956e1069552444b00bf45381f08ffa9a7bca9810fefb1801866216008bcfc"
+      "computedHash": "d429bcd005436a8eafbd6c6634d60fb3e51a3c66457c1c00e8c695420fdee0c9",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-calendar-agenda": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-calendar-agenda/SKILL.md",
-      "computedHash": "794bca1f324fa3a29dd1b98be990c690bcf9e36807fba8634042a36439d26c3e"
+      "computedHash": "fc8c836e54f12b7a2a4fe8e087b8822c2f4c1909c451f078bcda92a2bdf77d2c",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-calendar-insert": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-calendar-insert/SKILL.md",
-      "computedHash": "6cfef1caf4117b716e73a5ee4c3ab017bcf72617e9291c2812c052a77281bfbb"
+      "computedHash": "cfd159599d528957961b0de43e69eb5eb8e84dd2aeb3fcd95d0f8147829ae5ca",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-chat": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-chat/SKILL.md",
-      "computedHash": "b8399b81d524a3c95146a5e026bb5d7974f80c5264c29cbb16ceb0786ce43ff2"
+      "computedHash": "c4039956e9a7187d1494369958f82f209f0b639fa3e570529c2b67492b15c083",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-chat-send": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-chat-send/SKILL.md",
-      "computedHash": "b3fccfdd5283652163104e9e56d9f045b37540bd52d280088d22a15c97f4b8cc"
+      "computedHash": "e419c8046f9810d1efee02f514a13be9d0a9d55a81cf537a6ee1229807804360",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-classroom": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-classroom/SKILL.md",
-      "computedHash": "b8dc11ae32b7e922e89df7f2f0a0dbfc9039fe9672bf5a57766711297d4f3fa5"
+      "computedHash": "844b362154815350da55f01ddd8391840d5e954da5a3330a36834396e8012a74",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-docs": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-docs/SKILL.md",
-      "computedHash": "10dc2a8aa8cb28524a9d285ddba5602c24c21cbb640718fce522b58d90ee7b97"
+      "computedHash": "14ab181de731c55979d70fb1191d67b75e796ac7aa6a9edff37b03831061574f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-docs-write": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-docs-write/SKILL.md",
-      "computedHash": "fdf46eb60dcdd455a8d8c13dc70cbc855c97063be7d2071cd8c3defee62e60d6"
+      "computedHash": "5a4160d02be24da879663226977d4b728199c600ba8574901346eebca0b4099a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-drive": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-drive/SKILL.md",
-      "computedHash": "d637ff849b82a9fc195bcfedea260cffe94eaa31b843b28cd04313b1720bb153"
+      "computedHash": "c3c5d0d9927c97ef3f4ad9614440965d3fae6124728e74acc4b33a42f1ceb9ea",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-drive-upload": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-drive-upload/SKILL.md",
-      "computedHash": "0a5cb1978c1eb483bb223363a316dc6a73998b4158c0f4ebcf18882155a57bc8"
+      "computedHash": "62379de09b79f157cd654f6add56fe4eb0ffe4b6fbe7a2ccacb89f179205bb20",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-events": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-events/SKILL.md",
-      "computedHash": "8fc135105525b5e24c343f61071f66656ed58dc660c1ec14e1d5fc0db441d0eb"
+      "computedHash": "b54177a72d220edec47e2dd05be281980a4c107bf8950f61cd8b94bf9b7a24ec",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-events-renew": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-events-renew/SKILL.md",
-      "computedHash": "f40b7517c109f7302a40b74807edb5d7ed014c67ef88fb280ada27cd49cc81e6"
+      "computedHash": "7d9b6797561dd34a97469f5eaf5a8a3474ad74beb0d6625b565be392e6b16e85",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-events-subscribe": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-events-subscribe/SKILL.md",
-      "computedHash": "d5b6b0e16812ed935a05f5d1bb7b4d9b20d87cfe5d5cefea4e7cb6e42e1bcc4a"
+      "computedHash": "b5c0bed191faa90e80c1240cdc462d2022c27cd9ea15ff4d7c2567efcca491dd",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-forms": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-forms/SKILL.md",
-      "computedHash": "1f8a7f74106e00fa51a6505f16cf58d5e63c12dc90099920c3d2ed7a67cad6ea"
+      "computedHash": "27e30c392bf33e764f9016b53db3de9e294d0982d9e97194620a575785a3536f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail/SKILL.md",
-      "computedHash": "5e5b5fdb4b4f347310d929657ed773abcaf528b5ac0a68deee12d3d38d307642"
+      "computedHash": "aea4c2a07360c1872eb0ab6ede403b4accd4d86983b5be5253b156ea763785b2",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-forward": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-forward/SKILL.md",
-      "computedHash": "53790c38df818d91e3e214d80c016b50c67489a57d0e1764f1bcc2c31e754db8"
+      "computedHash": "85fa3664320841bef7a0c1e88e3e4507d992647391b87b9d5dedd890ba4ad4f4",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-read": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-read/SKILL.md",
-      "computedHash": "fb90ad1652e456d953e8d2094bffa955df171e362c7d31590797ec9ca84b3727"
+      "computedHash": "9eafc1ea7d953c5298e174f20c4f349200ff5ac64027868401cf4287025856a6",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-reply": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-reply/SKILL.md",
-      "computedHash": "908f72d3f5a7e9e53f4ecb3cfad6e146a0798aa55ba684629796baddbe5e766a"
+      "computedHash": "dfca6a71d489b85c84cc7a13e97a6c5a56f0b7a455b9ad84be962eca03f18f4a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-reply-all": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-reply-all/SKILL.md",
-      "computedHash": "2d848bf4503a1eaeca2051c51e107cc5a1c3ce2e7b772bddc86e3600c69084ab"
+      "computedHash": "11eee1a359235850c77ed7033fa1481e190a67e508db2adc05410843277b19b7",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-send": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-send/SKILL.md",
-      "computedHash": "87f48e0c57b05e143b9e206e9fd17585bcc7bfc3cf16e2bdd889c250e5eb8d34"
+      "computedHash": "bed256a563e73b40ceb62d2885a7806aaa498cee7ee82d16e8a1bd8e8a4be03f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-triage": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-triage/SKILL.md",
-      "computedHash": "404d060677fd09d2ddb4c4008817b430114a60a97e99cd94cf1308ec9b26db97"
+      "computedHash": "e2ddd3192ac163644901566e91ff5da14dbab404f335d9c890accda742b03002",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-gmail-watch": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-gmail-watch/SKILL.md",
-      "computedHash": "ecba93f87ac43d64f154e337c3a6be2139fc4a2e78263b880169ce220398f4c7"
+      "computedHash": "4f674d57d3b8bc4512efe7861c15265e23aa8537e56dabd60a5767f298f39fd9",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-keep": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-keep/SKILL.md",
-      "computedHash": "96279229273dc04afa1a1c5cfa5a23c7797178946c5de0b28e6d81cffb4286b4"
+      "computedHash": "a4eef73faa199cdb77a77bc6c4fb0cbdf46d6aad63cddb72084b10afa225eee5",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-meet": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-meet/SKILL.md",
-      "computedHash": "7186520b77ca74133bc1d6c9dedbe2502bad70a095d0c2881859324a45d120f1"
+      "computedHash": "365be53e6bfe628d17bb6a9c124c4ac10056c88e11c1b5db85c8d4c99250e04e",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-modelarmor": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-modelarmor/SKILL.md",
-      "computedHash": "7d0ffdbe62471c9b15aedc81771d6d0990dba5ada1f61ae31fd645b7c60a7c93"
+      "computedHash": "46494a71c9084c5a6aea934234bef4c9df495ab470840ec2994d1230dc8f9fb1",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-modelarmor-create-template": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-modelarmor-create-template/SKILL.md",
-      "computedHash": "98d2cad8f117751149ecb1d12d2cff8eb7a441477d32f9809dcda3b13ad03cd4"
+      "computedHash": "c141764e3e8f6fd937c4628bbcb95a1178c767290200359e993f9b42a940bc46",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-modelarmor-sanitize-prompt": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-modelarmor-sanitize-prompt/SKILL.md",
-      "computedHash": "798b25bc9e415eee94e0d4d8e504c898f2488c4d198b91345ea45714364d1448"
+      "computedHash": "34a243174cf84ac2a8fbf37442fdd51ddb7dd5bccd01db1a3e0063b6776c547a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-modelarmor-sanitize-response": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-modelarmor-sanitize-response/SKILL.md",
-      "computedHash": "04c6711b35086537e5649311809b0df671281c718c11cfb81f98a5c9419911af"
+      "computedHash": "3320460089919d08cfcbe5dbbcc5779c28bbe9b06a5fc2bfdb2fe839006c67c1",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-people": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-people/SKILL.md",
-      "computedHash": "6f6c4e5cd4cd20d57a8e912d3d1ec483a4d3f2de88ed168eaf20e04dafa01e79"
+      "computedHash": "c48986675edb76f2e23d64a6aa36111710d1cef27598c2428ffd35c3caa1b421",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-script": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-script/SKILL.md",
-      "computedHash": "799025ea93e295538fdecdff445dc2c054c388e1ecaebafeb3195fb5607b2f97"
+      "computedHash": "c4c69dd4987a0150510f21dfd21e980f4f6ffc881ab462e5f499c478f9beb62d",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-script-push": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-script-push/SKILL.md",
-      "computedHash": "e4103e5221d03fd90d77b1ce3864dafaa8f104de3420187d9aaf566fe1f83b0e"
+      "computedHash": "08129942cad5094d0972a5024e8c4d4233faf57a6d18c72e1e0101e8676a9cdc",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-shared": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-shared/SKILL.md",
-      "computedHash": "b197590681ce3d5a52e9c15a68652b5445d111dbfc0dc453f68fb0785aac443c"
+      "computedHash": "0aa572df2db7cbc6fc6beff4e00e216d4361cae7821c45d12202031852f9c7a4",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-sheets": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-sheets/SKILL.md",
-      "computedHash": "21c951f8bf399bb941740ab8b048157b43088ad96b743976e88abb0046d263d2"
+      "computedHash": "0b02ad980f288af63f37d7d0c36435ec28643513a782b286e434554a0097270f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-sheets-append": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-sheets-append/SKILL.md",
-      "computedHash": "00c79cd5e3f621474220a90f2c9baf5aa5732ef3c0354cdba6b8ff5921bccd36"
+      "computedHash": "41d2e88b78d2929b86dc4add2bf2006b5e19a0101fef9a4762dd9de8d95527eb",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-sheets-read": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-sheets-read/SKILL.md",
-      "computedHash": "082f6b6ee503a7438b12338024471f772f90193326cca3b6428e2450879785ff"
+      "computedHash": "1b2a771e85821811533c20f3631d693ad7377b07b80c2db929c18d802e8589a0",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-slides": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-slides/SKILL.md",
-      "computedHash": "5018c4b5578fae15b5c5212ad5a68263721c59c40e4bbecd8f4494cc93cb5471"
+      "computedHash": "1f4ac15d11a956e3b331c81ce518c9b471cefb19a15f40ec387593374b514d51",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-tasks": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-tasks/SKILL.md",
-      "computedHash": "c18db1a0ddecb2c4f1d3999d4021c77da621b51da6e9b4a24783a4ef16859c76"
+      "computedHash": "6651ce0e653c48290d3c3f10a807841072ec46a5db3af5b7b5b4606e4a491777",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow/SKILL.md",
-      "computedHash": "f123bdb9dd59271e93f0c04469a55ca9b0dbf599fc9722944659a083ed1e66ce"
+      "computedHash": "c276d6e0a02a0325e4c6d8e07350685b5bff96f777ef3742c315e0f14e40ca94",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow-email-to-task": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow-email-to-task/SKILL.md",
-      "computedHash": "24ca7296342b71eed2077154727485e96cb5317f76d20204472bc471131232b2"
+      "computedHash": "bd51c6974429ad242c2cc86bf47eee4c9bc797cda5534b28cd53fbef8b9f0d3c",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow-file-announce": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow-file-announce/SKILL.md",
-      "computedHash": "243abf3004274a4ec42ac5d8874f40b76d26ac52c84504b928a0c2d2be09051e"
+      "computedHash": "7eecad82c41fbff518b670915c822de3ad512ec28c9d8a252a3154afb3f52c14",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow-meeting-prep": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow-meeting-prep/SKILL.md",
-      "computedHash": "72561f3f0f5b1a6de2e6028b232fe2bba9a4d60a97df1012afbf34c5b53c9cf2"
+      "computedHash": "009f54e8b788b173be75b2878f74c0c1513c01d13aadb3023b80097eef183daa",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow-standup-report": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow-standup-report/SKILL.md",
-      "computedHash": "ea178b78a537f5e1a44e9ab87627f1618870a0b0e2b1e588c6336308c52a91ea"
+      "computedHash": "1fb1179a415a0d9647ea636dc169b8dbbc3ec394841b34f6d4682efe40d43990",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "gws-workflow-weekly-digest": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/gws-workflow-weekly-digest/SKILL.md",
-      "computedHash": "292bcf04593f7980caee1a0392784ca6b653d36be07a991922fbcdfcc1a5fa27"
+      "computedHash": "9417651912a87517427ad287fdd6d1176f816d52ffebf590daea2dcf6e0cfc00",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-content-creator": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-content-creator/SKILL.md",
-      "computedHash": "15b305780d8b3e4228cbed67a278b088e255465d6533a86781ac7775fbe92b3a"
+      "computedHash": "9abc1eb0f433e841f1c25024cadd00224aa99a9daa1a357806452789116c7638",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-customer-support": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-customer-support/SKILL.md",
-      "computedHash": "2e1e37b84630e5a0b217ad11bf35a9ca6003582f44bd655a73705855d8c551cc"
+      "computedHash": "467c16b1f632cef325bfc400e19a588fd249498dbba2ca617a123c246b842256",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-event-coordinator": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-event-coordinator/SKILL.md",
-      "computedHash": "a0bb37f5df4a742e8e7530b045a507de30a66960760077ad9b2655e360a284fd"
+      "computedHash": "cbcc13ab41ae55fedf8ce0e78a7e0b9959b8c74dd8bf96fba63b750af849b0f3",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-exec-assistant": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-exec-assistant/SKILL.md",
-      "computedHash": "b01fc996607b8b8d143c21607cf33eb63ed64876ef20c04e5418f9e84d1d9f41"
+      "computedHash": "d5f888db54f4169216a969f2f0a32c6439ac85b560bfc9c01fb8077583095b68",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-hr-coordinator": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-hr-coordinator/SKILL.md",
-      "computedHash": "b5caa92fdf9d9819ecd2216ffec01456409905973eea01bc1e6ebe7578c248d0"
+      "computedHash": "ba4e52da5a17d705c9f250015357b9e70d6496d4c0ae057cb2af644dbdd1940a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-it-admin": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-it-admin/SKILL.md",
-      "computedHash": "89ff73a44c1ea53954ac01748583781a864683959206c8c075a53cfd6a932d12"
+      "computedHash": "6dd16f78ce4ecc29c449c990757a16ff70ee67498b97d3785bb13408b6e93cbb",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-project-manager": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-project-manager/SKILL.md",
-      "computedHash": "791594e1b7fcabfb2cd0acc32bb3d76c2e10c7521a351f4db328c4231a031cd3"
+      "computedHash": "17abdd24435db2a5fd74d2b9c601588338e684886dc1ad39f77828952ec243ac",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-researcher": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-researcher/SKILL.md",
-      "computedHash": "66095fa643dcbd4414aff1f2235ea3513c3f3a9218d0c6a2ea24275512888f66"
+      "computedHash": "e87d5c1d9b977db83b818f7dd8a1d2bec95ade562383bb7f694a17e0c5eb2aea",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-sales-ops": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-sales-ops/SKILL.md",
-      "computedHash": "b9301ea015701a2b663faa5c333443f140fe710cb40132d3cb9e69fcecb8bec2"
+      "computedHash": "d5bbb4a8b3998a41190e49b8e79973219ec1af7c7fecd3d67cb723e032191622",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "persona-team-lead": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/persona-team-lead/SKILL.md",
-      "computedHash": "4be5f55f45c8174820a078262378aa310e7e0fd7cff9df9960691020562d8b1d"
+      "computedHash": "25f6a67a483ab4c1c02bb28cf0cb4adfd3fb0cb24859003e8a9ad18bb072a94b",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-backup-sheet-as-csv": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-backup-sheet-as-csv/SKILL.md",
-      "computedHash": "90ad5997a19038b57906a69b42fef8524758e4572350242cc453c94365feafa5"
+      "computedHash": "3abff3f94ff991ffc8079cdfba3a16e00bffb0591648eef642f6c7154072e541",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-batch-invite-to-event": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-batch-invite-to-event/SKILL.md",
-      "computedHash": "6d6d88d3539b0570fc3a917fdf6db2475b45ce680d216799ed8076aeeaac53e6"
+      "computedHash": "32499e99bb1404cad2f3b36d5463fcc5eb504366ca82c0b9f1b1f5fdd4a82a4f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-block-focus-time": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-block-focus-time/SKILL.md",
-      "computedHash": "1698ac55772d324bd5747c43129fd2ce3424091095eb1d90a49ce26348532337"
+      "computedHash": "dd81faf22030c12a0bb4f65b52635b06fc6619b39441b82feaf90576f73236fa",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-bulk-download-folder": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-bulk-download-folder/SKILL.md",
-      "computedHash": "33f1f77f9fc4397fe2abad6e42e2e434f5e2c36c47f5a68827f230844d8ff892"
+      "computedHash": "846a7a75fdf580400cfd667f3b27aafa2d4c6d03dcdd6f3e525cbcf25f0d1548",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-collect-form-responses": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-collect-form-responses/SKILL.md",
-      "computedHash": "6fed445a76c42014625bbaaf25d280d01ad76c5658e45291c396af927e54cd2a"
+      "computedHash": "491aa58117757f8c17a3bb6c660cdf8d32f13494a229fe864dd4d06ab608c464",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-compare-sheet-tabs": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-compare-sheet-tabs/SKILL.md",
-      "computedHash": "0413eb1c39e1a521a9b8f9f65890489de189b9d8dc740ef76ed968434fa05952"
+      "computedHash": "b5b68df1fc468afeb5843087e5682242240992efc74c41594a60dd475c41303c",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-copy-sheet-for-new-month": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-copy-sheet-for-new-month/SKILL.md",
-      "computedHash": "257fb7b14d88cefb21e13ab465e79dc05aa7fa964dbea0298f8bf493a07cf819"
+      "computedHash": "af3562b9bd9c461e7b31d4da893a001578f0f3ffa4805deaf651bb6edd6b619c",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-classroom-course": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-classroom-course/SKILL.md",
-      "computedHash": "9d02c6d2ae0e0d798b00302560218d9b3354f9dfd22b8d270767a90fad921738"
+      "computedHash": "1bd5ac7c0c7b15c4f9c53974b2aa52af578565cc2f94d1b531bcfb41810bd18a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-doc-from-template": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-doc-from-template/SKILL.md",
-      "computedHash": "dc49e1a728fd73ce6fdb4443dd91c5519cc77efc7685c7e9fdcbf9a4245ebd75"
+      "computedHash": "f7c9ed810b40a325d77c0265d2c99e15ce3f5dfc999386b2146f32900a6742d5",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-events-from-sheet": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-events-from-sheet/SKILL.md",
-      "computedHash": "b2c9bad0c72c732db3db679301b192db92b8c50d3f262605477fecda306b0e23"
+      "computedHash": "89b9fc72ceb82036bb4fa4ca5093f516155306a9bd1166bfde276610386c0f83",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-expense-tracker": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-expense-tracker/SKILL.md",
-      "computedHash": "e96639dbaa30920c019ac1db63ff1e427a1e8f22725968d7cd56763b82b5c939"
+      "computedHash": "feaf4dc21bb55e6d51d1d7b469ebc16269205340914190fe3114e764ce73a109",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-feedback-form": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-feedback-form/SKILL.md",
-      "computedHash": "dbf8400bd52e241d287548d4d50fa01f37af2032ae91d90e503018e67d9da3c2"
+      "computedHash": "bec36d6ce770d57465eed89227249504144d0f923f47166d62b12fac0da63167",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-gmail-filter": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-gmail-filter/SKILL.md",
-      "computedHash": "47d450f0e3796b03422f5d864ad36d8c93c9a17a189f5a480bed5b204612f0f3"
+      "computedHash": "150aa314290f033f182e5e657debee23ad0c59b66a8b28ab2acb68c034e1799f",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-meet-space": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-meet-space/SKILL.md",
-      "computedHash": "bdffd0af184a3fc33e882f9c096773d2c72d758069267a80964869aca20a85fd"
+      "computedHash": "83f3457987007f8b222280a327c5c63e19e8082b71cd53817adbf02ead9b058a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-presentation": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-presentation/SKILL.md",
-      "computedHash": "a86914b354970618ce3ac86be3219e0bcf15b98835841774af16409422f87dae"
+      "computedHash": "4d265d7fe0f90e6144a441a8aacf49f18854f21445d36366289cf271682b1e04",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-shared-drive": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-shared-drive/SKILL.md",
-      "computedHash": "629c8dc5c3c7d9d970ef8facc72c3d3310a2dca2c620e16a714d00cd56c4bca6"
+      "computedHash": "58cc4f42d23ce5448ffdd633a7a7221a09446b3bf5b275877f8d95035b620722",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-task-list": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-task-list/SKILL.md",
-      "computedHash": "f7b4f307c452e18f71d11b707ce101f3e1d2da884fc2fc304302086d8d0915bf"
+      "computedHash": "01592e681fd8b19dff8fb3b0e81fb3a0ab89cd44e109c8f8a5e9090dc62e986a",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-create-vacation-responder": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-create-vacation-responder/SKILL.md",
-      "computedHash": "a8663aae0092c81294a1e37d038a23e1332c0f8e7c14d1a30af6e5a2deec0d51"
+      "computedHash": "ee29f4ebf32f5e539d75fce8a43723ff96e2b5eea38c8d05b10daa41ce495fed",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-draft-email-from-doc": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-draft-email-from-doc/SKILL.md",
-      "computedHash": "c4d1b2300599b82c74b5912653c1ab4d7bf73c68b84872e547ceda1a63d80c0a"
+      "computedHash": "afbcedb877b59944ee7306841189d656b3b7a4d58bd83f8c989b48399b6c35b7",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-email-drive-link": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-email-drive-link/SKILL.md",
-      "computedHash": "0d083f564cf8548461c31d2d1b36ceb1d5b30f06bb2e00992dba29d0e4b4954d"
+      "computedHash": "d08675e00c1b68f00e8ff01608bd79f5375c9c188b52ee7e40abdf7f59ce8e13",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-find-free-time": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-find-free-time/SKILL.md",
-      "computedHash": "bc0e7c666aae2834669c55ea032616487140f92921003d7d29791d948028fca0"
+      "computedHash": "c3c1ae92733a02dbb10542f06f1601ed4127c9ccc3f29dcba52710f52f912fbd",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-find-large-files": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-find-large-files/SKILL.md",
-      "computedHash": "09b1dad5c431202694aab8b4358f3d2ff2691cf39c933410be015f13e9063b78"
+      "computedHash": "38e55db7a6e10e71731d98d78da850381f26b15731460af8988df8b0a596ffe3",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-forward-labeled-emails": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-forward-labeled-emails/SKILL.md",
-      "computedHash": "4998486e65d14c0df4c28bea943eee4e392e5cd0e8999833de51ebec26ba2761"
+      "computedHash": "ba4a5f252623a11955356df4e37e143dc4889c9e1fddc9e032c0ba7223eced0d",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-generate-report-from-sheet": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-generate-report-from-sheet/SKILL.md",
-      "computedHash": "9887fea88e29248dd981887d8e4b3ee14c380f53824275a27943fd274050871e"
+      "computedHash": "535c0248b4b358d9d199e6fb904f1ca29dae5cac44ad1d22f8dbaa4bf84c5560",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-label-and-archive-emails": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-label-and-archive-emails/SKILL.md",
-      "computedHash": "5f60b75c0a0a5c93abd437ca742ed9155495d19b716e9ca07fe6fc0a850c360d"
+      "computedHash": "d8fb5c0336e214c60b5f915505cd6bda8691d3419310eceb8e574321a6cc90f9",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-log-deal-update": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-log-deal-update/SKILL.md",
-      "computedHash": "1c65ceeb1e5caa370f61958da1c479e80b0d5218c78c6109ac96d080a3aca18b"
+      "computedHash": "1dcc1c0a6644aadf039c33cc8292d6c9ba46e0b1fe8c2686365dbc5e093f67d3",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-organize-drive-folder": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-organize-drive-folder/SKILL.md",
-      "computedHash": "b6cc2f74973fbbda0c28daeb416301950adbc1344f4683dd98313144838b015d"
+      "computedHash": "de991cb25e8f28b10e66a68aff565be18047064490699c28eee7562ffb3d98c2",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-plan-weekly-schedule": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-plan-weekly-schedule/SKILL.md",
-      "computedHash": "806ac44b1468f1c1bbdf1d0f046cbdfe927221da2f129e3e0de50770720ef8ab"
+      "computedHash": "3601b4ca2c04b865742d0bef53de9f2724a54d0319c2b09ac382f073ea02ab3b",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-post-mortem-setup": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-post-mortem-setup/SKILL.md",
-      "computedHash": "a894effeb3b2441c29dbea7dc1e16ef4c7149d1c22d1904b67efd0e482ec44a2"
+      "computedHash": "5058050689e39c2a885ea05339cd52f16113cb22ecc36f0770dc9c5d2cd21169",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-reschedule-meeting": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-reschedule-meeting/SKILL.md",
-      "computedHash": "bf13cf982fe02c33fdc5eef43041f0b704884bd1e016f9ba4a59334ad239d792"
+      "computedHash": "9ffeec485140f687008a1af5483b4ebdde0c4c2b96c1b4657ce409f5a11aee70",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-review-meet-participants": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-review-meet-participants/SKILL.md",
-      "computedHash": "d663fefecaf58fde31be82a445353405d6aba698a08836e0e3a1c36bcdefc23b"
+      "computedHash": "9482871873e6617ef34a98e29371400ad6663cd129273f075eb89633584111a9",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-review-overdue-tasks": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-review-overdue-tasks/SKILL.md",
-      "computedHash": "20a59f99916cef66d0279bf0644918cf2fd885b5aaed89e7409bb23ce6f89e7f"
+      "computedHash": "42ed16cfdd06c7c3c83766d56ff97edd7ed87e84a8e0a0c2542afc89b9e12d25",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-save-email-attachments": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-save-email-attachments/SKILL.md",
-      "computedHash": "da0db4fdfe3fc215a777110aa3c4cc05f575388217a9688ae0292ee03dda6762"
+      "computedHash": "3c2f24324ec972a62ae89a99d3208566af39ea607d08ed037088b8ec0c7b33d0",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-save-email-to-doc": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-save-email-to-doc/SKILL.md",
-      "computedHash": "c66ab9bdb4e68a8cfee1bf5cf51ec56c93d19b4902eb11d32152556fbdc85e14"
+      "computedHash": "33e5883c5e3f61a2ca05745462ce9d3e315e33486875cf3f6e4838e9d36dec6e",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-schedule-recurring-event": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-schedule-recurring-event/SKILL.md",
-      "computedHash": "ea82f8bd452d6eccf3e7f939d32367729f7915bf702a35d58c758c41f11feeff"
+      "computedHash": "b1fdc065e42e8785d5c36cc01513ed44e99525ba738848b3fa19d4da8c54e4cf",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-send-team-announcement": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-send-team-announcement/SKILL.md",
-      "computedHash": "6c1c97afb5cd93701420718b4f2155627c2661fd2701b5f1b4bb7bae94f162e6"
+      "computedHash": "e3d17eae6f57854e97e5a1df6295a61545f5fd2d0f4e01550e0c3e62512b98fd",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-share-doc-and-notify": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-share-doc-and-notify/SKILL.md",
-      "computedHash": "1778ee258909f0f10e36fb7f2c45b6c65a413c4eb638aee0683035dd4dc1ee96"
+      "computedHash": "68685635ec4ee1f64326f5eaa4bc5e8c63af043fa426396954573462593e0d98",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-share-event-materials": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-share-event-materials/SKILL.md",
-      "computedHash": "d9191d749beabe8f8718e3a605a55471c521521169352938224dd7ff5b8e1515"
+      "computedHash": "5f01ec5ebf39511fbd9214db930cf1fd9469ea473d7e295ebff82c4b040056b9",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-share-folder-with-team": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-share-folder-with-team/SKILL.md",
-      "computedHash": "c8dc58dad08e889716b06fe227ade63672c0d1cfd9536963fc20cc25d562ff32"
+      "computedHash": "4b9a544e8273cb8f4b6167899d184915ac58f38b48e08bd65acf9c93fc1c6787",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-sync-contacts-to-sheet": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-sync-contacts-to-sheet/SKILL.md",
-      "computedHash": "b6b2eadce3f0b108937c8ddfb0551d86136db8204e04a2f4661d473cf3b59924"
+      "computedHash": "35e79bc32e99772843217926c31080c39013fa0b5bb00b523b4937f72bf6b6c7",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     },
     "recipe-watch-drive-changes": {
       "source": "googleworkspace/cli",
       "sourceType": "github",
       "skillPath": "skills/recipe-watch-drive-changes/SKILL.md",
-      "computedHash": "936bdf68b95314d49fb04069da1b52e5092edef3ff576f483fe8c8323b05f3f3"
+      "computedHash": "da50e59c434baeb901a6341359116c51c6217237296a3cdfff3d9bfeb8c5a2b3",
+      "commit": "cd3697e07eb520056dcf142d0c7439bbb9ba32e9"
     }
   }
 }

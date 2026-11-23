@@ -1,17 +1,19 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "create-docs": {
       "source": "nuxt-content/docus",
       "sourceType": "github",
       "skillPath": "docs/skills/create-docs/SKILL.md",
-      "computedHash": "3c6d7d6f6084ff5ebbd59fe8b348f99bced0d303da45cd61069a0f6dac8199f6"
+      "computedHash": "54a6480390b42ab417f3c8eab8bbb3ad3c905670e8d4558da85ffc375e44f2be",
+      "commit": "c020e493d52434fcb1f1231d3ed11a1b86524318"
     },
     "review-docs": {
       "source": "nuxt-content/docus",
       "sourceType": "github",
       "skillPath": "docs/skills/review-docs/SKILL.md",
-      "computedHash": "016eca30a60e4d1ec38cf162753d47e52dbb543a931f77f8050d4bc4f6bc5e6b"
+      "computedHash": "e6e1b23eed984e816f0c2192886322059ce17a8b353a14594bc1e416b64f73ab",
+      "commit": "c020e493d52434fcb1f1231d3ed11a1b86524318"
     }
   }
 }

@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "nuxt-seo": {
       "source": "onmax/nuxt-skills",
       "sourceType": "github",
       "skillPath": "skills/nuxt-seo/SKILL.md",
-      "computedHash": "2c95519ef88aa9e307af520ce3daa38fa37602823703513d2841436c133dca98"
+      "computedHash": "9c765ce6c1fafa93955a8f39541a7954143dcf5118a4727e0dab48843c72ebb8",
+      "commit": "b4e1a3fb0d25704a70becfe84fddcce3463ebf91"
     }
   }
 }

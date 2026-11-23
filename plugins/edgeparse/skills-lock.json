@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "edgeparse": {
       "source": "raphaelmansuy/edgeparse",
       "sourceType": "github",
       "skillPath": "skills/edgeparse/SKILL.md",
-      "computedHash": "e710ee51a1362bd4f707f4041291cc3ddc87b4c31fa3a977af28a3c52f4be24c"
+      "computedHash": "f46f3c58df6125271b63b91fdcfed20c5d00245c22d202a2c815402c2928ba2b",
+      "commit": "8d706e0e467984dd890e9a896d46b793d01adc36"
     }
   }
 }

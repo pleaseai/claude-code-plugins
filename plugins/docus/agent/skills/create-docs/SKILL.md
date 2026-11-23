@@ -148,7 +148,7 @@ Check if project needs multi-language docs:
   },
   "dependencies": {
     "docus": "latest",
-    "better-sqlite3": "^12.5.0",
+    "better-sqlite3": "^13.2.0",
     "nuxt": "^4.2.2"
   }
 }
@@ -169,7 +169,7 @@ Check if project needs multi-language docs:
   "dependencies": {
     "@nuxtjs/i18n": "^10.2.1",
     "docus": "latest",
-    "better-sqlite3": "^12.5.0",
+    "better-sqlite3": "^13.2.0",
     "nuxt": "^4.2.2"
   }
 }

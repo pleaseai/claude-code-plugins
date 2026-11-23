@@ -1,11 +1,12 @@
 {
-  "version": 1,
+  "version": 2,
   "skills": {
     "pnpm": {
       "source": "antfu/skills",
       "sourceType": "github",
       "skillPath": "skills/pnpm/SKILL.md",
-      "computedHash": "71fd67de7ced43ff8eab87b46183fa10f09428bb3d9ae44418b506bac858583e"
+      "computedHash": "fb4c2b0f98b1e651fb217f2070e3782f2fa58fd7d9fb2745e9fefaf945b8c60e",
+      "commit": "4a6bb39e7b45e26402eb215393c51ccf5df1ca4c"
     }
   }
 }

@@ -5,19 +5,22 @@
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/migrating-to-workflow-sdk/SKILL.md",
-      "computedHash": "5a092a3589715a06aeaab3b5c874b3ef571baa6d966258759b00265d15afb3a6"
+      "computedHash": "d58ab958894b61756a8e40af022623d854c5694ad5bc8c14ccafad2a73f0f49a",
+      "commit": "f717314b6fa8e91d653f56f90b9a1facf36a5f38"
     },
     "workflow": {
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/workflow/SKILL.md",
-      "computedHash": "13791d5add44429eee466f9efc3ace04279bb448ec6a5547f22714ee016379c1"
+      "computedHash": "44d0c25644f1d56058c97f5d48ae4518c40e655021f0d3386d60ce1be810cd08",
+      "commit": "f717314b6fa8e91d653f56f90b9a1facf36a5f38"
     },
     "workflow-init": {
       "source": "vercel/workflow",
       "sourceType": "github",
       "skillPath": "skills/workflow-init/SKILL.md",
-      "computedHash": "e21b7fe0aeab17c7ea1762b6fa51c855ee13b8c3990588ecea5c693271406b06"
+      "computedHash": "e21b7fe0aeab17c7ea1762b6fa51c855ee13b8c3990588ecea5c693271406b06",
+      "commit": "f717314b6fa8e91d653f56f90b9a1facf36a5f38"
     }
   }
 }
